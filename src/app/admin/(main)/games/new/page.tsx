@@ -1,0 +1,123 @@
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { createClient } from "@/lib/supabase/client";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+
+export default function NewGame() {
+  const router = useRouter();
+  const [saving, setSaving] = useState(false);
+  const [form, setForm] = useState({
+    title: "", slug: "", thumbnail_url: "", cover_url: "", iframe_url: "",
+    description: "", how_to_play: "", controls: "", tips: "", features: "",
+    developer: "", publisher: "", release_date: "",
+    is_published: false, is_featured: false, is_trending: false,
+  });
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+    const { name, value, type } = e.target;
+    const checked = (e.target as HTMLInputElement).checked;
+    setForm(prev => ({ ...prev, [name]: type === "checkbox" ? checked : value }));
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setSaving(true);
+    const supabase = createClient();
+    await supabase.from("games").insert([{
+      ...form,
+      release_date: form.release_date || null,
+    }]);
+    router.push("/admin/games");
+  }
+
+  return (
+    <div className="max-w-3xl space-y-6">
+      <div>
+        <h1 className="text-2xl font-bold">Add New Game</h1>
+        <p className="text-sm text-muted-foreground">Create a new game entry</p>
+      </div>
+
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="space-y-2">
+            <Label htmlFor="title">Title *</Label>
+            <Input id="title" name="title" value={form.title} onChange={handleChange} required />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="slug">Slug *</Label>
+            <Input id="slug" name="slug" value={form.slug} onChange={handleChange} required />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="thumbnail_url">Thumbnail URL</Label>
+            <Input id="thumbnail_url" name="thumbnail_url" value={form.thumbnail_url} onChange={handleChange} />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="cover_url">Cover URL</Label>
+            <Input id="cover_url" name="cover_url" value={form.cover_url} onChange={handleChange} />
+          </div>
+          <div className="space-y-2 md:col-span-2">
+            <Label htmlFor="iframe_url">Iframe URL *</Label>
+            <Input id="iframe_url" name="iframe_url" value={form.iframe_url} onChange={handleChange} required />
+          </div>
+          <div className="space-y-2 md:col-span-2">
+            <Label htmlFor="description">Description</Label>
+            <Textarea id="description" name="description" value={form.description} onChange={handleChange} rows={4} />
+          </div>
+          <div className="space-y-2 md:col-span-2">
+            <Label htmlFor="how_to_play">How to Play</Label>
+            <Textarea id="how_to_play" name="how_to_play" value={form.how_to_play} onChange={handleChange} rows={3} />
+          </div>
+          <div className="space-y-2 md:col-span-2">
+            <Label htmlFor="controls">Controls</Label>
+            <Textarea id="controls" name="controls" value={form.controls} onChange={handleChange} rows={3} />
+          </div>
+          <div className="space-y-2 md:col-span-2">
+            <Label htmlFor="tips">Tips</Label>
+            <Textarea id="tips" name="tips" value={form.tips} onChange={handleChange} rows={3} />
+          </div>
+          <div className="space-y-2 md:col-span-2">
+            <Label htmlFor="features">Features</Label>
+            <Textarea id="features" name="features" value={form.features} onChange={handleChange} rows={3} />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="developer">Developer</Label>
+            <Input id="developer" name="developer" value={form.developer} onChange={handleChange} />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="publisher">Publisher</Label>
+            <Input id="publisher" name="publisher" value={form.publisher} onChange={handleChange} />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="release_date">Release Date</Label>
+            <Input id="release_date" name="release_date" type="date" value={form.release_date} onChange={handleChange} />
+          </div>
+        </div>
+
+        <div className="flex flex-wrap gap-6">
+          <label className="flex items-center gap-2 text-sm">
+            <input type="checkbox" name="is_published" checked={form.is_published} onChange={handleChange} />
+            Published
+          </label>
+          <label className="flex items-center gap-2 text-sm">
+            <input type="checkbox" name="is_featured" checked={form.is_featured} onChange={handleChange} />
+            Featured
+          </label>
+          <label className="flex items-center gap-2 text-sm">
+            <input type="checkbox" name="is_trending" checked={form.is_trending} onChange={handleChange} />
+            Trending
+          </label>
+        </div>
+
+        <div className="flex gap-3">
+          <Button type="submit" disabled={saving}>{saving ? "Saving..." : "Save Game"}</Button>
+          <Button type="button" variant="outline" onClick={() => router.back()}>Cancel</Button>
+        </div>
+      </form>
+    </div>
+  );
+}
