@@ -1,7 +1,25 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "img.itch.zone",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "imgs.crazygames.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "*.supabase.co",
+        pathname: "/**",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

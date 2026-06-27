@@ -75,12 +75,12 @@ function SectionHeader({ title, icon: Icon, href }: { title: string; icon: any; 
   return (
     <div className="flex items-center justify-between mb-4">
       <div className="flex items-center gap-2">
-        <Icon className="h-5 w-5 text-primary" />
-        <h2 className="text-lg font-black text-foreground">{title}</h2>
+        <Icon className="h-6 w-6 text-primary" />
+        <h2 className="text-lg md:text-xl font-black text-foreground">{title}</h2>
       </div>
       <Link
         href={href}
-        className="flex items-center gap-1 text-xs font-semibold text-muted-foreground hover:text-primary transition-colors"
+        className="flex items-center gap-1 text-sm font-semibold text-muted-foreground hover:text-primary transition-colors"
       >
         View All <ArrowRight className="h-3.5 w-3.5" />
       </Link>
@@ -124,17 +124,9 @@ export default async function HomePage() {
 
   return (
     <div className="pb-12">
-      {/* Page title */}
-      <div className="container mx-auto px-4 pt-8 pb-6">
-        <h1 className="text-2xl md:text-3xl font-black text-foreground">
-          Free Online Games at {SITE_NAME}
-        </h1>
-        <p className="text-sm text-muted-foreground mt-1 max-w-2xl">
-          Play the latest and best free online games. No downloads, no intrusive ads — just fun.
-        </p>
-      </div>
 
-      <div className="container mx-auto px-4 space-y-10">
+
+      <div className="container mx-auto px-4 pt-6 space-y-10">
         {/* Game sections — show all even if empty for layout consistency */}
         {sections.map((section) => (
           <section key={section.id}>
@@ -144,14 +136,14 @@ export default async function HomePage() {
               href={section.href}
             />
             {section.games.length > 0 ? (
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-5">
                 {section.games.map((game) => (
                   <GameCard key={game.id} game={game} showCategory={false} />
                 ))}
               </div>
             ) : (
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4">
-                {Array.from({ length: 6 }).map((_, i) => (
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-5">
+                {Array.from({ length: 4 }).map((_, i) => (
                   <div
                     key={i}
                     className="rounded-xl bg-card border border-border/40 overflow-hidden animate-pulse"

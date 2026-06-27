@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { createAdminClient } from "@/lib/supabase/admin";
 import { GameCard } from "@/components/games/GameCard";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { SITE_URL, PAGE_SIZE } from "@/lib/constants";
@@ -13,7 +13,7 @@ interface Props {
 }
 
 async function getCategory(slug: string) {
-  const supabase = await createServerSupabaseClient();
+  const supabase = createAdminClient();
   const { data } = await supabase
     .from("categories")
     .select("*")
@@ -23,7 +23,7 @@ async function getCategory(slug: string) {
 }
 
 async function getGames(slug: string, page: number) {
-  const supabase = await createServerSupabaseClient();
+  const supabase = createAdminClient();
   const from = (page - 1) * PAGE_SIZE;
   const to = from + PAGE_SIZE - 1;
 
@@ -35,16 +35,20 @@ async function getGames(slug: string, page: number) {
 
   if (!catData) return { games: [], total: 0 };
 
-  const { count } = await supabase
+  const { data: catGames } = await supabase
     .from("game_categories")
-    .select("*", { count: "exact", head: true })
+    .select("game_id")
     .eq("category_id", catData.id);
 
-  const { data: gamesData } = await supabase
+  const gameIds = (catGames || []).map(gc => gc.game_id);
+
+  if (gameIds.length === 0) return { games: [], total: 0 };
+
+  const { data: gamesData, count } = await supabase
     .from("games")
-    .select(`*, categories:game_categories(category_id, categories:categories(*))`)
+    .select(`*, categories:game_categories(category_id, categories:categories(*))`, { count: "exact" })
     .eq("is_published", true)
-    .eq("game_categories.category_id", catData.id)
+    .in("id", gameIds)
     .order("created_at", { ascending: false })
     .range(from, to);
 
@@ -98,7 +102,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
 
       {games.length > 0 ? (
         <>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-5">
             {games.map((game: Game) => (
               <GameCard key={game.id} game={game} />
             ))}

@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -22,28 +21,24 @@ export default function AdminGames() {
 
   async function loadGames() {
     setLoading(true);
-    const supabase = createClient();
-    const from = (page - 1) * PAGE_SIZE;
-    const to = from + PAGE_SIZE - 1;
-
-    let query = supabase.from("games").select("*", { count: "exact" });
-    if (search) query = query.or(`title.ilike.%${search}%,slug.ilike.%${search}%`);
-    query = query.order("created_at", { ascending: false }).range(from, to);
-
-    const { data, count } = await query;
-    setGames(data || []); setTotal(count || 0); setLoading(false);
+    const params = new URLSearchParams({ page: String(page), q: search });
+    const res = await fetch("/api/admin/games?" + params.toString());
+    const json = await res.json();
+    setGames(json.data || []); setTotal(json.total || 0); setLoading(false);
   }
 
   async function togglePublish(id: string, current: boolean) {
-    const supabase = createClient();
-    await supabase.from("games").update({ is_published: !current }).eq("id", id);
+    await fetch("/api/admin/games", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, is_published: !current }),
+    });
     loadGames();
   }
 
   async function deleteGame(id: string) {
     if (!confirm("Are you sure?")) return;
-    const supabase = createClient();
-    await supabase.from("games").delete().eq("id", id);
+    await fetch("/api/admin/games?id=" + id, { method: "DELETE" });
     loadGames();
   }
 

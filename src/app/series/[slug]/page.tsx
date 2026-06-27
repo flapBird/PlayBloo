@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { createAdminClient } from "@/lib/supabase/admin";
 import { GameCard } from "@/components/games/GameCard";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { SITE_URL } from "@/lib/constants";
@@ -12,25 +12,35 @@ interface Props {
 }
 
 async function getSeries(slug: string) {
-  const supabase = await createServerSupabaseClient();
+  const supabase = createAdminClient();
   const { data } = await supabase.from("series").select("*").eq("slug", slug).single();
   return data;
 }
 
 async function getGames(slug: string) {
-  const supabase = await createServerSupabaseClient();
+  const supabase = createAdminClient();
   const { data: seriesData } = await supabase
     .from("series").select("id").eq("slug", slug).single();
   if (!seriesData) return [];
 
+  const { data: seriesGames } = await supabase
+    .from("game_series")
+    .select("game_id, sort_order")
+    .eq("series_id", seriesData.id)
+    .order("sort_order", { ascending: true });
+
+  const gameIds = (seriesGames || []).map(gs => gs.game_id);
+  const sortMap = new Map((seriesGames || []).map(gs => [gs.game_id, gs.sort_order]));
+
+  if (gameIds.length === 0) return [];
+
   const { data } = await supabase
     .from("games")
-    .select(`*, categories:game_categories(category_id, categories:categories(*)), series:game_series!inner(series_id, sort_order, series:series(*))`)
+    .select(`*, categories:game_categories(category_id, categories:categories(*)), series:game_series(series_id, sort_order, series:series(*))`)
     .eq("is_published", true)
-    .eq("game_series.series_id", seriesData.id)
-    .order("game_series.sort_order", { ascending: true });
+    .in("id", gameIds);
 
-  return (data || []).map((g: any) => ({
+  return (data || []).sort((a: any, b: any) => (sortMap.get(a.id) || 0) - (sortMap.get(b.id) || 0)).map((g: any) => ({
     ...g,
     categories: g.categories?.filter((gc: any) => gc.categories).map((gc: any) => gc.categories) || [],
     series: g.series?.filter((gs: any) => gs.series).map((gs: any) => gs.series) || [],
@@ -85,7 +95,7 @@ export default async function SeriesPage({ params }: Props) {
       {games.length > 0 && (
         <div>
           <h2 className="text-xl font-bold mb-4">Games in this series</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-5">
             {games.map((game: Game, index: number) => (
               <div key={game.id} className="relative">
                 <div className="absolute -top-2 -left-2 z-10 w-7 h-7 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs font-bold shadow">

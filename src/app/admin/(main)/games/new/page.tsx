@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -10,11 +10,21 @@ import { Textarea } from "@/components/ui/textarea";
 
 export default function NewGame() {
   const router = useRouter();
-  const [saving, setSaving] = useState(false);
+
+  useEffect(() => {
+    fetch("/api/categories")
+      .then(r => r.json())
+      .then(d => setCategories(d.data || []))
+      .catch(() => {});
+  }, []);
+  const [saving, setSaving] = useState("");
+  const [error, setError] = useState("");
+  const [categories, setCategories] = useState<{ id: string; name: string }[]>([]);
+  const [selectedCategoryIds, setSelectedCategoryIds] = useState<string[]>([]);
   const [form, setForm] = useState({
     title: "", slug: "", thumbnail_url: "", cover_url: "", iframe_url: "",
     description: "", how_to_play: "", controls: "", tips: "", features: "",
-    developer: "", publisher: "", release_date: "",
+    release_date: "",
     is_published: false, is_featured: false, is_trending: false,
   });
 
@@ -26,12 +36,26 @@ export default function NewGame() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setSaving(true);
-    const supabase = createClient();
-    await supabase.from("games").insert([{
-      ...form,
-      release_date: form.release_date || null,
-    }]);
+    setSaving("Saving...");
+    setError("");
+
+    const res = await fetch("/api/admin/games", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        ...form,
+        release_date: form.release_date || null,
+        category_ids: selectedCategoryIds,
+      }),
+    });
+
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({}));
+      setError(data?.error || "Failed to save game");
+      setSaving("");
+      return;
+    }
+
     router.push("/admin/games");
   }
 
@@ -43,6 +67,11 @@ export default function NewGame() {
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
+          {error && (
+            <div className="rounded-lg bg-destructive/10 border border-destructive/20 p-3 text-sm text-destructive">
+              {error}
+            </div>
+          )}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-2">
             <Label htmlFor="title">Title *</Label>
@@ -84,37 +113,57 @@ export default function NewGame() {
             <Label htmlFor="features">Features</Label>
             <Textarea id="features" name="features" value={form.features} onChange={handleChange} rows={3} />
           </div>
-          <div className="space-y-2">
-            <Label htmlFor="developer">Developer</Label>
-            <Input id="developer" name="developer" value={form.developer} onChange={handleChange} />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="publisher">Publisher</Label>
-            <Input id="publisher" name="publisher" value={form.publisher} onChange={handleChange} />
-          </div>
+          
           <div className="space-y-2">
             <Label htmlFor="release_date">Release Date</Label>
             <Input id="release_date" name="release_date" type="date" value={form.release_date} onChange={handleChange} />
           </div>
         </div>
 
+        <div>
+          <Label className="text-sm font-semibold mb-2 block">Categories</Label>
+          <div className="flex flex-wrap gap-2 mb-4">
+            {categories.map(cat => (
+              <label key={cat.id} className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-sm cursor-pointer transition-colors ${
+                selectedCategoryIds.includes(cat.id)
+                  ? "bg-primary/10 border-primary/30 text-primary"
+                  : "bg-card border-border/60 text-muted-foreground hover:border-primary/30"
+              }`}>
+                <input
+                  type="checkbox"
+                  className="hidden"
+                  checked={selectedCategoryIds.includes(cat.id)}
+                  onChange={() => {
+                    setSelectedCategoryIds(prev =>
+                      prev.includes(cat.id)
+                        ? prev.filter(id => id !== cat.id)
+                        : [...prev, cat.id]
+                    );
+                  }}
+                />
+                {cat.name}
+              </label>
+            ))}
+          </div>
+        </div>
+
         <div className="flex flex-wrap gap-6">
-          <label className="flex items-center gap-2 text-sm">
-            <input type="checkbox" name="is_published" checked={form.is_published} onChange={handleChange} />
+          <label className="flex items-center gap-2 text-sm cursor-pointer">
+            <input type="checkbox" name="is_published" checked={form.is_published} onChange={handleChange} className="accent-indigo-600" />
             Published
           </label>
-          <label className="flex items-center gap-2 text-sm">
-            <input type="checkbox" name="is_featured" checked={form.is_featured} onChange={handleChange} />
+          <label className="flex items-center gap-2 text-sm cursor-pointer">
+            <input type="checkbox" name="is_featured" checked={form.is_featured} onChange={handleChange} className="accent-indigo-600" />
             Featured
           </label>
-          <label className="flex items-center gap-2 text-sm">
-            <input type="checkbox" name="is_trending" checked={form.is_trending} onChange={handleChange} />
+          <label className="flex items-center gap-2 text-sm cursor-pointer">
+            <input type="checkbox" name="is_trending" checked={form.is_trending} onChange={handleChange} className="accent-indigo-600" />
             Trending
           </label>
         </div>
 
         <div className="flex gap-3">
-          <Button type="submit" disabled={saving}>{saving ? "Saving..." : "Save Game"}</Button>
+          <Button type="submit" disabled={!!saving}>{saving ? "Saving..." : "Save Game"}</Button>
           <Button type="button" variant="outline" onClick={() => router.back()}>Cancel</Button>
         </div>
       </form>

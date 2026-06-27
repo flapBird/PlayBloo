@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState, useCallback, useEffect, useRef } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { Search, Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -16,6 +16,9 @@ export function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
   const searchRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
+  const pathname = usePathname();
+  const match = pathname.match(/^\/category\/([^\/]+)/);
+  const currentCategory = match?.[1] || null;
 
   const handleSearch = useCallback(
     (e: React.FormEvent) => {
@@ -105,7 +108,9 @@ export function Header() {
         <nav className="hidden md:flex items-center gap-1.5 px-4 pb-2 overflow-x-auto">
           <Link
             href="/"
-            className="inline-flex h-8 shrink-0 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600 px-3.5 text-xs font-semibold hover:bg-indigo-100 transition-colors"
+            className={`inline-flex h-9 shrink-0 items-center justify-center rounded-lg px-4 text-sm font-bold transition-colors ${
+              pathname === "/" ? "bg-indigo-50 text-indigo-600" : "text-muted-foreground hover:text-foreground hover:bg-muted"
+            }`}
           >
             All Games
           </Link>
@@ -113,14 +118,16 @@ export function Header() {
             <Link
               key={cat.slug}
               href={`/category/${cat.slug}`}
-              className="inline-flex h-8 shrink-0 items-center justify-center rounded-lg px-3.5 text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+              className={`inline-flex h-9 shrink-0 items-center justify-center rounded-lg px-4 text-sm font-bold transition-colors ${
+                currentCategory === cat.slug ? "bg-indigo-50 text-indigo-600" : "text-muted-foreground hover:text-foreground hover:bg-muted"
+              }`}
             >
               {cat.name}
             </Link>
           ))}
           <Link
             href="/search"
-            className="inline-flex h-8 shrink-0 items-center justify-center rounded-lg text-xs font-medium text-muted-foreground hover:text-foreground px-3 transition-colors"
+            className="inline-flex h-9 shrink-0 items-center justify-center rounded-lg text-sm font-semibold text-muted-foreground hover:text-foreground px-3 transition-colors"
           >
             View All <ChevronDown className="h-3 w-3 ml-0.5" />
           </Link>

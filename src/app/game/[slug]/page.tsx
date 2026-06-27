@@ -1,14 +1,15 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import type { Metadata } from "next";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { createAdminClient } from "@/lib/supabase/admin";
 import { GameCard } from "@/components/games/GameCard";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { GameJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 import { Play, Eye, Calendar } from "lucide-react";
+import { GameIframe } from "@/components/games/GameIframe";
 import type { Game } from "@/lib/types";
 
 interface Props {
@@ -80,7 +81,7 @@ export default async function GamePage({ params }: Props) {
 
   // Increment view count
   try {
-    const supabase = await createServerSupabaseClient();
+    const supabase = createAdminClient();
     await supabase
       .from("games")
       .update({ view_count: game.view_count + 1 })
@@ -100,33 +101,13 @@ export default async function GamePage({ params }: Props) {
         description={game.description || ""}
         url={`${SITE_URL}/game/${game.slug}`}
         image={game.thumbnail_url}
-        author={game.developer}
       />
 
       {/* Game Header */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Thumbnail */}
-        <div className="lg:col-span-1">
-          <div className="relative aspect-video rounded-xl overflow-hidden bg-muted">
-            {game.thumbnail_url ? (
-              <Image
-                src={game.thumbnail_url}
-                alt={game.title}
-                fill
-                className="object-cover"
-                sizes="400px"
-              />
-            ) : (
-              <div className="flex items-center justify-center h-full text-muted-foreground/50">
-                <Play className="h-16 w-16" />
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Info */}
-        <div className="lg:col-span-2 space-y-4">
-          <h1 className="text-3xl font-bold">{game.title}</h1>
+      <div className="max-w-5xl mx-auto space-y-6">
+        {/* Game Info */}
+        <div className="space-y-4">
+          <h1 className="text-3xl md:text-4xl font-black tracking-tight">{game.title}</h1>
 
           <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
             <span className="flex items-center gap-1">
@@ -140,8 +121,7 @@ export default async function GamePage({ params }: Props) {
                 <Calendar className="h-4 w-4" /> {game.release_date}
               </span>
             )}
-            {game.developer && <span>Developer: {game.developer}</span>}
-            {game.publisher && <span>Publisher: {game.publisher}</span>}
+            
           </div>
 
           {categories.length > 0 && (
@@ -174,18 +154,9 @@ export default async function GamePage({ params }: Props) {
             </div>
           )}
         </div>
-      </div>
 
       {/* Game Iframe */}
-      <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden border bg-black">
-        <iframe
-          src={game.iframe_url}
-          className="absolute inset-0 w-full h-full"
-          allowFullScreen
-          allow="autoplay; fullscreen"
-          title={game.title}
-        />
-      </div>
+      <GameIframe src={game.iframe_url} title={game.title} gameId={game.id} />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Main Content */}
@@ -277,6 +248,7 @@ export default async function GamePage({ params }: Props) {
         </aside>
       </div>
 
+      </div>
       {relatedGames.length > 0 && (
         <section>
           <Separator className="mb-8" />

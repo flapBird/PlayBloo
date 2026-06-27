@@ -13,9 +13,9 @@ interface GameCardProps {
 export function GameCard({ game, showCategory = true }: GameCardProps) {
   return (
     <Link href={`/game/${game.slug}`} className="group block">
-      <Card className="overflow-hidden bg-card border-border/60 shadow-sm transition-all duration-200 hover:shadow-md hover:shadow-indigo-500/5 hover:-translate-y-1">
+      <Card className="overflow-hidden bg-card border-border/60 shadow-sm transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/10 hover:-translate-y-1.5">
         {/* Thumbnail */}
-        <div className="relative aspect-[4/3] bg-gradient-to-br from-indigo-50 to-violet-50 overflow-hidden">
+        <div className="relative aspect-[16/10] bg-gradient-to-br from-indigo-50 to-violet-50 overflow-hidden rounded-t-xl">
           {game.thumbnail_url ? (
             <Image
               src={game.thumbnail_url}
@@ -32,7 +32,7 @@ export function GameCard({ game, showCategory = true }: GameCardProps) {
 
           {/* Hover overlay with play button */}
           <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
-            <div className="flex items-center gap-2 rounded-full bg-primary shadow-lg shadow-indigo-200 px-5 py-2.5 -translate-y-2 group-hover:translate-y-0 transition-all duration-200">
+            <div className="flex items-center gap-2 rounded-full bg-primary shadow-lg shadow-indigo-200 px-4 py-2 -translate-y-2 group-hover:translate-y-0 transition-all duration-200">
               <Play className="h-5 w-5 fill-white text-white" />
               <span className="text-sm font-bold text-white">Play Now</span>
             </div>
@@ -40,8 +40,8 @@ export function GameCard({ game, showCategory = true }: GameCardProps) {
         </div>
 
         {/* Info */}
-        <div className="p-3 space-y-1.5">
-          <h3 className="font-semibold text-sm text-card-foreground leading-tight line-clamp-1 group-hover:text-primary transition-colors">
+        <div className="p-4 space-y-2">
+          <h3 className="font-bold text-[15px] text-card-foreground leading-tight line-clamp-1 group-hover:text-primary transition-colors">
             {game.title}
           </h3>
 

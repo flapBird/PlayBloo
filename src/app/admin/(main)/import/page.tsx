@@ -30,7 +30,7 @@ export default function AdminImport() {
           iframe_url: row.iframe_url || row.url || "",
           description: row.description || null, how_to_play: row.how_to_play || null,
           controls: row.controls || null, tips: row.tips || null, features: row.features || null,
-          developer: row.developer || null, publisher: row.publisher || null,
+          
           is_published: true,
         };
         const { error } = await supabase.from("games").insert([gameData]);

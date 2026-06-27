@@ -57,8 +57,6 @@ CREATE TABLE games (
   controls TEXT,
   tips TEXT,
   features TEXT,
-  developer TEXT,
-  publisher TEXT,
   release_date DATE,
   is_published BOOLEAN NOT NULL DEFAULT false,
   is_featured BOOLEAN NOT NULL DEFAULT false,
@@ -163,3 +161,33 @@ INSERT INTO categories (name, slug, description, meta_title, meta_description, s
 ('Survival', 'survival', 'Survival games that test your resourcefulness.', 'Survival Games - Play Free Online Survival Games', 'Play free survival games online.', 23),
 ('Trivia', 'trivia', 'Test your knowledge with trivia and quiz games.', 'Trivia Games - Play Free Online Trivia Games', 'Play free trivia games online.', 24)
 ON CONFLICT (slug) DO NOTHING;
+
+-- RLS Policies: allow public SELECT on content tables
+ALTER TABLE games ENABLE ROW LEVEL SECURITY;
+ALTER TABLE categories ENABLE ROW LEVEL SECURITY;
+ALTER TABLE tags ENABLE ROW LEVEL SECURITY;
+ALTER TABLE series ENABLE ROW LEVEL SECURITY;
+ALTER TABLE game_categories ENABLE ROW LEVEL SECURITY;
+ALTER TABLE game_tags ENABLE ROW LEVEL SECURITY;
+ALTER TABLE game_series ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Public can read published games"
+  ON games FOR SELECT USING (is_published = true);
+
+CREATE POLICY "Public can read categories"
+  ON categories FOR SELECT USING (true);
+
+CREATE POLICY "Public can read tags"
+  ON tags FOR SELECT USING (true);
+
+CREATE POLICY "Public can read series"
+  ON series FOR SELECT USING (true);
+
+CREATE POLICY "Public can read game_categories"
+  ON game_categories FOR SELECT USING (true);
+
+CREATE POLICY "Public can read game_tags"
+  ON game_tags FOR SELECT USING (true);
+
+CREATE POLICY "Public can read game_series"
+  ON game_series FOR SELECT USING (true);

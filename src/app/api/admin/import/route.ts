@@ -38,8 +38,6 @@ export async function POST(request: NextRequest) {
           controls: row.controls || null,
           tips: row.tips || null,
           features: row.features || null,
-          developer: row.developer || null,
-          publisher: row.publisher || null,
           is_published: true,
         };
 

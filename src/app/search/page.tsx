@@ -91,7 +91,7 @@ export default async function SearchPage({ searchParams }: Props) {
       />
 
       <div className="space-y-4">
-        <h1 className="text-3xl font-bold">
+        <h1 className="text-3xl font-black tracking-tight">
           {q ? `Search results for "${q}"` : "Browse All Games"}
         </h1>
 
@@ -148,7 +148,7 @@ export default async function SearchPage({ searchParams }: Props) {
 
       {games.length > 0 ? (
         <>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-5">
             {games.map((game: Game) => (
               <GameCard key={game.id} game={game} />
             ))}
