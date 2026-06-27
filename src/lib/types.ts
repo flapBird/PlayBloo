@@ -5,6 +5,7 @@ export interface Game {
   thumbnail_url: string | null;
   cover_url: string | null;
   iframe_url: string;
+  external_url: string | null;
   description: string | null;
   how_to_play: string | null;
   controls: string | null;

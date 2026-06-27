@@ -52,6 +52,7 @@ CREATE TABLE games (
   thumbnail_url TEXT,
   cover_url TEXT,
   iframe_url TEXT NOT NULL,
+  external_url TEXT,
   description TEXT,
   how_to_play TEXT,
   controls TEXT,

@@ -1,31 +1,23 @@
 "use client";
 
-import { useRef, useState, useEffect, useCallback } from "react";
-import { Maximize2, Minimize2 } from "lucide-react";
+import { useRef, useState, useCallback, useEffect } from "react";
+import Image from "next/image";
+import { Play, Maximize2, Minimize2, ExternalLink, Gamepad2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface GameIframeProps {
   src: string;
   title: string;
   gameId: string;
+  thumbnailUrl?: string | null;
+  externalUrl?: string | null;
 }
 
-export function GameIframe({ src, title, gameId }: GameIframeProps) {
+export function GameIframe({ src, title, gameId, thumbnailUrl, externalUrl }: GameIframeProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [showIframe, setShowIframe] = useState(false);
   const tracked = useRef(false);
-
-  // Track play on mount
-  useEffect(() => {
-    if (tracked.current) return;
-    tracked.current = true;
-
-    fetch("/api/stats", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ game_id: gameId, type: "play" }),
-    }).catch(() => {});
-  }, [gameId]);
 
   useEffect(() => {
     const handler = () => setIsFullscreen(!!document.fullscreenElement);
@@ -33,24 +25,100 @@ export function GameIframe({ src, title, gameId }: GameIframeProps) {
     return () => document.removeEventListener("fullscreenchange", handler);
   }, []);
 
-  const toggleFullscreen = useCallback(async () => {
+  const trackPlay = () => {
+    if (tracked.current) return;
+    tracked.current = true;
+    fetch("/api/stats", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ game_id: gameId, type: "play" }),
+    }).catch(() => {});
+  };
+
+  const handlePlayClick = () => {
+    trackPlay();
+    if (externalUrl) {
+      window.open(externalUrl, "_blank", "noopener,noreferrer");
+      return;
+    }
+    setShowIframe(true);
+  };
+
+  const toggleFullscreen = useCallback(() => {
     if (!containerRef.current) return;
     if (document.fullscreenElement) {
-      await document.exitFullscreen();
+      document.exitFullscreen();
     } else {
-      try {
-        await containerRef.current.requestFullscreen();
-      } catch {}
+      containerRef.current.requestFullscreen().catch(() => {});
     }
   }, []);
 
+  // --- COVER STATE ---
+  if (!showIframe) {
+    return (
+      <div className="mx-auto max-w-5xl">
+        <div className="bg-gradient-to-br from-indigo-50 to-violet-50 rounded-xl border p-8 md:p-12">
+          <div className="flex flex-col items-center gap-5">
+            {/* Thumbnail */}
+            <div className="relative w-full max-w-xs aspect-[4/3] rounded-xl overflow-hidden shadow-lg ring-1 ring-black/5 bg-white">
+              {thumbnailUrl ? (
+                <Image
+                  src={thumbnailUrl}
+                  alt={title}
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-indigo-100 to-violet-100">
+                  <Gamepad2 className="h-16 w-16 text-indigo-200" />
+                </div>
+              )}
+            </div>
+
+            {/* Title */}
+            <h3 className="text-xl md:text-2xl font-bold text-foreground text-center">
+              {title}
+            </h3>
+
+            {/* Play Now button */}
+            <button
+              onClick={handlePlayClick}
+              className="relative inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-primary text-white font-bold text-base shadow-lg hover:shadow-xl hover:bg-primary/90 hover:scale-105 active:scale-100 transition-all duration-200"
+            >
+              <Play className="h-5 w-5 fill-white" />
+              <span>{externalUrl ? "Play on Website" : "Play Now"}</span>
+              {externalUrl && <ExternalLink className="h-4 w-4" />}
+            </button>
+
+            {externalUrl && (
+              <p className="text-sm text-muted-foreground">
+                This game will open in a new tab
+              </p>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // --- IFRAME STATE ---
   return (
     <div className="mx-auto max-w-5xl">
-      <div
-        ref={containerRef}
-        className="relative rounded-xl overflow-hidden border bg-black"
-      >
+      <div ref={containerRef} className="relative rounded-xl overflow-hidden border bg-black">
+        {/* Toolbar */}
         <div className="absolute top-3 right-3 z-20 flex gap-2">
+          {externalUrl && (
+            <Button
+              variant="secondary"
+              size="icon"
+              onClick={() => window.open(externalUrl, "_blank", "noopener,noreferrer")}
+              className="h-8 w-8 bg-black/60 hover:bg-black/80 text-white border-0"
+              title="Open in new tab"
+            >
+              <ExternalLink className="h-4 w-4" />
+            </Button>
+          )}
           <Button
             variant="secondary"
             size="icon"
@@ -62,6 +130,7 @@ export function GameIframe({ src, title, gameId }: GameIframeProps) {
           </Button>
         </div>
 
+        {/* Iframe */}
         <div className="w-full min-h-[500px] md:min-h-[600px] relative">
           <iframe
             src={src}

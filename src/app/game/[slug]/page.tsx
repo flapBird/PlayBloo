@@ -156,7 +156,7 @@ export default async function GamePage({ params }: Props) {
         </div>
 
       {/* Game Iframe */}
-      <GameIframe src={game.iframe_url} title={game.title} gameId={game.id} />
+      <GameIframe src={game.iframe_url} title={game.title} gameId={game.id} thumbnailUrl={game.thumbnail_url} externalUrl={game.external_url} />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Main Content */}

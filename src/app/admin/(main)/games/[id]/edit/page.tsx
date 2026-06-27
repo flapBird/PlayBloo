@@ -16,7 +16,7 @@ export default function EditGame() {
   const [categories, setCategories] = useState<{ id: string; name: string }[]>([]);
   const [selectedCategoryIds, setSelectedCategoryIds] = useState<string[]>([]);
   const [form, setForm] = useState({
-    title: "", slug: "", thumbnail_url: "", cover_url: "", iframe_url: "",
+    title: "", slug: "", thumbnail_url: "", cover_url: "", iframe_url: "", external_url: "",
     description: "", how_to_play: "", controls: "", tips: "", features: "",
     release_date: "",
     is_published: false, is_featured: false, is_trending: false,
@@ -46,6 +46,7 @@ export default function EditGame() {
         thumbnail_url: data.thumbnail_url || "",
         cover_url: data.cover_url || "",
         iframe_url: data.iframe_url || "",
+        external_url: data.external_url || "",
         description: data.description || "",
         how_to_play: data.how_to_play || "",
         controls: data.controls || "",
@@ -114,6 +115,10 @@ export default function EditGame() {
           <div className="space-y-2">
             <Label htmlFor="cover_url">Cover URL</Label>
             <Input id="cover_url" name="cover_url" value={form.cover_url} onChange={handleChange} />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="external_url">External URL (opens in new tab)</Label>
+            <Input id="external_url" name="external_url" value={form.external_url} onChange={handleChange} placeholder="https://example.com/game" />
           </div>
           <div className="space-y-2 md:col-span-2">
             <Label htmlFor="iframe_url">Iframe URL *</Label>

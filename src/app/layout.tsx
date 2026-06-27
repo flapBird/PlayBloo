@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -65,6 +66,18 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <JsonLd type="WebSite" />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-WVF4JL80YN"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-WVF4JL80YN');
+          `}
+        </Script>
       </body>
     </html>
   );
