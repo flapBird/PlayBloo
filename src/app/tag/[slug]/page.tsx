@@ -59,6 +59,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: `${tag.name} Games - Browse Free Online Games Tagged with ${tag.name}` };
 }
 
+export const revalidate = 120;
+
 export default async function TagPage({ params, searchParams }: Props) {
   const { slug } = await params;
   const { page: pageStr } = await searchParams;

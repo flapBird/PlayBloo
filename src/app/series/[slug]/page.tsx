@@ -36,7 +36,7 @@ async function getGames(slug: string) {
 
   const { data } = await supabase
     .from("games")
-    .select(`*, categories:game_categories(category_id, categories:categories(*)), series:game_series(series_id, sort_order, series:series(*))`)
+    .select(`id, title, slug, thumbnail_url, view_count, play_count, categories:game_categories(category_id, categories:categories(*)), series:game_series(series_id, sort_order, series:series(*))`)
     .eq("is_published", true)
     .in("id", gameIds);
 
@@ -57,6 +57,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return { title, description };
 }
+
+export const revalidate = 120;
 
 export default async function SeriesPage({ params }: Props) {
   const { slug } = await params;

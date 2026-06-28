@@ -15,7 +15,7 @@ export async function GET(request: NextRequest) {
 
   let query = supabase
     .from("games")
-    .select("*, categories:game_categories(category_id, categories:categories(*))", { count: "exact" })
+    .select("id, title, slug, thumbnail_url, view_count, play_count, created_at, categories:game_categories(category_id, categories:categories(*))", { count: "exact" })
     .eq("is_published", true);
 
   if (category) {

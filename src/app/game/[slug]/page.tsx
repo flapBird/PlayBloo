@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { GameCard } from "@/components/games/GameCard";
 import { Badge } from "@/components/ui/badge";
@@ -17,7 +16,7 @@ interface Props {
 }
 
 async function getGame(slug: string) {
-  const supabase = await createServerSupabaseClient();
+  const supabase = createAdminClient();
   const { data } = await supabase
     .from("games")
     .select("*, categories:game_categories(category_id, categories:categories(*)), tags:game_tags(tag_id, tags:tags(*)), series:game_series(series_id, series:series(*))")
@@ -28,7 +27,7 @@ async function getGame(slug: string) {
 
 async function getRelatedGames(gameId: string, categoryIds: string[]) {
   if (!categoryIds.length) return [];
-  const supabase = await createServerSupabaseClient();
+  const supabase = createAdminClient();
   const { data } = await supabase
     .from("games")
     .select(`*, categories:game_categories!inner(category_id, categories:categories(*))`)

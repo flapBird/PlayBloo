@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { createAdminClient } from "@/lib/supabase/admin";
 import { GameCard } from "@/components/games/GameCard";
 import { SITE_NAME, GAME_CATEGORIES } from "@/lib/constants";
 import { ArrowRight, TrendingUp, Sparkles, Flame } from "lucide-react";
@@ -11,7 +11,7 @@ async function getGamesSection(): Promise<{
   newest: Game[];
 }> {
   try {
-    const supabase = await createServerSupabaseClient();
+    const supabase = createAdminClient();
     if (!supabase) {
       return { trending: [], popular: [], newest: [] };
     }
@@ -19,19 +19,19 @@ async function getGamesSection(): Promise<{
     const [trendingRes, popularRes, newestRes] = await Promise.all([
       supabase
         .from("games")
-        .select("*, categories:game_categories(category_id, categories:categories(*))")
+        .select("id, title, slug, thumbnail_url, view_count, play_count, created_at, is_trending, hot_score, categories:game_categories(category_id, categories:categories(*))")
         .eq("is_published", true)
         .order("hot_score", { ascending: false })
         .limit(12),
       supabase
         .from("games")
-        .select("*, categories:game_categories(category_id, categories:categories(*))")
+        .select("id, title, slug, thumbnail_url, view_count, play_count, created_at, is_trending, hot_score, categories:game_categories(category_id, categories:categories(*))")
         .eq("is_published", true)
         .order("view_count", { ascending: false })
         .limit(12),
       supabase
         .from("games")
-        .select("*, categories:game_categories(category_id, categories:categories(*))")
+        .select("id, title, slug, thumbnail_url, view_count, play_count, created_at, is_trending, hot_score, categories:game_categories(category_id, categories:categories(*))")
         .eq("is_published", true)
         .order("created_at", { ascending: false })
         .limit(12),
@@ -58,7 +58,7 @@ async function getGamesSection(): Promise<{
 
 async function getSeries() {
   try {
-    const supabase = await createServerSupabaseClient();
+    const supabase = createAdminClient();
     if (!supabase) return [];
     const { data } = await supabase
       .from("series")
@@ -84,6 +84,8 @@ function SectionHeader({ title, href }: { title: string; href: string }) {
     </div>
   );
 }
+
+export const revalidate = 60;
 
 export default async function HomePage() {
   const games = await getGamesSection();
