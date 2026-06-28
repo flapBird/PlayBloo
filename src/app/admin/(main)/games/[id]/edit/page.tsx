@@ -121,8 +121,8 @@ export default function EditGame() {
             <Input id="external_url" name="external_url" value={form.external_url} onChange={handleChange} placeholder="https://example.com/game" />
           </div>
           <div className="space-y-2 md:col-span-2">
-            <Label htmlFor="iframe_url">Iframe URL *</Label>
-            <Input id="iframe_url" name="iframe_url" value={form.iframe_url} onChange={handleChange} required />
+            <Label htmlFor="iframe_url">Iframe URL</Label>
+            <Input id="iframe_url" name="iframe_url" value={form.iframe_url} onChange={handleChange} placeholder="optional" />
           </div>
           <div className="space-y-2 md:col-span-2">
             <Label htmlFor="description">Description</Label>

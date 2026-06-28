@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { GAME_CATEGORIES } from "@/lib/constants";
 
 export const dynamic = "force-dynamic";
 
@@ -35,29 +36,116 @@ export async function GET(request: NextRequest) {
   });
 }
 
+/** Resolve category_names → category_ids by finding or creating categories */
+async function resolveCategories(
+  supabase: ReturnType<typeof createAdminClient>,
+  names: string[]
+): Promise<string[]> {
+  if (!names || names.length === 0) return [];
+  const ids: string[] = [];
+
+  for (const rawName of names) {
+    const name = rawName.trim();
+    if (!name) continue;
+
+    const slug = name.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+
+    // Look up by slug
+    const { data: existing } = await supabase
+      .from("categories")
+      .select("id")
+      .eq("slug", slug)
+      .maybeSingle();
+
+    if (existing) {
+      ids.push(existing.id);
+    } else {
+      // Create if not found
+      const { data: created } = await supabase
+        .from("categories")
+        .insert([{ name, slug }])
+        .select("id")
+        .single();
+
+      if (created) ids.push(created.id);
+    }
+  }
+
+  return ids;
+}
+
 export async function POST(request: NextRequest) {
   const body = await request.json();
+  const { category_ids, category_names, tag_ids, series_id, ...gameData } = body;
   const supabase = createAdminClient();
-  const { data, error } = await supabase.from("games").insert([body]).select().single();
+
+  const { data, error } = await supabase.from("games").insert([gameData]).select().single();
   if (error) return NextResponse.json({ error: error.message }, { status: 400 });
+
+  const gameId = data.id;
+
+  // Resolve category_ids from existing IDs or from category_names
+  let resolvedCategoryIds = category_ids || [];
+  if (category_names && category_names.length > 0) {
+    resolvedCategoryIds = await resolveCategories(supabase, category_names);
+  }
+
+  if (resolvedCategoryIds.length > 0) {
+    await supabase.from("game_categories").insert(
+      resolvedCategoryIds.map((catId: string) => ({ game_id: gameId, category_id: catId }))
+    );
+  }
+
+  if (tag_ids && tag_ids.length > 0) {
+    await supabase.from("game_tags").insert(
+      tag_ids.map((tagId: string) => ({ game_id: gameId, tag_id: tagId }))
+    );
+  }
+
+  if (series_id) {
+    await supabase.from("game_series").insert([{ game_id: gameId, series_id }]);
+  }
+
   return NextResponse.json({ data }, { status: 201 });
 }
 
 export async function PUT(request: NextRequest) {
   const body = await request.json();
-  const { id, category_ids, ...updates } = body;
+  const { id, category_ids, category_names, tag_ids, series_id, ...updates } = body;
   if (!id) return NextResponse.json({ error: "Missing id" }, { status: 400 });
 
   const supabase = createAdminClient();
   const { data, error } = await supabase.from("games").update(updates).eq("id", id).select().single();
   if (error) return NextResponse.json({ error: error.message }, { status: 400 });
 
-  if (category_ids) {
+  // Resolve category_ids
+  let resolvedCategoryIds = category_ids || [];
+  if (category_names && category_names.length > 0) {
+    resolvedCategoryIds = await resolveCategories(supabase, category_names);
+  }
+
+  if (resolvedCategoryIds !== undefined) {
     await supabase.from("game_categories").delete().eq("game_id", id);
-    if (category_ids.length > 0) {
+    if (resolvedCategoryIds.length > 0) {
       await supabase.from("game_categories").insert(
-        category_ids.map((catId: string) => ({ game_id: id, category_id: catId }))
+        resolvedCategoryIds.map((catId: string) => ({ game_id: id, category_id: catId }))
       );
+    }
+  }
+
+  if (tag_ids !== undefined) {
+    await supabase.from("game_tags").delete().eq("game_id", id);
+    if (tag_ids.length > 0) {
+      await supabase.from("game_tags").insert(
+        tag_ids.map((tagId: string) => ({ game_id: id, tag_id: tagId }))
+      );
+    }
+  }
+
+  if (series_id !== undefined) {
+    await supabase.from("game_series").delete().eq("game_id", id);
+    if (series_id) {
+      await supabase.from("game_series").insert([{ game_id: id, series_id }]);
     }
   }
 

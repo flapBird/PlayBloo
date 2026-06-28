@@ -3,6 +3,26 @@ import { createAdminClient } from "@/lib/supabase/admin";
 
 export const dynamic = "force-dynamic";
 
+function parseCsvLine(line: string): string[] {
+  const result: string[] = [];
+  let current = "";
+  let inQuotes = false;
+
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i];
+    if (ch === '"') {
+      inQuotes = !inQuotes;
+    } else if (ch === "," && !inQuotes) {
+      result.push(current.trim());
+      current = "";
+    } else {
+      current += ch;
+    }
+  }
+  result.push(current.trim());
+  return result;
+}
+
 export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();
@@ -24,21 +44,26 @@ export async function POST(request: NextRequest) {
 
     for (let i = 1; i < lines.length; i++) {
       try {
-        const values = lines[i].split(",").map(v => v.trim());
+        const values = parseCsvLine(lines[i]);
         const row: Record<string, string> = {};
         headers.forEach((h, idx) => { row[h] = values[idx] || ""; });
 
         const gameData: Record<string, any> = {
           title: row.title,
           slug: row.slug,
-          thumbnail_url: row.thumbnail || row.thumbnail_url || null,
-          iframe_url: row.iframe_url || row.url || "",
+          thumbnail_url: row.thumbnail_url || row.thumbnail || null,
+          cover_url: row.cover_url || null,
+          iframe_url: row.iframe_url || null,
+          external_url: row.external_url || null,
           description: row.description || null,
           how_to_play: row.how_to_play || null,
           controls: row.controls || null,
           tips: row.tips || null,
           features: row.features || null,
-          is_published: true,
+          release_date: row.release_date || null,
+          is_published: row.is_published?.toLowerCase() === "true",
+          is_featured: row.is_featured?.toLowerCase() === "true",
+          is_trending: row.is_trending?.toLowerCase() === "true",
         };
 
         const { error } = await supabase.from("games").insert([gameData]);

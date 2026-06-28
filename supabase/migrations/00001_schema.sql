@@ -51,7 +51,7 @@ CREATE TABLE games (
   slug TEXT NOT NULL UNIQUE,
   thumbnail_url TEXT,
   cover_url TEXT,
-  iframe_url TEXT NOT NULL,
+  iframe_url TEXT,
   external_url TEXT,
   description TEXT,
   how_to_play TEXT,
