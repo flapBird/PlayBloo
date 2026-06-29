@@ -305,7 +305,7 @@ export default function AdminSeries() {
                         setEditMetaTitle(s.meta_title || "");
                         setEditMetaDesc(s.meta_description || "");
                         setEditSort(String(s.sort_order));
-                        setEditThumbnail(s.thumbnail_url || "");
+                        setEditThumbnail((s as any).thumbnail_url || "");
                       }}>
                         <Edit className="h-4 w-4" />
                       </Button>
