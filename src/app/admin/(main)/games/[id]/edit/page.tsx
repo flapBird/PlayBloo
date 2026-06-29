@@ -149,8 +149,8 @@ export default function EditGame() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         game_id: params.id,
-        level_number: parseInt(levelForm.level_number) || 0,
         ...levelForm,
+        level_number: parseInt(levelForm.level_number) || 0,
       }),
     });
     if (res.ok) {
@@ -164,7 +164,11 @@ export default function EditGame() {
     const res = await fetch("/api/admin/levels", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id: editingLevelId, ...levelForm }),
+      body: JSON.stringify({
+        id: editingLevelId,
+        ...levelForm,
+        level_number: parseInt(levelForm.level_number) || 0,
+      }),
     });
     if (res.ok) {
       resetLevelForm();
