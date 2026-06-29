@@ -5,23 +5,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "img.itch.zone",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "imgs.crazygames.com",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "zapgames.io",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "*.supabase.co",
-        pathname: "/**",
+        hostname: "**",
       },
     ],
   },

@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -11,27 +10,75 @@ import { Textarea } from "@/components/ui/textarea";
 export default function NewGame() {
   const router = useRouter();
 
+  const [saving, setSaving] = useState("");
+  const [error, setError] = useState("");
+  const [categories, setCategories] = useState<{ id: string; name: string }[]>([]);
+  const [selectedCategoryIds, setSelectedCategoryIds] = useState<string[]>([]);
+  const [dirty, setDirty] = useState(false);
+  const [form, setForm] = useState(() => {
+    // Restore draft on initial render
+    try {
+      const saved = localStorage.getItem("playbloo_new_game_draft");
+      if (saved) {
+        const draft = JSON.parse(saved);
+        if (draft.form) return draft.form;
+      }
+    } catch {}
+    return {
+      title: "", slug: "", thumbnail_url: "", cover_url: "", iframe_url: "", external_url: "",
+      description: "", how_to_play: "", controls: "", tips: "", features: "",
+      release_date: "",
+      is_published: false, is_featured: false, is_trending: false,
+    };
+  });
+
+  // Restore selected categories from draft
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("playbloo_new_game_draft");
+      if (saved) {
+        const draft = JSON.parse(saved);
+        if (draft.selectedCategoryIds?.length) {
+          setSelectedCategoryIds(draft.selectedCategoryIds);
+        }
+      }
+    } catch {}
+  }, []);
+
+  // Warn on browser close/refresh
+  useEffect(() => {
+    if (!dirty) return;
+    const handler = (e: BeforeUnloadEvent) => {
+      e.preventDefault();
+      e.returnValue = "";
+    };
+    window.addEventListener("beforeunload", handler);
+    return () => window.removeEventListener("beforeunload", handler);
+  }, [dirty]);
+
+  // Auto-save to localStorage on every change
+  useEffect(() => {
+    if (!dirty) return;
+    const data = { form, selectedCategoryIds };
+    try { localStorage.setItem("playbloo_new_game_draft", JSON.stringify(data)); } catch {}
+  }, [form, selectedCategoryIds, dirty]);
+
+  function clearDraft() {
+    try { localStorage.removeItem("playbloo_new_game_draft"); } catch {}
+  }
+
   useEffect(() => {
     fetch("/api/categories")
       .then(r => r.json())
       .then(d => setCategories(d.data || []))
       .catch(() => {});
   }, []);
-  const [saving, setSaving] = useState("");
-  const [error, setError] = useState("");
-  const [categories, setCategories] = useState<{ id: string; name: string }[]>([]);
-  const [selectedCategoryIds, setSelectedCategoryIds] = useState<string[]>([]);
-  const [form, setForm] = useState({
-    title: "", slug: "", thumbnail_url: "", cover_url: "", iframe_url: "", external_url: "",
-    description: "", how_to_play: "", controls: "", tips: "", features: "",
-    release_date: "",
-    is_published: false, is_featured: false, is_trending: false,
-  });
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     const { name, value, type } = e.target;
     const checked = (e.target as HTMLInputElement).checked;
     setForm(prev => ({ ...prev, [name]: type === "checkbox" ? checked : value }));
+    setDirty(true);
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -56,6 +103,7 @@ export default function NewGame() {
       return;
     }
 
+    clearDraft();
     router.push("/admin/games");
   }
 
@@ -138,6 +186,7 @@ export default function NewGame() {
                   className="hidden"
                   checked={selectedCategoryIds.includes(cat.id)}
                   onChange={() => {
+                    setDirty(true);
                     setSelectedCategoryIds(prev =>
                       prev.includes(cat.id)
                         ? prev.filter(id => id !== cat.id)
@@ -168,7 +217,7 @@ export default function NewGame() {
 
         <div className="flex gap-3">
           <Button type="submit" disabled={!!saving}>{saving ? "Saving..." : "Save Game"}</Button>
-          <Button type="button" variant="outline" onClick={() => router.back()}>Cancel</Button>
+          <Button type="button" variant="outline" onClick={() => { if (dirty && !confirm("You have unsaved changes. Leave this page?")) return; router.back(); }}>Cancel</Button>
         </div>
       </form>
     </div>

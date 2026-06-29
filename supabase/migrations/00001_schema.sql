@@ -9,6 +9,7 @@ CREATE TABLE categories (
   meta_title TEXT,
   meta_description TEXT,
   sort_order INTEGER NOT NULL DEFAULT 0,
+  thumbnail_url TEXT,
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
@@ -37,6 +38,7 @@ CREATE TABLE series (
   meta_title TEXT,
   meta_description TEXT,
   sort_order INTEGER NOT NULL DEFAULT 0,
+  thumbnail_url TEXT,
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
@@ -103,6 +105,7 @@ CREATE TABLE game_series (
   game_id UUID NOT NULL REFERENCES games(id) ON DELETE CASCADE,
   series_id UUID NOT NULL REFERENCES series(id) ON DELETE CASCADE,
   sort_order INTEGER NOT NULL DEFAULT 0,
+  thumbnail_url TEXT,
   PRIMARY KEY (game_id, series_id)
 );
 
@@ -192,3 +195,27 @@ CREATE POLICY "Public can read game_tags"
 
 CREATE POLICY "Public can read game_series"
   ON game_series FOR SELECT USING (true);
+
+-- Game Levels / Walkthrough pages
+CREATE TABLE game_levels (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  game_id UUID NOT NULL REFERENCES games(id) ON DELETE CASCADE,
+  level_number INTEGER NOT NULL,
+  title TEXT NOT NULL,
+  slug TEXT NOT NULL,
+  thumbnail_url TEXT,
+  content TEXT,
+  tips TEXT,
+  meta_title TEXT,
+  meta_description TEXT,
+  is_published BOOLEAN NOT NULL DEFAULT false,
+  view_count INTEGER NOT NULL DEFAULT 0,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  UNIQUE(game_id, level_number),
+  UNIQUE(slug)
+);
+
+CREATE INDEX idx_game_levels_game_id ON game_levels(game_id);
+CREATE INDEX idx_game_levels_slug ON game_levels(slug);
+CREATE INDEX idx_game_levels_published ON game_levels(is_published) WHERE is_published = true;

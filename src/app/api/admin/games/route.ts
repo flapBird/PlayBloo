@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { GAME_CATEGORIES } from "@/lib/constants";
 
 export const dynamic = "force-dynamic";
 
@@ -50,7 +50,6 @@ async function resolveCategories(
 
     const slug = name.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
 
-    // Look up by slug
     const { data: existing } = await supabase
       .from("categories")
       .select("id")
@@ -60,7 +59,6 @@ async function resolveCategories(
     if (existing) {
       ids.push(existing.id);
     } else {
-      // Create if not found
       const { data: created } = await supabase
         .from("categories")
         .insert([{ name, slug }])
@@ -74,17 +72,42 @@ async function resolveCategories(
   return ids;
 }
 
+/** Extract category slugs from a game's joined categories */
+function extractCategorySlugs(game: any): string[] {
+  const cats = game?.categories || [];
+  return cats
+    .filter((gc: any) => gc.categories)
+    .map((gc: any) => gc.categories.slug);
+}
+
+/** Revalidate only the pages affected by this game */
+function revalidateGamePages(slug: string, categorySlugs: string[]) {
+  const paths = [
+    // Homepage (game lists)
+    "/",
+    // This game's detail page
+    `/game/${slug}`,
+    // Category pages this game belongs to
+    ...categorySlugs.map((cs) => `/category/${cs}`),
+    // Search page (game lists)
+    "/search",
+  ];
+
+  for (const path of paths) {
+    try { revalidatePath(path, "page"); } catch {}
+  }
+}
+
 export async function POST(request: NextRequest) {
   const body = await request.json();
   const { category_ids, category_names, tag_ids, series_id, ...gameData } = body;
   const supabase = createAdminClient();
 
-  const { data, error } = await supabase.from("games").insert([gameData]).select().single();
+  const { data, error } = await supabase.from("games").insert([gameData]).select("*, categories:game_categories(category_id, categories:categories(*))").single();
   if (error) return NextResponse.json({ error: error.message }, { status: 400 });
 
   const gameId = data.id;
 
-  // Resolve category_ids from existing IDs or from category_names
   let resolvedCategoryIds = category_ids || [];
   if (category_names && category_names.length > 0) {
     resolvedCategoryIds = await resolveCategories(supabase, category_names);
@@ -106,6 +129,8 @@ export async function POST(request: NextRequest) {
     await supabase.from("game_series").insert([{ game_id: gameId, series_id }]);
   }
 
+  revalidateGamePages(data.slug, extractCategorySlugs(data));
+
   return NextResponse.json({ data }, { status: 201 });
 }
 
@@ -115,10 +140,13 @@ export async function PUT(request: NextRequest) {
   if (!id) return NextResponse.json({ error: "Missing id" }, { status: 400 });
 
   const supabase = createAdminClient();
-  const { data, error } = await supabase.from("games").update(updates).eq("id", id).select().single();
+
+  // Fetch existing game first to know its slug and old categories
+  const { data: existing } = await supabase.from("games").select("slug").eq("id", id).single();
+
+  const { data, error } = await supabase.from("games").update(updates).eq("id", id).select("*, categories:game_categories(category_id, categories:categories(*))").single();
   if (error) return NextResponse.json({ error: error.message }, { status: 400 });
 
-  // Resolve category_ids
   let resolvedCategoryIds = category_ids || [];
   if (category_names && category_names.length > 0) {
     resolvedCategoryIds = await resolveCategories(supabase, category_names);
@@ -149,6 +177,15 @@ export async function PUT(request: NextRequest) {
     }
   }
 
+  // Revalidate old slug too (in case slug changed)
+  const slugs = new Set<string>(extractCategorySlugs(data));
+  const newSlug = data.slug;
+  const oldSlug = existing?.slug;
+  revalidateGamePages(newSlug, [...slugs]);
+  if (oldSlug && oldSlug !== newSlug) {
+    try { revalidatePath(`/game/${oldSlug}`, "page"); } catch {}
+  }
+
   return NextResponse.json({ data });
 }
 
@@ -158,7 +195,20 @@ export async function DELETE(request: NextRequest) {
   if (!id) return NextResponse.json({ error: "Missing id" }, { status: 400 });
 
   const supabase = createAdminClient();
+
+  // Fetch game info before deleting (for cache revalidation)
+  const { data: game } = await supabase
+    .from("games")
+    .select("slug, categories:game_categories(category_id, categories:categories(*))")
+    .eq("id", id)
+    .single();
+
   const { error } = await supabase.from("games").delete().eq("id", id);
   if (error) return NextResponse.json({ error: error.message }, { status: 400 });
+
+  if (game) {
+    revalidateGamePages(game.slug, extractCategorySlugs(game));
+  }
+
   return NextResponse.json({ success: true });
 }
