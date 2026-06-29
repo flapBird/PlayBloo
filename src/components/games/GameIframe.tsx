@@ -14,6 +14,7 @@ interface GameIframeProps {
 }
 
 export function GameIframe({ src, title, gameId, thumbnailUrl, externalUrl }: GameIframeProps) {
+  const wrapperRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [showIframe, setShowIframe] = useState(false);
@@ -44,12 +45,12 @@ export function GameIframe({ src, title, gameId, thumbnailUrl, externalUrl }: Ga
     setShowIframe(true);
   };
 
+  // Fullscreen the wrapper div, not the iframe itself
   const toggleFullscreen = useCallback(() => {
-    if (!containerRef.current) return;
     if (document.fullscreenElement) {
       document.exitFullscreen();
     } else {
-      containerRef.current.requestFullscreen().catch(() => {});
+      wrapperRef.current?.requestFullscreen().catch(() => {});
     }
   }, []);
 
@@ -105,7 +106,14 @@ export function GameIframe({ src, title, gameId, thumbnailUrl, externalUrl }: Ga
   // --- IFRAME STATE ---
   return (
     <div className="mx-auto max-w-5xl">
-      <div ref={containerRef} className="relative rounded-xl overflow-hidden border bg-black">
+      {/* Fullscreen wrapper — this is what we fullscreen, not the iframe */}
+      <div
+        ref={wrapperRef}
+        className={`relative rounded-xl overflow-hidden border bg-black ${
+          isFullscreen ? "flex items-center justify-center" : ""
+        }`}
+        style={isFullscreen ? { width: "100vw", height: "100vh" } : {}}
+      >
         {/* Toolbar */}
         <div className="absolute top-3 right-3 z-20 flex gap-2">
           {externalUrl && (
@@ -130,13 +138,16 @@ export function GameIframe({ src, title, gameId, thumbnailUrl, externalUrl }: Ga
           </Button>
         </div>
 
-        {/* Iframe */}
-        <div className="w-full min-h-[500px] md:min-h-[600px] relative">
+        {/* Iframe container — fills the fullscreen wrapper */}
+        <div
+          ref={containerRef}
+          className={`w-full relative ${isFullscreen ? "h-full" : "min-h-[500px] md:min-h-[600px]"}`}
+        >
           <iframe
             src={src}
-            className="absolute inset-0 w-full h-full"
+            className={`absolute inset-0 w-full h-full ${isFullscreen ? "" : ""}`}
             allowFullScreen
-            allow="autoplay; fullscreen; pointer-lock; gamepad; microphone; camera; clipboard-read; clipboard-write; accelerometer; gyroscope; xr-spatial-tracking"
+            allow="autoplay; fullscreen; gamepad; microphone; camera; clipboard-read; clipboard-write; accelerometer; gyroscope; xr-spatial-tracking"
             title={title}
           />
         </div>

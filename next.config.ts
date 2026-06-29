@@ -15,6 +15,11 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
+        hostname: "zapgames.io",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
         hostname: "*.supabase.co",
         pathname: "/**",
       },
