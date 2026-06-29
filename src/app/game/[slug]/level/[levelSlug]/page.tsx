@@ -143,9 +143,7 @@ export default async function LevelPage({ params }: Props) {
           {level.content && (
             <section>
               <h2 className="text-xl font-bold mb-4">Walkthrough</h2>
-              <div className="prose prose-neutral max-w-none text-muted-foreground leading-relaxed whitespace-pre-wrap">
-                {level.content}
-              </div>
+              <div className="prose prose-neutral max-w-none text-muted-foreground leading-relaxed whitespace-pre-wrap" dangerouslySetInnerHTML={{ __html: level.content || "" }} />
             </section>
           )}
 
@@ -153,9 +151,7 @@ export default async function LevelPage({ params }: Props) {
           {level.tips && (
             <section>
               <h2 className="text-xl font-bold mb-3">Tips & Tricks</h2>
-              <div className="text-muted-foreground leading-relaxed whitespace-pre-wrap bg-amber-50" dangerouslySetInnerHTML={{ __html: level.tips || "" }} border border-amber-200 rounded-xl p-4">
-                {level.tips}
-              </div>
+              <div className="text-muted-foreground leading-relaxed whitespace-pre-wrap bg-amber-50 border border-amber-200 rounded-xl p-4" dangerouslySetInnerHTML={{ __html: level.tips }} />
             </section>
           )}
 
