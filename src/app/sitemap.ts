@@ -1,20 +1,24 @@
 import { MetadataRoute } from "next";
-import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { createAdminClient } from "@/lib/supabase/admin";
 import { SITE_URL } from "@/lib/constants";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const supabase = await createServerSupabaseClient();
+  const supabase = createAdminClient();
 
-  const [games, categories, tags, series] = await Promise.all([
+  const [games, categories, tags, series, levels] = await Promise.all([
     supabase.from("games").select("slug, updated_at").eq("is_published", true),
     supabase.from("categories").select("slug, updated_at"),
     supabase.from("tags").select("slug, updated_at"),
     supabase.from("series").select("slug, updated_at"),
+    supabase
+      .from("game_levels")
+      .select("slug, updated_at, games:games!inner(slug)")
+      .eq("is_published", true),
   ]);
 
   const staticPages: MetadataRoute.Sitemap = [
-    { url: SITE_URL, lastModified: new Date(), changeFrequency: "daily", priority: 1.0 },
-    { url: `${SITE_URL}/search`, lastModified: new Date(), changeFrequency: "daily", priority: 0.8 },
+    { url: SITE_URL, lastModified: new Date(), changeFrequency: "daily" as const, priority: 1.0 },
+    { url: `${SITE_URL}/search`, lastModified: new Date(), changeFrequency: "daily" as const, priority: 0.8 },
   ];
 
   const gamePages: MetadataRoute.Sitemap = (games.data || []).map((g) => ({
@@ -45,5 +49,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  return [...staticPages, ...gamePages, ...categoryPages, ...tagPages, ...seriesPages];
+  const levelPages: MetadataRoute.Sitemap = (levels.data || []).map((l: any) => ({
+    url: `${SITE_URL}/game/${l.games.slug}/level/${l.slug}`,
+    lastModified: new Date(l.updated_at),
+    changeFrequency: "weekly" as const,
+    priority: 0.5,
+  }));
+
+  return [...staticPages, ...gamePages, ...categoryPages, ...tagPages, ...seriesPages, ...levelPages];
 }
