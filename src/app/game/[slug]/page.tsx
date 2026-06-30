@@ -123,31 +123,21 @@ export default async function GamePage({ params }: Props) {
             
           </div>
 
-          {categories.length > 0 && (
-            <div className="flex flex-wrap gap-2">
+          {(categories.length > 0 || tags.length > 0 || seriesList.length > 0) && (
+            <div className="flex flex-wrap items-center gap-2">
               {categories.map((cat: any) => (
                 <Link key={cat.id} href={`/category/${cat.slug}`}>
                   <Badge variant="secondary">{cat.name}</Badge>
                 </Link>
               ))}
-            </div>
-          )}
-
-          {tags.length > 0 && (
-            <div className="flex flex-wrap gap-1.5">
+              {seriesList.map((s: any) => (
+                <Link key={s.id} href={`/series/${s.slug}`}>
+                  <Badge variant="secondary">{s.name}</Badge>
+                </Link>
+              ))}
               {tags.map((tag: any) => (
                 <Link key={tag.id} href={`/tag/${tag.slug}`}>
                   <Badge variant="outline" className="text-xs">{tag.name}</Badge>
-                </Link>
-              ))}
-            </div>
-          )}
-
-          {seriesList.length > 0 && (
-            <div className="flex flex-wrap gap-2">
-              {seriesList.map((s: any) => (
-                <Link key={s.id} href={`/series/${s.slug}`}>
-                  <Badge className="bg-primary/10 text-primary hover:bg-primary/20">{s.name} Series</Badge>
                 </Link>
               ))}
             </div>
@@ -211,11 +201,13 @@ export default async function GamePage({ params }: Props) {
           {seriesList.length > 0 && (
             <section className="rounded-xl border p-4">
               <h3 className="font-semibold mb-3">Series</h3>
-              {seriesList.map((s: any) => (
-                <Link key={s.id} href={`/series/${s.slug}`} className="block text-sm text-primary hover:underline">
-                  {s.name}
-                </Link>
-              ))}
+              <div className="flex flex-wrap gap-2">
+                {seriesList.map((s: any) => (
+                  <Link key={s.id} href={`/series/${s.slug}`}>
+                    <Badge variant="secondary">{s.name}</Badge>
+                  </Link>
+                ))}
+              </div>
             </section>
           )}
 

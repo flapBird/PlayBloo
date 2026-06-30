@@ -18,6 +18,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  other: {
+    "google-adsense-account": "ca-pub-4183802444188513",
+  },
   title: {
     default: `${SITE_NAME} - Free Online Games`,
     template: `%s | ${SITE_NAME}`,
