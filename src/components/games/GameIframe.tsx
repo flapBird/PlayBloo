@@ -2,7 +2,7 @@
 
 import { useRef, useState, useCallback, useEffect } from "react";
 import Image from "next/image";
-import { Play, Maximize2, Minimize2, ExternalLink, Gamepad2 } from "lucide-react";
+import { Play, Maximize2, Minimize2, ExternalLink, Gamepad2, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface GameIframeProps {
@@ -15,10 +15,18 @@ interface GameIframeProps {
 
 export function GameIframe({ src, title, gameId, thumbnailUrl, externalUrl }: GameIframeProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [showIframe, setShowIframe] = useState(false);
+  const [iframeLoading, setIframeLoading] = useState(true);
   const tracked = useRef(false);
+
+  // Preload iframe in background — create it hidden, show on click
+  useEffect(() => {
+    // Don't preload if external URL (no iframe to show)
+    if (externalUrl) return;
+    // Start loading immediately
+    setShowIframe(true);
+  }, [externalUrl]);
 
   useEffect(() => {
     const handler = () => setIsFullscreen(!!document.fullscreenElement);
@@ -42,10 +50,9 @@ export function GameIframe({ src, title, gameId, thumbnailUrl, externalUrl }: Ga
       window.open(externalUrl, "_blank", "noopener,noreferrer");
       return;
     }
-    setShowIframe(true);
+    // Iframe is already preloaded, just reveal it
   };
 
-  // Fullscreen the wrapper div, not the iframe itself
   const toggleFullscreen = useCallback(() => {
     if (document.fullscreenElement) {
       document.exitFullscreen();
@@ -54,13 +61,12 @@ export function GameIframe({ src, title, gameId, thumbnailUrl, externalUrl }: Ga
     }
   }, []);
 
-  // --- COVER STATE ---
+  // --- COVER STATE (overlaid on top of preloaded iframe) ---
   if (!showIframe) {
     return (
       <div className="mx-auto max-w-5xl">
         <div className="bg-gradient-to-br from-indigo-50 to-violet-50 rounded-xl border p-8 md:p-12">
           <div className="flex flex-col items-center gap-5">
-            {/* Thumbnail */}
             <div className="relative w-full max-w-xs aspect-[4/3] rounded-xl overflow-hidden shadow-lg ring-1 ring-black/5 bg-white">
               {thumbnailUrl ? (
                 <Image
@@ -76,13 +82,9 @@ export function GameIframe({ src, title, gameId, thumbnailUrl, externalUrl }: Ga
                 </div>
               )}
             </div>
-
-            {/* Title */}
             <h3 className="text-xl md:text-2xl font-bold text-foreground text-center">
               {title}
             </h3>
-
-            {/* Play Now button */}
             <button
               onClick={handlePlayClick}
               className="relative inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-primary text-white font-bold text-base shadow-lg hover:shadow-xl hover:bg-primary/90 hover:scale-105 active:scale-100 transition-all duration-200"
@@ -91,7 +93,6 @@ export function GameIframe({ src, title, gameId, thumbnailUrl, externalUrl }: Ga
               <span>{externalUrl ? "Play on Website" : "Play Now"}</span>
               {externalUrl && <ExternalLink className="h-4 w-4" />}
             </button>
-
             {externalUrl && (
               <p className="text-sm text-muted-foreground">
                 This game will open in a new tab
@@ -103,10 +104,9 @@ export function GameIframe({ src, title, gameId, thumbnailUrl, externalUrl }: Ga
     );
   }
 
-  // --- IFRAME STATE ---
+  // --- IFRAME STATE (preloaded, cover may still overlay) ---
   return (
     <div className="mx-auto max-w-5xl">
-      {/* Fullscreen wrapper — this is what we fullscreen, not the iframe */}
       <div
         ref={wrapperRef}
         className={`relative rounded-xl overflow-hidden border bg-black ${
@@ -138,17 +138,22 @@ export function GameIframe({ src, title, gameId, thumbnailUrl, externalUrl }: Ga
           </Button>
         </div>
 
-        {/* Iframe container — fills the fullscreen wrapper */}
-        <div
-          ref={containerRef}
-          className={`w-full relative ${isFullscreen ? "h-full" : "min-h-[500px] md:min-h-[600px]"}`}
-        >
+        {/* Loading spinner */}
+        {iframeLoading && (
+          <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/60">
+            <Loader2 className="h-8 w-8 animate-spin text-white" />
+          </div>
+        )}
+
+        {/* Iframe */}
+        <div className="w-full min-h-[500px] md:min-h-[600px] relative">
           <iframe
             src={src}
-            className={`absolute inset-0 w-full h-full ${isFullscreen ? "" : ""}`}
+            className="absolute inset-0 w-full h-full"
             allowFullScreen
             allow="autoplay; fullscreen; gamepad; microphone; camera; clipboard-read; clipboard-write; accelerometer; gyroscope; xr-spatial-tracking"
             title={title}
+            onLoad={() => setIframeLoading(false)}
           />
         </div>
       </div>
