@@ -16,6 +16,7 @@ type LevelRow = {
   title: string;
   slug: string;
   thumbnail_url: string | null;
+  video_url: string | null;
   content: string | null;
   tips: string | null;
   meta_title: string | null;
@@ -46,7 +47,7 @@ export default function EditGame() {
   const [levelsLoading, setLevelsLoading] = useState(false);
   // Level form
   const [levelForm, setLevelForm] = useState({
-    level_number: "", title: "", slug: "", thumbnail_url: "",
+    level_number: "", title: "", slug: "", thumbnail_url: "", video_url: "",
     content: "", tips: "", meta_title: "", meta_description: "",
     is_published: false,
   });
@@ -135,7 +136,7 @@ export default function EditGame() {
 
   function resetLevelForm() {
     setLevelForm({
-      level_number: "", title: "", slug: "", thumbnail_url: "",
+      level_number: "", title: "", slug: "", thumbnail_url: "", video_url: "",
       content: "", tips: "", meta_title: "", meta_description: "",
       is_published: false,
     });
@@ -189,6 +190,7 @@ export default function EditGame() {
       title: lvl.title,
       slug: lvl.slug,
       thumbnail_url: lvl.thumbnail_url || "",
+      video_url: lvl.video_url || "",
       content: lvl.content || "",
       tips: lvl.tips || "",
       meta_title: lvl.meta_title || "",
@@ -367,6 +369,10 @@ export default function EditGame() {
             <div className="space-y-1 mb-3">
               <Label className="text-xs">Thumbnail URL</Label>
               <Input value={levelForm.thumbnail_url} onChange={e => setLevelForm(f => ({ ...f, thumbnail_url: e.target.value }))} placeholder="https://..." />
+            </div>
+            <div className="space-y-1 mb-3">
+              <Label className="text-xs">Video URL (embed, e.g. YouTube)</Label>
+              <Input value={levelForm.video_url} onChange={e => setLevelForm(f => ({ ...f, video_url: e.target.value }))} placeholder="https://www.youtube.com/embed/..." />
             </div>
             <div className="space-y-1 mb-3">
               <Label className="text-xs">Content (Walkthrough)</Label>

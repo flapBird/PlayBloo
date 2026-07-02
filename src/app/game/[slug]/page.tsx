@@ -7,9 +7,10 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { GameJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
-import { Play, Eye, Calendar } from "lucide-react";
+import { Play, Eye, Calendar, Grid3X3, ArrowRight } from "lucide-react";
 import { GameIframe } from "@/components/games/GameIframe";
 import type { Game } from "@/lib/types";
+import { LevelSearch } from "@/components/levels/LevelSearch";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -39,6 +40,16 @@ async function getRelatedGames(gameId: string, categoryIds: string[]) {
     ...g,
     categories: g.categories?.filter((gc: any) => gc.categories).map((gc: any) => gc.categories) || [],
   }));
+}
+
+async function gameHasLevels(gameId: string) {
+  const supabase = createAdminClient();
+  const { count } = await supabase
+    .from("game_levels")
+    .select("id", { count: "exact", head: true })
+    .eq("game_id", gameId)
+    .eq("is_published", true);
+  return (count || 0) > 0;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -78,6 +89,8 @@ export default async function GamePage({ params }: Props) {
     categories.map((c: any) => c.id)
   );
 
+
+  const hasLevels = await gameHasLevels(game.id);
   // Increment view count
   try {
     const supabase = createAdminClient();
@@ -106,7 +119,24 @@ export default async function GamePage({ params }: Props) {
       <div className="max-w-5xl mx-auto space-y-6">
         {/* Game Info */}
         <div className="space-y-4">
-          <h1 className="text-3xl md:text-4xl font-black tracking-tight">{game.title}</h1>
+          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+            <h1 className="text-3xl md:text-4xl font-black tracking-tight">{game.title}</h1>
+            {hasLevels && (
+              <div className="flex items-center gap-2 shrink-0">
+                <div className="w-64">
+                  <LevelSearch gameId={game.id} gameSlug={game.slug} />
+                </div>
+                <Link
+                  href={`/game/${game.slug}/level`}
+                  className="shrink-0 inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm hover:shadow-md transition-all active:scale-95"
+                >
+                  <Grid3X3 className="h-3.5 w-3.5" />
+                  Walkthroughs
+                  <ArrowRight className="h-3 w-3" />
+                </Link>
+              </div>
+            )}
+          </div>
 
           <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
             <span className="flex items-center gap-1">

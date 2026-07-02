@@ -49,6 +49,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
+  // Level index pages for games that have levels
+  const gameIdsWithLevels = new Set((levels.data || []).map((l: any) => l.games.slug));
+  const levelIndexPages: MetadataRoute.Sitemap = [...gameIdsWithLevels].map((slug) => ({
+    url: `${SITE_URL}/game/${slug}/level`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.5,
+  }));
+
   const levelPages: MetadataRoute.Sitemap = (levels.data || []).map((l: any) => ({
     url: `${SITE_URL}/game/${l.games.slug}/level/${l.slug}`,
     lastModified: new Date(l.updated_at),
@@ -56,5 +65,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.5,
   }));
 
-  return [...staticPages, ...gamePages, ...categoryPages, ...tagPages, ...seriesPages, ...levelPages];
+  return [...staticPages, ...gamePages, ...categoryPages, ...tagPages, ...seriesPages, ...levelIndexPages, ...levelPages];
 }

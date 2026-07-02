@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
-import { ArrowLeft, ArrowRight, Gamepad2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, Gamepad2, Grid3X3 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
@@ -16,7 +16,7 @@ async function getGame(slug: string) {
   const supabase = createAdminClient();
   const { data } = await supabase
     .from("games")
-    .select("id, title, slug, thumbnail_url, iframe_url, description")
+    .select("id, title, slug, thumbnail_url, iframe_url, description, how_to_play, controls, tips, features")
     .eq("slug", slug)
     .single();
   return data;
@@ -101,14 +101,22 @@ export default async function LevelPage({ params }: Props) {
           { name: level.title, url: `${SITE_URL}/game/${game.slug}/level/${level.slug}` },
         ]}
       />
-
-      {/* Breadcrumb */}
-      <div className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
-        <Link href="/" className="hover:text-foreground">Home</Link>
-        <span>/</span>
-        <Link href={`/game/${game.slug}`} className="hover:text-foreground">{game.title}</Link>
-        <span>/</span>
-        <span className="text-foreground font-medium">Level {level.level_number}</span>
+      {/* Breadcrumb + Level Index */}
+      <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+          <Link href="/" className="hover:text-foreground">Home</Link>
+          <span>/</span>
+          <Link href={`/game/${game.slug}`} className="hover:text-foreground">{game.title}</Link>
+          <span>/</span>
+          <span className="text-foreground font-medium">Level {level.level_number}</span>
+        </div>
+        <Link
+          href={`/game/${game.slug}/level`}
+          className="shrink-0 inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm hover:shadow-md transition-all active:scale-95"
+        >
+          <Grid3X3 className="h-4 w-4" />
+          Walkthroughs
+        </Link>
       </div>
 
       {/* Header */}
@@ -120,16 +128,37 @@ export default async function LevelPage({ params }: Props) {
         <h1 className="text-3xl md:text-4xl font-black tracking-tight">
           {level.title}
         </h1>
-        <p className="text-muted-foreground">
-          Stuck on Level {level.level_number} of {game.title}? Read our step-by-step walkthrough to beat this level.
-        </p>
       </div>
+
+      {/* Tips — above video */}
+      {level.tips && (
+        <div className="text-muted-foreground leading-relaxed whitespace-pre-wrap text-center bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6">
+          {level.tips}
+        </div>
+      )}
+
+      {/* Video */}
+      {level.video_url && (
+        <section className="mb-8">
+          <div className="rounded-xl overflow-hidden border bg-black">
+            <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+              <iframe
+                src={level.video_url}
+                className="absolute inset-0 w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                title={`${level.title} video walkthrough`}
+              />
+            </div>
+          </div>
+        </section>
+      )}
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Main content */}
         <div className="lg:col-span-2 space-y-8">
-          {/* Thumbnail */}
-          {level.thumbnail_url && (
+          {/* Thumbnail — only if no video */}
+          {!level.video_url && level.thumbnail_url && (
             <div className="rounded-xl overflow-hidden border">
               <img
                 src={level.thumbnail_url}
@@ -144,14 +173,6 @@ export default async function LevelPage({ params }: Props) {
             <section>
               <h2 className="text-xl font-bold mb-4">Walkthrough</h2>
               <div className="prose prose-neutral max-w-none text-muted-foreground leading-relaxed whitespace-pre-wrap" dangerouslySetInnerHTML={{ __html: level.content || "" }} />
-            </section>
-          )}
-
-          {/* Tips */}
-          {level.tips && (
-            <section>
-              <h2 className="text-xl font-bold mb-3">Tips & Tricks</h2>
-              <div className="text-muted-foreground leading-relaxed whitespace-pre-wrap bg-amber-50 border border-amber-200 rounded-xl p-4" dangerouslySetInnerHTML={{ __html: level.tips }} />
             </section>
           )}
 
