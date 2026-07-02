@@ -40,20 +40,13 @@ export function GameIframe({ src, title, gameId, thumbnailUrl, externalUrl }: Ga
   const showHint = () => {
     setShowWakeHint(true);
     clearTimeout(hintTimer.current);
-    hintTimer.current = setTimeout(() => setShowWakeHint(false), 4000);
+    hintTimer.current = setTimeout(() => setShowWakeHint(false), 3000);
   };
 
   const toggleFullscreen = () => {
     setIsFullscreen((prev) => !prev);
     showHint();
   };
-
-  // Always listen for clicks — hide hint immediately
-  useEffect(() => {
-    const hide = () => setShowWakeHint(false);
-    window.addEventListener("click", hide);
-    return () => window.removeEventListener("click", hide);
-  }, []);
 
   // ESC key to exit
   useEffect(() => {
@@ -109,13 +102,12 @@ export function GameIframe({ src, title, gameId, thumbnailUrl, externalUrl }: Ga
       <div
         className={
           isFullscreen
-            ? "fixed inset-0 bg-black"
+            ? "fixed inset-0 z-50 bg-black"
             : "relative rounded-xl overflow-hidden border bg-black"
         }
-        style={isFullscreen ? { zIndex: 50 } : undefined}
       >
         {/* Controls */}
-        <div className="absolute top-3 right-3 flex gap-2" style={{ zIndex: 30 }}>
+        <div className="absolute top-3 right-3 z-20 flex gap-2">
           {externalUrl && (
             <Button
               variant="secondary"
@@ -138,19 +130,16 @@ export function GameIframe({ src, title, gameId, thumbnailUrl, externalUrl }: Ga
 
         {/* Loading spinner - only on initial load */}
         {iframeLoading && !isFullscreen && (
-          <div className="absolute inset-0 flex items-center justify-center bg-black/60" style={{ zIndex: 10 }}>
+          <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/60">
             <Loader2 className="h-8 w-8 animate-spin text-white" />
           </div>
         )}
 
-        {/* Wake hint overlay */}
+        {/* Wake hint */}
         {showWakeHint && (
-          <div className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm" style={{ zIndex: 20 }}>
-            <div className="flex flex-col items-center gap-3">
-              <div className="bg-white/10 rounded-full p-4 ring-1 ring-white/20">
-                <MousePointerClick className="h-8 w-8 text-white" />
-              </div>
-              <span className="text-white font-bold text-lg tracking-wide">Click to continue</span>
+          <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
+            <div className="bg-black/70 text-white text-sm px-4 py-2 rounded-full animate-pulse">
+              Click the game to continue
             </div>
           </div>
         )}
