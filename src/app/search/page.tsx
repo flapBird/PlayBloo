@@ -31,7 +31,16 @@ async function searchGames(q: string, sort: string, page: number, category?: str
   }
 
   if (category) {
-    query = query.eq("game_categories.category_id", category);
+    // Filter by category: find games linked to this category
+    const { data: catGameIds } = await supabase
+      .from("game_categories")
+      .select("game_id")
+      .eq("category_id", category);
+    if (catGameIds?.length) {
+      query = query.in("id", catGameIds.map((g: any) => g.game_id));
+    } else {
+      return { games: [], total: 0 };
+    }
   }
 
   switch (sort) {
