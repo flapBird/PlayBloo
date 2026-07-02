@@ -20,7 +20,7 @@ export function GameIframe({ src, title, gameId, thumbnailUrl, externalUrl }: Ga
   const [showWakeHint, setShowWakeHint] = useState(false);
   const tracked = useRef(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
-  const hintTimer = useRef<ReturnType<typeof setTimeout>>();
+  const hintTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   useEffect(() => {
     if (externalUrl) return;
