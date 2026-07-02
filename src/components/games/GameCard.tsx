@@ -11,7 +11,7 @@ interface GameCardProps {
 export function GameCard({ game }: GameCardProps) {
   return (
     <Link href={`/game/${game.slug}`} className="group block">
-      <div className="relative aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-indigo-50 to-violet-50 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+      <div className="relative aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-indigo-50 to-violet-50 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
         {/* Game thumbnail */}
         <div className="absolute inset-0 overflow-hidden">
           {game.thumbnail_url ? (
@@ -29,36 +29,28 @@ export function GameCard({ game }: GameCardProps) {
           )}
         </div>
 
-        {/* Gradient overlay (always visible subtly, strong on hover) */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        {/* Gradient overlay on hover */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
         {/* View count badge */}
-        <div className="absolute top-2 left-2 z-10">
-          <span className="inline-flex items-center px-2 py-0.5 bg-black/50 backdrop-blur-sm rounded-md text-[10px] font-medium text-white/90">
-            {game.view_count.toLocaleString()} views
+        <div className="absolute top-1.5 left-1.5 z-10">
+          <span className="inline-flex items-center px-1.5 py-0.5 bg-black/50 backdrop-blur-sm rounded text-[9px] font-medium text-white/90">
+            {game.view_count.toLocaleString()}
           </span>
         </div>
 
-        {/* Play button (center on hover) */}
+        {/* Play button on hover */}
         <div className="absolute inset-0 flex items-center justify-center z-10 opacity-0 group-hover:opacity-100 transition-all duration-300">
-          <div className="relative">
-            <div className="absolute inset-0 rounded-full bg-primary/30 animate-ping" />
-            <div className="relative w-14 h-14 rounded-full bg-primary/90 backdrop-blur-sm flex items-center justify-center shadow-xl shadow-primary/30 transform scale-75 group-hover:scale-100 transition-transform duration-300">
-              <Play className="h-6 w-6 text-white fill-white ml-0.5" />
-            </div>
+          <div className="w-10 h-10 rounded-full bg-primary/90 backdrop-blur-sm flex items-center justify-center shadow-lg shadow-primary/30">
+            <Play className="h-4 w-4 text-white fill-white ml-0.5" />
           </div>
         </div>
-
-        {/* Title (appears on hover at bottom) */}
-        <div className="absolute inset-x-0 bottom-0 p-3 z-10 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-          <span className="block w-full text-center px-3 py-1.5 bg-black/70 backdrop-blur-sm rounded-lg text-sm font-semibold text-white truncate">
-            {game.title}
-          </span>
-        </div>
-
-        {/* Ring on hover */}
-        <div className="absolute inset-0 rounded-xl ring-2 ring-transparent group-hover:ring-primary/50 transition-all duration-300 pointer-events-none" />
       </div>
+
+      {/* Title below card */}
+      <p className="mt-2 text-xs font-medium text-foreground leading-tight line-clamp-2 group-hover:text-primary transition-colors">
+        {game.title}
+      </p>
     </Link>
   );
 }

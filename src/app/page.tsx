@@ -22,19 +22,19 @@ async function getGamesSection(): Promise<{
         .select("id, title, slug, thumbnail_url, view_count, play_count, created_at, is_trending, hot_score, categories:game_categories(category_id, categories:categories(*))")
         .eq("is_published", true)
         .order("hot_score", { ascending: false })
-        .limit(10),
+        .limit(18),
       supabase
         .from("games")
         .select("id, title, slug, thumbnail_url, view_count, play_count, created_at, is_trending, hot_score, categories:game_categories(category_id, categories:categories(*))")
         .eq("is_published", true)
         .order("view_count", { ascending: false })
-        .limit(10),
+        .limit(18),
       supabase
         .from("games")
         .select("id, title, slug, thumbnail_url, view_count, play_count, created_at, is_trending, hot_score, categories:game_categories(category_id, categories:categories(*))")
         .eq("is_published", true)
         .order("created_at", { ascending: false })
-        .limit(10),
+        .limit(18),
     ]);
 
     const mapGames = (games: any[]) =>
@@ -133,13 +133,13 @@ export default async function HomePage() {
           <section key={section.id}>
             <SectionHeader title={section.title} href={section.href} />
             {section.games.length > 0 ? (
-              <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-8 gap-3 md:gap-4">
+              <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-9 gap-3 md:gap-4">
                 {section.games.map((game) => (
                   <GameCard key={game.id} game={game} showCategory={false} />
                 ))}
               </div>
             ) : (
-              <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-8 gap-3 md:gap-4">
+              <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-9 gap-3 md:gap-4">
                 {Array.from({ length: 4 }).map((_, i) => (
                   <div
                     key={i}
@@ -172,7 +172,7 @@ export default async function HomePage() {
         {/* Categories */}
         <section>
           <SectionHeader title="Categories" href="/search" />
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-2">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-9 gap-2">
             {GAME_CATEGORIES.map((cat) => (
               <Link
                 key={cat.slug}

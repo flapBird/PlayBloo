@@ -157,7 +157,7 @@ export default async function SearchPage({ searchParams }: Props) {
 
       {games.length > 0 ? (
         <>
-          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-8 gap-3 md:gap-4">
+          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-9 gap-3 md:gap-4">
             {games.map((game: Game) => (
               <GameCard key={game.id} game={game} />
             ))}

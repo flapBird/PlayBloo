@@ -76,6 +76,23 @@ export default async function SeriesPage({ params }: Props) {
         ]}
       />
 
+      {/* Games grid first — more intuitive */}
+      {games.length > 0 && (
+        <div>
+          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-9 gap-3 md:gap-4">
+            {games.map((game: Game, index: number) => (
+              <div key={game.id} className="relative">
+                <div className="absolute -top-2 -left-2 z-10 w-7 h-7 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs font-bold shadow">
+                  {index + 1}
+                </div>
+                <GameCard game={game} />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Title and description below the games */}
       <div className="max-w-3xl space-y-4">
         <h1 className="text-3xl font-bold">{series.name} Game Series</h1>
         {series.description && (
@@ -92,22 +109,6 @@ export default async function SeriesPage({ params }: Props) {
           </p>
         )}
       </div>
-
-      {games.length > 0 && (
-        <div>
-          <h2 className="text-xl font-bold mb-4">Games in this series</h2>
-          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-8 gap-3 md:gap-4">
-            {games.map((game: Game, index: number) => (
-              <div key={game.id} className="relative">
-                <div className="absolute -top-2 -left-2 z-10 w-7 h-7 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs font-bold shadow">
-                  {index + 1}
-                </div>
-                <GameCard game={game} />
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
 
       {games.length === 0 && (
         <div className="text-center py-12 text-muted-foreground">
