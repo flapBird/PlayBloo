@@ -11,7 +11,7 @@ interface GameCardProps {
 export function GameCard({ game }: GameCardProps) {
   return (
     <Link href={`/game/${game.slug}`} className="group block">
-      <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-gradient-to-br from-indigo-50 to-violet-50 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+      <div className="relative aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-indigo-50 to-violet-50 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
         {/* Game thumbnail */}
         <div className="absolute inset-0 overflow-hidden">
           {game.thumbnail_url ? (

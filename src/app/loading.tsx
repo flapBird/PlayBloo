@@ -7,7 +7,7 @@ export default function HomeLoading() {
         {/* Section 1 */}
         <section>
           <div className="h-7 w-32 bg-muted rounded animate-pulse mb-5" />
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-5">
+          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-8 gap-3 md:gap-4">
             {Array.from({ length: 5 }).map((_, i) => (
               <div key={i} className="aspect-[4/3] rounded-xl bg-muted animate-pulse" />
             ))}
@@ -17,7 +17,7 @@ export default function HomeLoading() {
         {/* Section 2 */}
         <section>
           <div className="h-7 w-24 bg-muted rounded animate-pulse mb-5" />
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-5">
+          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-8 gap-3 md:gap-4">
             {Array.from({ length: 5 }).map((_, i) => (
               <div key={i} className="aspect-[4/3] rounded-xl bg-muted animate-pulse" />
             ))}

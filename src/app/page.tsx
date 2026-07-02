@@ -133,13 +133,13 @@ export default async function HomePage() {
           <section key={section.id}>
             <SectionHeader title={section.title} href={section.href} />
             {section.games.length > 0 ? (
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-5">
+              <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-8 gap-3 md:gap-4">
                 {section.games.map((game) => (
                   <GameCard key={game.id} game={game} showCategory={false} />
                 ))}
               </div>
             ) : (
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-5">
+              <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-8 gap-3 md:gap-4">
                 {Array.from({ length: 4 }).map((_, i) => (
                   <div
                     key={i}

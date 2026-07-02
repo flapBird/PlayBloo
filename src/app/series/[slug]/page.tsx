@@ -96,7 +96,7 @@ export default async function SeriesPage({ params }: Props) {
       {games.length > 0 && (
         <div>
           <h2 className="text-xl font-bold mb-4">Games in this series</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-5">
+          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-8 gap-3 md:gap-4">
             {games.map((game: Game, index: number) => (
               <div key={game.id} className="relative">
                 <div className="absolute -top-2 -left-2 z-10 w-7 h-7 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs font-bold shadow">
