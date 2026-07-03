@@ -44,9 +44,6 @@ async function searchGames(q: string, sort: string, page: number, category?: str
   }
 
   switch (sort) {
-    case "trending":
-      query = query.order("hot_score", { ascending: false });
-      break;
     case "popular":
       query = query.order("view_count", { ascending: false });
       break;
@@ -108,7 +105,7 @@ export default async function SearchPage({ searchParams }: Props) {
           <span className="text-sm text-muted-foreground mr-2">Sort:</span>
           {[
             { label: "Newest", value: "newest" },
-            { label: "Trending", value: "trending" },
+            
             { label: "Popular", value: "popular" },
           ].map((s) => (
             <Link

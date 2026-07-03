@@ -24,7 +24,7 @@ export async function GET(request: NextRequest) {
   }
 
   switch (sort) {
-    case "trending": query = query.order("hot_score", { ascending: false }); break;
+    case "trending": query = query.order("view_count", { ascending: false }); break;
     case "popular": query = query.order("view_count", { ascending: false }); break;
     case "newest": default: query = query.order("created_at", { ascending: false }); break;
   }

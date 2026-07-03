@@ -2,37 +2,30 @@ import Link from "next/link";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { GameCard } from "@/components/games/GameCard";
 import { SITE_NAME, GAME_CATEGORIES } from "@/lib/constants";
-import { ArrowRight, TrendingUp, Sparkles, Flame, Layers } from "lucide-react";
+import { Sparkles, Layers } from "lucide-react";
 import type { Game } from "@/lib/types";
 import { ContinuePlaying } from "@/components/home/ContinuePlaying";
 
 async function getGamesSection(): Promise<{
-  trending: Game[];
   popular: Game[];
   newest: Game[];
 }> {
   try {
     const supabase = createAdminClient();
     if (!supabase) {
-      return { trending: [], popular: [], newest: [] };
+      return { popular: [], newest: [] };
     }
 
-    const [trendingRes, popularRes, newestRes] = await Promise.all([
+    const [popularRes, newestRes] = await Promise.all([
       supabase
         .from("games")
-        .select("id, title, slug, thumbnail_url, view_count, play_count, created_at, is_trending, hot_score, categories:game_categories(category_id, categories:categories(*))")
-        .eq("is_published", true)
-        .order("hot_score", { ascending: false })
-        .limit(18),
-      supabase
-        .from("games")
-        .select("id, title, slug, thumbnail_url, view_count, play_count, created_at, is_trending, hot_score, categories:game_categories(category_id, categories:categories(*))")
+        .select("id, title, slug, thumbnail_url, view_count, play_count, created_at, categories:game_categories(category_id, categories:categories(*))")
         .eq("is_published", true)
         .order("view_count", { ascending: false })
         .limit(18),
       supabase
         .from("games")
-        .select("id, title, slug, thumbnail_url, view_count, play_count, created_at, is_trending, hot_score, categories:game_categories(category_id, categories:categories(*))")
+        .select("id, title, slug, thumbnail_url, view_count, play_count, created_at, categories:game_categories(category_id, categories:categories(*))")
         .eq("is_published", true)
         .order("created_at", { ascending: false })
         .limit(18),
@@ -47,13 +40,12 @@ async function getGamesSection(): Promise<{
       }));
 
     return {
-      trending: mapGames(trendingRes.data || []),
       popular: mapGames(popularRes.data || []),
       newest: mapGames(newestRes.data || []),
     };
   } catch (e) {
     console.error("Error fetching games:", e);
-    return { trending: [], popular: [], newest: [] };
+    return { popular: [], newest: [] };
   }
 }
 
@@ -108,12 +100,6 @@ export default async function HomePage() {
       title: "New Games",
       href: "/search?sort=newest",
       games: games.newest,
-    },
-    {
-      id: "trending",
-      title: "Trending",
-      href: "/search?sort=trending",
-      games: games.trending,
     },
     {
       id: "popular",
