@@ -4,16 +4,18 @@ import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { Play, Maximize2, Minimize2, ExternalLink, Gamepad2, Loader2, MousePointerClick } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { addPlayRecord } from "@/lib/play-history";
 
 interface GameIframeProps {
   src: string;
   title: string;
   gameId: string;
+  slug: string;
   thumbnailUrl?: string | null;
   externalUrl?: string | null;
 }
 
-export function GameIframe({ src, title, gameId, thumbnailUrl, externalUrl }: GameIframeProps) {
+export function GameIframe({ src, title, gameId, slug, thumbnailUrl, externalUrl }: GameIframeProps) {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [showIframe, setShowIframe] = useState(false);
   const [iframeLoading, setIframeLoading] = useState(true);
@@ -35,6 +37,13 @@ export function GameIframe({ src, title, gameId, thumbnailUrl, externalUrl }: Ga
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ game_id: gameId, type: "play" }),
     }).catch(() => {});
+    // Save to play history for Continue Playing
+    addPlayRecord({
+      gameId,
+      slug,
+      title,
+      thumbnailUrl: thumbnailUrl ?? null,
+    });
   };
 
   const showHint = () => {

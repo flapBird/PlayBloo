@@ -4,6 +4,7 @@ import { GameCard } from "@/components/games/GameCard";
 import { SITE_NAME, GAME_CATEGORIES } from "@/lib/constants";
 import { ArrowRight, TrendingUp, Sparkles, Flame, Layers } from "lucide-react";
 import type { Game } from "@/lib/types";
+import { ContinuePlaying } from "@/components/home/ContinuePlaying";
 
 async function getGamesSection(): Promise<{
   trending: Game[];
@@ -127,6 +128,8 @@ export default async function HomePage() {
   return (
     <div className="pb-12">
       <div className="container mx-auto px-4 pt-6 space-y-12">
+        {/* Continue Playing */}
+        <ContinuePlaying />
 
         {/* Game sections */}
         {sections.map((section) => (
