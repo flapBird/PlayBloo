@@ -17,7 +17,7 @@ export default function ContactPage() {
         <div className="rounded-xl border border-border/60 bg-card p-6 space-y-4">
           <div>
             <h2 className="text-sm font-bold text-foreground mb-1">General Inquiries</h2>
-            <p className="text-sm">hello@{SITE_DOMAIN}</p>
+            <p className="text-sm">contact@{SITE_DOMAIN}</p>
           </div>
           <div>
             <h2 className="text-sm font-bold text-foreground mb-1">Game Submissions</h2>
