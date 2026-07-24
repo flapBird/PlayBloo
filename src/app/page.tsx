@@ -1,8 +1,7 @@
- import type { Metadata } from "next";
 import Link from "next/link";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { GameCard } from "@/components/games/GameCard";
-import { SITE_NAME, GAME_CATEGORIES } from "@/lib/constants";
+ import { SITE_NAME, GAME_CATEGORIES } from "@/lib/constants";
 import { Sparkles, Layers } from "lucide-react";
 import type { Game } from "@/lib/types";
 import { ContinuePlaying } from "@/components/home/ContinuePlaying";
@@ -84,11 +83,6 @@ function SectionHeader({ title, href }: { title: string; href: string }) {
   );
 }
 
- export const metadata: Metadata = {
-   alternates: {
-     canonical: "/",
-   },
- };
  
 export const revalidate = 60;
 
@@ -121,6 +115,7 @@ export default async function HomePage() {
   return (
     <div className="pb-12">
       <div className="container mx-auto px-4 pt-6 space-y-12">
+         <link rel="canonical" href="https://playbloo.net/" />
         {/* Continue Playing */}
         <ContinuePlaying />
 
