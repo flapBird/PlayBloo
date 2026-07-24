@@ -27,6 +27,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${game.title} Walkthroughs — Level Guides & Tips | ${SITE_NAME}`,
     description: `Stuck on ${game.title}? Browse our collection of level walkthroughs with video guides, tips, and step-by-step strategies.`,
+     alternates: {
+       canonical: `/game/${slug}/level`,
+     },
   };
 }
 

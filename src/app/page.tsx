@@ -1,3 +1,4 @@
+ import type { Metadata } from "next";
 import Link from "next/link";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { GameCard } from "@/components/games/GameCard";
@@ -83,6 +84,12 @@ function SectionHeader({ title, href }: { title: string; href: string }) {
   );
 }
 
+ export const metadata: Metadata = {
+   alternates: {
+     canonical: "/",
+   },
+ };
+ 
 export const revalidate = 60;
 
 export default async function HomePage() {

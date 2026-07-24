@@ -56,7 +56,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const tag = await getTag(slug);
   if (!tag) return { title: "Tag Not Found" };
-  return { title: `${tag.name} Games - Browse Free Online Games Tagged with ${tag.name}` };
+   return {
+     title: `${tag.name} Games - Browse Free Online Games Tagged with ${tag.name}`,
+     alternates: {
+       canonical: `/tag/${slug}`,
+     },
+   };
 }
 
 export const revalidate = 120;

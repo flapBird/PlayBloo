@@ -60,6 +60,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${game.title} - Play Free Online Game`,
     description: game.description?.slice(0, 160) || `Play ${game.title} online for free on ${SITE_NAME}.`,
+     alternates: {
+       canonical: `/game/${slug}`,
+     },
     openGraph: {
       title: `${game.title} - Free Online Game`,
       description: game.description?.slice(0, 160) || undefined,

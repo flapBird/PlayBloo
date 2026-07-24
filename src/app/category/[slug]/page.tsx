@@ -68,7 +68,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title = category.meta_title || `${category.name} Games - Play Free Online ${category.name} Games`;
   const description = category.meta_description || `Play the best free ${category.name} games online.`;
 
-  return { title, description };
+   return {
+     title,
+     description,
+     alternates: {
+       canonical: `/category/${slug}`,
+     },
+   };
 }
 
 export const revalidate = 120;

@@ -61,13 +61,16 @@ async function getAdjacentLevels(gameId: string, currentNumber: number) {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { levelSlug } = await params;
+   const { slug, levelSlug } = await params;
   const level = await getLevel(levelSlug);
   if (!level) return { title: "Level Not Found" };
 
   return {
     title: level.meta_title || `${level.title} — ${SITE_NAME}`,
     description: level.meta_description || `Walkthrough and tips for ${level.title}.`,
+     alternates: {
+       canonical: `/game/${slug}/level/${levelSlug}`,
+     },
   };
 }
 

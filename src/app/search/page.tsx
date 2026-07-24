@@ -74,6 +74,9 @@ async function getCategories() {
 
 export const metadata: Metadata = {
   title: "Search Games - Play Free Online Games",
+   alternates: {
+     canonical: "/search",
+   },
 };
 
 export default async function SearchPage({ searchParams }: Props) {

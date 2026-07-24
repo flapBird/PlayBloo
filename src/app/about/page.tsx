@@ -4,6 +4,9 @@ import { SITE_NAME } from "@/lib/constants";
 export const metadata: Metadata = {
   title: `About Us - ${SITE_NAME}`,
   description: `Learn about ${SITE_NAME}, the free online games platform.`,
+   alternates: {
+     canonical: "/about",
+   },
 };
 
 export default function AboutPage() {

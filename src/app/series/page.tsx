@@ -5,6 +5,9 @@ import { SITE_NAME } from "@/lib/constants";
 export const metadata = {
   title: "Game Series",
   description: `Browse all game series on ${SITE_NAME}. Play complete game collections.`,
+   alternates: {
+     canonical: "/series",
+   },
 };
 
 export default async function SeriesListPage() {
