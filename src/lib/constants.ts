@@ -1,7 +1,7 @@
 export const SITE_NAME = "PlayBloo";
 export const SITE_DOMAIN = "playbloo.net";
 export const SITE_URL = `https://${SITE_DOMAIN}`;
-export const SITE_DESCRIPTION = "Play free online games on PlayBloo.org. Discover thousands of exciting games including action, puzzle, driving, and more. No download required.";
+export const SITE_DESCRIPTION = "Play free online games on PlayBloo. Discover action, puzzle, driving, and arcade games with no download required.";
 
 export const PAGE_SIZE = 24;
 export const ADMIN_PAGE_SIZE = 20;

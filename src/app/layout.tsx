@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
-  metadataBase: new URL(SITE_URL),
+  metadataBase: new URL(`${SITE_URL}/`),
   openGraph: {
     type: "website",
     siteName: SITE_NAME,

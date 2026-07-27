@@ -19,7 +19,7 @@ export function Footer() {
               {SITE_NAME}
             </Link>
             <p className="mt-2 text-sm text-muted-foreground max-w-sm leading-relaxed">
-              Play free online games on {SITE_NAME}. Discover thousands of exciting games including action, puzzle, driving, and more. No download required.
+              Play free online games on {SITE_NAME}. Discover action, puzzle, driving, and arcade games with no download required.
             </p>
           </div>
 

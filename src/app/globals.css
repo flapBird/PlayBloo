@@ -5,13 +5,13 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #F0F2F6;
-  --foreground: #1A1B2F;
+  --background: #F7F7FB;
+  --foreground: #171624;
   --card: #FFFFFF;
   --card-foreground: #1A1B2F;
   --popover: #FFFFFF;
   --popover-foreground: #1A1B2F;
-  --primary: #6366F1;
+  --primary: #6D5DFB;
   --primary-foreground: #FFFFFF;
   --secondary: #E6E9F0;
   --secondary-foreground: #1F2937;
@@ -61,19 +61,30 @@
     @apply border-border;
   }
   body {
-    background: linear-gradient(180deg, #F6F7FA 0%, #F0F2F6 100%);
+    background: linear-gradient(180deg, #FAFAFD 0%, #F4F4F9 100%);
     color: var(--foreground);
     font-family: var(--font-sans), system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     min-height: 100vh;
-    background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.03) 1px, transparent 0);
-    background-size: 24px 24px;
+    background-image: radial-gradient(circle at 1px 1px, rgba(88, 72, 172, 0.035) 1px, transparent 0);
+    background-size: 28px 28px;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-bold text-foreground;
   }
 }
+
+.hero-orb { position: absolute; border-radius: 9999px; filter: blur(2px); pointer-events: none; }
+.hero-orb-one { width: 32rem; height: 32rem; right: -12rem; top: -18rem; background: radial-gradient(circle, rgba(131, 107, 255, .65), transparent 67%); }
+.hero-orb-two { width: 22rem; height: 22rem; left: 38%; bottom: -16rem; background: radial-gradient(circle, rgba(36, 204, 184, .25), transparent 68%); }
+.category-tile { @apply flex min-h-24 items-end justify-between rounded-2xl px-4 py-3 text-sm font-extrabold transition-transform duration-200 hover:-translate-y-1; }
+.category-tile-0 { background: #ede9fe; color: #4c1d95; }
+.category-tile-1 { background: #dff8f1; color: #075e54; }
+.category-tile-2 { background: #ffedd5; color: #9a3412; }
+.category-tile-3 { background: #e0f2fe; color: #075985; }
+.category-tile-4 { background: #fce7f3; color: #9d174d; }
+.category-tile-5 { background: #ecfccb; color: #3f6212; }
 
 @utility container {
   margin-inline: auto;

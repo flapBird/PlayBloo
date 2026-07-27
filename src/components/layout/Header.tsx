@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState, useCallback, useEffect, useRef } from "react";
 import { useRouter, usePathname } from "next/navigation";
-import { Search, Menu, X, ChevronDown } from "lucide-react";
+import { Search, Menu, X, ChevronDown, Gamepad2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { SITE_NAME, GAME_CATEGORIES } from "@/lib/constants";
@@ -39,12 +39,13 @@ export function Header() {
   }, [searchOpen]);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/70 bg-card/95 backdrop-blur-lg supports-[backdrop-filter]:bg-card/80">
+    <header className="sticky top-0 z-50 w-full border-b border-border/70 bg-card/90 backdrop-blur-xl supports-[backdrop-filter]:bg-card/75">
       <div className="container mx-auto">
         {/* Main row */}
         <div className="flex h-16 items-center justify-between px-4">
           <div className="flex items-center gap-6">
-            <Link href="/" className="text-2xl font-black tracking-tight text-foreground hover:text-primary transition-colors">
+            <Link href="/" className="flex items-center gap-2 text-xl font-black tracking-tight text-foreground transition-colors hover:text-primary">
+              <span className="grid h-8 w-8 place-items-center rounded-xl bg-primary text-primary-foreground shadow-lg shadow-primary/25"><Gamepad2 className="h-4 w-4" /></span>
               {SITE_NAME}
             </Link>
           </div>
@@ -59,7 +60,7 @@ export function Header() {
                 placeholder="Search games..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 bg-muted border-0 text-sm h-10 rounded-xl"
+                className="w-full border-0 bg-muted/70 pl-10 text-sm h-10 rounded-xl focus-visible:ring-primary/30"
               />
             </form>
           </div>
