@@ -3,8 +3,10 @@ import Image from "next/image";
 import { Play } from "lucide-react";
 import type { Game } from "@/lib/types";
 
+type GameCardGame = Pick<Game, "id" | "title" | "slug" | "thumbnail_url" | "view_count">;
+
 interface GameCardProps {
-  game: Game;
+  game: GameCardGame;
   showCategory?: boolean;
 }
 

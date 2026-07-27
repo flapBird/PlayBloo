@@ -6,7 +6,7 @@ import { GameCard } from "@/components/games/GameCard";
 import { ContinuePlaying } from "@/components/home/ContinuePlaying";
 import { GAME_CATEGORIES } from "@/lib/constants";
 import { ArrowRight, Flame, Gamepad2, Play, Sparkles } from "lucide-react";
-import type { Category, Game } from "@/lib/types";
+import type { Game } from "@/lib/types";
 
 export const revalidate = 60;
 
@@ -14,28 +14,26 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://playbloo.net/" },
 };
 
-async function getHomeContent(): Promise<{ featured: Game[]; popular: Game[]; newest: Game[] }> {
+type HomeGame = Pick<Game, "id" | "title" | "slug" | "thumbnail_url" | "view_count" | "play_count" | "created_at" | "is_featured">;
+
+async function getHomeContent(): Promise<{ featured: HomeGame[]; popular: HomeGame[]; newest: HomeGame[] }> {
   try {
     const supabase = createAdminClient();
     if (!supabase) return { featured: [], popular: [], newest: [] };
 
-    const fields = "id, title, slug, thumbnail_url, view_count, play_count, created_at, is_featured, categories:game_categories(category_id, categories:categories(*))";
+    const fields = "id, title, slug, thumbnail_url, view_count, play_count, created_at, is_featured";
     const [featuredRes, popularRes, newestRes] = await Promise.all([
       supabase.from("games").select(fields).eq("is_published", true).eq("is_featured", true).order("created_at", { ascending: false }).limit(5),
       supabase.from("games").select(fields).eq("is_published", true).order("play_count", { ascending: false }).limit(18),
       supabase.from("games").select(fields).eq("is_published", true).order("created_at", { ascending: false }).limit(18),
     ]);
 
-    type RawGame = Game & { categories?: { categories?: Category | null }[] };
-    const mapGames = (games: RawGame[]) => (games || []).map((game) => ({
-      ...game,
-      categories: (game.categories || []).flatMap((entry) => entry.categories ? [entry.categories] : []),
-    })) as Game[];
-    const popular = mapGames((popularRes.data || []) as RawGame[]);
+    const mapGames = (games: unknown): HomeGame[] => (games || []) as HomeGame[];
+    const popular = mapGames(popularRes.data);
     return {
-      featured: mapGames((featuredRes.data || []) as RawGame[]).length ? mapGames((featuredRes.data || []) as RawGame[]) : popular.slice(0, 5),
+      featured: mapGames(featuredRes.data).length ? mapGames(featuredRes.data) : popular.slice(0, 5),
       popular,
-      newest: mapGames((newestRes.data || []) as RawGame[]),
+      newest: mapGames(newestRes.data),
     };
   } catch (error) {
     console.error("Could not load home content:", error);
