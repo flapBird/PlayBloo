@@ -65,8 +65,9 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <div className="site-background" aria-hidden="true" />
         <Header />
-        <main className="flex-1">{children}</main>
+        <main className="site-main flex-1">{children}</main>
         <Footer />
         <JsonLd type="WebSite" />
         <Script

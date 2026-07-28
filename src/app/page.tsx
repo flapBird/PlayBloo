@@ -43,7 +43,7 @@ async function getHomeContent(): Promise<{ featured: HomeGame[]; popular: HomeGa
 
 function SectionTitle({ eyebrow, title, href }: { eyebrow: string; title: string; href: string }) {
   return (
-    <div className="mb-5 flex items-end justify-between gap-4">
+    <div className="section-heading mb-5 flex items-end justify-between gap-4">
       <div>
         <p className="mb-1 text-[11px] font-extrabold uppercase tracking-[0.18em] text-primary">{eyebrow}</p>
         <h2 className="text-2xl font-black tracking-tight text-foreground md:text-3xl">{title}</h2>
@@ -63,7 +63,7 @@ export default async function HomePage() {
   return (
     <div className="pb-16">
       <div className="container mx-auto px-4 pt-5 md:pt-8">
-        <section className="relative overflow-hidden rounded-[2rem] bg-[#151426] px-6 py-8 text-white shadow-2xl shadow-indigo-950/20 md:px-10 md:py-10">
+        <section className="home-hero relative overflow-hidden rounded-[2rem] px-6 py-8 text-white md:px-10 md:py-10">
           <div className="hero-orb hero-orb-one" />
           <div className="hero-orb hero-orb-two" />
           <div className="relative grid gap-8 lg:grid-cols-[1.05fr_.95fr] lg:items-center">
@@ -71,15 +71,15 @@ export default async function HomePage() {
               <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-bold text-white/85 backdrop-blur">
                 <Sparkles className="h-3.5 w-3.5 text-violet-300" /> Fresh games. Zero downloads.
               </div>
-              <h1 className="text-4xl font-black leading-[0.98] tracking-[-0.055em] sm:text-5xl md:text-6xl">
-                Your next game<br /><span className="text-violet-300">starts here.</span>
+              <h1 className="text-4xl font-black leading-[0.98] tracking-[-0.055em] text-white sm:text-5xl md:text-6xl">
+                Your next game<br /><span className="hero-gradient-text">starts here.</span>
               </h1>
               <p className="mt-5 max-w-md text-base leading-relaxed text-indigo-100/75">Pick up a quick play, find a new obsession, or jump back into a favorite — all in your browser.</p>
               <div className="mt-7 flex flex-wrap gap-3">
-                <Link href="/search?sort=trending" className="inline-flex items-center gap-2 rounded-xl bg-white px-4 py-3 text-sm font-extrabold text-[#17152b] transition-transform hover:-translate-y-0.5">
+                <Link href="/search?sort=trending" className="hero-primary-action inline-flex items-center gap-2 rounded-xl bg-white px-4 py-3 text-sm font-extrabold text-[#17152b] transition-transform hover:-translate-y-0.5">
                   <Flame className="h-4 w-4 text-orange-500" /> See what&apos;s hot
                 </Link>
-                <Link href="/category" className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm font-bold text-white transition-colors hover:bg-white/10">
+                <Link href="/category" className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm font-bold text-white backdrop-blur-sm transition-colors hover:border-white/25 hover:bg-white/10">
                   Browse categories <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
@@ -87,8 +87,8 @@ export default async function HomePage() {
 
             {leadGame ? (
               <div className="grid grid-cols-[1.4fr_1fr] gap-3">
-                <Link href={`/game/${leadGame.slug}`} className="group relative row-span-2 min-h-64 overflow-hidden rounded-2xl bg-indigo-900">
-                  {leadGame.thumbnail_url && <Image src={leadGame.thumbnail_url} alt="" fill sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover transition duration-700 group-hover:scale-110" />}
+                <Link href={`/game/${leadGame.slug}`} className="featured-game group relative row-span-2 min-h-64 overflow-hidden rounded-2xl bg-indigo-900">
+                  {leadGame.thumbnail_url && <Image src={leadGame.thumbnail_url} alt="" fill preload sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover transition duration-700 group-hover:scale-110" />}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/5 to-transparent" />
                   <div className="absolute inset-x-0 bottom-0 p-4">
                     <span className="mb-2 inline-block rounded-md bg-violet-500 px-2 py-1 text-[10px] font-black uppercase tracking-wider">Editor&apos;s pick</span>
@@ -96,8 +96,8 @@ export default async function HomePage() {
                     <span className="mt-2 inline-flex items-center gap-1 text-xs font-bold text-white/80">Play now <Play className="h-3 w-3 fill-current" /></span>
                   </div>
                 </Link>
-                {sideGames.map((game) => (
-                  <Link key={game.id} href={`/game/${game.slug}`} className="group relative min-h-30 overflow-hidden rounded-2xl bg-indigo-900">
+                {sideGames.map((game, index) => (
+                  <Link key={game.id} href={`/game/${game.slug}`} className={`featured-game group relative min-h-30 overflow-hidden rounded-2xl bg-indigo-900 ${index > 1 ? "hidden sm:block" : ""}`}>
                     {game.thumbnail_url && <Image src={game.thumbnail_url} alt="" fill sizes="(max-width: 1024px) 50vw, 20vw" className="object-cover transition duration-500 group-hover:scale-110" />}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-black/10" />
                     <p className="absolute inset-x-0 bottom-0 p-3 text-xs font-extrabold leading-tight line-clamp-2">{game.title}</p>
@@ -110,7 +110,7 @@ export default async function HomePage() {
           </div>
         </section>
 
-        <div className="mt-12 space-y-14">
+        <div className="home-content-stack mt-12 space-y-14">
           <ContinuePlaying />
 
           <section>
@@ -120,11 +120,11 @@ export default async function HomePage() {
             </div>
           </section>
 
-          <section className="rounded-[1.75rem] border border-border/70 bg-card/75 p-5 shadow-sm md:p-7">
+          <section className="genre-panel rounded-[1.75rem] p-5 md:p-7">
             <SectionTitle eyebrow="Find your mood" title="Explore by genre" href="/category" />
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6">
               {GAME_CATEGORIES.slice(0, 12).map((category, index) => (
-                <Link key={category.slug} href={`/category/${category.slug}`} className={`category-tile category-tile-${index % 6}`}>
+                <Link key={category.slug} href={`/category/${category.slug}`} className={`group category-tile category-tile-${index % 6}`}>
                   <span>{category.name}</span><ArrowRight className="h-4 w-4 opacity-60 transition-transform group-hover:translate-x-1" />
                 </Link>
               ))}

@@ -40,6 +40,18 @@ export function getRecentPlays(limit: number = 8): PlayHistoryItem[] {
   return getAll().slice(0, limit);
 }
 
+export function removePlayRecord(gameId: string): void {
+  if (typeof window === "undefined") return;
+  try {
+    const remaining = getAll().filter((item) => item.gameId !== gameId);
+    if (remaining.length === 0) {
+      localStorage.removeItem(STORAGE_KEY);
+      return;
+    }
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(remaining));
+  } catch {}
+}
+
 export function clearHistory(): void {
   if (typeof window === "undefined") return;
   try {

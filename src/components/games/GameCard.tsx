@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Play } from "lucide-react";
+import { Eye, Play } from "lucide-react";
 import type { Game } from "@/lib/types";
 
 type GameCardGame = Pick<Game, "id" | "title" | "slug" | "thumbnail_url" | "view_count">;
@@ -12,17 +12,17 @@ interface GameCardProps {
 
 export function GameCard({ game }: GameCardProps) {
   return (
-    <Link href={`/game/${game.slug}`} className="group block">
-      <div className="relative aspect-square rounded-2xl overflow-hidden bg-muted shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+    <Link href={`/game/${game.slug}`} aria-label={`Play ${game.title}`} className="game-card group block">
+      <div className="game-card-media relative aspect-square overflow-hidden rounded-2xl bg-muted">
         {/* Game thumbnail */}
         <div className="absolute inset-0 overflow-hidden">
           {game.thumbnail_url ? (
             <Image
               src={game.thumbnail_url}
-              alt={game.title}
+              alt=""
               fill
               className="object-cover transition-transform duration-500 group-hover:scale-105"
-              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+              sizes="(max-width: 640px) 33vw, (max-width: 768px) 25vw, (max-width: 1024px) 20vw, (max-width: 1280px) 16vw, 12vw"
             />
           ) : (
             <div className="flex items-center justify-center h-full">
@@ -36,14 +36,15 @@ export function GameCard({ game }: GameCardProps) {
 
         {/* View count badge */}
         <div className="absolute top-2 left-2 z-10">
-          <span className="inline-flex items-center px-1.5 py-0.5 bg-black/40 backdrop-blur-sm rounded-md text-[10px] font-medium text-white/90">
+          <span className="inline-flex items-center gap-1 rounded-md border border-white/10 bg-black/45 px-1.5 py-0.5 text-[10px] font-medium text-white/90 backdrop-blur-md">
+            <Eye className="h-2.5 w-2.5" aria-hidden="true" />
             {game.view_count.toLocaleString()}
           </span>
         </div>
 
         {/* Play button on hover */}
         <div className="absolute inset-0 flex items-center justify-center z-10 opacity-0 group-hover:opacity-100 transition-all duration-200">
-          <div className="w-9 h-9 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg">
+          <div className="game-card-play flex h-10 w-10 items-center justify-center rounded-full bg-white/90 shadow-lg backdrop-blur-sm">
             <Play className="h-4 w-4 text-primary fill-primary ml-0.5" />
           </div>
         </div>
@@ -53,7 +54,7 @@ export function GameCard({ game }: GameCardProps) {
       </div>
 
       {/* Title below card */}
-      <p className="mt-2 text-xs font-semibold text-foreground text-center leading-snug line-clamp-2 group-hover:text-primary transition-colors">
+      <p className="mt-2.5 line-clamp-2 text-left text-xs font-bold leading-snug text-foreground transition-colors group-hover:text-primary">
         {game.title}
       </p>
     </Link>

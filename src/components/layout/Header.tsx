@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState, useCallback, useEffect, useRef } from "react";
 import { useRouter, usePathname } from "next/navigation";
-import { Search, Menu, X, ChevronDown, Gamepad2 } from "lucide-react";
+import { Search, Menu, X, ArrowRight, Gamepad2, LayoutGrid } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { SITE_NAME, GAME_CATEGORIES } from "@/lib/constants";
@@ -39,13 +39,13 @@ export function Header() {
   }, [searchOpen]);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/70 bg-card/90 backdrop-blur-xl supports-[backdrop-filter]:bg-card/75">
+    <header className="site-header sticky top-0 z-50 w-full">
       <div className="container mx-auto">
         {/* Main row */}
         <div className="flex h-16 items-center justify-between px-4">
           <div className="flex items-center gap-6">
             <Link href="/" className="flex items-center gap-2 text-xl font-black tracking-tight text-foreground transition-colors hover:text-primary">
-              <span className="grid h-8 w-8 place-items-center rounded-xl bg-primary text-primary-foreground shadow-lg shadow-primary/25"><Gamepad2 className="h-4 w-4" /></span>
+              <span className="brand-mark grid h-8 w-8 place-items-center rounded-xl text-primary-foreground"><Gamepad2 className="h-4 w-4" /></span>
               {SITE_NAME}
             </Link>
           </div>
@@ -60,7 +60,7 @@ export function Header() {
                 placeholder="Search games..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full border-0 bg-muted/70 pl-10 text-sm h-10 rounded-xl focus-visible:ring-primary/30"
+                className="header-search h-10 w-full rounded-xl border-0 pl-10 text-sm focus-visible:ring-primary/30"
               />
             </form>
           </div>
@@ -72,6 +72,9 @@ export function Header() {
               size="icon"
               className="md:hidden text-muted-foreground"
               onClick={() => setSearchOpen(!searchOpen)}
+              aria-label={searchOpen ? "Close search" : "Open search"}
+              aria-expanded={searchOpen}
+              aria-controls="mobile-search"
             >
               {searchOpen ? <X className="h-5 w-5" /> : <Search className="h-5 w-5" />}
             </Button>
@@ -82,6 +85,9 @@ export function Header() {
               size="icon"
               className="md:hidden text-muted-foreground"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-menu"
             >
               {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
@@ -90,7 +96,7 @@ export function Header() {
 
         {/* Mobile search */}
         {searchOpen && (
-          <div className="md:hidden px-4 pb-3">
+          <div id="mobile-search" className="md:hidden px-4 pb-3">
             <form onSubmit={handleSearch} className="relative">
               <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
@@ -105,38 +111,38 @@ export function Header() {
           </div>
         )}
 
-        {/* Category bar - Desktop */}
-        <nav className="hidden md:flex items-center gap-1.5 px-4 pb-2 overflow-x-auto">
-          <Link
-            href="/"
-            className={`inline-flex h-9 shrink-0 items-center justify-center rounded-lg px-4 text-sm font-bold transition-colors ${
-              pathname === "/" ? "bg-indigo-50 text-indigo-600" : "text-muted-foreground hover:text-foreground hover:bg-muted"
-            }`}
-          >
-            All Games
-          </Link>
-          {mainCategories.map((cat) => (
+        {/* Category rail */}
+        <nav aria-label="Game categories" className="category-nav px-3 pb-3 md:px-4 md:pb-2">
+          <div className="category-nav-track flex items-center gap-1.5 overflow-x-auto">
             <Link
-              key={cat.slug}
-              href={`/category/${cat.slug}`}
-              className={`inline-flex h-9 shrink-0 items-center justify-center rounded-lg px-4 text-sm font-bold transition-colors ${
-                currentCategory === cat.slug ? "bg-indigo-50 text-indigo-600" : "text-muted-foreground hover:text-foreground hover:bg-muted"
-              }`}
+              href="/"
+              className={`category-nav-pill ${pathname === "/" ? "is-active" : ""}`}
             >
-              {cat.name}
+              <LayoutGrid className="h-3.5 w-3.5" aria-hidden="true" />
+              All Games
             </Link>
-          ))}
-          <Link
-            href="/search"
-            className="inline-flex h-9 shrink-0 items-center justify-center rounded-lg text-sm font-semibold text-muted-foreground hover:text-foreground px-3 transition-colors"
-          >
-            View All <ChevronDown className="h-3 w-3 ml-0.5" />
-          </Link>
+            {mainCategories.map((cat, index) => (
+              <Link
+                key={cat.slug}
+                href={`/category/${cat.slug}`}
+                className={`category-nav-pill ${currentCategory === cat.slug ? "is-active" : ""}`}
+              >
+                <span className={`category-nav-dot category-nav-dot-${index % 6}`} aria-hidden="true" />
+                {cat.name}
+              </Link>
+            ))}
+            <Link
+              href="/category"
+              className={`category-nav-pill category-nav-all ${pathname === "/category" ? "is-active" : ""}`}
+            >
+              View All <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+            </Link>
+          </div>
         </nav>
 
         {/* Mobile menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-t border-border/50">
+          <div id="mobile-menu" className="md:hidden border-t border-border/50">
             <div className="px-4 py-3 space-y-1">
               <Link
                 href="/"
