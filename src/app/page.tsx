@@ -1,18 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
-import type { Metadata } from "next";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { GameCard } from "@/components/games/GameCard";
 import { ContinuePlaying } from "@/components/home/ContinuePlaying";
-import { GAME_CATEGORIES } from "@/lib/constants";
+import { GAME_CATEGORIES, SITE_URL } from "@/lib/constants";
 import { ArrowRight, Flame, Gamepad2, Play, Sparkles } from "lucide-react";
 import type { Game } from "@/lib/types";
 
 export const revalidate = 60;
-
-export const metadata: Metadata = {
-  alternates: { canonical: "https://playbloo.net/" },
-};
 
 type HomeGame = Pick<Game, "id" | "title" | "slug" | "thumbnail_url" | "view_count" | "play_count" | "created_at" | "is_featured">;
 
@@ -62,6 +57,8 @@ export default async function HomePage() {
 
   return (
     <div className="pb-16">
+      {/* Next metadata serializes root canonical URLs as the bare origin. */}
+      <link rel="canonical" href={`${SITE_URL}/`} />
       <div className="container mx-auto px-4 pt-5 md:pt-8">
         <section className="home-hero relative overflow-hidden rounded-[2rem] px-6 py-8 text-white md:px-10 md:py-10">
           <div className="hero-orb hero-orb-one" />
