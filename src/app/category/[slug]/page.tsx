@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { GameCard } from "@/components/games/GameCard";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
-import { SITE_URL, PAGE_SIZE } from "@/lib/constants";
+import { SITE_URL, PAGE_SIZE, MIN_INDEXABLE_CATEGORY_GAMES } from "@/lib/constants";
 import type { Game } from "@/lib/types";
 
 interface Props {
@@ -64,6 +64,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const category = await getCategory(slug);
   if (!category) return { title: "Category Not Found" };
+  const { total } = await getGames(slug, 1);
 
   const title = category.meta_title || `${category.name} Games - Play Free Online ${category.name} Games`;
   const description = category.meta_description || `Play the best free ${category.name} games online.`;
@@ -74,6 +75,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
      alternates: {
        canonical: `/category/${slug}`,
      },
+     ...(total < MIN_INDEXABLE_CATEGORY_GAMES
+       ? {
+           robots: {
+             index: false,
+             follow: true,
+           },
+         }
+       : {}),
    };
 }
 

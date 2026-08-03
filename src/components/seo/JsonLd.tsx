@@ -16,11 +16,6 @@ export function JsonLd({ type = "WebSite", data = {} }: JsonLdProps) {
         name: SITE_NAME,
         url: SITE_URL,
         description: "Play free online games on PlayBloo.",
-        potentialAction: {
-          "@type": "SearchAction",
-          target: `${SITE_URL}/search?q={search_term_string}`,
-          "query-input": "required name=search_term_string",
-        },
         ...data,
       };
       break;

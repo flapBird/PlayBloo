@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { GameCard } from "@/components/games/GameCard";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
-import { SITE_URL, PAGE_SIZE } from "@/lib/constants";
+import { SITE_URL, PAGE_SIZE, MIN_INDEXABLE_CATEGORY_GAMES } from "@/lib/constants";
 import type { Game } from "@/lib/types";
 
 interface Props {
@@ -44,6 +44,11 @@ async function searchGames(q: string, sort: string, page: number, category?: str
   }
 
   switch (sort) {
+    case "trending":
+      query = query
+        .order("hot_score", { ascending: false })
+        .order("play_count", { ascending: false });
+      break;
     case "popular":
       query = query.order("view_count", { ascending: false });
       break;
@@ -65,11 +70,30 @@ async function searchGames(q: string, sort: string, page: number, category?: str
 
 async function getCategories() {
   const supabase = await createServerSupabaseClient();
-  const { data } = await supabase
-    .from("categories")
-    .select("id, name, slug")
-    .order("name", { ascending: true });
-  return data || [];
+  const [{ data: categories }, { data: games }] = await Promise.all([
+    supabase
+      .from("categories")
+      .select("id, name, slug")
+      .order("name", { ascending: true }),
+    supabase
+      .from("games")
+      .select("categories:game_categories(category_id)")
+      .eq("is_published", true),
+  ]);
+
+  const categoryCounts = new Map<string, number>();
+  for (const game of games || []) {
+    for (const membership of game.categories || []) {
+      categoryCounts.set(
+        membership.category_id,
+        (categoryCounts.get(membership.category_id) || 0) + 1,
+      );
+    }
+  }
+
+  return (categories || []).filter(
+    (category) => (categoryCounts.get(category.id) || 0) >= MIN_INDEXABLE_CATEGORY_GAMES,
+  );
 }
 
 export const metadata: Metadata = {
@@ -108,7 +132,7 @@ export default async function SearchPage({ searchParams }: Props) {
           <span className="text-sm text-muted-foreground mr-2">Sort:</span>
           {[
             { label: "Newest", value: "newest" },
-            
+            { label: "Trending", value: "trending" },
             { label: "Popular", value: "popular" },
           ].map((s) => (
             <Link

@@ -1,13 +1,18 @@
 import { MetadataRoute } from "next";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { SITE_URL } from "@/lib/constants";
+import { MIN_INDEXABLE_CATEGORY_GAMES, SITE_URL } from "@/lib/constants";
+
+export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const supabase = createAdminClient();
 
   const [games, categories, tags, series, levels] = await Promise.all([
-    supabase.from("games").select("slug, updated_at").eq("is_published", true),
-    supabase.from("categories").select("slug, updated_at"),
+    supabase
+      .from("games")
+      .select("slug, updated_at, categories:game_categories(category_id)")
+      .eq("is_published", true),
+    supabase.from("categories").select("id, slug, updated_at"),
     supabase.from("tags").select("slug, updated_at"),
     supabase.from("series").select("slug, updated_at"),
     supabase
@@ -28,12 +33,36 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.9,
   }));
 
-  const categoryPages: MetadataRoute.Sitemap = (categories.data || []).map((c) => ({
-    url: `${SITE_URL}/category/${c.slug}`,
-    lastModified: new Date(c.updated_at),
-    changeFrequency: "weekly" as const,
-    priority: 0.7,
-  }));
+  const categoryCounts = new Map<string, number>();
+  const categoryLastModified = new Map<string, Date>();
+  for (const game of games.data || []) {
+    for (const membership of game.categories || []) {
+      categoryCounts.set(
+        membership.category_id,
+        (categoryCounts.get(membership.category_id) || 0) + 1,
+      );
+
+      const gameUpdatedAt = new Date(game.updated_at);
+      const previousUpdatedAt = categoryLastModified.get(membership.category_id);
+      if (!previousUpdatedAt || gameUpdatedAt > previousUpdatedAt) {
+        categoryLastModified.set(membership.category_id, gameUpdatedAt);
+      }
+    }
+  }
+
+  const categoryPages: MetadataRoute.Sitemap = (categories.data || [])
+    .filter((category) => (categoryCounts.get(category.id) || 0) >= MIN_INDEXABLE_CATEGORY_GAMES)
+    .map((category) => ({
+      url: `${SITE_URL}/category/${category.slug}`,
+      lastModified: new Date(
+        Math.max(
+          new Date(category.updated_at).getTime(),
+          categoryLastModified.get(category.id)?.getTime() || 0,
+        ),
+      ),
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    }));
 
   const tagPages: MetadataRoute.Sitemap = (tags.data || []).map((t) => ({
     url: `${SITE_URL}/tag/${t.slug}`,
