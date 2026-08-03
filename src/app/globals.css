@@ -255,7 +255,7 @@
   padding-bottom: 0.5rem;
 }
 .home-content-stack > .continue-playing + section {
-  margin-top: 5rem;
+  margin-top: 4rem;
 }
 .continue-card {
   border: 1px solid rgba(222, 219, 232, 0.82);
@@ -380,7 +380,7 @@
 
 @media (width >= 768px) {
   .home-content-stack > .continue-playing + section {
-    margin-top: 6rem;
+    margin-top: 4.5rem;
   }
 }
 
