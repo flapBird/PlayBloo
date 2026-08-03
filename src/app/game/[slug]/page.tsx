@@ -16,6 +16,15 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
+function getMetaDescription(description: string | null, title: string) {
+  const fallback = `Play ${title} online for free on ${SITE_NAME}.`;
+  const normalized = description?.replace(/\s+/g, " ").trim() || fallback;
+  if (normalized.length <= 160) return normalized;
+
+  const shortened = normalized.slice(0, 156).replace(/\s+\S*$/, "");
+  return `${shortened}…`;
+}
+
 async function getGame(slug: string) {
   const supabase = createAdminClient();
   const { data } = await supabase
@@ -56,22 +65,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const game = await getGame(slug);
   if (!game) return { title: "Game Not Found" };
+  const description = getMetaDescription(game.description, game.title);
 
   return {
     title: `${game.title} - Play Free Online Game`,
-    description: game.description?.slice(0, 160) || `Play ${game.title} online for free on ${SITE_NAME}.`,
+    description,
      alternates: {
        canonical: `/game/${slug}`,
      },
     openGraph: {
       title: `${game.title} - Free Online Game`,
-      description: game.description?.slice(0, 160) || undefined,
+      description,
       ...(game.thumbnail_url ? { images: [{ url: game.thumbnail_url }] } : {}),
     },
     twitter: {
       card: "summary_large_image",
       title: `${game.title} - Free Online Game`,
-      description: game.description?.slice(0, 160) || undefined,
+      description,
       ...(game.thumbnail_url ? { images: [game.thumbnail_url] } : {}),
     },
   };
