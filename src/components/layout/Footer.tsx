@@ -15,7 +15,7 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
           {/* Brand column */}
           <div className="col-span-2 lg:col-span-2">
-            <Link href="/" className="text-xl font-black tracking-tight text-white">
+            <Link href="/" prefetch={false} className="text-xl font-black tracking-tight text-white">
               {SITE_NAME}
             </Link>
             <p className="mt-2 max-w-sm text-sm leading-relaxed text-slate-400">
@@ -31,6 +31,7 @@ export function Footer() {
                 <li key={cat.slug}>
                   <Link
                     href={`/category/${cat.slug}`}
+                    prefetch={false}
                     className="text-sm text-slate-400 transition-colors hover:text-white"
                   >
                     {cat.name}
@@ -45,16 +46,16 @@ export function Footer() {
             <h3 className="mb-3 text-xs font-bold uppercase tracking-wider text-slate-500">More</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="text-sm text-slate-400 transition-colors hover:text-white">Home</Link>
+                <Link href="/" prefetch={false} className="text-sm text-slate-400 transition-colors hover:text-white">Home</Link>
               </li>
               <li>
-                <Link href="/search?sort=newest" className="text-sm text-slate-400 transition-colors hover:text-white">New Games</Link>
+                <Link href="/search?sort=newest" prefetch={false} className="text-sm text-slate-400 transition-colors hover:text-white">New Games</Link>
               </li>
               <li>
-                <Link href="/search?sort=trending" className="text-sm text-slate-400 transition-colors hover:text-white">Trending</Link>
+                <Link href="/search?sort=trending" prefetch={false} className="text-sm text-slate-400 transition-colors hover:text-white">Trending</Link>
               </li>
               <li>
-                <Link href="/series" className="text-sm text-slate-400 transition-colors hover:text-white">Game Series</Link>
+                <Link href="/series" prefetch={false} className="text-sm text-slate-400 transition-colors hover:text-white">Game Series</Link>
               </li>
             </ul>
           </div>
@@ -67,6 +68,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
+                    prefetch={false}
                     className="text-sm text-slate-400 transition-colors hover:text-white"
                   >
                     {link.label}

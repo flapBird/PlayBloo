@@ -138,7 +138,12 @@ export default async function HomePage() {
             <SectionTitle eyebrow="Find your mood" title="Explore by genre" href="/category" />
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6">
               {GAME_CATEGORIES.slice(0, 12).map((category, index) => (
-                <Link key={category.slug} href={`/category/${category.slug}`} className={`group category-tile category-tile-${index % 6}`}>
+                <Link
+                  key={category.slug}
+                  href={`/category/${category.slug}`}
+                  prefetch={false}
+                  className={`group category-tile category-tile-${index % 6}`}
+                >
                   <span>{category.name}</span><ArrowRight className="h-4 w-4 opacity-60 transition-transform group-hover:translate-x-1" />
                 </Link>
               ))}

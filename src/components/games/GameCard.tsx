@@ -12,7 +12,12 @@ interface GameCardProps {
 
 export function GameCard({ game }: GameCardProps) {
   return (
-    <Link href={`/game/${game.slug}`} aria-label={`Play ${game.title}`} className="game-card group block">
+    <Link
+      href={`/game/${game.slug}`}
+      prefetch={false}
+      aria-label={`Play ${game.title}`}
+      className="game-card group block"
+    >
       <div className="game-card-media relative aspect-square overflow-hidden rounded-2xl bg-muted">
         {/* Game thumbnail */}
         <div className="absolute inset-0 overflow-hidden">
