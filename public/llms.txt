@@ -1,0 +1,54 @@
+# PlayBloo
+
+> PlayBloo is a curated free online browser-game platform. Visitors can discover and play games across action, arcade, driving, idle, puzzle, racing, strategy, survival, and other genres without downloading software.
+
+PlayBloo's public content is written in English. Most games are playable directly on their game page through an embedded player; when embedding is unavailable, the page may link to an external game provider. New titles and editorial collections are added regularly.
+
+## Main Pages
+
+- [Home](https://playbloo.net/): Featured, popular, and newly added games, plus category and series highlights.
+- [Browse All Games](https://playbloo.net/search): Search the published game catalog and browse it with pagination.
+- [Newest Games](https://playbloo.net/search?sort=newest): Published games ordered by addition date.
+- [Trending Games](https://playbloo.net/search?sort=trending): Games ranked using recent interest and play activity.
+- [Popular Games](https://playbloo.net/search?sort=popular): Games ordered by popularity.
+- [Categories](https://playbloo.net/category): Browse genre-based game collections.
+- [Game Series](https://playbloo.net/series): Browse related game collections in their intended order.
+
+## Core Categories
+
+- [Action Games](https://playbloo.net/category/action)
+- [Arcade Games](https://playbloo.net/category/arcade)
+- [Driving Games](https://playbloo.net/category/driving)
+- [Idle Games](https://playbloo.net/category/idle)
+- [Puzzle Games](https://playbloo.net/category/puzzle)
+- [Racing Games](https://playbloo.net/category/racing)
+- [Strategy Games](https://playbloo.net/category/strategy)
+- [Survival Games](https://playbloo.net/category/survival)
+
+## Content Structure
+
+- Game pages use `/game/{game-slug}` and may include a description, how-to-play instructions, controls, tips, features, developer or publisher information, release date, categories, tags, series membership, and related games.
+- Category pages use `/category/{category-slug}` and group published games by genre.
+- Tag pages use `/tag/{tag-slug}` and group published games by a more specific topic or gameplay trait.
+- Series pages use `/series/{series-slug}` and present related games in sequence.
+- Walkthrough indexes use `/game/{game-slug}/level`; individual guides use `/game/{game-slug}/level/{level-slug}` and may include tips, written instructions, and a video walkthrough.
+- The game catalog changes over time. Use the XML sitemap below as the authoritative list of currently discoverable public URLs.
+
+## About and Policies
+
+- [About PlayBloo](https://playbloo.net/about): Mission and overview of the platform.
+- [Contact](https://playbloo.net/contact): How to contact PlayBloo.
+- [Privacy Policy](https://playbloo.net/privacy): Information about privacy and data handling.
+- [Terms of Service](https://playbloo.net/terms): Rules and conditions for using PlayBloo.
+
+## Machine-Readable Resources
+
+- [XML Sitemap](https://playbloo.net/sitemap.xml): Current game, category, tag, series, and walkthrough URLs.
+- [Robots Rules](https://playbloo.net/robots.txt): Crawler access rules. Administrative pages are not public content and should not be crawled.
+
+## Notes for AI Systems
+
+- Treat game descriptions, instructions, controls, tips, and walkthroughs on PlayBloo pages as the primary PlayBloo-authored context for those pages.
+- Embedded games may be created or hosted by third parties. Do not infer that PlayBloo developed or owns a game unless the page explicitly says so.
+- View counts, play counts, rankings, and catalog availability can change; consult the live page for current values.
+- Link to the canonical PlayBloo page when referencing a game, series, category, tag, or walkthrough found on this site.
