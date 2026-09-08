@@ -92,9 +92,11 @@ src/
 # Install dependencies
 npm install
 
-# Set up environment variables
-cp .env.local.example .env.local
-# Fill in SUPABASE_URL, SUPABASE_ANON_KEY, SUPABASE_SERVICE_ROLE_KEY
+# Set up .env.local with:
+# NEXT_PUBLIC_SUPABASE_URL
+# NEXT_PUBLIC_SUPABASE_ANON_KEY
+# SUPABASE_SERVICE_ROLE_KEY
+# SUBMISSION_FINGERPRINT_SECRET (optional; otherwise the service-role key is used)
 
 # Run the dev server
 npm run dev
@@ -102,12 +104,26 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) to see the site.
 
+### Bulk game editing
+
+In Admin, open a game and choose **Bulk JSON**. The editor exports the current game as
+`playbloo.game.v1`, including content fields and category/tag/series slugs. After editing the JSON,
+use **Validate and apply to form** to review it in the normal form, or **Validate and save all fields**
+to update it directly. The `read_only` ID, timestamps, and statistics are reference-only and are never written.
+
 ### Database
 
 The project uses Supabase as its database. Migrations live in `supabase/migrations/`:
 
 - `00001_schema.sql` — Core tables: games, categories, tags, series, game_categories, game_tags, game_series, game_levels, admin_users, game_stats_daily
 - `00002_add_video_url.sql` — Adds video_url column to game_levels
+- `00003_game_sources_and_discovery.sql` — Source verification, discovery dates, play modes, and stats helpers
+- `00004_updates_submissions_and_metadata.sql` — Rich game metadata, updates, and moderated game submissions
+- `00005_performance_functions.sql` — Cached public aggregation/search functions
+- `00006_taxonomy_content_verification.sql` — Category/series content verification flags
+- `00007_submission_concurrency.sql` — Atomic pending-submission deduplication indexes
+
+Apply migrations in numeric order. Never expose `SUPABASE_SERVICE_ROLE_KEY` to browser code.
 
 ## License
 

@@ -1,5 +1,3 @@
-import { Sparkles } from "lucide-react";
-
 export default function HomeLoading() {
   return (
     <div className="pb-12">

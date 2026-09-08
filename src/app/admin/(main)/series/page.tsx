@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -15,6 +16,10 @@ type SeriesRow = {
   description: string | null;
   meta_title: string | null;
   meta_description: string | null;
+  thumbnail_url?: string | null;
+  content_verified?: boolean;
+  source_url?: string | null;
+  last_verified_at?: string | null;
   sort_order: number;
   created_at: string;
   updated_at: string;
@@ -37,6 +42,8 @@ export default function AdminSeries() {
   const [newMetaDesc, setNewMetaDesc] = useState("");
   const [newSort, setNewSort] = useState("0");
   const [newThumbnail, setNewThumbnail] = useState("");
+  const [newSource, setNewSource] = useState("");
+  const [newVerified, setNewVerified] = useState(false);
   const [adding, setAdding] = useState(false);
   const [addError, setAddError] = useState("");
   // Edit form
@@ -48,6 +55,9 @@ export default function AdminSeries() {
   const [editMetaDesc, setEditMetaDesc] = useState("");
   const [editSort, setEditSort] = useState("0");
   const [editThumbnail, setEditThumbnail] = useState("");
+  const [editSource, setEditSource] = useState("");
+  const [editVerified, setEditVerified] = useState(false);
+  const [verificationSchemaAvailable, setVerificationSchemaAvailable] = useState(false);
   // Manage games drawer
   const [managingGames, setManagingGames] = useState<string | null>(null);
   const [linkedGames, setLinkedGames] = useState<GameRow[]>([]);
@@ -61,6 +71,7 @@ export default function AdminSeries() {
     const res = await fetch("/api/admin/series");
     const json = await res.json();
     setSeriesList(json.data || []);
+    setVerificationSchemaAvailable(Boolean(json.data?.[0] && "content_verified" in json.data[0]));
   }
 
   async function add() {
@@ -79,6 +90,11 @@ export default function AdminSeries() {
         meta_description: newMetaDesc || null,
         sort_order: parseInt(newSort) || 0,
         thumbnail_url: newThumbnail || null,
+        ...(verificationSchemaAvailable ? {
+          source_url: newSource || null,
+          content_verified: newVerified,
+          last_verified_at: newVerified ? new Date().toISOString() : null,
+        } : {}),
       }),
     });
 
@@ -90,7 +106,7 @@ export default function AdminSeries() {
     }
 
     setNewName(""); setNewSlug(""); setNewDesc("");
-    setNewMetaTitle(""); setNewMetaDesc(""); setNewThumbnail(""); setNewSort("0");
+    setNewMetaTitle(""); setNewMetaDesc(""); setNewThumbnail(""); setNewSort("0"); setNewSource(""); setNewVerified(false);
     setAdding(false);
     load();
   }
@@ -108,6 +124,11 @@ export default function AdminSeries() {
         meta_description: editMetaDesc || null,
         sort_order: parseInt(editSort) || 0,
         thumbnail_url: editThumbnail || null,
+        ...(verificationSchemaAvailable ? {
+          source_url: editSource || null,
+          content_verified: editVerified,
+          last_verified_at: editVerified ? new Date().toISOString() : null,
+        } : {}),
       }),
     });
 
@@ -190,7 +211,12 @@ export default function AdminSeries() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold">Series</h1>
+      <div>
+        <h1 className="text-2xl font-bold">Series</h1>
+        {!verificationSchemaAvailable && seriesList.length > 0 && (
+          <p className="mt-1 text-xs text-amber-600">Apply migration 00006 to enable sourced editorial copy.</p>
+        )}
+      </div>
 
       {/* Add new series form */}
       <div className="rounded-xl border bg-card p-4">
@@ -223,13 +249,15 @@ export default function AdminSeries() {
           </div>
           <div className="space-y-1">
             <Label className="text-xs">Order</Label>
+            <Input type="number" value={newSort} onChange={e => setNewSort(e.target.value)} className="w-16" />
+          </div>
           <div className="space-y-1">
             <Label className="text-xs">Thumbnail URL</Label>
             <Input value={newThumbnail} onChange={e => setNewThumbnail(e.target.value)} placeholder="https://..." className="w-52" />
           </div>
-            <Input type="number" value={newSort} onChange={e => setNewSort(e.target.value)} className="w-16" />
-          </div>
-          <Button onClick={add} size="sm" disabled={adding}>
+          {verificationSchemaAvailable && <div className="space-y-1"><Label className="text-xs">Editorial source</Label><Input type="url" value={newSource} onChange={e => setNewSource(e.target.value)} placeholder="https://..." className="w-52" /></div>}
+          {verificationSchemaAvailable && <label className="flex h-10 items-center gap-2 text-xs font-medium"><input type="checkbox" checked={newVerified} onChange={e => setNewVerified(e.target.checked)} className="accent-emerald-600" />Verified</label>}
+          <Button onClick={add} size="sm" disabled={adding || (newVerified && !newSource)}>
             <Plus className="h-4 w-4 mr-1" /> {adding ? "Adding..." : "Add"}
           </Button>
         </div>
@@ -244,6 +272,8 @@ export default function AdminSeries() {
               <TableHead>Slug</TableHead>
               <TableHead>Description</TableHead>
               <TableHead>Meta Title</TableHead>
+              {verificationSchemaAvailable && <TableHead>Source</TableHead>}
+              {verificationSchemaAvailable && <TableHead className="text-center">Verified</TableHead>}
               <TableHead className="w-16 text-center">Order</TableHead>
               <TableHead className="w-16 text-center">Games</TableHead>
               <TableHead className="w-20">Actions</TableHead>
@@ -278,6 +308,18 @@ export default function AdminSeries() {
                     <span className="text-xs text-muted-foreground line-clamp-2">{s.meta_title || "—"}</span>
                   )}
                 </TableCell>
+                {verificationSchemaAvailable && <TableCell className="max-w-[220px]">
+                  {editing === s.id
+                    ? <Input type="url" value={editSource} onChange={e => setEditSource(e.target.value)} className="w-52 text-xs" />
+                    : s.source_url
+                      ? <a href={s.source_url} target="_blank" rel="noopener noreferrer" className="block truncate text-xs text-primary hover:underline">{s.source_url}</a>
+                      : <span className="text-xs text-muted-foreground">—</span>}
+                </TableCell>}
+                {verificationSchemaAvailable && <TableCell className="text-center">
+                  {editing === s.id
+                    ? <input type="checkbox" checked={editVerified} onChange={e => setEditVerified(e.target.checked)} className="accent-emerald-600" />
+                    : <span className={s.content_verified ? "text-xs font-bold text-emerald-600" : "text-xs text-muted-foreground"}>{s.content_verified ? "Checked" : "Pending"}</span>}
+                </TableCell>}
                 <TableCell className="text-center">
                   {editing === s.id
                     ? <Input type="number" value={editSort} onChange={e => setEditSort(e.target.value)} className="w-16 text-center" />
@@ -292,7 +334,7 @@ export default function AdminSeries() {
                 <TableCell>
                   {editing === s.id ? (
                     <div className="flex gap-1">
-                      <Button variant="ghost" size="icon" onClick={() => update(s.id)}><Check className="h-4 w-4" /></Button>
+                      <Button variant="ghost" size="icon" disabled={editVerified && !editSource} onClick={() => update(s.id)}><Check className="h-4 w-4" /></Button>
                       <Button variant="ghost" size="icon" onClick={() => setEditing(null)}><X className="h-4 w-4" /></Button>
                     </div>
                   ) : (
@@ -305,7 +347,9 @@ export default function AdminSeries() {
                         setEditMetaTitle(s.meta_title || "");
                         setEditMetaDesc(s.meta_description || "");
                         setEditSort(String(s.sort_order));
-                        setEditThumbnail((s as any).thumbnail_url || "");
+                        setEditThumbnail(s.thumbnail_url || "");
+                        setEditSource(s.source_url || "");
+                        setEditVerified(s.content_verified === true);
                       }}>
                         <Edit className="h-4 w-4" />
                       </Button>
@@ -319,7 +363,7 @@ export default function AdminSeries() {
             ))}
             {seriesList.length === 0 && (
               <TableRow>
-                <TableCell colSpan={7} className="text-center py-8 text-muted-foreground">
+                <TableCell colSpan={verificationSchemaAvailable ? 9 : 7} className="text-center py-8 text-muted-foreground">
                   No series yet. Add one above.
                 </TableCell>
               </TableRow>
@@ -359,7 +403,7 @@ export default function AdminSeries() {
                     <div key={g.id} className="flex items-center justify-between px-3 py-2 hover:bg-muted/50">
                       <div className="flex items-center gap-2 min-w-0">
                         {g.thumbnail_url && (
-                          <img src={g.thumbnail_url} alt="" className="w-8 h-6 rounded object-cover" />
+                          <Image src={g.thumbnail_url} alt="" width={32} height={24} unoptimized className="w-8 h-6 rounded object-cover" />
                         )}
                         <span className="text-sm truncate">{g.title}</span>
                       </div>
@@ -402,7 +446,7 @@ export default function AdminSeries() {
                         </button>
                       </div>
                       {g.thumbnail_url && (
-                        <img src={g.thumbnail_url} alt="" className="w-10 h-7 rounded object-cover shrink-0" />
+                        <Image src={g.thumbnail_url} alt="" width={40} height={28} unoptimized className="w-10 h-7 rounded object-cover shrink-0" />
                       )}
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium truncate">{g.title}</p>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -17,15 +17,17 @@ export default function AdminGames() {
   const [loading, setLoading] = useState(true);
   const PAGE_SIZE = 20;
 
-  useEffect(() => { loadGames(); }, [page, search]);
-
-  async function loadGames() {
+  const loadGames = useCallback(async () => {
     setLoading(true);
     const params = new URLSearchParams({ page: String(page), q: search });
     const res = await fetch("/api/admin/games?" + params.toString());
     const json = await res.json();
     setGames(json.data || []); setTotal(json.total || 0); setLoading(false);
-  }
+  }, [page, search]);
+
+  useEffect(() => {
+    queueMicrotask(() => { void loadGames(); });
+  }, [loadGames]);
 
   async function togglePublish(id: string, current: boolean) {
     await fetch("/api/admin/games", {

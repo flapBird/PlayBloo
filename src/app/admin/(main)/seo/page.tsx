@@ -1,36 +1,51 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { createClient } from "@/lib/supabase/client";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
+type SeoTaxonomy = {
+  id: string;
+  name: string;
+  meta_title: string | null;
+  meta_description: string | null;
+};
+
 export default function AdminSEO() {
-  const [categories, setCategories] = useState<any[]>([]);
-  const [series, setSeries] = useState<any[]>([]);
+  const [categories, setCategories] = useState<SeoTaxonomy[]>([]);
+  const [series, setSeries] = useState<SeoTaxonomy[]>([]);
   const [activeTab, setActiveTab] = useState("categories");
 
-  useEffect(() => { loadData(); }, []);
-
-  async function loadData() {
-    const supabase = createClient();
-    const [catRes, seriesRes] = await Promise.all([
-      supabase.from("categories").select("*").order("name", { ascending: true }),
-      supabase.from("series").select("*").order("name", { ascending: true }),
-    ]);
-    setCategories(catRes.data || []); setSeries(seriesRes.data || []);
-  }
+  useEffect(() => {
+    let cancelled = false;
+    void Promise.all([
+      fetch("/api/admin/categories", { cache: "no-store" }).then((response) => response.json()),
+      fetch("/api/admin/series", { cache: "no-store" }).then((response) => response.json()),
+    ]).then(([categoryData, seriesData]) => {
+      if (!cancelled) {
+        setCategories(categoryData.data || []);
+        setSeries(seriesData.data || []);
+      }
+    });
+    return () => { cancelled = true; };
+  }, []);
 
   async function updateCategory(id: string, field: string, value: string) {
-    const supabase = createClient();
-    await supabase.from("categories").update({ [field]: value }).eq("id", id);
+    await fetch("/api/admin/categories", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, [field]: value }),
+    });
   }
 
   async function updateSeries(id: string, field: string, value: string) {
-    const supabase = createClient();
-    await supabase.from("series").update({ [field]: value }).eq("id", id);
+    await fetch("/api/admin/series", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, [field]: value }),
+    });
   }
 
   return (

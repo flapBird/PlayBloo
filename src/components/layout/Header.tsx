@@ -3,12 +3,10 @@
 import Link from "next/link";
 import { useState, useCallback, useEffect, useRef } from "react";
 import { useRouter, usePathname } from "next/navigation";
-import { Search, Menu, X, ArrowRight, Gamepad2, LayoutGrid } from "lucide-react";
+import { Search, Menu, X, Gamepad2, Heart, History, Flame, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { SITE_NAME, GAME_CATEGORIES } from "@/lib/constants";
-
-const mainCategories = GAME_CATEGORIES.slice(0, 8);
+import { SITE_NAME } from "@/lib/constants";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -17,8 +15,6 @@ export function Header() {
   const searchRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
   const pathname = usePathname();
-  const match = pathname.match(/^\/category\/([^\/]+)/);
-  const currentCategory = match?.[1] || null;
 
   const handleSearch = useCallback(
     (e: React.FormEvent) => {
@@ -43,15 +39,21 @@ export function Header() {
       <div className="container mx-auto">
         {/* Main row */}
         <div className="flex h-16 items-center justify-between px-4">
-          <div className="flex items-center gap-6">
+          <div className="flex shrink-0 items-center gap-7">
             <Link href="/" className="flex items-center gap-2 text-xl font-black tracking-tight text-foreground transition-colors hover:text-primary">
-              <span className="brand-mark grid h-8 w-8 place-items-center rounded-xl text-primary-foreground"><Gamepad2 className="h-4 w-4" /></span>
+              <span className="brand-mark grid h-8 w-8 place-items-center rounded-lg text-primary-foreground"><Gamepad2 className="h-4 w-4" /></span>
               {SITE_NAME}
             </Link>
+            <nav aria-label="Primary" className="hidden items-center gap-1 lg:flex">
+              <Link href="/" className={`header-nav-link ${pathname === "/" ? "is-active" : ""}`}>Games</Link>
+              <Link href="/search?sort=recently-updated" className="header-nav-link">Updates</Link>
+              <Link href="/search?sort=popular" className="header-nav-link"><Flame className="h-3.5 w-3.5" />Popular</Link>
+              <Link href="/search?playMode=embedded" className="header-nav-link"><Sparkles className="h-3.5 w-3.5" />Playable</Link>
+            </nav>
           </div>
 
           {/* Desktop search */}
-          <div className="hidden md:flex items-center gap-3 flex-1 max-w-md mx-6">
+          <div className="mx-5 hidden max-w-md flex-1 items-center gap-3 md:flex lg:ml-auto">
             <form onSubmit={handleSearch} className="relative w-full">
               <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
@@ -60,12 +62,20 @@ export function Header() {
                 placeholder="Search games..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="header-search h-10 w-full rounded-xl border-0 pl-10 text-sm focus-visible:ring-primary/30"
+                className="header-search h-9 w-full rounded-lg border pl-10 text-sm focus-visible:ring-0"
               />
             </form>
           </div>
 
           <div className="flex items-center gap-2">
+            <div className="hidden items-center gap-1 md:flex">
+              <Link href="/recently-played" aria-label="Recently played" className="grid h-9 w-9 place-items-center rounded-xl text-muted-foreground transition hover:bg-muted hover:text-primary">
+                <History className="h-4 w-4" />
+              </Link>
+              <Link href="/favorites" aria-label="Your favorites" className="grid h-9 w-9 place-items-center rounded-xl text-muted-foreground transition hover:bg-muted hover:text-rose-500">
+                <Heart className="h-4 w-4" />
+              </Link>
+            </div>
             {/* Mobile search toggle */}
             <Button
               variant="ghost"
@@ -111,35 +121,6 @@ export function Header() {
           </div>
         )}
 
-        {/* Category rail */}
-        <nav aria-label="Game categories" className="category-nav px-3 pb-3 md:px-4 md:pb-2">
-          <div className="category-nav-track flex items-center gap-1.5 overflow-x-auto">
-            <Link
-              href="/"
-              className={`category-nav-pill ${pathname === "/" ? "is-active" : ""}`}
-            >
-              <LayoutGrid className="h-3.5 w-3.5" aria-hidden="true" />
-              All Games
-            </Link>
-            {mainCategories.map((cat, index) => (
-              <Link
-                key={cat.slug}
-                href={`/category/${cat.slug}`}
-                className={`category-nav-pill ${currentCategory === cat.slug ? "is-active" : ""}`}
-              >
-                <span className={`category-nav-dot category-nav-dot-${index % 6}`} aria-hidden="true" />
-                {cat.name}
-              </Link>
-            ))}
-            <Link
-              href="/category"
-              className={`category-nav-pill category-nav-all ${pathname === "/category" ? "is-active" : ""}`}
-            >
-              View All <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
-            </Link>
-          </div>
-        </nav>
-
         {/* Mobile menu */}
         {mobileMenuOpen && (
           <div id="mobile-menu" className="md:hidden border-t border-border/50">
@@ -149,18 +130,19 @@ export function Header() {
                 className="block px-3 py-2 text-sm font-medium rounded-lg hover:bg-muted transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Home
+                Games
               </Link>
-              {mainCategories.map((cat) => (
-                <Link
-                  key={cat.slug}
-                  href={`/category/${cat.slug}`}
-                  className="block px-3 py-2 text-sm font-medium rounded-lg hover:bg-muted text-muted-foreground hover:text-foreground transition-colors"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {cat.name} Games
-                </Link>
-              ))}
+              <Link href="/search?sort=recently-updated" className="block px-3 py-2 text-sm font-medium rounded-lg hover:bg-muted" onClick={() => setMobileMenuOpen(false)}>Updates</Link>
+              <Link href="/search?sort=popular" className="block px-3 py-2 text-sm font-medium rounded-lg hover:bg-muted" onClick={() => setMobileMenuOpen(false)}>Popular</Link>
+              <Link href="/search?playMode=embedded" className="block px-3 py-2 text-sm font-medium rounded-lg hover:bg-muted" onClick={() => setMobileMenuOpen(false)}>Playable Here</Link>
+              <Link href="/favorites" className="flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-lg hover:bg-muted" onClick={() => setMobileMenuOpen(false)}>
+                <Heart className="h-4 w-4" /> Favorites
+              </Link>
+              <Link href="/recently-played" className="flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-lg hover:bg-muted" onClick={() => setMobileMenuOpen(false)}>
+                <History className="h-4 w-4" /> Recently Played
+              </Link>
+              <Link href="/submit-game" className="block px-3 py-2 text-sm font-medium rounded-lg hover:bg-muted" onClick={() => setMobileMenuOpen(false)}>Submit a Game</Link>
+              <Link href="/category" className="block px-3 py-2 text-sm font-medium rounded-lg hover:bg-muted text-muted-foreground hover:text-foreground" onClick={() => setMobileMenuOpen(false)}>Browse genres</Link>
             </div>
           </div>
         )}

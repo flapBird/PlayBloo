@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { SITE_NAME, GAME_CATEGORIES } from "@/lib/constants";
+import { SITE_NAME } from "@/lib/constants";
 
 const aboutLinks = [
   { label: "About Us", href: "/about" },
@@ -19,25 +19,19 @@ export function Footer() {
               {SITE_NAME}
             </Link>
             <p className="mt-2 max-w-sm text-sm leading-relaxed text-slate-400">
-              Play free online games on {SITE_NAME}. Discover action, puzzle, driving, and arcade games with no download required.
+              Discover new and trending browser games. Play instantly on {SITE_NAME} when available, or continue on the official game site.
             </p>
           </div>
 
-          {/* Categories */}
+          {/* Discovery */}
           <div>
-            <h3 className="mb-3 text-xs font-bold uppercase tracking-wider text-slate-500">Categories</h3>
+            <h3 className="mb-3 text-xs font-bold uppercase tracking-wider text-slate-500">Discover</h3>
             <ul className="space-y-2">
-              {GAME_CATEGORIES.slice(0, 8).map((cat) => (
-                <li key={cat.slug}>
-                  <Link
-                    href={`/category/${cat.slug}`}
-                    prefetch={false}
-                    className="text-sm text-slate-400 transition-colors hover:text-white"
-                  >
-                    {cat.name}
-                  </Link>
-                </li>
-              ))}
+              <li><Link href="/category" prefetch={false} className="text-sm text-slate-400 transition-colors hover:text-white">Browse Categories</Link></li>
+              <li><Link href="/search?playMode=embedded" prefetch={false} className="text-sm text-slate-400 transition-colors hover:text-white">Playable Here</Link></li>
+              <li><Link href="/favorites" prefetch={false} className="text-sm text-slate-400 transition-colors hover:text-white">Your Favorites</Link></li>
+              <li><Link href="/recently-played" prefetch={false} className="text-sm text-slate-400 transition-colors hover:text-white">Recently Played</Link></li>
+              <li><Link href="/submit-game" prefetch={false} className="text-sm text-slate-400 transition-colors hover:text-white">Submit a Game</Link></li>
             </ul>
           </div>
 

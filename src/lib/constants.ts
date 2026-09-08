@@ -1,14 +1,22 @@
 export const SITE_NAME = "PlayBloo";
 export const SITE_DOMAIN = "playbloo.net";
 export const SITE_URL = `https://${SITE_DOMAIN}`;
-export const SITE_DESCRIPTION = "Play free online games on PlayBloo. Discover action, puzzle, driving, and arcade games with no download required.";
+export const SITE_DESCRIPTION = "Discover new and trending browser games on PlayBloo. Play instantly when available or continue on the official game site.";
 
 export const PAGE_SIZE = 24;
 export const ADMIN_PAGE_SIZE = 20;
 export const RELATED_GAMES_LIMIT = 6;
 export const TOP_GAMES_LIMIT = 10;
 export const RECENT_STATS_DAYS = 7;
-export const MIN_INDEXABLE_CATEGORY_GAMES = 2;
+export const MIN_INDEXABLE_CATEGORY_GAMES = 3;
+export const MIN_INDEXABLE_SERIES_GAMES = 3;
+export const MIN_INDEXABLE_TAG_GAMES = 3;
+export const MAX_RECENTLY_PLAYED_GAMES = 25;
+export const NEW_GAME_BADGE_DAYS = 14;
+export const UPDATED_GAME_BADGE_DAYS = 30;
+
+export const FAVORITES_STORAGE_KEY = "playbloo:favorites:v1";
+export const RECENTLY_PLAYED_STORAGE_KEY = "playbloo:recently-played:v1";
 
 export const HOT_SCORE_DECAY_FACTOR = 0.9;
 export const HOT_SCORE_VIEW_WEIGHT = 1;

@@ -9,9 +9,9 @@ import { Label } from "@/components/ui/label";
 import { SITE_NAME } from "@/lib/constants";
 import { Eye, EyeOff, LogIn, AlertCircle } from "lucide-react";
 
-async function checkAdmin(email: string): Promise<boolean> {
+async function checkAdmin(): Promise<boolean> {
   try {
-    const res = await fetch(`/api/admin/check-auth?email=${encodeURIComponent(email)}`);
+    const res = await fetch("/api/admin/check-auth", { cache: "no-store" });
     const data = await res.json();
     return data.authorized;
   } catch {
@@ -34,7 +34,7 @@ export default function AdminLogin() {
         const supabase = createClient();
         const { data: { session } } = await supabase.auth.getSession();
         if (session?.user?.email) {
-          const authorized = await checkAdmin(session.user.email);
+          const authorized = await checkAdmin();
           if (authorized) {
             router.replace("/admin");
             return;
@@ -52,15 +52,6 @@ export default function AdminLogin() {
     setError("");
 
     try {
-      // Check via API (bypasses RLS with service_role)
-      const authorized = await checkAdmin(email);
-      if (!authorized) {
-        setError("This email is not authorized as an admin.");
-        setLoading(false);
-        return;
-      }
-
-      // Proceed with Supabase Auth sign in
       const supabase = createClient();
       const { error: signInError } = await supabase.auth.signInWithPassword({
         email,
@@ -73,9 +64,17 @@ export default function AdminLogin() {
         return;
       }
 
+      const authorized = await checkAdmin();
+      if (!authorized) {
+        await supabase.auth.signOut();
+        setError("This account is not authorized as an admin.");
+        setLoading(false);
+        return;
+      }
+
       router.replace("/admin");
-    } catch (err: any) {
-      setError(err?.message || "Login failed.");
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Login failed.");
       setLoading(false);
     }
   }

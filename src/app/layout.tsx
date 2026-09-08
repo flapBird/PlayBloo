@@ -1,21 +1,13 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Geist, Geist_Mono } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from "@/lib/constants";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const isProduction = process.env.NODE_ENV === "production";
+const productionHostname = new URL(SITE_URL).hostname;
 
 export const metadata: Metadata = {
   other: {
@@ -39,7 +31,7 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
   },
   icons: {
-    icon: '/icon.png',
+    icon: "/favicon.png",
   },
   robots: {
     index: true,
@@ -60,28 +52,30 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
+    <html lang="en" className="h-full antialiased">
       <body className="min-h-full flex flex-col">
         <div className="site-background" aria-hidden="true" />
         <Header />
         <main className="site-main flex-1">{children}</main>
         <Footer />
         <JsonLd type="WebSite" />
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-WVF4JL80YN"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-WVF4JL80YN');
-          `}
-        </Script>
+        {isProduction && (
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
+              if (window.location.hostname === ${JSON.stringify(productionHostname)}) {
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-WVF4JL80YN');
+
+                var script = document.createElement('script');
+                script.async = true;
+                script.src = 'https://www.googletagmanager.com/gtag/js?id=G-WVF4JL80YN';
+                document.head.appendChild(script);
+              }
+            `}
+          </Script>
+        )}
       </body>
     </html>
   );

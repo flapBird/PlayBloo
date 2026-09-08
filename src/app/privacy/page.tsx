@@ -17,7 +17,8 @@ export default function PrivacyPage() {
         <section>
           <h2 className="text-lg font-bold text-foreground mb-2">1. Information We Collect</h2>
           <p>
-            We collect information you provide directly, such as when you contact us. We also collect
+            We collect information you provide directly, such as when you contact us or optionally include
+            contact details with a game submission. We also collect
             certain information automatically, including your IP address, browser type, and usage data
             through cookies and analytics services like Google Analytics.
           </p>

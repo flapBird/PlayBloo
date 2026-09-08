@@ -6,6 +6,18 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { parseSourcesText } from "@/lib/game-utils";
+
+const EMPTY_GAME_FORM = {
+  title: "", slug: "", thumbnail_url: "", cover_url: "", iframe_url: "", external_url: "",
+  description: "", how_to_play: "", controls: "", tips: "", features: "",
+  developer: "", publisher: "", source_url: "", source_type: "", original_game_url: "",
+  developer_url: "", steam_url: "", itch_url: "", last_verified_at: "", sources_text: "",
+  release_date: "", added_at: "", last_updated_at: "", short_description: "", official_website_url: "",
+  steam_app_id: "", itch_project_slug: "", platforms_text: "", monetization: "", development_status: "",
+  graphics: "", multiplayer: "", engine: "", screenshots_text: "",
+  is_published: false, is_featured: false, is_trending: false, content_verified: false,
+};
 
 export default function NewGame() {
   const router = useRouter();
@@ -15,34 +27,26 @@ export default function NewGame() {
   const [categories, setCategories] = useState<{ id: string; name: string }[]>([]);
   const [selectedCategoryIds, setSelectedCategoryIds] = useState<string[]>([]);
   const [dirty, setDirty] = useState(false);
-  const [form, setForm] = useState(() => {
-    // Restore draft on initial render
-    try {
-      const saved = localStorage.getItem("playbloo_new_game_draft");
-      if (saved) {
-        const draft = JSON.parse(saved);
-        if (draft.form) return draft.form;
-      }
-    } catch {}
-    return {
-      title: "", slug: "", thumbnail_url: "", cover_url: "", iframe_url: "", external_url: "",
-      description: "", how_to_play: "", controls: "", tips: "", features: "",
-      release_date: "",
-      is_published: false, is_featured: false, is_trending: false,
-    };
-  });
+  const [form, setForm] = useState({ ...EMPTY_GAME_FORM });
 
-  // Restore selected categories from draft
+  // Restore the client-only draft after hydration so server and first client render match.
   useEffect(() => {
-    try {
-      const saved = localStorage.getItem("playbloo_new_game_draft");
-      if (saved) {
-        const draft = JSON.parse(saved);
-        if (draft.selectedCategoryIds?.length) {
-          setSelectedCategoryIds(draft.selectedCategoryIds);
+    let cancelled = false;
+    queueMicrotask(() => {
+      if (cancelled) return;
+      try {
+        const saved = localStorage.getItem("playbloo_new_game_draft");
+        if (saved) {
+          const draft = JSON.parse(saved) as {
+            form?: Partial<typeof EMPTY_GAME_FORM>;
+            selectedCategoryIds?: string[];
+          };
+          if (draft.form) setForm((previous) => ({ ...previous, ...draft.form }));
+          if (draft.selectedCategoryIds?.length) setSelectedCategoryIds(draft.selectedCategoryIds);
         }
-      }
-    } catch {}
+      } catch {}
+    });
+    return () => { cancelled = true; };
   }, []);
 
   // Warn on browser close/refresh
@@ -68,13 +72,13 @@ export default function NewGame() {
   }
 
   useEffect(() => {
-    fetch("/api/categories")
+    fetch("/api/categories?includeThin=1", { cache: "no-store" })
       .then(r => r.json())
       .then(d => setCategories(d.data || []))
       .catch(() => {});
   }, []);
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
     const { name, value, type } = e.target;
     const checked = (e.target as HTMLInputElement).checked;
     setForm((prev: typeof form) => ({ ...prev, [name]: type === "checkbox" ? checked : value }));
@@ -86,12 +90,21 @@ export default function NewGame() {
     setSaving("Saving...");
     setError("");
 
+    const { sources_text, platforms_text, screenshots_text, ...gameFields } = form;
     const res = await fetch("/api/admin/games", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        ...form,
+        ...gameFields,
+        sources: parseSourcesText(sources_text),
+        platforms: platforms_text.split(",").map((value: string) => value.trim()).filter(Boolean),
+        screenshots: screenshots_text.split("\n").map((value: string) => value.trim()).filter(Boolean),
         release_date: form.release_date || null,
+        added_at: form.added_at || undefined,
+        last_updated_at: form.last_updated_at || null,
+        monetization: form.monetization || null,
+        development_status: form.development_status || null,
+        last_verified_at: form.last_verified_at || null,
         category_ids: selectedCategoryIds,
       }),
     });
@@ -170,6 +183,41 @@ export default function NewGame() {
             <Label htmlFor="release_date">Release Date</Label>
             <Input id="release_date" name="release_date" type="date" value={form.release_date} onChange={handleChange} />
           </div>
+          <div className="space-y-2">
+            <Label htmlFor="developer">Developer</Label>
+            <Input id="developer" name="developer" value={form.developer} onChange={handleChange} />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="publisher">Publisher</Label>
+            <Input id="publisher" name="publisher" value={form.publisher} onChange={handleChange} />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="source_type">Primary Source Type</Label>
+            <Input id="source_type" name="source_type" value={form.source_type} onChange={handleChange} placeholder="Developer / Steam / itch.io" />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="source_url">Primary Source URL</Label>
+            <Input id="source_url" name="source_url" type="url" value={form.source_url} onChange={handleChange} />
+          </div>
+          {(["original_game_url", "developer_url", "steam_url", "itch_url"] as const).map((field) => (
+            <div key={field} className="space-y-2">
+              <Label htmlFor={field}>{field.replaceAll("_", " ")}</Label>
+              <Input id={field} name={field} type="url" value={form[field]} onChange={handleChange} />
+            </div>
+          ))}
+          <div className="space-y-2">
+            <Label htmlFor="last_verified_at">Last Verified At</Label>
+            <Input id="last_verified_at" name="last_verified_at" type="datetime-local" value={form.last_verified_at} onChange={handleChange} />
+          </div>
+          <div className="space-y-2 md:col-span-2">
+            <Label htmlFor="sources_text">Additional Sources</Label>
+            <Textarea id="sources_text" name="sources_text" value={form.sources_text} onChange={handleChange} rows={3} placeholder="Steam | https://store.steampowered.com/... | 2026-08-29" />
+            <p className="text-xs text-muted-foreground">One per line: type | URL | verified date.</p>
+          </div>
+        </div>
+
+        <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950">
+          Gameplay facts must come from a developer, Steam, itch.io, an official repository, or another trusted source. Leave Controls, Tips, Features, and mechanics blank when they cannot be verified.
         </div>
 
         <div>
@@ -212,6 +260,10 @@ export default function NewGame() {
           <label className="flex items-center gap-2 text-sm cursor-pointer">
             <input type="checkbox" name="is_trending" checked={form.is_trending} onChange={handleChange} className="accent-indigo-600" />
             Trending
+          </label>
+          <label className="flex items-center gap-2 text-sm cursor-pointer">
+            <input type="checkbox" name="content_verified" checked={form.content_verified} onChange={handleChange} className="accent-emerald-600" />
+            Description and gameplay facts verified against sources
           </label>
         </div>
 

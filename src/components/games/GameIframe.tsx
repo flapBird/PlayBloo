@@ -2,12 +2,13 @@
 
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
-import { Play, Maximize2, Minimize2, ExternalLink, Gamepad2, Loader2, MousePointerClick } from "lucide-react";
+import { Play, Maximize2, Minimize2, ExternalLink, Gamepad2, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { addPlayRecord } from "@/lib/play-history";
+import { shouldBypassImageOptimization } from "@/lib/game-utils";
 
 interface GameIframeProps {
-  src: string;
+  src: string | null;
   title: string;
   gameId: string;
   slug: string;
@@ -24,11 +25,6 @@ export function GameIframe({ src, title, gameId, slug, thumbnailUrl, externalUrl
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const hintTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
 
-  useEffect(() => {
-    if (externalUrl) return;
-    setShowIframe(true);
-  }, [externalUrl]);
-
   const trackPlay = () => {
     if (tracked.current) return;
     tracked.current = true;
@@ -37,13 +33,17 @@ export function GameIframe({ src, title, gameId, slug, thumbnailUrl, externalUrl
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ game_id: gameId, type: "play" }),
     }).catch(() => {});
-    // Save to play history for Continue Playing
+    // A play is recorded only after an explicit launch action.
     addPlayRecord({
       gameId,
       slug,
       title,
       thumbnailUrl: thumbnailUrl ?? null,
     });
+  };
+
+  const trackExternalClick = () => {
+    fetch("/api/stats", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ game_id: gameId, type: "external_click" }) }).catch(() => {});
   };
 
   const showHint = () => {
@@ -73,35 +73,62 @@ export function GameIframe({ src, title, gameId, slug, thumbnailUrl, externalUrl
     return () => { document.body.style.overflow = ""; };
   }, [isFullscreen]);
 
-  // Cover state
+  const hasEmbeddedGame = Boolean(src?.trim());
+  const hasExternalGame = Boolean(externalUrl?.trim());
+
+  // Launch state: merely opening the detail page never counts as a play.
   if (!showIframe) {
     return (
       <div className="mx-auto max-w-5xl">
-        <div className="bg-gradient-to-br from-indigo-50 to-violet-50 rounded-xl border p-8 md:p-12">
-          <div className="flex flex-col items-center gap-5">
-            <div className="relative w-full max-w-xs aspect-[4/3] rounded-xl overflow-hidden shadow-lg ring-1 ring-black/5 bg-white">
+        <section className="grid gap-5 rounded-xl border bg-card p-4 sm:p-5 md:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] md:items-center md:gap-8">
+          <div className="relative aspect-[16/10] w-full overflow-hidden rounded-lg border bg-muted">
               {thumbnailUrl ? (
-                <Image src={thumbnailUrl} alt={title} fill className="object-cover" priority />
+                <Image
+                  src={thumbnailUrl}
+                  alt=""
+                  fill
+                  className="object-cover"
+                  loading="eager"
+                  sizes="(max-width: 768px) calc(100vw - 4rem), 352px"
+                  unoptimized={shouldBypassImageOptimization(thumbnailUrl)}
+                />
               ) : (
-                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-indigo-100 to-violet-100">
-                  <Gamepad2 className="h-16 w-16 text-indigo-200" />
+                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-900 to-slate-800">
+                  <Gamepad2 className="h-16 w-16 text-slate-600" />
                 </div>
               )}
-            </div>
-            <h3 className="text-xl md:text-2xl font-bold text-foreground text-center">{title}</h3>
-            <button
-              onClick={() => { trackPlay(); if (externalUrl) window.open(externalUrl, "_blank", "noopener,noreferrer"); }}
-              className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-primary text-white font-bold text-base shadow-lg hover:shadow-xl hover:bg-primary/90 hover:scale-105 active:scale-100 transition-all duration-200"
-            >
-              <Play className="h-5 w-5 fill-white" />
-              <span>{externalUrl ? "Play on Website" : "Play Now"}</span>
-              {externalUrl && <ExternalLink className="h-4 w-4" />}
-            </button>
-            {externalUrl && (
-              <p className="text-sm text-muted-foreground">This game will open in a new tab</p>
-            )}
           </div>
-        </div>
+          <div className="min-w-0">
+            <p className="text-[10px] font-extrabold uppercase tracking-[0.14em] text-muted-foreground">
+              {hasEmbeddedGame ? "Instant play" : hasExternalGame ? "External game" : "Play status"}
+            </p>
+            <h2 className="mt-1.5 text-xl font-black tracking-tight md:text-2xl">
+              {hasEmbeddedGame ? "Ready to play in this page" : hasExternalGame ? "Continue to the game site" : "Play link unavailable"}
+            </h2>
+            <p id="game-launch-note" className="mt-2 max-w-lg text-sm leading-6 text-muted-foreground">
+              {hasEmbeddedGame
+                ? `Launch ${title} here without a download. It only counts as played after you press the button.`
+                : hasExternalGame
+                  ? `${title} opens in a new tab. Play history is recorded only when you continue.`
+                  : "No working embedded or external play link has been verified yet."}
+            </p>
+            <button
+              onClick={() => {
+                if (!hasEmbeddedGame && !hasExternalGame) return;
+                trackPlay();
+                if (hasEmbeddedGame) setShowIframe(true);
+                else if (hasExternalGame) { trackExternalClick(); window.open(externalUrl as string, "_blank", "noopener,noreferrer"); }
+              }}
+              disabled={!hasEmbeddedGame && !hasExternalGame}
+              aria-describedby="game-launch-note"
+              className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-extrabold text-white transition-colors hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              <Play className="h-4 w-4 fill-white" />
+              <span>{hasEmbeddedGame ? "Launch game" : hasExternalGame ? "Open game site" : "Currently unavailable"}</span>
+              {hasExternalGame && <ExternalLink className="h-4 w-4" />}
+            </button>
+          </div>
+        </section>
       </div>
     );
   }
@@ -121,7 +148,7 @@ export function GameIframe({ src, title, gameId, slug, thumbnailUrl, externalUrl
             <Button
               variant="secondary"
               size="icon"
-              onClick={() => window.open(externalUrl, "_blank", "noopener,noreferrer")}
+              onClick={() => { trackExternalClick(); window.open(externalUrl, "_blank", "noopener,noreferrer"); }}
               className="h-8 w-8 bg-black/60 hover:bg-black/80 text-white border-0"
             >
               <ExternalLink className="h-4 w-4" />
@@ -155,7 +182,7 @@ export function GameIframe({ src, title, gameId, slug, thumbnailUrl, externalUrl
 
         <iframe
           ref={iframeRef}
-          src={src}
+          src={src || undefined}
           className={
             isFullscreen
               ? "w-full h-full"
@@ -164,7 +191,7 @@ export function GameIframe({ src, title, gameId, slug, thumbnailUrl, externalUrl
           allow="autoplay; fullscreen; gamepad; microphone; camera; clipboard-read; clipboard-write; accelerometer; gyroscope; xr-spatial-tracking"
           allowFullScreen
           title={title}
-          onLoad={() => { setIframeLoading(false); trackPlay(); }}
+          onLoad={() => setIframeLoading(false)}
         />
       </div>
     </div>

@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { getAuthenticatedAdmin } from "@/lib/admin-auth";
 
 export async function GET(request: NextRequest) {
+  if (!await getAuthenticatedAdmin()) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const { searchParams } = new URL(request.url);
   const game_id = searchParams.get("game_id");
   if (!game_id) {

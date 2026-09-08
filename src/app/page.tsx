@@ -1,205 +1,303 @@
+import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
+import {
+  ArrowRight,
+  CalendarDays,
+  Clock3,
+  Flame,
+  LayoutGrid,
+  List,
+  Search,
+  SlidersHorizontal,
+  Sparkles,
+} from "lucide-react";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { GameCard } from "@/components/games/GameCard";
-import { ContinuePlaying } from "@/components/home/ContinuePlaying";
-import { GAME_CATEGORIES, SITE_URL } from "@/lib/constants";
-import { ArrowRight, Flame, Gamepad2, Layers, Play, Sparkles } from "lucide-react";
-import type { Game, Series } from "@/lib/types";
+import { GameListItem } from "@/components/games/GameListItem";
+import type { GameCardGame } from "@/components/games/GameCard";
+import { HomeLibraryPanel } from "@/components/home/HomeLibraryPanel";
+import { normalizePublicGameCards, PUBLIC_GAME_CARD_FIELDS, PUBLIC_GAME_DISCOVERY_FIELDS, rankHiddenGems } from "@/lib/discovery-data";
 
-export const revalidate = 60;
+export const revalidate = 300;
 
-type HomeGame = Pick<Game, "id" | "title" | "slug" | "thumbnail_url" | "view_count" | "play_count" | "created_at" | "is_featured">;
-type HomeSeries = Pick<Series, "id" | "name" | "slug" | "sort_order"> & {
-  thumbnail_url: string | null;
-  game_count: number;
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
 };
 
-async function getHomeContent(): Promise<{ featured: HomeGame[]; popular: HomeGame[]; newest: HomeGame[]; series: HomeSeries[] }> {
+interface HomeContent {
+  feed: HomeGame[];
+  trending: HomeGame[];
+  playable: HomeGame[];
+  released: HomeGame[];
+  updated: HomeGame[];
+  hiddenGems: HomeGame[];
+}
+
+type HomeGame = GameCardGame;
+
+async function getHomeContent(): Promise<HomeContent> {
   try {
     const supabase = createAdminClient();
-    if (!supabase) return { featured: [], popular: [], newest: [], series: [] };
+    const advancedResult = await supabase
+      .from("games")
+      .select(PUBLIC_GAME_DISCOVERY_FIELDS)
+      .eq("is_published", true)
+      .order("created_at", { ascending: false })
+      .limit(60);
 
-    const fields = "id, title, slug, thumbnail_url, view_count, play_count, created_at, is_featured";
-    const [featuredRes, popularRes, newestRes, seriesRes, seriesGamesRes] = await Promise.all([
-      supabase.from("games").select(fields).eq("is_published", true).eq("is_featured", true).order("created_at", { ascending: false }).limit(5),
-      supabase.from("games").select(fields).eq("is_published", true).order("play_count", { ascending: false }).limit(18),
-      supabase.from("games").select(fields).eq("is_published", true).order("created_at", { ascending: false }).limit(18),
-      supabase.from("series").select("id, name, slug, thumbnail_url, sort_order").order("sort_order", { ascending: true }).limit(8),
-      supabase.from("game_series").select("series_id, games!inner(id)").eq("games.is_published", true),
-    ]);
-
-    const mapGames = (games: unknown): HomeGame[] => (games || []) as HomeGame[];
-    const popular = mapGames(popularRes.data);
-    const seriesCounts = new Map<string, number>();
-    for (const membership of (seriesGamesRes.data || []) as { series_id: string }[]) {
-      seriesCounts.set(membership.series_id, (seriesCounts.get(membership.series_id) || 0) + 1);
+    // The public site stays usable before the optional P1 migration is run.
+    // Legacy timestamps are never presented as real update dates.
+    let gameRows: unknown = advancedResult.data;
+    let queryError = advancedResult.error;
+    if (advancedResult.error) {
+      const fallbackResult = await supabase
+        .from("games")
+        .select(PUBLIC_GAME_CARD_FIELDS)
+        .eq("is_published", true)
+        .order("created_at", { ascending: false })
+        .limit(60);
+      gameRows = fallbackResult.data;
+      queryError = fallbackResult.error;
     }
-    const series = ((seriesRes.data || []) as Omit<HomeSeries, "game_count">[])
-      .map((item) => ({ ...item, game_count: seriesCounts.get(item.id) || 0 }))
-      .filter((item) => item.game_count >= 2)
-      .slice(0, 3);
 
-    return {
-      featured: mapGames(featuredRes.data).length ? mapGames(featuredRes.data) : popular.slice(0, 5),
-      popular,
-      newest: mapGames(newestRes.data),
-      series,
+    if (queryError) throw queryError;
+
+    const games = normalizePublicGameCards(gameRows);
+    const now = Date.now();
+    const pastTimestamp = (value: string | null | undefined) => {
+      if (!value) return 0;
+      const timestamp = new Date(value).getTime();
+      return Number.isFinite(timestamp) && timestamp <= now ? timestamp : 0;
     };
+    const feed = [...games]
+      .sort((a, b) => pastTimestamp(b.added_at || b.created_at) - pastTimestamp(a.added_at || a.created_at))
+      .slice(0, 14);
+    const trending = [...games]
+      .sort(
+        (a, b) =>
+          Number(Boolean(b.is_trending)) - Number(Boolean(a.is_trending)) ||
+          (b.hot_score || 0) - (a.hot_score || 0) ||
+          (b.play_count || 0) - (a.play_count || 0),
+      )
+      .slice(0, 6);
+    const playable = games
+      .filter((game) => Boolean(game.iframe_url?.trim()))
+      .sort((a, b) => (b.play_count || 0) - (a.play_count || 0))
+      .slice(0, 6);
+    const released = games
+      .filter((game) => pastTimestamp(game.release_date) > 0)
+      .sort((a, b) => pastTimestamp(b.release_date) - pastTimestamp(a.release_date))
+      .slice(0, 3);
+    const updated = games
+      .filter((game) => pastTimestamp(game.last_updated_at) > 0)
+      .sort((a, b) => pastTimestamp(b.last_updated_at) - pastTimestamp(a.last_updated_at))
+      .slice(0, 3);
+    const hiddenGems = rankHiddenGems(games).slice(0, 3);
+
+    return { feed, trending, playable, released, updated, hiddenGems };
   } catch (error) {
     console.error("Could not load home content:", error);
-    return { featured: [], popular: [], newest: [], series: [] };
+    return { feed: [], trending: [], playable: [], released: [], updated: [], hiddenGems: [] };
   }
 }
 
-function SectionTitle({ eyebrow, title, href }: { eyebrow: string; title: string; href: string }) {
+function formatSignalDate(value: string | null | undefined): string {
+  if (!value) return "Date unavailable";
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "Date unavailable";
+  return date.toLocaleDateString("en", { month: "short", day: "numeric", year: "numeric" });
+}
+
+function DiscoverySignal({
+  title,
+  detail,
+  games,
+  href,
+  dateField,
+  emptyText,
+}: {
+  title: string;
+  detail: string;
+  games: HomeGame[];
+  href: string;
+  dateField?: "release_date" | "last_updated_at";
+  emptyText: string;
+}) {
   return (
-    <div className="section-heading mb-5 flex items-end justify-between gap-4">
-      <div>
-        <p className="mb-1 text-[11px] font-extrabold uppercase tracking-[0.18em] text-primary">{eyebrow}</p>
-        <h2 className="text-2xl font-black tracking-tight text-foreground md:text-3xl">{title}</h2>
+    <section className="min-w-0 border-t pt-4 md:border-l md:border-t-0 md:pl-5 md:pt-0">
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <h2 className="text-sm font-extrabold tracking-tight">{title}</h2>
+          <p className="mt-0.5 text-[10px] leading-4 text-muted-foreground">{detail}</p>
+        </div>
+        <Link href={href} aria-label={`View all ${title}`} className="shrink-0 text-muted-foreground hover:text-primary">
+          <ArrowRight className="h-4 w-4" />
+        </Link>
       </div>
-      <Link href={href} className="group hidden items-center gap-1 text-sm font-bold text-muted-foreground transition-colors hover:text-foreground sm:inline-flex">
-        Explore all <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-      </Link>
-    </div>
+      {games.length ? (
+        <ol className="mt-3 space-y-2.5">
+          {games.map((game, index) => (
+            <li key={game.id} className="flex min-w-0 items-center gap-2.5">
+              <span className="w-4 shrink-0 text-[10px] font-black text-muted-foreground/60">0{index + 1}</span>
+              <Link href={`/game/${game.slug}`} prefetch={false} className="min-w-0 flex-1 truncate text-xs font-bold hover:text-primary">{game.title}</Link>
+              {dateField ? (
+                <time dateTime={game[dateField] || undefined} className="hidden shrink-0 text-[10px] text-muted-foreground sm:block">
+                  {formatSignalDate(game[dateField])}
+                </time>
+              ) : (
+                <span className="shrink-0 text-[10px] text-muted-foreground">{game.play_count || 0} plays</span>
+              )}
+            </li>
+          ))}
+        </ol>
+      ) : (
+        <p className="mt-3 text-xs leading-5 text-muted-foreground">{emptyText}</p>
+      )}
+    </section>
+  );
+}
+
+function CompactRanking({
+  title,
+  eyebrow,
+  games,
+  href,
+}: {
+  title: string;
+  eyebrow: string;
+  games: HomeGame[];
+  href: string;
+}) {
+  if (!games.length) return null;
+
+  return (
+    <section className="discovery-side-panel">
+      <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground">{eyebrow}</p>
+      <div className="mt-1 flex items-center justify-between gap-3">
+        <h2 className="text-base font-extrabold tracking-tight">{title}</h2>
+        <Link href={href} className="text-xs font-bold text-muted-foreground hover:text-primary">View all</Link>
+      </div>
+      <ol className="mt-3 divide-y divide-border/70">
+        {games.map((game, index) => (
+          <li key={game.id}>
+            <Link href={`/game/${game.slug}`} prefetch={false} className="group flex items-center gap-3 py-3">
+              <span className="w-5 shrink-0 text-center text-xs font-black text-muted-foreground/70">{String(index + 1).padStart(2, "0")}</span>
+              <span className="min-w-0 flex-1">
+                <span className="block truncate text-sm font-bold transition-colors group-hover:text-primary">{game.title}</span>
+                <span className="mt-0.5 block truncate text-[11px] text-muted-foreground">
+                  {game.categories?.[0]?.name || "Browser game"} · {(game.play_count || 0).toLocaleString()} plays
+                </span>
+              </span>
+              <ArrowRight className="h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
+            </Link>
+          </li>
+        ))}
+      </ol>
+    </section>
   );
 }
 
 export default async function HomePage() {
-  const { featured, popular, newest, series } = await getHomeContent();
-  const leadGame = featured[0];
-  const sideGames = featured.slice(1, 5);
-  const seriesGridClass = series.length === 1 ? "grid-cols-1" : series.length === 2 ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3";
+  const { feed, trending, playable, released, updated, hiddenGems } = await getHomeContent();
 
   return (
     <div className="pb-16">
-      {/* Next metadata serializes root canonical URLs as the bare origin. */}
-      <link rel="canonical" href={`${SITE_URL}/`} />
-      <div className="container mx-auto px-4 pt-5 md:pt-8">
-        <section className="home-hero relative overflow-hidden rounded-[2rem] px-6 py-8 text-white md:px-10 md:py-10">
-          <div className="hero-orb hero-orb-one" />
-          <div className="hero-orb hero-orb-two" />
-          <div className="relative grid gap-8 lg:grid-cols-[1.05fr_.95fr] lg:items-center">
-            <div className="max-w-xl">
-              <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-bold text-white/85 backdrop-blur">
-                <Sparkles className="h-3.5 w-3.5 text-violet-300" /> Fresh games. Zero downloads.
-              </div>
-              <h1 className="text-4xl font-black leading-[0.98] tracking-[-0.055em] text-white sm:text-5xl md:text-6xl">
-                Your next game<br /><span className="hero-gradient-text">starts here.</span>
-              </h1>
-              <p className="mt-5 max-w-md text-base leading-relaxed text-indigo-100/75">Pick up a quick play, find a new obsession, or jump back into a favorite — all in your browser.</p>
-              <div className="mt-7 flex flex-wrap gap-3">
-                <Link href="/search?sort=trending" className="hero-primary-action inline-flex items-center gap-2 rounded-xl bg-white px-4 py-3 text-sm font-extrabold text-[#17152b] transition-transform hover:-translate-y-0.5">
-                  <Flame className="h-4 w-4 text-orange-500" /> See what&apos;s hot
-                </Link>
-                <Link href="/category" className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm font-bold text-white backdrop-blur-sm transition-colors hover:border-white/25 hover:bg-white/10">
-                  Browse categories <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
-            </div>
+      <div className="container mx-auto px-4 pt-5 md:pt-7">
+        <section className="home-intro flex flex-col gap-4 border-b pb-6 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-2xl">
+            <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.16em] text-muted-foreground">Curated browser game discovery</p>
+            <h1 className="text-2xl font-black leading-tight tracking-[-0.035em] sm:text-3xl">
+              Discover what&apos;s new. <span className="text-primary">Play instantly.</span>
+            </h1>
+            <p className="mt-2 max-w-xl text-sm leading-6 text-muted-foreground">
+              A focused feed of new, updated and playable browser games—with source-backed details where they have been verified.
+            </p>
+          </div>
+          <Link href="/search" className="inline-flex shrink-0 items-center gap-2 self-start rounded-lg border bg-card px-4 py-2.5 text-sm font-bold transition-colors hover:border-primary/50 hover:text-primary md:self-auto">
+            <Search className="h-4 w-4" /> Find a game
+          </Link>
+        </section>
 
-            {leadGame ? (
-              <div className="grid grid-cols-[1.4fr_1fr] gap-3">
-                <Link href={`/game/${leadGame.slug}`} className="featured-game group relative row-span-2 min-h-64 overflow-hidden rounded-2xl bg-indigo-900">
-                  {leadGame.thumbnail_url && <Image src={leadGame.thumbnail_url} alt="" fill preload sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover transition duration-700 group-hover:scale-110" />}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/5 to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 p-4">
-                    <span className="mb-2 inline-block rounded-md bg-violet-500 px-2 py-1 text-[10px] font-black uppercase tracking-wider">Editor&apos;s pick</span>
-                    <p className="line-clamp-2 text-lg font-black leading-tight">{leadGame.title}</p>
-                    <span className="mt-2 inline-flex items-center gap-1 text-xs font-bold text-white/80">Play now <Play className="h-3 w-3 fill-current" /></span>
-                  </div>
-                </Link>
-                {sideGames.map((game, index) => (
-                  <Link key={game.id} href={`/game/${game.slug}`} className={`featured-game group relative min-h-30 overflow-hidden rounded-2xl bg-indigo-900 ${index > 1 ? "hidden sm:block" : ""}`}>
-                    {game.thumbnail_url && <Image src={game.thumbnail_url} alt="" fill sizes="(max-width: 1024px) 50vw, 20vw" className="object-cover transition duration-500 group-hover:scale-110" />}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-black/10" />
-                    <p className="absolute inset-x-0 bottom-0 p-3 text-xs font-extrabold leading-tight line-clamp-2">{game.title}</p>
-                  </Link>
+        <HomeLibraryPanel />
+
+        <nav aria-label="Game feed" className="discovery-toolbar mt-7">
+          <div className="discovery-tabs" role="list">
+            <Link href="/" className="is-active" role="listitem">New</Link>
+            <Link href="/search?sort=trending" role="listitem"><Flame className="h-3.5 w-3.5" />Trending</Link>
+            <Link href="/search?sort=released" role="listitem"><CalendarDays className="h-3.5 w-3.5" />Released</Link>
+            {updated.length > 0 && <Link href="/search?sort=recently-updated" role="listitem"><Clock3 className="h-3.5 w-3.5" />Updated</Link>}
+            <Link href="/search?sort=popular" role="listitem">Popular</Link>
+            <Link href="/search?sort=hidden-gems" role="listitem">Hidden Gems</Link>
+            <Link href="/search?playMode=embedded" role="listitem"><Sparkles className="h-3.5 w-3.5" />Playable Here</Link>
+          </div>
+          <div className="discovery-tools flex shrink-0 items-center gap-2">
+            <Link href="/search" className="discovery-tool-button"><SlidersHorizontal className="h-4 w-4" />Filters</Link>
+            <span className="discovery-tool-button view-switch is-selected hidden sm:inline-flex"><List className="h-4 w-4" />List</span>
+            <Link href="/search?view=grid" aria-label="Grid view" className="discovery-tool-button view-switch hidden sm:inline-flex"><LayoutGrid className="h-4 w-4" /></Link>
+          </div>
+        </nav>
+
+        <div className="mt-5 grid gap-4 rounded-xl border bg-card/40 p-4 md:grid-cols-3 md:gap-0 md:p-5">
+          <DiscoverySignal
+            title="Recently released"
+            detail="Ordered by the game’s real release date"
+            games={released}
+            href="/search?sort=released"
+            dateField="release_date"
+            emptyText="Release dates will appear after they are sourced."
+          />
+          <DiscoverySignal
+            title="Recently updated"
+            detail="Only verified game update dates"
+            games={updated}
+            href="/search?sort=recently-updated"
+            dateField="last_updated_at"
+            emptyText="No verified game updates have been recorded yet."
+          />
+          <DiscoverySignal
+            title="Hidden gems"
+            detail="Lower visibility with a stronger play rate"
+            games={hiddenGems}
+            href="/search?sort=hidden-gems"
+            emptyText="More play activity is needed to surface hidden gems."
+          />
+        </div>
+
+        <div className="mt-5 grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_290px] xl:gap-12">
+          <main className="min-w-0" aria-label="Newest games">
+            {feed.length ? (
+              <div className="discovery-list">
+                {feed.map((game, index) => (
+                  <GameListItem
+                    key={game.id}
+                    game={game}
+                    eagerImage={index === 0}
+                    featured={index === 0}
+                  />
                 ))}
               </div>
             ) : (
-              <div className="flex min-h-64 items-center justify-center rounded-2xl border border-dashed border-white/20 bg-white/5"><Gamepad2 className="h-12 w-12 text-violet-300" /></div>
+              <div className="rounded-xl border border-dashed p-12 text-center text-muted-foreground">
+                <Flame className="mx-auto mb-3 h-8 w-8 text-primary/30" />
+                New games will appear here soon.
+              </div>
             )}
-          </div>
-        </section>
 
-        <div className="home-content-stack mt-12 space-y-14">
-          <ContinuePlaying />
-
-          <section>
-            <SectionTitle eyebrow="Most played" title="Trending right now" href="/search?sort=popular" />
-            <div className="grid grid-cols-3 gap-x-3 gap-y-5 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-9">
-              {popular.map((game) => <GameCard key={game.id} game={game} />)}
-            </div>
-          </section>
-
-          <section className="genre-panel rounded-[1.75rem] p-5 md:p-7">
-            <SectionTitle eyebrow="Find your mood" title="Explore by genre" href="/category" />
-            <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6">
-              {GAME_CATEGORIES.slice(0, 12).map((category, index) => (
-                <Link
-                  key={category.slug}
-                  href={`/category/${category.slug}`}
-                  prefetch={false}
-                  className={`group category-tile category-tile-${index % 6}`}
-                >
-                  <span>{category.name}</span><ArrowRight className="h-4 w-4 opacity-60 transition-transform group-hover:translate-x-1" />
-                </Link>
-              ))}
-            </div>
-          </section>
-
-          <section>
-            <SectionTitle eyebrow="Just added" title="New games to try" href="/search?sort=newest" />
-            <div className="grid grid-cols-3 gap-x-3 gap-y-5 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-9">
-              {newest.map((game) => <GameCard key={game.id} game={game} />)}
-            </div>
-          </section>
-
-          {series.length > 0 && (
-            <section className="relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-[#171529] p-5 text-white shadow-2xl shadow-indigo-950/15 md:p-7">
-              <div className="pointer-events-none absolute -right-24 -top-28 h-72 w-72 rounded-full bg-violet-500/20 blur-3xl" />
-              <div className="pointer-events-none absolute -bottom-32 left-1/3 h-64 w-64 rounded-full bg-teal-400/10 blur-3xl" />
-
-              <div className="relative mb-5 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-                <div>
-                  <p className="mb-1 text-[11px] font-extrabold uppercase tracking-[0.18em] text-violet-300">Keep the run going</p>
-                  <h2 className="text-2xl font-black tracking-tight text-white md:text-3xl">Play the whole series</h2>
-                  <p className="mt-2 max-w-xl text-sm leading-relaxed text-indigo-100/65">Found a favorite? Keep playing through every game in the collection.</p>
-                </div>
-                <Link href="/series" className="group inline-flex w-fit items-center gap-1.5 text-sm font-bold text-white/70 transition-colors hover:text-white">
-                  Browse all series <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            {feed.length > 0 && (
+              <div className="mt-6 flex justify-center">
+                <Link href="/search" className="inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-bold hover:border-primary/50 hover:text-primary">
+                  Browse all games <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
+            )}
+          </main>
 
-              <div className={`relative grid gap-3 ${seriesGridClass}`}>
-                {series.map((item) => (
-                  <Link key={item.id} href={`/series/${item.slug}`} className="group relative min-h-48 overflow-hidden rounded-2xl border border-white/10 bg-indigo-950/70 shadow-xl shadow-black/10">
-                    {item.thumbnail_url ? (
-                      <Image src={item.thumbnail_url} alt="" fill sizes={series.length === 1 ? "(max-width: 1280px) 100vw, 1200px" : "(max-width: 640px) 100vw, 50vw"} className="object-cover transition duration-500 group-hover:scale-105" />
-                    ) : (
-                      <div className="absolute inset-0 grid place-items-center bg-gradient-to-br from-violet-600/30 via-indigo-900 to-slate-950">
-                        <Layers className="h-12 w-12 text-violet-200/70" />
-                      </div>
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/45 to-black/10" />
-                    <div className="absolute inset-0 flex flex-col items-start justify-end p-5">
-                      <span className="mb-2 rounded-full border border-white/15 bg-white/10 px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white/80 backdrop-blur-sm">
-                        {item.game_count} games
-                      </span>
-                      <h3 className="text-xl font-black text-white md:text-2xl">{item.name}</h3>
-                      <span className="mt-2 inline-flex items-center gap-1 text-xs font-bold text-white/70 transition-colors group-hover:text-white">
-                        Start the series <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                      </span>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </section>
-          )}
-
-          {!popular.length && !newest.length && <div className="rounded-3xl border border-dashed border-border bg-card p-12 text-center text-muted-foreground">New games will appear here soon.</div>}
+          <aside className="space-y-5 lg:sticky lg:top-24">
+            <CompactRanking title="Trending now" eyebrow="Popular this moment" games={trending} href="/search?sort=trending" />
+            <CompactRanking title="Play instantly" eyebrow="No download required" games={playable} href="/search?playMode=embedded" />
+            <Link href="/category" className="flex items-center justify-between rounded-lg border px-4 py-3 text-sm font-bold text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary">
+              Browse all genres <ArrowRight className="h-4 w-4" />
+            </Link>
+          </aside>
         </div>
       </div>
     </div>

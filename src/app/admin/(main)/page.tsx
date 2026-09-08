@@ -2,6 +2,9 @@ import { createAdminClient } from "@/lib/supabase/admin";
 
 export const dynamic = "force-dynamic";
 
+type RecentGame = { id: string; title: string; slug: string; created_at: string };
+type TopGame = { id: string; title: string; slug: string; view_count: number; play_count: number };
+
 async function getStats() {
   try {
     const supabase = createAdminClient();
@@ -85,7 +88,7 @@ export default async function AdminDashboard() {
           <h2 className="font-semibold mb-4">Recent Games</h2>
           {stats.recentGames.length > 0 ? (
             <ul className="space-y-2">
-              {stats.recentGames.map((g: any) => (
+              {(stats.recentGames as RecentGame[]).map((g) => (
                 <li key={g.id} className="text-sm flex justify-between">
                   <span>{g.title}</span>
                   <span className="text-muted-foreground">{new Date(g.created_at).toLocaleDateString()}</span>
@@ -100,7 +103,7 @@ export default async function AdminDashboard() {
           <h2 className="font-semibold mb-4">Most Viewed Games</h2>
           {stats.topGames.length > 0 ? (
             <ul className="space-y-2">
-              {stats.topGames.map((g: any, i: number) => (
+              {(stats.topGames as TopGame[]).map((g, i) => (
                 <li key={g.id} className="text-sm flex justify-between">
                   <span className="flex items-center gap-2">
                     <span className="w-5 h-5 rounded bg-muted flex items-center justify-center text-xs font-medium">{i + 1}</span>

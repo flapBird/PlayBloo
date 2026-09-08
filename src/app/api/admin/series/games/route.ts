@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { getAuthenticatedAdmin } from "@/lib/admin-auth";
 
 export const dynamic = "force-dynamic";
 
 // GET /api/admin/series/games?series_id=xxx
 export async function GET(request: NextRequest) {
+  if (!await getAuthenticatedAdmin()) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const { searchParams } = new URL(request.url);
   const seriesId = searchParams.get("series_id");
   if (!seriesId) return NextResponse.json({ error: "Missing series_id" }, { status: 400 });
@@ -16,12 +18,15 @@ export async function GET(request: NextRequest) {
     .eq("series_id", seriesId)
     .order("sort_order", { ascending: true });
 
-  const games = (data || []).map((r: any) => r.games).filter(Boolean);
+  const games = (data || [])
+    .map((row) => row.games)
+    .flatMap((game) => Array.isArray(game) ? game : game ? [game] : []);
   return NextResponse.json({ data: games });
 }
 
 // POST /api/admin/series/games
 export async function POST(request: NextRequest) {
+  if (!await getAuthenticatedAdmin()) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const body = await request.json();
   const { series_id, game_id } = body;
   if (!series_id || !game_id) {
@@ -52,6 +57,7 @@ export async function POST(request: NextRequest) {
 
 // DELETE /api/admin/series/games
 export async function DELETE(request: NextRequest) {
+  if (!await getAuthenticatedAdmin()) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const body = await request.json();
   const { series_id, game_id } = body;
   if (!series_id || !game_id) {

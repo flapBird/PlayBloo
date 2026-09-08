@@ -1,17 +1,93 @@
 import { NextRequest, NextResponse } from "next/server";
 import { revalidatePath } from "next/cache";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { getAuthenticatedAdmin } from "@/lib/admin-auth";
 
 export const dynamic = "force-dynamic";
 
+type SourceRecord = { type?: unknown; url?: unknown };
+type JoinedCategory = { categories?: { slug?: string } | { slug?: string }[] | null };
+type GameWithJoinedCategories = { categories?: JoinedCategory[] | null };
+
+const GAME_MUTABLE_FIELDS = [
+  "title", "slug", "thumbnail_url", "cover_url", "iframe_url", "external_url", "description",
+  "short_description", "how_to_play", "controls", "tips", "features", "developer", "publisher",
+  "source_url", "source_type", "original_game_url", "developer_url", "steam_url", "itch_url",
+  "official_website_url", "steam_app_id", "itch_project_slug", "release_date", "added_at",
+  "last_updated_at", "last_verified_at", "platforms", "monetization", "development_status", "graphics",
+  "multiplayer", "engine", "screenshots", "sources", "is_published", "is_featured", "is_trending",
+  "content_verified",
+] as const;
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return Boolean(value) && typeof value === "object" && !Array.isArray(value);
+}
+
+function pickMutableGameFields(body: Record<string, unknown>): Record<string, unknown> {
+  const fields = Object.fromEntries(
+    GAME_MUTABLE_FIELDS.filter((field) => body[field] !== undefined).map((field) => [field, body[field]]),
+  );
+  // Optional unique identifiers must use SQL NULL, never an empty string.
+  for (const field of ["steam_app_id", "itch_project_slug"] as const) {
+    if (typeof fields[field] === "string") fields[field] = fields[field].trim() || null;
+  }
+  return fields;
+}
+
+async function gameWriteError(
+  supabase: ReturnType<typeof createAdminClient>,
+  error: { code?: string; message: string },
+  fields: Record<string, unknown>,
+) {
+  for (const field of ["steam_app_id", "itch_project_slug"] as const) {
+    if (error.code === "23505" && error.message.includes(`idx_games_${field}_unique`)) {
+      const { data: conflict } = await supabase.from("games").select("id, title, slug").eq(field, fields[field]).maybeSingle();
+      return NextResponse.json({
+        error: `${field} “${fields[field]}” is already used by ${conflict?.title || "another game"}. Check the identifier or leave it empty if unknown.`,
+        conflict,
+      }, { status: 409 });
+    }
+  }
+  return NextResponse.json({ error: error.message }, { status: 400 });
+}
+
+function getIdList(value: unknown): string[] | undefined {
+  if (value === undefined) return undefined;
+  if (!Array.isArray(value) || !value.every((item) => typeof item === "string")) return undefined;
+  return [...new Set(value.filter(Boolean))];
+}
+
+function hasDocumentedSource(gameData: Record<string, unknown>): boolean {
+  return Boolean(
+    gameData.source_url ||
+    gameData.original_game_url ||
+    gameData.developer_url ||
+    gameData.steam_url ||
+    gameData.itch_url ||
+    (Array.isArray(gameData.sources) && gameData.sources.some((source: SourceRecord) => source?.type && source?.url)),
+  );
+}
+
+function validateVerifiedContent(gameData: Record<string, unknown>): string | null {
+  if (gameData.content_verified && !hasDocumentedSource(gameData)) {
+    return "A trusted source URL is required before gameplay facts can be marked verified.";
+  }
+  return null;
+}
+
 export async function GET(request: NextRequest) {
+  if (!await getAuthenticatedAdmin()) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const { searchParams } = new URL(request.url);
   const supabase = createAdminClient();
 
   // Single game lookup by id
   const id = searchParams.get("id");
   if (id) {
-    const { data } = await supabase.from("games").select("*").eq("id", id).single();
+    const { data } = await supabase
+      .from("games")
+      .select("*, categories:game_categories(category_id, categories:categories(id, name, slug)), tags:game_tags(tag_id, tags:tags(id, name, slug)), series:game_series(series_id, series:series(id, name, slug))")
+      .eq("id", id)
+      .single();
     return NextResponse.json({ data: data || null });
   }
 
@@ -73,11 +149,15 @@ async function resolveCategories(
 }
 
 /** Extract category slugs from a game's joined categories */
-function extractCategorySlugs(game: any): string[] {
+function extractCategorySlugs(game: GameWithJoinedCategories | null): string[] {
   const cats = game?.categories || [];
   return cats
-    .filter((gc: any) => gc.categories)
-    .map((gc: any) => gc.categories.slug);
+    .flatMap((membership) => {
+      const category = membership.categories;
+      if (Array.isArray(category)) return category.map((item) => item.slug);
+      return [category?.slug];
+    })
+    .filter((slug): slug is string => Boolean(slug));
 }
 
 /** Revalidate only the pages affected by this game */
@@ -89,8 +169,15 @@ function revalidateGamePages(slug: string, categorySlugs: string[]) {
     `/game/${slug}`,
     // Category pages this game belongs to
     ...categorySlugs.map((cs) => `/category/${cs}`),
+    // Taxonomy relationships may be changed by the bulk editor.
+    "/category",
+    "/category/[slug]",
+    "/tag/[slug]",
+    "/series",
+    "/series/[slug]",
     // Search page (game lists)
     "/search",
+    "/sitemap.xml",
   ];
 
   for (const path of paths) {
@@ -99,18 +186,26 @@ function revalidateGamePages(slug: string, categorySlugs: string[]) {
 }
 
 export async function POST(request: NextRequest) {
-  const body = await request.json();
-  const { category_ids, category_names, tag_ids, series_id, ...gameData } = body;
+  if (!await getAuthenticatedAdmin()) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const body: unknown = await request.json().catch(() => null);
+  if (!isRecord(body)) return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
+  const gameData = pickMutableGameFields(body);
+  const categoryIds = getIdList(body.category_ids);
+  const categoryNames = Array.isArray(body.category_names) && body.category_names.every((item) => typeof item === "string") ? body.category_names : undefined;
+  const tagIds = getIdList(body.tag_ids);
+  const seriesIds = getIdList(body.series_ids) ?? (typeof body.series_id === "string" && body.series_id ? [body.series_id] : []);
+  const verificationError = validateVerifiedContent(gameData);
+  if (verificationError) return NextResponse.json({ error: verificationError }, { status: 400 });
   const supabase = createAdminClient();
 
   const { data, error } = await supabase.from("games").insert([gameData]).select("*, categories:game_categories(category_id, categories:categories(*))").single();
-  if (error) return NextResponse.json({ error: error.message }, { status: 400 });
+  if (error) return gameWriteError(supabase, error, gameData);
 
   const gameId = data.id;
 
-  let resolvedCategoryIds = category_ids || [];
-  if (category_names && category_names.length > 0) {
-    resolvedCategoryIds = await resolveCategories(supabase, category_names);
+  let resolvedCategoryIds = categoryIds || [];
+  if (categoryNames?.length) {
+    resolvedCategoryIds = await resolveCategories(supabase, categoryNames);
   }
 
   if (resolvedCategoryIds.length > 0) {
@@ -119,14 +214,16 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  if (tag_ids && tag_ids.length > 0) {
+  if (tagIds?.length) {
     await supabase.from("game_tags").insert(
-      tag_ids.map((tagId: string) => ({ game_id: gameId, tag_id: tagId }))
+      tagIds.map((tagId) => ({ game_id: gameId, tag_id: tagId }))
     );
   }
 
-  if (series_id) {
-    await supabase.from("game_series").insert([{ game_id: gameId, series_id }]);
+  if (seriesIds.length) {
+    await supabase.from("game_series").insert(
+      seriesIds.map((seriesId, index) => ({ game_id: gameId, series_id: seriesId, sort_order: index })),
+    );
   }
 
   revalidateGamePages(data.slug, extractCategorySlugs(data));
@@ -135,21 +232,39 @@ export async function POST(request: NextRequest) {
 }
 
 export async function PUT(request: NextRequest) {
-  const body = await request.json();
-  const { id, category_ids, category_names, tag_ids, series_id, ...updates } = body;
+  if (!await getAuthenticatedAdmin()) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const body: unknown = await request.json().catch(() => null);
+  if (!isRecord(body)) return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
+  const id = typeof body.id === "string" ? body.id : "";
   if (!id) return NextResponse.json({ error: "Missing id" }, { status: 400 });
+  const updates = pickMutableGameFields(body);
+  const categoryNames = Array.isArray(body.category_names) && body.category_names.every((item) => typeof item === "string") ? body.category_names : undefined;
+  let resolvedCategoryIds = getIdList(body.category_ids);
+  const tagIds = getIdList(body.tag_ids);
+  const seriesIds = getIdList(body.series_ids) ?? (
+    body.series_id !== undefined ? (typeof body.series_id === "string" && body.series_id ? [body.series_id] : []) : undefined
+  );
 
   const supabase = createAdminClient();
+
+  if (updates.content_verified) {
+    const { data: sourceState } = await supabase
+      .from("games")
+      .select("source_url, original_game_url, developer_url, steam_url, itch_url, sources")
+      .eq("id", id)
+      .single();
+    const verificationError = validateVerifiedContent({ ...sourceState, ...updates });
+    if (verificationError) return NextResponse.json({ error: verificationError }, { status: 400 });
+  }
 
   // Fetch existing game first to know its slug and old categories
   const { data: existing } = await supabase.from("games").select("slug").eq("id", id).single();
 
   const { data, error } = await supabase.from("games").update(updates).eq("id", id).select("*, categories:game_categories(category_id, categories:categories(*))").single();
-  if (error) return NextResponse.json({ error: error.message }, { status: 400 });
+  if (error) return gameWriteError(supabase, error, updates);
 
-  let resolvedCategoryIds = category_ids || [];
-  if (category_names && category_names.length > 0) {
-    resolvedCategoryIds = await resolveCategories(supabase, category_names);
+  if (categoryNames?.length) {
+    resolvedCategoryIds = await resolveCategories(supabase, categoryNames);
   }
 
   if (resolvedCategoryIds !== undefined) {
@@ -161,19 +276,21 @@ export async function PUT(request: NextRequest) {
     }
   }
 
-  if (tag_ids !== undefined) {
+  if (tagIds !== undefined) {
     await supabase.from("game_tags").delete().eq("game_id", id);
-    if (tag_ids.length > 0) {
+    if (tagIds.length > 0) {
       await supabase.from("game_tags").insert(
-        tag_ids.map((tagId: string) => ({ game_id: id, tag_id: tagId }))
+        tagIds.map((tagId) => ({ game_id: id, tag_id: tagId }))
       );
     }
   }
 
-  if (series_id !== undefined) {
+  if (seriesIds !== undefined) {
     await supabase.from("game_series").delete().eq("game_id", id);
-    if (series_id) {
-      await supabase.from("game_series").insert([{ game_id: id, series_id }]);
+    if (seriesIds.length) {
+      await supabase.from("game_series").insert(
+        seriesIds.map((seriesId, index) => ({ game_id: id, series_id: seriesId, sort_order: index })),
+      );
     }
   }
 
@@ -190,6 +307,7 @@ export async function PUT(request: NextRequest) {
 }
 
 export async function DELETE(request: NextRequest) {
+  if (!await getAuthenticatedAdmin()) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const { searchParams } = new URL(request.url);
   const id = searchParams.get("id");
   if (!id) return NextResponse.json({ error: "Missing id" }, { status: 400 });

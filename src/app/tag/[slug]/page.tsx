@@ -1,24 +1,25 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { unstable_cache } from "next/cache";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { GameCard } from "@/components/games/GameCard";
+import { GameListItem } from "@/components/games/GameListItem";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
-import { SITE_URL, PAGE_SIZE } from "@/lib/constants";
-import type { Game } from "@/lib/types";
+import { MIN_INDEXABLE_TAG_GAMES, SITE_URL, PAGE_SIZE } from "@/lib/constants";
+import { normalizePublicGameCards, PUBLIC_GAME_CARD_FIELDS } from "@/lib/discovery-data";
 
 interface Props {
   params: Promise<{ slug: string }>;
   searchParams: Promise<{ page?: string }>;
 }
 
-async function getTag(slug: string) {
+const getTag = unstable_cache(async (slug: string) => {
   const supabase = createAdminClient();
   const { data } = await supabase.from("tags").select("*").eq("slug", slug).single();
   return data;
-}
+}, ["tag-by-slug-v1"], { revalidate: 1800 });
 
-async function getGames(slug: string, page: number) {
+const getGames = unstable_cache(async (slug: string, page: number) => {
   const supabase = createAdminClient();
   const from = (page - 1) * PAGE_SIZE;
   const to = from + PAGE_SIZE - 1;
@@ -38,38 +39,37 @@ async function getGames(slug: string, page: number) {
 
   const { data: gamesData, count } = await supabase
     .from("games")
-    .select(`*, categories:game_categories(category_id, categories:categories(*))`, { count: "exact" })
+    .select(PUBLIC_GAME_CARD_FIELDS, { count: "exact" })
     .eq("is_published", true)
     .in("id", gameIds)
     .order("created_at", { ascending: false })
     .range(from, to);
 
-  const games = (gamesData || []).map((g: any) => ({
-    ...g,
-    categories: g.categories?.filter((gc: any) => gc.categories).map((gc: any) => gc.categories) || [],
-  }));
+  return { games: normalizePublicGameCards(gamesData), total: count || 0 };
+}, ["tag-games-v2"], { revalidate: 1800 });
 
-  return { games, total: count || 0 };
-}
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
   const { slug } = await params;
+  const { page: pageValue } = await searchParams;
+  const page = Math.min(100, Math.max(1, parseInt(pageValue || "1") || 1));
   const tag = await getTag(slug);
   if (!tag) return { title: "Tag Not Found" };
+  const { total } = await getGames(slug, 1);
    return {
      title: `${tag.name} Games - Browse Free Online Games Tagged with ${tag.name}`,
      alternates: {
-       canonical: `/tag/${slug}`,
+       canonical: page > 1 ? `/tag/${slug}?page=${page}` : `/tag/${slug}`,
      },
+     ...(total < MIN_INDEXABLE_TAG_GAMES ? { robots: { index: false, follow: true } } : {}),
    };
 }
 
-export const revalidate = 120;
+export const revalidate = 1800;
 
 export default async function TagPage({ params, searchParams }: Props) {
   const { slug } = await params;
   const { page: pageStr } = await searchParams;
-  const page = Math.max(1, parseInt(pageStr || "1") || 1);
+  const page = Math.min(100, Math.max(1, parseInt(pageStr || "1") || 1));
 
   const tag = await getTag(slug);
   if (!tag) notFound();
@@ -86,16 +86,17 @@ export default async function TagPage({ params, searchParams }: Props) {
         ]}
       />
 
-      <div className="space-y-2">
-        <h1 className="text-3xl font-bold">Games tagged with &ldquo;{tag.name}&rdquo;</h1>
-        <p className="text-sm text-muted-foreground">{total} games found</p>
+      <div className="border-b pb-6">
+        <p className="mb-2 text-[10px] font-extrabold uppercase tracking-[0.14em] text-muted-foreground">Browse by tag</p>
+        <h1 className="text-3xl font-black tracking-tight">Games tagged with &ldquo;{tag.name}&rdquo;</h1>
+        <p className="mt-2 text-sm text-muted-foreground">{total} games found</p>
       </div>
 
       {games.length > 0 ? (
         <>
-          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-9 gap-3 md:gap-4">
-            {games.map((game: Game) => (
-              <GameCard key={game.id} game={game} />
+          <div className="mx-auto max-w-5xl">
+            {games.map((game, index) => (
+              <GameListItem key={game.id} game={game} eagerImage={index === 0} />
             ))}
           </div>
           {totalPages > 1 && (

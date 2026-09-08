@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { cache } from "react";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
@@ -10,7 +11,7 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
-async function getGame(slug: string) {
+const getGame = cache(async (slug: string) => {
   const supabase = createAdminClient();
   const { data } = await supabase
     .from("games")
@@ -18,6 +19,16 @@ async function getGame(slug: string) {
     .eq("slug", slug)
     .single();
   return data;
+});
+
+export async function generateStaticParams() {
+  const { data } = await createAdminClient()
+    .from("games")
+    .select("slug, game_levels!inner(id)")
+    .eq("is_published", true)
+    .eq("game_levels.is_published", true)
+    .limit(50);
+  return (data || []).map((game) => ({ slug: game.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -33,7 +44,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export const revalidate = 120;
+export const revalidate = 1800;
 
 export default async function LevelIndexPage({ params }: Props) {
   const { slug } = await params;

@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { getAuthenticatedAdmin } from "@/lib/admin-auth";
 
 export const dynamic = "force-dynamic";
 
 // POST /api/admin/series/games/reorder
 export async function POST(request: NextRequest) {
+  if (!await getAuthenticatedAdmin()) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const body = await request.json();
   const { series_id, orders } = body;
   if (!series_id || !orders?.length) {

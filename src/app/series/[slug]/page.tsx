@@ -1,22 +1,23 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { cache } from "react";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { GameCard } from "@/components/games/GameCard";
+import { GameListItem } from "@/components/games/GameListItem";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
-import { SITE_URL } from "@/lib/constants";
-import type { Game } from "@/lib/types";
+import { MIN_INDEXABLE_SERIES_GAMES, SITE_URL } from "@/lib/constants";
+import { normalizePublicGameCards, PUBLIC_GAME_CARD_FIELDS } from "@/lib/discovery-data";
 
 interface Props {
   params: Promise<{ slug: string }>;
 }
 
-async function getSeries(slug: string) {
+const getSeries = cache(async (slug: string) => {
   const supabase = createAdminClient();
   const { data } = await supabase.from("series").select("*").eq("slug", slug).single();
   return data;
-}
+});
 
-async function getGames(slug: string) {
+const getGames = cache(async (slug: string) => {
   const supabase = createAdminClient();
   const { data: seriesData } = await supabase
     .from("series").select("id").eq("slug", slug).single();
@@ -35,24 +36,33 @@ async function getGames(slug: string) {
 
   const { data } = await supabase
     .from("games")
-    .select(`id, title, slug, thumbnail_url, view_count, play_count, categories:game_categories(category_id, categories:categories(*)), series:game_series(series_id, sort_order, series:series(*))`)
+    .select(PUBLIC_GAME_CARD_FIELDS)
     .eq("is_published", true)
     .in("id", gameIds);
 
-  return (data || []).sort((a: any, b: any) => (sortMap.get(a.id) || 0) - (sortMap.get(b.id) || 0)).map((g: any) => ({
-    ...g,
-    categories: g.categories?.filter((gc: any) => gc.categories).map((gc: any) => gc.categories) || [],
-    series: g.series?.filter((gs: any) => gs.series).map((gs: any) => gs.series) || [],
-  }));
+  return normalizePublicGameCards(data)
+    .sort((a, b) => (sortMap.get(a.id) || 0) - (sortMap.get(b.id) || 0));
+});
+
+export async function generateStaticParams() {
+  const { data } = await createAdminClient().from("series").select("slug").order("sort_order").limit(100);
+  return (data || []).map((series) => ({ slug: series.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const series = await getSeries(slug);
   if (!series) return { title: "Series Not Found" };
+  const games = await getGames(slug);
+  const isContentVerified = series.content_verified === true;
 
-  const title = series.meta_title || `${series.name} Game Series - Play All Games in Order`;
-  const description = series.meta_description || series.description || `Play the complete ${series.name} game series.`;
+  const title = isContentVerified && series.meta_title
+    ? series.meta_title
+    : `${series.name} Games in Order`;
+  const gameLabel = games.length === 1 ? "game" : "games";
+  const description = isContentVerified && (series.meta_description || series.description)
+    ? series.meta_description || series.description
+    : `Browse ${games.length} ${gameLabel} in the ${series.name} series in order.`;
 
    return {
      title,
@@ -60,10 +70,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
      alternates: {
        canonical: `/series/${slug}`,
      },
+     ...(games.length < MIN_INDEXABLE_SERIES_GAMES
+       ? { robots: { index: false, follow: true } }
+       : {}),
    };
 }
 
-export const revalidate = 120;
+export const revalidate = 1800;
 
 export default async function SeriesPage({ params }: Props) {
   const { slug } = await params;
@@ -71,6 +84,7 @@ export default async function SeriesPage({ params }: Props) {
   if (!series) notFound();
 
   const games = await getGames(slug);
+  const isContentVerified = series.content_verified === true;
 
   return (
     <div className="container mx-auto px-4 py-8 space-y-8">
@@ -82,39 +96,41 @@ export default async function SeriesPage({ params }: Props) {
         ]}
       />
 
-      {/* Games grid first — more intuitive */}
-      {games.length > 0 && (
-        <div>
-          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-9 gap-3 md:gap-4">
-            {games.map((game: Game, index: number) => (
-              <div key={game.id} className="relative">
-                <div className="absolute -top-2 -left-2 z-10 w-7 h-7 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs font-bold shadow">
-                  {index + 1}
-                </div>
-                <GameCard game={game} />
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* Title and description below the games */}
-      <div className="max-w-3xl space-y-4">
-        <h1 className="text-3xl font-bold">{series.name} Game Series</h1>
-        {series.description && (
-          <div className="text-muted-foreground leading-relaxed whitespace-pre-wrap">
+      <div className="max-w-3xl border-b pb-6">
+        <p className="mb-2 text-[10px] font-extrabold uppercase tracking-[0.14em] text-muted-foreground">Play in series order</p>
+        <h1 className="text-3xl font-black tracking-tight">{series.name} Game Series</h1>
+        {isContentVerified && series.description && (
+          <div className="mt-3 whitespace-pre-wrap leading-7 text-muted-foreground">
             {series.description}
           </div>
         )}
-        {series.meta_description && (
-          <p className="text-muted-foreground">{series.meta_description}</p>
+        {isContentVerified && series.meta_description && series.meta_description !== series.description && (
+          <p className="mt-3 text-muted-foreground">{series.meta_description}</p>
+        )}
+        {isContentVerified && series.source_url && (
+          <a
+            href={series.source_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 inline-flex text-xs font-semibold text-muted-foreground hover:text-foreground"
+          >
+            Editorial source
+          </a>
         )}
         {games.length > 0 && (
-          <p className="text-sm text-muted-foreground">
+          <p className="mt-3 text-sm text-muted-foreground">
             {games.length} game{games.length > 1 ? "s" : ""} in this series
           </p>
         )}
       </div>
+
+      {games.length > 0 && (
+        <div className="mx-auto max-w-5xl">
+          {games.map((game, index) => (
+            <GameListItem key={game.id} game={game} position={index + 1} eagerImage={index === 0} />
+          ))}
+        </div>
+      )}
 
       {games.length === 0 && (
         <div className="text-center py-12 text-muted-foreground">

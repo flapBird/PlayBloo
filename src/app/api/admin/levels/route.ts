@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { getAuthenticatedAdmin } from "@/lib/admin-auth";
 
 export const dynamic = "force-dynamic";
 
 // GET /api/admin/levels?game_id=xxx
 export async function GET(request: NextRequest) {
+  if (!await getAuthenticatedAdmin()) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const { searchParams } = new URL(request.url);
   const gameId = searchParams.get("game_id");
   if (!gameId) return NextResponse.json({ error: "Missing game_id" }, { status: 400 });
@@ -21,6 +23,7 @@ export async function GET(request: NextRequest) {
 
 // POST /api/admin/levels
 export async function POST(request: NextRequest) {
+  if (!await getAuthenticatedAdmin()) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const body = await request.json();
   const supabase = createAdminClient();
   const { error } = await supabase.from("game_levels").insert([body]).select().single();
@@ -30,6 +33,7 @@ export async function POST(request: NextRequest) {
 
 // PUT /api/admin/levels
 export async function PUT(request: NextRequest) {
+  if (!await getAuthenticatedAdmin()) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const body = await request.json();
   const { id, ...updates } = body;
   if (!id) return NextResponse.json({ error: "Missing id" }, { status: 400 });
@@ -42,6 +46,7 @@ export async function PUT(request: NextRequest) {
 
 // DELETE /api/admin/levels?id=xxx
 export async function DELETE(request: NextRequest) {
+  if (!await getAuthenticatedAdmin()) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const { searchParams } = new URL(request.url);
   const id = searchParams.get("id");
   if (!id) return NextResponse.json({ error: "Missing id" }, { status: 400 });

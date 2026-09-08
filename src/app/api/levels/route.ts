@@ -35,11 +35,12 @@ export async function GET(request: NextRequest) {
   const { data, count } = await query.range(from, to);
 
   // Flatten games slug into level result
-  const flattened = (data || []).map((l: any) => {
-    const { games, ...rest } = l;
+  const flattened = (data || []).map((level) => {
+    const { games, ...rest } = level;
+    const relatedGame = Array.isArray(games) ? games[0] : games;
     return {
       ...rest,
-      game_slug: games?.slug || "",
+      game_slug: relatedGame?.slug || "",
     };
   });
 

@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
+import { cache } from "react";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
@@ -12,7 +14,20 @@ interface Props {
   params: Promise<{ slug: string; levelSlug: string }>;
 }
 
-async function getGame(slug: string) {
+export async function generateStaticParams() {
+  const { data } = await createAdminClient()
+    .from("game_levels")
+    .select("slug, games!inner(slug, is_published)")
+    .eq("is_published", true)
+    .eq("games.is_published", true)
+    .limit(100);
+  return ((data || []) as Array<{ slug: string; games: { slug: string } | Array<{ slug: string }> }>).flatMap((level) => {
+    const game = Array.isArray(level.games) ? level.games[0] : level.games;
+    return game?.slug ? [{ slug: game.slug, levelSlug: level.slug }] : [];
+  });
+}
+
+const getGame = cache(async (slug: string) => {
   const supabase = createAdminClient();
   const { data } = await supabase
     .from("games")
@@ -20,9 +35,9 @@ async function getGame(slug: string) {
     .eq("slug", slug)
     .single();
   return data;
-}
+});
 
-async function getLevel(levelSlug: string) {
+const getLevel = cache(async (levelSlug: string) => {
   const supabase = createAdminClient();
   const { data } = await supabase
     .from("game_levels")
@@ -31,7 +46,7 @@ async function getLevel(levelSlug: string) {
     .eq("is_published", true)
     .single();
   return data;
-}
+});
 
 async function getAdjacentLevels(gameId: string, currentNumber: number) {
   const supabase = createAdminClient();
@@ -74,7 +89,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export const dynamic = "force-dynamic";
+export const revalidate = 1800;
 
 export default async function LevelPage({ params }: Props) {
   const { slug, levelSlug } = await params;
@@ -85,15 +100,6 @@ export default async function LevelPage({ params }: Props) {
   if (!level) notFound();
 
   const adjacent = await getAdjacentLevels(game.id, level.level_number);
-
-  // Increment view count
-  try {
-    const supabase = createAdminClient();
-    await supabase
-      .from("game_levels")
-      .update({ view_count: level.view_count + 1 })
-      .eq("id", level.id);
-  } catch {}
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
@@ -135,7 +141,7 @@ export default async function LevelPage({ params }: Props) {
 
       {/* Tips — above video */}
       {level.tips && (
-        <div className="text-muted-foreground leading-relaxed whitespace-pre-wrap text-center bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6">
+        <div className="text-amber-100/80 leading-relaxed whitespace-pre-wrap text-center bg-amber-500/10 border border-amber-400/25 rounded-xl p-4 mb-6">
           {level.tips}
         </div>
       )}
@@ -163,9 +169,12 @@ export default async function LevelPage({ params }: Props) {
           {/* Thumbnail — only if no video */}
           {!level.video_url && level.thumbnail_url && (
             <div className="rounded-xl overflow-hidden border">
-              <img
+              <Image
                 src={level.thumbnail_url}
                 alt={level.title}
+                width={1200}
+                height={675}
+                unoptimized
                 className="w-full object-cover"
               />
             </div>
@@ -202,7 +211,7 @@ export default async function LevelPage({ params }: Props) {
           <div className="rounded-xl border p-4 space-y-3">
             <h3 className="font-semibold text-sm">About {game.title}</h3>
             {game.thumbnail_url && (
-              <img src={game.thumbnail_url} alt={game.title} className="w-full rounded-lg" />
+              <Image src={game.thumbnail_url} alt={game.title} width={640} height={360} unoptimized className="w-full rounded-lg" />
             )}
             {game.description && (
               <p className="text-xs text-muted-foreground line-clamp-3">{game.description}</p>

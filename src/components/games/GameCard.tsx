@@ -1,67 +1,102 @@
-import Link from "next/link";
 import Image from "next/image";
-import { Eye, Play } from "lucide-react";
-import type { Game } from "@/lib/types";
+import Link from "next/link";
+import { Eye, ExternalLink, Gamepad2, Play } from "lucide-react";
+import { getDiscoveryStatusBadge, getGamePlayMode, shouldBypassImageOptimization } from "@/lib/game-utils";
+import type { Category, Game } from "@/lib/types";
 
-type GameCardGame = Pick<Game, "id" | "title" | "slug" | "thumbnail_url" | "view_count">;
+export type GameCardGame = Pick<Game, "id" | "title" | "slug" | "thumbnail_url" | "view_count"> &
+  Partial<Pick<Game, "play_count" | "iframe_url" | "external_url" | "original_game_url" | "is_trending" | "hot_score" | "created_at" | "updated_at" | "added_at" | "release_date" | "last_updated_at" | "description" | "short_description" | "content_verified">> &
+  { categories?: Array<Pick<Category, "id" | "name" | "slug">> };
 
 interface GameCardProps {
   game: GameCardGame;
-  showCategory?: boolean;
+  badges?: string[];
+  showDate?: boolean;
+  dateField?: "added" | "released" | "updated";
+  eagerImage?: boolean;
 }
 
-export function GameCard({ game }: GameCardProps) {
+function formatCount(value: number | undefined): string {
+  return new Intl.NumberFormat("en", { notation: "compact", maximumFractionDigits: 1 }).format(value || 0);
+}
+
+export function GameCard({ game, badges = [], showDate = false, dateField = "added", eagerImage = false }: GameCardProps) {
+  const playMode = getGamePlayMode({
+    iframe_url: game.iframe_url || null,
+    external_url: game.external_url || null,
+    original_game_url: game.original_game_url || null,
+  });
+  const modeBadge = playMode === "embedded" ? "PLAY HERE" : playMode === "external" ? "EXTERNAL" : null;
+  const statusBadge = getDiscoveryStatusBadge(game);
+  const priority = ["TRENDING", "NEW", "UPDATED", "PLAY HERE", "EXTERNAL"];
+  const requested = [...new Set([...badges, ...(statusBadge ? [statusBadge] : []), ...(modeBadge ? [modeBadge] : [])])];
+  const visibleBadges = requested.sort((a, b) => priority.indexOf(a) - priority.indexOf(b)).slice(0, 3);
+  const primaryCategory = game.categories?.[0];
+  const rawDate = dateField === "released" ? game.release_date : dateField === "updated" ? game.last_updated_at : game.added_at || game.created_at;
+  const dateValue = rawDate ? new Date(rawDate) : null;
+
   return (
-    <Link
-      href={`/game/${game.slug}`}
-      prefetch={false}
-      aria-label={`Play ${game.title}`}
-      className="game-card group block"
-    >
-      <div className="game-card-media relative aspect-square overflow-hidden rounded-2xl bg-muted">
-        {/* Game thumbnail */}
-        <div className="absolute inset-0 overflow-hidden">
+    <article className="game-card group relative min-w-0">
+      <div className="game-card-media relative aspect-[16/10] overflow-hidden rounded-xl bg-muted">
+        <Link href={`/game/${game.slug}`} prefetch={false} aria-label={`View ${game.title}`} className="absolute inset-0">
           {game.thumbnail_url ? (
             <Image
               src={game.thumbnail_url}
               alt=""
               fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
-              sizes="(max-width: 640px) 33vw, (max-width: 768px) 25vw, (max-width: 1024px) 20vw, (max-width: 1280px) 16vw, 12vw"
+              loading={eagerImage ? "eager" : "lazy"}
+              unoptimized={shouldBypassImageOptimization(game.thumbnail_url)}
+              className="object-cover transition-opacity duration-200 group-hover:opacity-90"
+              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 20vw, 16vw"
             />
           ) : (
-            <div className="flex items-center justify-center h-full">
-              <Play className="h-8 w-8 text-muted-foreground/30" />
-            </div>
+            <span className="flex h-full items-center justify-center bg-gradient-to-br from-slate-900 to-slate-800">
+              <Gamepad2 className="h-9 w-9 text-primary/25" />
+            </span>
           )}
-        </div>
+        </Link>
 
-        {/* Subtle bottom fade for readability */}
-        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
-
-        {/* View count badge */}
-        <div className="absolute top-2 left-2 z-10">
-          <span className="inline-flex items-center gap-1 rounded-md border border-white/10 bg-black/45 px-1.5 py-0.5 text-[10px] font-medium text-white/90 backdrop-blur-md">
-            <Eye className="h-2.5 w-2.5" aria-hidden="true" />
-            {game.view_count.toLocaleString()}
-          </span>
-        </div>
-
-        {/* Play button on hover */}
-        <div className="absolute inset-0 flex items-center justify-center z-10 opacity-0 group-hover:opacity-100 transition-all duration-200">
-          <div className="game-card-play flex h-10 w-10 items-center justify-center rounded-full bg-white/90 shadow-lg backdrop-blur-sm">
-            <Play className="h-4 w-4 text-primary fill-primary ml-0.5" />
+        {visibleBadges.length > 0 && (
+          <div className="absolute left-2 top-2 z-10 flex max-w-[calc(100%-3rem)] flex-wrap gap-1">
+            {visibleBadges.map((badge) => (
+              <span
+                key={badge}
+                className={`rounded-md border px-1.5 py-0.5 text-[9px] font-bold tracking-wide ${
+                  badge === "PLAY HERE" ? "border-emerald-500/35 bg-emerald-500/20 text-emerald-300" : badge === "EXTERNAL" ? "border-slate-500/35 bg-slate-900/80 text-slate-300" : badge === "TRENDING" ? "border-amber-500/35 bg-amber-500/20 text-amber-300" : "border-indigo-400/35 bg-indigo-500/20 text-indigo-200"
+                }`}
+              >
+                {badge}
+              </span>
+            ))}
           </div>
-        </div>
+        )}
 
-        {/* Ring on hover */}
-        <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-black/5 group-hover:ring-primary/20 transition-all duration-300 pointer-events-none" />
       </div>
 
-      {/* Title below card */}
-      <p className="mt-2.5 line-clamp-2 text-left text-xs font-bold leading-snug text-foreground transition-colors group-hover:text-primary">
-        {game.title}
-      </p>
-    </Link>
+      <div className="pt-2">
+        <Link href={`/game/${game.slug}`} prefetch={false} className="block">
+          <h3 className="line-clamp-2 text-[13px] font-bold leading-snug text-foreground transition-colors group-hover:text-primary sm:text-sm">{game.title}</h3>
+        </Link>
+        <div className="mt-1 flex min-w-0 items-center gap-2 text-[10px] text-muted-foreground sm:text-[11px]">
+          <span className="truncate">{primaryCategory?.name || (playMode === "unavailable" ? "Details only" : "Browser game")}</span>
+          <span aria-hidden="true">·</span>
+          <span className="inline-flex shrink-0 items-center gap-1"><Eye className="h-3 w-3" />{formatCount(game.view_count)}</span>
+          {showDate && dateValue ? (
+            <><span aria-hidden="true">·</span><time className="shrink-0" dateTime={rawDate || undefined}>{dateValue.toLocaleDateString("en", { month: "short", day: "numeric" })}</time></>
+          ) : (
+            <><span aria-hidden="true">·</span><span className="shrink-0">{formatCount(game.play_count)} plays</span></>
+          )}
+        </div>
+        <Link href={`/game/${game.slug}`} prefetch={false} className="mt-1.5 inline-flex items-center gap-1 text-[11px] font-semibold text-muted-foreground transition-colors hover:text-primary">
+          {playMode === "embedded" ? (
+            <><Play className="h-3 w-3 fill-current" /> Play Now</>
+          ) : playMode === "external" ? (
+            <><ExternalLink className="h-3 w-3" /> View Game</>
+          ) : (
+            "View Details"
+          )}
+        </Link>
+      </div>
+    </article>
   );
 }

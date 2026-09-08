@@ -1,17 +1,19 @@
 import { redirect } from "next/navigation";
+import type { Metadata } from "next";
 import Link from "next/link";
-import { createServerSupabaseClient } from "@/lib/supabase/server";
-import { createAdminClient } from "@/lib/supabase/admin";
+import { getAuthenticatedAdmin } from "@/lib/admin-auth";
 import { SITE_NAME } from "@/lib/constants";
 import {
   LayoutDashboard, Gamepad2, Tags, ListTree, FolderTree, Search,
-  FileSpreadsheet, ExternalLink, LogOut
+  FileSpreadsheet, ExternalLink, Inbox
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+
+export const metadata: Metadata = { robots: { index: false, follow: false } };
 
 const adminNav = [
   { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
   { label: "Games", href: "/admin/games", icon: Gamepad2 },
+  { label: "Submissions", href: "/admin/submissions", icon: Inbox },
   { label: "Categories", href: "/admin/categories", icon: FolderTree },
   { label: "Tags", href: "/admin/tags", icon: Tags },
   { label: "Series", href: "/admin/series", icon: ListTree },
@@ -20,35 +22,8 @@ const adminNav = [
 ];
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
-  // Check authentication
-  let isAuthenticated = false;
-  let userEmail = "";
-
-  try {
-    const supabase = await createServerSupabaseClient();
-    const { data: { session } } = await supabase.auth.getSession();
-
-    if (session?.user?.email) {
-      // Use admin client (service_role) to bypass RLS on admin_users
-      const adminSupabase = createAdminClient();
-      const { data: adminUser } = await adminSupabase
-        .from("admin_users")
-        .select("id, display_name, role")
-        .eq("email", session.user.email)
-        .eq("is_active", true)
-        .maybeSingle();
-
-      if (adminUser) {
-        isAuthenticated = true;
-        userEmail = session.user.email;
-      }
-    }
-  } catch {}
-
-  // Not authenticated — redirect to login
-  if (!isAuthenticated) {
-    redirect("/admin/login");
-  }
+  const admin = await getAuthenticatedAdmin();
+  if (!admin) redirect("/admin/login");
 
   return (
     <div className="min-h-screen bg-background">
@@ -59,7 +34,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
             <Link href="/admin" className="font-black text-lg tracking-tight">{SITE_NAME} Admin</Link>
           </div>
           <div className="flex items-center gap-3">
-            <span className="text-xs text-muted-foreground hidden sm:block">{userEmail}</span>
+            <span className="text-xs text-muted-foreground hidden sm:block">{admin.email}</span>
             <Link
               href="/"
               className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors"

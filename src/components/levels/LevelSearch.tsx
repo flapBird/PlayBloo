@@ -76,7 +76,7 @@ export function LevelSearch({ gameId, gameSlug }: Props) {
           onChange={e => setQ(e.target.value)}
           onFocus={() => { if (results.length > 0) setShowDropdown(true); }}
           placeholder="Search levels by number or keyword (e.g. Level 666, tips, walkthrough)..."
-          className="pl-10 pr-10 h-11 text-base bg-white border-amber-400 shadow-sm focus-visible:ring-amber-400"
+          className="pl-10 pr-10 h-11 text-base bg-card border-amber-400/60 shadow-sm focus-visible:ring-amber-400"
         />
         {loading && (
           <Loader2 className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 animate-spin text-muted-foreground" />

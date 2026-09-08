@@ -11,6 +11,16 @@ const CSV_TEMPLATE_HEADERS = [
   "cover_url",
   "iframe_url",
   "external_url",
+  "original_game_url",
+  "developer",
+  "publisher",
+  "developer_url",
+  "steam_url",
+  "itch_url",
+  "source_type",
+  "source_url",
+  "last_verified_at",
+  "sources_json",
   "description",
   "how_to_play",
   "controls",
@@ -20,6 +30,7 @@ const CSV_TEMPLATE_HEADERS = [
   "is_published",
   "is_featured",
   "is_trending",
+  "content_verified",
   "categories",
 ];
 
@@ -30,15 +41,26 @@ const CSV_TEMPLATE_EXAMPLE = [
   "",
   "https://example.com/game.html",
   "",
-  '"A fast-paced racing game with cool cars and tracks."',
-  '"Use arrow keys to steer, space to boost."',
-  '"Arrow Keys = Move, Space = Boost"',
-  '"Collect coins for extra points!"',
-  '"5 unique tracks, 10 cars, online leaderboard"',
+  "https://developer.example/game",
+  "Example Studio",
+  "Example Publisher",
+  "https://developer.example",
+  "",
+  "",
+  "Developer",
+  "https://developer.example/game",
+  "2026-08-29",
+  '"[]"',
+  '"Source-backed description only."',
+  "",
+  "",
+  "",
+  "",
   "2025-01-15",
+  "false",
+  "false",
+  "false",
   "true",
-  "false",
-  "false",
   '"Action, Racing"',
 ];
 
@@ -87,13 +109,23 @@ export default function AdminImport() {
       const row: Record<string, string> = {};
       headers.forEach((h, idx) => { row[h] = values[idx] || ""; });
 
-      const gameData: Record<string, any> = {
+      const gameData: Record<string, unknown> = {
         title: row.title,
         slug: row.slug,
         thumbnail_url: row.thumbnail_url || row.thumbnail || null,
         cover_url: row.cover_url || null,
         iframe_url: row.iframe_url || null,
         external_url: row.external_url || null,
+        original_game_url: row.original_game_url || null,
+        developer: row.developer || null,
+        publisher: row.publisher || null,
+        developer_url: row.developer_url || null,
+        steam_url: row.steam_url || null,
+        itch_url: row.itch_url || null,
+        source_type: row.source_type || null,
+        source_url: row.source_url || null,
+        last_verified_at: row.last_verified_at || null,
+        sources: (() => { try { const value = JSON.parse(row.sources_json || "[]"); return Array.isArray(value) ? value : []; } catch { return []; } })(),
         description: row.description || null,
         how_to_play: row.how_to_play || null,
         controls: row.controls || null,
@@ -103,6 +135,7 @@ export default function AdminImport() {
         is_published: row.is_published?.toLowerCase() === "true",
         is_featured: row.is_featured?.toLowerCase() === "true",
         is_trending: row.is_trending?.toLowerCase() === "true",
+        content_verified: row.content_verified?.toLowerCase() === "true",
       };
 
       // Parse categories as comma-separated inside quotes: "Action,Racing"
@@ -128,8 +161,8 @@ export default function AdminImport() {
           const err = await res.json().catch(() => ({}));
           errors.push(`Row ${i + 1}: ${err?.error || "Unknown error"}`);
         }
-      } catch (err: any) {
-        errors.push(`Row ${i + 1}: ${err.message}`);
+      } catch (err: unknown) {
+        errors.push(`Row ${i + 1}: ${err instanceof Error ? err.message : "Import failed"}`);
       }
     }
 
