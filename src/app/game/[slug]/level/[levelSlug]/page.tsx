@@ -31,17 +31,19 @@ const getGame = cache(async (slug: string) => {
   const supabase = createAdminClient();
   const { data } = await supabase
     .from("games")
-    .select("id, title, slug, thumbnail_url, iframe_url, description, how_to_play, controls, tips, features")
+    .select("id, title, slug, thumbnail_url, iframe_url, content_verified, description, how_to_play, controls, tips, features")
     .eq("slug", slug)
+    .eq("is_published", true)
     .single();
   return data;
 });
 
-const getLevel = cache(async (levelSlug: string) => {
+const getLevel = cache(async (gameId: string, levelSlug: string) => {
   const supabase = createAdminClient();
   const { data } = await supabase
     .from("game_levels")
     .select("*")
+    .eq("game_id", gameId)
     .eq("slug", levelSlug)
     .eq("is_published", true)
     .single();
@@ -77,7 +79,9 @@ async function getAdjacentLevels(gameId: string, currentNumber: number) {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
    const { slug, levelSlug } = await params;
-  const level = await getLevel(levelSlug);
+  const game = await getGame(slug);
+  if (!game) return { title: "Game Not Found" };
+  const level = await getLevel(game.id, levelSlug);
   if (!level) return { title: "Level Not Found" };
 
   return {
@@ -96,7 +100,7 @@ export default async function LevelPage({ params }: Props) {
   const game = await getGame(slug);
   if (!game) notFound();
 
-  const level = await getLevel(levelSlug);
+  const level = await getLevel(game.id, levelSlug);
   if (!level) notFound();
 
   const adjacent = await getAdjacentLevels(game.id, level.level_number);
@@ -111,8 +115,8 @@ export default async function LevelPage({ params }: Props) {
         ]}
       />
       {/* Breadcrumb + Level Index */}
-      <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+      <div className="mb-6 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex min-w-0 flex-wrap items-center gap-2 text-sm text-muted-foreground">
           <Link href="/" className="hover:text-foreground">Home</Link>
           <span>/</span>
           <Link href={`/game/${game.slug}`} className="hover:text-foreground">{game.title}</Link>
@@ -135,7 +139,7 @@ export default async function LevelPage({ params }: Props) {
           <Badge variant="outline">Walkthrough</Badge>
         </div>
         <h1 className="text-3xl md:text-4xl font-black tracking-tight">
-          {level.title}
+          {level.content || level.tips ? level.title : `${game.title} — Level ${level.level_number}${level.video_url ? " Video Walkthrough" : ""}`}
         </h1>
       </div>
 
@@ -160,6 +164,7 @@ export default async function LevelPage({ params }: Props) {
               />
             </div>
           </div>
+          <a href={level.video_url} target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex min-h-11 items-center text-sm font-bold text-primary underline underline-offset-4">Open video in a new tab</a>
         </section>
       )}
 
@@ -188,6 +193,8 @@ export default async function LevelPage({ params }: Props) {
             </section>
           )}
 
+          {!level.content && !level.tips && <section className="rounded-xl border p-4"><h2 className="font-bold">About this walkthrough</h2><p className="mt-2 text-sm text-muted-foreground">Written steps for Level {level.level_number} are not available yet.{level.video_url ? " Use the video above, or open it in a new tab if the player does not load." : " Browse other levels or return to the game page."}</p></section>}
+          {game.content_verified && game.how_to_play && <section><h2 className="mb-3 text-xl font-bold">General game instructions</h2><p className="mb-3 text-sm text-muted-foreground">These instructions apply to the game overall, rather than this specific level.</p><div className="whitespace-pre-wrap text-sm leading-6 text-muted-foreground">{game.how_to_play}</div></section>}
           {/* Play the game */}
           <section className="rounded-xl border bg-card p-6">
             <h2 className="text-lg font-bold mb-3 flex items-center gap-2">
@@ -195,13 +202,9 @@ export default async function LevelPage({ params }: Props) {
               Play {game.title}
             </h2>
             <p className="text-sm text-muted-foreground mb-4">
-              Read the walkthrough and ready to play? Jump into the game now.
+              Return to the game page to start playing.
             </p>
-            <Link href={`/game/${game.slug}`}>
-              <Button>
-                Play {game.title}
-              </Button>
-            </Link>
+            <Button asChild><Link href={`/game/${game.slug}`}>View game</Link></Button>
           </section>
         </div>
 
@@ -213,7 +216,7 @@ export default async function LevelPage({ params }: Props) {
             {game.thumbnail_url && (
               <Image src={game.thumbnail_url} alt={game.title} width={640} height={360} unoptimized className="w-full rounded-lg" />
             )}
-            {game.description && (
+            {game.content_verified && game.description && (
               <p className="text-xs text-muted-foreground line-clamp-3">{game.description}</p>
             )}
             <Link href={`/game/${game.slug}`} className="text-sm text-primary hover:underline block">

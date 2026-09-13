@@ -41,6 +41,7 @@ export function HomeLibraryPanel() {
   const [recent, setRecent] = useState<RecentPlayRecord[]>([]);
   const [favorites, setFavorites] = useState<GameCardGame[]>([]);
   const sequence = useRef(0);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     let active = true;
@@ -64,9 +65,11 @@ export function HomeLibraryPanel() {
     };
     void sync();
     window.addEventListener(LIBRARY_CHANGE_EVENT, sync);
+    window.addEventListener("storage", sync);
     return () => {
       active = false;
       window.removeEventListener(LIBRARY_CHANGE_EVENT, sync);
+      window.removeEventListener("storage", sync);
     };
   }, []);
 
@@ -85,6 +88,7 @@ export function HomeLibraryPanel() {
         </Link>
       </div>
 
+      {error && <p role="alert" className="mt-3 text-sm text-red-300">{error}</p>}
       <div className="mt-4 grid gap-5 lg:grid-cols-2 lg:gap-8">
         {recent.length > 0 && (
           <div className={favorites.length ? "" : "lg:col-span-2"}>
@@ -99,7 +103,7 @@ export function HomeLibraryPanel() {
                       <Link href={`/game/${game.slug}`} prefetch={false} className="block truncate text-xs font-bold group-hover:text-primary">{game.title}</Link>
                       <span className="mt-0.5 block text-[10px] text-muted-foreground">{relativeTime(item.lastPlayedAt)}</span>
                     </div>
-                    <button type="button" onClick={() => removePlayRecord(item.gameId)} aria-label={`Remove ${game.title} from recently played`} className="grid h-7 w-7 shrink-0 place-items-center rounded-md text-muted-foreground opacity-60 hover:bg-background hover:text-foreground sm:opacity-0 sm:group-hover:opacity-100 sm:focus-visible:opacity-100"><X className="h-3.5 w-3.5" /></button>
+                    <button type="button" onClick={() => { if (!removePlayRecord(item.gameId)) setError("Could not update history. Please try again."); }} aria-label={`Remove ${game.title} from recently played`} className="grid h-7 w-7 shrink-0 place-items-center rounded-md text-muted-foreground opacity-60 hover:bg-background hover:text-foreground sm:opacity-0 sm:group-hover:opacity-100 sm:focus-visible:opacity-100"><X className="h-3.5 w-3.5" /></button>
                   </article>
                 );
               })}
@@ -118,7 +122,7 @@ export function HomeLibraryPanel() {
                     <Link href={`/game/${game.slug}`} prefetch={false} className="block truncate text-xs font-bold group-hover:text-primary">{game.title}</Link>
                     <Link href={`/game/${game.slug}`} prefetch={false} className="mt-0.5 inline-flex items-center gap-1 text-[10px] font-semibold text-muted-foreground hover:text-primary"><Play className="h-2.5 w-2.5" />Open game</Link>
                   </div>
-                  <button type="button" onClick={() => toggleFavorite(game.id)} aria-label={`Remove ${game.title} from favorites`} className="grid h-7 w-7 shrink-0 place-items-center rounded-md text-rose-400 opacity-70 hover:bg-background sm:opacity-0 sm:group-hover:opacity-100 sm:focus-visible:opacity-100"><X className="h-3.5 w-3.5" /></button>
+                  <button type="button" onClick={() => { try { toggleFavorite(game.id); setError(""); } catch { setError("Could not save favorites. Please try again."); } }} aria-label={`Remove ${game.title} from favorites`} className="grid h-7 w-7 shrink-0 place-items-center rounded-md text-rose-400 opacity-70 hover:bg-background sm:opacity-0 sm:group-hover:opacity-100 sm:focus-visible:opacity-100"><X className="h-3.5 w-3.5" /></button>
                 </article>
               ))}
             </div>

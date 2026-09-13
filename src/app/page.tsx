@@ -15,7 +15,7 @@ import { createAdminClient } from "@/lib/supabase/admin";
 import { GameListItem } from "@/components/games/GameListItem";
 import type { GameCardGame } from "@/components/games/GameCard";
 import { HomeLibraryPanel } from "@/components/home/HomeLibraryPanel";
-import { normalizePublicGameCards, PUBLIC_GAME_CARD_FIELDS, PUBLIC_GAME_DISCOVERY_FIELDS, rankHiddenGems } from "@/lib/discovery-data";
+import { normalizePublicGameCards, LEGACY_GAME_CARD_FIELDS, PUBLIC_GAME_DISCOVERY_FIELDS, rankHiddenGems } from "@/lib/discovery-data";
 
 export const revalidate = 300;
 
@@ -51,7 +51,7 @@ async function getHomeContent(): Promise<HomeContent> {
     if (advancedResult.error) {
       const fallbackResult = await supabase
         .from("games")
-        .select(PUBLIC_GAME_CARD_FIELDS)
+        .select(LEGACY_GAME_CARD_FIELDS)
         .eq("is_published", true)
         .order("created_at", { ascending: false })
         .limit(60);
@@ -122,8 +122,9 @@ function DiscoverySignal({
   dateField?: "release_date" | "last_updated_at";
   emptyText: string;
 }) {
+  if (!games.length) return null;
   return (
-    <section className="min-w-0 border-t pt-4 md:border-l md:border-t-0 md:pl-5 md:pt-0">
+    <section className="min-w-0">
       <div className="flex items-start justify-between gap-3">
         <div>
           <h2 className="text-sm font-extrabold tracking-tight">{title}</h2>
@@ -209,7 +210,7 @@ export default async function HomePage() {
               Discover what&apos;s new. <span className="text-primary">Play instantly.</span>
             </h1>
             <p className="mt-2 max-w-xl text-sm leading-6 text-muted-foreground">
-              A focused feed of new, updated and playable browser games—with source-backed details where they have been verified.
+              Find a browser game and start playing. No download required.
             </p>
           </div>
           <Link href="/search" className="inline-flex shrink-0 items-center gap-2 self-start rounded-lg border bg-card px-4 py-2.5 text-sm font-bold transition-colors hover:border-primary/50 hover:text-primary md:self-auto">
@@ -217,17 +218,16 @@ export default async function HomePage() {
           </Link>
         </section>
 
-        <HomeLibraryPanel />
 
         <nav aria-label="Game feed" className="discovery-toolbar mt-7">
-          <div className="discovery-tabs" role="list">
-            <Link href="/" className="is-active" role="listitem">New</Link>
-            <Link href="/search?sort=trending" role="listitem"><Flame className="h-3.5 w-3.5" />Trending</Link>
-            <Link href="/search?sort=released" role="listitem"><CalendarDays className="h-3.5 w-3.5" />Released</Link>
-            {updated.length > 0 && <Link href="/search?sort=recently-updated" role="listitem"><Clock3 className="h-3.5 w-3.5" />Updated</Link>}
-            <Link href="/search?sort=popular" role="listitem">Popular</Link>
-            <Link href="/search?sort=hidden-gems" role="listitem">Hidden Gems</Link>
-            <Link href="/search?playMode=embedded" role="listitem"><Sparkles className="h-3.5 w-3.5" />Playable Here</Link>
+          <div className="discovery-tabs">
+            <Link href="/" className="is-active" aria-current="page">New</Link>
+            <Link href="/search?sort=trending"><Flame className="h-3.5 w-3.5" />Trending</Link>
+            <Link href="/search?sort=released"><CalendarDays className="h-3.5 w-3.5" />Released</Link>
+            {updated.length > 0 && <Link href="/search?sort=recently-updated"><Clock3 className="h-3.5 w-3.5" />Updated</Link>}
+            <Link href="/search?sort=popular">Popular</Link>
+            <Link href="/search?sort=hidden-gems">Hidden Gems</Link>
+            <Link href="/search?playMode=embedded"><Sparkles className="h-3.5 w-3.5" />Playable Here</Link>
           </div>
           <div className="discovery-tools flex shrink-0 items-center gap-2">
             <Link href="/search" className="discovery-tool-button"><SlidersHorizontal className="h-4 w-4" />Filters</Link>
@@ -236,34 +236,8 @@ export default async function HomePage() {
           </div>
         </nav>
 
-        <div className="mt-5 grid gap-4 rounded-xl border bg-card/40 p-4 md:grid-cols-3 md:gap-0 md:p-5">
-          <DiscoverySignal
-            title="Recently released"
-            detail="Ordered by the game’s real release date"
-            games={released}
-            href="/search?sort=released"
-            dateField="release_date"
-            emptyText="Release dates will appear after they are sourced."
-          />
-          <DiscoverySignal
-            title="Recently updated"
-            detail="Only verified game update dates"
-            games={updated}
-            href="/search?sort=recently-updated"
-            dateField="last_updated_at"
-            emptyText="No verified game updates have been recorded yet."
-          />
-          <DiscoverySignal
-            title="Hidden gems"
-            detail="Lower visibility with a stronger play rate"
-            games={hiddenGems}
-            href="/search?sort=hidden-gems"
-            emptyText="More play activity is needed to surface hidden gems."
-          />
-        </div>
-
         <div className="mt-5 grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_290px] xl:gap-12">
-          <main className="min-w-0" aria-label="Newest games">
+          <section className="min-w-0" aria-label="Newest games">
             {feed.length ? (
               <div className="discovery-list">
                 {feed.map((game, index) => (
@@ -289,9 +263,35 @@ export default async function HomePage() {
                 </Link>
               </div>
             )}
-          </main>
+          </section>
 
           <aside className="space-y-5 lg:sticky lg:top-24">
+            <div className="grid gap-5 rounded-xl border bg-card/40 p-4">
+              <DiscoverySignal
+                title="Recently released"
+                detail="Ordered by the game’s real release date"
+                games={released}
+                href="/search?sort=released"
+                dateField="release_date"
+                emptyText="Release dates will appear after they are sourced."
+              />
+              <DiscoverySignal
+                title="Recently updated"
+                detail="Only verified game update dates"
+                games={updated}
+                href="/search?sort=recently-updated"
+                dateField="last_updated_at"
+                emptyText="No verified game updates have been recorded yet."
+              />
+              <DiscoverySignal
+                title="Hidden gems"
+                detail="Lower visibility with a stronger play rate"
+                games={hiddenGems}
+                href="/search?sort=hidden-gems"
+                emptyText="More play activity is needed to surface hidden gems."
+              />
+            </div>
+
             <CompactRanking title="Trending now" eyebrow="Popular this moment" games={trending} href="/search?sort=trending" />
             <CompactRanking title="Play instantly" eyebrow="No download required" games={playable} href="/search?playMode=embedded" />
             <Link href="/category" className="flex items-center justify-between rounded-lg border px-4 py-3 text-sm font-bold text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary">
@@ -299,6 +299,7 @@ export default async function HomePage() {
             </Link>
           </aside>
         </div>
+        <HomeLibraryPanel />
       </div>
     </div>
   );

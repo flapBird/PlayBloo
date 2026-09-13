@@ -8,7 +8,7 @@ import { GameCard, type GameCardGame } from "@/components/games/GameCard";
 import { GameListItem } from "@/components/games/GameListItem";
 import { ActiveFilterChips, SearchFilterPanel, type FilterOptions, type PublicSearchFilters } from "@/components/search/SearchFilterPanel";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
-import { MIN_INDEXABLE_CATEGORY_GAMES, PAGE_SIZE, SITE_URL } from "@/lib/constants";
+import { PAGE_SIZE, SITE_URL } from "@/lib/constants";
 
 interface Props { searchParams: Promise<{ q?: string; sort?: string; page?: string; category?: string; playMode?: string; platform?: string; price?: string; status?: string; view?: string }> }
 interface SearchOptionGame { platforms: string[] | null; monetization: string | null; development_status: string | null; release_date: string | null; last_updated_at: string | null }
@@ -44,7 +44,7 @@ async function findMatches(q: string) {
   for (const item of [...(categoryGames.data || []), ...(tagGames.data || [])]) ids.add(item.game_id); return ids;
 }
 
-async function searchGames(filters: PublicSearchFilters): Promise<{ games: GameCardGame[]; total: number }> {
+async function searchGames(filters: PublicSearchFilters): Promise<{ games: GameCardGame[]; total: number; failed?: boolean }> {
   const supabase = createAdminClient(); let ids = await findMatches(filters.q);
   if (filters.category) { const { data } = await supabase.from("game_categories").select("game_id").eq("category_id", filters.category).limit(1000); const categoryIds = new Set((data || []).map((v) => v.game_id)); ids = ids === null ? categoryIds : new Set([...ids].filter((id) => categoryIds.has(id))); }
   if (ids && !ids.size) return { games: [], total: 0 };
@@ -61,26 +61,30 @@ async function searchGames(filters: PublicSearchFilters): Promise<{ games: GameC
     const { data, error } = await query.order("view_count", { ascending: true }).limit(500);
     if (error) {
       console.error("Hidden gems query failed:", error.message);
-      return { games: [], total: 0 };
+      return { games: [], total: 0, failed: true };
     }
     const ranked = rankHiddenGems(normalizePublicGameCards(data));
     const from = (filters.page - 1) * PAGE_SIZE;
     return { games: ranked.slice(from, from + PAGE_SIZE), total: ranked.length };
   }
-  if (filters.sort === "released") query = query.not("release_date", "is", null).order("release_date", { ascending: false });
+  if (filters.sort === "released") query = query.not("release_date", "is", null).lte("release_date", new Date().toISOString().slice(0, 10)).order("release_date", { ascending: false });
   else if (filters.sort === "recently-updated") query = query.not("last_updated_at", "is", null).order("last_updated_at", { ascending: false });
   else if (filters.sort === "trending") query = query.order("hot_score", { ascending: false }).order("play_count", { ascending: false });
   else if (filters.sort === "popular") query = query.order("play_count", { ascending: false }).order("view_count", { ascending: false });
   // created_at remains the compatibility-safe "added" timestamp until the
   // optional editorial-date migration has been applied in every environment.
   else query = query.order("created_at", { ascending: false });
-  const from = (filters.page - 1) * PAGE_SIZE; const { data, count, error } = await query.range(from, from + PAGE_SIZE - 1);
+  const from = (filters.page - 1) * PAGE_SIZE; const { data, count, error, status } = await query.range(from, from + PAGE_SIZE - 1);
+  if (error && status === 416 && filters.page > 1) {
+    const firstPage = await searchGames({ ...filters, page: 1 });
+    return { games: [], total: firstPage.total, failed: firstPage.failed };
+  }
   if (error) {
     // The public site remains usable before the optional discovery migrations
     // are applied. These two rankings depend on new columns, so temporarily
     // fall back to newest rather than returning a misleading empty result.
     console.error("Search query failed:", error.message);
-    return { games: [], total: 0 };
+    return { games: [], total: 0, failed: true };
   }
   return { games: normalizePublicGameCards(data), total: count || 0 };
 }
@@ -114,16 +118,16 @@ const getOptions = unstable_cache(async (): Promise<FilterOptions> => {
     }));
   }
 
-  const preferred = ["Web", "Windows", "Android", "iOS"];
+  const platforms = [...new Set(rows.flatMap((game) => game.platforms || []))].filter(Boolean).sort();
   return {
-    categories: categories.filter((item) => item.game_count >= MIN_INDEXABLE_CATEGORY_GAMES),
-    platforms: preferred.filter((platform) => rows.some((game) => game.platforms?.includes(platform))),
+    categories: categories.filter((item) => item.game_count > 0),
+    platforms: platforms,
     prices: ["free", "paid"].filter((price) => rows.some((game) => price === "free" ? ["free", "free-with-ads", "freemium"].includes(game.monetization || "") : game.monetization === "paid")),
     statuses: ["demo", "released", "upcoming"].filter((status) => rows.some((game) => game.development_status === status)),
     hasReleaseDates: rows.some((game) => Boolean(game.release_date)),
     hasUpdates: rows.some((game) => Boolean(game.last_updated_at)),
   };
-}, ["public-search-filter-options-v2"], { revalidate: 1800 });
+}, ["public-search-filter-options-v3"], { revalidate: 1800 });
 
 function href(filters: PublicSearchFilters, page: number, view = filters.view) {
   const p = new URLSearchParams();
@@ -149,7 +153,7 @@ export default async function SearchPage({ searchParams }: Props) {
   const requestedFilters: PublicSearchFilters = {
     q: clean(p.q),
     sort: sorts.includes(p.sort || "") ? p.sort! : "newest",
-    page: Math.max(1, Number(p.page) || 1),
+    page: Number.isSafeInteger(Number(p.page)) && Number(p.page) > 0 ? Number(p.page) : 1,
     category: clean(p.category, 80) || undefined,
     playMode: p.playMode === "embedded" ? "embedded" : "all",
     platform: clean(p.platform, 30) || undefined,
@@ -164,25 +168,28 @@ export default async function SearchPage({ searchParams }: Props) {
     price: options.prices.includes(requestedFilters.price || "") ? requestedFilters.price : undefined,
     status: options.statuses.includes(requestedFilters.status || "") ? requestedFilters.status : undefined,
   };
-  const { games, total } = filters.sort === "recently-updated" && !options.hasUpdates
-    ? { games: [], total: 0 }
+  const { games, total, failed = false } = filters.sort === "recently-updated" && !options.hasUpdates
+    ? { games: [], total: 0, failed: false }
     : await searchGames(filters);
   const pages = Math.ceil(total / PAGE_SIZE);
+  const dateField = filters.sort === "released" ? "released" : filters.sort === "recently-updated" ? "updated" : "added";
+  const sortLabels: Record<string, string> = { newest: "Newest games", released: "Recently released games", "recently-updated": "Recently updated games", trending: "Trending games", popular: "Popular games", "hidden-gems": "Hidden gems" };
+
 
   return (
     <div className="container mx-auto space-y-6 px-4 py-6 md:py-8">
       <BreadcrumbJsonLd items={[{ name: "Home", url: SITE_URL }, { name: "Search", url: `${SITE_URL}/search` }]} />
       <div>
         <p className="mb-1.5 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground"><SlidersHorizontal className="h-3.5 w-3.5" />Game discovery</p>
-        <h1 className="text-2xl font-extrabold tracking-tight md:text-3xl">{filters.q ? `Results for “${filters.q}”` : "Find your next game"}</h1>
+        <h1 className="text-2xl font-extrabold tracking-tight md:text-3xl">{filters.q ? `Results for “${filters.q}”` : filters.playMode === "embedded" ? "Games playable here" : sortLabels[filters.sort]}</h1>
       </div>
       <div className="grid gap-6 md:grid-cols-[220px_minmax(0,1fr)]">
         <SearchFilterPanel filters={filters} options={options} />
-        <main className="min-w-0 space-y-5">
+        <section aria-label="Search results" className="min-w-0 space-y-5">
           <div className="flex flex-wrap items-center justify-between gap-3 border-b pb-4">
             <div>
               <p className="text-sm text-muted-foreground"><strong className="text-foreground">{total}</strong> games found</p>
-              <ActiveFilterChips filters={filters} />
+              <ActiveFilterChips filters={filters} options={options} />
             </div>
             <div className="flex items-center gap-1 rounded-lg border bg-card p-1">
               <Link href={href(filters, 1, "list")} aria-label="List view" className={`grid h-8 w-8 place-items-center rounded-md ${filters.view === "list" ? "bg-muted text-foreground" : "text-muted-foreground hover:text-foreground"}`}><List className="h-4 w-4" /></Link>
@@ -193,11 +200,11 @@ export default async function SearchPage({ searchParams }: Props) {
             <>
               {filters.view === "grid" ? (
                 <div className="grid grid-cols-2 gap-x-3 gap-y-6 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-                  {games.map((game) => <GameCard key={game.id} game={game} />)}
+                  {games.map((game) => <GameCard key={game.id} game={game} showDate dateField={dateField} />)}
                 </div>
               ) : (
                 <div className="discovery-list">
-                  {games.map((game, index) => <GameListItem key={game.id} game={game} eagerImage={index === 0} />)}
+                  {games.map((game, index) => <GameListItem key={game.id} game={game} dateField={dateField} eagerImage={index === 0} />)}
                 </div>
               )}
               {pages > 1 && (
@@ -210,11 +217,11 @@ export default async function SearchPage({ searchParams }: Props) {
             </>
           ) : (
             <div className="rounded-xl border border-dashed p-12 text-center text-muted-foreground">
-              {filters.sort === "recently-updated" ? "No verified game updates have been recorded yet." : "No games match these filters."}{" "}
-              <Link href="/search" className="font-bold text-primary">Clear all</Link>.
+              {failed ? "Games could not be loaded. Please try again." : total > 0 ? "No games on this page." : filters.sort === "recently-updated" ? "No verified game updates have been recorded yet." : "No games match these filters."}{" "}
+              <Link href={failed ? href(filters, filters.page) : total > 0 ? href(filters, 1) : "/search"} className="font-bold text-primary">{failed ? "Try again" : total > 0 ? "Back to first page" : "Clear all"}</Link>.
             </div>
           )}
-        </main>
+        </section>
       </div>
     </div>
   );

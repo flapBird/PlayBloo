@@ -32,20 +32,22 @@ function readArray<T>(key: string): T[] {
   }
 }
 
-function writeArray<T>(key: string, value: T[]): void {
-  if (typeof window === "undefined") return;
+function writeArray<T>(key: string, value: T[]): boolean {
+  if (typeof window === "undefined") return false;
   try {
     if (value.length) localStorage.setItem(key, JSON.stringify(value));
     else localStorage.removeItem(key);
     window.dispatchEvent(new CustomEvent(LIBRARY_CHANGE_EVENT, { detail: { key } }));
+    return true;
   } catch {
-    // Storage can be disabled or full. The game remains usable without it.
+    return false;
   }
 }
 
 function migrateLegacyHistory(): void {
-  if (typeof window === "undefined" || localStorage.getItem(RECENTLY_PLAYED_STORAGE_KEY)) return;
+  if (typeof window === "undefined") return;
   try {
+    if (localStorage.getItem(RECENTLY_PLAYED_STORAGE_KEY)) return;
     const legacy = readArray<{
       gameId?: string;
       playedAt?: number;
@@ -85,12 +87,13 @@ export function isFavorite(gameId: string): boolean {
 export function toggleFavorite(gameId: string): boolean {
   const favorites = getFavorites();
   const exists = favorites.some((item) => item.gameId === gameId);
-  writeArray(
+  const saved = writeArray(
     FAVORITES_STORAGE_KEY,
     exists
       ? favorites.filter((item) => item.gameId !== gameId)
       : [{ gameId, timestamp: Date.now() }, ...favorites],
   );
+  if (!saved) throw new Error("This browser could not save your favorites. Please try again.");
   return !exists;
 }
 
@@ -120,8 +123,8 @@ export function addPlayRecord(
   ].slice(0, MAX_RECENTLY_PLAYED_GAMES));
 }
 
-export function removePlayRecord(gameId: string): void {
-  writeArray(
+export function removePlayRecord(gameId: string): boolean {
+  return writeArray(
     RECENTLY_PLAYED_STORAGE_KEY,
     getRecentPlays().filter((item) => item.gameId !== gameId),
   );
@@ -129,4 +132,8 @@ export function removePlayRecord(gameId: string): void {
 
 export function clearHistory(): void {
   writeArray(RECENTLY_PLAYED_STORAGE_KEY, []);
+}
+
+export function restorePlayRecord(record: RecentPlayRecord): boolean {
+  return writeArray(RECENTLY_PLAYED_STORAGE_KEY, [record, ...getRecentPlays().filter((item) => item.gameId !== record.gameId)].sort((a, b) => b.lastPlayedAt - a.lastPlayedAt).slice(0, MAX_RECENTLY_PLAYED_GAMES));
 }

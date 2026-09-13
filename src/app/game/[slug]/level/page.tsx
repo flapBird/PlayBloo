@@ -17,6 +17,7 @@ const getGame = cache(async (slug: string) => {
     .from("games")
     .select("id, title, slug, thumbnail_url")
     .eq("slug", slug)
+    .eq("is_published", true)
     .single();
   return data;
 });
@@ -62,7 +63,7 @@ export default async function LevelIndexPage({ params }: Props) {
       />
 
       {/* Breadcrumb */}
-      <div className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
+      <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground mb-6">
         <Link href="/" className="hover:text-foreground">Home</Link>
         <span>/</span>
         <Link href={`/game/${game.slug}`} className="hover:text-foreground">{game.title}</Link>
@@ -75,7 +76,7 @@ export default async function LevelIndexPage({ params }: Props) {
           {game.title} Walkthroughs
         </h1>
         <p className="text-muted-foreground">
-          Step-by-step guides for the trickiest levels. Videos, tips, and strategies to help you beat every challenge.
+          Choose a level to see its available videos and written tips.
         </p>
       </div>
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Input } from "@/components/ui/input";
 import { Search, Loader2, ArrowRight, Hash } from "lucide-react";
 import Link from "next/link";
@@ -27,35 +27,32 @@ export function LevelSearch({ gameId, gameSlug }: Props) {
   const [results, setResults] = useState<LevelResult[]>([]);
   const [loading, setLoading] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
-  const debounceRef = useRef<ReturnType<typeof setTimeout>>(undefined);
+  const [error, setError] = useState("");
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const search = useCallback(async (query: string) => {
-    if (!query.trim()) {
-      setResults([]);
-      setShowDropdown(false);
-      return;
-    }
-
-    setLoading(true);
-    try {
-      const params = new URLSearchParams({ q: query, game_id: gameId, limit: "10" });
-      const res = await fetch(`/api/levels?${params.toString()}`);
-      const json = await res.json();
-      setResults(json.data || []);
-      setShowDropdown((json.data || []).length > 0);
-    } catch {
-      setResults([]);
-    } finally {
-      setLoading(false);
-    }
-  }, [gameId]);
-
   useEffect(() => {
-    if (debounceRef.current) clearTimeout(debounceRef.current);
-    debounceRef.current = setTimeout(() => search(q), 300);
-    return () => { if (debounceRef.current) clearTimeout(debounceRef.current); };
-  }, [q, search]);
+    const controller = new AbortController();
+    const timer = setTimeout(async () => {
+      if (!q.trim()) { setResults([]); setShowDropdown(false); setLoading(false); return; }
+      setLoading(true);
+      setError("");
+      try {
+        const params = new URLSearchParams({ q, game_id: gameId, limit: "10" });
+        const response = await fetch(`/api/levels?${params}`, { signal: controller.signal });
+        if (!response.ok) throw new Error("load");
+        const payload = await response.json();
+        if (controller.signal.aborted) return;
+        setResults(payload.data || []);
+        setShowDropdown(true);
+      } catch {
+        if (controller.signal.aborted) return;
+        setResults([]);
+        setError("Could not load levels. Try searching again.");
+        setShowDropdown(true);
+      } finally { if (!controller.signal.aborted) setLoading(false); }
+    }, 300);
+    return () => { clearTimeout(timer); controller.abort(); };
+  }, [q, gameId]);
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -73,9 +70,11 @@ export function LevelSearch({ gameId, gameSlug }: Props) {
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
         <Input
           value={q}
-          onChange={e => setQ(e.target.value)}
+          onChange={e => { setQ(e.target.value); setShowDropdown(false); }}
+          aria-label="Search game levels"
+          onKeyDown={e => { if (e.key === "Escape") setShowDropdown(false); }}
           onFocus={() => { if (results.length > 0) setShowDropdown(true); }}
-          placeholder="Search levels by number or keyword (e.g. Level 666, tips, walkthrough)..."
+          placeholder="Find a level (e.g. 29)"
           className="pl-10 pr-10 h-11 text-base bg-card border-amber-400/60 shadow-sm focus-visible:ring-amber-400"
         />
         {loading && (
@@ -83,8 +82,9 @@ export function LevelSearch({ gameId, gameSlug }: Props) {
         )}
       </div>
 
-      {showDropdown && results.length > 0 && (
+      {showDropdown && (
         <div className="absolute z-30 mt-2 w-full rounded-xl border bg-card shadow-2xl overflow-hidden">
+          {!results.length && <p role="status" className="p-4 text-sm text-muted-foreground">{error || "No matching levels. Try another number or keyword."}</p>}
           <ul className="max-h-80 overflow-y-auto divide-y">
             {results.map((level) => (
               <li key={level.id}>
@@ -114,7 +114,7 @@ export function LevelSearch({ gameId, gameSlug }: Props) {
           </ul>
           <div className="px-4 py-2 border-t bg-muted/30">
             <p className="text-xs text-muted-foreground">
-              {results.length} level{results.length > 1 ? "s" : ""} found
+              {results.length} level{results.length !== 1 ? "s" : ""} found
             </p>
           </div>
         </div>

@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
-import { Play, Maximize2, Minimize2, ExternalLink, Gamepad2, Loader2 } from "lucide-react";
+import { Play, Maximize2, Minimize2, ExternalLink, Gamepad2, Loader2, RotateCcw, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { addPlayRecord } from "@/lib/play-history";
 import { shouldBypassImageOptimization } from "@/lib/game-utils";
@@ -21,8 +21,11 @@ export function GameIframe({ src, title, gameId, slug, thumbnailUrl, externalUrl
   const [showIframe, setShowIframe] = useState(false);
   const [iframeLoading, setIframeLoading] = useState(true);
   const [showWakeHint, setShowWakeHint] = useState(false);
+  const [attempt, setAttempt] = useState(0);
+  const [showRecovery, setShowRecovery] = useState(false);
   const tracked = useRef(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const playerRef = useRef<HTMLDivElement>(null);
   const hintTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   const trackPlay = () => {
@@ -52,16 +55,32 @@ export function GameIframe({ src, title, gameId, slug, thumbnailUrl, externalUrl
     hintTimer.current = setTimeout(() => setShowWakeHint(false), 3000);
   };
 
-  const toggleFullscreen = () => {
-    setIsFullscreen((prev) => !prev);
+  const toggleFullscreen = async () => {
+    if (isFullscreen) {
+      if (document.fullscreenElement === playerRef.current) await document.exitFullscreen().catch(() => {});
+      setIsFullscreen(false);
+    } else {
+      setIsFullscreen(true);
+      // Keep the same iframe mounted so entering fullscreen preserves the game.
+      await playerRef.current?.requestFullscreen?.().catch(() => {});
+    }
     showHint();
   };
+
+  useEffect(() => {
+    const onFullscreenChange = () => setIsFullscreen(Boolean(playerRef.current && document.fullscreenElement === playerRef.current));
+    document.addEventListener("fullscreenchange", onFullscreenChange);
+    return () => document.removeEventListener("fullscreenchange", onFullscreenChange);
+  }, []);
 
   // ESC key to exit
   useEffect(() => {
     if (!isFullscreen) return;
     const handler = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setIsFullscreen(false);
+      if (e.key === "Escape") {
+        if (document.fullscreenElement === playerRef.current) void document.exitFullscreen().catch(() => {});
+        setIsFullscreen(false);
+      }
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
@@ -69,9 +88,29 @@ export function GameIframe({ src, title, gameId, slug, thumbnailUrl, externalUrl
 
   // Lock body scroll when fullscreen
   useEffect(() => {
-    document.body.style.overflow = isFullscreen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    if (!isFullscreen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.body.classList.add("game-fullscreen");
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.body.classList.remove("game-fullscreen");
+    };
   }, [isFullscreen]);
+
+  useEffect(() => {
+    if (!showIframe) return;
+    const timer = setTimeout(() => { setShowRecovery(true); setIframeLoading(false); }, 15000);
+    return () => clearTimeout(timer);
+  }, [showIframe, attempt]);
+
+  useEffect(() => () => clearTimeout(hintTimer.current), []);
+
+  const retry = () => {
+    setIframeLoading(true);
+    setShowRecovery(false);
+    setAttempt((value) => value + 1);
+  };
 
   const hasEmbeddedGame = Boolean(src?.trim());
   const hasExternalGame = Boolean(externalUrl?.trim());
@@ -81,7 +120,7 @@ export function GameIframe({ src, title, gameId, slug, thumbnailUrl, externalUrl
     return (
       <div className="mx-auto max-w-5xl">
         <section className="grid gap-5 rounded-xl border bg-card p-4 sm:p-5 md:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] md:items-center md:gap-8">
-          <div className="relative aspect-[16/10] w-full overflow-hidden rounded-lg border bg-muted">
+          <div className="relative hidden aspect-[16/10] w-full overflow-hidden sm:block rounded-lg border bg-muted">
               {thumbnailUrl ? (
                 <Image
                   src={thumbnailUrl}
@@ -107,9 +146,9 @@ export function GameIframe({ src, title, gameId, slug, thumbnailUrl, externalUrl
             </h2>
             <p id="game-launch-note" className="mt-2 max-w-lg text-sm leading-6 text-muted-foreground">
               {hasEmbeddedGame
-                ? `Launch ${title} here without a download. It only counts as played after you press the button.`
+                ? `Play ${title} here without a download.`
                 : hasExternalGame
-                  ? `${title} opens in a new tab. Play history is recorded only when you continue.`
+                  ? `${title} opens on the game site in a new tab.`
                   : "No working embedded or external play link has been verified yet."}
             </p>
             <button
@@ -125,7 +164,7 @@ export function GameIframe({ src, title, gameId, slug, thumbnailUrl, externalUrl
             >
               <Play className="h-4 w-4 fill-white" />
               <span>{hasEmbeddedGame ? "Launch game" : hasExternalGame ? "Open game site" : "Currently unavailable"}</span>
-              {hasExternalGame && <ExternalLink className="h-4 w-4" />}
+              {!hasEmbeddedGame && hasExternalGame && <ExternalLink className="h-4 w-4" />}
             </button>
           </div>
         </section>
@@ -136,6 +175,7 @@ export function GameIframe({ src, title, gameId, slug, thumbnailUrl, externalUrl
   return (
     <div className={isFullscreen ? "" : "mx-auto max-w-5xl"}>
       <div
+        ref={playerRef}
         className={
           isFullscreen
             ? "fixed inset-0 z-50 bg-black"
@@ -146,10 +186,12 @@ export function GameIframe({ src, title, gameId, slug, thumbnailUrl, externalUrl
         <div className="absolute top-3 right-3 z-20 flex gap-2">
           {externalUrl && (
             <Button
+              aria-label="Open game site in a new tab"
+              title="Open game site in a new tab"
               variant="secondary"
               size="icon"
               onClick={() => { trackExternalClick(); window.open(externalUrl, "_blank", "noopener,noreferrer"); }}
-              className="h-8 w-8 bg-black/60 hover:bg-black/80 text-white border-0"
+              className="h-11 w-11 bg-black/80 hover:bg-black/80 text-white border-0"
             >
               <ExternalLink className="h-4 w-4" />
             </Button>
@@ -157,17 +199,19 @@ export function GameIframe({ src, title, gameId, slug, thumbnailUrl, externalUrl
           <Button
             variant="secondary"
             size="icon"
+            aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
+            title={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
             onClick={toggleFullscreen}
-            className="h-8 w-8 bg-black/60 hover:bg-black/80 text-white border-0"
+            className="h-11 w-11 bg-black/80 hover:bg-black/80 text-white border-0"
           >
             {isFullscreen ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
           </Button>
         </div>
 
         {/* Loading spinner - only on initial load */}
-        {iframeLoading && !isFullscreen && (
+        {iframeLoading && (
           <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/60">
-            <Loader2 className="h-8 w-8 animate-spin text-white" />
+            <div role="status" className="text-center text-white"><Loader2 className="mx-auto h-8 w-8 animate-spin" /><p className="mt-3 text-sm">Loading game…</p></div>
           </div>
         )}
 
@@ -181,6 +225,7 @@ export function GameIframe({ src, title, gameId, slug, thumbnailUrl, externalUrl
         )}
 
         <iframe
+          key={attempt}
           ref={iframeRef}
           src={src || undefined}
           className={
@@ -192,8 +237,19 @@ export function GameIframe({ src, title, gameId, slug, thumbnailUrl, externalUrl
           allowFullScreen
           title={title}
           onLoad={() => setIframeLoading(false)}
+          onError={() => { setIframeLoading(false); setShowRecovery(true); }}
         />
       </div>
+      {!isFullscreen && (
+        <div className="mt-3 space-y-2 rounded-lg border bg-card p-3">
+          {showRecovery && <p role="status" className="text-sm text-muted-foreground">Still not seeing a playable game? Try reloading or open the game site.</p>}
+          <div className="flex flex-wrap gap-2">
+            <Button variant="outline" onClick={retry}><RotateCcw className="mr-2 h-4 w-4" />Reload game</Button>
+            <Button variant="outline" onClick={() => { setShowIframe(false); setIsFullscreen(false); setIframeLoading(true); setShowRecovery(false); }}><ArrowLeft className="mr-2 h-4 w-4" />Back to launch</Button>
+            {externalUrl && <a href={externalUrl} target="_blank" rel="noopener noreferrer" onClick={trackExternalClick} className="inline-flex min-h-11 items-center gap-2 px-3 text-sm font-bold text-primary">Open game site<ExternalLink className="h-4 w-4" /></a>}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

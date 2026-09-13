@@ -30,7 +30,7 @@ const getGames = cache(async (slug: string) => {
     .order("sort_order", { ascending: true });
 
   const gameIds = (seriesGames || []).map(gs => gs.game_id);
-  const sortMap = new Map((seriesGames || []).map(gs => [gs.game_id, gs.sort_order]));
+
 
   if (gameIds.length === 0) return [];
 
@@ -41,7 +41,7 @@ const getGames = cache(async (slug: string) => {
     .in("id", gameIds);
 
   return normalizePublicGameCards(data)
-    .sort((a, b) => (sortMap.get(a.id) || 0) - (sortMap.get(b.id) || 0));
+    .sort((a, b) => a.title.localeCompare(b.title, "en", { numeric: true, sensitivity: "base" }));
 });
 
 export async function generateStaticParams() {
@@ -58,11 +58,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const title = isContentVerified && series.meta_title
     ? series.meta_title
-    : `${series.name} Games in Order`;
+    : `${series.name} Game Collection`;
   const gameLabel = games.length === 1 ? "game" : "games";
   const description = isContentVerified && (series.meta_description || series.description)
     ? series.meta_description || series.description
-    : `Browse ${games.length} ${gameLabel} in the ${series.name} series in order.`;
+    : `Browse ${games.length} ${gameLabel} in the ${series.name} series, sorted by title.`;
 
    return {
      title,
@@ -97,7 +97,7 @@ export default async function SeriesPage({ params }: Props) {
       />
 
       <div className="max-w-3xl border-b pb-6">
-        <p className="mb-2 text-[10px] font-extrabold uppercase tracking-[0.14em] text-muted-foreground">Play in series order</p>
+        <p className="mb-2 text-[10px] font-extrabold uppercase tracking-[0.14em] text-muted-foreground">Browse titles A–Z</p>
         <h1 className="text-3xl font-black tracking-tight">{series.name} Game Series</h1>
         {isContentVerified && series.description && (
           <div className="mt-3 whitespace-pre-wrap leading-7 text-muted-foreground">
@@ -127,7 +127,7 @@ export default async function SeriesPage({ params }: Props) {
       {games.length > 0 && (
         <div className="mx-auto max-w-5xl">
           {games.map((game, index) => (
-            <GameListItem key={game.id} game={game} position={index + 1} eagerImage={index === 0} />
+            <GameListItem key={game.id} game={game}  eagerImage={index === 0} />
           ))}
         </div>
       )}

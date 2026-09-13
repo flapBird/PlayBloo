@@ -248,14 +248,20 @@ export default async function GamePage({ params }: Props) {
             <h1 className="text-3xl md:text-4xl font-black tracking-tight">{game.title}</h1>
             <div className="flex flex-wrap items-center gap-2 shrink-0">
               <FavoriteButton gameId={game.id} gameTitle={game.title} />
+            </div>
+          </div>
+
+          {/* Game launch */}
+          <GameIframe src={game.iframe_url} title={game.title} gameId={game.id} slug={game.slug} thumbnailUrl={game.thumbnail_url} externalUrl={externalGameUrl} />
+          <div className="flex flex-wrap items-center gap-3">
               {hasLevels && (
               <>
-                <div className="w-64">
+                <div className="w-full sm:w-64">
                   <LevelSearch gameId={game.id} gameSlug={game.slug} />
                 </div>
                 <Link
                   href={`/game/${game.slug}/level`}
-                  className="shrink-0 inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm hover:shadow-md transition-all active:scale-95"
+                  className="shrink-0 inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-2 rounded-lg border bg-card text-foreground hover:bg-muted transition-all active:scale-95"
                 >
                   <Grid3X3 className="h-3.5 w-3.5" />
                   Walkthroughs
@@ -263,7 +269,6 @@ export default async function GamePage({ params }: Props) {
                 </Link>
               </>
               )}
-            </div>
           </div>
 
           <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
@@ -275,7 +280,7 @@ export default async function GamePage({ params }: Props) {
             </span>
             {game.release_date && (
               <span className="flex items-center gap-1">
-                <Calendar className="h-4 w-4" /> {new Date(game.release_date).toLocaleDateString("en", { year: "numeric", month: "short", day: "numeric" })}
+                <Calendar className="h-4 w-4" /> Released {new Date(game.release_date).toLocaleDateString("en", { year: "numeric", month: "short", day: "numeric" })}
               </span>
             )}
             <span className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-extrabold ${playMode === "embedded" ? "bg-emerald-500/15 text-emerald-300" : playMode === "external" ? "bg-slate-500/15 text-slate-300" : "bg-amber-500/15 text-amber-300"}`}>
@@ -308,8 +313,6 @@ export default async function GamePage({ params }: Props) {
           )}
         </div>
 
-      {/* Game Iframe */}
-      <GameIframe src={game.iframe_url} title={game.title} gameId={game.id} slug={game.slug} thumbnailUrl={game.thumbnail_url} externalUrl={externalGameUrl} />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Main Content */}

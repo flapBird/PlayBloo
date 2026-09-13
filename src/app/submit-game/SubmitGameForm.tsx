@@ -13,7 +13,7 @@ function sourceHint(value: string): string {
     const host = new URL(value).hostname.toLowerCase();
     if (host === "store.steampowered.com") return "Steam page detected — public store metadata will be prepared for editorial review.";
     if (host.endsWith(".itch.io") && host !== "itch.io") return "itch.io project detected — public project metadata will be prepared for editorial review.";
-    return "Official site detected — an editor will verify the details manually.";
+    return "Link format is valid — an editor will verify the source and game details.";
   } catch {
     return "Steam and itch.io pages can be pre-filled automatically. Other official sites are saved for manual review.";
   }

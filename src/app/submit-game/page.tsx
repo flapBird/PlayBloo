@@ -16,10 +16,10 @@ export default function SubmitGamePage() {
         <h1 className="text-3xl font-black tracking-tight md:text-5xl">Submit a game</h1>
         <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">Share one trusted source URL. We&apos;ll collect available facts and an editor will verify them before publishing.</p>
       </div>
-      <div className="mb-6 grid gap-3 sm:grid-cols-3">
+      <div className="mb-6 flex flex-wrap justify-center gap-2">
         {[[Link2, "One source URL"], [SearchCheck, "Metadata pre-check"], [ShieldCheck, "Human review"]].map(([Icon, label]) => {
           const Component = Icon as typeof Link2;
-          return <div key={label as string} className="flex items-center justify-center gap-2 rounded-2xl border bg-muted/30 px-3 py-3 text-sm font-bold"><Component className="h-4 w-4 text-primary" />{label as string}</div>;
+          return <div key={label as string} className="flex items-center justify-center gap-2 rounded-2xl border bg-muted/30 px-3 py-2 text-xs font-bold"><Component className="h-4 w-4 text-primary" />{label as string}</div>;
         })}
       </div>
       <SubmitGameForm />

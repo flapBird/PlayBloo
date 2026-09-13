@@ -21,6 +21,7 @@ interface FavoriteButtonProps {
 
 export function FavoriteButton({ gameId, gameTitle, compact = false, className }: FavoriteButtonProps) {
   const [favorite, setFavorite] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const sync = () => setFavorite(isFavorite(gameId));
@@ -37,14 +38,15 @@ export function FavoriteButton({ gameId, gameTitle, compact = false, className }
   }, [gameId]);
 
   return (
-    <button
+    <span className="inline-flex flex-col items-start gap-1"><button
       type="button"
       aria-label={`${favorite ? "Remove" : "Add"} ${gameTitle} ${favorite ? "from" : "to"} favorites`}
       aria-pressed={favorite}
       onClick={(event) => {
         event.preventDefault();
         event.stopPropagation();
-        setFavorite(toggleFavorite(gameId));
+        try { setFavorite(toggleFavorite(gameId)); setError(""); }
+        catch { setError("Could not save favorites in this browser. Please try again."); }
       }}
       className={cn(
         compact
@@ -56,6 +58,6 @@ export function FavoriteButton({ gameId, gameTitle, compact = false, className }
     >
       <Heart className={cn(compact ? "h-4 w-4" : "h-4 w-4", favorite && "fill-current")} />
       {!compact && (favorite ? "Favorited" : "Favorite")}
-    </button>
+    </button>{error && <span role="alert" className="max-w-xs text-xs text-red-300">{error}</span>}</span>
   );
 }

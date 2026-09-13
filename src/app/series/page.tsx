@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { MIN_INDEXABLE_SERIES_GAMES, SITE_NAME } from "@/lib/constants";
+import { SITE_NAME } from "@/lib/constants";
 import { ArrowRight, Layers } from "lucide-react";
 
 type SeriesCard = {
@@ -41,13 +41,13 @@ export default async function SeriesListPage() {
 
   const series = ((seriesRes.data || []) as Omit<SeriesCard, "game_count">[])
     .map((item) => ({ ...item, game_count: gameCounts.get(item.id) || 0 }))
-    .filter((item) => item.game_count >= MIN_INDEXABLE_SERIES_GAMES);
+    .filter((item) => item.game_count > 0);
   return (
     <div className="container mx-auto space-y-8 px-4 py-8 md:py-10">
       <div className="max-w-2xl border-b pb-6">
         <p className="mb-2 text-[11px] font-extrabold uppercase tracking-[0.18em] text-primary">Complete collections</p>
         <h1 className="text-3xl font-black tracking-tight md:text-4xl">Game Series</h1>
-        <p className="mt-3 leading-relaxed text-muted-foreground">Find every game in a collection and play the series in order.</p>
+        <p className="mt-3 leading-relaxed text-muted-foreground">Explore originals, sequels and spin-offs in each collection.</p>
       </div>
 
       {series.length > 0 ? (
@@ -61,7 +61,7 @@ export default async function SeriesListPage() {
               <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-primary/12 text-primary"><Layers className="h-5 w-5" /></span>
               <span className="min-w-0 flex-1">
                 <span className="block truncate text-lg font-black transition-colors group-hover:text-primary">{item.name}</span>
-                <span className="mt-1 block text-xs text-muted-foreground">{item.game_count} game{item.game_count === 1 ? "" : "s"} in order</span>
+                <span className="mt-1 block text-xs text-muted-foreground">{item.game_count} game{item.game_count === 1 ? "" : "s"} in this collection</span>
               </span>
               <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
             </Link>

@@ -93,7 +93,7 @@ export function Header() {
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden text-muted-foreground"
+              className="lg:hidden text-muted-foreground"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileMenuOpen}
@@ -123,7 +123,7 @@ export function Header() {
 
         {/* Mobile menu */}
         {mobileMenuOpen && (
-          <div id="mobile-menu" className="md:hidden border-t border-border/50">
+          <div id="mobile-menu" className="lg:hidden border-t border-border/50">
             <div className="px-4 py-3 space-y-1">
               <Link
                 href="/"

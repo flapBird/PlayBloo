@@ -1,11 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Eye, ExternalLink, Gamepad2, Play } from "lucide-react";
+import { Eye, ArrowRight, Gamepad2 } from "lucide-react";
 import { getDiscoveryStatusBadge, getGamePlayMode, shouldBypassImageOptimization } from "@/lib/game-utils";
 import type { Category, Game } from "@/lib/types";
 
 export type GameCardGame = Pick<Game, "id" | "title" | "slug" | "thumbnail_url" | "view_count"> &
-  Partial<Pick<Game, "play_count" | "iframe_url" | "external_url" | "original_game_url" | "is_trending" | "hot_score" | "created_at" | "updated_at" | "added_at" | "release_date" | "last_updated_at" | "description" | "short_description" | "content_verified">> &
+  Partial<Pick<Game, "play_count" | "iframe_url" | "external_url" | "original_game_url" | "official_website_url" | "is_trending" | "hot_score" | "created_at" | "updated_at" | "added_at" | "release_date" | "last_updated_at" | "description" | "short_description" | "content_verified">> &
   { categories?: Array<Pick<Category, "id" | "name" | "slug">> };
 
 interface GameCardProps {
@@ -25,6 +25,7 @@ export function GameCard({ game, badges = [], showDate = false, dateField = "add
     iframe_url: game.iframe_url || null,
     external_url: game.external_url || null,
     original_game_url: game.original_game_url || null,
+    official_website_url: game.official_website_url || null,
   });
   const modeBadge = playMode === "embedded" ? "PLAY HERE" : playMode === "external" ? "EXTERNAL" : null;
   const statusBadge = getDiscoveryStatusBadge(game);
@@ -61,8 +62,8 @@ export function GameCard({ game, badges = [], showDate = false, dateField = "add
             {visibleBadges.map((badge) => (
               <span
                 key={badge}
-                className={`rounded-md border px-1.5 py-0.5 text-[9px] font-bold tracking-wide ${
-                  badge === "PLAY HERE" ? "border-emerald-500/35 bg-emerald-500/20 text-emerald-300" : badge === "EXTERNAL" ? "border-slate-500/35 bg-slate-900/80 text-slate-300" : badge === "TRENDING" ? "border-amber-500/35 bg-amber-500/20 text-amber-300" : "border-indigo-400/35 bg-indigo-500/20 text-indigo-200"
+                className={`rounded-md border px-1.5 py-0.5 text-[10px] font-bold tracking-wide ${
+                  badge === "PLAY HERE" ? "border-emerald-500/35 bg-slate-950 text-emerald-300" : badge === "EXTERNAL" ? "border-slate-500/35 bg-slate-900/80 text-slate-300" : badge === "TRENDING" ? "border-amber-500/35 bg-slate-950 text-amber-300" : "border-indigo-400/35 bg-slate-950 text-indigo-200"
                 }`}
               >
                 {badge}
@@ -87,14 +88,8 @@ export function GameCard({ game, badges = [], showDate = false, dateField = "add
             <><span aria-hidden="true">·</span><span className="shrink-0">{formatCount(game.play_count)} plays</span></>
           )}
         </div>
-        <Link href={`/game/${game.slug}`} prefetch={false} className="mt-1.5 inline-flex items-center gap-1 text-[11px] font-semibold text-muted-foreground transition-colors hover:text-primary">
-          {playMode === "embedded" ? (
-            <><Play className="h-3 w-3 fill-current" /> Play Now</>
-          ) : playMode === "external" ? (
-            <><ExternalLink className="h-3 w-3" /> View Game</>
-          ) : (
-            "View Details"
-          )}
+        <Link href={`/game/${game.slug}`} prefetch={false} className="mt-1.5 inline-flex min-h-9 items-center gap-1 text-[11px] font-semibold text-muted-foreground transition-colors hover:text-primary">
+          <ArrowRight className="h-3.5 w-3.5" /> View game
         </Link>
       </div>
     </article>

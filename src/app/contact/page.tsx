@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 import { SITE_NAME, SITE_DOMAIN } from "@/lib/constants";
 
@@ -20,19 +21,20 @@ export default function ContactPage() {
         <div className="rounded-xl border border-border/60 bg-card p-6 space-y-4">
           <div>
             <h2 className="text-sm font-bold text-foreground mb-1">General Inquiries</h2>
-            <p className="text-sm">contact@{SITE_DOMAIN}</p>
+            <a href={`mailto:contact@${SITE_DOMAIN}`} className="inline-flex min-h-9 items-center text-sm text-primary underline underline-offset-4">contact@{SITE_DOMAIN}</a>
           </div>
           <div>
             <h2 className="text-sm font-bold text-foreground mb-1">Game Submissions</h2>
-            <p className="text-sm">developers@{SITE_DOMAIN}</p>
+            <Link href="/submit-game" className="block py-2 text-sm font-bold text-primary underline underline-offset-4">Submit a game for review</Link>
+            <a href={`mailto:developers@${SITE_DOMAIN}`} className="inline-flex min-h-9 items-center text-sm text-primary underline underline-offset-4">developers@{SITE_DOMAIN}</a>
           </div>
           <div>
             <h2 className="text-sm font-bold text-foreground mb-1">DMCA / Copyright</h2>
-            <p className="text-sm">dmca@{SITE_DOMAIN}</p>
+            <a href={`mailto:dmca@${SITE_DOMAIN}`} className="inline-flex min-h-9 items-center text-sm text-primary underline underline-offset-4">dmca@{SITE_DOMAIN}</a>
           </div>
           <div>
             <h2 className="text-sm font-bold text-foreground mb-1">Privacy</h2>
-            <p className="text-sm">privacy@{SITE_DOMAIN}</p>
+            <a href={`mailto:privacy@${SITE_DOMAIN}`} className="inline-flex min-h-9 items-center text-sm text-primary underline underline-offset-4">privacy@{SITE_DOMAIN}</a>
           </div>
         </div>
       </div>

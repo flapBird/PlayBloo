@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { CalendarDays, ExternalLink, Eye, Gamepad2, Play } from "lucide-react";
+import { CalendarDays, ArrowRight, Eye, Gamepad2 } from "lucide-react";
 import { getDiscoveryStatusBadge, getGamePlayMode, shouldBypassImageOptimization } from "@/lib/game-utils";
 import type { GameCardGame } from "@/components/games/GameCard";
 
@@ -10,6 +10,8 @@ interface GameListItemProps {
   eagerImage?: boolean;
   featured?: boolean;
   position?: number;
+  categorySlug?: string;
+  dateField?: "added" | "released" | "updated";
 }
 
 function formatCount(value: number | undefined): string {
@@ -32,13 +34,16 @@ export function GameListItem({
   eagerImage = false,
   featured = false,
   position,
+  categorySlug,
+  dateField = "added",
 }: GameListItemProps) {
   const playMode = getGamePlayMode({
     iframe_url: game.iframe_url || null,
     external_url: game.external_url || null,
     original_game_url: game.original_game_url || null,
+    official_website_url: game.official_website_url || null,
   });
-  const primaryCategory = game.categories?.[0];
+  const primaryCategory = game.categories?.find((item) => item.slug === categorySlug) || game.categories?.[0];
   const verifiedSummary = game.content_verified
     ? game.short_description || game.description
     : null;
@@ -49,7 +54,9 @@ export function GameListItem({
         ? " with an external play link."
         : ". Source verification is still in progress."
   }`;
-  const date = formatDate(game.added_at || game.created_at);
+  const rawDate = dateField === "released" ? game.release_date : dateField === "updated" ? game.last_updated_at : game.added_at || game.created_at;
+  const date = formatDate(rawDate);
+  const dateLabel = dateField === "released" ? "Released" : dateField === "updated" ? "Updated" : "Added";
   const modeBadge = playMode === "embedded" ? "PLAY HERE" : playMode === "external" ? "EXTERNAL" : null;
   const statusBadge = getDiscoveryStatusBadge(game);
   const visibleBadges = [...new Set([...badges, ...(statusBadge ? [statusBadge] : []), ...(modeBadge ? [modeBadge] : [])])].slice(0, 2);
@@ -111,8 +118,8 @@ export function GameListItem({
             prefetch={false}
             className="hidden shrink-0 items-center gap-1.5 rounded-lg border px-3 py-2 text-xs font-bold text-foreground transition-colors hover:border-primary/50 hover:text-primary sm:inline-flex"
           >
-            {playMode === "embedded" ? <Play className="h-3.5 w-3.5 fill-current" /> : <ExternalLink className="h-3.5 w-3.5" />}
-            {playMode === "embedded" ? "Play now" : "View game"}
+            <ArrowRight className="h-3.5 w-3.5" />
+            View game
           </Link>
         </div>
 
@@ -123,9 +130,9 @@ export function GameListItem({
         <div className="mt-2.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-muted-foreground">
           <span className="inline-flex items-center gap-1"><Eye className="h-3.5 w-3.5" />{formatCount(game.view_count)} views</span>
           <span>{formatCount(game.play_count)} plays</span>
-          {date && <time dateTime={game.added_at || game.created_at} className="inline-flex items-center gap-1"><CalendarDays className="h-3.5 w-3.5" />Added {date}</time>}
-          <Link href={`/game/${game.slug}`} prefetch={false} className="ml-auto inline-flex items-center gap-1 font-bold text-primary sm:hidden">
-            {playMode === "embedded" ? "Play" : "Details"} <span aria-hidden="true">→</span>
+          {date && <time dateTime={rawDate || undefined} className="inline-flex items-center gap-1"><CalendarDays className="h-3.5 w-3.5" />{dateLabel} {date}</time>}
+          <Link href={`/game/${game.slug}`} prefetch={false} className="ml-auto inline-flex min-h-9 items-center gap-1 font-bold text-primary sm:hidden">
+            View game <span aria-hidden="true">→</span>
           </Link>
         </div>
       </div>

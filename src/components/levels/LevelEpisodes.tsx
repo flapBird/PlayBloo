@@ -18,16 +18,20 @@ interface Props {
 export function LevelEpisodes({ gameSlug }: Props) {
   const [levels, setLevels] = useState<LevelSummary[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+  const [attempt, setAttempt] = useState(0);
 
   useEffect(() => {
-    fetch(`/api/levels/summary?game_slug=${gameSlug}`)
-      .then(r => r.json())
-      .then(data => {
-        setLevels(data.levels || []);
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
-  }, [gameSlug]);
+    const controller = new AbortController();
+    fetch(`/api/levels/summary?game_slug=${encodeURIComponent(gameSlug)}`, { signal: controller.signal })
+      .then(response => { if (!response.ok) throw new Error("load"); return response.json(); })
+      .then(data => { if (!controller.signal.aborted) { setLevels(data.levels || []); setError(false); } })
+      .catch(() => { if (!controller.signal.aborted) setError(true); })
+      .finally(() => { if (!controller.signal.aborted) setLoading(false); });
+    return () => controller.abort();
+  }, [gameSlug, attempt]);
+
+  if (error) return <div role="alert" className="rounded-xl border p-4"><p>Walkthroughs could not be loaded.</p><button className="min-h-11 font-bold text-primary" onClick={() => { setError(false); setLoading(true); setAttempt(value => value + 1); }}>Try again</button></div>;
 
   if (loading) {
     return (
@@ -54,16 +58,14 @@ export function LevelEpisodes({ gameSlug }: Props) {
         {levels.map(level => (
           <Link
             key={level.id}
+            title={level.title}
             href={`/game/${gameSlug}/level/${level.slug}`}
-            className="group flex items-center gap-2.5 px-3 py-2.5 rounded-lg border border-border bg-card hover:border-primary/30 hover:bg-primary/5 transition-all"
+            className="group flex min-h-12 items-center gap-2.5 px-3 py-2.5 rounded-lg border border-border bg-card hover:border-primary/30 hover:bg-primary/5 transition-all"
           >
-            <span className="shrink-0 w-8 h-8 rounded-md bg-primary/10 text-primary flex items-center justify-center text-xs font-bold">
-              {level.level_number}
+            <span className="text-sm font-bold flex-1 group-hover:text-primary transition-colors">
+              Level {level.level_number}
             </span>
-            <span className="text-sm font-medium truncate flex-1 group-hover:text-primary transition-colors">
-              {level.title}
-            </span>
-            <ChevronRight className="h-4 w-4 text-muted-foreground shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
+            <ChevronRight className="h-4 w-4 text-muted-foreground shrink-0 opacity-50 group-hover:opacity-100 transition-opacity" />
           </Link>
         ))}
       </div>

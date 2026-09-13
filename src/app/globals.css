@@ -257,10 +257,11 @@
 }
 .discovery-tabs {
   display: flex;
+  flex-wrap: wrap;
   min-width: 0;
   align-items: center;
   gap: 0.15rem;
-  overflow-x: auto;
+  overflow-x: visible;
   overscroll-behavior-x: contain;
   scrollbar-width: none;
 }
@@ -291,7 +292,7 @@
 .discovery-tabs a.is-active::after {
   position: absolute;
   right: 0.8rem;
-  bottom: -0.55rem;
+  bottom: 0;
   left: 0.8rem;
   height: 2px;
   border-radius: 9999px;
@@ -496,6 +497,8 @@
   }
   .discovery-tabs {
     width: 100%;
+    flex-wrap: wrap;
+    overflow: visible;
   }
   .discovery-tools {
     justify-content: flex-end;
@@ -548,4 +551,9 @@
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #505866;
+}
+
+/* Fallback for browsers without native fullscreen: raise the main stacking context. */
+body.game-fullscreen .site-main {
+  z-index: 60;
 }

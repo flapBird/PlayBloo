@@ -137,7 +137,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
         <>
           <div className="mx-auto max-w-5xl">
             {games.map((game, index) => (
-              <GameListItem key={game.id} game={game} eagerImage={index === 0} />
+              <GameListItem key={game.id} game={game} categorySlug={category.slug} eagerImage={index === 0} />
             ))}
           </div>
 

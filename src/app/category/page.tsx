@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MIN_INDEXABLE_CATEGORY_GAMES, SITE_NAME } from "@/lib/constants";
+import { SITE_NAME } from "@/lib/constants";
 import { getCachedCategoryCatalog } from "@/lib/discovery-data";
 import { ArrowRight, LayoutGrid } from "lucide-react";
 
@@ -15,7 +15,7 @@ export const revalidate = 1800;
 
 export default async function CategoryListPage() {
   const visibleCategories = (await getCachedCategoryCatalog()).filter(
-    (category) => category.game_count >= MIN_INDEXABLE_CATEGORY_GAMES,
+    (category) => category.game_count > 0,
   );
 
   return (
@@ -40,7 +40,7 @@ export default async function CategoryListPage() {
           >
             <span>
               <span className="block font-extrabold transition-colors group-hover:text-primary">{cat.name}</span>
-              <span className="mt-1 block text-xs text-muted-foreground">{cat.game_count} games</span>
+              <span className="mt-1 block text-xs text-muted-foreground">{cat.game_count} game{cat.game_count === 1 ? "" : "s"}</span>
             </span>
             <ArrowRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
           </Link>

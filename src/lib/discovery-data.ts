@@ -1,13 +1,13 @@
 import "server-only";
 
 import { unstable_cache } from "next/cache";
-import { MIN_INDEXABLE_CATEGORY_GAMES } from "@/lib/constants";
 import { createAdminClient } from "@/lib/supabase/admin";
 import type { GameCardGame } from "@/components/games/GameCard";
 import type { Category } from "@/lib/types";
 
-export const PUBLIC_GAME_CARD_FIELDS = "id, title, slug, thumbnail_url, iframe_url, external_url, view_count, play_count, created_at, updated_at, release_date, is_trending, hot_score, categories:game_categories(category_id, categories:categories(id, name, slug))";
-export const PUBLIC_GAME_DISCOVERY_FIELDS = `${PUBLIC_GAME_CARD_FIELDS}, added_at, last_updated_at, content_verified, short_description`;
+export const PUBLIC_GAME_CARD_FIELDS = "id, title, slug, thumbnail_url, iframe_url, external_url, original_game_url, official_website_url, content_verified, short_description, description, added_at, last_updated_at, view_count, play_count, created_at, updated_at, release_date, is_trending, hot_score, categories:game_categories(category_id, categories:categories(id, name, slug))";
+export const LEGACY_GAME_CARD_FIELDS = "id, title, slug, thumbnail_url, iframe_url, external_url, view_count, play_count, created_at, updated_at, release_date, is_trending, hot_score, categories:game_categories(category_id, categories:categories(id, name, slug))";
+export const PUBLIC_GAME_DISCOVERY_FIELDS = PUBLIC_GAME_CARD_FIELDS;
 
 type CategorySummary = Pick<Category, "id" | "name" | "slug">;
 type RawPublicGameCard = Omit<GameCardGame, "categories"> & {
@@ -98,6 +98,6 @@ export const getCachedCategoryCatalog = unstable_cache(
 export async function getNavigationCategories(limit = 8): Promise<PublicCategory[]> {
   const categories = await getCachedCategoryCatalog();
   return categories
-    .filter((category) => category.game_count >= MIN_INDEXABLE_CATEGORY_GAMES)
+    .filter((category) => category.game_count > 0)
     .slice(0, limit);
 }
