@@ -1,4 +1,4 @@
-import { SITE_NAME, SITE_URL } from "@/lib/constants";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/constants";
 
 interface JsonLdProps {
   type?: "WebSite" | "BreadcrumbList" | "Game" | "Series" | "CollectionPage";
@@ -15,7 +15,7 @@ export function JsonLd({ type = "WebSite", data = {} }: JsonLdProps) {
         "@type": "WebSite",
         name: SITE_NAME,
         url: SITE_URL,
-        description: "Play free online games on PlayBloo.",
+        description: SITE_DESCRIPTION,
         ...data,
       };
       break;

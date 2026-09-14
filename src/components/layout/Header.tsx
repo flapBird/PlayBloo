@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState, useCallback, useEffect, useRef } from "react";
 import { useRouter, usePathname } from "next/navigation";
-import { Search, Menu, X, Gamepad2, Heart, History, Flame, Sparkles } from "lucide-react";
+import { Search, Menu, X, Gamepad2, Heart, History, Flame, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { SITE_NAME } from "@/lib/constants";
@@ -48,7 +48,7 @@ export function Header() {
               <Link href="/" className={`header-nav-link ${pathname === "/" ? "is-active" : ""}`}>Games</Link>
               <Link href="/search?sort=recently-updated" className="header-nav-link">Updates</Link>
               <Link href="/search?sort=popular" className="header-nav-link"><Flame className="h-3.5 w-3.5" />Popular</Link>
-              <Link href="/search?playMode=embedded" className="header-nav-link"><Sparkles className="h-3.5 w-3.5" />Playable</Link>
+              <Link href="/guides" aria-current={pathname === "/guides" || pathname.startsWith("/guides/") ? "page" : undefined} className={`header-nav-link ${pathname === "/guides" || pathname.startsWith("/guides/") ? "is-active" : ""}`}><BookOpen className="h-3.5 w-3.5" />Guides</Link>
             </nav>
           </div>
 
@@ -134,7 +134,7 @@ export function Header() {
               </Link>
               <Link href="/search?sort=recently-updated" className="block px-3 py-2 text-sm font-medium rounded-lg hover:bg-muted" onClick={() => setMobileMenuOpen(false)}>Updates</Link>
               <Link href="/search?sort=popular" className="block px-3 py-2 text-sm font-medium rounded-lg hover:bg-muted" onClick={() => setMobileMenuOpen(false)}>Popular</Link>
-              <Link href="/search?playMode=embedded" className="block px-3 py-2 text-sm font-medium rounded-lg hover:bg-muted" onClick={() => setMobileMenuOpen(false)}>Playable Here</Link>
+              <Link href="/guides" aria-current={pathname === "/guides" || pathname.startsWith("/guides/") ? "page" : undefined} className={`block px-3 py-2 text-sm font-medium rounded-lg hover:bg-muted ${pathname === "/guides" || pathname.startsWith("/guides/") ? "text-primary bg-muted" : ""}`} onClick={() => setMobileMenuOpen(false)}>Guides</Link>
               <Link href="/favorites" className="flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-lg hover:bg-muted" onClick={() => setMobileMenuOpen(false)}>
                 <Heart className="h-4 w-4" /> Favorites
               </Link>

@@ -1,7 +1,7 @@
 export const SITE_NAME = "PlayBloo";
 export const SITE_DOMAIN = "playbloo.net";
 export const SITE_URL = `https://${SITE_DOMAIN}`;
-export const SITE_DESCRIPTION = "Discover new and trending browser games on PlayBloo. Play instantly when available or continue on the official game site.";
+export const SITE_DESCRIPTION = "Discover browser games and explore game guides on PlayBloo, with release dates, gameplay explainers and version comparisons.";
 
 export const PAGE_SIZE = 24;
 export const ADMIN_PAGE_SIZE = 20;

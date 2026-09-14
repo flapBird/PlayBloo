@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { getGuidesSitemap } from "@/lib/guides";
 import { MIN_INDEXABLE_CATEGORY_GAMES, MIN_INDEXABLE_SERIES_GAMES, MIN_INDEXABLE_TAG_GAMES, SITE_URL } from "@/lib/constants";
 
 export const revalidate = 3600;
@@ -107,5 +108,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }];
   });
 
-  return [...staticPages, ...gamePages, ...categoryPages, ...tagPages, ...seriesPages, ...levelIndexPages, ...levelPages];
+  return [...staticPages, ...gamePages, ...categoryPages, ...tagPages, ...seriesPages, ...levelIndexPages, ...levelPages, ...getGuidesSitemap()];
 }

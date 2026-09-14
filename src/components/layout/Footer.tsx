@@ -19,7 +19,7 @@ export function Footer() {
               {SITE_NAME}
             </Link>
             <p className="mt-2 max-w-sm text-sm leading-relaxed text-slate-400">
-              Discover new and trending browser games. Play instantly on {SITE_NAME} when available, or continue on the official game site.
+              Discover browser games and explore guides to the games on your radar. Play, read and find your next adventure.
             </p>
           </div>
 
@@ -28,7 +28,7 @@ export function Footer() {
             <h3 className="mb-3 text-xs font-bold uppercase tracking-wider text-slate-500">Discover</h3>
             <ul className="space-y-2">
               <li><Link href="/category" prefetch={false} className="text-sm text-slate-400 transition-colors hover:text-white">Browse Categories</Link></li>
-              <li><Link href="/search?playMode=embedded" prefetch={false} className="text-sm text-slate-400 transition-colors hover:text-white">Playable Here</Link></li>
+              <li><Link href="/guides" prefetch={false} className="text-sm text-slate-400 transition-colors hover:text-white">Game Guides</Link></li>
               <li><Link href="/favorites" prefetch={false} className="text-sm text-slate-400 transition-colors hover:text-white">Your Favorites</Link></li>
               <li><Link href="/recently-played" prefetch={false} className="text-sm text-slate-400 transition-colors hover:text-white">Recently Played</Link></li>
               <li><Link href="/submit-game" prefetch={false} className="text-sm text-slate-400 transition-colors hover:text-white">Submit a Game</Link></li>

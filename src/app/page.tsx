@@ -9,12 +9,12 @@ import {
   List,
   Search,
   SlidersHorizontal,
-  Sparkles,
 } from "lucide-react";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { GameListItem } from "@/components/games/GameListItem";
 import type { GameCardGame } from "@/components/games/GameCard";
 import { HomeLibraryPanel } from "@/components/home/HomeLibraryPanel";
+import { HomeGuideFeature } from "@/components/guides/HomeGuideFeature";
 import { normalizePublicGameCards, LEGACY_GAME_CARD_FIELDS, PUBLIC_GAME_DISCOVERY_FIELDS, rankHiddenGems } from "@/lib/discovery-data";
 
 export const revalidate = 300;
@@ -227,7 +227,6 @@ export default async function HomePage() {
             {updated.length > 0 && <Link href="/search?sort=recently-updated"><Clock3 className="h-3.5 w-3.5" />Updated</Link>}
             <Link href="/search?sort=popular">Popular</Link>
             <Link href="/search?sort=hidden-gems">Hidden Gems</Link>
-            <Link href="/search?playMode=embedded"><Sparkles className="h-3.5 w-3.5" />Playable Here</Link>
           </div>
           <div className="discovery-tools flex shrink-0 items-center gap-2">
             <Link href="/search" className="discovery-tool-button"><SlidersHorizontal className="h-4 w-4" />Filters</Link>
@@ -266,6 +265,7 @@ export default async function HomePage() {
           </section>
 
           <aside className="space-y-5 lg:sticky lg:top-24">
+            <HomeGuideFeature />
             <div className="grid gap-5 rounded-xl border bg-card/40 p-4">
               <DiscoverySignal
                 title="Recently released"
