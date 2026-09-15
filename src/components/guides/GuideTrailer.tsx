@@ -6,7 +6,7 @@ import { Play, ExternalLink } from "lucide-react";
 import type { GuideTopic } from "@/lib/guides/types";
 import styles from "./guides.module.css";
 
-export function GuideTrailer({ trailer, cover }: Pick<GuideTopic, "trailer" | "cover">) {
+export function GuideTrailer({ trailer, cover }: { trailer: NonNullable<GuideTopic["trailer"]>; cover: GuideTopic["cover"] }) {
   const [playing, setPlaying] = useState(false);
   const { youtubeId, title } = trailer;
   return (
@@ -25,7 +25,7 @@ export function GuideTrailer({ trailer, cover }: Pick<GuideTopic, "trailer" | "c
             <Image src={cover.src} alt="" fill sizes="(max-width: 1024px) 100vw, 800px" />
             <span className={styles.trailerOverlay} />
             <span className={styles.playButton}><Play size={22} fill="currentColor" /></span>
-            <span className={styles.trailerLabel}>Nintendo’s official trailer</span>
+            <span className={styles.trailerLabel}>Official trailer</span>
           </button>
         )}
       </div>

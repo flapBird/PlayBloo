@@ -52,7 +52,7 @@ promotional artwork linked from the official US product page. Its source asset i
 
 https://assets.nintendo.com/image/upload/c_limit,w_1600/q_auto/f_webp/Marketing2/3OKTBMay01784158342jwugZ3wp08zzZXCWrPOIiyNS7pQz0fYoQD300Z0LrEbNS/intro/intro-keyart-large-up
 
-Credit is shown on the image and in the sources block. Text is original editorial
+Artwork attribution and source URLs are retained in the content data. Text is original editorial
 coverage; GameWith and other competitors informed navigation planning only.
 The trailer loads YouTube's privacy-enhanced embed after the user clicks play.
 
@@ -62,3 +62,19 @@ Run `npm run lint` and `npm run build`. Against a local running server, run
 `node scripts/verify-guides.mjs http://localhost:3000` to check route boundaries,
 metadata, sitemap, internal links and navigation. Also inspect a hub and article
 at desktop/mobile widths and test the trailer control.
+
+## September 15 topics
+
+World of Warcraft Forever and Marvel’s Wolverine use official promotional artwork
+from their publisher product pages. Source records remain in the content data for
+editorial maintenance; the public pages omit source links and image credit overlays.
+Trailers are optional; do not add an embed without a verified official video.
+The Forever beta article distinguishes launch subscription access from beta pack
+eligibility. Wolverine coverage does not assert unverified file sizes, frame-rate
+targets, completion times or trophy requirements. Keep these in the hub until
+substantive, verified standalone coverage is ready.
+
+Official cover assets:
+
+- Forever: https://blz-contentstack-images.akamaized.net/v3/assets/blt9c12f249ac15c7ec/blt766f7698aedb7b7f/6a9bc5882437ed5612d4878f/Open_Graph_-_Camelot.jpg
+- Wolverine: https://gmedia.playstation.com/is/image/SIEPDC/marvels-wolverine-hero-desktop-01-en-30sep25?wid=1600&fmt=jpg

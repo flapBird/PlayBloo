@@ -75,7 +75,7 @@ export const ocarinaOfTimeRemake: GuideTopic = {
         },
         {
           id: "pre-orders", title: "Where to check pre-orders",
-          paragraphs: ["Nintendo’s official trailer directs viewers to pre-order and says the launch physical version has textured foil packaging while supplies last. Treat that packaging as a limited-availability detail, not a guaranteed feature of every future physical copy.", "Use the official regional listings in the sources below as your starting point. Before ordering from a retailer, check the edition, delivery estimate, currency, cancellation terms and whether any advertised packaging is explicitly included."], sourceIds: ["trailer", "us", "au"],
+          paragraphs: ["Nintendo’s official trailer directs viewers to pre-order and says the launch physical version has textured foil packaging while supplies last. Treat that packaging as a limited-availability detail, not a guaranteed feature of every future physical copy.", "Use the official regional Nintendo listings as your starting point. Before ordering from a retailer, check the edition, delivery estimate, currency, cancellation terms and whether any advertised packaging is explicitly included."], sourceIds: ["trailer", "us", "au"],
         },
         {
           id: "launch-time", title: "Release date is not an unlock-time announcement",

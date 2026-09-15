@@ -144,3 +144,64 @@
 @media (prefers-reduced-motion: reduce) {
   .guideCard, .primaryButton { transition: none; }
 }
+
+/* Compact topic rows and article cards with visible game identity. */
+.topicCard { grid-template-columns: minmax(0, 1fr) 280px; border-radius: 12px; }
+.topicCard .heroCopy { padding: 22px 26px; }
+.topicCard h2 { font-size: 25px; margin: 0 0 9px; line-height: 1.25; }
+.topicCard .heroCopy > p { max-width: 660px; font-size: 13px; line-height: 1.65; }
+.topicCard .heroImage { min-height: 0; }
+.heroImage img { object-position: center; }
+.topicCard .chips { margin: 12px 0; }
+.topicCard .primaryButton { padding: 8px 12px; font-size: 12px; }
+.guideCard { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 18px; padding: 16px; }
+.cardImage { position: relative; overflow: hidden; border-radius: 7px; min-height: 110px; }
+.cardImage img { object-fit: cover; object-position: 60% center; }
+.cardCopy { min-width: 0; display: flex; flex-direction: column; }
+.gameName { font-size: 12px; font-weight: 650; line-height: 1.45; color: var(--primary); }
+.cardTop > svg { flex-shrink: 0; }
+.guideCard h3 { margin-top: 8px; font-size: 17px; line-height: 1.4; }
+.guideCard p { font-size: 12px; line-height: 1.65; margin: 7px 0 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+@media (max-width: 767px) {
+  .topicCard { grid-template-columns: minmax(0, 1fr) 120px; }
+  .topicCard .heroImage { grid-row: auto; aspect-ratio: auto; }
+  .topicCard .heroCopy { padding: 16px; }
+  .topicCard h2 { font-size: 20px; }
+  .topicCard .heroCopy > p { font-size: 12px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .topicCard .chips { gap: 5px; margin: 10px 0; }
+  .topicCard .chips > span { padding: 3px 5px; font-size: 10px; }
+  .guideCard { grid-template-columns: 88px minmax(0, 1fr); gap: 13px; padding: 13px; }
+  .guideCard h3 { font-size: 16px; }
+  .gameName { font-size: 11px; }
+}
+@media (max-width: 767px) {
+  .topicCard .heroImage { align-self: start; margin: 16px 12px 0 0; aspect-ratio: 1.3; border-radius: 7px; overflow: hidden; }
+  .topicCard .heroImage img { object-position: 65% center; }
+}
+
+/* Give long guide titles room; keep navigation in the metadata row. */
+.detailHero { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
+.detailHero .heroCopy { padding: 30px 32px; min-width: 0; }
+.detailHero h1 { font-size: clamp(28px, 2.8vw, 36px); line-height: 1.2; margin: 0 0 16px; }
+.detailHero .heroCopy > p { max-width: 640px; line-height: 1.75; }
+.detailHero .heroImage { min-height: 0; }
+.detailHero .heroImage img { object-position: 65% center; }
+.heroMeta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: 20px; }
+.heroMeta .chips { margin: 0; }
+.heroGuideLink { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 650; color: var(--primary); }
+.heroGuideLink:hover { text-decoration: underline; text-underline-offset: 4px; }
+.topicCard { transition: border-color .15s, background .15s; }
+.topicCard:hover { border-color: var(--primary); background: var(--secondary); }
+.topicCard .heroMeta { margin-top: 14px; }
+.topicArrow { color: var(--primary); margin-left: auto; flex-shrink: 0; }
+@media (max-width: 767px) {
+  .detailHero { grid-template-columns: minmax(0, 1fr); }
+  .detailHero .heroCopy { padding: 22px; }
+  .detailHero h1 { font-size: 28px; }
+  .detailHero .heroImage { aspect-ratio: 2.5; }
+  .detailHero .heroMeta { gap: 12px; margin-top: 16px; }
+  .topicCard .heroMeta { gap: 8px; margin-top: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .topicCard { transition: none; }
+}

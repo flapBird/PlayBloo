@@ -22,13 +22,12 @@ export default function GuidesPage() {
   return <div className={styles.page}>
     <GuideBreadcrumbs />
     <header className={styles.indexHeading}>
-      <span className={styles.eyebrow}>The games on your radar</span>
-      <h1>Game guides. Better adventures.</h1>
-      <p>Game guides, release dates and the details worth knowing. Get ready for your next game with clear explanations and information checked against official sources.</p>
+      <h1>Game Guides</h1>
+      <p>Release dates, beta access, and help getting started with your next game.</p>
     </header>
     <section aria-label="Game guide hubs" className="space-y-5">{topics.map((topic) => <GuideHero key={topic.slug} topic={topic} listing />)}</section>
     <section className={styles.latest} aria-labelledby="latest-guides">
-      <div className={styles.sectionHeading}><div><span className={styles.eyebrow}>From the guide desk</span><h2 id="latest-guides">Latest guides & explainers</h2></div><span className={styles.count}>{latest.length} articles</span></div>
+      <div className={styles.sectionHeading}><div><h2 id="latest-guides">Latest Updates</h2></div><span className={styles.count}>{latest.length} articles</span></div>
       <div className={styles.cardGrid}>{latest.map(({ topic, article }) => <GuideCard key={`${topic.slug}/${article.slug}`} topic={topic} article={article} />)}</div>
     </section>
     <JsonLd type="CollectionPage" data={{

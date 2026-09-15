@@ -40,7 +40,7 @@ export interface GuideTopic {
   releaseStatus: "upcoming" | "released";
   publisher: string;
   cover: { src: string; alt: string; credit: string; sourceUrl: string };
-  trailer: { youtubeId: string; title: string; publishedAt: string };
+  trailer?: { youtubeId: string; title: string; publishedAt: string };
   publishedAt: string;
   updatedAt: string;
   verifiedAt: string;

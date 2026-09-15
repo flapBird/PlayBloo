@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 
 const base = process.argv[2] || "http://localhost:3000";
 const hub = "/guides/ocarina-of-time-remake";
-const pages = ["/guides", hub, ...["release-date", "new-features", "remake-vs-original", "gameplay"].map((slug) => `${hub}/${slug}`)];
+const pages = ["/guides", hub, ...["release-date", "new-features", "remake-vs-original", "gameplay"].map((slug) => `${hub}/${slug}`), "/guides/world-of-warcraft-forever", "/guides/world-of-warcraft-forever/beta", "/guides/marvels-wolverine", "/guides/marvels-wolverine/settings-and-accessibility"];
 const preview = `${hub}/walkthrough`;
 const canonicalOrigin = "https://playbloo.net";
 const get = (path, options) => fetch(new URL(path, base), { signal: AbortSignal.timeout(30000), ...options });
@@ -62,6 +62,6 @@ const home = await homeResponse.text();
 const header = home.match(/<header\b[\s\S]*?<\/header>/)?.[0] || "";
 assert.ok(header.includes('href="/guides"'), "Primary navigation links to Guides");
 assert.ok(!header.includes("playMode=embedded"), "Redundant Playable navigation removed");
-assert.ok(home.includes(`href="${hub}"`), "Homepage links to featured hub");
+assert.ok(home.includes('href="/guides/world-of-warcraft-forever"'), "Homepage links to featured hub");
 assert.ok(!(home.match(/<nav aria-label="Game feed"[\s\S]*?<\/nav>/)?.[0] || "").includes("playMode=embedded"), "Redundant feed tab removed");
 console.log("PASS unknown routes, canonical redirect, sitemap, internal links and homepage navigation");

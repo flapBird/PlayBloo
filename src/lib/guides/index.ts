@@ -1,11 +1,13 @@
 import type { Metadata, MetadataRoute } from "next";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 import { ocarinaOfTimeRemake } from "./ocarina-of-time-remake";
+import { worldOfWarcraftForever } from "./world-of-warcraft-forever";
+import { marvelsWolverine } from "./marvels-wolverine";
 import type { GuideArticle, GuideTopic } from "./types";
 
-const topics: GuideTopic[] = [ocarinaOfTimeRemake];
+const topics: GuideTopic[] = [worldOfWarcraftForever, marvelsWolverine, ocarinaOfTimeRemake];
 export const GUIDE_AUTHOR = { name: "PlayBloo Editorial", url: `${SITE_URL}/about` };
-export const GUIDES_DESCRIPTION = "Release dates, gameplay explainers and version comparisons for the games on your radar. Explore PlayBloo’s game guides and official-source coverage.";
+export const GUIDES_DESCRIPTION = "Release dates, beta access, and help getting started with your next game.";
 
 export const getGuideTopics = () => topics.filter((topic) => topic.status === "published");
 export const getGuideTopic = (slug: string) => getGuideTopics().find((topic) => topic.slug === slug);
