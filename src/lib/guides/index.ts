@@ -5,7 +5,9 @@ import { worldOfWarcraftForever } from "./world-of-warcraft-forever";
 import { marvelsWolverine } from "./marvels-wolverine";
 import type { GuideArticle, GuideTopic } from "./types";
 
-const topics: GuideTopic[] = [worldOfWarcraftForever, marvelsWolverine, ocarinaOfTimeRemake];
+import { shapeWalkthrough } from "./shape-walkthrough";
+
+const topics: GuideTopic[] = [worldOfWarcraftForever, marvelsWolverine, ocarinaOfTimeRemake, shapeWalkthrough];
 export const GUIDE_AUTHOR = { name: "PlayBloo Editorial", url: `${SITE_URL}/about` };
 export const GUIDES_DESCRIPTION = "Release dates, beta access, and help getting started with your next game.";
 
@@ -21,7 +23,7 @@ export function guideMetadata(topic: GuideTopic, article?: GuideArticle): Metada
   const content = article || topic;
   const title = `${content.title} | ${SITE_NAME}`;
   const url = `${SITE_URL}${guidePath(topic, article)}`;
-  const images = [{ url: topic.cover.src, width: 1600, height: 1000, alt: topic.cover.alt }];
+  const images = [{ url: topic.cover.src, width: topic.cover.width ?? 1600, height: topic.cover.height ?? 1000, alt: topic.cover.alt }];
   return {
     title: content.title,
     description: content.description,

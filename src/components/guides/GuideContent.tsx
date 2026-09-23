@@ -65,10 +65,10 @@ export function GuideHero({ topic, listing = false }: { topic: GuideTopic; listi
       <p>{topic.description}</p>
       <div className={styles.heroMeta}>
         <div className={styles.chips}><span>{topic.platforms.join(" · ")}</span><span><CalendarDays size={13} />{formatGuideDate(topic.releaseDate)}</span></div>
-        {listing ? <ArrowUpRight className={styles.topicArrow} size={19} aria-hidden="true" /> : <Link href="#guide-library" className={styles.heroGuideLink}>Find your guide<ArrowRight size={16} /></Link>}
+        {listing ? <ArrowUpRight className={styles.topicArrow} size={19} aria-hidden="true" /> : getGuideArticles(topic).length > 0 ? <Link href="#guide-library" className={styles.heroGuideLink}>Find your guide<ArrowRight size={16} /></Link> : null}
       </div>
     </div>
-    <div className={styles.heroImage}><Image src={topic.cover.src} alt={listing ? "" : topic.cover.alt} fill preload={!listing} sizes={listing ? "(max-width: 767px) 120px, 280px" : "(max-width: 767px) 100vw, 380px"} /></div>
+    <div className={styles.heroImage}><Image src={topic.cover.src} style={topic.cover.fit ? { objectFit: topic.cover.fit, objectPosition: "center" } : undefined} alt={listing ? "" : topic.cover.alt} fill preload={!listing} sizes={listing ? "(max-width: 767px) 120px, 280px" : "(max-width: 767px) 100vw, 380px"} /></div>
   </>;
   return listing
     ? <Link href={guidePath(topic)} aria-label={`Explore ${topic.name} guides`} className={`${styles.hero} ${styles.topicCard}`}>{content}</Link>
@@ -77,7 +77,7 @@ export function GuideHero({ topic, listing = false }: { topic: GuideTopic; listi
 
 export function GuideCard({ topic, article }: { topic: GuideTopic; article: GuideArticle }) {
   return <Link href={guidePath(topic, article)} className={styles.guideCard}>
-    <div className={styles.cardImage}><Image src={topic.cover.src} alt="" fill sizes="(max-width: 767px) 88px, 120px" /></div>
+    <div className={styles.cardImage}><Image src={topic.cover.src} style={topic.cover.fit ? { objectFit: topic.cover.fit, objectPosition: "center" } : undefined} alt="" fill sizes="(max-width: 767px) 88px, 120px" /></div>
     <div className={styles.cardCopy}>
       <div className={styles.cardTop}><span className={styles.gameName}>{topic.name}</span><ArrowUpRight size={16} /></div>
       <h3>{article.shortTitle}</h3>
@@ -109,6 +109,15 @@ export function GuideSections({ topic, sections }: { topic: GuideTopic; sections
   return <div className={styles.prose}>
     {sections.map((section) => <section key={section.id} id={section.id}>
       <h2>{section.title}</h2>
+      {section.puzzle && <>
+        <figure className={styles.puzzleImage}>
+          <Image src={section.puzzle.image.src} alt={section.puzzle.image.alt} width={section.puzzle.image.width} height={section.puzzle.image.height} sizes="(max-width: 1023px) 100vw, 800px" />
+          <figcaption>{section.puzzle.image.caption}</figcaption>
+        </figure>
+        <p><strong>Gentle hint:</strong> {section.puzzle.hint}</p>
+        <details className={styles.puzzleHint}><summary>Show a stronger hint</summary><p>{section.puzzle.furtherHint}</p></details>
+        <details className={styles.puzzleHint}><summary>Reveal the full solution (spoilers)</summary><ol>{section.puzzle.solution.map((step) => <li key={step}>{step}</li>)}</ol></details>
+      </>}
       {section.releaseFacts && <GuideFacts topic={topic} />}
       {section.paragraphs?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
       {section.bullets && <ul>{section.bullets.map((item) => <li key={item}>{item}</li>)}</ul>}

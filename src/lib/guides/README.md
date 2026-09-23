@@ -78,3 +78,37 @@ Official cover assets:
 
 - Forever: https://blz-contentstack-images.akamaized.net/v3/assets/blt9c12f249ac15c7ec/blt766f7698aedb7b7f/6a9bc5882437ed5612d4878f/Open_Graph_-_Camelot.jpg
 - Wolverine: https://gmedia.playstation.com/is/image/SIEPDC/marvels-wolverine-hero-desktop-01-en-30sep25?wid=1600&fmt=jpg
+
+## SHAPE web Demo (September 23, 2026)
+
+`shape-walkthrough` covers the browser Demo only. Do not apply its route to the
+complete SHAPE game included with TRACE Definitive Edition. September 13 is the
+web Demo publication date, not TRACE Definitive Edition's release date.
+Colorbomb's official reply confirms the underwater red-block puzzle is full-game
+content and cannot be solved in the Demo. Platform promises for the complete game
+must be checked separately from browser support.
+
+Official Demo cover asset (reviewed before use):
+https://img.itch.zone/aW1nLzI5OTUyMzQ5LnBuZw==/original/w1b49k.png
+
+Puzzle sections support a location image, a visible gentle hint, and native
+`details` disclosures for the stronger hint and full solution. Keep solution
+screenshots out of the visible location image. Preserve native keyboard access.
+
+Hands-on notes (September 20; resumed September 22): web v17 starts in the metal
+room numbered 12. Shopping-list words OXIDE / BOXES / XENON / EPOXY / XYLOL map
+O and X positions directly onto the five-by-five wall panel. Other letters remain
+blank. Solving it releases the blue key from the slot beneath the panel.
+Inventory items follow the pointer after selection; move the pointer out of the
+drawer and let it close before clicking the target. Browser screenshots should
+use distinct filenames and be saved only after the relevant scene has settled.
+
+The September 23 puzzle-order check used the full browser-Demo playthrough from
+EscapeGamesWalkthrough, linked by EscapeGames24:
+https://www.youtube.com/watch?v=FC-H18PKE2w
+The eight location images are compressed frames from that playthrough, not captures
+from the separate Steam game. Keep this provenance with the content if replacing
+images. The own browser session verified the shopping-list answer; later steps were
+checked against video frames and EscapeGames24 player notes. The four-pad color
+interaction is deliberately described by its observable behavior rather than a
+fixed color code, since the footage does not establish a single stable sequence.

@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 
 const base = process.argv[2] || "http://localhost:3000";
 const hub = "/guides/ocarina-of-time-remake";
-const pages = ["/guides", hub, ...["release-date", "new-features", "remake-vs-original", "gameplay"].map((slug) => `${hub}/${slug}`), "/guides/world-of-warcraft-forever", "/guides/world-of-warcraft-forever/beta", "/guides/marvels-wolverine", "/guides/marvels-wolverine/settings-and-accessibility"];
+const pages = ["/guides/shape-walkthrough", "/guides/shape-walkthrough/controls-and-camera", "/guides", hub, ...["release-date", "new-features", "remake-vs-original", "gameplay"].map((slug) => `${hub}/${slug}`), "/guides/world-of-warcraft-forever", "/guides/world-of-warcraft-forever/beta", "/guides/marvels-wolverine", "/guides/marvels-wolverine/settings-and-accessibility"];
 const preview = `${hub}/walkthrough`;
 const canonicalOrigin = "https://playbloo.net";
 const get = (path, options) => fetch(new URL(path, base), { signal: AbortSignal.timeout(30000), ...options });
@@ -65,3 +65,18 @@ assert.ok(!header.includes("playMode=embedded"), "Redundant Playable navigation 
 assert.ok(home.includes('href="/guides/world-of-warcraft-forever"'), "Homepage links to featured hub");
 assert.ok(!(home.match(/<nav aria-label="Game feed"[\s\S]*?<\/nav>/)?.[0] || "").includes("playMode=embedded"), "Redundant feed tab removed");
 console.log("PASS unknown routes, canonical redirect, sitemap, internal links and homepage navigation");
+
+const shapeResponse = await get("/guides/shape-walkthrough");
+const shape = await shapeResponse.text();
+assert.ok(shape.includes("Before you start: this is the web Demo"), "SHAPE identifies the covered version");
+assert.ok(shape.includes("not a solvable puzzle in the web Demo"), "SHAPE explains the full-game water tank boundary");
+const sectionIds = [...shape.matchAll(/<section[^>]*\bid="([^"]+)"/g)].map((match) => match[1]);
+assert.equal(new Set(sectionIds).size, sectionIds.length, "SHAPE section IDs are unique");
+for (const [, target] of shape.matchAll(/href="#([^"]+)"/g)) {
+  assert.ok(shape.includes(`id="${target}"`), `SHAPE anchor ${target} exists`);
+}
+const puzzles = [...shape.matchAll(/<details\b([^>]*)>[\s\S]*?<summary>Reveal the full solution \(spoilers\)<\/summary>/g)];
+assert.equal(puzzles.length, 8, "SHAPE includes all eight Demo puzzle solutions");
+assert.equal([...shape.matchAll(/<figure\b/g)].length, puzzles.length, "Each SHAPE puzzle includes a location image");
+for (const [, attrs] of puzzles) assert.ok(!/\bopen\b/.test(attrs), "SHAPE solutions start collapsed");
+console.log("PASS SHAPE version boundary, puzzle disclosures and contents anchors");

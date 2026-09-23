@@ -205,3 +205,11 @@
 @media (prefers-reduced-motion: reduce) {
   .topicCard { transition: none; }
 }
+
+.puzzleImage { margin: 18px 0; }
+.puzzleImage img { width: 100%; height: auto; border: 1px solid var(--border); border-radius: 10px; }
+.puzzleImage figcaption { margin-top: 8px; font-size: 12px; line-height: 1.6; color: var(--muted-foreground); }
+.puzzleHint { margin: 12px 0; padding: 15px 18px; border: 1px solid var(--border); border-radius: 9px; background: var(--card); }
+.puzzleHint summary { cursor: pointer; font-size: 14px; font-weight: 650; }
+.puzzleHint summary:focus-visible { outline: 2px solid var(--primary); outline-offset: 5px; }
+.puzzleHint ol { list-style: decimal; padding-left: 22px; font-size: 14px; line-height: 1.9; margin-top: 16px; color: #bec4d0; }

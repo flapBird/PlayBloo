@@ -13,6 +13,12 @@ export interface GuideSection {
   sourceIds?: string[];
   trailer?: boolean;
   releaseFacts?: boolean;
+  puzzle?: {
+    image: { src: string; alt: string; width: number; height: number; caption: string };
+    hint: string;
+    furtherHint: string;
+    solution: string[];
+  };
 }
 
 export interface GuideArticle {
@@ -39,7 +45,7 @@ export interface GuideTopic {
   releaseDate: string;
   releaseStatus: "upcoming" | "released";
   publisher: string;
-  cover: { src: string; alt: string; credit: string; sourceUrl: string };
+  cover: { src: string; alt: string; credit: string; sourceUrl: string; width?: number; height?: number; fit?: "contain" | "cover" };
   trailer?: { youtubeId: string; title: string; publishedAt: string };
   publishedAt: string;
   updatedAt: string;
