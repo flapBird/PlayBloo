@@ -45,6 +45,7 @@ export interface GuideTopic {
   status: "published" | "draft";
   platforms: string[];
   releaseDate: string;
+  releaseKind?: "demo";
   releaseStatus: "upcoming" | "released";
   publisher: string;
   cover: { src: string; alt: string; credit: string; sourceUrl: string; width?: number; height?: number; fit?: "contain" | "cover" };

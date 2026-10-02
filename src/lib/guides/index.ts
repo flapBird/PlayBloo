@@ -7,8 +7,11 @@ import type { GuideArticle, GuideTopic } from "./types";
 
 import { shapeWalkthrough } from "./shape-walkthrough";
 import { sploob } from "./sploob";
+import { remember } from "./remember";
+import { nextStationTheMoon } from "./next-station-the-moon";
+import { biteYourTongue } from "./bite-your-tongue";
 
-const topics: GuideTopic[] = [worldOfWarcraftForever, marvelsWolverine, ocarinaOfTimeRemake, sploob, shapeWalkthrough];
+const topics: GuideTopic[] = [worldOfWarcraftForever, marvelsWolverine, ocarinaOfTimeRemake, remember, nextStationTheMoon, biteYourTongue, sploob, shapeWalkthrough];
 export const GUIDE_AUTHOR = { name: "PlayBloo Editorial", url: `${SITE_URL}/about` };
 export const GUIDES_DESCRIPTION = "Release dates, beta access, and help getting started with your next game.";
 

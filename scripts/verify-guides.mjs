@@ -5,6 +5,12 @@ const hub = "/guides/ocarina-of-time-remake";
 const pages = ["/guides/sploob", "/guides/sploob/how-to-play", "/guides/shape-walkthrough", "/guides/shape-walkthrough/controls-and-camera", "/guides", hub, ...["release-date", "new-features", "remake-vs-original", "gameplay"].map((slug) => `${hub}/${slug}`), "/guides/world-of-warcraft-forever", "/guides/world-of-warcraft-forever/beta", "/guides/marvels-wolverine", "/guides/marvels-wolverine/settings-and-accessibility"];
 const preview = `${hub}/walkthrough`;
 const canonicalOrigin = "https://playbloo.net";
+const demoTopics = [
+  { slug: "remember", officialUrl: "https://xlaucifer.itch.io/remember" },
+  { slug: "next-station-the-moon", officialUrl: "https://comfortkuma.itch.io/next-station-the-moon" },
+  { slug: "bite-your-tongue", officialUrl: "https://try-froggery.itch.io/bite-your-tongue" },
+];
+pages.push(...demoTopics.map(({ slug }) => `/guides/${slug}`));
 const get = (path, options) => fetch(new URL(path, base), { signal: AbortSignal.timeout(30000), ...options });
 const attr = (html, tag, match, name) => {
   const element = [...html.matchAll(new RegExp(`<${tag}\\b[^>]*>`, "g"))].map(([value]) => value).find((value) => value.includes(match));
@@ -97,3 +103,22 @@ for (const path of ["/images/guides/sploob.webp", "/images/guides/sploob-score.w
   assert.ok(response.headers.get("content-type")?.includes("image/webp"), `${path}: image format`);
 }
 console.log("PASS SPLOOB official entry, screenshots and contents anchors");
+
+const listing = await (await get("/guides")).text();
+const latestUpdates = listing.split('id="latest-guides"')[1]?.split("</section>")[0] ?? "";
+for (const { slug, officialUrl } of demoTopics) {
+  const path = `/guides/${slug}`;
+  const html = await (await get(path)).text();
+  assert.ok(html.includes(`href="${officialUrl}"`), `${path}: official Demo entry`);
+  assert.ok(html.includes("Demo release date") && html.includes("Full game in development"), `${path}: Demo availability is separate from full release`);
+  assert.ok(!html.includes("<iframe"), `${path}: no game embed`);
+  assert.ok(!html.includes('href="#guide-library"'), `${path}: no empty article-library link`);
+  assert.ok(latestUpdates.includes(`href="${path}"`), `${path}: standalone introduction appears in Latest Updates`);
+  for (const [, target] of html.matchAll(/href="#([^"]+)"/g)) {
+    assert.ok(html.includes(`id="${target}"`), `${path}: contents target ${target} exists`);
+  }
+  const cover = await get(`/images/guides/${slug}.webp`);
+  assert.equal(cover.status, 200, `${path}: official cover loads`);
+  assert.ok(cover.headers.get("content-type")?.includes("image/webp"), `${path}: cover format`);
+}
+console.log("PASS visual novel Demo status, official entries, covers and Latest Updates");

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { GuideBreadcrumbs, GuideCard, GuideHero } from "@/components/guides/GuideContent";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { getGuideArticles, getGuideTopics, guidePath, GUIDES_DESCRIPTION } from "@/lib/guides";
+import type { GuideArticle, GuideTopic } from "@/lib/guides/types";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 import styles from "@/components/guides/guides.module.css";
 
@@ -17,8 +18,12 @@ export const metadata: Metadata = {
 
 export default function GuidesPage() {
   const topics = getGuideTopics();
-  const latest = topics.flatMap((topic) => getGuideArticles(topic).map((article) => ({ topic, article })))
-    .sort((a, b) => Date.parse(b.article.updatedAt) - Date.parse(a.article.updatedAt));
+  const latest = topics.flatMap<{ topic: GuideTopic; article?: GuideArticle; updatedAt: string }>((topic) => {
+    const articles = getGuideArticles(topic);
+    return articles.length
+      ? articles.map((article) => ({ topic, article, updatedAt: article.updatedAt }))
+      : [{ topic, article: undefined, updatedAt: topic.updatedAt }];
+  }).sort((a, b) => Date.parse(b.updatedAt) - Date.parse(a.updatedAt));
   return <div className={styles.page}>
     <GuideBreadcrumbs />
     <header className={styles.indexHeading}>
@@ -27,8 +32,8 @@ export default function GuidesPage() {
     </header>
     <section aria-label="Game guide hubs" className="space-y-5">{topics.map((topic) => <GuideHero key={topic.slug} topic={topic} listing />)}</section>
     <section className={styles.latest} aria-labelledby="latest-guides">
-      <div className={styles.sectionHeading}><div><h2 id="latest-guides">Latest Updates</h2></div><span className={styles.count}>{latest.length} articles</span></div>
-      <div className={styles.cardGrid}>{latest.map(({ topic, article }) => <GuideCard key={`${topic.slug}/${article.slug}`} topic={topic} article={article} />)}</div>
+      <div className={styles.sectionHeading}><div><h2 id="latest-guides">Latest Updates</h2></div><span className={styles.count}>{latest.length} guides</span></div>
+      <div className={styles.cardGrid}>{latest.map(({ topic, article }) => <GuideCard key={`${topic.slug}/${article?.slug ?? ""}`} topic={topic} article={article} />)}</div>
     </section>
     <JsonLd type="CollectionPage" data={{
       name: title, description: GUIDES_DESCRIPTION, url: `${SITE_URL}/guides`,

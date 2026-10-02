@@ -69,6 +69,28 @@ The cover and in-body screenshot were inspected before conversion to WebP.
 Their original asset URLs are retained in `sploob.ts`. The cover uses `contain`
 to keep the beaker and score display visible in compact cards.
 
+## Standalone introductions
+
+Standalone topics without published articles appear directly in Latest Updates.
+Their cards link to the topic; topics with articles keep showing article updates.
+
+## October 2 visual novel Demos
+
+Remember is Laucifer's creepypasta visual novel, not another same-name game.
+Its official Demo covers the prologue, Chapter 1 and half of Chapter 2. The
+September 27 date is the itch.io Demo publication date, not a full-game launch.
+
+Next Station: The Moon's September 30 release is a Demo. January 2027 is the
+studio's announced full-release target; no exact day is established.
+Bite Your Tongue's October 1 release is also a Demo. Its 13 endings and expanded
+word count are full-game plans, not current Demo content.
+
+All three pages retain official product/source artwork URLs in their topic data.
+Remember uses a still from the developer's animated cover; the other two use
+official static covers. No embedded game, hands-on walkthrough or unverified
+mobile input promise is added. `releaseKind: "demo"` labels the visible facts
+as Demo dates and keeps the full game's development status explicit.
+
 ## Checks
 
 Run `npm run lint` and `npm run build`. Against a local running server, run

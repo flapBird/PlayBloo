@@ -75,13 +75,13 @@ export function GuideHero({ topic, listing = false }: { topic: GuideTopic; listi
     : <div className={`${styles.hero} ${styles.detailHero}`}>{content}</div>;
 }
 
-export function GuideCard({ topic, article }: { topic: GuideTopic; article: GuideArticle }) {
+export function GuideCard({ topic, article }: { topic: GuideTopic; article?: GuideArticle }) {
   return <Link href={guidePath(topic, article)} className={styles.guideCard}>
     <div className={styles.cardImage}><Image src={topic.cover.src} style={topic.cover.fit ? { objectFit: topic.cover.fit, objectPosition: "center" } : undefined} alt="" fill sizes="(max-width: 767px) 88px, 120px" /></div>
     <div className={styles.cardCopy}>
       <div className={styles.cardTop}><span className={styles.gameName}>{topic.name}</span><ArrowUpRight size={16} /></div>
-      <h3>{article.shortTitle}</h3>
-      <p>{article.description}</p>
+      <h3>{article?.shortTitle ?? topic.title}</h3>
+      <p>{article?.description ?? topic.description}</p>
     </div>
   </Link>;
 }
@@ -98,10 +98,10 @@ export function GuideLibrary({ topic }: { topic: GuideTopic }) {
 
 export function GuideFacts({ topic }: { topic: GuideTopic }) {
   return <dl className={styles.facts}>
-    <div><dt>Release date</dt><dd><time dateTime={topic.releaseDate}>{formatGuideDate(topic.releaseDate)}</time></dd></div>
+    <div><dt>{topic.releaseKind === "demo" ? "Demo release date" : "Release date"}</dt><dd><time dateTime={topic.releaseDate}>{formatGuideDate(topic.releaseDate)}</time></dd></div>
     <div><dt>Platform</dt><dd>{topic.platforms.join(", ")}</dd></div>
     <div><dt>Publisher</dt><dd>{topic.publisher}</dd></div>
-    <div><dt>Status at last check</dt><dd>{topic.releaseStatus === "upcoming" ? "Upcoming" : "Released"}</dd></div>
+    <div><dt>Status at last check</dt><dd>{topic.releaseKind === "demo" ? (topic.releaseStatus === "released" ? "Demo available · Full game in development" : "Demo upcoming") : topic.releaseStatus === "upcoming" ? "Upcoming" : "Released"}</dd></div>
   </dl>;
 }
 
