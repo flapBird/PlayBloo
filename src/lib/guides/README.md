@@ -56,6 +56,19 @@ Artwork attribution and source URLs are retained in the content data. Text is or
 coverage; GameWith and other competitors informed navigation planning only.
 The trailer loads YouTube's privacy-enhanced embed after the user clicks play.
 
+## SPLOOB (October 2, 2026)
+
+`sploob` covers the HTML5 game released by Mors and Catonator on September 28,
+2026. The hub and `how-to-play` article link to the official itch.io game;
+no playable iframe or Supabase game entry is added. Row-clearing advice is based
+on the official objective, not a hands-on high-score test. Exact key bindings,
+controller behavior and phone touch support remain untested. Do not present
+the developer screenshots as original PlayBloo captures.
+
+The cover and in-body screenshot were inspected before conversion to WebP.
+Their original asset URLs are retained in `sploob.ts`. The cover uses `contain`
+to keep the beaker and score display visible in compact cards.
+
 ## Checks
 
 Run `npm run lint` and `npm run build`. Against a local running server, run

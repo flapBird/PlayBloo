@@ -13,6 +13,8 @@ export interface GuideSection {
   sourceIds?: string[];
   trailer?: boolean;
   releaseFacts?: boolean;
+  link?: { label: string; href: string };
+  image?: { src: string; alt: string; width: number; height: number; caption: string };
   puzzle?: {
     image: { src: string; alt: string; width: number; height: number; caption: string };
     hint: string;

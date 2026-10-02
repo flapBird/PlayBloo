@@ -6,8 +6,9 @@ import { marvelsWolverine } from "./marvels-wolverine";
 import type { GuideArticle, GuideTopic } from "./types";
 
 import { shapeWalkthrough } from "./shape-walkthrough";
+import { sploob } from "./sploob";
 
-const topics: GuideTopic[] = [worldOfWarcraftForever, marvelsWolverine, ocarinaOfTimeRemake, shapeWalkthrough];
+const topics: GuideTopic[] = [worldOfWarcraftForever, marvelsWolverine, ocarinaOfTimeRemake, sploob, shapeWalkthrough];
 export const GUIDE_AUTHOR = { name: "PlayBloo Editorial", url: `${SITE_URL}/about` };
 export const GUIDES_DESCRIPTION = "Release dates, beta access, and help getting started with your next game.";
 

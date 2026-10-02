@@ -109,6 +109,10 @@ export function GuideSections({ topic, sections }: { topic: GuideTopic; sections
   return <div className={styles.prose}>
     {sections.map((section) => <section key={section.id} id={section.id}>
       <h2>{section.title}</h2>
+      {section.image && <figure className={styles.puzzleImage}>
+        <Image src={section.image.src} alt={section.image.alt} width={section.image.width} height={section.image.height} sizes="(max-width: 1023px) 100vw, 800px" />
+        <figcaption>{section.image.caption}</figcaption>
+      </figure>}
       {section.puzzle && <>
         <figure className={styles.puzzleImage}>
           <Image src={section.puzzle.image.src} alt={section.puzzle.image.alt} width={section.puzzle.image.width} height={section.puzzle.image.height} sizes="(max-width: 1023px) 100vw, 800px" />
@@ -120,6 +124,7 @@ export function GuideSections({ topic, sections }: { topic: GuideTopic; sections
       </>}
       {section.releaseFacts && <GuideFacts topic={topic} />}
       {section.paragraphs?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+      {section.link && <a href={section.link.href} className={styles.heroGuideLink}>{section.link.label}<ArrowUpRight size={16} aria-hidden="true" /></a>}
       {section.bullets && <ul>{section.bullets.map((item) => <li key={item}>{item}</li>)}</ul>}
       {section.table && <div className={styles.tableScroll} role="region" aria-label={`${section.title} comparison table`} tabIndex={0}><table>
         <thead><tr>{section.table.headers.map((header) => <th key={header} scope="col">{header}</th>)}</tr></thead>

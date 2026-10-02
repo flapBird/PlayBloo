@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 
 const base = process.argv[2] || "http://localhost:3000";
 const hub = "/guides/ocarina-of-time-remake";
-const pages = ["/guides/shape-walkthrough", "/guides/shape-walkthrough/controls-and-camera", "/guides", hub, ...["release-date", "new-features", "remake-vs-original", "gameplay"].map((slug) => `${hub}/${slug}`), "/guides/world-of-warcraft-forever", "/guides/world-of-warcraft-forever/beta", "/guides/marvels-wolverine", "/guides/marvels-wolverine/settings-and-accessibility"];
+const pages = ["/guides/sploob", "/guides/sploob/how-to-play", "/guides/shape-walkthrough", "/guides/shape-walkthrough/controls-and-camera", "/guides", hub, ...["release-date", "new-features", "remake-vs-original", "gameplay"].map((slug) => `${hub}/${slug}`), "/guides/world-of-warcraft-forever", "/guides/world-of-warcraft-forever/beta", "/guides/marvels-wolverine", "/guides/marvels-wolverine/settings-and-accessibility"];
 const preview = `${hub}/walkthrough`;
 const canonicalOrigin = "https://playbloo.net";
 const get = (path, options) => fetch(new URL(path, base), { signal: AbortSignal.timeout(30000), ...options });
@@ -80,3 +80,20 @@ assert.equal(puzzles.length, 8, "SHAPE includes all eight Demo puzzle solutions"
 assert.equal([...shape.matchAll(/<figure\b/g)].length, puzzles.length, "Each SHAPE puzzle includes a location image");
 for (const [, attrs] of puzzles) assert.ok(!/\bopen\b/.test(attrs), "SHAPE solutions start collapsed");
 console.log("PASS SHAPE version boundary, puzzle disclosures and contents anchors");
+
+for (const path of ["/guides/sploob", "/guides/sploob/how-to-play"]) {
+  const html = await (await get(path)).text();
+  assert.ok(html.includes('href="https://mors-games.itch.io/sploob"'), `${path}: official game entry`);
+  assert.ok(!html.includes("<iframe"), `${path}: no unapproved game embed`);
+  const ids = [...html.matchAll(/<section[^>]*\bid="([^"]+)"/g)].map((match) => match[1]);
+  assert.equal(new Set(ids).size, ids.length, `${path}: unique section IDs`);
+  for (const [, target] of html.matchAll(/href="#([^"]+)"/g)) {
+    assert.ok(html.includes(`id="${target}"`), `${path}: anchor ${target} exists`);
+  }
+}
+for (const path of ["/images/guides/sploob.webp", "/images/guides/sploob-score.webp"]) {
+  const response = await get(path);
+  assert.equal(response.status, 200, `${path}: screenshot loads`);
+  assert.ok(response.headers.get("content-type")?.includes("image/webp"), `${path}: image format`);
+}
+console.log("PASS SPLOOB official entry, screenshots and contents anchors");
