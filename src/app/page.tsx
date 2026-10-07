@@ -130,7 +130,7 @@ function DiscoverySignal({
           <h2 className="text-sm font-extrabold tracking-tight">{title}</h2>
           <p className="mt-0.5 text-[10px] leading-4 text-muted-foreground">{detail}</p>
         </div>
-        <Link href={href} aria-label={`View all ${title}`} className="shrink-0 text-muted-foreground hover:text-primary">
+        <Link href={href} prefetch={false} aria-label={`View all ${title}`} className="shrink-0 text-muted-foreground hover:text-primary">
           <ArrowRight className="h-4 w-4" />
         </Link>
       </div>
@@ -175,7 +175,7 @@ function CompactRanking({
       <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground">{eyebrow}</p>
       <div className="mt-1 flex items-center justify-between gap-3">
         <h2 className="text-base font-extrabold tracking-tight">{title}</h2>
-        <Link href={href} className="text-xs font-bold text-muted-foreground hover:text-primary">View all</Link>
+        <Link href={href} prefetch={false} className="text-xs font-bold text-muted-foreground hover:text-primary">View all</Link>
       </div>
       <ol className="mt-3 divide-y divide-border/70">
         {games.map((game, index) => (
@@ -213,7 +213,7 @@ export default async function HomePage() {
               Find a browser game and start playing. No download required.
             </p>
           </div>
-          <Link href="/search" className="inline-flex shrink-0 items-center gap-2 self-start rounded-lg border bg-card px-4 py-2.5 text-sm font-bold transition-colors hover:border-primary/50 hover:text-primary md:self-auto">
+          <Link href="/search" prefetch={false} className="inline-flex shrink-0 items-center gap-2 self-start rounded-lg border bg-card px-4 py-2.5 text-sm font-bold transition-colors hover:border-primary/50 hover:text-primary md:self-auto">
             <Search className="h-4 w-4" /> Find a game
           </Link>
         </section>
@@ -222,16 +222,16 @@ export default async function HomePage() {
         <nav aria-label="Game feed" className="discovery-toolbar mt-7">
           <div className="discovery-tabs">
             <Link href="/" className="is-active" aria-current="page">New</Link>
-            <Link href="/search?sort=trending"><Flame className="h-3.5 w-3.5" />Trending</Link>
-            <Link href="/search?sort=released"><CalendarDays className="h-3.5 w-3.5" />Released</Link>
-            {updated.length > 0 && <Link href="/search?sort=recently-updated"><Clock3 className="h-3.5 w-3.5" />Updated</Link>}
-            <Link href="/search?sort=popular">Popular</Link>
-            <Link href="/search?sort=hidden-gems">Hidden Gems</Link>
+            <Link href="/search?sort=trending" prefetch={false}><Flame className="h-3.5 w-3.5" />Trending</Link>
+            <Link href="/search?sort=released" prefetch={false}><CalendarDays className="h-3.5 w-3.5" />Released</Link>
+            {updated.length > 0 && <Link href="/search?sort=recently-updated" prefetch={false}><Clock3 className="h-3.5 w-3.5" />Updated</Link>}
+            <Link href="/search?sort=popular" prefetch={false}>Popular</Link>
+            <Link href="/search?sort=hidden-gems" prefetch={false}>Hidden Gems</Link>
           </div>
           <div className="discovery-tools flex shrink-0 items-center gap-2">
-            <Link href="/search" className="discovery-tool-button"><SlidersHorizontal className="h-4 w-4" />Filters</Link>
+            <Link href="/search" prefetch={false} className="discovery-tool-button"><SlidersHorizontal className="h-4 w-4" />Filters</Link>
             <span className="discovery-tool-button view-switch is-selected hidden sm:inline-flex"><List className="h-4 w-4" />List</span>
-            <Link href="/search?view=grid" aria-label="Grid view" className="discovery-tool-button view-switch hidden sm:inline-flex"><LayoutGrid className="h-4 w-4" /></Link>
+            <Link href="/search?view=grid" prefetch={false} aria-label="Grid view" className="discovery-tool-button view-switch hidden sm:inline-flex"><LayoutGrid className="h-4 w-4" /></Link>
           </div>
         </nav>
 
@@ -257,7 +257,7 @@ export default async function HomePage() {
 
             {feed.length > 0 && (
               <div className="mt-6 flex justify-center">
-                <Link href="/search" className="inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-bold hover:border-primary/50 hover:text-primary">
+                <Link href="/search" prefetch={false} className="inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-bold hover:border-primary/50 hover:text-primary">
                   Browse all games <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>

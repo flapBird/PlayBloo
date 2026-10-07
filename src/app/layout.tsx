@@ -60,7 +60,7 @@ export default function RootLayout({
         <Footer />
         <JsonLd type="WebSite" />
         {isProduction && (
-          <Script id="microsoft-clarity" strategy="afterInteractive">
+          <Script id="microsoft-clarity" strategy="lazyOnload">
             {`
               if (window.location.hostname === ${JSON.stringify(productionHostname)}) {
                 (function(c,l,a,r,i,t,y){

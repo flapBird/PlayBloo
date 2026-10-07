@@ -75,6 +75,7 @@ export function GameListItem({
             alt=""
             fill
             loading={eagerImage ? "eager" : "lazy"}
+            fetchPriority={eagerImage ? "high" : undefined}
             unoptimized={shouldBypassImageOptimization(game.thumbnail_url)}
             className="object-cover transition-opacity duration-150 group-hover:opacity-90"
             sizes="(max-width: 640px) 112px, 190px"
