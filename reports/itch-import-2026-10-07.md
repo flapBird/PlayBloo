@@ -77,3 +77,10 @@
    - 注意：后台手工添加 itch 游戏时，thumbnail 仍会指向 itch CDN，需按需镜像；`img.itch.zone` 服务器端抓取从本机测试是通的（200），之前 Vercel 侧 4xx 的说法未复现，如需彻底移除 bypass 可再评估。
 3. 遗留：`/api/stats` 接口在浏览器里显示 2s+，主要是 serverless 冷启动 + 跨境网络（本机到 Vercel 静态页 TTFB 基线即 ~1s），且为 fire-and-forget 不阻塞页面渲染，暂不处理。
 
+## 同日事故修复：封面 URL 少了 bucket 段（线上裂图）
+
+- 现象：部署后首页/详情页封面全部裂图。根因：批量脚本 PATCH `thumbnail_url` 时把公开 URL 写成了 `/storage/v1/object/public/covers/...`，**漏了 bucket 名 `game-media`**（上传路径是对的，写库路径错了），57 行全部失效；`/_next/image` 取源时 Supabase 返回 400（Bucket not found）→ 图片 400。
+- 修复：57 行 `thumbnail_url` 已批量替换为 `/storage/v1/object/public/game-media/covers/...`，优化端点实测 200。
+- 部署后冷缓存：每次部署会清空 Vercel 图片优化缓存，首访需逐图逐宽度冷转换，弱线路上易超时裂图。新增 `scripts/warm-image-cache.mjs`（`node scripts/warm-image-cache.mjs`，读 `.env.local`，浏览器 UA + 重试），部署后跑一遍即可把全部封面×3 宽度预热成边缘命中。注意：Cloudflare（站点现套 CF）会 403 掉 `Python-urllib`/curl 类非浏览器 UA，脚本已用浏览器 UA。
+- 相关游戏推荐池 `unstable_cache` 30 分钟过期，修复后旧池里的坏 URL 会在 ≤30 分钟内自然消失。
+
