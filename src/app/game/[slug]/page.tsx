@@ -26,6 +26,11 @@ interface Props {
 
 export const revalidate = 300;
 
+// Prerender every published game at build time. A visitor hitting a page that
+// was never rendered pays the full server render (several Supabase round
+// trips) synchronously — after each deploy that used to be the first visitor
+// of every game outside the top-24. Capped so a huge catalogue cannot blow up
+// build times; the tail renders on demand through ISR.
 export async function generateStaticParams() {
   const { data } = await createAdminClient()
     .from("games")
@@ -33,7 +38,7 @@ export async function generateStaticParams() {
     .eq("is_published", true)
     .order("hot_score", { ascending: false })
     .order("play_count", { ascending: false })
-    .limit(24);
+    .limit(500);
   return (data || []).map((game) => ({ slug: game.slug }));
 }
 

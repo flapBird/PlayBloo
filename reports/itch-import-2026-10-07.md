@@ -84,3 +84,10 @@
 - 部署后冷缓存：每次部署会清空 Vercel 图片优化缓存，首访需逐图逐宽度冷转换，弱线路上易超时裂图。新增 `scripts/warm-image-cache.mjs`（`node scripts/warm-image-cache.mjs`，读 `.env.local`，浏览器 UA + 重试），部署后跑一遍即可把全部封面×3 宽度预热成边缘命中。注意：Cloudflare（站点现套 CF）会 403 掉 `Python-urllib`/curl 类非浏览器 UA，脚本已用浏览器 UA。
 - 相关游戏推荐池 `unstable_cache` 30 分钟过期，修复后旧池里的坏 URL 会在 ≤30 分钟内自然消失。
 
+## 详情页打开慢（6s）的处置
+
+- 根因：`generateStaticParams` 只预渲染 hot_score 前 24 款游戏，其余详情页（含全部新游戏）在**每次部署后都处于零缓存状态，首个访客要同步吃完整 SSR**（getGame 连表 + 推荐池 + updates + levels 共 3-4 次 Supabase 往返），再叠加跨境线路延迟。
+- 修复：预渲染上限 24 → 500（当前 68 款全部进构建期静态 HTML，`next build` 输出 `[+65 more paths]`），此后访客始终命中缓存/ISR 旧值秒开，后台再按 `revalidate = 300` 刷新。
+- 预期：服务端渲染开销从访客路径上移除后，详情页 TTFB ≈ 访客到 CF/Vercel 边缘的网络底线（国内直连约 1-2s）。要进一步压到亚秒级需要国内 CDN/ICP，超出代码层范围。
+- 部署后记得跑 `node scripts/warm-image-cache.mjs`（图片缓存同样随部署清空）。
+
