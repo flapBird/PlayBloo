@@ -70,3 +70,10 @@
 - `sitemap.xml` 设有 `revalidate = 3600`，新游戏已随下次刷新自动进入 sitemap（导入当天已验证 52 款页面均正常渲染）。
 - SEO 控制台（itch 雷达）中本批记录需人工标记为「已用于 PlayBloo」。
 
+## 同日追补：Updates 数据与封面镜像
+
+1. **Updates 模块数据**：为 52 款新游戏各创建一条 `game_updates` 记录（标题 "Added to PlayBloo"，摘要取自各款 short_description，`published_at` = 入库时间，`source_url` = itch 页面）。此前 `game_updates` 表为 0 行，前台 Updates 区块因此从不显示。
+2. **封面镜像到 Supabase Storage**：57 张 `img.itch.zone` 封面（含本批 52 款与早期 itch 游戏）全部下载并上传到公开 bucket `game-media/covers/{slug}.{ext}`，`games.thumbnail_url` 改指 `{SUPABASE_URL}/storage/v1/object/public/...`。原因：`shouldBypassImageOptimization` 让 itch 封面绕过 next/image、访客浏览器直连 itch CDN，国内访问慢且不稳；镜像后图片走 `/_next/image` 优化 + Vercel 边缘缓存。原始 itch URL 保留在 `/tmp/itch_import/cover-mirror.json`（ itch 页面亦可随时找回）。
+   - 注意：后台手工添加 itch 游戏时，thumbnail 仍会指向 itch CDN，需按需镜像；`img.itch.zone` 服务器端抓取从本机测试是通的（200），之前 Vercel 侧 4xx 的说法未复现，如需彻底移除 bypass 可再评估。
+3. 遗留：`/api/stats` 接口在浏览器里显示 2s+，主要是 serverless 冷启动 + 跨境网络（本机到 Vercel 静态页 TTFB 基线即 ~1s），且为 fire-and-forget 不阻塞页面渲染，暂不处理。
+
