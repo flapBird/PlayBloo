@@ -1,0 +1,4 @@
+interface:
+  display_name: "PlayBloo 批量添加游戏"
+  short_description: "按指定日期去重导入新游戏，搜索网上资料补全真实玩法、操作与功能详情"
+  default_prompt: "使用 $playbloo-import-games，将我提供的指定日期游戏清单去重后加入 PlayBloo，并搜索网上资料补全真实详情。"
