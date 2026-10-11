@@ -68,7 +68,7 @@ const home = await homeResponse.text();
 const header = home.match(/<header\b[\s\S]*?<\/header>/)?.[0] || "";
 assert.ok(header.includes('href="/guides"'), "Primary navigation links to Guides");
 assert.ok(!header.includes("playMode=embedded"), "Redundant Playable navigation removed");
-assert.ok(home.includes('href="/guides/world-of-warcraft-forever"'), "Homepage links to featured hub");
+assert.ok(home.includes('href="/guides/hellraiser-revival"'), "Homepage feature links to the newest guide");
 assert.ok(!(home.match(/<nav aria-label="Game feed"[\s\S]*?<\/nav>/)?.[0] || "").includes("playMode=embedded"), "Redundant feed tab removed");
 console.log("PASS unknown routes, canonical redirect, sitemap, internal links and homepage navigation");
 

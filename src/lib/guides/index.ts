@@ -18,6 +18,7 @@ export const GUIDES_DESCRIPTION = "Release dates, beta access, and help getting 
 
 export const getGuideTopics = () => topics.filter((topic) => topic.status === "published");
 export const getGuideTopic = (slug: string) => getGuideTopics().find((topic) => topic.slug === slug);
+export const getLatestGuideTopic = () => [...getGuideTopics()].sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt))[0];
 export const getGuideArticles = (topic: GuideTopic) => topic.articles.filter((article) => article.status === "published");
 export const getGuideArticle = (topic: GuideTopic, slug: string) => topic.articles.find((article) => article.slug === slug && article.status !== "draft");
 export const guidePath = (topic: GuideTopic, article?: GuideArticle) => `/guides/${topic.slug}${article ? `/${article.slug}` : ""}`;
