@@ -6,8 +6,8 @@
 
 :root {
   color-scheme: light;
-  --background: #F8F9FC;
-  --foreground: #202331;
+  --background: #FFFFFF;
+  --foreground: #242632;
   --card: #FFFFFF;
   --card-foreground: #202331;
   --popover: #FFFFFF;
@@ -16,15 +16,15 @@
   --primary-foreground: #FFFFFF;
   --secondary: #EEF0F6;
   --secondary-foreground: #303546;
-  --muted: #ECEEF4;
-  --muted-foreground: #626A7D;
+  --muted: #EFF0F4;
+  --muted-foreground: #666D7D;
   --accent: #EEEAFE;
   --accent-foreground: #5541C5;
   --destructive: #DC2626;
   --destructive-foreground: #FFFFFF;
   --success: #047857;
   --warning: #A16207;
-  --border: #DEE2EB;
+  --border: #E1E4EB;
   --input: #CCD2DF;
   --ring: #6353DB;
   --radius: 0.625rem;
@@ -296,7 +296,7 @@
 .discovery-tabs::-webkit-scrollbar {
   display: none;
 }
-.discovery-tabs a {
+.discovery-tabs :is(a, button) {
   position: relative;
   display: inline-flex;
   min-height: 2.35rem;
@@ -310,14 +310,14 @@
   font-weight: 700;
   transition: color 150ms ease, background-color 150ms ease;
 }
-.discovery-tabs a:hover {
+.discovery-tabs :is(a, button):hover {
   background: var(--muted);
   color: var(--foreground);
 }
-.discovery-tabs a.is-active {
+.discovery-tabs :is(a, button).is-active {
   color: var(--foreground);
 }
-.discovery-tabs a.is-active::after {
+.discovery-tabs :is(a, button).is-active::after {
   position: absolute;
   right: 0.8rem;
   bottom: 0;
@@ -502,7 +502,7 @@
   .category-tile,
   .category-nav-pill,
     .header-nav-link,
-    .discovery-tabs a,
+    .discovery-tabs :is(a, button),
     .discovery-tool-button {
     transition-duration: 0.01ms;
   }
@@ -533,7 +533,7 @@
     border-top: 1px solid var(--border);
     padding-top: 0.45rem;
   }
-  .discovery-tabs a {
+  .discovery-tabs :is(a, button) {
     min-height: 2.25rem;
     padding-inline: 0.65rem;
     font-size: 0.75rem;
@@ -581,4 +581,73 @@
 /* Fallback for browsers without native fullscreen: raise the main stacking context. */
 body.game-fullscreen .site-main {
   z-index: 60;
+}
+
+
+/* Discovery: calmer typography, compact cards, and a clear light-surface hierarchy. */
+.home-feed-panel:focus-visible,
+.discovery-tabs button:focus-visible,
+.discovery-tool-button:focus-visible,
+.game-card-link:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+}
+.discovery-tabs button { cursor: pointer; }
+.home-view-switch { display: flex; gap: .125rem; border: 1px solid var(--border); border-radius: .6rem; padding: .2rem; }
+.home-view-switch .discovery-tool-button { min-width: 2rem; min-height: 2rem; border: 0; border-radius: .4rem; background: transparent; padding: .4rem; }
+.home-view-switch .discovery-tool-button.is-selected { background: var(--muted); color: var(--foreground); }
+.home-filter-button { border-color: transparent; background: transparent; }
+.game-card { height: 100%; }
+.game-card-link { display: flex; height: 100%; flex-direction: column; border-radius: .85rem; }
+.game-card-copy { padding: .7rem .1rem .25rem; }
+.game-card-title { font-size: .9375rem; font-weight: 600; line-height: 1.45; letter-spacing: -.015em; transition: color 150ms ease; }
+.game-card-link:hover .game-card-title { color: var(--primary); }
+.game-card-meta { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .35rem .5rem; margin-top: .35rem; color: var(--muted-foreground); font-size: .6875rem; line-height: 1.5; }
+.game-card-mode { display: inline-flex; align-items: center; gap: .3rem; white-space: nowrap; }
+.game-card-mode.is-playable { color: var(--success); }
+.game-card-details { display: flex; align-items: center; flex-wrap: wrap; gap: .35rem .65rem; margin-top: .4rem; color: var(--muted-foreground); font-size: .625rem; line-height: 1.5; }
+.game-card-status { position: absolute; top: .5rem; left: .5rem; border: 1px solid #ffffff25; border-radius: .35rem; padding: .2rem .45rem; background: #12151ceb; color: #E4E1FF; font-size: .625rem; font-weight: 650; line-height: 1.3; backdrop-filter: blur(8px); }
+.game-card-status.is-trending { color: #FCD34D; }
+:root:not(.dark) .site-header { background: #ffffffed; box-shadow: none; }
+:root:not(.dark) .header-search { background: #F4F5F7; border-color: #E9EBF0 !important; }
+:root:not(.dark) .header-search:focus { border-color: var(--primary) !important; background: var(--card); }
+:root:not(.dark) .header-nav-link { font-weight: 550; }
+:root:not(.dark) .header-nav-link.is-active { background: var(--accent); color: var(--primary); }
+:root:not(.dark) .home-intro { padding-top: .75rem; padding-bottom: 1.75rem; border-bottom: 0; }
+:root:not(.dark) .home-title { font-weight: 600; font-size: clamp(1.55rem, 2.6vw, 2.15rem); letter-spacing: -.04em; line-height: 1.2; }
+:root:not(.dark) .home-eyebrow { color: var(--primary); font-weight: 600; letter-spacing: .13em; }
+:root:not(.dark) .home-intro > a { border-color: var(--border); font-weight: 600; box-shadow: 0 2px 3px #20243804; }
+:root:not(.dark) .home-discovery-toolbar { margin-top: .5rem; border: 0; border-bottom: 1px solid var(--border); background: transparent; border-radius: 0; box-shadow: none; padding: 0 0 .75rem; }
+:root:not(.dark) .home-discovery-toolbar .discovery-tabs { gap: .25rem; }
+:root:not(.dark) .home-discovery-toolbar .discovery-tabs button { min-height: 2.5rem; padding-inline: 1rem; font-weight: 550; font-size: .8125rem; border-radius: .5rem; }
+:root:not(.dark) .home-discovery-toolbar .discovery-tabs .is-active { color: var(--primary); background: var(--accent); font-weight: 650; }
+:root:not(.dark) .home-discovery-toolbar .discovery-tabs .is-active::after { display: none; }
+:root:not(.dark) .home-view-switch { border-color: transparent; background: #F3F4F7; }
+:root:not(.dark) .home-view-switch .is-selected { background: var(--card); color: var(--primary); box-shadow: 0 1px 3px #20243818; }
+:root:not(.dark) .game-card-link { height: auto; padding: 0; border: 0; background: transparent; box-shadow: none; }
+:root:not(.dark) .game-card-link:hover { box-shadow: none; }
+:root:not(.dark) .game-card-media { border: 1px solid #2426320D; border-radius: .65rem; }
+:root:not(.dark) .game-card-copy { padding: .65rem 0 .15rem; }
+:root:not(.dark) .game-card-status { background: #fffffff2; color: #5141AF; border-color: #ffffffa6; box-shadow: 0 1px 3px #20243812; }
+:root:not(.dark) .game-card-status.is-trending { color: #8F570B; }
+:root:not(.dark) .home-sidebar .discovery-side-panel { background: transparent; border: 0; border-top: 1px solid var(--border); border-radius: 0; box-shadow: none; padding: 1.25rem 0 0; }
+:root:not(.dark) .home-sidebar h2 { font-weight: 650; }
+:root:not(.dark) .home-sidebar .font-bold { font-weight: 550; }
+:root:not(.dark) .home-sidebar .font-black { font-weight: 600; }
+:root:not(.dark) .home-browse-link { background: var(--card); }
+@media (width < 640px) {
+  :root:not(.dark) .home-discovery-toolbar .discovery-tabs { justify-content: space-between; gap: 0; }
+  :root:not(.dark) .home-discovery-toolbar .discovery-tabs button { padding-inline: .5rem; font-size: .75rem; }
+  .game-card-title { font-size: .875rem; }
+  .game-card-meta { font-size: .6875rem; }
+  .game-card-copy { padding-top: .6rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .game-card-link, .game-card-title { transition: none !important; }
+}
+
+@media (width < 380px) {
+  .home-discovery-toolbar .discovery-tabs { flex-wrap: nowrap; }
+  .home-discovery-toolbar .discovery-tabs button { flex: 1; justify-content: center; padding-inline: .4rem; }
+  .home-discovery-toolbar .discovery-tabs button svg { display: none; }
 }

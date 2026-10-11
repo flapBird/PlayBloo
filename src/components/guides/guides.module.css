@@ -213,3 +213,9 @@
 .puzzleHint summary { cursor: pointer; font-size: 14px; font-weight: 650; }
 .puzzleHint summary:focus-visible { outline: 2px solid var(--primary); outline-offset: 5px; }
 .puzzleHint ol { list-style: decimal; padding-left: 22px; font-size: 14px; line-height: 1.9; margin-top: 16px; color: var(--muted-foreground); }
+
+:global(:root:not(.dark)) .homeFeature { border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+:global(:root:not(.dark)) .homeFeatureImage { border-radius: 10px; overflow: hidden; }
+:global(:root:not(.dark)) .homeFeatureCopy { padding: 16px 0 0; }
+:global(:root:not(.dark)) .homeFeature h2 { margin-top: 0; font-weight: 650; letter-spacing: -.025em; }
+:global(:root:not(.dark)) .homeFeature p { line-height: 1.7; margin: 8px 0 18px; }

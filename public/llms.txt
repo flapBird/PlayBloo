@@ -6,13 +6,14 @@ PlayBloo's public content is written in English. Game pages provide researched i
 
 ## Main Pages
 
-- [Home](https://playbloo.net/): Newly added games in a compact grid with a list-view option, plus guide, release, trending, and instantly playable highlights.
+- [Home](https://playbloo.net/): Switch between New, Trending, Released, and Popular games directly on the homepage in a compact grid or list view, with guide and instantly playable highlights.
 - [Browse All Games](https://playbloo.net/search): Search the published game catalog and browse it with filters, pagination, and grid or list views (grid by default).
 - [Newest Games](https://playbloo.net/search?sort=newest): Published games ordered by addition date.
 - [Trending Games](https://playbloo.net/search?sort=trending): Games ranked using recent interest and play activity.
 - [Popular Games](https://playbloo.net/search?sort=popular): Games ordered by popularity.
 - [Categories](https://playbloo.net/category): Browse genre-based game collections.
 - [Game Series](https://playbloo.net/series): Browse related game collections in their intended order.
+- [Submit a Game](https://playbloo.net/submit-game): Suggest a game for review; available beside Guides in the main navigation.
 
 ## Core Categories
 
@@ -27,7 +28,8 @@ PlayBloo's public content is written in English. Game pages provide researched i
 
 ## Display Preferences
 
-- The site uses a light theme by default. A theme toggle beside Favorites in the header switches between light and dark appearances and saves the choice in this browser.
+- Homepage tabs show rankings from the full published catalog. Switching tabs preserves the selected grid or list view; Filters and Browse all continue with the selected ranking.
+- The site uses a dark theme by default. A theme toggle beside Favorites in the header switches between light and dark appearances and saves the choice in this browser.
 
 ## Content Structure
 

@@ -1,33 +1,79 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { useState, type KeyboardEvent, type ReactNode } from "react";
 import Link from "next/link";
 import { ArrowRight, CalendarDays, Flame, LayoutGrid, List, SlidersHorizontal } from "lucide-react";
+import { GameCard } from "@/components/games/GameCard";
+import { GameListItem } from "@/components/games/GameListItem";
+import type { HomeFeeds, HomeFeedSort } from "@/lib/home-feeds";
 
-export function HomeDiscovery({ grid, list, sidebar }: { grid: ReactNode; list: ReactNode; sidebar: ReactNode }) {
+const tabs = [
+  { sort: "newest", label: "New", icon: null },
+  { sort: "trending", label: "Trending", icon: Flame },
+  { sort: "released", label: "Released", icon: CalendarDays },
+  { sort: "popular", label: "Popular", icon: null },
+] as const;
+
+export function HomeDiscovery({ feeds, sidebar }: { feeds: HomeFeeds; sidebar: ReactNode }) {
   const [view, setView] = useState<"grid" | "list">("grid");
+  const [sort, setSort] = useState<HomeFeedSort>("newest");
+  const activeTab = tabs.find((tab) => tab.sort === sort)!;
+  const { games, failed } = feeds[sort];
+  const query = new URLSearchParams();
+  if (sort !== "newest") query.set("sort", sort);
+  if (view === "list") query.set("view", view);
+  const browseHref = `/search${query.size ? `?${query}` : ""}`;
+
+  function handleTabKey(event: KeyboardEvent<HTMLButtonElement>, index: number) {
+    let next: number;
+    if (event.key === "ArrowRight") next = (index + 1) % tabs.length;
+    else if (event.key === "ArrowLeft") next = (index + tabs.length - 1) % tabs.length;
+    else if (event.key === "Home") next = 0;
+    else if (event.key === "End") next = tabs.length - 1;
+    else return;
+    event.preventDefault();
+    setSort(tabs[next].sort);
+    event.currentTarget.parentElement?.querySelectorAll<HTMLButtonElement>('[role="tab"]')[next]?.focus();
+  }
 
   return (
     <>
-      <nav aria-label="Game feed" className="discovery-toolbar mt-7">
-        <div className="discovery-tabs">
-          <Link href="/" className="is-active" aria-current="page">New</Link>
-          <Link href="/search?sort=trending" prefetch={false}><Flame className="h-3.5 w-3.5" />Trending</Link>
-          <Link href="/search?sort=released" prefetch={false}><CalendarDays className="h-3.5 w-3.5" />Released</Link>
-          <Link href="/search?sort=popular" prefetch={false}>Popular</Link>
+      <div className="discovery-toolbar home-discovery-toolbar mt-7">
+        <div role="tablist" aria-label="Game feed" className="discovery-tabs">
+          {tabs.map((tab, index) => (
+            <button key={tab.sort} type="button" role="tab" id={`feed-tab-${tab.sort}`} aria-controls="home-game-feed" aria-selected={sort === tab.sort} tabIndex={sort === tab.sort ? 0 : -1} onClick={() => setSort(tab.sort)} onKeyDown={(event) => handleTabKey(event, index)} className={sort === tab.sort ? "is-active" : ""}>
+              {tab.icon && <tab.icon className="h-3.5 w-3.5" aria-hidden="true" />}{tab.label}
+            </button>
+          ))}
         </div>
-        <div className="discovery-tools flex shrink-0 items-center gap-2">
-          <Link href="/search" prefetch={false} className="discovery-tool-button"><SlidersHorizontal className="h-4 w-4" />Filters</Link>
-          <button type="button" onClick={() => setView("grid")} aria-label="Grid view" aria-pressed={view === "grid"} className={`discovery-tool-button ${view === "grid" ? "is-selected" : ""}`}><LayoutGrid className="h-4 w-4" /></button>
-          <button type="button" onClick={() => setView("list")} aria-label="List view" aria-pressed={view === "list"} className={`discovery-tool-button ${view === "list" ? "is-selected" : ""}`}><List className="h-4 w-4" /></button>
-        </div>
-      </nav>
-      <div className="mt-5 grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_290px] xl:gap-10">
-        <section aria-label="Newest games" className="min-w-0">
-          {view === "grid" ? grid : list}
-          <div className="mt-6 flex justify-center">
-            <Link href={view === "list" ? "/search?view=list" : "/search"} prefetch={false} className="inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-bold hover:border-primary/50 hover:text-primary">Browse all games <ArrowRight className="h-4 w-4" /></Link>
+        <div className="discovery-tools flex shrink-0 items-center gap-3">
+          <Link href={browseHref} prefetch={false} className="discovery-tool-button home-filter-button"><SlidersHorizontal className="h-4 w-4" />Filters</Link>
+          <div role="group" aria-label="Display games as" className="home-view-switch">
+            <button type="button" onClick={() => setView("grid")} aria-label="Grid view" aria-pressed={view === "grid"} className={`discovery-tool-button ${view === "grid" ? "is-selected" : ""}`}><LayoutGrid className="h-4 w-4" /></button>
+            <button type="button" onClick={() => setView("list")} aria-label="List view" aria-pressed={view === "list"} className={`discovery-tool-button ${view === "list" ? "is-selected" : ""}`}><List className="h-4 w-4" /></button>
           </div>
+        </div>
+      </div>
+      <div className="mt-6 grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_290px] xl:gap-8">
+        <section id="home-game-feed" role="tabpanel" aria-labelledby={`feed-tab-${sort}`} tabIndex={0} className="home-feed-panel min-w-0">
+          <span aria-live="polite" className="sr-only">{failed ? "Games could not be loaded" : `${activeTab.label}: ${games.length} games shown`}</span>
+          {games.length ? view === "grid" ? (
+            <div className="home-game-grid grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 xl:grid-cols-4">
+              {games.map((game, index) => <GameCard key={game.id} game={game} eagerImage={index < 4} showDate={sort === "released"} dateField={sort === "released" ? "released" : "added"} />)}
+            </div>
+          ) : (
+            <div className="discovery-list">
+              {games.map((game, index) => <GameListItem key={game.id} game={game} eagerImage={index === 0} dateField={sort === "released" ? "released" : "added"} />)}
+            </div>
+          ) : (
+            <div className="rounded-xl border border-dashed p-10 text-center text-sm text-muted-foreground">
+              <p>{failed ? "Games could not be loaded. Please try again." : sort === "released" ? "No verified release dates are available yet." : "Games will appear here soon."}</p>
+              {failed && <Link href={browseHref} className="mt-3 inline-block font-semibold text-primary">Try again <ArrowRight className="inline h-3.5 w-3.5" /></Link>}
+            </div>
+          )}
+          {games.length > 0 && <div className="mt-7 flex justify-center">
+            <Link href={browseHref} prefetch={false} className="home-browse-link inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-semibold hover:border-primary/50 hover:text-primary">Browse all {activeTab.label.toLowerCase()} games <ArrowRight className="h-4 w-4" /></Link>
+          </div>}
         </section>
         {sidebar}
       </div>
