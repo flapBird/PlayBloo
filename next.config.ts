@@ -2,6 +2,12 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
+    // Vercel bills Image Transformations per (image, width) pair. Once the quota
+    // is exhausted, every new transformation 402s and production renders broken
+    // images while local runs stay fine. Shipped assets (mirrored cover art,
+    // pre-sized WebP in /public) are already optimized, so the optimizer adds
+    // little — serve everything as-is and never spend Transformations.
+    unoptimized: true,
     remotePatterns: [
       { protocol: "https", hostname: "azgames.io", port: "", pathname: "/**" },
       { protocol: "https", hostname: "escaperoad.io", port: "", pathname: "/**" },

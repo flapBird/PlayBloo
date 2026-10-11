@@ -46,7 +46,9 @@ export function getDiscoveryStatusBadge(game: Partial<Pick<Game, "is_trending" |
  * widths exhaust the Hobby quota, and once exhausted every new transformation
  * 402s and renders as a broken image. The hosts we mirror to (itch CDN,
  * Supabase, Steam CDN) already serve reasonably sized assets, so the optimizer
- * adds little. Keep local /public images on the optimizer.
+ * adds little. Since October 11, 2026 next.config.ts disables the optimizer
+ * globally (images.unoptimized), so local /public images are unoptimized too;
+ * this function remains for its existing call sites.
  */
 export function shouldBypassImageOptimization(value: string | null | undefined): boolean {
   if (!value) return false;
