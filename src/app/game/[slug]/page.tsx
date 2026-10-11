@@ -288,10 +288,10 @@ export default async function GamePage({ params }: Props) {
                 <Calendar className="h-4 w-4" /> Released {new Date(game.release_date).toLocaleDateString("en", { year: "numeric", month: "short", day: "numeric" })}
               </span>
             )}
-            <span className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-extrabold ${playMode === "embedded" ? "bg-emerald-500/15 text-emerald-300" : playMode === "external" ? "bg-slate-500/15 text-slate-300" : "bg-amber-500/15 text-amber-300"}`}>
+            <span className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-extrabold ${playMode === "embedded" ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300" : playMode === "external" ? "bg-slate-500/15 text-slate-600 dark:text-slate-300" : "bg-amber-500/15 text-amber-700 dark:text-amber-300"}`}>
               {playMode === "embedded" ? <><Zap className="h-3.5 w-3.5 fill-current" /> Play Here</> : playMode === "external" ? <><ExternalLink className="h-3.5 w-3.5" /> External Game</> : "Details Only"}
             </span>
-            <span className={`inline-flex items-center gap-1 text-xs font-bold ${game.content_verified ? "text-emerald-300" : "text-muted-foreground"}`}>
+            <span className={`inline-flex items-center gap-1 text-xs font-bold ${game.content_verified ? "text-emerald-700 dark:text-emerald-300" : "text-muted-foreground"}`}>
               {game.content_verified ? <ShieldCheck className="h-3.5 w-3.5" /> : <ShieldAlert className="h-3.5 w-3.5" />}
               {game.content_verified ? "Source checked" : "Verification pending"}
             </span>
@@ -368,7 +368,7 @@ export default async function GamePage({ params }: Props) {
           )}
           {!game.content_verified && (
             <section className="rounded-xl border border-dashed bg-muted/35 p-4">
-              <h2 className="flex items-center gap-2 text-sm font-bold"><ShieldAlert className="h-4 w-4 text-amber-300" />Editorial verification in progress</h2>
+              <h2 className="flex items-center gap-2 text-sm font-bold"><ShieldAlert className="h-4 w-4 text-amber-700 dark:text-amber-300" />Editorial verification in progress</h2>
               <p className="mt-1.5 text-sm leading-6 text-muted-foreground">Detailed gameplay claims are hidden until they have been checked against an official or trusted source. Play availability and catalogue metadata remain visible.</p>
             </section>
           )}
@@ -379,7 +379,7 @@ export default async function GamePage({ params }: Props) {
         <aside className="space-y-6">
           <GameInfo game={game} playMode={playMode} />
           <section className="rounded-xl border p-4">
-              <h3 className="mb-3 flex items-center gap-2 font-semibold"><ShieldCheck className="h-4 w-4 text-emerald-400" /> Sources &amp; credits</h3>
+              <h3 className="mb-3 flex items-center gap-2 font-semibold"><ShieldCheck className="h-4 w-4 text-emerald-700 dark:text-emerald-400" /> Sources &amp; credits</h3>
               {game.developer && <p className="mb-3 text-sm text-muted-foreground">Developer: <span className="font-semibold text-foreground">{game.developer}</span></p>}
               {sources.length > 0 && (
                 <ul className="space-y-2 text-sm">

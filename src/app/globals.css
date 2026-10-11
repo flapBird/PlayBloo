@@ -5,6 +5,34 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  color-scheme: light;
+  --background: #F8F9FC;
+  --foreground: #202331;
+  --card: #FFFFFF;
+  --card-foreground: #202331;
+  --popover: #FFFFFF;
+  --popover-foreground: #202331;
+  --primary: #6353DB;
+  --primary-foreground: #FFFFFF;
+  --secondary: #EEF0F6;
+  --secondary-foreground: #303546;
+  --muted: #ECEEF4;
+  --muted-foreground: #626A7D;
+  --accent: #EEEAFE;
+  --accent-foreground: #5541C5;
+  --destructive: #DC2626;
+  --destructive-foreground: #FFFFFF;
+  --success: #047857;
+  --warning: #A16207;
+  --border: #DEE2EB;
+  --input: #CCD2DF;
+  --ring: #6353DB;
+  --radius: 0.625rem;
+  --font-ui-sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-ui-mono: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+:root.dark {
   color-scheme: dark;
   --background: #0B0D12;
   --foreground: #F2F4F8;
@@ -22,8 +50,8 @@
   --accent-foreground: #B8B2FF;
   --destructive: #EF4444;
   --destructive-foreground: #FFFFFF;
-  --success: #10B981;
-  --warning: #F59E0B;
+  --success: #6EE7B7;
+  --warning: #FCD34D;
   --border: #292E39;
   --input: #323845;
   --ring: #8177FF;
@@ -127,7 +155,7 @@
 }
 .site-header {
   border-bottom: 1px solid var(--border);
-  background: rgba(11, 13, 18, 0.94);
+  background: color-mix(in srgb, var(--background) 94%, transparent);
   box-shadow: none;
   backdrop-filter: blur(12px);
 }
@@ -137,12 +165,12 @@
 }
 .header-search {
   border: 1px solid transparent !important;
-  background: #171A21;
+  background: var(--muted);
   box-shadow: none;
 }
 .header-search:focus {
   border-color: rgba(129, 119, 255, 0.45) !important;
-  background: #1B1F28;
+  background: var(--secondary);
 }
 .header-nav-link {
   display: inline-flex;
@@ -200,7 +228,7 @@
 }
 .category-nav-pill:hover {
   border-color: transparent;
-  background: #1A1E26;
+  background: var(--muted);
   color: var(--foreground);
 }
 .category-nav-pill.is-active {
@@ -237,7 +265,7 @@
 .home-hero {
   isolation: isolate;
   border: 1px solid var(--border);
-  background: #12151C;
+  background: var(--card);
   box-shadow: none;
 }
 .home-intro {
@@ -252,7 +280,7 @@
   overflow: hidden;
   border: 1px solid var(--border);
   border-radius: 0.75rem;
-  background: #0e1016;
+  background: var(--card);
   padding: 0.55rem 0.65rem;
 }
 .discovery-tabs {
@@ -317,7 +345,7 @@
 }
 .discovery-tool-button:hover,
 .discovery-tool-button.is-selected {
-  border-color: #3a404d;
+  border-color: var(--input);
   background: var(--muted);
   color: var(--foreground);
 }
@@ -338,7 +366,7 @@
 .discovery-row.is-featured {
   margin-bottom: 0.15rem;
   padding: 1rem;
-  border: 1px solid #3a404d;
+  border: 1px solid var(--input);
   border-radius: 0.85rem;
   background: var(--card);
 }
@@ -367,12 +395,12 @@
 .discovery-badge.is-playable {
   border-color: rgba(16, 185, 129, 0.38);
   background: rgba(16, 185, 129, 0.1);
-  color: #6ee7b7;
+  color: var(--success);
 }
 .discovery-badge.is-trending {
   border-color: rgba(245, 158, 11, 0.35);
   background: rgba(245, 158, 11, 0.1);
-  color: #fcd34d;
+  color: var(--warning);
 }
 .discovery-side-panel {
   border: 1px solid var(--border);
@@ -420,14 +448,14 @@
 }
 .genre-panel {
   border: 1px solid var(--border);
-  background: #12151C;
+  background: var(--card);
   box-shadow: none;
   backdrop-filter: none;
 }
 .category-tile {
   @apply relative flex min-h-12 items-center justify-between overflow-hidden rounded-lg px-3 py-2 text-sm font-semibold transition-colors duration-150;
   border: 1px solid var(--border);
-  background: #171A21 !important;
+  background: var(--card) !important;
   color: var(--foreground) !important;
   box-shadow: none;
 }
@@ -436,7 +464,7 @@
 }
 .category-tile:hover {
   border-color: rgba(129, 119, 255, 0.38);
-  background: #201E34 !important;
+  background: var(--accent) !important;
   box-shadow: none;
 }
 .category-tile-0 { background: linear-gradient(145deg, #f3efff, #e8e2ff); color: #4c1d95; }
@@ -463,8 +491,8 @@
 }
 .site-footer {
   overflow: hidden;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  background: #090A0E;
+  border-top: 1px solid var(--border);
+  background: var(--card);
   box-shadow: none;
 }
 
@@ -504,9 +532,6 @@
     justify-content: flex-end;
     border-top: 1px solid var(--border);
     padding-top: 0.45rem;
-  }
-  .discovery-tool-button.view-switch {
-    display: none;
   }
   .discovery-tabs a {
     min-height: 2.25rem;

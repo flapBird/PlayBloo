@@ -3,7 +3,7 @@ import Link from "next/link";
 import { unstable_cache } from "next/cache";
 import { LayoutGrid, List, SlidersHorizontal } from "lucide-react";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { getCachedCategoryCatalog, normalizePublicGameCards, PUBLIC_GAME_CARD_FIELDS, rankHiddenGems } from "@/lib/discovery-data";
+import { getCachedCategoryCatalog, normalizePublicGameCards, PUBLIC_GAME_CARD_FIELDS } from "@/lib/discovery-data";
 import { GameCard, type GameCardGame } from "@/components/games/GameCard";
 import { GameListItem } from "@/components/games/GameListItem";
 import { ActiveFilterChips, SearchFilterPanel, type FilterOptions, type PublicSearchFilters } from "@/components/search/SearchFilterPanel";
@@ -57,16 +57,6 @@ async function searchGames(filters: PublicSearchFilters): Promise<{ games: GameC
   if (filters.price === "free") query = query.in("monetization", ["free", "free-with-ads", "freemium"]);
   if (filters.price === "paid") query = query.eq("monetization", "paid");
   if (filters.status) query = query.eq("development_status", filters.status);
-  if (filters.sort === "hidden-gems") {
-    const { data, error } = await query.order("view_count", { ascending: true }).limit(500);
-    if (error) {
-      console.error("Hidden gems query failed:", error.message);
-      return { games: [], total: 0, failed: true };
-    }
-    const ranked = rankHiddenGems(normalizePublicGameCards(data));
-    const from = (filters.page - 1) * PAGE_SIZE;
-    return { games: ranked.slice(from, from + PAGE_SIZE), total: ranked.length };
-  }
   if (filters.sort === "released") query = query.not("release_date", "is", null).lte("release_date", new Date().toISOString().slice(0, 10)).order("release_date", { ascending: false });
   else if (filters.sort === "recently-updated") query = query.not("last_updated_at", "is", null).order("last_updated_at", { ascending: false });
   else if (filters.sort === "trending") query = query.order("hot_score", { ascending: false }).order("play_count", { ascending: false });
@@ -139,7 +129,7 @@ function href(filters: PublicSearchFilters, page: number, view = filters.view) {
     platform: filters.platform,
     price: filters.price,
     status: filters.status,
-    view: view === "list" ? "" : view,
+    view: view === "grid" ? "" : view,
     page: page > 1 ? String(page) : "",
   })) {
     if (value) p.set(key, value);
@@ -149,7 +139,7 @@ function href(filters: PublicSearchFilters, page: number, view = filters.view) {
 
 export default async function SearchPage({ searchParams }: Props) {
   const p = await searchParams;
-  const sorts = ["newest", "released", "recently-updated", "trending", "popular", "hidden-gems"];
+  const sorts = ["newest", "released", "recently-updated", "trending", "popular"];
   const requestedFilters: PublicSearchFilters = {
     q: clean(p.q),
     sort: sorts.includes(p.sort || "") ? p.sort! : "newest",
@@ -159,7 +149,7 @@ export default async function SearchPage({ searchParams }: Props) {
     platform: clean(p.platform, 30) || undefined,
     price: ["free", "paid"].includes(p.price || "") ? p.price : undefined,
     status: ["demo", "released", "upcoming"].includes(p.status || "") ? p.status : undefined,
-    view: p.view === "grid" ? "grid" : "list",
+    view: p.view === "list" ? "list" : "grid",
   };
   const options = await getOptions();
   const filters: PublicSearchFilters = {
@@ -173,7 +163,7 @@ export default async function SearchPage({ searchParams }: Props) {
     : await searchGames(filters);
   const pages = Math.ceil(total / PAGE_SIZE);
   const dateField = filters.sort === "released" ? "released" : filters.sort === "recently-updated" ? "updated" : "added";
-  const sortLabels: Record<string, string> = { newest: "Newest games", released: "Recently released games", "recently-updated": "Recently updated games", trending: "Trending games", popular: "Popular games", "hidden-gems": "Hidden gems" };
+  const sortLabels: Record<string, string> = { newest: "Newest games", released: "Recently released games", "recently-updated": "Recently updated games", trending: "Trending games", popular: "Popular games" };
 
 
   return (

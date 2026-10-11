@@ -24,26 +24,6 @@ export function normalizePublicGameCards(value: unknown): GameCardGame[] {
   }));
 }
 
-/**
- * A deterministic discovery score based only on observed catalogue activity.
- * Games must sit in the lower 60% by views and have at least three real plays;
- * within that pool, a stronger play-to-view ratio ranks first.
- */
-export function rankHiddenGems(games: GameCardGame[]): GameCardGame[] {
-  const rankedByViews = [...games]
-    .filter((game) => (game.view_count || 0) > 0)
-    .sort((a, b) => (a.view_count || 0) - (b.view_count || 0));
-  const lowViewCutoff = rankedByViews[Math.floor(rankedByViews.length * 0.6)]?.view_count || 0;
-
-  return games
-    .filter((game) => (game.play_count || 0) >= 3 && (game.view_count || 0) > 0 && (game.view_count || 0) <= lowViewCutoff)
-    .sort((a, b) => {
-      const aRate = (a.play_count || 0) / Math.max(a.view_count || 0, 1);
-      const bRate = (b.play_count || 0) / Math.max(b.view_count || 0, 1);
-      return bRate - aRate || (b.play_count || 0) - (a.play_count || 0);
-    });
-}
-
 export interface PublicCategory {
   id: string;
   name: string;

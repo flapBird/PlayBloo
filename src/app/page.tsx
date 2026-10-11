@@ -2,20 +2,16 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRight,
-  CalendarDays,
-  Clock3,
   Flame,
-  LayoutGrid,
-  List,
   Search,
-  SlidersHorizontal,
 } from "lucide-react";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { GameListItem } from "@/components/games/GameListItem";
-import type { GameCardGame } from "@/components/games/GameCard";
+import { GameCard, type GameCardGame } from "@/components/games/GameCard";
+import { HomeDiscovery } from "@/components/home/HomeDiscovery";
 import { HomeLibraryPanel } from "@/components/home/HomeLibraryPanel";
 import { HomeGuideFeature } from "@/components/guides/HomeGuideFeature";
-import { normalizePublicGameCards, LEGACY_GAME_CARD_FIELDS, PUBLIC_GAME_DISCOVERY_FIELDS, rankHiddenGems } from "@/lib/discovery-data";
+import { normalizePublicGameCards, LEGACY_GAME_CARD_FIELDS, PUBLIC_GAME_DISCOVERY_FIELDS } from "@/lib/discovery-data";
 
 export const revalidate = 300;
 
@@ -28,8 +24,6 @@ interface HomeContent {
   trending: HomeGame[];
   playable: HomeGame[];
   released: HomeGame[];
-  updated: HomeGame[];
-  hiddenGems: HomeGame[];
 }
 
 type HomeGame = GameCardGame;
@@ -70,7 +64,7 @@ async function getHomeContent(): Promise<HomeContent> {
     };
     const feed = [...games]
       .sort((a, b) => pastTimestamp(b.added_at || b.created_at) - pastTimestamp(a.added_at || a.created_at))
-      .slice(0, 14);
+      .slice(0, 16);
     const trending = [...games]
       .sort(
         (a, b) =>
@@ -87,16 +81,11 @@ async function getHomeContent(): Promise<HomeContent> {
       .filter((game) => pastTimestamp(game.release_date) > 0)
       .sort((a, b) => pastTimestamp(b.release_date) - pastTimestamp(a.release_date))
       .slice(0, 3);
-    const updated = games
-      .filter((game) => pastTimestamp(game.last_updated_at) > 0)
-      .sort((a, b) => pastTimestamp(b.last_updated_at) - pastTimestamp(a.last_updated_at))
-      .slice(0, 3);
-    const hiddenGems = rankHiddenGems(games).slice(0, 3);
 
-    return { feed, trending, playable, released, updated, hiddenGems };
+    return { feed, trending, playable, released };
   } catch (error) {
     console.error("Could not load home content:", error);
-    return { feed: [], trending: [], playable: [], released: [], updated: [], hiddenGems: [] };
+    return { feed: [], trending: [], playable: [], released: [] };
   }
 }
 
@@ -198,7 +187,7 @@ function CompactRanking({
 }
 
 export default async function HomePage() {
-  const { feed, trending, playable, released, updated, hiddenGems } = await getHomeContent();
+  const { feed, trending, playable, released } = await getHomeContent();
 
   return (
     <div className="pb-16">
@@ -219,86 +208,56 @@ export default async function HomePage() {
         </section>
 
 
-        <nav aria-label="Game feed" className="discovery-toolbar mt-7">
-          <div className="discovery-tabs">
-            <Link href="/" className="is-active" aria-current="page">New</Link>
-            <Link href="/search?sort=trending" prefetch={false}><Flame className="h-3.5 w-3.5" />Trending</Link>
-            <Link href="/search?sort=released" prefetch={false}><CalendarDays className="h-3.5 w-3.5" />Released</Link>
-            {updated.length > 0 && <Link href="/search?sort=recently-updated" prefetch={false}><Clock3 className="h-3.5 w-3.5" />Updated</Link>}
-            <Link href="/search?sort=popular" prefetch={false}>Popular</Link>
-            <Link href="/search?sort=hidden-gems" prefetch={false}>Hidden Gems</Link>
-          </div>
-          <div className="discovery-tools flex shrink-0 items-center gap-2">
-            <Link href="/search" prefetch={false} className="discovery-tool-button"><SlidersHorizontal className="h-4 w-4" />Filters</Link>
-            <span className="discovery-tool-button view-switch is-selected hidden sm:inline-flex"><List className="h-4 w-4" />List</span>
-            <Link href="/search?view=grid" prefetch={false} aria-label="Grid view" className="discovery-tool-button view-switch hidden sm:inline-flex"><LayoutGrid className="h-4 w-4" /></Link>
-          </div>
-        </nav>
-
-        <div className="mt-5 grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_290px] xl:gap-12">
-          <section className="min-w-0" aria-label="Newest games">
-            {feed.length ? (
-              <div className="discovery-list">
-                {feed.map((game, index) => (
-                  <GameListItem
-                    key={game.id}
-                    game={game}
-                    eagerImage={index === 0}
-                    featured={index === 0}
-                  />
-                ))}
-              </div>
-            ) : (
-              <div className="rounded-xl border border-dashed p-12 text-center text-muted-foreground">
-                <Flame className="mx-auto mb-3 h-8 w-8 text-primary/30" />
-                New games will appear here soon.
-              </div>
-            )}
-
-            {feed.length > 0 && (
-              <div className="mt-6 flex justify-center">
-                <Link href="/search" prefetch={false} className="inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-bold hover:border-primary/50 hover:text-primary">
-                  Browse all games <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
-            )}
-          </section>
-
-          <aside className="space-y-5 lg:sticky lg:top-24">
-            <HomeGuideFeature />
-            <div className="grid gap-5 rounded-xl border bg-card/40 p-4">
-              <DiscoverySignal
-                title="Recently released"
-                detail="Ordered by the game’s real release date"
-                games={released}
-                href="/search?sort=released"
-                dateField="release_date"
-                emptyText="Release dates will appear after they are sourced."
-              />
-              <DiscoverySignal
-                title="Recently updated"
-                detail="Only verified game update dates"
-                games={updated}
-                href="/search?sort=recently-updated"
-                dateField="last_updated_at"
-                emptyText="No verified game updates have been recorded yet."
-              />
-              <DiscoverySignal
-                title="Hidden gems"
-                detail="Lower visibility with a stronger play rate"
-                games={hiddenGems}
-                href="/search?sort=hidden-gems"
-                emptyText="More play activity is needed to surface hidden gems."
-              />
+        <HomeDiscovery
+          grid={feed.length ? (
+            <div className="grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-3 xl:grid-cols-4">
+              {feed.map((game, index) => <GameCard key={game.id} game={game} eagerImage={index < 4} />)}
             </div>
+          ) : <p className="rounded-xl border border-dashed p-12 text-center text-muted-foreground">New games will appear here soon.</p>}
+          list={
+            <div className="min-w-0">
+              {feed.length ? (
+                <div className="discovery-list">
+                  {feed.map((game, index) => (
+                    <GameListItem
+                      key={game.id}
+                      game={game}
+                      eagerImage={index === 0}
+                      featured={index === 0}
+                    />
+                  ))}
+                </div>
+              ) : (
+                <div className="rounded-xl border border-dashed p-12 text-center text-muted-foreground">
+                  <Flame className="mx-auto mb-3 h-8 w-8 text-primary/30" />
+                  New games will appear here soon.
+                </div>
+              )}
 
-            <CompactRanking title="Trending now" eyebrow="Popular this moment" games={trending} href="/search?sort=trending" />
-            <CompactRanking title="Play instantly" eyebrow="No download required" games={playable} href="/search?playMode=embedded" />
-            <Link href="/category" className="flex items-center justify-between rounded-lg border px-4 py-3 text-sm font-bold text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary">
-              Browse all genres <ArrowRight className="h-4 w-4" />
-            </Link>
-          </aside>
-        </div>
+            </div>
+          }
+          sidebar={
+            <aside className="space-y-5 lg:sticky lg:top-24">
+              <HomeGuideFeature />
+              <div className="grid gap-5 rounded-xl border bg-card/40 p-4">
+                <DiscoverySignal
+                  title="Recently released"
+                  detail="Ordered by the game’s real release date"
+                  games={released}
+                  href="/search?sort=released"
+                  dateField="release_date"
+                  emptyText="Release dates will appear after they are sourced."
+                />
+              </div>
+
+              <CompactRanking title="Trending now" eyebrow="Popular this moment" games={trending} href="/search?sort=trending" />
+              <CompactRanking title="Play instantly" eyebrow="No download required" games={playable} href="/search?playMode=embedded" />
+              <Link href="/category" className="flex items-center justify-between rounded-lg border px-4 py-3 text-sm font-bold text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary">
+                Browse all genres <ArrowRight className="h-4 w-4" />
+              </Link>
+            </aside>
+          }
+        />
         <HomeLibraryPanel />
       </div>
     </div>

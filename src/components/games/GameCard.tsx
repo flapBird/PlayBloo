@@ -78,7 +78,7 @@ export function GameCard({ game, badges = [], showDate = false, dateField = "add
         <Link href={`/game/${game.slug}`} prefetch={false} className="block">
           <h3 className="line-clamp-2 text-[13px] font-bold leading-snug text-foreground transition-colors group-hover:text-primary sm:text-sm">{game.title}</h3>
         </Link>
-        <div className="mt-1 flex min-w-0 items-center gap-2 text-[10px] text-muted-foreground sm:text-[11px]">
+        <div className="mt-1 flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1 text-[10px] text-muted-foreground sm:text-[11px]">
           <span className="truncate">{primaryCategory?.name || (playMode === "unavailable" ? "Details only" : "Browser game")}</span>
           <span aria-hidden="true">·</span>
           <span className="inline-flex shrink-0 items-center gap-1"><Eye className="h-3 w-3" />{formatCount(game.view_count)}</span>

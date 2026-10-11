@@ -52,7 +52,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full antialiased">
+    <html lang="en" className="h-full antialiased" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: `try { document.documentElement.classList.toggle("dark", localStorage.getItem("playbloo-theme") === "dark"); } catch {}` }} />
+      </head>
       <body className="min-h-full flex flex-col">
         <div className="site-background" aria-hidden="true" />
         <Header />
