@@ -7,17 +7,18 @@ import { SITE_NAME, SITE_URL } from "@/lib/constants";
 import styles from "@/components/guides/guides.module.css";
 
 const title = "Game Guides, Release Dates & Comparisons";
-const cover = getGuideTopics()[0]?.cover;
+const sortTopicsByPublishDate = (topics: GuideTopic[]) => [...topics].sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt));
+const cover = sortTopicsByPublishDate(getGuideTopics())[0]?.cover;
 export const metadata: Metadata = {
   title,
   description: GUIDES_DESCRIPTION,
   alternates: { canonical: `${SITE_URL}/guides` },
-  openGraph: { type: "website", title: `${title} | ${SITE_NAME}`, description: GUIDES_DESCRIPTION, url: `${SITE_URL}/guides`, siteName: SITE_NAME, images: cover ? [{ url: cover.src, width: 1600, height: 1000, alt: cover.alt }] : [] },
-  twitter: { card: "summary_large_image", title: `${title} | ${SITE_NAME}`, description: GUIDES_DESCRIPTION, images: cover ? [cover.src] : [] },
+  openGraph: { type: "website", title: `${title} | ${SITE_NAME}`, description: GUIDES_DESCRIPTION, url: `${SITE_URL}/guides`, siteName: SITE_NAME, images: cover ? [{ url: cover.src, width: cover.width ?? 1600, height: cover.height ?? 1000, alt: cover.alt }] : [] },
+  twitter: { card: "summary_large_image", title, description: GUIDES_DESCRIPTION, images: cover ? [cover.src] : [] },
 };
 
 export default function GuidesPage() {
-  const topics = getGuideTopics();
+  const topics = sortTopicsByPublishDate(getGuideTopics());
   const latest = topics.flatMap<{ topic: GuideTopic; article?: GuideArticle; updatedAt: string }>((topic) => {
     const articles = getGuideArticles(topic);
     return articles.length

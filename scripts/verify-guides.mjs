@@ -139,3 +139,8 @@ for (const { slug, officialUrl } of demoTopics) {
   assert.ok(cover.headers.get("content-type")?.includes("image/webp"), `${path}: cover format`);
 }
 console.log("PASS visual novel Demo status, official entries, covers and Latest Updates");
+
+const hubSection = listing.split('aria-label="Game guide hubs"')[1]?.split("</section>")[0] ?? "";
+const firstHub = hubSection.match(/href="(\/guides\/[^"?#]+)"/)?.[1];
+assert.equal(firstHub, "/guides/hellraiser-revival", "Guide hubs list leads with the newest published topic");
+console.log("PASS guide hubs list is newest-first");
