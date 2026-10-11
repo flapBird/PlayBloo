@@ -35,9 +35,7 @@
 - 上传用 `x-upsert: true` 头 + 正确 Content-Type。
 - 下载 itch 封面：直连 + 0.35s 节奏 + 失败重试；单图 <200B 视为可疑（HTML 错误页），报错。
 - **站点前端套了 Cloudflare**：非浏览器 UA（Python-urllib、curl 默认 UA）访问 playbloo.net 会被 403。任何打站点的脚本都要带浏览器 UA。
-- **`/_next/image` 只接受 next.config.ts 里配置的宽度**（imageSizes+deviceSizes），乱传 `w=241` 得 400；`q` 必须在 qualities 列表（60/75）。响应头 `x-vercel-cache: MISS/HIT` 可判断预热状态。
-- **每次部署会清空 Vercel 图片优化缓存**，首个访客要为每图每宽度冷转换，弱线路上大量超时 → 全站裂图。部署后跑 `node scripts/warm-image-cache.mjs`（脚本用浏览器 UA，读 .env.local，把全部封面 × 96/240/480 宽度预热成边缘命中）。
-- 排查页面图片 URL 时注意 HTML 里 srcset 的 URL 是**百分号编码**的（`%2F` 代替 `/`），grep `object/public/covers` 会漏报，grep `covers/<slug>` 或解码后再查。
+- **Vercel Transformations 按（图片 × 宽度）计费，配额耗尽后所有新转换 402**，症状是"线上裂图、本地正常"（2026-10-11 事故：本地图片走 `/_next/image` 全裂）。2026-10-11 起 `next.config.ts` 已设 `images.unoptimized: true` 全局关闭优化器，所有图片直连原始 URL，页面不再产生 srcset/`/_next/image` 引用。**不要再运行 `scripts/warm-image-cache.mjs`**（优化器时代脚本，现在运行只会白烧配额）；若线上裂图复发，先查是否有人重新启用了优化器或删了该配置。
 
 ## 5. 站点架构备忘（影响导入决策）
 

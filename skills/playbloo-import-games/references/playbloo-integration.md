@@ -49,7 +49,7 @@
 
 验证上传成功、公开访问为图片、Content-Type 与字节一致，再设置 `thumbnail_url`。记录原图 URL、优化图 URL、尺寸与字节数；同一对象路径已存在时先核对，不盲目覆盖其他批次资产。不能把 HTML 错误页上传成图片。报告不需提交原图或网页全文。
 
-使用项目已有图片工具，或已有 sharp/Pillow 等压缩；无需为此换技术栈。`scripts/warm-image-cache.mjs` 可按其当前实现预热图片，先阅读参数与范围；验证本批实际 `/_next/image` URL 即可，不必无条件预热全站。动态游戏截图需要保留动态内容时不要强制转成单帧封面。
+使用项目已有图片工具，或已有 sharp/Pillow 等压缩；无需为此换技术栈。站点已全局关闭 Vercel 图片优化（`images.unoptimized: true`，2026-10-11 起），图片直连原始 URL；不要运行 `scripts/warm-image-cache.mjs`——该脚本已过时，运行只会消耗 Transformations 配额。动态游戏截图需要保留动态内容时不要强制转成单帧封面。
 
 ## 写库可靠性与日期
 

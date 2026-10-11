@@ -12,3 +12,10 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - sitemap 中老游戏已有的内容更新时间必须保留。不得因新增其他游戏、下架游戏、批量导入、数据同步、功能迭代、构建、部署或重新生成 sitemap 而批量改写老游戏的 `lastModified`，也不得为了刷新 sitemap 而批量更新老游戏的 `updated_at`。除非用户另有明确要求，不调整老游戏已有的 sitemap 更新时间。
 - 游戏下架或删除后，必须从 sitemap 移除对应游戏 URL，以及依赖该游戏上线状态的关卡等页面 URL；同时检查受影响的分类、标签、系列等页面是否仍符合现有收录条件。
 - 验证至少覆盖：新增上线游戏被收录且更新时间等于上线日期；下架或删除游戏及其依赖页面不再被收录；本轮未变动的老游戏更新时间与修改前一致。最终回复简要说明 sitemap 的处理及验证结果；无法验证时如实说明原因。
+
+# 图片管道约定
+
+- 站点所有图片直连原始 URL：`next.config.ts` 已设 `images.unoptimized: true` 全局关闭 Vercel 图片优化（2026-10-11 起）。不要移除该配置，不要给单个 `<Image>` 重新启用优化，也不要引入会请求 `/_next/image` 的自定义 loader。
+- 原因：Vercel Transformations 按（图片 × 宽度）计费，Hobby 配额耗尽后所有新转换 402，症状是"线上裂图、本地正常"（2026-10 两次事故）。`scripts/warm-image-cache.mjs` 是优化器时代的产物，已无用且运行只会消耗配额，不要再在部署后运行。
+- 没有优化器兜底，新增图片素材必须预先压缩到位（WebP、合理尺寸，参考 `public/images/guides/` 下 1600px 宽的封面规格），浏览器直接加载原图缩放显示。
+- 游戏封面镜像到 Supabase Storage 的惯例不变——那是为了绕开 itch 热链问题，与图片优化无关。

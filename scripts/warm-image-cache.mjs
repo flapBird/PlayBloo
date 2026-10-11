@@ -1,5 +1,11 @@
 #!/usr/bin/env node
 /**
+ * OBSOLETE since 2026-10-11: next.config.ts sets images.unoptimized: true
+ * (the optimizer was burning Vercel Transformations quota and 402ing new
+ * images). Pages no longer reference /_next/image, so there is nothing to
+ * warm — running this script only spends Transformations quota. Kept for
+ * reference in case the optimizer is ever re-enabled.
+ *
  * Warms the Vercel image optimizer cache (/_next/image) for every published
  * game cover after a deployment. Deployments start with a cold image cache, so
  * the first visitors pay an origin fetch + transform per image variant — over

@@ -45,7 +45,7 @@ PROBLEM 行必须清零再执行正式入库。脚本会自动查重（slug / it
 ```bash
 cd /tmp/itch-import && python3 /Users/admin/Documents/Codex/PlayBloo/.agents/skills/itch-game-import/scripts/mirror_covers.py
 ```
-把 `img.itch.zone` 热链封面（含历史游戏）转存到 Supabase Storage 公开 bucket `game-media` 并 PATCH `thumbnail_url`——图片从此走 next/image 优化 + Vercel 边缘缓存。**不要直接热链 itch 封面**（国内访客裂图，这是加镜像机制前的事故形态）。
+把 `img.itch.zone` 热链封面（含历史游戏）转存到 Supabase Storage 公开 bucket `game-media` 并 PATCH `thumbnail_url`——图片从此走自家存储直连（站点已全局关闭 Vercel 图片优化），不再受 itch 热链影响。**不要直接热链 itch 封面**（国内访客裂图，这是加镜像机制前的事故形态）。
 
 ### 6. 验证与收尾
 - 抓 2-3 个 `/game/<slug>` 页面确认标题/简介/图片/外链按钮渲染正常（grep 时注意 srcset 里的 URL 是 %2F 编码的）。
@@ -55,10 +55,7 @@ cd /tmp/itch-import && python3 /Users/admin/Documents/Codex/PlayBloo/.agents/ski
 
 ## 部署相关（代码有改动时）
 
-详情页构建期全量预渲染（上限 500），部署不会造成首访慢。但**每次部署清空 Vercel 图片优化缓存**，会导致全站图片裂图几秒到几分钟——部署完成后执行：
-```bash
-node scripts/warm-image-cache.mjs
-```
+详情页构建期全量预渲染（上限 500），部署不会造成首访慢。站点图片全部直连原始 URL（`next.config.ts` 已设 `images.unoptimized: true`），没有图片优化缓存需要预热；**不要再运行 `scripts/warm-image-cache.mjs`**——那是优化器时代的脚本，现在运行只会白烧 Transformations 配额。
 
 ## 已知边界
 
