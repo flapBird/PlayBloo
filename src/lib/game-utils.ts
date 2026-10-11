@@ -41,14 +41,18 @@ export function getDiscoveryStatusBadge(game: Partial<Pick<Game, "is_trending" |
 }
 
 /**
- * Some official game/CDN image hosts reject server-side proxy requests. Sending
- * those URLs through Next Image causes repeated 4xx transformations on Vercel.
- * Keep the exception narrow so compatible sources still get responsive images.
+ * All remote game art is served unoptimized. Vercel bills Image Transformations
+ * per unique (image, width) pair — hundreds of covers across the responsive
+ * widths exhaust the Hobby quota, and once exhausted every new transformation
+ * 402s and renders as a broken image. The hosts we mirror to (itch CDN,
+ * Supabase, Steam CDN) already serve reasonably sized assets, so the optimizer
+ * adds little. Keep local /public images on the optimizer.
  */
 export function shouldBypassImageOptimization(value: string | null | undefined): boolean {
   if (!value) return false;
   try {
-    return new URL(value).hostname.toLowerCase() === "img.itch.zone";
+    const { protocol } = new URL(value);
+    return protocol === "http:" || protocol === "https:";
   } catch {
     return false;
   }
