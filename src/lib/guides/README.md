@@ -91,6 +91,39 @@ official static covers. No embedded game, hands-on walkthrough or unverified
 mobile input promise is added. `releaseKind: "demo"` labels the visible facts
 as Demo dates and keeps the full game's development status explicit.
 
+## Hellraiser: Revival (October 11, 2026)
+
+`hellraiser-revival` covers Saber Interactive's single-player first-person action
+horror survival game, launched October 8, 2026 on Steam (Windows), PlayStation 5,
+Xbox Series X|S and Nintendo Switch 2. It was not added to the Supabase games
+module; there is no playable iframe, review score claim or hands-on session.
+PlayBloo has not played the game.
+
+Verified facts come from the official game site and its store links (Steam app
+1551980, PlayStation concept 10012313, Xbox 9nswrgzbq2mc), the Steam appdetails
+API for date/price/specs ($39.99, 80 GB, Windows-only), the official Demo page
+(app 5184670, September 17, 2026) and the Deluxe Content DLC page (app 4664770,
+$14.99, item list quoted from the store). The Switch 2 release rests on two
+official sources: Nintendo of America's launch trailer upload and
+Nintendo Everything's same-day coverage; the eShop listing was not checked
+directly.
+
+The launch trailer embed (`JCeq-T1Q4FM`) is Nintendo of America's official
+upload, verified via oEmbed; it is labeled as such in the sources. If a
+Saber-channel trailer URL is confirmed later, swapping the ID is enough.
+
+Gameplay advice (suffering economy, armor targeting, healing loop, stealth
+caveat, Chatterer avoidance, late-game crashes) is summarized and quoted from
+GamingTrend's October 8, 2026 PC review (85/100) and attributed to it in-text.
+It is one reviewer's experience, not a PlayBloo test; difficulty options and
+exact control bindings remain unverified and are not described.
+
+The cover and two in-body images are official Steam store screenshots,
+inspected before conversion to WebP; their original asset URLs are retained in
+`hellraiser-revival.ts`. The combat screenshot shows gore; it is official
+marketing material for an adults-rated horror game and illustrates the armor
+advice directly.
+
 ## Checks
 
 Run `npm run lint` and `npm run build`. Against a local running server, run

@@ -10,8 +10,9 @@ import { sploob } from "./sploob";
 import { remember } from "./remember";
 import { nextStationTheMoon } from "./next-station-the-moon";
 import { biteYourTongue } from "./bite-your-tongue";
+import { hellraiserRevival } from "./hellraiser-revival";
 
-const topics: GuideTopic[] = [worldOfWarcraftForever, marvelsWolverine, ocarinaOfTimeRemake, remember, nextStationTheMoon, biteYourTongue, sploob, shapeWalkthrough];
+const topics: GuideTopic[] = [worldOfWarcraftForever, marvelsWolverine, ocarinaOfTimeRemake, remember, nextStationTheMoon, biteYourTongue, sploob, shapeWalkthrough, hellraiserRevival];
 export const GUIDE_AUTHOR = { name: "PlayBloo Editorial", url: `${SITE_URL}/about` };
 export const GUIDES_DESCRIPTION = "Release dates, beta access, and help getting started with your next game.";
 

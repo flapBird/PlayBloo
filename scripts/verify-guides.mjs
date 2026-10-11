@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 
 const base = process.argv[2] || "http://localhost:3000";
 const hub = "/guides/ocarina-of-time-remake";
-const pages = ["/guides/sploob", "/guides/sploob/how-to-play", "/guides/shape-walkthrough", "/guides/shape-walkthrough/controls-and-camera", "/guides", hub, ...["release-date", "new-features", "remake-vs-original", "gameplay"].map((slug) => `${hub}/${slug}`), "/guides/world-of-warcraft-forever", "/guides/world-of-warcraft-forever/beta", "/guides/marvels-wolverine", "/guides/marvels-wolverine/settings-and-accessibility"];
+const pages = ["/guides/sploob", "/guides/sploob/how-to-play", "/guides/shape-walkthrough", "/guides/shape-walkthrough/controls-and-camera", "/guides", hub, ...["release-date", "new-features", "remake-vs-original", "gameplay"].map((slug) => `${hub}/${slug}`), "/guides/world-of-warcraft-forever", "/guides/world-of-warcraft-forever/beta", "/guides/marvels-wolverine", "/guides/marvels-wolverine/settings-and-accessibility", "/guides/hellraiser-revival", "/guides/hellraiser-revival/getting-started"];
 const preview = `${hub}/walkthrough`;
 const canonicalOrigin = "https://playbloo.net";
 const demoTopics = [
@@ -103,6 +103,23 @@ for (const path of ["/images/guides/sploob.webp", "/images/guides/sploob-score.w
   assert.ok(response.headers.get("content-type")?.includes("image/webp"), `${path}: image format`);
 }
 console.log("PASS SPLOOB official entry, screenshots and contents anchors");
+
+for (const path of ["/guides/hellraiser-revival", "/guides/hellraiser-revival/getting-started"]) {
+  const html = await (await get(path)).text();
+  assert.ok(html.includes('href="https://store.steampowered.com/app/1551980/Clive_Barkers_Hellraiser_Revival/"'), `${path}: official Steam entry`);
+  const ids = [...html.matchAll(/<section[^>]*\bid="([^"]+)"/g)].map((match) => match[1]);
+  assert.equal(new Set(ids).size, ids.length, `${path}: unique section IDs`);
+  for (const [, target] of html.matchAll(/href="#([^"]+)"/g)) {
+    assert.ok(html.includes(`id="${target}"`), `${path}: anchor ${target} exists`);
+  }
+}
+assert.ok((await (await get("/guides/hellraiser-revival")).text()).includes("<iframe") === false, "Hellraiser hub trailer starts without an unapproved embed");
+for (const path of ["/images/guides/hellraiser-revival.webp", "/images/guides/hellraiser-revival-pinhead.webp", "/images/guides/hellraiser-revival-combat.webp"]) {
+  const response = await get(path);
+  assert.equal(response.status, 200, `${path}: screenshot loads`);
+  assert.ok(response.headers.get("content-type")?.includes("image/webp"), `${path}: image format`);
+}
+console.log("PASS Hellraiser Revival official entry, screenshots and contents anchors");
 
 const listing = await (await get("/guides")).text();
 const latestUpdates = listing.split('id="latest-guides"')[1]?.split("</section>")[0] ?? "";
