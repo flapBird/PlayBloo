@@ -36,3 +36,17 @@
 - 抽查线上 `/game/office-immortal`、`/game/wreckbox`、`/game/yes-comrade`：标题、og:description、正文渲染正常，封面全部走 `game-media/covers/` 镜像（0 处 itch 热链），外链按钮指向 itch 原页面
 - 封面镜像 URL 单发复核 HTTP 200
 - 相关游戏推荐池有 30 分钟缓存、首页/详情页 ISR 5 分钟，属正常滞后
+
+## 重复批次复核 · 2026-10-12
+
+用户再次提供同一批 10 款游戏，导出抓取时间为 **2026-10-12 15:06（UTC+8）**，来源为 `https://itch.io/games/new-and-popular/free/platform-web.xml`。本次复核于 **2026-10-12 23:15（UTC+8）**完成。
+
+- 生产库去重结果：10/10 已发布，与上方清单及原 itch 页面地址一致；入库脚本 dry-run 为 `rows to insert: 0`，无 PROBLEM。本轮新增 0 款，未重复写入游戏、分类或动态。
+- 每款均有完整英文短简介、介绍、玩法、操作、技巧和功能字段；共 20 条分类关联，每款恰有 1 条 `Added to PlayBloo` 动态。Anime Biz Magnate 浏览器版已标注 `demo`。
+- 10 张封面均使用 Supabase `game-media/covers/` 镜像，逐张返回 HTTP 200 和有效图片内容。
+- 抽查线上 Office Immortal、Anime Biz Magnate、Yes, Comrade. 详情页：HTTP 200，标题、短简介、镜像封面及 itch 外链均正确，未使用 `/_next/image`。
+- 原导入后的 sitemap 缓存已刷新：线上 `/sitemap.xml` 已收录全部 10 个正式游戏 URL，`lastmod` 均为 `2026-10-11T16:47:26.422Z`，对应 PlayBloo 首次上线日期 **2026-10-12（UTC+8）**。本轮未新增、下架或删除游戏，无需修改 sitemap 生成器。
+- 复核前后生产库全部 930 条游戏记录的 `updated_at` 及发布状态一致，保留了本批和老游戏的已有更新时间。
+- 已检查 `public/llms.txt`：现有描述与外链游玩方式、游戏详情路由及 sitemap 一致，无需更新。仅补充本报告，不涉及代码或部署。
+
+本批已完整用于 PlayBloo；请在 SEO 控制台将其标记为「已用于 PlayBloo」。
