@@ -1,0 +1,2786 @@
+{
+  "batchDate": "2026-10-14",
+  "inputCount": 10,
+  "baselineCount": 940,
+  "entries": [
+    {
+      "index": 1,
+      "inputTitle": "Himaneji – Idle Factory Clicker",
+      "sourceUrl": "https://scgf.itch.io/himaneji-idle-factory-clicker",
+      "resolvedUrl": "https://scgf.itch.io/himaneji-idle-factory-clicker",
+      "identity": "scgf/himaneji-idle-factory-clicker",
+      "inputPublishedAt": "2026-10-12 23:43（UTC+8）",
+      "decision": "published",
+      "game": {
+        "id": "3d56b89f-9fcb-4e41-b514-759d04dc8e3e",
+        "title": "Himaneji – Idle Factory Clicker",
+        "slug": "himaneji-idle-factory-clicker",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-14/himaneji-idle-factory-clicker.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "Himaneji is an idle factory clicker by scgf. Earn money from machines, hire workers to automate production, and choose branches in a technology tree. Rockets carry the factory loop across six stars, while rebirths award Blueprints for lasting upgrades.\n\nFast tapping can produce Circuit Chips for a separate upgrade tree. This beta includes daily missions and 42 achievements, with English, Japanese, and Traditional Chinese options. Saves stay in the browser; the developer provides transfer codes and an alternative official site for phones that cannot save inside itch.io.",
+        "how_to_play": "Tap machines to earn money, buy more production capacity, and let workers automate it. Spend Circuit Chips and explore technology choices. Rebirth for permanent upgrades, then launch rockets to progress to another star.",
+        "controls": "Tap / click machines — earn resources\nOn-screen buttons — purchases, upgrades, and rockets\nMenu → Transfer / Backup — create a save transfer code",
+        "tips": "Back up a transfer code before changing devices or clearing browser data.\nReview either-or technology choices before committing.\nIf saving fails on a phone, follow the developer’s official-site link.",
+        "features": "Worker automation and away earnings\nSix-star rocket progression\nBlueprint rebirth upgrades\nCircuit Chip upgrade tree\n42 achievements and daily missions\nEnglish, Japanese, and Traditional Chinese\nBrowser save transfer codes",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-13T17:04:27.826207+00:00",
+        "updated_at": "2026-10-13T17:04:47+00:00",
+        "external_url": "https://scgf.itch.io/himaneji-idle-factory-clicker",
+        "developer": "scgf",
+        "publisher": null,
+        "source_url": "https://scgf.itch.io/himaneji-idle-factory-clicker",
+        "source_type": "itch.io",
+        "original_game_url": "https://scgf.itch.io/himaneji-idle-factory-clicker",
+        "developer_url": "https://scgf.itch.io",
+        "steam_url": null,
+        "itch_url": "https://scgf.itch.io/himaneji-idle-factory-clicker",
+        "last_verified_at": "2026-10-13T17:00:42+00:00",
+        "sources": [
+          {
+            "url": "https://scgf.itch.io/himaneji-idle-factory-clicker",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-13T17:00:42+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-13T17:04:47+00:00",
+        "last_updated_at": null,
+        "short_description": "Tap machines, automate a factory, and launch rockets across six stars.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "scgf/himaneji-idle-factory-clicker",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "early-access",
+        "graphics": null,
+        "multiplayer": "single-player",
+        "engine": null,
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/himaneji-idle-factory-clicker-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/himaneji-idle-factory-clicker-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/himaneji-idle-factory-clicker-2.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/himaneji-idle-factory-clicker-3.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/himaneji-idle-factory-clicker-4.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/himaneji-idle-factory-clicker-5.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "idle",
+        "clicker"
+      ],
+      "media": [
+        {
+          "kind": "cover",
+          "file": "himaneji-idle-factory-clicker.webp",
+          "source": "https://img.itch.zone/aW1nLzMwODAxMzczLnBuZw==/original/2fQTMQ.png",
+          "object": "covers/2026-10-14/himaneji-idle-factory-clicker.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-14/himaneji-idle-factory-clicker.webp",
+          "bytes": 32296,
+          "width": 630,
+          "height": 500,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            630,
+            500
+          ],
+          "sha256": "60b28173de84237c56be7a7c1696b2e18340850ef5841d0611c0edacc80c7fe2",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "himaneji-idle-factory-clicker-screen-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE0NTU5NC8zMDgwMTM5My5qcGc=/347x500/0gkvcl.jpg",
+          "object": "screenshots/2026-10-14/himaneji-idle-factory-clicker-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/himaneji-idle-factory-clicker-0.webp",
+          "bytes": 3980,
+          "width": 347,
+          "height": 216,
+          "originalFormat": "JPEG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            216
+          ],
+          "sha256": "a869e5fc792763cde4e5ad05588c1d26f0753877b1b961f3d2b143f5a1ed63f2",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "himaneji-idle-factory-clicker-screen-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE0NTU5NC8zMDgwMTM5NS5qcGc=/347x500/okFo4%2B.jpg",
+          "object": "screenshots/2026-10-14/himaneji-idle-factory-clicker-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/himaneji-idle-factory-clicker-1.webp",
+          "bytes": 17188,
+          "width": 293,
+          "height": 500,
+          "originalFormat": "JPEG",
+          "originalFrames": 1,
+          "originalSize": [
+            293,
+            500
+          ],
+          "sha256": "85e8e8cf21755e2db2ed2f1e2c76fc9951e9ec0beab3f2f68c9b40945f803700",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "himaneji-idle-factory-clicker-screen-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE0NTU5NC8zMDgwMTM5Ni5qcGc=/347x500/gxZI6B.jpg",
+          "object": "screenshots/2026-10-14/himaneji-idle-factory-clicker-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/himaneji-idle-factory-clicker-2.webp",
+          "bytes": 19580,
+          "width": 293,
+          "height": 500,
+          "originalFormat": "JPEG",
+          "originalFrames": 1,
+          "originalSize": [
+            293,
+            500
+          ],
+          "sha256": "660757d30a662a65ae7da62fbd3f4bb5e59172b13db18bea62559caaa0e261d2",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "himaneji-idle-factory-clicker-screen-3.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE0NTU5NC8zMDgwMTM5Mi5qcGc=/347x500/N2YTeS.jpg",
+          "object": "screenshots/2026-10-14/himaneji-idle-factory-clicker-3.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/himaneji-idle-factory-clicker-3.webp",
+          "bytes": 10796,
+          "width": 347,
+          "height": 216,
+          "originalFormat": "JPEG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            216
+          ],
+          "sha256": "f5d0ae53e25156197b08437fb2c27d989caa888a0f8eb4ae9224ee5bfd01e3aa",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "himaneji-idle-factory-clicker-screen-4.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE0NTU5NC8zMDgwMTM5NC5qcGc=/347x500/3eGvl%2F.jpg",
+          "object": "screenshots/2026-10-14/himaneji-idle-factory-clicker-4.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/himaneji-idle-factory-clicker-4.webp",
+          "bytes": 7274,
+          "width": 347,
+          "height": 216,
+          "originalFormat": "JPEG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            216
+          ],
+          "sha256": "e60936f883438fcb8d0b67dcf75106548253916dffb6466a94145e3311e39d00",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "himaneji-idle-factory-clicker-screen-5.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE0NTU5NC8zMDgwMTM5Ny5qcGc=/347x500/dHWesT.jpg",
+          "object": "screenshots/2026-10-14/himaneji-idle-factory-clicker-5.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/himaneji-idle-factory-clicker-5.webp",
+          "bytes": 13308,
+          "width": 347,
+          "height": 216,
+          "originalFormat": "JPEG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            216
+          ],
+          "sha256": "8aa60d223c5fdb883c2960f0e6201eaf1b10044dcb58e530c9250490dad18ada",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "url": "https://html-classic.itch.zone/html/19718800/index.html?v=1791821571",
+        "resolvedUrl": "https://html-classic.itch.zone/html/19718800/index.html?v=1791821571",
+        "httpStatus": 200,
+        "bytes": 1153,
+        "resourceCheck": {
+          "slug": "himaneji-idle-factory-clicker",
+          "externalResources": [
+            {
+              "url": "https://scgf.net/neji/?utm_source=itch&utm_medium=embed&utm_campaign=itch_wrapper",
+              "resolvedUrl": "https://scgf.net/neji/?utm_source=itch&utm_medium=embed&utm_campaign=itch_wrapper",
+              "httpStatus": 200,
+              "bytes": 35042,
+              "contentType": "text/html"
+            }
+          ],
+          "note": "Static availability check; not a gameplay or multiplayer test."
+        }
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://scgf.itch.io/himaneji-idle-factory-clicker",
+          "verifiedAt": "2026-10-13T17:00:42+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "status"
+          ],
+          "tipsBasis": "Editorial suggestions based on documented mechanics"
+        }
+      ],
+      "metadataNotes": [
+        "Radar publication time retained as input only; no verified original release date.",
+        "Tips are editorial advice inferred from verified mechanics."
+      ],
+      "missingDetailFields": [],
+      "gameId": "3d56b89f-9fcb-4e41-b514-759d04dc8e3e",
+      "publishedAt": "2026-10-13T17:04:47+00:00",
+      "updates": [
+        {
+          "id": "e8f8283a-a5cb-4896-93a6-432974e2e1af",
+          "game_id": "3d56b89f-9fcb-4e41-b514-759d04dc8e3e",
+          "version": null,
+          "title": "Added to PlayBloo",
+          "summary": "Added to the PlayBloo catalogue with researched game details and an official itch.io play link.",
+          "published_at": "2026-10-13T17:04:47+00:00",
+          "source_url": "https://scgf.itch.io/himaneji-idle-factory-clicker",
+          "created_at": "2026-10-13T17:04:29.200216+00:00",
+          "updated_at": "2026-10-13T17:04:29.200216+00:00"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "inputTitle": "Sir, We Have a Situation",
+      "sourceUrl": "https://deskgeneral.itch.io/sir-we-have-a-situation",
+      "resolvedUrl": "https://deskgeneral.itch.io/sir-we-have-a-situation",
+      "identity": "deskgeneral/sir-we-have-a-situation",
+      "inputPublishedAt": "2026-10-06 17:20（UTC+8）",
+      "decision": "published",
+      "game": {
+        "id": "ca6c8525-770f-489b-ac48-bb649706b930",
+        "title": "Sir, We Have a Situation",
+        "slug": "sir-we-have-a-situation",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-14/sir-we-have-a-situation.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "Sir, We Have a Situation is an idle strategy demo by deskgeneral. Command a base against oversized everyday objects, beginning with a giant pigeon. Buildings grow as they are upgraded, and trained troops keep fighting while the tab is closed.\n\nSix encounters bring different weaknesses, resistances, and signaled attacks. Support abilities and changing weather affect the response. The developer estimates a 45–60 minute demo ending in a debrief.",
+        "how_to_play": "Build and upgrade the base, train troops, and inspect each target’s strengths and weaknesses. Use support when attacks are signaled, adjust for weather, and complete Command objectives through all six encounters.",
+        "controls": "Hover buildings — open management options\nQ / W / E — call support\nUse the on-screen interface for base upgrades and troop training.",
+        "tips": "Choose troops that suit the target: the flamingo resists mortars.\nTime support around signaled attacks.\nAccount for reduced rifle effectiveness during fog.",
+        "features": "Six-target browser demo\nVisible building upgrades\nAutomatic combat and offline progress\nTarget-specific weaknesses and resistances\nWeather effects\nCommand objectives and commendations",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-13T17:04:27.826207+00:00",
+        "updated_at": "2026-10-13T17:04:47+00:00",
+        "external_url": "https://deskgeneral.itch.io/sir-we-have-a-situation",
+        "developer": "deskgeneral",
+        "publisher": null,
+        "source_url": "https://deskgeneral.itch.io/sir-we-have-a-situation",
+        "source_type": "itch.io",
+        "original_game_url": "https://deskgeneral.itch.io/sir-we-have-a-situation",
+        "developer_url": "https://deskgeneral.itch.io",
+        "steam_url": null,
+        "itch_url": "https://deskgeneral.itch.io/sir-we-have-a-situation",
+        "last_verified_at": "2026-10-13T17:00:42+00:00",
+        "sources": [
+          {
+            "url": "https://deskgeneral.itch.io/sir-we-have-a-situation",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-13T17:00:42+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-13T17:04:47+00:00",
+        "last_updated_at": null,
+        "short_description": "Build a military base and deploy automatic troops against six absurd giant targets.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "deskgeneral/sir-we-have-a-situation",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "demo",
+        "graphics": "2D",
+        "multiplayer": "single-player",
+        "engine": null,
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/sir-we-have-a-situation-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/sir-we-have-a-situation-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/sir-we-have-a-situation-2.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/sir-we-have-a-situation-3.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/sir-we-have-a-situation-4.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/sir-we-have-a-situation-5.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "strategy",
+        "idle"
+      ],
+      "media": [
+        {
+          "kind": "cover",
+          "file": "sir-we-have-a-situation.webp",
+          "source": "https://img.itch.zone/aW1nLzMwNTkzOTQyLnBuZw==/original/Z%2FDxRn.png",
+          "object": "covers/2026-10-14/sir-we-have-a-situation.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-14/sir-we-have-a-situation.webp",
+          "bytes": 18498,
+          "width": 630,
+          "height": 500,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            630,
+            500
+          ],
+          "sha256": "47232150b3452e4edf2d25d9530ec6845a33ed476e65df7450739b15550e3af4",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "sir-we-have-a-situation-screen-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTExMDIyNy8zMDU5NDEyNC5wbmc=/347x500/%2FoUr57.png",
+          "object": "screenshots/2026-10-14/sir-we-have-a-situation-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/sir-we-have-a-situation-0.webp",
+          "bytes": 3918,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "f2e35b3a681492df7101a34532a27ab9728179c89a82d51a842a517c4b2c823d",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "sir-we-have-a-situation-screen-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTExMDIyNy8zMDU5NDEyMy5wbmc=/347x500/OX8JeX.png",
+          "object": "screenshots/2026-10-14/sir-we-have-a-situation-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/sir-we-have-a-situation-1.webp",
+          "bytes": 8030,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "5098ee89d8b43e22c9c0df66f2f783e38b2f88feff61eea36ec6b06421a971aa",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "sir-we-have-a-situation-screen-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTExMDIyNy8zMDU5NDExOS5wbmc=/347x500/wDTjrG.png",
+          "object": "screenshots/2026-10-14/sir-we-have-a-situation-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/sir-we-have-a-situation-2.webp",
+          "bytes": 8426,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "2c3e94f6cc176687b144459e143aec3ab77f65cdeebe0068140da94a11603430",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "sir-we-have-a-situation-screen-3.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTExMDIyNy8zMDU5NDEyMC5wbmc=/347x500/Vo90OS.png",
+          "object": "screenshots/2026-10-14/sir-we-have-a-situation-3.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/sir-we-have-a-situation-3.webp",
+          "bytes": 7288,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "02c5036eb01e7acfce8575a79cba0e05c82d8c292ddf6951f87c39a05862c8c2",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "sir-we-have-a-situation-screen-4.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTExMDIyNy8zMDU5NDE1Mi5wbmc=/347x500/kDGlyN.png",
+          "object": "screenshots/2026-10-14/sir-we-have-a-situation-4.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/sir-we-have-a-situation-4.webp",
+          "bytes": 12976,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "a012ce06c5608478f3fbec13d1de24dc826dd2d0fe6a800120341a94e2416908",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "sir-we-have-a-situation-screen-5.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTExMDIyNy8zMDU5NDEyMS5wbmc=/347x500/JucVyf.png",
+          "object": "screenshots/2026-10-14/sir-we-have-a-situation-5.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/sir-we-have-a-situation-5.webp",
+          "bytes": 6796,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "5d4943aabb752faaaf6a34e97d0a3188fffc214294bfa52da981461a29815fcd",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "url": "https://html-classic.itch.zone/html/19594481-2079225/index.html?v=1791860153",
+        "resolvedUrl": "https://html-classic.itch.zone/html/19594481-2079225/index.html?v=1791860153",
+        "httpStatus": 200,
+        "bytes": 1428460,
+        "resourceCheck": {
+          "slug": "sir-we-have-a-situation",
+          "externalResources": [],
+          "note": "Game code embedded in HTML or loaded by runtime-specific loader; HTML entry checked."
+        }
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://deskgeneral.itch.io/sir-we-have-a-situation",
+          "verifiedAt": "2026-10-13T17:00:42+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "status"
+          ],
+          "tipsBasis": "Editorial suggestions based on documented mechanics"
+        }
+      ],
+      "metadataNotes": [
+        "Radar publication time retained as input only; no verified original release date.",
+        "Tips are editorial advice inferred from verified mechanics."
+      ],
+      "missingDetailFields": [],
+      "gameId": "ca6c8525-770f-489b-ac48-bb649706b930",
+      "publishedAt": "2026-10-13T17:04:47+00:00",
+      "updates": [
+        {
+          "id": "2cddc770-f071-4f8f-af9d-e50e00e96f90",
+          "game_id": "ca6c8525-770f-489b-ac48-bb649706b930",
+          "version": null,
+          "title": "Added to PlayBloo",
+          "summary": "Added to the PlayBloo catalogue with researched game details and an official itch.io play link.",
+          "published_at": "2026-10-13T17:04:47+00:00",
+          "source_url": "https://deskgeneral.itch.io/sir-we-have-a-situation",
+          "created_at": "2026-10-13T17:04:29.200216+00:00",
+          "updated_at": "2026-10-13T17:04:29.200216+00:00"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "inputTitle": "Idle Dreadnought",
+      "sourceUrl": "https://griffithsgames.itch.io/idle-dreadnought",
+      "resolvedUrl": "https://griffithsgames.itch.io/idle-dreadnought",
+      "identity": "griffithsgames/idle-dreadnought",
+      "inputPublishedAt": "2026-10-13 03:09（UTC+8）",
+      "decision": "published",
+      "game": {
+        "id": "bc7c767d-ae37-4d2c-bf0c-0d0ad9f829e9",
+        "title": "Idle Dreadnought",
+        "slug": "idle-dreadnought",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-14/idle-dreadnought.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "Idle Dreadnought is a space shooter by Griffiths Games with automatic aiming, firing, and loot collection. Start with a Hammerhead frigate and spend alloy and EP on upgrades. The shipyard offers separate Corvette, Destroyer, and Carrier hulls with additional mounts and room slots.\n\nChoose weapons with distinct firing arcs and advance through hostile sectors and capital-ship bosses. A challenge sector changes rules weekly. The free browser edition has no ads; the developer describes rewarded ads separately for the mobile edition.",
+        "how_to_play": "Let the ship fight and collect alloy and EP. Fit weapons to mounts and invest in upgrades, then commission new hulls through the Berths and choose when to advance into deeper sectors.",
+        "controls": "Mouse / touch — interface buttons\nEsc — back or close a screen\nSpace during combat — change speed\nU during combat — upgrades\nP during combat — pause\nEnter in shipyard — launch\nTab / 1–5 in shipyard — switch sections\nEnter / Space on run summary — continue",
+        "tips": "Consider each mount’s firing arc when choosing a weapon.\nReview hull capacity before commissioning the next ship.\nUse pause and speed controls while planning upgrades.",
+        "features": "Automatic turret combat and loot collection\nFour distinct ship hulls\nIndividual weapon mounts and firing arcs\nCapital-ship bosses\nWeekly challenge-sector rules\nMouse, touch, and keyboard support\nAd-free browser edition",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-13T17:04:27.826207+00:00",
+        "updated_at": "2026-10-13T17:04:47+00:00",
+        "external_url": "https://griffithsgames.itch.io/idle-dreadnought",
+        "developer": "Griffiths Games",
+        "publisher": null,
+        "source_url": "https://griffithsgames.itch.io/idle-dreadnought",
+        "source_type": "itch.io",
+        "original_game_url": "https://griffithsgames.itch.io/idle-dreadnought",
+        "developer_url": "https://griffithsgames.itch.io",
+        "steam_url": null,
+        "itch_url": "https://griffithsgames.itch.io/idle-dreadnought",
+        "last_verified_at": "2026-10-13T17:00:42+00:00",
+        "sources": [
+          {
+            "url": "https://griffithsgames.itch.io/idle-dreadnought",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-13T17:00:42+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-13T17:04:47+00:00",
+        "last_updated_at": null,
+        "short_description": "Fit weapons, upgrade your fleet, and let automatic turrets fight through hostile space.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "griffithsgames/idle-dreadnought",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "released",
+        "graphics": null,
+        "multiplayer": "single-player",
+        "engine": "XNA",
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/idle-dreadnought-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/idle-dreadnought-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/idle-dreadnought-2.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/idle-dreadnought-3.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/idle-dreadnought-4.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "idle",
+        "shooting"
+      ],
+      "media": [
+        {
+          "kind": "cover",
+          "file": "idle-dreadnought.webp",
+          "source": "https://img.itch.zone/aW1nLzMwODA3OTI5LnBuZw==/original/BQ1anv.png",
+          "object": "covers/2026-10-14/idle-dreadnought.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-14/idle-dreadnought.webp",
+          "bytes": 35940,
+          "width": 630,
+          "height": 500,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            630,
+            500
+          ],
+          "sha256": "c848f61c7e7e38adbdd41c8beb1343f11b83ad5ba2da5dc476fde58834422a4d",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "idle-dreadnought-screen-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE0NjcxMS8zMDgwNzkwOC5wbmc=/347x500/bBph94.png",
+          "object": "screenshots/2026-10-14/idle-dreadnought-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/idle-dreadnought-0.webp",
+          "bytes": 18956,
+          "width": 281,
+          "height": 500,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            281,
+            500
+          ],
+          "sha256": "3b53b0b90a1e5cebf32cc194629c0532ac6378ce665eac09889203133e063f9e",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "idle-dreadnought-screen-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE0NjcxMS8zMDgwNzkwOS5wbmc=/347x500/HnX1ji.png",
+          "object": "screenshots/2026-10-14/idle-dreadnought-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/idle-dreadnought-1.webp",
+          "bytes": 15648,
+          "width": 281,
+          "height": 500,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            281,
+            500
+          ],
+          "sha256": "9b43bdbef902dfbeec8def0182cac2e1764e4afe775aa546e62ee1806665d69f",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "idle-dreadnought-screen-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE0NjcxMS8zMDgwNzkwNy5wbmc=/347x500/smFzPO.png",
+          "object": "screenshots/2026-10-14/idle-dreadnought-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/idle-dreadnought-2.webp",
+          "bytes": 17756,
+          "width": 281,
+          "height": 500,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            281,
+            500
+          ],
+          "sha256": "2d8122242a01044f97a19aebe61cf8542db2e88896036687b12f8f1ba8457909",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "idle-dreadnought-screen-3.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE0NjcxMS8zMDgwNzkxMC5wbmc=/347x500/KVlzQU.png",
+          "object": "screenshots/2026-10-14/idle-dreadnought-3.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/idle-dreadnought-3.webp",
+          "bytes": 23176,
+          "width": 281,
+          "height": 500,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            281,
+            500
+          ],
+          "sha256": "c062bd2dba928adf5e6b81a8adbe39a4e1b8f98fe9bdaa885a8f0f338b5b9b60",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "idle-dreadnought-screen-4.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE0NjcxMS8zMDgwNzkxMS5wbmc=/347x500/UK8DgR.png",
+          "object": "screenshots/2026-10-14/idle-dreadnought-4.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/idle-dreadnought-4.webp",
+          "bytes": 15352,
+          "width": 281,
+          "height": 500,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            281,
+            500
+          ],
+          "sha256": "9973207878d8c7f20bab2601d43996d13d8dd2a8940323b37af1a683fc565038",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "url": "https://html-classic.itch.zone/html/19723213-2115561/index.html?v=1791879746",
+        "resolvedUrl": "https://html-classic.itch.zone/html/19723213-2115561/index.html?v=1791879746",
+        "httpStatus": 200,
+        "bytes": 5786,
+        "resourceCheck": {
+          "slug": "idle-dreadnought",
+          "externalResources": [
+            {
+              "url": "https://html-classic.itch.zone/html/19723213-2115561/portal-config.js",
+              "resolvedUrl": "https://html-classic.itch.zone/html/19723213-2115561/portal-config.js",
+              "httpStatus": 200,
+              "bytes": 217,
+              "contentType": "text/javascript; charset=utf-8"
+            }
+          ],
+          "note": "Static availability check; not a gameplay or multiplayer test."
+        }
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://griffithsgames.itch.io/idle-dreadnought",
+          "verifiedAt": "2026-10-13T17:00:42+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "status"
+          ],
+          "tipsBasis": "Editorial suggestions based on documented mechanics"
+        }
+      ],
+      "metadataNotes": [
+        "Radar publication time retained as input only; no verified original release date.",
+        "Tips are editorial advice inferred from verified mechanics."
+      ],
+      "missingDetailFields": [],
+      "gameId": "bc7c767d-ae37-4d2c-bf0c-0d0ad9f829e9",
+      "publishedAt": "2026-10-13T17:04:47+00:00",
+      "updates": [
+        {
+          "id": "f321ed02-4253-4c2b-b1b0-69a48b13a224",
+          "game_id": "bc7c767d-ae37-4d2c-bf0c-0d0ad9f829e9",
+          "version": null,
+          "title": "Added to PlayBloo",
+          "summary": "Added to the PlayBloo catalogue with researched game details and an official itch.io play link.",
+          "published_at": "2026-10-13T17:04:47+00:00",
+          "source_url": "https://griffithsgames.itch.io/idle-dreadnought",
+          "created_at": "2026-10-13T17:04:29.200216+00:00",
+          "updated_at": "2026-10-13T17:04:29.200216+00:00"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "inputTitle": "Idle Island",
+      "sourceUrl": "https://cosmos07.itch.io/idle-island",
+      "resolvedUrl": "https://cosmos07.itch.io/idle-island",
+      "identity": "cosmos07/idle-island",
+      "inputPublishedAt": "2026-10-13 14:22（UTC+8）",
+      "decision": "published",
+      "game": {
+        "id": "31752a30-bd03-4313-aa5f-7e9913b8e6f1",
+        "title": "Idle Island",
+        "slug": "idle-island",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-14/idle-island.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "Idle Island is a cozy incremental prototype by Cosmos07. Gather coconuts, recruit animal helpers, and develop a tropical home with huts, sawmills, docks, and quarries. Building placement matters because nearby trees, rocks, and palms provide boosts.\n\nExplore five zones, respond to storms and boars, fish, and collect messages from a previous captain’s journal. Progress continues while you are away. The Godot prototype supports English and Spanish through Map → Settings.",
+        "how_to_play": "Gather resources and recruit helpers. Place production buildings near useful terrain, unlock cloud-covered areas, and respond to island events. Collect washed-up bottles to uncover the captain’s story.",
+        "controls": "Keyboard and mouse are listed as supported inputs.\nSee the original itch.io page and in-game interface for specific controls.\nMap → Settings — language selection",
+        "tips": "Check nearby terrain before placing a production building.\nWatch the fishing bobber for a bite.\nUse Map → Settings to choose your language.",
+        "features": "Animal helpers\nTerrain-based production boosts\nFive explorable zones\nStorms, boars, and fishing\nCollectible journal fragments\nAway progress\nEnglish and Spanish\nEarly Godot prototype",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-13T17:04:27.826207+00:00",
+        "updated_at": "2026-10-13T17:04:47+00:00",
+        "external_url": "https://cosmos07.itch.io/idle-island",
+        "developer": "Cosmos07",
+        "publisher": null,
+        "source_url": "https://cosmos07.itch.io/idle-island",
+        "source_type": "itch.io",
+        "original_game_url": "https://cosmos07.itch.io/idle-island",
+        "developer_url": "https://cosmos07.itch.io",
+        "steam_url": null,
+        "itch_url": "https://cosmos07.itch.io/idle-island",
+        "last_verified_at": "2026-10-13T17:00:42+00:00",
+        "sources": [
+          {
+            "url": "https://cosmos07.itch.io/idle-island",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-13T17:00:42+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-13T17:04:47+00:00",
+        "last_updated_at": null,
+        "short_description": "Build an island home with animal helpers, resource buildings, and five hidden zones.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "cosmos07/idle-island",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "early-access",
+        "graphics": "2D",
+        "multiplayer": "single-player",
+        "engine": "Godot",
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/idle-island-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/idle-island-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/idle-island-2.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "idle",
+        "simulation"
+      ],
+      "media": [
+        {
+          "kind": "cover",
+          "file": "idle-island.webp",
+          "source": "https://img.itch.zone/aW1nLzMwODIzMDg0LnBuZw==/original/OuVcdw.png",
+          "object": "covers/2026-10-14/idle-island.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-14/idle-island.webp",
+          "bytes": 59204,
+          "width": 640,
+          "height": 508,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            1260,
+            1000
+          ],
+          "sha256": "37e2ed661d07e6dc31071761cf1c47f87f4ba86b6aefd355e768a7518a4db0e1",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "idle-island-screen-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE0OTIxOC8zMDgyMjk4My5wbmc=/347x500/pVIDkY.png",
+          "object": "screenshots/2026-10-14/idle-island-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/idle-island-0.webp",
+          "bytes": 14928,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "613d1c9ad7c1e3f4e70ab7e9a490a799f0ccd65ad9103a5d9efd6b9e836b6eaf",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "idle-island-screen-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE0OTIxOC8zMDgyMjk4NS5wbmc=/347x500/Llxf9D.png",
+          "object": "screenshots/2026-10-14/idle-island-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/idle-island-1.webp",
+          "bytes": 15660,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "1f46b25a208aa57ef8a98fbb2224e6d2a4e05182099e61a04c6b6da81e86e9cb",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "idle-island-screen-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE0OTIxOC8zMDgyMjk4NC5wbmc=/347x500/ABXcWg.png",
+          "object": "screenshots/2026-10-14/idle-island-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/idle-island-2.webp",
+          "bytes": 12726,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "e46bee2017fd8f65ed53e9d74d3232195bc3201b2b994b202b803e4cdc1fa954",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "url": "https://html-classic.itch.zone/html/19731519/index.html?v=1791872752",
+        "resolvedUrl": "https://html-classic.itch.zone/html/19731519/index.html?v=1791872752",
+        "httpStatus": 200,
+        "bytes": 5533,
+        "resourceCheck": {
+          "slug": "idle-island",
+          "externalResources": [
+            {
+              "url": "https://html-classic.itch.zone/html/19731519/index.js",
+              "resolvedUrl": "https://html-classic.itch.zone/html/19731519/index.js",
+              "httpStatus": 200,
+              "bytes": 279815,
+              "contentType": "text/javascript; charset=utf-8"
+            }
+          ],
+          "note": "Static availability check; not a gameplay or multiplayer test."
+        }
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://cosmos07.itch.io/idle-island",
+          "verifiedAt": "2026-10-13T17:00:42+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "status"
+          ],
+          "tipsBasis": "Editorial suggestions based on documented mechanics"
+        }
+      ],
+      "metadataNotes": [
+        "Radar publication time retained as input only; no verified original release date.",
+        "Tips are editorial advice inferred from verified mechanics."
+      ],
+      "missingDetailFields": [],
+      "gameId": "31752a30-bd03-4313-aa5f-7e9913b8e6f1",
+      "publishedAt": "2026-10-13T17:04:47+00:00",
+      "updates": [
+        {
+          "id": "1165d545-3bad-48ba-a97c-925eee4b9ef3",
+          "game_id": "31752a30-bd03-4313-aa5f-7e9913b8e6f1",
+          "version": null,
+          "title": "Added to PlayBloo",
+          "summary": "Added to the PlayBloo catalogue with researched game details and an official itch.io play link.",
+          "published_at": "2026-10-13T17:04:47+00:00",
+          "source_url": "https://cosmos07.itch.io/idle-island",
+          "created_at": "2026-10-13T17:04:29.200216+00:00",
+          "updated_at": "2026-10-13T17:04:29.200216+00:00"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "inputTitle": "The Excavation Project",
+      "sourceUrl": "https://basilium.itch.io/the-excavation-project",
+      "resolvedUrl": "https://basilium.itch.io/the-excavation-project",
+      "identity": "basilium/the-excavation-project",
+      "inputPublishedAt": "2026-09-22 21:21（UTC+8）",
+      "decision": "published",
+      "game": {
+        "id": "b6fe60f7-5c9e-4e7e-8c79-01d80fd01cfb",
+        "title": "The Excavation Project",
+        "slug": "the-excavation-project",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-14/the-excavation-project.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "The Excavation Project is a short digging game by Basilium. Begin by scraping through a small patch of ground, sell the stones you uncover, and improve your equipment to reach deeper layers and hidden gems. The official page presents excavation automation as part of the progression.\n\nBuilt with Unity, the game is designed for runs of roughly 15–30 minutes. There is no save system, so a run needs to be completed in one session.",
+        "how_to_play": "Use your current tool to dig, collect stones, and sell them. Reinvest in better tools and excavation upgrades, then work deeper into the patch of land.",
+        "controls": "Left mouse button — use tool\nRight mouse button — rotate camera\nWASD — move camera\n1–7 — select tools",
+        "tips": "Allow time for a full run: progress cannot be saved.\nMove and rotate the camera to inspect the excavation.\nUse tool shortcuts when switching between tasks.",
+        "features": "Digging and stone selling\nTool upgrades\nHidden gems\nExcavation automation\nCamera movement and rotation\nShort 15–30 minute runs\nNo save system",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-13T17:04:27.826207+00:00",
+        "updated_at": "2026-10-13T17:04:47+00:00",
+        "external_url": "https://basilium.itch.io/the-excavation-project",
+        "developer": "Basilium",
+        "publisher": null,
+        "source_url": "https://basilium.itch.io/the-excavation-project",
+        "source_type": "itch.io",
+        "original_game_url": "https://basilium.itch.io/the-excavation-project",
+        "developer_url": "https://basilium.itch.io",
+        "steam_url": null,
+        "itch_url": "https://basilium.itch.io/the-excavation-project",
+        "last_verified_at": "2026-10-13T17:00:42+00:00",
+        "sources": [
+          {
+            "url": "https://basilium.itch.io/the-excavation-project",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-13T17:00:42+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-13T17:04:47+00:00",
+        "last_updated_at": null,
+        "short_description": "Dig for valuable stones, sell your finds, and improve your excavation tools.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "basilium/the-excavation-project",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "released",
+        "graphics": null,
+        "multiplayer": "single-player",
+        "engine": "Unity",
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/the-excavation-project-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/the-excavation-project-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/the-excavation-project-2.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/the-excavation-project-3.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/the-excavation-project-4.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "simulation",
+        "idle"
+      ],
+      "media": [
+        {
+          "kind": "cover",
+          "file": "the-excavation-project.webp",
+          "source": "https://img.itch.zone/aW1nLzMwMTgxMjY2LmdpZg==/original/M2yJqT.gif",
+          "object": "covers/2026-10-14/the-excavation-project.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-14/the-excavation-project.webp",
+          "bytes": 27888,
+          "width": 600,
+          "height": 476,
+          "originalFormat": "GIF",
+          "originalFrames": 63,
+          "originalSize": [
+            600,
+            476
+          ],
+          "sha256": "65b005912b4dde81e66e155d9196e22645191dd529ce3afddea65b2f86728158",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "the-excavation-project-screen-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTA0MDA3NS8zMDE4NDAzNS5naWY=/original/mUBNIb.gif",
+          "object": "screenshots/2026-10-14/the-excavation-project-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/the-excavation-project-0.webp",
+          "bytes": 27888,
+          "width": 600,
+          "height": 476,
+          "originalFormat": "GIF",
+          "originalFrames": 63,
+          "originalSize": [
+            600,
+            476
+          ],
+          "sha256": "65b005912b4dde81e66e155d9196e22645191dd529ce3afddea65b2f86728158",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "the-excavation-project-screen-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTA0MDA3NS8zMDE4Mzk2NS5wbmc=/347x500/a9j62b.png",
+          "object": "screenshots/2026-10-14/the-excavation-project-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/the-excavation-project-1.webp",
+          "bytes": 7728,
+          "width": 347,
+          "height": 194,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            194
+          ],
+          "sha256": "93539639f4f0547291b5ec7bc417e34788c17c6a116d87ed3a9b0ab4bd48b53e",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "the-excavation-project-screen-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTA0MDA3NS8zMDE3ODk1Ny5wbmc=/347x500/iBPcBF.png",
+          "object": "screenshots/2026-10-14/the-excavation-project-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/the-excavation-project-2.webp",
+          "bytes": 10592,
+          "width": 347,
+          "height": 194,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            194
+          ],
+          "sha256": "ad756e06857de2aa4fec81ee8aad4fd5119017b1402a344e994dcc7ad870e269",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "the-excavation-project-screen-3.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTA0MDA3NS8zMDE3ODk1Ni5wbmc=/347x500/cZsOTg.png",
+          "object": "screenshots/2026-10-14/the-excavation-project-3.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/the-excavation-project-3.webp",
+          "bytes": 7438,
+          "width": 347,
+          "height": 194,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            194
+          ],
+          "sha256": "c9d6e5dbce20ab792c16b5dc44d9f3853c1131e78fda4556fedbfe79077a2805",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "the-excavation-project-screen-4.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTA0MDA3NS8zMDE3ODk2OS5wbmc=/347x500/CqmVJH.png",
+          "object": "screenshots/2026-10-14/the-excavation-project-4.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/the-excavation-project-4.webp",
+          "bytes": 8934,
+          "width": 347,
+          "height": 194,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            194
+          ],
+          "sha256": "8249e07905bf2b55135d5a2a8d7b06b770bb45d9659d341e541f582c8db06c1c",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "url": "https://html-classic.itch.zone/html/19368353/BuildWeb/index.html?v=1790181897",
+        "resolvedUrl": "https://html-classic.itch.zone/html/19368353/BuildWeb/index.html?v=1790181897",
+        "httpStatus": 200,
+        "bytes": 6522,
+        "resourceCheck": {
+          "slug": "the-excavation-project",
+          "externalResources": [],
+          "note": "Game code embedded in HTML or loaded by runtime-specific loader; HTML entry checked."
+        }
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://basilium.itch.io/the-excavation-project",
+          "verifiedAt": "2026-10-13T17:00:42+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "status"
+          ],
+          "tipsBasis": "Editorial suggestions based on documented mechanics"
+        }
+      ],
+      "metadataNotes": [
+        "Radar publication time retained as input only; no verified original release date.",
+        "Tips are editorial advice inferred from verified mechanics."
+      ],
+      "missingDetailFields": [],
+      "gameId": "b6fe60f7-5c9e-4e7e-8c79-01d80fd01cfb",
+      "publishedAt": "2026-10-13T17:04:47+00:00",
+      "updates": [
+        {
+          "id": "5adf05e6-0eee-49da-b069-74791e02ee25",
+          "game_id": "b6fe60f7-5c9e-4e7e-8c79-01d80fd01cfb",
+          "version": null,
+          "title": "Added to PlayBloo",
+          "summary": "Added to the PlayBloo catalogue with researched game details and an official itch.io play link.",
+          "published_at": "2026-10-13T17:04:47+00:00",
+          "source_url": "https://basilium.itch.io/the-excavation-project",
+          "created_at": "2026-10-13T17:04:29.200216+00:00",
+          "updated_at": "2026-10-13T17:04:29.200216+00:00"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "inputTitle": "Lost Warden",
+      "sourceUrl": "https://arknoid.itch.io/lost-warden",
+      "resolvedUrl": "https://arknoid.itch.io/lost-warden",
+      "identity": "arknoid/lost-warden",
+      "inputPublishedAt": "2017-12-01 19:42（UTC+8）",
+      "decision": "published",
+      "game": {
+        "id": "ee01db45-8f40-4664-bed2-58556d6936e7",
+        "title": "Lost Warden",
+        "slug": "lost-warden",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-14/lost-warden.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "Lost Warden is Arknoid’s retro arcade shooter, reworked from a 2017 project. Pilot a fighter through enemy formations and build up stackable power-ups. Damage can weaken an accumulated build; movement slows while firing.\n\nThe current Godot build supports solo runs, local two-player co-op, keyboard or gamepad controls, and local high scores. Its ongoing visual rework retains some older art.",
+        "how_to_play": "Avoid enemy fire, shoot through waves, and collect upgrades automatically. Gather plasma cells for the beam and balance sustained fire against movement speed.",
+        "controls": "Arrow keys / WASD / ZQSD — move\nSpace — fire\nLeft Shift — beam with plasma charge\nEsc — pause\nGamepad stick / D-pad — move\nSouth / A — fire\nEast / B — beam\nStart / Menu — pause",
+        "tips": "Release fire when mobility matters.\nKeep plasma for difficult formations.\nUse the developer-recommended gamepad if available.",
+        "features": "Score-based arcade runs\nLocal two-player co-op\nStackable upgrades\nShield and charged beam\nKeyboard and gamepad support\nLocal high scores",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-13T17:04:27.826207+00:00",
+        "updated_at": "2026-10-13T17:04:47+00:00",
+        "external_url": "https://arknoid.itch.io/lost-warden",
+        "developer": "Arknoid",
+        "publisher": null,
+        "source_url": "https://arknoid.itch.io/lost-warden",
+        "source_type": "itch.io",
+        "original_game_url": "https://arknoid.itch.io/lost-warden",
+        "developer_url": "https://arknoid.itch.io",
+        "steam_url": null,
+        "itch_url": "https://arknoid.itch.io/lost-warden",
+        "last_verified_at": "2026-10-13T17:00:42+00:00",
+        "sources": [
+          {
+            "url": "https://arknoid.itch.io/lost-warden",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-13T17:00:42+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-13T17:04:47+00:00",
+        "last_updated_at": null,
+        "short_description": "Survive arcade starfighter waves alone or with a local co-op partner.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "arknoid/lost-warden",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "early-access",
+        "graphics": "2D",
+        "multiplayer": "single-player or local two-player co-op",
+        "engine": "Godot",
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/lost-warden-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/lost-warden-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/lost-warden-2.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/lost-warden-3.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/lost-warden-4.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/lost-warden-5.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "shooting",
+        "multiplayer"
+      ],
+      "media": [
+        {
+          "kind": "cover",
+          "file": "lost-warden.webp",
+          "source": "https://img.itch.zone/aW1nLzI5NTk2NTA4LnBuZw==/original/cSPjFb.png",
+          "object": "covers/2026-10-14/lost-warden.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-14/lost-warden.webp",
+          "bytes": 16504,
+          "width": 630,
+          "height": 500,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            630,
+            500
+          ],
+          "sha256": "6ebb4ace6ada811e6ce6de0072a68913045b0c019433a303ea394a2860667060",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "lost-warden-screen-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvMTk5NDEwLzExMzQxNDQucG5n/347x500/E76Dml.png",
+          "object": "screenshots/2026-10-14/lost-warden-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/lost-warden-0.webp",
+          "bytes": 7474,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "8692542ff31b5f9b8c016da925086e7d3066e06f6a974852b8d116b38b9b73e6",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "lost-warden-screen-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvMTk5NDEwLzExMzQxNDIucG5n/347x500/0vwu1r.png",
+          "object": "screenshots/2026-10-14/lost-warden-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/lost-warden-1.webp",
+          "bytes": 7858,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "01c22d8080c4e043e883f647cc1beb411911fd6732ae911ddc876fcebe9e4ce1",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "lost-warden-screen-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvMTk5NDEwLzExMzQxNDAucG5n/347x500/XtGVOt.png",
+          "object": "screenshots/2026-10-14/lost-warden-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/lost-warden-2.webp",
+          "bytes": 9054,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "ced54f66e8ec8b1f14bec0083f0ece91deef4b5d840775548430a95b3e352834",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "lost-warden-screen-3.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvMTk5NDEwLzExMzQxNDEucG5n/347x500/UabLpZ.png",
+          "object": "screenshots/2026-10-14/lost-warden-3.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/lost-warden-3.webp",
+          "bytes": 8072,
+          "width": 347,
+          "height": 194,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            194
+          ],
+          "sha256": "db2151803f7d18274dcf9cdadc64070f86468781f2dd0bec3aa382c9347901dc",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "lost-warden-screen-4.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvMTk5NDEwLzk0ODgxMi5naWY=/original/DBmyMk.gif",
+          "object": "screenshots/2026-10-14/lost-warden-4.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/lost-warden-4.webp",
+          "bytes": 3172,
+          "width": 480,
+          "height": 270,
+          "originalFormat": "GIF",
+          "originalFrames": 226,
+          "originalSize": [
+            480,
+            270
+          ],
+          "sha256": "03e63bc004bbcc5964d11f18e93612c5561f7a3d2dcad939b7648804f3889b1b",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "lost-warden-screen-5.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvMTk5NDEwLzkzMzI0Ny5wbmc=/347x500/7iITd7.png",
+          "object": "screenshots/2026-10-14/lost-warden-5.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/lost-warden-5.webp",
+          "bytes": 4202,
+          "width": 347,
+          "height": 183,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            183
+          ],
+          "sha256": "5ecbe6788f649a2e8679620bdf830cff94f269451323c79ae02efcfa980baf01",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "url": "https://html-classic.itch.zone/html/19722579/index.html?v=1791833364",
+        "resolvedUrl": "https://html-classic.itch.zone/html/19722579/index.html?v=1791833364",
+        "httpStatus": 200,
+        "bytes": 5530,
+        "resourceCheck": {
+          "slug": "lost-warden",
+          "externalResources": [
+            {
+              "url": "https://html-classic.itch.zone/html/19722579/index.js",
+              "resolvedUrl": "https://html-classic.itch.zone/html/19722579/index.js",
+              "httpStatus": 200,
+              "bytes": 279815,
+              "contentType": "text/javascript; charset=utf-8"
+            }
+          ],
+          "note": "Static availability check; not a gameplay or multiplayer test."
+        }
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://arknoid.itch.io/lost-warden",
+          "verifiedAt": "2026-10-13T17:00:42+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "status"
+          ],
+          "tipsBasis": "Editorial suggestions based on documented mechanics"
+        }
+      ],
+      "metadataNotes": [
+        "Radar publication time retained as input only; no verified original release date.",
+        "Tips are editorial advice inferred from verified mechanics.",
+        "RSS title retained: first h1 belongs to itch site masthead; future bosses and enemy families excluded."
+      ],
+      "missingDetailFields": [],
+      "gameId": "ee01db45-8f40-4664-bed2-58556d6936e7",
+      "publishedAt": "2026-10-13T17:04:47+00:00",
+      "updates": [
+        {
+          "id": "5c17681e-bb6e-435a-8e35-fb8969d6c843",
+          "game_id": "ee01db45-8f40-4664-bed2-58556d6936e7",
+          "version": null,
+          "title": "Added to PlayBloo",
+          "summary": "Added to the PlayBloo catalogue with researched game details and an official itch.io play link.",
+          "published_at": "2026-10-13T17:04:47+00:00",
+          "source_url": "https://arknoid.itch.io/lost-warden",
+          "created_at": "2026-10-13T17:04:29.200216+00:00",
+          "updated_at": "2026-10-13T17:04:29.200216+00:00"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "inputTitle": "The Last Line",
+      "sourceUrl": "https://device25.itch.io/the-last-line",
+      "resolvedUrl": "https://device25.itch.io/the-last-line",
+      "identity": "device25/the-last-line",
+      "inputPublishedAt": "2026-10-12 20:03（UTC+8）",
+      "decision": "published",
+      "game": {
+        "id": "3324dade-df3a-4d64-9009-68f370d36bec",
+        "title": "The Last Line",
+        "slug": "the-last-line",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-14/the-last-line.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "The Last Line is an incremental defense game by device25. Your garrison fires automatically while you hire and upgrade ten unit types, place tactical orders, and aim the marshal’s pistol. Bosses pressure the defenses, and breaches push the army back through the Outer Wall, Inner Wall, and Keep.\n\nFallbacks award medals for permanent bonuses. Browser saves and up to eight hours of away earnings support longer progression. The in-development build uses WebGPU where available, with a Canvas 2D fallback.",
+        "how_to_play": "Hire troops, improve their damage, and direct orders toward threatened lanes. Use aimed pistol shots to support the garrison. Advance or lower the threat level, and fall back for permanent medal bonuses when needed.",
+        "controls": "1–6 / order bar — select an order\nClick a lane or point — place selected order\nRight-click / Esc — cancel order\nClick field without an order — aimed pistol shot\nAdvance / Back — raise or lower threat level",
+        "tips": "Aim at a target’s center for the documented critical-hit bonus.\nPlan purchases around the damage milestones every 25 troops of a type.\nUse orders on the lanes under pressure.\nPreserve browser data to retain your save.",
+        "features": "Ten garrison unit types\nAutomatic troop fire\nTactical orders and optional Auto orders\nAimed sidearm shots\nBoss encounters\nThree defensive lines\nPermanent medal bonuses\nBrowser saves and capped away earnings",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-13T17:04:27.826207+00:00",
+        "updated_at": "2026-10-13T17:04:47+00:00",
+        "external_url": "https://device25.itch.io/the-last-line",
+        "developer": "device25",
+        "publisher": null,
+        "source_url": "https://device25.itch.io/the-last-line",
+        "source_type": "itch.io",
+        "original_game_url": "https://device25.itch.io/the-last-line",
+        "developer_url": "https://device25.itch.io",
+        "steam_url": null,
+        "itch_url": "https://device25.itch.io/the-last-line",
+        "last_verified_at": "2026-10-13T17:00:42+00:00",
+        "sources": [
+          {
+            "url": "https://device25.itch.io/the-last-line",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-13T17:00:42+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-13T17:04:47+00:00",
+        "last_updated_at": null,
+        "short_description": "Build an automatic garrison and issue tactical orders against an endless alien swarm.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "device25/the-last-line",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "early-access",
+        "graphics": "2D",
+        "multiplayer": "single-player",
+        "engine": null,
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/the-last-line-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/the-last-line-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/the-last-line-2.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/the-last-line-3.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/the-last-line-4.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "strategy",
+        "idle"
+      ],
+      "media": [
+        {
+          "kind": "cover",
+          "file": "the-last-line.webp",
+          "source": "https://img.itch.zone/aW1nLzMwODE2NjE4LmdpZg==/original/U%2FTWvl.gif",
+          "object": "covers/2026-10-14/the-last-line.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-14/the-last-line.webp",
+          "bytes": 21626,
+          "width": 315,
+          "height": 250,
+          "originalFormat": "GIF",
+          "originalFrames": 48,
+          "originalSize": [
+            315,
+            250
+          ],
+          "sha256": "b65e00465794df3a328b8c2d0a1e5f86807b7378219b591a69d1c2f2a4b9ad52",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "the-last-line-screen-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE0NDU4OS8zMDgxNjQ0OC5wbmc=/347x500/3Rittt.png",
+          "object": "screenshots/2026-10-14/the-last-line-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/the-last-line-0.webp",
+          "bytes": 16620,
+          "width": 347,
+          "height": 243,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            243
+          ],
+          "sha256": "d1ee9ce7460764f7e58141a66539bf86aa9fdd99d8b50b7a8b205141018cdf1e",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "the-last-line-screen-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE0NDU4OS8zMDgxNjQ0OS5wbmc=/347x500/j7nm1K.png",
+          "object": "screenshots/2026-10-14/the-last-line-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/the-last-line-1.webp",
+          "bytes": 16354,
+          "width": 347,
+          "height": 243,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            243
+          ],
+          "sha256": "116daca4da3c39d462a1a2d8aa58cd92cbf5711611e41bde37ed40a95d08576e",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "the-last-line-screen-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE0NDU4OS8zMDgxNjQ1MC5wbmc=/347x500/gRxhnu.png",
+          "object": "screenshots/2026-10-14/the-last-line-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/the-last-line-2.webp",
+          "bytes": 9822,
+          "width": 347,
+          "height": 243,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            243
+          ],
+          "sha256": "82062924689a69f545adf6822f18962529f3e2c6e438ddbede530f495a5d3b04",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "the-last-line-screen-3.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE0NDU4OS8zMDgxNjQ1MS5wbmc=/347x500/SL%2Fwzz.png",
+          "object": "screenshots/2026-10-14/the-last-line-3.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/the-last-line-3.webp",
+          "bytes": 15640,
+          "width": 347,
+          "height": 243,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            243
+          ],
+          "sha256": "5a99cf0efdc6df81ca25d32f3777f5a3feb01c1c8904f6f17c8cc9d4f091dde9",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "the-last-line-screen-4.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE0NDU4OS8zMDgxNjQ1Ny5wbmc=/347x500/OnSGkn.png",
+          "object": "screenshots/2026-10-14/the-last-line-4.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/the-last-line-4.webp",
+          "bytes": 15134,
+          "width": 347,
+          "height": 243,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            243
+          ],
+          "sha256": "3a8c15947b399e2ea74517f4488a2a22887efbe23de5e620bea2f1127daec561",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "url": "https://html-classic.itch.zone/html/19741061/index.html?v=1791909766",
+        "resolvedUrl": "https://html-classic.itch.zone/html/19741061/index.html?v=1791909766",
+        "httpStatus": 200,
+        "bytes": 327410,
+        "resourceCheck": {
+          "slug": "the-last-line",
+          "externalResources": [],
+          "note": "Game code embedded in HTML or loaded by runtime-specific loader; HTML entry checked."
+        }
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://device25.itch.io/the-last-line",
+          "verifiedAt": "2026-10-13T17:00:42+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "status"
+          ],
+          "tipsBasis": "Editorial suggestions based on documented mechanics"
+        }
+      ],
+      "metadataNotes": [
+        "Radar publication time retained as input only; no verified original release date.",
+        "Tips are editorial advice inferred from verified mechanics."
+      ],
+      "missingDetailFields": [],
+      "gameId": "3324dade-df3a-4d64-9009-68f370d36bec",
+      "publishedAt": "2026-10-13T17:04:47+00:00",
+      "updates": [
+        {
+          "id": "c3a86fe8-2b8a-4698-9732-f9ec1d78bbe4",
+          "game_id": "3324dade-df3a-4d64-9009-68f370d36bec",
+          "version": null,
+          "title": "Added to PlayBloo",
+          "summary": "Added to the PlayBloo catalogue with researched game details and an official itch.io play link.",
+          "published_at": "2026-10-13T17:04:47+00:00",
+          "source_url": "https://device25.itch.io/the-last-line",
+          "created_at": "2026-10-13T17:04:29.200216+00:00",
+          "updated_at": "2026-10-13T17:04:29.200216+00:00"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "inputTitle": "Combat Arena Pré-Alfa",
+      "sourceUrl": "https://thiagodv.itch.io/combat-arena",
+      "resolvedUrl": "https://thiagodv.itch.io/combat-arena",
+      "identity": "thiagodv/combat-arena",
+      "inputPublishedAt": "2026-10-12 02:30（UTC+8）",
+      "decision": "published",
+      "game": {
+        "id": "a1bba492-07a1-4843-86ab-8b5912bdd64d",
+        "title": "Combat Arena Pré-Alfa",
+        "slug": "combat-arena",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-14/combat-arena.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "Combat Arena Pré-Alfa is a tactical multiplayer FPS prototype by Thiago.dv. The developer describes team formats from 1v1 to 4v4, ranked matches, private rooms, and a training mode. Between rounds, an economy supports buying weapons and equipment.\n\nThe arsenal spans pistols, submachine guns, shotguns, rifles, and sniper rifles. Brazilian Portuguese and English are supported. This early build’s modes and balance may change as development continues.",
+        "how_to_play": "Choose a match mode or private room, assemble a loadout, and coordinate with teammates. Manage purchases between rounds and use training to practice aiming.",
+        "controls": "See the original itch.io page and in-game settings for the developer’s current control notes.",
+        "tips": "Practice in the advertised training mode before competitive rounds.\nCoordinate purchases and roles with your team.\nChoose the supported language that suits you.",
+        "features": "Pre-alpha browser FPS\n1v1 through 4v4 team formats\nRanked and private matches advertised by the developer\nBetween-round equipment economy\nMultiple weapon classes\nTraining mode\nBrazilian Portuguese and English",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-13T17:04:27.826207+00:00",
+        "updated_at": "2026-10-13T17:04:47+00:00",
+        "external_url": "https://thiagodv.itch.io/combat-arena",
+        "developer": "Thiago.dv",
+        "publisher": null,
+        "source_url": "https://thiagodv.itch.io/combat-arena",
+        "source_type": "itch.io",
+        "original_game_url": "https://thiagodv.itch.io/combat-arena",
+        "developer_url": "https://thiagodv.itch.io",
+        "steam_url": null,
+        "itch_url": "https://thiagodv.itch.io/combat-arena",
+        "last_verified_at": "2026-10-13T17:00:42+00:00",
+        "sources": [
+          {
+            "url": "https://thiagodv.itch.io/combat-arena",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-13T17:00:42+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-13T17:04:47+00:00",
+        "last_updated_at": null,
+        "short_description": "A pre-alpha multiplayer FPS with team rounds, private rooms, and weapon purchases.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "thiagodv/combat-arena",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "early-access",
+        "graphics": "3D",
+        "multiplayer": "online multiplayer (1v1–4v4)",
+        "engine": null,
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/combat-arena-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/combat-arena-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/combat-arena-2.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/combat-arena-3.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/combat-arena-4.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/combat-arena-5.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "shooting",
+        "multiplayer"
+      ],
+      "media": [
+        {
+          "kind": "cover",
+          "file": "combat-arena.webp",
+          "source": "https://img.itch.zone/aW1nLzMwNzc0NjczLnBuZw==/original/8KWLVy.png",
+          "object": "covers/2026-10-14/combat-arena.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-14/combat-arena.webp",
+          "bytes": 16638,
+          "width": 640,
+          "height": 407,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            1573,
+            1000
+          ],
+          "sha256": "bfa337cfae1ab3253e65c99a49e2e656a9b2feb856cb7a7711fcef4d8d16f2da",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "combat-arena-screen-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE0MDIxMC8zMDc3MjY4MC5wbmc=/347x500/z4Eeay.png",
+          "object": "screenshots/2026-10-14/combat-arena-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/combat-arena-0.webp",
+          "bytes": 3418,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "4541b3b180a60ff5cd6b66563e98806a7470b8cca8b70101d4cc3230d747d235",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "combat-arena-screen-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE0MDIxMC8zMDc3MjY4NS5wbmc=/347x500/eqQaW%2F.png",
+          "object": "screenshots/2026-10-14/combat-arena-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/combat-arena-1.webp",
+          "bytes": 9614,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "17b607c891bba15c318da8d3e863909259657fc535608914341ec658922f2e8e",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "combat-arena-screen-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE0MDIxMC8zMDc3MjY4Ni5wbmc=/347x500/88sAKT.png",
+          "object": "screenshots/2026-10-14/combat-arena-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/combat-arena-2.webp",
+          "bytes": 7982,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "ebca0be14cc40b2b272dde62107ffe9df8dd97e000df26e0071af4aa23771899",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "combat-arena-screen-3.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE0MDIxMC8zMDc3MjY4OC5wbmc=/347x500/v5h%2BQ5.png",
+          "object": "screenshots/2026-10-14/combat-arena-3.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/combat-arena-3.webp",
+          "bytes": 6878,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "8d017c23528855cb1c495853c46fe4cc431dcdbee9cd7e8231fa07b3c8929a50",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "combat-arena-screen-4.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE0MDIxMC8zMDc3MjY5NS5wbmc=/347x500/4g17qC.png",
+          "object": "screenshots/2026-10-14/combat-arena-4.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/combat-arena-4.webp",
+          "bytes": 9254,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "2e01d74291ea0e5a8c63225a98ddc5877f8677b67412265b0b83ae0add716133",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "combat-arena-screen-5.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE0MDIxMC8zMDgxNTQyNi5naWY=/original/cTgcGw.gif",
+          "object": "screenshots/2026-10-14/combat-arena-5.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/combat-arena-5.webp",
+          "bytes": 6272,
+          "width": 426,
+          "height": 240,
+          "originalFormat": "GIF",
+          "originalFrames": 96,
+          "originalSize": [
+            426,
+            240
+          ],
+          "sha256": "041856e1889d72eeabbf51339f61f4c20a26f00f8d8f43744ecbb3fe8e812ed1",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "url": "https://html-classic.itch.zone/html/19702438/index.html?v=1791752296",
+        "resolvedUrl": "https://html-classic.itch.zone/html/19702438/index.html?v=1791752296",
+        "httpStatus": 200,
+        "bytes": 568,
+        "resourceCheck": {
+          "slug": "combat-arena",
+          "externalResources": [
+            {
+              "url": "https://html-classic.itch.zone/html/19702438/assets/index-B4ZaQ82a.js",
+              "resolvedUrl": "https://html-classic.itch.zone/html/19702438/assets/index-B4ZaQ82a.js",
+              "httpStatus": 200,
+              "bytes": 2017139,
+              "contentType": "text/javascript; charset=utf-8"
+            }
+          ],
+          "note": "Static availability check; not a gameplay or multiplayer test."
+        }
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://thiagodv.itch.io/combat-arena",
+          "verifiedAt": "2026-10-13T17:00:42+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "status"
+          ],
+          "tipsBasis": "Editorial suggestions based on documented mechanics"
+        }
+      ],
+      "metadataNotes": [
+        "Radar publication time retained as input only; no verified original release date.",
+        "Tips are editorial advice inferred from verified mechanics.",
+        "Multiplayer features reflect creator description; no matchmaking or multiplayer sessions were playtested."
+      ],
+      "missingDetailFields": [],
+      "gameId": "a1bba492-07a1-4843-86ab-8b5912bdd64d",
+      "publishedAt": "2026-10-13T17:04:47+00:00",
+      "updates": [
+        {
+          "id": "6b2b0e64-a90c-463f-8ef8-87125dcad1bf",
+          "game_id": "a1bba492-07a1-4843-86ab-8b5912bdd64d",
+          "version": null,
+          "title": "Added to PlayBloo",
+          "summary": "Added to the PlayBloo catalogue with researched game details and an official itch.io play link.",
+          "published_at": "2026-10-13T17:04:47+00:00",
+          "source_url": "https://thiagodv.itch.io/combat-arena",
+          "created_at": "2026-10-13T17:04:29.200216+00:00",
+          "updated_at": "2026-10-13T17:04:29.200216+00:00"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "inputTitle": "ROTETRA",
+      "sourceUrl": "https://sharkwithlasers.itch.io/rotetra",
+      "resolvedUrl": "https://sharkwithlasers.itch.io/rotetra",
+      "identity": "sharkwithlasers/rotetra",
+      "inputPublishedAt": "2026-10-04 04:26（UTC+8）",
+      "decision": "published",
+      "game": {
+        "id": "e56d5ec3-6c7a-4555-b775-ebb85b4c9506",
+        "title": "ROTETRA",
+        "slug": "rotetra",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-14/rotetra.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "ROTETRA is Michael Kamm’s board-spinning block puzzler, published by sharkwithlasers. Move, rotate, drop, and hold pieces while also turning the grid to juggle incoming blocks.\n\nThe in-development browser build provides rebindable keyboard and gamepad inputs. The developer lists additional modes as plans for the full game.",
+        "how_to_play": "Position and rotate pieces, then drop them into the grid. Turn the board to change orientation and use hold to manage pieces.",
+        "controls": "Left / Right — move\nZ / Up — rotate piece\nDown — soft drop\nSpace — hard drop\nC — hold\nA / D — rotate grid\nEsc / Enter — pause\nGamepad: D-pad moves/drops; South/East rotates; shoulders hold; triggers or West/North rotate grid; Start pauses.",
+        "tips": "Check the board before a hard drop.\nUse hold to manage awkward pieces.\nRebind controls if needed; pause is fixed.",
+        "features": "Rotatable board\nMultiple falling pieces\nHold and drop controls\nRebindable keyboard/gamepad inputs\n2D pixel art",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-13T17:04:27.826207+00:00",
+        "updated_at": "2026-10-13T17:04:47+00:00",
+        "external_url": "https://sharkwithlasers.itch.io/rotetra",
+        "developer": "sharkwithlasers",
+        "publisher": null,
+        "source_url": "https://sharkwithlasers.itch.io/rotetra",
+        "source_type": "itch.io",
+        "original_game_url": "https://sharkwithlasers.itch.io/rotetra",
+        "developer_url": "https://sharkwithlasers.itch.io",
+        "steam_url": null,
+        "itch_url": "https://sharkwithlasers.itch.io/rotetra",
+        "last_verified_at": "2026-10-13T17:00:42+00:00",
+        "sources": [
+          {
+            "url": "https://sharkwithlasers.itch.io/rotetra",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-13T17:00:42+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-13T17:04:47+00:00",
+        "last_updated_at": null,
+        "short_description": "Stack tetrominoes while rotating the entire board and managing multiple falling pieces.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "sharkwithlasers/rotetra",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "early-access",
+        "graphics": "2D",
+        "multiplayer": "single-player",
+        "engine": null,
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/rotetra-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/rotetra-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/rotetra-2.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/rotetra-3.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/rotetra-4.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "puzzle",
+        "arcade"
+      ],
+      "media": [
+        {
+          "kind": "cover",
+          "file": "rotetra.webp",
+          "source": "https://img.itch.zone/aW1nLzMwNTEwMDE1LnBuZw==/original/ejUiPA.png",
+          "object": "covers/2026-10-14/rotetra.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-14/rotetra.webp",
+          "bytes": 40012,
+          "width": 630,
+          "height": 500,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            630,
+            500
+          ],
+          "sha256": "4a3771a4b305f6539b202c6a42852a72ad49bedd6d29d34b79870a75c8b87a17",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "rotetra-screen-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTA5NjIwMy8zMDU4MjA4My5wbmc=/347x500/c1OmVO.png",
+          "object": "screenshots/2026-10-14/rotetra-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/rotetra-0.webp",
+          "bytes": 13480,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "30f9f36bfd502b0a09fb94ca32f526b3d5f73e28d96d6cd6c98fc5ca9745d940",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "rotetra-screen-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTA5NjIwMy8zMDU4MjA4MS5wbmc=/347x500/%2BviC0o.png",
+          "object": "screenshots/2026-10-14/rotetra-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/rotetra-1.webp",
+          "bytes": 9152,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "e4878df8adb05c5fda9cab120ce2e96ea407e40032595240030253d75c7bd7df",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "rotetra-screen-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTA5NjIwMy8zMDU4MjA4MC5wbmc=/347x500/X6%2FKPF.png",
+          "object": "screenshots/2026-10-14/rotetra-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/rotetra-2.webp",
+          "bytes": 13694,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "c789ed3e591eb9293bc5651c92cf9116201f0b4cd2a7e579b0ddd8d586d07fe8",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "rotetra-screen-3.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTA5NjIwMy8zMDU4MjA4Mi5wbmc=/347x500/1pCy9f.png",
+          "object": "screenshots/2026-10-14/rotetra-3.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/rotetra-3.webp",
+          "bytes": 10738,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "6252068a4260feb1249dea2f77d45308e52fe0bd8887732e7861df069a2babd0",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "rotetra-screen-4.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTA5NjIwMy8zMDU4MjA3OS5wbmc=/347x500/iGzD3t.png",
+          "object": "screenshots/2026-10-14/rotetra-4.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/rotetra-4.webp",
+          "bytes": 14582,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "ddda38c81d00720481a0f4f53b4f33cf5d906cbd910a711eb26a6c0f251cd0b0",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "url": "https://html.itch.zone/html/19544637/index.html?v=1791059576",
+        "resolvedUrl": "https://html.itch.zone/html/19544637/index.html?v=1791059576",
+        "httpStatus": 200,
+        "bytes": 12335,
+        "resourceCheck": {
+          "slug": "rotetra",
+          "externalResources": [],
+          "note": "Game code embedded in HTML or loaded by runtime-specific loader; HTML entry checked."
+        }
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://sharkwithlasers.itch.io/rotetra",
+          "verifiedAt": "2026-10-13T17:00:42+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "status"
+          ],
+          "tipsBasis": "Editorial suggestions based on documented mechanics"
+        }
+      ],
+      "metadataNotes": [
+        "Radar publication time retained as input only; no verified original release date.",
+        "Tips are editorial advice inferred from verified mechanics.",
+        "Planned full-game modes excluded from current features; browser edition not explicitly called a demo on official page."
+      ],
+      "missingDetailFields": [],
+      "gameId": "e56d5ec3-6c7a-4555-b775-ebb85b4c9506",
+      "publishedAt": "2026-10-13T17:04:47+00:00",
+      "updates": [
+        {
+          "id": "fdd576b5-bc0d-4baa-bfbe-8b1ac10da0c5",
+          "game_id": "e56d5ec3-6c7a-4555-b775-ebb85b4c9506",
+          "version": null,
+          "title": "Added to PlayBloo",
+          "summary": "Added to the PlayBloo catalogue with researched game details and an official itch.io play link.",
+          "published_at": "2026-10-13T17:04:47+00:00",
+          "source_url": "https://sharkwithlasers.itch.io/rotetra",
+          "created_at": "2026-10-13T17:04:29.200216+00:00",
+          "updated_at": "2026-10-13T17:04:29.200216+00:00"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "inputTitle": "Project Chromata",
+      "sourceUrl": "https://gamezeternal.itch.io/project-chromata",
+      "resolvedUrl": "https://gamezeternal.itch.io/project-chromata",
+      "identity": "gamezeternal/project-chromata",
+      "inputPublishedAt": "2025-08-12 06:28（UTC+8）",
+      "decision": "published",
+      "game": {
+        "id": "42c0ef31-0083-4ccb-960a-208e76dd24d1",
+        "title": "Project Chromata",
+        "slug": "project-chromata",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-14/project-chromata.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "Project Chromata is GamezEternal’s minimalist sci-fi incremental game. As the Chroma Engine, produce primary colors, combine them into new resources, and convert that production into Light to restore a star chart. Constellations award permanent bonuses.\n\nAutomation supports the growing economy, while progress reveals fragments of the universe’s history. The current in-development edition covers stages 1–10 and includes a strategic combat layer.",
+        "how_to_play": "Allocate power to color generation, unlock mixers, and develop production chains. Automate upgrades, produce Light, and restore stars to earn constellation bonuses and uncover lore.",
+        "controls": "See the original itch.io page and in-game interface for the developer’s control notes.",
+        "tips": "Check production balance before expanding mixers.\nUse constellation bonuses to support the next restoration goal.\nReview newly unlocked automation as the economy grows.",
+        "features": "Color mixing and production chains\nAutomation\nStar-chart restoration\nPermanent constellation bonuses\nProgress-linked lore\nStages 1–10",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-13T17:04:27.826207+00:00",
+        "updated_at": "2026-10-13T17:04:47+00:00",
+        "external_url": "https://gamezeternal.itch.io/project-chromata",
+        "developer": "GamezEternal",
+        "publisher": null,
+        "source_url": "https://gamezeternal.itch.io/project-chromata",
+        "source_type": "itch.io",
+        "original_game_url": "https://gamezeternal.itch.io/project-chromata",
+        "developer_url": "https://gamezeternal.itch.io",
+        "steam_url": null,
+        "itch_url": "https://gamezeternal.itch.io/project-chromata",
+        "last_verified_at": "2026-10-13T17:00:42+00:00",
+        "sources": [
+          {
+            "url": "https://gamezeternal.itch.io/project-chromata",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-13T17:00:42+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-13T17:04:47+00:00",
+        "last_updated_at": null,
+        "short_description": "Build color-production chains and restore stars in a mysterious idle universe.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "gamezeternal/project-chromata",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "early-access",
+        "graphics": null,
+        "multiplayer": "single-player",
+        "engine": null,
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/project-chromata-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/project-chromata-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/project-chromata-2.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/project-chromata-3.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/project-chromata-4.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/project-chromata-5.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "idle",
+        "strategy"
+      ],
+      "media": [
+        {
+          "kind": "cover",
+          "file": "project-chromata.webp",
+          "source": "https://img.itch.zone/aW1nLzIyNjg2ODI0LnBuZw==/original/X%2F15IU.png",
+          "object": "covers/2026-10-14/project-chromata.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-14/project-chromata.webp",
+          "bytes": 4458,
+          "width": 256,
+          "height": 256,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            256,
+            256
+          ],
+          "sha256": "bb0fb30f0d6c2cb282a9b0212ef3608a9ac22f2e7dd9ad16bbfb0b9d5736e210",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "project-chromata-screen-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvMzgwNTU0Ny8yMjkxNzQ2Ni5qcGc=/347x500/dQTOaI.jpg",
+          "object": "screenshots/2026-10-14/project-chromata-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/project-chromata-0.webp",
+          "bytes": 5076,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "JPEG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "f48130d4df6ff29646dfca1fcfefac991d7233be7b167c442c0b38dfe61cc4d6",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "project-chromata-screen-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvMzgwNTU0Ny8yMjkxNzQ2OS5qcGc=/347x500/MDuOCw.jpg",
+          "object": "screenshots/2026-10-14/project-chromata-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/project-chromata-1.webp",
+          "bytes": 2498,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "JPEG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "f33ff8f0b0853176d5c40c90264f9f61a015b48484cd669b5ad663b21c00753b",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "project-chromata-screen-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvMzgwNTU0Ny8yNTkwMTAzMy5wbmc=/347x500/uNa880.png",
+          "object": "screenshots/2026-10-14/project-chromata-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/project-chromata-2.webp",
+          "bytes": 632,
+          "width": 347,
+          "height": 112,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            112
+          ],
+          "sha256": "1e5cb245f1ae228968746596e65abf1c84fd4bbbedf3573ed81dd4a477767316",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "project-chromata-screen-3.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvMzgwNTU0Ny8yNTkwMTAzNi5wbmc=/347x500/6%2BaZ1c.png",
+          "object": "screenshots/2026-10-14/project-chromata-3.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/project-chromata-3.webp",
+          "bytes": 252,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "25427544b57e995bd7ea3b8c12f679b56f4a474601aa09c9afee12525399f611",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "project-chromata-screen-4.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvMzgwNTU0Ny8yNjcyNjk1Ni5wbmc=/347x500/qsxNSq.png",
+          "object": "screenshots/2026-10-14/project-chromata-4.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/project-chromata-4.webp",
+          "bytes": 5194,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "0ded4f3d1621420bf8655233c55b1fa32011f72dd05aa2fc9512a94ff2abed8a",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "project-chromata-screen-5.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvMzgwNTU0Ny8yNjcyNjk2MC5wbmc=/347x500/EGUbAG.png",
+          "object": "screenshots/2026-10-14/project-chromata-5.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-14/project-chromata-5.webp",
+          "bytes": 9496,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "2ed1f0b639797b5f01a12d7c38eb0d0e3377fe2f2af7ecffc5c9e35910b767c0",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "url": "https://html-classic.itch.zone/html/19724257/index.html?v=1791838535",
+        "resolvedUrl": "https://html-classic.itch.zone/html/19724257/index.html?v=1791838535",
+        "httpStatus": 200,
+        "bytes": 3653,
+        "resourceCheck": {
+          "slug": "project-chromata",
+          "externalResources": [],
+          "note": "Game code embedded in HTML or loaded by runtime-specific loader; HTML entry checked."
+        }
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://gamezeternal.itch.io/project-chromata",
+          "verifiedAt": "2026-10-13T17:00:42+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "status"
+          ],
+          "tipsBasis": "Editorial suggestions based on documented mechanics"
+        }
+      ],
+      "metadataNotes": [
+        "Radar publication time retained as input only; no verified original release date.",
+        "Tips are editorial advice inferred from verified mechanics."
+      ],
+      "missingDetailFields": [],
+      "gameId": "42c0ef31-0083-4ccb-960a-208e76dd24d1",
+      "publishedAt": "2026-10-13T17:04:47+00:00",
+      "updates": [
+        {
+          "id": "869af736-1ecd-40f0-af07-1daf1b4b854e",
+          "game_id": "42c0ef31-0083-4ccb-960a-208e76dd24d1",
+          "version": null,
+          "title": "Added to PlayBloo",
+          "summary": "Added to the PlayBloo catalogue with researched game details and an official itch.io play link.",
+          "published_at": "2026-10-13T17:04:47+00:00",
+          "source_url": "https://gamezeternal.itch.io/project-chromata",
+          "created_at": "2026-10-13T17:04:29.200216+00:00",
+          "updated_at": "2026-10-13T17:04:29.200216+00:00"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "anonymousDraftExclusion": true,
+    "anonymousPublishedRead": true,
+    "fieldsAndCategories": true,
+    "mediaPublicRead": true,
+    "catalogueUpdatesCreated": 10,
+    "originalReleaseAndUpdateDatesNotInferred": true,
+    "oldGameRowsUnchanged": 940,
+    "oldCategoryLinksUnchanged": true,
+    "totalGamesAfter": 950,
+    "livePages": [
+      {
+        "slug": "himaneji-idle-factory-clicker",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "metaDescription": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "catalogueUpdate": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "sir-we-have-a-situation",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "metaDescription": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "catalogueUpdate": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "idle-dreadnought",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "metaDescription": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "catalogueUpdate": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "idle-island",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "metaDescription": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "catalogueUpdate": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "the-excavation-project",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "metaDescription": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "catalogueUpdate": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "lost-warden",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "metaDescription": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "catalogueUpdate": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "the-last-line",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "metaDescription": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "catalogueUpdate": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "combat-arena",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "metaDescription": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "catalogueUpdate": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "rotetra",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "metaDescription": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "catalogueUpdate": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "project-chromata",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "metaDescription": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "catalogueUpdate": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      }
+    ],
+    "liveSitemap": {
+      "httpStatus": 200,
+      "newEntries": [
+        {
+          "slug": "himaneji-idle-factory-clicker",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "sir-we-have-a-situation",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "idle-dreadnought",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "idle-island",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "the-excavation-project",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "lost-warden",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "the-last-line",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "combat-arena",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "rotetra",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "project-chromata",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        }
+      ],
+      "oldGameTimestampChanges": [],
+      "cacheHeaders": {
+        "Age": "70",
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "x-vercel-cache": "HIT"
+      }
+    },
+    "homepage": {
+      "httpStatus": 200,
+      "newSlugsVisible": [],
+      "noImageOptimizer": true
+    },
+    "verifiedAt": "2026-10-13T17:06:47+00:00",
+    "productionBuild": {
+      "status": "passed",
+      "exitCode": 0,
+      "summary": "npm run build 通过；本批 10/10 正式 URL 已在构建 sitemap 收录，lastmod 与发布时间一致；933 个老游戏的 sitemap 时间戳与导入前一致。当前构建按热度选取前 500 款，本批 0/10 被预渲染；10 个线上详情页均已完成运行时渲染和正文校验",
+      "entries": [
+        {
+          "slug": "himaneji-idle-factory-clicker",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": false
+        },
+        {
+          "slug": "sir-we-have-a-situation",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": false
+        },
+        {
+          "slug": "idle-dreadnought",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": false
+        },
+        {
+          "slug": "idle-island",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": false
+        },
+        {
+          "slug": "the-excavation-project",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": false
+        },
+        {
+          "slug": "lost-warden",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": false
+        },
+        {
+          "slug": "the-last-line",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": false
+        },
+        {
+          "slug": "combat-arena",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": false
+        },
+        {
+          "slug": "rotetra",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": false
+        },
+        {
+          "slug": "project-chromata",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": false
+        }
+      ],
+      "oldPublishedTimestampsChecked": 933,
+      "timestampPrecision": "JavaScript Date / sitemap ISO output uses milliseconds; database comparison normalized to milliseconds, prior XML compared exactly",
+      "draftsExcluded": true,
+      "runtimePagesPassed": 10
+    },
+    "llmsTxt": {
+      "path": "public/llms.txt",
+      "checked": true,
+      "changed": false,
+      "reason": "Existing game detail, external play, catalogue, and sitemap descriptions remain accurate."
+    },
+    "baselineSha256": "666551d5cbf667b8488e5769ada24998da3517ec9b3e149d3df42ce11ee79325",
+    "categoryBaselineSha256": "45684173ad125f67329a13de5b2843c2073d283db456cf55008a380cd51e0b80"
+  }
+}
