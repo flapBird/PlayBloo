@@ -613,11 +613,9 @@ body.game-fullscreen .site-main {
 :root:not(.dark) .header-search:focus { border-color: var(--primary) !important; background: var(--card); }
 :root:not(.dark) .header-nav-link { font-weight: 550; }
 :root:not(.dark) .header-nav-link.is-active { background: var(--accent); color: var(--primary); }
-:root:not(.dark) .home-intro { padding-top: .75rem; padding-bottom: 1.75rem; border-bottom: 0; }
+:root:not(.dark) .home-intro { padding-top: .75rem; padding-bottom: .5rem; }
 :root:not(.dark) .home-title { font-weight: 600; font-size: clamp(1.55rem, 2.6vw, 2.15rem); letter-spacing: -.04em; line-height: 1.2; }
-:root:not(.dark) .home-eyebrow { color: var(--primary); font-weight: 600; letter-spacing: .13em; }
-:root:not(.dark) .home-intro > a { border-color: var(--border); font-weight: 600; box-shadow: 0 2px 3px #20243804; }
-:root:not(.dark) .home-discovery-toolbar { margin-top: .5rem; border: 0; border-bottom: 1px solid var(--border); background: transparent; border-radius: 0; box-shadow: none; padding: 0 0 .75rem; }
+.home-discovery-toolbar { margin-top: 1rem; border: 0; border-bottom: 1px solid var(--border); background: transparent; border-radius: 0; box-shadow: none; padding: 0 0 .75rem; }
 :root:not(.dark) .home-discovery-toolbar .discovery-tabs { gap: .25rem; }
 :root:not(.dark) .home-discovery-toolbar .discovery-tabs button { min-height: 2.5rem; padding-inline: 1rem; font-weight: 550; font-size: .8125rem; border-radius: .5rem; }
 :root:not(.dark) .home-discovery-toolbar .discovery-tabs .is-active { color: var(--primary); background: var(--accent); font-weight: 650; }

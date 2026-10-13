@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import {
-  ArrowRight,
-  Search,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import type { GameCardGame } from "@/components/games/GameCard";
 import { HomeDiscovery } from "@/components/home/HomeDiscovery";
 import { HomeLibraryPanel } from "@/components/home/HomeLibraryPanel";
@@ -64,9 +61,8 @@ export default async function HomePage() {
   return (
     <div className="home-page pb-8">
       <div className="container mx-auto px-4 pt-5 md:pt-7">
-        <section className="home-intro flex flex-col gap-4 border-b pb-6 md:flex-row md:items-end md:justify-between">
+        <section className="home-intro pb-2">
           <div className="max-w-2xl">
-            <p className="home-eyebrow mb-3 text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">Curated browser game discovery</p>
             <h1 className="home-title text-2xl font-bold leading-tight tracking-[-0.035em] sm:text-3xl">
               Discover what&apos;s new. <span className="text-primary">Play instantly.</span>
             </h1>
@@ -74,9 +70,6 @@ export default async function HomePage() {
               Find a browser game and start playing. No download required.
             </p>
           </div>
-          <Link href="/search" prefetch={false} className="inline-flex shrink-0 items-center gap-2 self-start rounded-lg border bg-card px-4 py-2.5 text-sm font-bold transition-colors hover:border-primary/50 hover:text-primary md:self-auto">
-            <Search className="h-4 w-4" /> Find a game
-          </Link>
         </section>
 
 
