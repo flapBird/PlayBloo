@@ -1,0 +1,1903 @@
+{
+  "batchDate": "2026-10-13",
+  "inputCount": 10,
+  "baselineCount": 930,
+  "entries": [
+    {
+      "index": 1,
+      "inputTitle": "PACKARDOS",
+      "sourceUrl": "https://slambond.itch.io/packardos",
+      "resolvedUrl": "https://slambond.itch.io/packardos",
+      "identity": "slambond/packardos",
+      "inputPublishedAt": "2026-10-12T05:51:00+08:00",
+      "decision": "published",
+      "game": {
+        "id": "e27b5b46-8e84-4380-8d44-5679db0a18f9",
+        "title": "PACKARDOS",
+        "slug": "packardos",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-13/packardos.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "PACKARDOS is an unofficial Pokémon fan game about collecting virtual cards. Begin with two unlimited free expansions, then keep, sell, or grade your pulls to fund access to older sets. The collection spans 4,240 cards across 35 expansions and 18 tiers, leading toward 1st Edition Base Set.\n\nAlbums, custom binders, collector requests, and automation give the collection a longer progression loop. This free prototype is unaffiliated with Pokémon’s rights holders; its cards have no real-world monetary value.",
+        "how_to_play": "Open packs and reveal their cards. Decide which to collect, sell, or send for grading. Reinvest earnings in expansions and upgrades; use albums and collection filters to track missing cards.",
+        "controls": "Click / Space / Enter — continue\nR — another pack\nB — album\nL — grading\nU — upgrades\nM — sound\nEsc — close\nMouse or touch — full interface control",
+        "tips": "Check collector requests before selling valuable cards.\nExport a save from Settings before clearing browser data or changing browsers.",
+        "features": "Card grading from 1 to 10\nSearchable collection, favorites, and wishlist\nCustom binders\n135 achievements\nBatch openings and automation\nBrowser autosave with export",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-13T01:49:47.371605+00:00",
+        "updated_at": "2026-10-13T01:50:19+00:00",
+        "external_url": "https://slambond.itch.io/packardos",
+        "developer": "SLAMBOND",
+        "publisher": null,
+        "source_url": "https://slambond.itch.io/packardos",
+        "source_type": "itch.io",
+        "original_game_url": "https://slambond.itch.io/packardos",
+        "developer_url": "https://slambond.itch.io",
+        "steam_url": null,
+        "itch_url": "https://slambond.itch.io/packardos",
+        "last_verified_at": "2026-10-13T01:46:27+00:00",
+        "sources": [
+          {
+            "url": "https://slambond.itch.io/packardos",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-13T01:46:27+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-13T01:46:27+00:00",
+        "last_updated_at": null,
+        "short_description": "Open virtual Pokémon card packs, grade your finds, and unlock older expansions.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "slambond/packardos",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "early-access",
+        "graphics": null,
+        "multiplayer": "single-player",
+        "engine": null,
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/packardos-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/packardos-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/packardos-2.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "card",
+        "idle"
+      ],
+      "media": [
+        {
+          "file": "packardos.webp",
+          "object": "covers/2026-10-13/packardos.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-13/packardos.webp",
+          "source": "https://img.itch.zone/aW1nLzMwNzc2MTcxLnBuZw==/original/QoZEqW.png",
+          "bytes": 64768,
+          "width": 630,
+          "height": 500,
+          "sha256": "b6f74578ece4cbc1c5ea9a3864397ff715ff1a936d71de4a057f72f45ebd55e3",
+          "publicVerified": true
+        },
+        {
+          "file": "packardos-screen-0.webp",
+          "object": "screenshots/2026-10-13/packardos-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/packardos-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE0MTMwNy8zMDc3NjQyMS5wbmc=/347x500/wQ54wy.png",
+          "bytes": 10210,
+          "width": 347,
+          "height": 238,
+          "sha256": "be249139e2a56974a72ae022ae390a4cdd2bba9e7ad0957d7d9b3626b126a4ad",
+          "publicVerified": true
+        },
+        {
+          "file": "packardos-screen-1.webp",
+          "object": "screenshots/2026-10-13/packardos-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/packardos-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE0MTMwNy8zMDc3NjQyMC5wbmc=/347x500/NsNygu.png",
+          "bytes": 4476,
+          "width": 347,
+          "height": 163,
+          "sha256": "24cdb8374edf19c2db6cc06f16eb2fa3c2833a36b3d070942fe3e1b9ae8171f6",
+          "publicVerified": true
+        },
+        {
+          "file": "packardos-screen-2.webp",
+          "object": "screenshots/2026-10-13/packardos-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/packardos-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE0MTMwNy8zMDc3NjQyNC5wbmc=/347x500/5IMN6X.png",
+          "bytes": 11792,
+          "width": 347,
+          "height": 236,
+          "sha256": "a6bb9b5968b06acbecb763371022e5dd0c2014e1812ca938f6c34cb0138132ea",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "slug": "packardos",
+        "entryUrl": "https://html-classic.itch.zone/html/19725845/index.html?v=1791844676",
+        "entryResolved": "https://html-classic.itch.zone/html/19725845/index.html?v=1791844676",
+        "entryStatus": 200,
+        "entryBytes": 801,
+        "coverSource": "https://img.itch.zone/aW1nLzMwNzc2MTcxLnBuZw==/original/QoZEqW.png",
+        "coverOriginalBytes": 524666,
+        "cover": {
+          "bytes": 64768,
+          "width": 630,
+          "height": 500
+        }
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://slambond.itch.io/packardos",
+          "verifiedAt": "2026-10-13T01:46:27+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "engine",
+            "status"
+          ],
+          "tipsBasis": "Editorial advice inferred from verified mechanics"
+        }
+      ],
+      "missingDetailFields": [],
+      "metadataNotes": [
+        "release_date and last_updated_at left null: radar publication time is not a verified original release date"
+      ],
+      "gameId": "e27b5b46-8e84-4380-8d44-5679db0a18f9",
+      "publishedAt": "2026-10-13T01:50:19+00:00"
+    },
+    {
+      "index": 2,
+      "inputTitle": "Azzucca",
+      "sourceUrl": "https://starea.itch.io/azzucca",
+      "resolvedUrl": "https://starea.itch.io/azzucca",
+      "identity": "starea/azzucca",
+      "inputPublishedAt": "2026-10-12T00:43:00+08:00",
+      "decision": "published",
+      "game": {
+        "id": "2203d086-1368-4e88-9b75-9fcf14282b97",
+        "title": "Azzucca",
+        "slug": "azzucca",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-13/azzucca.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "Azzucca combines tower defense with incremental upgrades in a short autumn jam prototype. As a witch, protect a pumpkin tree from nightly attacks while using daylight to build towers and develop your skill tree.\n\nYour position matters: entering a tower room warms you and boosts that room’s firing rate while doubling its projectiles. Survive ten waves to win, or continue with the simple endless mode. Created for Mini Jam 221: Autumn.",
+        "how_to_play": "Build defenses and purchase skill-tree improvements during the day. When enemies arrive at night, move into a tower room to strengthen its attack. Keep the pumpkin tree safe through all ten waves.",
+        "controls": "Arrow keys / A, D — movement\nW / Space — jump",
+        "tips": "Spend daylight preparing before the next wave.\nSupport the room covering the busiest approach to make use of its doubled projectiles.",
+        "features": "Daytime building and nighttime defense\nSkill-tree progression\nRoom-based attack buffs\nTen-wave victory condition\nEndless mode\nPixel-art presentation",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-13T01:49:47.371605+00:00",
+        "updated_at": "2026-10-13T01:50:19+00:00",
+        "external_url": "https://starea.itch.io/azzucca",
+        "developer": "starea",
+        "publisher": null,
+        "source_url": "https://starea.itch.io/azzucca",
+        "source_type": "itch.io",
+        "original_game_url": "https://starea.itch.io/azzucca",
+        "developer_url": "https://starea.itch.io",
+        "steam_url": null,
+        "itch_url": "https://starea.itch.io/azzucca",
+        "last_verified_at": "2026-10-13T01:46:27+00:00",
+        "sources": [
+          {
+            "url": "https://starea.itch.io/azzucca",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-13T01:46:27+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-13T01:46:27+00:00",
+        "last_updated_at": null,
+        "short_description": "Defend a pumpkin tree through ten nights with towers, upgrades, and a witch’s warming presence.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "starea/azzucca",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "early-access",
+        "graphics": "2D",
+        "multiplayer": "single-player",
+        "engine": "Godot",
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/azzucca-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/azzucca-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/azzucca-2.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "strategy",
+        "idle"
+      ],
+      "media": [
+        {
+          "file": "azzucca.webp",
+          "object": "covers/2026-10-13/azzucca.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-13/azzucca.webp",
+          "source": "https://img.itch.zone/aW1nLzMwNzY1NzAzLnBuZw==/original/6oRoBa.png",
+          "bytes": 16012,
+          "width": 315,
+          "height": 250,
+          "sha256": "e6bad114bfabf0092ceb7c1b6da110f50b61e8b4b068c5c6901b506f618e3b52",
+          "publicVerified": true
+        },
+        {
+          "file": "azzucca-screen-0.webp",
+          "object": "screenshots/2026-10-13/azzucca-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/azzucca-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTEzOTU1Ny8zMDc2NTcyOS5qcGc=/347x500/EjT%2Fts.jpg",
+          "bytes": 6846,
+          "width": 347,
+          "height": 195,
+          "sha256": "5f6b9d7e95b0a273d2084442e680b20a31cb04ee5a7a59e7a898d58d76730da2",
+          "publicVerified": true
+        },
+        {
+          "file": "azzucca-screen-1.webp",
+          "object": "screenshots/2026-10-13/azzucca-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/azzucca-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTEzOTU1Ny8zMDc2NTczMC5qcGc=/347x500/bI1ngF.jpg",
+          "bytes": 2878,
+          "width": 347,
+          "height": 195,
+          "sha256": "c12bb0139e2756301326d526310855c5b34faa4eeab6d04263b8903d1b32d644",
+          "publicVerified": true
+        },
+        {
+          "file": "azzucca-screen-2.webp",
+          "object": "screenshots/2026-10-13/azzucca-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/azzucca-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTEzOTU1Ny8zMDc2NTczMS5qcGc=/347x500/UFAeer.jpg",
+          "bytes": 12318,
+          "width": 347,
+          "height": 195,
+          "sha256": "92600b0d3e9046d2aa0b462e7574da2dfe3df61c84e809ca2e2cae5f798c808d",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "slug": "azzucca",
+        "entryUrl": "https://html.itch.zone/html/19696848/index.html?v=1791737469",
+        "entryResolved": "https://html.itch.zone/html/19696848/index.html?v=1791737469",
+        "entryStatus": 200,
+        "entryBytes": 5526,
+        "coverSource": "https://img.itch.zone/aW1nLzMwNzY1NzAzLnBuZw==/original/6oRoBa.png",
+        "coverOriginalBytes": 6651,
+        "cover": {
+          "bytes": 16012,
+          "width": 315,
+          "height": 250
+        }
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://starea.itch.io/azzucca",
+          "verifiedAt": "2026-10-13T01:46:27+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "engine",
+            "status"
+          ],
+          "tipsBasis": "Editorial advice inferred from verified mechanics"
+        }
+      ],
+      "missingDetailFields": [],
+      "metadataNotes": [
+        "release_date and last_updated_at left null: radar publication time is not a verified original release date"
+      ],
+      "gameId": "2203d086-1368-4e88-9b75-9fcf14282b97",
+      "publishedAt": "2026-10-13T01:50:19+00:00"
+    },
+    {
+      "index": 3,
+      "inputTitle": "II II II I I I I II",
+      "sourceUrl": "https://ii-p.itch.io/ii-ii-ii-i-i-i-i-ii",
+      "resolvedUrl": "https://ii-p.itch.io/ii-ii-ii-i-i-i-i-ii",
+      "identity": "ii-p/ii-ii-ii-i-i-i-i-ii",
+      "inputPublishedAt": "2026-10-11T22:46:00+08:00",
+      "decision": "published",
+      "game": {
+        "id": "030fb07c-3d3e-42f8-aedf-6b4673b92a79",
+        "title": "II II II I I I I II",
+        "slug": "ii-ii-ii-i-i-i-i-ii",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-13/ii-ii-ii-i-i-i-i-ii.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "Content warning: self-harm and psychological distress. II II II I I I I II is a short, surreal interactive narrative by II-P that explores a person’s difficult emotional experiences through a recurring late-night setting.\n\nThe game uses a stark black-and-white presentation, dialogue, and choices, with multiple endings listed by the developer. A browser version is available, although the creator recommends the downloadable build for the best experience.",
+        "how_to_play": "Read the dialogue, follow the interactive tutorial, and make the choices offered by the story. Progress through its scenes to reach an ending.",
+        "controls": "Space / left mouse button — advance dialogue\nHold Enter — skip dialogue and tutorial\nDown / Up — hide / show text box\nM — mute / unmute music",
+        "tips": "Read the tutorial before using the dialogue-skip shortcut.\nUse the text-box visibility keys when you want a clearer view of a scene.",
+        "features": "Psychological interactive fiction\nMeaningful story choices and multiple endings\nBlack-and-white visuals\nSubtitles and interactive tutorial\nEnglish text\nMusic featuring soma",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-13T01:49:47.371605+00:00",
+        "updated_at": "2026-10-13T01:50:19+00:00",
+        "external_url": "https://ii-p.itch.io/ii-ii-ii-i-i-i-i-ii",
+        "developer": "II-P",
+        "publisher": null,
+        "source_url": "https://ii-p.itch.io/ii-ii-ii-i-i-i-i-ii",
+        "source_type": "itch.io",
+        "original_game_url": "https://ii-p.itch.io/ii-ii-ii-i-i-i-i-ii",
+        "developer_url": "https://ii-p.itch.io",
+        "steam_url": null,
+        "itch_url": "https://ii-p.itch.io/ii-ii-ii-i-i-i-i-ii",
+        "last_verified_at": "2026-10-13T01:46:27+00:00",
+        "sources": [
+          {
+            "url": "https://ii-p.itch.io/ii-ii-ii-i-i-i-i-ii",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-13T01:46:27+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-13T01:46:27+00:00",
+        "last_updated_at": null,
+        "short_description": "A surreal psychological narrative about recurring distress and buried emotions.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "ii-p/ii-ii-ii-i-i-i-i-ii",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "released",
+        "graphics": null,
+        "multiplayer": "single-player",
+        "engine": "Unity",
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/ii-ii-ii-i-i-i-i-ii-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/ii-ii-ii-i-i-i-i-ii-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/ii-ii-ii-i-i-i-i-ii-2.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "casual",
+        "horror"
+      ],
+      "media": [
+        {
+          "file": "ii-ii-ii-i-i-i-i-ii.webp",
+          "object": "covers/2026-10-13/ii-ii-ii-i-i-i-i-ii.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-13/ii-ii-ii-i-i-i-i-ii.webp",
+          "source": "https://img.itch.zone/aW1nLzMwNzYyNTM4LnBuZw==/original/%2FgIrnG.png",
+          "bytes": 53282,
+          "width": 640,
+          "height": 508,
+          "sha256": "facb8ae11cb046df09d8eb301da04c21a61d2decbb005b2f35e3c0d5fbbaee36",
+          "publicVerified": true
+        },
+        {
+          "file": "ii-ii-ii-i-i-i-i-ii-screen-0.webp",
+          "object": "screenshots/2026-10-13/ii-ii-ii-i-i-i-i-ii-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/ii-ii-ii-i-i-i-i-ii-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTEzODgzNC8zMDc2MTUwNS5naWY=/original/zGHDsb.gif",
+          "bytes": 538186,
+          "width": 480,
+          "height": 5940,
+          "sha256": "f8564e7abe7156302ed8753a2414122c9b9254a39bba7cdd875b8d88dfe68b6a",
+          "publicVerified": true
+        },
+        {
+          "file": "ii-ii-ii-i-i-i-i-ii-screen-1.webp",
+          "object": "screenshots/2026-10-13/ii-ii-ii-i-i-i-i-ii-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/ii-ii-ii-i-i-i-i-ii-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTEzODgzNC8zMDc2MTUwNC5naWY=/original/BhtV0Y.gif",
+          "bytes": 315698,
+          "width": 480,
+          "height": 4050,
+          "sha256": "69f3e562ef3d0de0a35df32579d6b6b0e2d3345604ae0f71187de1b45f66a693",
+          "publicVerified": true
+        },
+        {
+          "file": "ii-ii-ii-i-i-i-i-ii-screen-2.webp",
+          "object": "screenshots/2026-10-13/ii-ii-ii-i-i-i-i-ii-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/ii-ii-ii-i-i-i-i-ii-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTEzODgzNC8zMDc2MTUwMS5naWY=/original/VT5w6X.gif",
+          "bytes": 687804,
+          "width": 480,
+          "height": 5670,
+          "sha256": "9042b4766f25bb9ea63100313a98173ce2954eb117b4d60ffd4d6c444cdef5cb",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "slug": "ii-ii-ii-i-i-i-i-ii",
+        "entryUrl": "https://html-classic.itch.zone/html/19694775/html/index.html?v=1791731398",
+        "entryResolved": "https://html-classic.itch.zone/html/19694775/html/index.html?v=1791731398",
+        "entryStatus": 200,
+        "entryBytes": 5695,
+        "coverSource": "https://img.itch.zone/aW1nLzMwNzYyNTM4LnBuZw==/original/%2FgIrnG.png",
+        "coverOriginalBytes": 674959,
+        "cover": {
+          "bytes": 53282,
+          "width": 640,
+          "height": 508
+        }
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://ii-p.itch.io/ii-ii-ii-i-i-i-i-ii",
+          "verifiedAt": "2026-10-13T01:46:27+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "engine",
+            "status"
+          ],
+          "tipsBasis": "Editorial advice inferred from verified mechanics"
+        }
+      ],
+      "missingDetailFields": [],
+      "metadataNotes": [
+        "release_date and last_updated_at left null: radar publication time is not a verified original release date"
+      ],
+      "gameId": "030fb07c-3d3e-42f8-aedf-6b4673b92a79",
+      "publishedAt": "2026-10-13T01:50:19+00:00"
+    },
+    {
+      "index": 4,
+      "inputTitle": "We Need More Undead!",
+      "sourceUrl": "https://cattt999.itch.io/we-need-more-undead",
+      "resolvedUrl": "https://cattt999.itch.io/we-need-more-undead",
+      "identity": "cattt999/we-need-more-undead",
+      "inputPublishedAt": "2026-10-11T16:48:00+08:00",
+      "decision": "published",
+      "game": {
+        "id": "8b71d59d-cec8-4629-8cbb-a02f8c501b22",
+        "title": "We Need More Undead!",
+        "slug": "we-need-more-undead",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-13/we-need-more-undead.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "We Need More Undead! is an incremental prototype about building a necromancer’s army. Your undead spawn, march, and fight automatically, earning souls as they push through hostile territory.\n\nSpend those souls on a branching upgrade tree to increase army size, health, and speed. New undead types and abilities expand your options, while directly cursing enemy towers lets you support the advancing army.",
+        "how_to_play": "Let the army advance and earn souls. Spend them in the upgrade tree, then repeat as stronger forces push farther. Click enemy towers to disable them temporarily and unlock additional undead types as progress allows.",
+        "controls": "Mouse click on enemy towers — temporarily disable them\nUse the on-screen upgrade tree to purchase improvements",
+        "tips": "Use tower curses when your army is approaching a defended position.\nIf progress slows, consider survivability and speed upgrades as well as army size.",
+        "features": "Automatic spawning and combat\nSoul-based progression\nArmy upgrade tree\nTemporary tower curses\nUnlockable undead types and abilities",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-13T01:49:47.371605+00:00",
+        "updated_at": "2026-10-13T01:50:19+00:00",
+        "external_url": "https://cattt999.itch.io/we-need-more-undead",
+        "developer": "LoadingCat",
+        "publisher": null,
+        "source_url": "https://cattt999.itch.io/we-need-more-undead",
+        "source_type": "itch.io",
+        "original_game_url": "https://cattt999.itch.io/we-need-more-undead",
+        "developer_url": "https://cattt999.itch.io",
+        "steam_url": null,
+        "itch_url": "https://cattt999.itch.io/we-need-more-undead",
+        "last_verified_at": "2026-10-13T01:46:27+00:00",
+        "sources": [
+          {
+            "url": "https://cattt999.itch.io/we-need-more-undead",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-13T01:46:27+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-13T01:46:27+00:00",
+        "last_updated_at": null,
+        "short_description": "Grow an automated undead army and use soul-funded upgrades to overwhelm enemy defenses.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "cattt999/we-need-more-undead",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "early-access",
+        "graphics": null,
+        "multiplayer": "single-player",
+        "engine": "Unity",
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/we-need-more-undead-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/we-need-more-undead-1.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "idle",
+        "strategy"
+      ],
+      "media": [
+        {
+          "file": "we-need-more-undead.webp",
+          "object": "covers/2026-10-13/we-need-more-undead.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-13/we-need-more-undead.webp",
+          "source": "https://img.itch.zone/aW1nLzMwNzUzNDAyLnBuZw==/original/HQqxzT.png",
+          "bytes": 101962,
+          "width": 640,
+          "height": 497,
+          "sha256": "80a78a469f09066bf70b149331bb809ff5314f4662f5ce31bef34a26bf5c70c3",
+          "publicVerified": true
+        },
+        {
+          "file": "we-need-more-undead-screen-0.webp",
+          "object": "screenshots/2026-10-13/we-need-more-undead-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/we-need-more-undead-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTEzNzExNi8zMDc1MTUwMi5wbmc=/347x500/n2jYUX.png",
+          "bytes": 7290,
+          "width": 347,
+          "height": 192,
+          "sha256": "dbabf9c932255bf84eaf0376e228bdc3bfe10285c94371a16cb7bd0acebf2f5c",
+          "publicVerified": true
+        },
+        {
+          "file": "we-need-more-undead-screen-1.webp",
+          "object": "screenshots/2026-10-13/we-need-more-undead-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/we-need-more-undead-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTEzNzExNi8zMDc1MTUwMy5wbmc=/347x500/KUib6N.png",
+          "bytes": 3754,
+          "width": 347,
+          "height": 194,
+          "sha256": "412669285eca0ad72060d0d540e7affd6e4547c4e2c36b0fb5fb53ba9bd5c945",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "slug": "we-need-more-undead",
+        "entryUrl": "https://html-classic.itch.zone/html/19689906/index.html?v=1791712962",
+        "entryResolved": "https://html-classic.itch.zone/html/19689906/index.html?v=1791712962",
+        "entryStatus": 200,
+        "entryBytes": 2000,
+        "coverSource": "https://img.itch.zone/aW1nLzMwNzUzNDAyLnBuZw==/original/HQqxzT.png",
+        "coverOriginalBytes": 1824131,
+        "cover": {
+          "bytes": 101962,
+          "width": 640,
+          "height": 497
+        }
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://cattt999.itch.io/we-need-more-undead",
+          "verifiedAt": "2026-10-13T01:46:27+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "engine",
+            "status"
+          ],
+          "tipsBasis": "Editorial advice inferred from verified mechanics"
+        }
+      ],
+      "missingDetailFields": [],
+      "metadataNotes": [
+        "release_date and last_updated_at left null: radar publication time is not a verified original release date"
+      ],
+      "gameId": "8b71d59d-cec8-4629-8cbb-a02f8c501b22",
+      "publishedAt": "2026-10-13T01:50:19+00:00"
+    },
+    {
+      "index": 5,
+      "inputTitle": "One Way Down",
+      "sourceUrl": "https://blindhermit.itch.io/one-way-down",
+      "resolvedUrl": "https://blindhermit.itch.io/one-way-down",
+      "identity": "blindhermit/one-way-down",
+      "inputPublishedAt": "2026-10-11T20:17:00+08:00",
+      "decision": "published",
+      "game": {
+        "id": "bfcce9d6-57e1-4134-9f0c-88ceeddba046",
+        "title": "One Way Down",
+        "slug": "one-way-down",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-13/one-way-down.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "One Way Down is an isometric mining clicker built around a 100-metre descent. Break blocks for gold, recruit specialist workers, and choose among 71 upgrades across five connected branches. Six biomes hide monsters, artifacts, and a boss every tenth metre.\n\nWorkers gain experience, but deaths are permanent and replacements start over. Finish an expedition to develop Base Camp, recruiting five persistent characters and building a network of 21 improvements that help future runs. The game is free and open source under GPL v3.",
+        "how_to_play": "Click blocks to mine and earn gold. Hire crew and buy upgrades as you descend. Attack monsters that grab workers, defeat the ten bosses, and reach the bottom. Spend time at camp improving the next expedition.",
+        "controls": "Click blocks — mine\nClick a monster holding a miner — attack it\nUse on-screen hiring and upgrade options",
+        "tips": "Respond quickly when a worker is grabbed to avoid losing their experience.\nUse camp improvements to support later expeditions.\nConsider combat upgrades before deeper boss encounters.",
+        "features": "Six biomes and ten bosses\nSpecialist miners with leveling\n71 expedition upgrades\nPersistent camp progression\nExpedition artifacts\n61 achievements",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-13T01:49:47.371605+00:00",
+        "updated_at": "2026-10-13T01:50:19+00:00",
+        "external_url": "https://blindhermit.itch.io/one-way-down",
+        "developer": "BlindHermit",
+        "publisher": null,
+        "source_url": "https://blindhermit.itch.io/one-way-down",
+        "source_type": "itch.io",
+        "original_game_url": "https://blindhermit.itch.io/one-way-down",
+        "developer_url": "https://blindhermit.itch.io",
+        "steam_url": null,
+        "itch_url": "https://blindhermit.itch.io/one-way-down",
+        "last_verified_at": "2026-10-13T01:46:27+00:00",
+        "sources": [
+          {
+            "url": "https://blindhermit.itch.io/one-way-down",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-13T01:46:27+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-13T01:46:27+00:00",
+        "last_updated_at": null,
+        "short_description": "Lead a mining crew through six underground biomes, then improve camp for the next expedition.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "blindhermit/one-way-down",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "released",
+        "graphics": null,
+        "multiplayer": "single-player",
+        "engine": null,
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/one-way-down-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/one-way-down-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/one-way-down-2.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "clicker",
+        "strategy"
+      ],
+      "media": [
+        {
+          "file": "one-way-down.webp",
+          "object": "covers/2026-10-13/one-way-down.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-13/one-way-down.webp",
+          "source": "https://img.itch.zone/aW1nLzMwNzU2ODUzLnBuZw==/original/OIR%2Fo9.png",
+          "bytes": 13150,
+          "width": 630,
+          "height": 500,
+          "sha256": "c9d970b4d924a763d0bd728af0fbb799ad1e954740915f64f990de7fbf58fa60",
+          "publicVerified": true
+        },
+        {
+          "file": "one-way-down-screen-0.webp",
+          "object": "screenshots/2026-10-13/one-way-down-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/one-way-down-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTEzODAxOC8zMDc1NjcwNy5wbmc=/347x500/KmHeWz.png",
+          "bytes": 9592,
+          "width": 347,
+          "height": 195,
+          "sha256": "2abdec667bf5f0a4c8cc8af10df6f14660d4941be8f6323be7a454d9aca1a198",
+          "publicVerified": true
+        },
+        {
+          "file": "one-way-down-screen-1.webp",
+          "object": "screenshots/2026-10-13/one-way-down-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/one-way-down-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTEzODAxOC8zMDc1NjcxMi5wbmc=/347x500/%2FVSwnX.png",
+          "bytes": 12160,
+          "width": 347,
+          "height": 195,
+          "sha256": "c0226865b7f023de2238b2ddeddeb5fe0035f5e1169fd91009ba381a108da6b3",
+          "publicVerified": true
+        },
+        {
+          "file": "one-way-down-screen-2.webp",
+          "object": "screenshots/2026-10-13/one-way-down-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/one-way-down-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTEzODAxOC8zMDc1NjcwOC5wbmc=/347x500/%2BLdeMk.png",
+          "bytes": 11264,
+          "width": 347,
+          "height": 195,
+          "sha256": "cd1bb80c4c01fcb72782138b18e2cb14e98c36af1325077adec66d36aba2cae6",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "slug": "one-way-down",
+        "entryUrl": "https://html-classic.itch.zone/html/19727428/index.html?v=1791850877",
+        "entryResolved": "https://html-classic.itch.zone/html/19727428/index.html?v=1791850877",
+        "entryStatus": 200,
+        "entryBytes": 21621,
+        "coverSource": "https://img.itch.zone/aW1nLzMwNzU2ODUzLnBuZw==/original/OIR%2Fo9.png",
+        "coverOriginalBytes": 70436,
+        "cover": {
+          "bytes": 13150,
+          "width": 630,
+          "height": 500
+        }
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://blindhermit.itch.io/one-way-down",
+          "verifiedAt": "2026-10-13T01:46:27+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "engine",
+            "status"
+          ],
+          "tipsBasis": "Editorial advice inferred from verified mechanics"
+        }
+      ],
+      "missingDetailFields": [],
+      "metadataNotes": [
+        "release_date and last_updated_at left null: radar publication time is not a verified original release date"
+      ],
+      "gameId": "bfcce9d6-57e1-4134-9f0c-88ceeddba046",
+      "publishedAt": "2026-10-13T01:50:19+00:00"
+    },
+    {
+      "index": 6,
+      "inputTitle": "Fake News Detective (In Space)",
+      "sourceUrl": "https://studio-spagunkel.itch.io/fake-news-detective-in-space",
+      "resolvedUrl": "https://studio-spagunkel.itch.io/fake-news-detective-in-space",
+      "identity": "studio-spagunkel/fake-news-detective-in-space",
+      "inputPublishedAt": "2026-08-28T20:16:00+08:00",
+      "decision": "published",
+      "game": {
+        "id": "26ca990d-8ac8-4f41-93eb-c5c71309b17b",
+        "title": "Fake News Detective (In Space)",
+        "slug": "fake-news-detective-in-space",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-13/fake-news-detective-in-space.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "Fake News Detective (In Space) is an educational point-and-click puzzle game set on the planet Shrim. Its residents need help judging online articles, and each level asks you to investigate an uncertain piece of reporting.\n\nUse the game’s web search, reverse image search, source links, AI checker, and warning-sign checklist to gather evidence before deciding whether an article is trustworthy. The project began at the Digiwise GameJam in Leipzig and remains in development; the available release is presented as a demo. English and German are listed as supported languages.",
+        "how_to_play": "Launch the browser player and read the article presented in a level. Explore the investigation tools, compare the evidence with the checklist, and make your final judgment about the article.",
+        "controls": "Mouse — point and click to use the interface and investigation tools",
+        "tips": "Keep notes on claims and the evidence you find.\nCompare several clues before deciding; treat the AI checker as one tool in the investigation.",
+        "features": "Article-based detective puzzles\nSimulated search and image-search tools\nSource-link investigation\nFake-news checklist\nEnglish and German\nBrowser point-and-click play",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-13T01:49:47.371605+00:00",
+        "updated_at": "2026-10-13T01:50:19+00:00",
+        "external_url": "https://studio-spagunkel.itch.io/fake-news-detective-in-space",
+        "developer": "Studio_Spagunkel",
+        "publisher": null,
+        "source_url": "https://studio-spagunkel.itch.io/fake-news-detective-in-space",
+        "source_type": "itch.io",
+        "original_game_url": "https://studio-spagunkel.itch.io/fake-news-detective-in-space",
+        "developer_url": "https://studio-spagunkel.itch.io",
+        "steam_url": null,
+        "itch_url": "https://studio-spagunkel.itch.io/fake-news-detective-in-space",
+        "last_verified_at": "2026-10-13T01:46:27+00:00",
+        "sources": [
+          {
+            "url": "https://studio-spagunkel.itch.io/fake-news-detective-in-space",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-13T01:46:27+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-13T01:46:27+00:00",
+        "last_updated_at": null,
+        "short_description": "Investigate suspicious articles and help an alien planet distinguish misinformation from trustworthy reporting.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "studio-spagunkel/fake-news-detective-in-space",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "demo",
+        "graphics": "2D",
+        "multiplayer": "single-player",
+        "engine": "Unity",
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/fake-news-detective-in-space-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/fake-news-detective-in-space-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/fake-news-detective-in-space-2.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "educational",
+        "puzzle"
+      ],
+      "media": [
+        {
+          "file": "fake-news-detective-in-space.webp",
+          "object": "covers/2026-10-13/fake-news-detective-in-space.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-13/fake-news-detective-in-space.webp",
+          "source": "https://img.itch.zone/aW1nLzI5NTg5NjM4LnBuZw==/original/NOUVTI.png",
+          "bytes": 31068,
+          "width": 630,
+          "height": 500,
+          "sha256": "13f811fdc7819beba99e5f4ed0e088b7b144f1bceb3cd5d9e8e44a156aa29748",
+          "publicVerified": true
+        },
+        {
+          "file": "fake-news-detective-in-space-screen-0.webp",
+          "object": "screenshots/2026-10-13/fake-news-detective-in-space-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/fake-news-detective-in-space-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDk0NTc2Ni8yOTU4OTc5MC5wbmc=/347x500/ZYmVCE.png",
+          "bytes": 13612,
+          "width": 347,
+          "height": 195,
+          "sha256": "bdc7bc524c69c7ae30b36bab8b8313b2ce9556cfe51c7455912707273c4bac0e",
+          "publicVerified": true
+        },
+        {
+          "file": "fake-news-detective-in-space-screen-1.webp",
+          "object": "screenshots/2026-10-13/fake-news-detective-in-space-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/fake-news-detective-in-space-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDk0NTc2Ni8yOTU4OTc5MS5wbmc=/347x500/UJuX1h.png",
+          "bytes": 11798,
+          "width": 347,
+          "height": 195,
+          "sha256": "c1e6f08509c07a938da4c4f861d2e97cf9d5df351921bf9b89121d44040ce238",
+          "publicVerified": true
+        },
+        {
+          "file": "fake-news-detective-in-space-screen-2.webp",
+          "object": "screenshots/2026-10-13/fake-news-detective-in-space-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/fake-news-detective-in-space-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDk0NTc2Ni8yOTU4OTc5Mi5wbmc=/347x500/eKNoCy.png",
+          "bytes": 5766,
+          "width": 347,
+          "height": 195,
+          "sha256": "01b33f025d936d4c34fae1d680fee9609c3dc148cdf62f2fa73226326b356fde",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "slug": "fake-news-detective-in-space",
+        "entryUrl": "https://html-classic.itch.zone/html/19031199/FNDIS_0.2_web/index.html?v=1788109802",
+        "entryResolved": "https://html-classic.itch.zone/html/19031199/FNDIS_0.2_web/index.html?v=1788109802",
+        "entryStatus": 200,
+        "entryBytes": 1061,
+        "coverSource": "https://img.itch.zone/aW1nLzI5NTg5NjM4LnBuZw==/original/NOUVTI.png",
+        "coverOriginalBytes": 1189951,
+        "cover": {
+          "bytes": 31068,
+          "width": 630,
+          "height": 500
+        }
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://studio-spagunkel.itch.io/fake-news-detective-in-space",
+          "verifiedAt": "2026-10-13T01:46:27+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "engine",
+            "status",
+            "official cover says DEMO"
+          ],
+          "tipsBasis": "Editorial advice inferred from verified mechanics"
+        }
+      ],
+      "missingDetailFields": [],
+      "metadataNotes": [
+        "release_date and last_updated_at left null: radar publication time is not a verified original release date"
+      ],
+      "gameId": "26ca990d-8ac8-4f41-93eb-c5c71309b17b",
+      "publishedAt": "2026-10-13T01:50:19+00:00"
+    },
+    {
+      "index": 7,
+      "inputTitle": "KAIJU DISPOSAL",
+      "sourceUrl": "https://csaf.itch.io/kaiju-disposal",
+      "resolvedUrl": "https://csaf.itch.io/kaiju-disposal",
+      "identity": "csaf/kaiju-disposal",
+      "inputPublishedAt": "2026-10-11T10:27:00+08:00",
+      "decision": "published",
+      "game": {
+        "id": "37bb3138-e373-46fd-9562-131daa1520d4",
+        "title": "KAIJU DISPOSAL",
+        "slug": "kaiju-disposal",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-13/kaiju-disposal.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "KAIJU DISPOSAL is a browser management incremental about clearing giant carcasses from city streets. Queue two cuts for saw crews, haul materials to buyers, and balance fresh-part income against rot, gas buildup, and heat from the core.\n\nTimed events alter priorities across twelve contracts. Between jobs, expand crews and transport or buy equipment upgrades. Generated monsters vary in body plan and species. If a job fails, the army finishes it, reputation falls, and the contract returns with a more patient city.",
+        "how_to_play": "Select body parts for the cutting queue. Watch decay and timed events, let crews cut and trucks deliver, then invest between contracts.",
+        "controls": "Click / tap — order or cancel a cut\nSpace / P / Esc — pause\nS — shop\n1 / 2 / 4 — speed\nM — sound\nArrows / drag — pan on the largest job",
+        "tips": "Watch the gut and hot core before committing both queued cuts.\nPause to reassess an event.\nMatch transport capacity to your cutting crews.",
+        "features": "Twelve-contract campaign\nProcedural carcasses\nTimed events and material buyers\nNine equipment upgrades\nAutomatic browser saving\nMouse, keyboard, and touch controls",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-13T01:49:47.371605+00:00",
+        "updated_at": "2026-10-13T01:50:19+00:00",
+        "external_url": "https://csaf.itch.io/kaiju-disposal",
+        "developer": "CSAF — Core Systems Asset Factory",
+        "publisher": null,
+        "source_url": "https://csaf.itch.io/kaiju-disposal",
+        "source_type": "itch.io",
+        "original_game_url": "https://csaf.itch.io/kaiju-disposal",
+        "developer_url": "https://csaf.itch.io",
+        "steam_url": null,
+        "itch_url": "https://csaf.itch.io/kaiju-disposal",
+        "last_verified_at": "2026-10-13T01:46:27+00:00",
+        "sources": [
+          {
+            "url": "https://csaf.itch.io/kaiju-disposal",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-13T01:46:27+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-13T01:46:27+00:00",
+        "last_updated_at": null,
+        "short_description": "Run a monster-cleanup company and choose your cuts before decay exhausts the city’s patience.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "csaf/kaiju-disposal",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "released",
+        "graphics": null,
+        "multiplayer": "single-player",
+        "engine": null,
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/kaiju-disposal-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/kaiju-disposal-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/kaiju-disposal-2.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "simulation",
+        "strategy"
+      ],
+      "media": [
+        {
+          "file": "kaiju-disposal.webp",
+          "object": "covers/2026-10-13/kaiju-disposal.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-13/kaiju-disposal.webp",
+          "source": "https://img.itch.zone/aW1nLzMwNzQ0NzEwLnBuZw==/original/6q09Lj.png",
+          "bytes": 66576,
+          "width": 630,
+          "height": 500,
+          "sha256": "667bd43f3927dbbf49cb401286a1856cce10d927d2e02bac2208f63fd0084478",
+          "publicVerified": true
+        },
+        {
+          "file": "kaiju-disposal-screen-0.webp",
+          "object": "screenshots/2026-10-13/kaiju-disposal-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/kaiju-disposal-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTEzNTk1NC8zMDc0Nzg1Ni5naWY=/original/MoR%2BH9.gif",
+          "bytes": 1003320,
+          "width": 960,
+          "height": 62400,
+          "sha256": "bb729bc393b52f170a01aed91c1ae82ad794c3a0a27e57173715977a13fc214b",
+          "publicVerified": true
+        },
+        {
+          "file": "kaiju-disposal-screen-1.webp",
+          "object": "screenshots/2026-10-13/kaiju-disposal-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/kaiju-disposal-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTEzNTk1NC8zMDc0Nzg3My5wbmc=/347x500/vLgB2A.png",
+          "bytes": 5768,
+          "width": 347,
+          "height": 216,
+          "sha256": "f30078262bdeebd624d6bf655da02bdf4d6aa3150dce0a42cb62a3917c756a8b",
+          "publicVerified": true
+        },
+        {
+          "file": "kaiju-disposal-screen-2.webp",
+          "object": "screenshots/2026-10-13/kaiju-disposal-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/kaiju-disposal-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTEzNTk1NC8zMDc0Nzg4OC5wbmc=/347x500/FQpV6g.png",
+          "bytes": 14256,
+          "width": 347,
+          "height": 216,
+          "sha256": "04e618d424b0350e00f6f82e2e3e6a2a57a988e104a702929d5e1bfd069b82bd",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "slug": "kaiju-disposal",
+        "entryUrl": "https://html-classic.itch.zone/html/19687653-2110364/index.html?v=1791769451",
+        "entryResolved": "https://html-classic.itch.zone/html/19687653-2110364/index.html?v=1791769451",
+        "entryStatus": 200,
+        "entryBytes": 1634,
+        "coverSource": "https://img.itch.zone/aW1nLzMwNzQ0NzEwLnBuZw==/original/6q09Lj.png",
+        "coverOriginalBytes": 736094,
+        "cover": {
+          "bytes": 66576,
+          "width": 630,
+          "height": 500
+        }
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://csaf.itch.io/kaiju-disposal",
+          "verifiedAt": "2026-10-13T01:46:27+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "engine",
+            "status"
+          ],
+          "tipsBasis": "Editorial advice inferred from verified mechanics"
+        }
+      ],
+      "missingDetailFields": [],
+      "metadataNotes": [
+        "release_date and last_updated_at left null: radar publication time is not a verified original release date"
+      ],
+      "gameId": "37bb3138-e373-46fd-9562-131daa1520d4",
+      "publishedAt": "2026-10-13T01:50:19+00:00"
+    },
+    {
+      "index": 8,
+      "inputTitle": "Leaf by Leaf",
+      "sourceUrl": "https://reeecook.itch.io/leaf-by-leaf-jam",
+      "resolvedUrl": "https://reeecook.itch.io/leaf-by-leaf-jam",
+      "identity": "reeecook/leaf-by-leaf-jam",
+      "inputPublishedAt": "2026-10-12T09:01:00+08:00",
+      "decision": "published",
+      "game": {
+        "id": "dd145331-76a8-460a-86e5-1cd53d59bbfe",
+        "title": "Leaf by Leaf",
+        "slug": "leaf-by-leaf-jam",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-13/leaf-by-leaf-jam.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "Leaf by Leaf is a compact incremental prototype made for Mini Jam 221: Autumn and its Staying Warm limitation. Feed a bonfire with fallen leaves: each burned leaf earns coins and extends the fire’s life. When it goes out, the day ends.\n\nAt night, spend your earnings on a better blower, more leaves, and higher leaf values. Seventeen upgrades gradually unlock, including tornadoes that bring leaves into the fire automatically. The long-term goal is to grow a small campfire into a furnace capable of warming the world.",
+        "how_to_play": "During daylight, direct leaves into the fire and keep them burning to earn coins. Once night falls, buy upgrades and begin another day. Repeat to grow the bonfire and unlock more tools.",
+        "controls": "Mouse — position the blower, which points toward the fire\nHold left click — blow leaves\nHover and click at night — select and buy upgrades",
+        "tips": "Keep leaves feeding the fire to extend each earning period.\nBalance blower strength, leaf supply, and leaf value as you upgrade.",
+        "features": "Day-and-night progression\nCoin rewards for burned leaves\nSeventeen unlockable upgrades\nAutomatic leaf-carrying tornadoes\nPixel-art presentation",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-13T01:49:47.371605+00:00",
+        "updated_at": "2026-10-13T01:50:19+00:00",
+        "external_url": "https://reeecook.itch.io/leaf-by-leaf-jam",
+        "developer": "Reeecook",
+        "publisher": null,
+        "source_url": "https://reeecook.itch.io/leaf-by-leaf-jam",
+        "source_type": "itch.io",
+        "original_game_url": "https://reeecook.itch.io/leaf-by-leaf-jam",
+        "developer_url": "https://reeecook.itch.io",
+        "steam_url": null,
+        "itch_url": "https://reeecook.itch.io/leaf-by-leaf-jam",
+        "last_verified_at": "2026-10-13T01:46:27+00:00",
+        "sources": [
+          {
+            "url": "https://reeecook.itch.io/leaf-by-leaf-jam",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-13T01:46:27+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-13T01:46:27+00:00",
+        "last_updated_at": null,
+        "short_description": "Blow leaves into a bonfire, buy nightly upgrades, and grow the fire day by day.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "reeecook/leaf-by-leaf-jam",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "early-access",
+        "graphics": "2D",
+        "multiplayer": "single-player",
+        "engine": "Godot",
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/leaf-by-leaf-jam-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/leaf-by-leaf-jam-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/leaf-by-leaf-jam-2.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "idle",
+        "casual"
+      ],
+      "media": [
+        {
+          "file": "leaf-by-leaf-jam.webp",
+          "object": "covers/2026-10-13/leaf-by-leaf-jam.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-13/leaf-by-leaf-jam.webp",
+          "source": "https://img.itch.zone/aW1nLzMwNzgyMDcxLnBuZw==/original/i8%2F0zQ.png",
+          "bytes": 23962,
+          "width": 630,
+          "height": 500,
+          "sha256": "f10559c0bfec0b8caf0d365f3ddda273177b629b40f527544132c803bdada8a8",
+          "publicVerified": true
+        },
+        {
+          "file": "leaf-by-leaf-jam-screen-0.webp",
+          "object": "screenshots/2026-10-13/leaf-by-leaf-jam-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/leaf-by-leaf-jam-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE0MjE0NS8zMDc4NDE3OC5wbmc=/347x500/MWsbMB.png",
+          "bytes": 14182,
+          "width": 347,
+          "height": 195,
+          "sha256": "adc0069ec032ef2efc5a2a6bbe6a3d207ec6ecc9aa130db36be700bd475964c0",
+          "publicVerified": true
+        },
+        {
+          "file": "leaf-by-leaf-jam-screen-1.webp",
+          "object": "screenshots/2026-10-13/leaf-by-leaf-jam-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/leaf-by-leaf-jam-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE0MjE0NS8zMDc4NDE4Mi5wbmc=/347x500/4K7KXD.png",
+          "bytes": 4002,
+          "width": 347,
+          "height": 195,
+          "sha256": "f480796d5afcd25971def1fc1a17d6d0a0972a863d806c718ffbc9c8d2f1945b",
+          "publicVerified": true
+        },
+        {
+          "file": "leaf-by-leaf-jam-screen-2.webp",
+          "object": "screenshots/2026-10-13/leaf-by-leaf-jam-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/leaf-by-leaf-jam-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE0MjE0NS8zMDc4NDE4MS5wbmc=/347x500/hKC%2Fto.png",
+          "bytes": 12378,
+          "width": 347,
+          "height": 195,
+          "sha256": "716dbd5e54868ac3b94ca5aa3942e4fed70be3d25387adde4725c9c1ff96d258",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "slug": "leaf-by-leaf-jam",
+        "entryUrl": "https://html-classic.itch.zone/html/19728015/index.html?v=1791853722",
+        "entryResolved": "https://html-classic.itch.zone/html/19728015/index.html?v=1791853722",
+        "entryStatus": 200,
+        "entryBytes": 5531,
+        "coverSource": "https://img.itch.zone/aW1nLzMwNzgyMDcxLnBuZw==/original/i8%2F0zQ.png",
+        "coverOriginalBytes": 6410,
+        "cover": {
+          "bytes": 23962,
+          "width": 630,
+          "height": 500
+        }
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://reeecook.itch.io/leaf-by-leaf-jam",
+          "verifiedAt": "2026-10-13T01:46:27+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "engine",
+            "status"
+          ],
+          "tipsBasis": "Editorial advice inferred from verified mechanics"
+        }
+      ],
+      "missingDetailFields": [],
+      "metadataNotes": [
+        "release_date and last_updated_at left null: radar publication time is not a verified original release date"
+      ],
+      "gameId": "dd145331-76a8-460a-86e5-1cd53d59bbfe",
+      "publishedAt": "2026-10-13T01:50:19+00:00"
+    },
+    {
+      "index": 9,
+      "inputTitle": "Lab accident",
+      "sourceUrl": "https://twgrow.itch.io/lab-accident",
+      "resolvedUrl": "https://twgrow.itch.io/lab-accident",
+      "identity": "twgrow/lab-accident",
+      "inputPublishedAt": "2026-10-11T23:05:00+08:00",
+      "decision": "published",
+      "game": {
+        "id": "86d0e6c8-27f5-40e9-9a88-f11de69e7d85",
+        "title": "Lab accident",
+        "slug": "lab-accident",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-13/lab-accident.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "Content note: body-transformation fetish themes and obsession. Lab accident is an interactive story by TWgrow set in a genetic research laboratory. An experimental serum changes Jenna, an intern hired by the player character, and shifts the relationship between them.\n\nThe creator describes the current story as linear, with six variations for Jenna and corresponding dialogue differences. Branching Act 2 routes are future plans rather than part of the currently described release. The project uses Twine and discloses AI-assisted graphics.",
+        "how_to_play": "Read the story passages and follow the available narrative choices to continue through the current act.",
+        "controls": "Click the linked narrative choices to continue.",
+        "tips": "Explore the current act without expecting the planned Act 2 branching routes.\nPay attention to dialogue differences when comparing variations.",
+        "features": "Twine interactive fiction\nGenetic-research setting\nSix character variations described by the creator\nVariation-dependent dialogue\nCurrent linear story structure\nAI-assisted graphics disclosure",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-13T01:49:47.371605+00:00",
+        "updated_at": "2026-10-13T01:50:19+00:00",
+        "external_url": "https://twgrow.itch.io/lab-accident",
+        "developer": "TWgrow",
+        "publisher": null,
+        "source_url": "https://twgrow.itch.io/lab-accident",
+        "source_type": "itch.io",
+        "original_game_url": "https://twgrow.itch.io/lab-accident",
+        "developer_url": "https://twgrow.itch.io",
+        "steam_url": null,
+        "itch_url": "https://twgrow.itch.io/lab-accident",
+        "last_verified_at": "2026-10-13T01:46:27+00:00",
+        "sources": [
+          {
+            "url": "https://twgrow.itch.io/lab-accident",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-13T01:46:27+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-13T01:46:27+00:00",
+        "last_updated_at": null,
+        "short_description": "A Twine story about a laboratory accident, a changing intern, and growing obsession.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "twgrow/lab-accident",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "released",
+        "graphics": null,
+        "multiplayer": "single-player",
+        "engine": "Twine",
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/lab-accident-0.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "casual"
+      ],
+      "media": [
+        {
+          "file": "lab-accident.webp",
+          "object": "covers/2026-10-13/lab-accident.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-13/lab-accident.webp",
+          "source": "https://img.itch.zone/aW1nLzMwNzYyNTIwLnBuZw==/original/SJCaVj.png",
+          "bytes": 36960,
+          "width": 504,
+          "height": 640,
+          "sha256": "059220e91a8c598c63cfb5ebaf8904502b8ad1d900e5c23fa838130f6e239c2a",
+          "publicVerified": true
+        },
+        {
+          "file": "lab-accident-screen-0.webp",
+          "object": "screenshots/2026-10-13/lab-accident-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/lab-accident-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTEzODk0Ny8zMDc2MjUzMi5wbmc=/347x500/iP%2Fouq.png",
+          "bytes": 19318,
+          "width": 347,
+          "height": 441,
+          "sha256": "db519667e3dd7bad7432220106d9e3dc27988c2b85a8bd77ea95fc7cf22b8279",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "slug": "lab-accident",
+        "entryUrl": "https://html-classic.itch.zone/html/19694914/Lab accident early/index.html?v=1791731835",
+        "entryResolved": "https://html-classic.itch.zone/html/19694914/Lab%20accident%20early/index.html?v=1791731835",
+        "entryStatus": 200,
+        "entryBytes": 634267,
+        "coverSource": "https://img.itch.zone/aW1nLzMwNzYyNTIwLnBuZw==/original/SJCaVj.png",
+        "coverOriginalBytes": 1198541,
+        "cover": {
+          "bytes": 36960,
+          "width": 504,
+          "height": 640
+        }
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://twgrow.itch.io/lab-accident",
+          "verifiedAt": "2026-10-13T01:46:27+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "engine",
+            "status",
+            "creator comment: linear story with six variations; Act 2 routes planned",
+            "public Harlowe HTML: linked passage navigation"
+          ],
+          "tipsBasis": "Editorial advice inferred from verified mechanics"
+        },
+        {
+          "url": "https://html-classic.itch.zone/html/19694914/Lab accident early/index.html?v=1791731835",
+          "verifiedAt": "2026-10-13T01:46:27+00:00",
+          "supports": [
+            "HTML entry reachable",
+            "Harlowe narrative links inspected statically; not playtested"
+          ]
+        }
+      ],
+      "missingDetailFields": [],
+      "metadataNotes": [
+        "release_date and last_updated_at left null: radar publication time is not a verified original release date"
+      ],
+      "gameId": "86d0e6c8-27f5-40e9-9a88-f11de69e7d85",
+      "publishedAt": "2026-10-13T01:50:19+00:00"
+    },
+    {
+      "index": 10,
+      "inputTitle": "Dungeon Swap-R",
+      "sourceUrl": "https://potit-bob.itch.io/dungeon-swap-r",
+      "resolvedUrl": "https://potit-bob.itch.io/dungeon-swap-r",
+      "identity": "potit-bob/dungeon-swap-r",
+      "inputPublishedAt": "2021-02-12T16:08:00+08:00",
+      "decision": "published",
+      "game": {
+        "id": "d798fcaf-c050-4798-9ac4-f9d83d4fd391",
+        "title": "Dungeon Swap-R",
+        "slug": "dungeon-swap-r",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-13/dungeon-swap-r.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "Dungeon Swap-R splits its puzzles into planning and traversal. During SWAP, rearrange rooms to build a route; during CRAWL, guide a fragile armored hero through the result. Items change enemy positions: the shield pushes a foe one room, while the graplin pulls one across two rooms.\n\nIf a layout fails, restart and return to planning. The current 1.3.0 version includes former community creations as built-in Bonus levels; the older online community service and level builder have been retired.",
+        "how_to_play": "Find the exit marker and arrange a connected route in SWAP. Press Space to begin CRAWL, then navigate rooms and use items against enemies. Press R to return to SWAP if the arrangement does not work.",
+        "controls": "Space — switch from SWAP to CRAWL\nR — restart and return to SWAP\nMouse wheel — zoom during CRAWL\nKeyboard and mouse supported",
+        "tips": "Inspect the route and enemy positions before starting CRAWL.\nPlan around the different displacement distances of the shield and graplin.\nZoom out when checking the overall layout.",
+        "features": "Two-phase dungeon puzzles\nRoom rearrangement\nEnemy-displacement items\nRestartable layouts\nBuilt-in Bonus levels in version 1.3.0",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-13T01:49:47.371605+00:00",
+        "updated_at": "2026-10-13T01:50:19+00:00",
+        "external_url": "https://potit-bob.itch.io/dungeon-swap-r",
+        "developer": "Potit Bob",
+        "publisher": null,
+        "source_url": "https://potit-bob.itch.io/dungeon-swap-r",
+        "source_type": "itch.io",
+        "original_game_url": "https://potit-bob.itch.io/dungeon-swap-r",
+        "developer_url": "https://potit-bob.itch.io",
+        "steam_url": null,
+        "itch_url": "https://potit-bob.itch.io/dungeon-swap-r",
+        "last_verified_at": "2026-10-13T01:46:27+00:00",
+        "sources": [
+          {
+            "url": "https://potit-bob.itch.io/dungeon-swap-r",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-13T01:46:27+00:00"
+          },
+          {
+            "url": "https://potit-bob.itch.io/dungeon-swap-r/devlog/1656507/community-levels-are-going-offline-and-becoming-permanent",
+            "type": "developer",
+            "verifiedAt": "2026-10-13T01:46:27+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-13T01:46:27+00:00",
+        "last_updated_at": null,
+        "short_description": "Rearrange dungeon rooms, then crawl through your layout to reach the exit.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "potit-bob/dungeon-swap-r",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "released",
+        "graphics": "2D",
+        "multiplayer": "single-player",
+        "engine": "Godot",
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/dungeon-swap-r-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/dungeon-swap-r-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/dungeon-swap-r-2.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "puzzle"
+      ],
+      "media": [
+        {
+          "file": "dungeon-swap-r.webp",
+          "object": "covers/2026-10-13/dungeon-swap-r.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-13/dungeon-swap-r.webp",
+          "source": "https://img.itch.zone/aW1nLzU1MjIwMzcucG5n/original/h%2BKG35.png",
+          "bytes": 34438,
+          "width": 550,
+          "height": 550,
+          "sha256": "6432256232ba4f64792092929fc166592074eb4e02a6a2c65952591726681add",
+          "publicVerified": true
+        },
+        {
+          "file": "dungeon-swap-r-screen-0.webp",
+          "object": "screenshots/2026-10-13/dungeon-swap-r-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/dungeon-swap-r-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvOTE3ODAzLzU1MjAwODAucG5n/347x500/TbYygL.png",
+          "bytes": 7784,
+          "width": 347,
+          "height": 259,
+          "sha256": "9cecd29b0a1415b453b16122e625d41850a8ecbf29044c00d4e8a66c564893de",
+          "publicVerified": true
+        },
+        {
+          "file": "dungeon-swap-r-screen-1.webp",
+          "object": "screenshots/2026-10-13/dungeon-swap-r-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/dungeon-swap-r-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvOTE3ODAzLzU1MjAwODEucG5n/347x500/V3leJ7.png",
+          "bytes": 9256,
+          "width": 347,
+          "height": 259,
+          "sha256": "8936b305567c9d6cb43fd8d8498a201a61c457c1b8a33ba1f90bdcd94ac6acff",
+          "publicVerified": true
+        },
+        {
+          "file": "dungeon-swap-r-screen-2.webp",
+          "object": "screenshots/2026-10-13/dungeon-swap-r-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-13/dungeon-swap-r-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvOTE3ODAzLzU1MjAwNzkucG5n/347x500/%2BNLSDz.png",
+          "bytes": 7702,
+          "width": 347,
+          "height": 259,
+          "sha256": "a921b4f493d4f186c68f03f8fe1e1e5b07f058bea265a63163e64807e294ddc0",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "slug": "dungeon-swap-r",
+        "entryUrl": "https://html.itch.zone/html/19711864/index.html?v=1791795873",
+        "entryResolved": "https://html.itch.zone/html/19711864/index.html?v=1791795873",
+        "entryStatus": 200,
+        "entryBytes": 5533,
+        "coverSource": "https://img.itch.zone/aW1nLzU1MjIwMzcucG5n/original/h%2BKG35.png",
+        "coverOriginalBytes": 205726,
+        "cover": {
+          "bytes": 34438,
+          "width": 550,
+          "height": 550
+        }
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://potit-bob.itch.io/dungeon-swap-r",
+          "verifiedAt": "2026-10-13T01:46:27+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "engine",
+            "status"
+          ],
+          "tipsBasis": "Editorial advice inferred from verified mechanics"
+        },
+        {
+          "url": "https://potit-bob.itch.io/dungeon-swap-r/devlog/1656507/community-levels-are-going-offline-and-becoming-permanent",
+          "verifiedAt": "2026-10-13T01:46:27+00:00",
+          "supports": [
+            "online service and editor retired; built-in Bonus levels in 1.3.0"
+          ]
+        }
+      ],
+      "missingDetailFields": [],
+      "metadataNotes": [
+        "release_date and last_updated_at left null: radar publication time is not a verified original release date"
+      ],
+      "gameId": "d798fcaf-c050-4798-9ac4-f9d83d4fd391",
+      "publishedAt": "2026-10-13T01:50:19+00:00"
+    }
+  ],
+  "verification": {
+    "anonymousDraftExclusion": true,
+    "anonymousPublishedRead": true,
+    "fieldsAndCategories": true,
+    "mediaPublicRead": true,
+    "oldGameRowsUnchanged": 930,
+    "oldCategoryLinksUnchanged": true,
+    "totalGamesAfter": 940,
+    "livePages": [
+      {
+        "slug": "packardos",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "azzucca",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "ii-ii-ii-i-i-i-i-ii",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "we-need-more-undead",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "one-way-down",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "fake-news-detective-in-space",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "kaiju-disposal",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "leaf-by-leaf-jam",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "lab-accident",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "dungeon-swap-r",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      }
+    ],
+    "liveSitemap": {
+      "httpStatus": 200,
+      "newEntries": [
+        {
+          "slug": "packardos",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "azzucca",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "ii-ii-ii-i-i-i-i-ii",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "we-need-more-undead",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "one-way-down",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "fake-news-detective-in-space",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "kaiju-disposal",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "leaf-by-leaf-jam",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "lab-accident",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "dungeon-swap-r",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        }
+      ],
+      "oldGameTimestampChanges": [],
+      "cacheHeaders": {
+        "Age": "225",
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "x-vercel-cache": "HIT"
+      }
+    },
+    "homepage": {
+      "httpStatus": 200,
+      "newSlugsVisible": [],
+      "noImageOptimizer": true
+    },
+    "verifiedAt": "2026-10-13T01:51:06+00:00",
+    "shortDescriptionValidation": {
+      "databaseReadback": true,
+      "note": "The current detail template renders description in page body and metadata, not short_description. Short descriptions were verified in DB, not required as visible detail text."
+    },
+    "productionBuild": {
+      "status": "passed",
+      "exitCode": 0,
+      "summary": "npm run build 通过；本批 10/10 正式 URL 已在构建 sitemap 收录，lastmod 与发布时间一致；923 个老游戏的 sitemap 时间戳与导入前一致；本批 10/10 已预渲染并验证全部正文栏目",
+      "entries": [
+        {
+          "slug": "packardos",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": true,
+          "allBodySections": true
+        },
+        {
+          "slug": "azzucca",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": true,
+          "allBodySections": true
+        },
+        {
+          "slug": "ii-ii-ii-i-i-i-i-ii",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": true,
+          "allBodySections": true
+        },
+        {
+          "slug": "we-need-more-undead",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": true,
+          "allBodySections": true
+        },
+        {
+          "slug": "one-way-down",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": true,
+          "allBodySections": true
+        },
+        {
+          "slug": "fake-news-detective-in-space",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": true,
+          "allBodySections": true
+        },
+        {
+          "slug": "kaiju-disposal",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": true,
+          "allBodySections": true
+        },
+        {
+          "slug": "leaf-by-leaf-jam",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": true,
+          "allBodySections": true
+        },
+        {
+          "slug": "lab-accident",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": true,
+          "allBodySections": true
+        },
+        {
+          "slug": "dungeon-swap-r",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": true,
+          "allBodySections": true
+        }
+      ],
+      "oldPublishedTimestampsChecked": 923,
+      "timestampPrecision": "JavaScript Date / sitemap ISO output uses milliseconds; database comparison normalized to milliseconds, prior XML compared exactly",
+      "draftsExcluded": true
+    },
+    "llmsTxt": {
+      "path": "public/llms.txt",
+      "checked": true,
+      "changed": false,
+      "reason": "Existing game detail, external play, catalogue, and sitemap descriptions remain accurate."
+    },
+    "noGameUpdatesCreated": true,
+    "baselineSha256": "4193edb76301c555796edd4bc5a2fbb2e375423eb74ced6b9214f64d21d492b5",
+    "categoryBaselineSha256": "e81a4d52068318e7ca7dbf33e1c967fb08f95cd77c6e975809d7f439d3e69935"
+  }
+}
