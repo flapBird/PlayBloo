@@ -1,0 +1,2813 @@
+{
+  "batchDate": "2026-10-16",
+  "inputCount": 10,
+  "baselineCount": 960,
+  "entries": [
+    {
+      "index": 1,
+      "inputTitle": "Dust Buster [JAM]",
+      "sourceUrl": "https://transmutrix.itch.io/dust-buster",
+      "resolvedUrl": "https://transmutrix.itch.io/dust-buster",
+      "identity": "transmutrix/dust-buster",
+      "inputPublishedAt": "2026-08-15 01:31 UTC+8",
+      "decision": "published",
+      "game": {
+        "id": "16ba5fb4-ba4e-471c-b546-c74a621bc407",
+        "title": "Dust Buster [JAM]",
+        "slug": "dust-buster",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-16/dust-buster.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "Dust Buster [JAM] turns a brick-breaking game into a cleaning job. Use a vacuum head to keep the ball in play while gathering the dust left behind for points. A run gives you three balls and takes you through 25 levels.\n\nHolding suction helps collect dust, but prolonged use overheats the vacuum and forces a cooldown. After the bricks are gone, you can collect the ball and finish cleaning the screen. Created for LOWREZJAM 2026, the game uses compact pixel art. Safari does not preserve high scores between sessions.",
+        "how_to_play": "Keep the ball from dropping off-screen while it breaks bricks. Move the vacuum toward dust and use suction to collect it. Release suction before overheating interrupts your cleanup. When all bricks are destroyed, suck up the ball and collect the remaining dust.",
+        "controls": "Mouse — move the vacuum head\nHold left mouse button — suck up dust or the ball\nEscape — pause\nAlt + Enter — toggle fullscreen",
+        "tips": "Prioritize keeping the ball in play over collecting distant dust.\nUse suction in short bursts to leave time for cooling.\nClear leftover dust after securing the ball at the end of a level.",
+        "features": "25 levels\nThree balls per run\nVacuum suction and overheating\nDust-based scoring\nLow-resolution pixel art\nFree browser play",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-15T16:25:54.885213+00:00",
+        "updated_at": "2026-10-15T16:26:12+00:00",
+        "external_url": "https://transmutrix.itch.io/dust-buster",
+        "developer": "transmutrix",
+        "publisher": null,
+        "source_url": "https://transmutrix.itch.io/dust-buster",
+        "source_type": "itch.io",
+        "original_game_url": "https://transmutrix.itch.io/dust-buster",
+        "developer_url": "https://transmutrix.itch.io",
+        "steam_url": null,
+        "itch_url": "https://transmutrix.itch.io/dust-buster",
+        "last_verified_at": "2026-10-15T16:24:28+00:00",
+        "sources": [
+          {
+            "url": "https://transmutrix.itch.io/dust-buster",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-15T16:24:28+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-15T16:26:12+00:00",
+        "last_updated_at": null,
+        "short_description": "Break bricks, vacuum up dust, and keep your cleaner from overheating.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "transmutrix/dust-buster",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "released",
+        "graphics": "2D",
+        "multiplayer": "single-player",
+        "engine": null,
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/dust-buster-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/dust-buster-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/dust-buster-2.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "arcade",
+        "action"
+      ],
+      "media": [
+        {
+          "kind": "cover",
+          "file": "dust-buster.webp",
+          "source": "https://img.itch.zone/aW1nLzI5Mjc1ODA5LnBuZw==/original/6QSh0z.png",
+          "object": "covers/2026-10-16/dust-buster.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-16/dust-buster.webp",
+          "bytes": 20454,
+          "width": 630,
+          "height": 500,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            630,
+            500
+          ],
+          "sha256": "902feae547728a7d0a106e9f3b72c9b3b62a0850c4c4d46ef924ed7312341824",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "dust-buster-screen-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDg5NjgzMS8yOTI3ODYwOS5naWY=/original/Hn6xwn.gif",
+          "object": "screenshots/2026-10-16/dust-buster-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/dust-buster-0.webp",
+          "bytes": 7408,
+          "width": 214,
+          "height": 212,
+          "originalFormat": "GIF",
+          "originalFrames": 209,
+          "originalSize": [
+            214,
+            212
+          ],
+          "sha256": "c4d7b52e543e3a746d7920b69fe37b53b183f73386989878ed7d38aa60c93caf",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "dust-buster-screen-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDg5NjgzMS8yOTI3ODYyMS5naWY=/original/fyloYz.gif",
+          "object": "screenshots/2026-10-16/dust-buster-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/dust-buster-1.webp",
+          "bytes": 6208,
+          "width": 214,
+          "height": 212,
+          "originalFormat": "GIF",
+          "originalFrames": 410,
+          "originalSize": [
+            214,
+            212
+          ],
+          "sha256": "ab95a2bc3c3e7db183480167c1ecfabe4afeebe6b95b2993c2d03a451354c15e",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "dust-buster-screen-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDg5NjgzMS8yOTI3ODYyMC5naWY=/original/hPvh%2F5.gif",
+          "object": "screenshots/2026-10-16/dust-buster-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/dust-buster-2.webp",
+          "bytes": 6340,
+          "width": 214,
+          "height": 212,
+          "originalFormat": "GIF",
+          "originalFrames": 139,
+          "originalSize": [
+            214,
+            212
+          ],
+          "sha256": "988ca556985aafd7ccc095df5942589006deda32e83d8a48e09e0b328d8df5b0",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "url": "https://html-classic.itch.zone/html/18813867/index.html?v=1786795466",
+        "resolvedUrl": "https://html-classic.itch.zone/html/18813867/index.html?v=1786795466",
+        "httpStatus": 200,
+        "bytes": 3591
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://transmutrix.itch.io/dust-buster",
+          "verifiedAt": "2026-10-15T16:24:28+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "status"
+          ],
+          "tipsBasis": "Editorial suggestions based on documented mechanics"
+        }
+      ],
+      "editorialEvidence": {
+        "attention": [
+          "Only current playable features included; roadmap and full-game promises excluded.",
+          "Tips are editorial suggestions inferred from documented mechanics."
+        ],
+        "missingDetailFields": []
+      },
+      "metadataNotes": [
+        "Radar publication time retained as input only; no verified original release date.",
+        "Tips are editorial advice inferred from verified mechanics.",
+        "Only current playable features included; roadmap and full-game promises excluded.",
+        "Tips are editorial suggestions inferred from documented mechanics.",
+        "No Added to PlayBloo game_updates entry was created: catalogue publication is not a developer version update.",
+        "Cover GIFs are represented by a compressed static first frame."
+      ],
+      "missingDetailFields": [],
+      "gameId": "16ba5fb4-ba4e-471c-b546-c74a621bc407",
+      "publishedAt": "2026-10-15T16:26:12+00:00",
+      "searchNotes": "Targeted supplementary controls searches were reviewed; unrelated similarly named games were not used."
+    },
+    {
+      "index": 2,
+      "inputTitle": "Respect The Horde (Demo)",
+      "sourceUrl": "https://gfx47.itch.io/respect-the-horde",
+      "resolvedUrl": "https://gfx47.itch.io/respect-the-horde",
+      "identity": "gfx47/respect-the-horde",
+      "inputPublishedAt": "2026-03-21 02:19 UTC+8",
+      "decision": "published",
+      "game": {
+        "id": "fb4f8b4c-1159-4b95-8825-a64001408808",
+        "title": "Respect The Horde (Demo)",
+        "slug": "respect-the-horde",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-16/respect-the-horde.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "Respect The Horde is a browser demo about surviving through preparation and crowd control. Search abandoned areas for supplies, set barriers and traps, and lure infected into routes that favor your defenses. Direct gunfire is only one part of the plan.\n\nThe developer describes a risk-and-reward loop in which completing the objective opens an opportunity to extract, while staying for more waves raises both the danger and potential rewards. This listing links to the free demo of a game still in development; it does not promise the complete island campaign. The developer recommends Chromium if Firefox on Linux displays graphical errors.",
+        "how_to_play": "Explore for weapons, ammunition and building resources. Choose a defensive position, use obstacles to funnel enemies, and leave yourself a way out. Lead the horde toward traps and environmental hazards. After completing the objective, weigh another wave against extracting with your rewards.",
+        "controls": "Keyboard and mouse supported.\nThe official page also lists Xbox, PlayStation and other gamepads; follow the in-game prompts for the current bindings.",
+        "tips": "Plan an escape route before committing to a defensive position.\nUse narrow approaches to concentrate enemies around traps.\nExtract when the next wave is likely to overwhelm your setup.",
+        "features": "Free browser demo\nZombie crowd manipulation\nObstacles, traps and environmental hazards\nExploration and resource gathering\nOptional extra waves before extraction",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-15T16:25:54.885213+00:00",
+        "updated_at": "2026-10-15T16:26:12+00:00",
+        "external_url": "https://gfx47.itch.io/respect-the-horde",
+        "developer": "GFX47",
+        "publisher": null,
+        "source_url": "https://gfx47.itch.io/respect-the-horde",
+        "source_type": "itch.io",
+        "original_game_url": "https://gfx47.itch.io/respect-the-horde",
+        "developer_url": "https://gfx47.itch.io",
+        "steam_url": null,
+        "itch_url": "https://gfx47.itch.io/respect-the-horde",
+        "last_verified_at": "2026-10-15T16:24:28+00:00",
+        "sources": [
+          {
+            "url": "https://gfx47.itch.io/respect-the-horde",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-15T16:24:28+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-15T16:26:12+00:00",
+        "last_updated_at": null,
+        "short_description": "Channel zombie crowds through traps, then decide when to extract.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "gfx47/respect-the-horde",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "demo",
+        "graphics": null,
+        "multiplayer": "single-player",
+        "engine": "Unity",
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/respect-the-horde-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/respect-the-horde-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/respect-the-horde-2.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/respect-the-horde-3.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/respect-the-horde-4.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/respect-the-horde-5.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "strategy",
+        "survival"
+      ],
+      "media": [
+        {
+          "kind": "cover",
+          "file": "respect-the-horde.webp",
+          "source": "https://img.itch.zone/aW1nLzMwOTA1NDI3LnBuZw==/original/3GF06w.png",
+          "object": "covers/2026-10-16/respect-the-horde.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-16/respect-the-horde.webp",
+          "bytes": 49768,
+          "width": 640,
+          "height": 360,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            1067,
+            600
+          ],
+          "sha256": "fb2e135bfaf3b551fe62a3729e152c7a3292b311f41020b72d47a16f72deb5ef",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "respect-the-horde-screen-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDM5ODU3NS8zMDgxMzYzNC5wbmc=/347x500/%2FaL8yR.png",
+          "object": "screenshots/2026-10-16/respect-the-horde-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/respect-the-horde-0.webp",
+          "bytes": 13244,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "1e6728628253327dea3f785c2ae56864f7dcb17cc0c6cbadcfe328d465941bdb",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "respect-the-horde-screen-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDM5ODU3NS8zMDgxMzYzOS5wbmc=/347x500/Nvb%2BrZ.png",
+          "object": "screenshots/2026-10-16/respect-the-horde-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/respect-the-horde-1.webp",
+          "bytes": 17422,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "2dea72bcdca1ae4b45d3de0f2911cbc05d7737e3b99dc7cf3425db3c288b0ff2",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "respect-the-horde-screen-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDM5ODU3NS8zMDgxMzYzNy5wbmc=/347x500/OVXqvj.png",
+          "object": "screenshots/2026-10-16/respect-the-horde-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/respect-the-horde-2.webp",
+          "bytes": 13900,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "9ee3b3fef9b39c2f0f4dce69833d302a8f42b07b4ed291b52315827e5899e9d6",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "respect-the-horde-screen-3.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDM5ODU3NS8zMDgxMzYzOC5wbmc=/347x500/9VygGu.png",
+          "object": "screenshots/2026-10-16/respect-the-horde-3.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/respect-the-horde-3.webp",
+          "bytes": 19596,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "10aae83997782505628baab7fe61c127ce77d0c42264d6e7490fbb9d855d6058",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "respect-the-horde-screen-4.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDM5ODU3NS8zMDgxMzYzNi5wbmc=/347x500/iMoD8M.png",
+          "object": "screenshots/2026-10-16/respect-the-horde-4.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/respect-the-horde-4.webp",
+          "bytes": 22784,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "a157b7325eef5ca09ca49c1fbbc4d03a48c5ffc331a9638e8b97375d416217d5",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "respect-the-horde-screen-5.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDM5ODU3NS8zMDgxMzYzNS5wbmc=/347x500/YLTPFY.png",
+          "object": "screenshots/2026-10-16/respect-the-horde-5.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/respect-the-horde-5.webp",
+          "bytes": 13440,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "128508d86e7a685fe5b65b49ed3da583a4c8714b3c44ffe75a069865ce1e452b",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "url": "https://html-classic.itch.zone/html/19763215/index.html?v=1791999402",
+        "resolvedUrl": "https://html-classic.itch.zone/html/19763215/index.html?v=1791999402",
+        "httpStatus": 200,
+        "bytes": 2286
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://gfx47.itch.io/respect-the-horde",
+          "verifiedAt": "2026-10-15T16:24:28+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "status"
+          ],
+          "tipsBasis": "Editorial suggestions based on documented mechanics"
+        }
+      ],
+      "editorialEvidence": {
+        "attention": [
+          "Only current playable features included; roadmap and full-game promises excluded.",
+          "Tips are editorial suggestions inferred from documented mechanics."
+        ],
+        "missingDetailFields": []
+      },
+      "metadataNotes": [
+        "Radar publication time retained as input only; no verified original release date.",
+        "Tips are editorial advice inferred from verified mechanics.",
+        "Only current playable features included; roadmap and full-game promises excluded.",
+        "Tips are editorial suggestions inferred from documented mechanics.",
+        "No Added to PlayBloo game_updates entry was created: catalogue publication is not a developer version update.",
+        "Cover GIFs are represented by a compressed static first frame."
+      ],
+      "missingDetailFields": [],
+      "gameId": "fb4f8b4c-1159-4b95-8825-a64001408808",
+      "publishedAt": "2026-10-15T16:26:12+00:00",
+      "searchNotes": "Targeted supplementary controls searches were reviewed; unrelated similarly named games were not used."
+    },
+    {
+      "index": 3,
+      "inputTitle": "Amber Forest",
+      "sourceUrl": "https://auguste-eden.itch.io/amber-forest",
+      "resolvedUrl": "https://auguste-eden.itch.io/amber-forest",
+      "identity": "auguste-eden/amber-forest",
+      "inputPublishedAt": "2025-08-15 22:12 UTC+8",
+      "decision": "published",
+      "game": {
+        "id": "8ba278b1-9763-4ac9-b9da-9868095844df",
+        "title": "Amber Forest",
+        "slug": "amber-forest",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-16/amber-forest.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "Amber Forest is an in-development roguelike deckbuilder following Aspen, a young elf trying to reach the forest through hostile creatures. Its illustrated presentation draws on manga, while the developer cites Slay the Spire and Inscryption as influences.\n\nThe current demo includes skill cards, animals with individual abilities, varied enemies and an initial boss encounter. Relics, consumables, route selection, multiple acts and metaprogression are listed as future plans, so they are not part of this description of the available build. English and Russian are supported. The developer recommends a Chromium-based browser and notes that the web build can be less stable than the desktop version.",
+        "how_to_play": "Build a deck using the available skills and animals. Read their abilities and consider how they work together against each enemy. Progress through encounters and use the first boss fight to test your understanding of the deck.",
+        "controls": "Keyboard and mouse supported.\nF11 or the lower-right fullscreen button — toggle fullscreen.",
+        "tips": "Choose animals and skills that support one another.\nAdapt to each enemy rather than assuming every encounter works the same way.\nTry a Chromium-based browser if the web build performs poorly.",
+        "features": "Playable deckbuilding demo\nAnimal and skill cards\nEnemies with different behaviors\nInitial boss encounter\nManga-inspired illustrations\nEnglish and Russian",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-15T16:25:54.885213+00:00",
+        "updated_at": "2026-10-15T16:26:12+00:00",
+        "external_url": "https://auguste-eden.itch.io/amber-forest",
+        "developer": "Auguste_Eden",
+        "publisher": null,
+        "source_url": "https://auguste-eden.itch.io/amber-forest",
+        "source_type": "itch.io",
+        "original_game_url": "https://auguste-eden.itch.io/amber-forest",
+        "developer_url": "https://auguste-eden.itch.io",
+        "steam_url": null,
+        "itch_url": "https://auguste-eden.itch.io/amber-forest",
+        "last_verified_at": "2026-10-15T16:24:28+00:00",
+        "sources": [
+          {
+            "url": "https://auguste-eden.itch.io/amber-forest",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-15T16:24:28+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-15T16:26:12+00:00",
+        "last_updated_at": null,
+        "short_description": "Build a deck of animals and skills to guide Aspen toward the Amber Forest.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "auguste-eden/amber-forest",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "demo",
+        "graphics": "2D",
+        "multiplayer": "single-player",
+        "engine": "Godot",
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/amber-forest-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/amber-forest-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/amber-forest-2.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/amber-forest-3.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/amber-forest-4.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/amber-forest-5.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "card",
+        "strategy"
+      ],
+      "media": [
+        {
+          "kind": "cover",
+          "file": "amber-forest.webp",
+          "source": "https://img.itch.zone/aW1nLzMwMjk5MTQ5LnBuZw==/original/PnOxJD.png",
+          "object": "covers/2026-10-16/amber-forest.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-16/amber-forest.webp",
+          "bytes": 31194,
+          "width": 630,
+          "height": 350,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            630,
+            350
+          ],
+          "sha256": "f5e5e98acf0acd1e5cd848bab5f3ac2c09ab7e3cadbb6f9d24f35b2a3d017bdf",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "amber-forest-screen-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvMzgxNDE5MC8zMDMwMTUwMi5naWY=/original/Pog9ZQ.gif",
+          "object": "screenshots/2026-10-16/amber-forest-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/amber-forest-0.webp",
+          "bytes": 22044,
+          "width": 400,
+          "height": 225,
+          "originalFormat": "GIF",
+          "originalFrames": 297,
+          "originalSize": [
+            400,
+            225
+          ],
+          "sha256": "2f7d5cdcc11e91538e5c99b6474b752926fc664283b880fa115e2cae096807ec",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "amber-forest-screen-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvMzgxNDE5MC8zMDMwMTY5OC5naWY=/original/CRnQIZ.gif",
+          "object": "screenshots/2026-10-16/amber-forest-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/amber-forest-1.webp",
+          "bytes": 8730,
+          "width": 400,
+          "height": 225,
+          "originalFormat": "GIF",
+          "originalFrames": 295,
+          "originalSize": [
+            400,
+            225
+          ],
+          "sha256": "012f79c72f1596bcc28bed418c5b5a411e7fdb15d301f32383a950d4cf8fba39",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "amber-forest-screen-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvMzgxNDE5MC8zMDMwMTg1NS5wbmc=/347x500/fxJtqB.png",
+          "object": "screenshots/2026-10-16/amber-forest-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/amber-forest-2.webp",
+          "bytes": 16616,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "6adab7d06a7128b68f61c46c335151e028925ed7a03a5bb4fa1e5eaca263c960",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "amber-forest-screen-3.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvMzgxNDE5MC8zMDMwMjA4Ni5wbmc=/347x500/S1FUE4.png",
+          "object": "screenshots/2026-10-16/amber-forest-3.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/amber-forest-3.webp",
+          "bytes": 11796,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "7e72b263c1de27ccdec0263508f9d47c682186e083e0ae3ad71835b9b7d0c63d",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "amber-forest-screen-4.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvMzgxNDE5MC8zMDMwMjEyMy5wbmc=/347x500/dFS5St.png",
+          "object": "screenshots/2026-10-16/amber-forest-4.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/amber-forest-4.webp",
+          "bytes": 10788,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "d6006c23ff6c317b907e3111a6bb8b7832dad4f78178e0845d394131015cfe6e",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "amber-forest-screen-5.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvMzgxNDE5MC8zMDMwMjE4Mi5wbmc=/347x500/hHPr3D.png",
+          "object": "screenshots/2026-10-16/amber-forest-5.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/amber-forest-5.webp",
+          "bytes": 16354,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "2d4b2a0460a13ab3909cc29a08cdb77ccffa08b02e4c114521d5f94e75996fc9",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "url": "https://html-classic.itch.zone/html/19430201/web/index.html?v=1790523599",
+        "resolvedUrl": "https://html-classic.itch.zone/html/19430201/web/index.html?v=1790523599",
+        "httpStatus": 200,
+        "bytes": 5533
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://auguste-eden.itch.io/amber-forest",
+          "verifiedAt": "2026-10-15T16:24:28+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "status"
+          ],
+          "tipsBasis": "Editorial suggestions based on documented mechanics"
+        }
+      ],
+      "editorialEvidence": {
+        "attention": [
+          "Only current playable features included; roadmap and full-game promises excluded.",
+          "Tips are editorial suggestions inferred from documented mechanics."
+        ],
+        "missingDetailFields": []
+      },
+      "metadataNotes": [
+        "Radar publication time retained as input only; no verified original release date.",
+        "Tips are editorial advice inferred from verified mechanics.",
+        "Only current playable features included; roadmap and full-game promises excluded.",
+        "Tips are editorial suggestions inferred from documented mechanics.",
+        "No Added to PlayBloo game_updates entry was created: catalogue publication is not a developer version update.",
+        "Cover GIFs are represented by a compressed static first frame."
+      ],
+      "missingDetailFields": [],
+      "gameId": "8ba278b1-9763-4ac9-b9da-9868095844df",
+      "publishedAt": "2026-10-15T16:26:12+00:00",
+      "searchNotes": "Targeted supplementary controls searches were reviewed; unrelated similarly named games were not used."
+    },
+    {
+      "index": 4,
+      "inputTitle": "The Chimera Gameboy",
+      "sourceUrl": "https://zanipixels.itch.io/the-chimera-gameboy",
+      "resolvedUrl": "https://zanipixels.itch.io/the-chimera-gameboy",
+      "identity": "zanipixels/the-chimera-gameboy",
+      "inputPublishedAt": "2026-07-01 13:51 UTC+8",
+      "decision": "published",
+      "game": {
+        "id": "09fd5416-03ba-42e4-bcd9-c203b4d45d91",
+        "title": "The Chimera Gameboy",
+        "slug": "the-chimera-gameboy",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-16/the-chimera-gameboy.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "The Chimera Gameboy combines shooting and puzzles in a fictional future shaped by megacorporations, depleted resources and uncontrolled AI. Its retro presentation is designed for Game Boy Color, with a browser version available on the developer’s page.\n\nThis is an in-development demo. The project also offers files for compatible handheld hardware, but planned additions such as extra levels, difficulty options and achievements are not advertised here as finished features.",
+        "how_to_play": "Move through the available areas, fire at threats and use missiles as needed. Pay attention to puzzle elements as well as combat to find your way forward.",
+        "controls": "Arrow keys — move\nZ — shoot (Game Boy A)\nX — missiles (Game Boy B)",
+        "tips": "Watch the route ahead while fighting so puzzle elements are not overlooked.\nLearn the difference between regular shots and missiles before pushing into unfamiliar areas.",
+        "features": "Browser-playable demo\nShooting mixed with puzzles\nGame Boy Color presentation\nDystopian science-fiction setting\nSeparate hardware-compatible downloads",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-15T16:25:54.885213+00:00",
+        "updated_at": "2026-10-15T16:26:12+00:00",
+        "external_url": "https://zanipixels.itch.io/the-chimera-gameboy",
+        "developer": "Zani.Pixels ಠ_ಠ",
+        "publisher": null,
+        "source_url": "https://zanipixels.itch.io/the-chimera-gameboy",
+        "source_type": "itch.io",
+        "original_game_url": "https://zanipixels.itch.io/the-chimera-gameboy",
+        "developer_url": "https://zanipixels.itch.io",
+        "steam_url": null,
+        "itch_url": "https://zanipixels.itch.io/the-chimera-gameboy",
+        "last_verified_at": "2026-10-15T16:24:28+00:00",
+        "sources": [
+          {
+            "url": "https://zanipixels.itch.io/the-chimera-gameboy",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-15T16:24:28+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-15T16:26:12+00:00",
+        "last_updated_at": null,
+        "short_description": "Fight through a corporate dystopia in a Game Boy shooter with puzzles.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "zanipixels/the-chimera-gameboy",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "demo",
+        "graphics": "2D",
+        "multiplayer": "single-player",
+        "engine": "GB Studio",
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/the-chimera-gameboy-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/the-chimera-gameboy-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/the-chimera-gameboy-2.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/the-chimera-gameboy-3.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/the-chimera-gameboy-4.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/the-chimera-gameboy-5.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "shooting",
+        "puzzle"
+      ],
+      "media": [
+        {
+          "kind": "cover",
+          "file": "the-chimera-gameboy.webp",
+          "source": "https://img.itch.zone/aW1nLzI4NDQ3MzQ0LmdpZg==/original/63tWwH.gif",
+          "object": "covers/2026-10-16/the-chimera-gameboy.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-16/the-chimera-gameboy.webp",
+          "bytes": 11806,
+          "width": 270,
+          "height": 240,
+          "originalFormat": "GIF",
+          "originalFrames": 22,
+          "originalSize": [
+            270,
+            240
+          ],
+          "sha256": "4662586ab67f73d2c6bed58414e6fc5156653bc8a9ab01076c2191273527ad78",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "the-chimera-gameboy-screen-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDczMzQwMS8yODI0NjEzNS5qcGc=/347x500/ggIUoz.jpg",
+          "object": "screenshots/2026-10-16/the-chimera-gameboy-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/the-chimera-gameboy-0.webp",
+          "bytes": 17408,
+          "width": 347,
+          "height": 312,
+          "originalFormat": "JPEG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            312
+          ],
+          "sha256": "c9fe26956b7de6da68dc8c4951c0205e588d780c2fbb4748a814860150e730e1",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "the-chimera-gameboy-screen-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDczMzQwMS8yODI0OTAzOC5qcGc=/347x500/KfWPKV.jpg",
+          "object": "screenshots/2026-10-16/the-chimera-gameboy-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/the-chimera-gameboy-1.webp",
+          "bytes": 8378,
+          "width": 347,
+          "height": 312,
+          "originalFormat": "JPEG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            312
+          ],
+          "sha256": "bcf91d4d23c196a585d5b829a6888f1f481fa54edf77602b42147d6ce50c8d0d",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "the-chimera-gameboy-screen-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDczMzQwMS8yODI0OTAzNy5qcGc=/347x500/TiYgtP.jpg",
+          "object": "screenshots/2026-10-16/the-chimera-gameboy-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/the-chimera-gameboy-2.webp",
+          "bytes": 9698,
+          "width": 347,
+          "height": 312,
+          "originalFormat": "JPEG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            312
+          ],
+          "sha256": "c1e603cd50e578dac0c50d3d593bf7d17a538abc1c2840b79cb7de9f6a1634f1",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "the-chimera-gameboy-screen-3.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDczMzQwMS8yODI0NjEzNy5qcGc=/347x500/mcJuTb.jpg",
+          "object": "screenshots/2026-10-16/the-chimera-gameboy-3.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/the-chimera-gameboy-3.webp",
+          "bytes": 12750,
+          "width": 347,
+          "height": 312,
+          "originalFormat": "JPEG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            312
+          ],
+          "sha256": "6509f4b9ddb0e07d1eee6809828dedd39c119741afb4134313c9c05b64f79bd4",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "the-chimera-gameboy-screen-4.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDczMzQwMS8yODIxNzY4Ni5qcGc=/347x500/tMQVLl.jpg",
+          "object": "screenshots/2026-10-16/the-chimera-gameboy-4.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/the-chimera-gameboy-4.webp",
+          "bytes": 14154,
+          "width": 347,
+          "height": 312,
+          "originalFormat": "JPEG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            312
+          ],
+          "sha256": "6c543a832d957872de460219b066f0ee6794dbc3b34afd3732843bb9d082b67d",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "the-chimera-gameboy-screen-5.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDczMzQwMS8yODIxNzY4NC5qcGVn/347x500/V9EFX9.jpeg",
+          "object": "screenshots/2026-10-16/the-chimera-gameboy-5.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/the-chimera-gameboy-5.webp",
+          "bytes": 17868,
+          "width": 347,
+          "height": 312,
+          "originalFormat": "JPEG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            312
+          ],
+          "sha256": "eb42dfa0d6eec8a2b094b82a636f046350cf377a80797e0d7d0cd7e723bddb0a",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "url": "https://html-classic.itch.zone/html/19773876/TheChimera1.4/index.html?v=1792043219",
+        "resolvedUrl": "https://html-classic.itch.zone/html/19773876/TheChimera1.4/index.html?v=1792043219",
+        "httpStatus": 200,
+        "bytes": 1485
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://zanipixels.itch.io/the-chimera-gameboy",
+          "verifiedAt": "2026-10-15T16:24:28+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "status"
+          ],
+          "tipsBasis": "Editorial suggestions based on documented mechanics"
+        }
+      ],
+      "editorialEvidence": {
+        "attention": [
+          "Only current playable features included; roadmap and full-game promises excluded.",
+          "Tips are editorial suggestions inferred from documented mechanics."
+        ],
+        "missingDetailFields": []
+      },
+      "metadataNotes": [
+        "Radar publication time retained as input only; no verified original release date.",
+        "Tips are editorial advice inferred from verified mechanics.",
+        "Only current playable features included; roadmap and full-game promises excluded.",
+        "Tips are editorial suggestions inferred from documented mechanics.",
+        "No Added to PlayBloo game_updates entry was created: catalogue publication is not a developer version update.",
+        "Cover GIFs are represented by a compressed static first frame."
+      ],
+      "missingDetailFields": [],
+      "gameId": "09fd5416-03ba-42e4-bcd9-c203b4d45d91",
+      "publishedAt": "2026-10-15T16:26:12+00:00",
+      "searchNotes": "Targeted supplementary controls searches were reviewed; unrelated similarly named games were not used."
+    },
+    {
+      "index": 5,
+      "inputTitle": "Better on Paper!",
+      "sourceUrl": "https://aiainaine.itch.io/better-on-paper",
+      "resolvedUrl": "https://aiainaine.itch.io/better-on-paper",
+      "identity": "aiainaine/better-on-paper",
+      "inputPublishedAt": "2026-07-07 00:32 UTC+8",
+      "decision": "published",
+      "game": {
+        "id": "c7b78dac-af35-4c5f-8a46-b278f28759b8",
+        "title": "Better on Paper!",
+        "slug": "better-on-paper",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-16/better-on-paper.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "Better on Paper! follows Emie as she tries to stay in college and graduate, with art forgery complicating an already difficult relationship with procrastination. Friendship, self-discovery and possible romance frame the story.\n\nThe game combines a visual novel with stat building and mix-and-match minigames. Its published feature list includes over 10,000 words, eight endings, full voice acting and five original music tracks. Content notices include a brief mention of depression, anxiety and implied homophobia.",
+        "how_to_play": "Follow Emie’s story, make the choices presented to you, and take part in the stat-building and mix-and-match activities. Explore different decisions on later runs to discover other endings.",
+        "controls": "",
+        "tips": "Pay attention to the stat-building portions as well as dialogue choices.\nTry a different approach on a later run to explore the eight endings.",
+        "features": "Visual novel and stat-building hybrid\nMix-and-match minigames\nEight endings\nOver 10,000 words\nFull voice acting\nFive original music tracks",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-15T16:25:54.885213+00:00",
+        "updated_at": "2026-10-15T16:26:12+00:00",
+        "external_url": "https://aiainaine.itch.io/better-on-paper",
+        "developer": "aine, LemonadeMochi, Mich, Indie Starz ₊⊹, Rosia, checky, CuteShadow",
+        "publisher": null,
+        "source_url": "https://aiainaine.itch.io/better-on-paper",
+        "source_type": "itch.io",
+        "original_game_url": "https://aiainaine.itch.io/better-on-paper",
+        "developer_url": "https://aiainaine.itch.io",
+        "steam_url": null,
+        "itch_url": "https://aiainaine.itch.io/better-on-paper",
+        "last_verified_at": "2026-10-15T16:24:28+00:00",
+        "sources": [
+          {
+            "url": "https://aiainaine.itch.io/better-on-paper",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-15T16:24:28+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-15T16:26:12+00:00",
+        "last_updated_at": null,
+        "short_description": "Help Emie navigate college, procrastination, art and possible romance.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "aiainaine/better-on-paper",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "released",
+        "graphics": "2D",
+        "multiplayer": "single-player",
+        "engine": "Ren'Py",
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/better-on-paper-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/better-on-paper-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/better-on-paper-2.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/better-on-paper-3.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/better-on-paper-4.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/better-on-paper-5.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "casual",
+        "simulation"
+      ],
+      "media": [
+        {
+          "kind": "cover",
+          "file": "better-on-paper.webp",
+          "source": "https://img.itch.zone/aW1nLzMwMjM4MzI2LnBuZw==/original/pMJT6u.png",
+          "object": "covers/2026-10-16/better-on-paper.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-16/better-on-paper.webp",
+          "bytes": 46862,
+          "width": 640,
+          "height": 360,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            1920,
+            1080
+          ],
+          "sha256": "2089e580d0782a721ea3451034943c09dabea5d1ddc8b8ed95155933e8308bb4",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "better-on-paper-screen-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDc1MTQwMy8zMDIzOTE4OS5wbmc=/347x500/zSg%2Fh6.png",
+          "object": "screenshots/2026-10-16/better-on-paper-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/better-on-paper-0.webp",
+          "bytes": 10240,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "6d519c75452f96de1442e01b35154ad937dbde26c981cdf37a224bc1a7a5cc50",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "better-on-paper-screen-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDc1MTQwMy8zMDIzOTE5MC5wbmc=/347x500/uumvr4.png",
+          "object": "screenshots/2026-10-16/better-on-paper-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/better-on-paper-1.webp",
+          "bytes": 7796,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "07e94d4c5433b246742b81d2b983b1d253bff226b084b2e835bd97f239d5232d",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "better-on-paper-screen-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDc1MTQwMy8zMDIzOTE4NS5wbmc=/347x500/Whcva6.png",
+          "object": "screenshots/2026-10-16/better-on-paper-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/better-on-paper-2.webp",
+          "bytes": 7838,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "6b66d7d8b1595539593d808348e9365508244da41c7ad8eaed3e79be9d26121e",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "better-on-paper-screen-3.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDc1MTQwMy8zMDIzOTIxMC5wbmc=/347x500/kIqQH7.png",
+          "object": "screenshots/2026-10-16/better-on-paper-3.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/better-on-paper-3.webp",
+          "bytes": 8718,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "d46885d5764d25691d7c80b267cf358926e1ef5e12f8cabb35cdd134483ceb5c",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "better-on-paper-screen-4.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDc1MTQwMy8zMDIzOTE4Ni5wbmc=/347x500/YjO%2BMB.png",
+          "object": "screenshots/2026-10-16/better-on-paper-4.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/better-on-paper-4.webp",
+          "bytes": 7156,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "91c7cfdefcb2d609aae55589d102ecdce75e386f4dcd709a522b3c7023eeecf5",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "better-on-paper-screen-5.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDc1MTQwMy8zMDIzOTIwMS5wbmc=/347x500/d8Uv5J.png",
+          "object": "screenshots/2026-10-16/better-on-paper-5.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/better-on-paper-5.webp",
+          "bytes": 10192,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "d9da5f3e728f2951f1be8fbc43c0fa0d12b3d561e224a7ec35ddc8947adf85bf",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "url": "https://html-classic.itch.zone/html/19439054/index.html?v=1790551453",
+        "resolvedUrl": "https://html-classic.itch.zone/html/19439054/index.html?v=1790551453",
+        "httpStatus": 200,
+        "bytes": 6400
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://aiainaine.itch.io/better-on-paper",
+          "verifiedAt": "2026-10-15T16:24:28+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "features",
+            "developer",
+            "status"
+          ],
+          "tipsBasis": "Editorial suggestions based on documented mechanics"
+        }
+      ],
+      "editorialEvidence": {
+        "attention": [
+          "Only current playable features included; roadmap and full-game promises excluded.",
+          "Tips are editorial suggestions inferred from documented mechanics."
+        ],
+        "missingDetailFields": [
+          {
+            "field": "controls",
+            "reason": "Official page and targeted search do not establish specific input bindings."
+          }
+        ]
+      },
+      "metadataNotes": [
+        "Radar publication time retained as input only; no verified original release date.",
+        "Tips are editorial advice inferred from verified mechanics.",
+        "Only current playable features included; roadmap and full-game promises excluded.",
+        "Tips are editorial suggestions inferred from documented mechanics.",
+        "No Added to PlayBloo game_updates entry was created: catalogue publication is not a developer version update.",
+        "Cover GIFs are represented by a compressed static first frame."
+      ],
+      "missingDetailFields": [
+        {
+          "field": "controls",
+          "reason": "Official page and targeted search do not establish specific input bindings."
+        }
+      ],
+      "gameId": "c7b78dac-af35-4c5f-8a46-b278f28759b8",
+      "publishedAt": "2026-10-15T16:26:12+00:00",
+      "searchNotes": "Targeted supplementary controls searches were reviewed; unrelated similarly named games were not used."
+    },
+    {
+      "index": 6,
+      "inputTitle": "Midas Crutch",
+      "sourceUrl": "https://mors-games.itch.io/midas-crutch",
+      "resolvedUrl": "https://mors-games.itch.io/midas-crutch",
+      "identity": "mors-games/midas-crutch",
+      "inputPublishedAt": "2026-09-21 01:47 UTC+8",
+      "decision": "published",
+      "game": {
+        "id": "3b2a1499-7cb8-45b7-8262-baa55f1baa3e",
+        "title": "Midas Crutch",
+        "slug": "midas-crutch",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-16/midas-crutch.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "Midas Crutch is a puzzle game built around transforming obstacles into gold. Instead of simply removing what blocks your path, you push the transformed objects into useful positions to find a way out. Midas’s lost totems provide another thing to watch for while exploring.\n\nThe free browser version is accompanied by a Windows download. Its credited team combines code and design by Mors with pixel art and sound from several collaborators.",
+        "how_to_play": "Examine the obstacles between you and the exit. Turn suitable obstacles into gold, push them into place, and use the resulting arrangement to progress. Look for Midas’s lost totems along the way.",
+        "controls": "Keyboard and Xbox controller are listed as supported inputs. Use the game’s displayed prompts for movement and interaction bindings.",
+        "tips": "Consider where a golden object needs to end up before pushing it.\nLook for totems while studying the route to the exit.",
+        "features": "Gold-transformation puzzle mechanic\nPushable obstacles\nLost totems to discover\nPixel-art presentation\nFree browser version",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-15T16:25:54.885213+00:00",
+        "updated_at": "2026-10-15T16:26:12+00:00",
+        "external_url": "https://mors-games.itch.io/midas-crutch",
+        "developer": "mors, batfeula, olive, Tetraminose, datagoblin",
+        "publisher": null,
+        "source_url": "https://mors-games.itch.io/midas-crutch",
+        "source_type": "itch.io",
+        "original_game_url": "https://mors-games.itch.io/midas-crutch",
+        "developer_url": "https://mors-games.itch.io",
+        "steam_url": null,
+        "itch_url": "https://mors-games.itch.io/midas-crutch",
+        "last_verified_at": "2026-10-15T16:24:28+00:00",
+        "sources": [
+          {
+            "url": "https://mors-games.itch.io/midas-crutch",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-15T16:24:28+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-15T16:26:12+00:00",
+        "last_updated_at": null,
+        "short_description": "Turn obstacles into gold and push them into a route to the exit.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "mors-games/midas-crutch",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "released",
+        "graphics": "2D",
+        "multiplayer": "single-player",
+        "engine": "GameMaker",
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/midas-crutch-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/midas-crutch-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/midas-crutch-2.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/midas-crutch-3.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "puzzle",
+        "platformer"
+      ],
+      "media": [
+        {
+          "kind": "cover",
+          "file": "midas-crutch.webp",
+          "source": "https://img.itch.zone/aW1nLzMwMTU2NjAzLnBuZw==/original/9UXcSn.png",
+          "object": "covers/2026-10-16/midas-crutch.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-16/midas-crutch.webp",
+          "bytes": 21494,
+          "width": 630,
+          "height": 500,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            630,
+            500
+          ],
+          "sha256": "358c999981d2475d7be130ebf704ecd5a9a7f4a415d6bed917711bac0de1d11f",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "midas-crutch-screen-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTAzMjE1NC8zMDE1NjU1MS5naWY=/original/rC5ES7.gif",
+          "object": "screenshots/2026-10-16/midas-crutch-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/midas-crutch-0.webp",
+          "bytes": 32352,
+          "width": 960,
+          "height": 864,
+          "originalFormat": "GIF",
+          "originalFrames": 210,
+          "originalSize": [
+            960,
+            864
+          ],
+          "sha256": "022d3b2725e60f6a5b19c3038ec79c820d3c3f6c1652e8190eaeb672df65553a",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "midas-crutch-screen-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTAzMjE1NC8zMDE1NjcwNC5wbmc=/347x500/zTnfoa.png",
+          "object": "screenshots/2026-10-16/midas-crutch-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/midas-crutch-1.webp",
+          "bytes": 20214,
+          "width": 347,
+          "height": 312,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            312
+          ],
+          "sha256": "0361b477598ad9eff4270c449f4946b5487b36db1cdda64cd95e84d17babb9e8",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "midas-crutch-screen-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTAzMjE1NC8zMDE1NjcwNi5wbmc=/347x500/rQv3P9.png",
+          "object": "screenshots/2026-10-16/midas-crutch-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/midas-crutch-2.webp",
+          "bytes": 16466,
+          "width": 347,
+          "height": 312,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            312
+          ],
+          "sha256": "ed6afb8a434da57dfedd93b4c3b028100dbd1daed43633c15438d0d8071d8542",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "midas-crutch-screen-3.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTAzMjE1NC8zMDE1NjcwNS5wbmc=/347x500/%2FhvXsQ.png",
+          "object": "screenshots/2026-10-16/midas-crutch-3.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/midas-crutch-3.webp",
+          "bytes": 22086,
+          "width": 347,
+          "height": 312,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            312
+          ],
+          "sha256": "e3e0923bec2c9fefc557835fc98a307af920a62032833c50591d3dcd94e48c88",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "url": "https://html-classic.itch.zone/html/19676497/index.html?v=1791650795",
+        "resolvedUrl": "https://html-classic.itch.zone/html/19676497/index.html?v=1791650795",
+        "httpStatus": 200,
+        "bytes": 16510
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://mors-games.itch.io/midas-crutch",
+          "verifiedAt": "2026-10-15T16:24:28+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "status"
+          ],
+          "tipsBasis": "Editorial suggestions based on documented mechanics"
+        }
+      ],
+      "editorialEvidence": {
+        "attention": [
+          "Only current playable features included; roadmap and full-game promises excluded.",
+          "Tips are editorial suggestions inferred from documented mechanics."
+        ],
+        "missingDetailFields": []
+      },
+      "metadataNotes": [
+        "Radar publication time retained as input only; no verified original release date.",
+        "Tips are editorial advice inferred from verified mechanics.",
+        "Only current playable features included; roadmap and full-game promises excluded.",
+        "Tips are editorial suggestions inferred from documented mechanics.",
+        "No Added to PlayBloo game_updates entry was created: catalogue publication is not a developer version update.",
+        "Cover GIFs are represented by a compressed static first frame."
+      ],
+      "missingDetailFields": [],
+      "gameId": "3b2a1499-7cb8-45b7-8262-baa55f1baa3e",
+      "publishedAt": "2026-10-15T16:26:12+00:00",
+      "searchNotes": "Targeted supplementary controls searches were reviewed; unrelated similarly named games were not used."
+    },
+    {
+      "index": 7,
+      "inputTitle": "Bombermaid",
+      "sourceUrl": "https://waldorf.itch.io/bombermaid",
+      "resolvedUrl": "https://waldorf.itch.io/bombermaid",
+      "identity": "waldorf/bombermaid",
+      "inputPublishedAt": "2026-07-26 08:27 UTC+8",
+      "decision": "published",
+      "game": {
+        "id": "71bb7285-e3b8-469e-a131-15f5bc4a7e19",
+        "title": "Bombermaid",
+        "slug": "bombermaid",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-16/bombermaid.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "Bombermaid is an action puzzle game about a maid sent into a cave to recover minerals for gems. Her enthusiasm for explosions attracts opposition from someone determined to protect the cave.\n\nEach level separates preparation from execution. First, place bombs to open a route. Then move through the resulting chain reaction without being caught in a blast, reaching the exit before the ten-second bomb goes off. The developer notes that the browser build is not fully optimized.",
+        "how_to_play": "Use the preparation phase to place bombs along a route toward the exit. Consider the order in which they will detonate. During the explosion phase, move through the opened path while avoiding blasts and reach safety before the ten-second bomb explodes.",
+        "controls": "Keyboard input. Follow the game’s tutorial for the specific movement and bomb-placement keys.",
+        "tips": "Plan your movement together with the detonation order.\nAvoid positioning bombs where a later explosion will block your escape.\nKeep the final route short enough to finish before the ten-second deadline.",
+        "features": "Separate planning and action phases\nOrdered bomb chain reactions\nTen-second escape deadline\nCave exploration story\nPixel-art presentation",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-15T16:25:54.885213+00:00",
+        "updated_at": "2026-10-15T16:26:12+00:00",
+        "external_url": "https://waldorf.itch.io/bombermaid",
+        "developer": "Waldorf",
+        "publisher": null,
+        "source_url": "https://waldorf.itch.io/bombermaid",
+        "source_type": "itch.io",
+        "original_game_url": "https://waldorf.itch.io/bombermaid",
+        "developer_url": "https://waldorf.itch.io",
+        "steam_url": null,
+        "itch_url": "https://waldorf.itch.io/bombermaid",
+        "last_verified_at": "2026-10-15T16:24:28+00:00",
+        "sources": [
+          {
+            "url": "https://waldorf.itch.io/bombermaid",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-15T16:24:28+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-15T16:26:12+00:00",
+        "last_updated_at": null,
+        "short_description": "Plan a chain of bombs, then escape before the ten-second blast.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "waldorf/bombermaid",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "released",
+        "graphics": "2D",
+        "multiplayer": "single-player",
+        "engine": "RPG Maker",
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/bombermaid-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/bombermaid-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/bombermaid-2.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/bombermaid-3.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/bombermaid-4.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/bombermaid-5.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "puzzle",
+        "action"
+      ],
+      "media": [
+        {
+          "kind": "cover",
+          "file": "bombermaid.webp",
+          "source": "https://img.itch.zone/aW1nLzI4ODI2NDkyLnBuZw==/original/tXdT1t.png",
+          "object": "covers/2026-10-16/bombermaid.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-16/bombermaid.webp",
+          "bytes": 39140,
+          "width": 630,
+          "height": 500,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            630,
+            500
+          ],
+          "sha256": "77b691d4bc965b1e4442547e5400de83693d26e17beed39fcf4181281cfea8c6",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "bombermaid-screen-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDgyMTc3NC8yODgxNjg4OS5wbmc=/347x500/S%2FxEN9.png",
+          "object": "screenshots/2026-10-16/bombermaid-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/bombermaid-0.webp",
+          "bytes": 11178,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "f6d0123610278dc3f26df8aca8b308e0bb3ade298493a45d0c1ffee0569d6af9",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "bombermaid-screen-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDgyMTc3NC8yODgxNjg5MC5wbmc=/347x500/bauWKK.png",
+          "object": "screenshots/2026-10-16/bombermaid-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/bombermaid-1.webp",
+          "bytes": 12726,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "c8d5d3f1210721b263a408d53435ffbaae676886f379c56cfd828901dc26e3fd",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "bombermaid-screen-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDgyMTc3NC8yODgxNjg5MS5wbmc=/347x500/NQ7PhR.png",
+          "object": "screenshots/2026-10-16/bombermaid-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/bombermaid-2.webp",
+          "bytes": 10012,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "cb5155fc958ce29585b1608b9e416dd564c390f199d8eee9a1fb6fea8c1caf31",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "bombermaid-screen-3.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDgyMTc3NC8yODgyMjE5OS5wbmc=/347x500/IVW49H.png",
+          "object": "screenshots/2026-10-16/bombermaid-3.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/bombermaid-3.webp",
+          "bytes": 10544,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "aff073fbffb592907fd2153c48e577ecf28a39acbb66d84f21f9476eb6a290f0",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "bombermaid-screen-4.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDgyMTc3NC8yODgxNjg4Ny5wbmc=/347x500/BwT3Tf.png",
+          "object": "screenshots/2026-10-16/bombermaid-4.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/bombermaid-4.webp",
+          "bytes": 11018,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "65dfe78289c3469743325db237524289e48b0bfd84784c131e3263fe8f54bb85",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "bombermaid-screen-5.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDgyMTc3NC8yODgxNjg4OC5wbmc=/347x500/YqkkQn.png",
+          "object": "screenshots/2026-10-16/bombermaid-5.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/bombermaid-5.webp",
+          "bytes": 9308,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "65a07076ec27e5b6e63c47f405da8396ba78050cde8601a158ae585a0b0f3539",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "url": "https://html-classic.itch.zone/html/18826026/index.html?v=1786874470",
+        "resolvedUrl": "https://html-classic.itch.zone/html/18826026/index.html?v=1786874470",
+        "httpStatus": 200,
+        "bytes": 729
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://waldorf.itch.io/bombermaid",
+          "verifiedAt": "2026-10-15T16:24:28+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "status"
+          ],
+          "tipsBasis": "Editorial suggestions based on documented mechanics"
+        }
+      ],
+      "editorialEvidence": {
+        "attention": [
+          "Only current playable features included; roadmap and full-game promises excluded.",
+          "Tips are editorial suggestions inferred from documented mechanics."
+        ],
+        "missingDetailFields": []
+      },
+      "metadataNotes": [
+        "Radar publication time retained as input only; no verified original release date.",
+        "Tips are editorial advice inferred from verified mechanics.",
+        "Only current playable features included; roadmap and full-game promises excluded.",
+        "Tips are editorial suggestions inferred from documented mechanics.",
+        "No Added to PlayBloo game_updates entry was created: catalogue publication is not a developer version update.",
+        "Cover GIFs are represented by a compressed static first frame."
+      ],
+      "missingDetailFields": [],
+      "gameId": "71bb7285-e3b8-469e-a131-15f5bc4a7e19",
+      "publishedAt": "2026-10-15T16:26:12+00:00",
+      "searchNotes": "Targeted supplementary controls searches were reviewed; unrelated similarly named games were not used."
+    },
+    {
+      "index": 8,
+      "inputTitle": "0:07",
+      "sourceUrl": "https://placeholders.itch.io/007",
+      "resolvedUrl": "https://placeholders.itch.io/007",
+      "identity": "placeholders/007",
+      "inputPublishedAt": "2026-07-25 16:23 UTC+8",
+      "decision": "published",
+      "game": {
+        "id": "d7c3ce90-a4cd-481a-8cdb-b357bfa69dcc",
+        "title": "0:07",
+        "slug": "007",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-16/007.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "0:07 is a timed action game created for GMTK 2026’s countdown theme. Set the clock yourself, call the countdown and clear a sequence of ten floors with exact timing. Aiming, shooting, melee attacks and dashing are part of the available toolset.\n\nThe game contains violence, psychological themes, disturbing dialogue and references to hearing voices.",
+        "how_to_play": "Adjust the clock with the mouse wheel and tackle each floor around the countdown you have chosen. Move and aim, use ranged or melee attacks, and dash when repositioning. Work toward clearing all ten floors on time.",
+        "controls": "WASD — move\nMouse — aim\nLeft click — shoot\nRight click — melee\nShift — dash\nMouse wheel — set clock time\nP — pause/settings",
+        "tips": "Set a countdown that suits the route you plan to take.\nInclude movement and repositioning in your timing rather than counting only attacks.\nUse the pause/settings menu to review your setup.",
+        "features": "Player-set countdown\nTen floors\nShooting and melee attacks\nDash movement\nGMTK 2026 game-jam entry",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-15T16:25:54.885213+00:00",
+        "updated_at": "2026-10-15T16:26:12+00:00",
+        "external_url": "https://placeholders.itch.io/007",
+        "developer": "Placeholders",
+        "publisher": null,
+        "source_url": "https://placeholders.itch.io/007",
+        "source_type": "itch.io",
+        "original_game_url": "https://placeholders.itch.io/007",
+        "developer_url": "https://placeholders.itch.io",
+        "steam_url": null,
+        "itch_url": "https://placeholders.itch.io/007",
+        "last_verified_at": "2026-10-15T16:24:28+00:00",
+        "sources": [
+          {
+            "url": "https://placeholders.itch.io/007",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-15T16:24:28+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-15T16:26:12+00:00",
+        "last_updated_at": null,
+        "short_description": "Set your own countdown and clear ten floors with precise timing.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "placeholders/007",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "released",
+        "graphics": "2D",
+        "multiplayer": "single-player",
+        "engine": "Unity",
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/007-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/007-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/007-2.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/007-3.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "action",
+        "shooting"
+      ],
+      "media": [
+        {
+          "kind": "cover",
+          "file": "007.webp",
+          "source": "https://img.itch.zone/aW1nLzMwMjUxNzAyLnBuZw==/original/R%2F4Qz%2F.png",
+          "object": "covers/2026-10-16/007.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-16/007.webp",
+          "bytes": 14164,
+          "width": 640,
+          "height": 508,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            1313,
+            1042
+          ],
+          "sha256": "6602a20eee8ae22ee4dc3ac67f197c7e79b1e6b487520da7d4a505ea2ba5d9e5",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "007-screen-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDgxNzc2OS8yODc5Nzk2MS5wbmc=/347x500/c2JLdL.png",
+          "object": "screenshots/2026-10-16/007-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/007-0.webp",
+          "bytes": 6998,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "4285de388b1b2ad366b482b3bce81da9a8b1b115b9143d07472004ddabb84adf",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "007-screen-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDgxNzc2OS8yODc5Nzk2Mi5wbmc=/347x500/w04cCB.png",
+          "object": "screenshots/2026-10-16/007-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/007-1.webp",
+          "bytes": 4876,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "0296dae394c0e271e8304ba8047f402df4878b5735ceb950670fc762c8daed79",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "007-screen-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDgxNzc2OS8yODc5Nzk2MC5wbmc=/347x500/aoxltg.png",
+          "object": "screenshots/2026-10-16/007-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/007-2.webp",
+          "bytes": 5098,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "01ad51ca5f980ced86a9a5e472659dc1311135ed7c5205d60215ab1a4aff3d08",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "007-screen-3.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDgxNzc2OS8yODc5Nzk1OS5wbmc=/347x500/tj3qsB.png",
+          "object": "screenshots/2026-10-16/007-3.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/007-3.webp",
+          "bytes": 3330,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "0121005e6ceef5927eecf63ecfaf2b335761ebc746f6e0679e83a05a79a47e52",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "url": "https://html-classic.itch.zone/html/18528905/WebGL/index.html?v=1785079228",
+        "resolvedUrl": "https://html-classic.itch.zone/html/18528905/WebGL/index.html?v=1785079228",
+        "httpStatus": 200,
+        "bytes": 4660
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://placeholders.itch.io/007",
+          "verifiedAt": "2026-10-15T16:24:28+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "status"
+          ],
+          "tipsBasis": "Editorial suggestions based on documented mechanics"
+        }
+      ],
+      "editorialEvidence": {
+        "attention": [
+          "Only current playable features included; roadmap and full-game promises excluded.",
+          "Tips are editorial suggestions inferred from documented mechanics."
+        ],
+        "missingDetailFields": []
+      },
+      "metadataNotes": [
+        "Radar publication time retained as input only; no verified original release date.",
+        "Tips are editorial advice inferred from verified mechanics.",
+        "Only current playable features included; roadmap and full-game promises excluded.",
+        "Tips are editorial suggestions inferred from documented mechanics.",
+        "No Added to PlayBloo game_updates entry was created: catalogue publication is not a developer version update.",
+        "Cover GIFs are represented by a compressed static first frame."
+      ],
+      "missingDetailFields": [],
+      "gameId": "d7c3ce90-a4cd-481a-8cdb-b357bfa69dcc",
+      "publishedAt": "2026-10-15T16:26:12+00:00",
+      "searchNotes": "Targeted supplementary controls searches were reviewed; unrelated similarly named games were not used."
+    },
+    {
+      "index": 9,
+      "inputTitle": "Kenzu: Shadow and Light",
+      "sourceUrl": "https://lambdaforge.itch.io/kenzu",
+      "resolvedUrl": "https://lambdaforge.itch.io/kenzu",
+      "identity": "lambdaforge/kenzu",
+      "inputPublishedAt": "2025-11-04 04:25 UTC+8",
+      "decision": "published",
+      "game": {
+        "id": "578bcb55-98f3-4f1d-afc1-f51c04febc74",
+        "title": "Kenzu: Shadow and Light",
+        "slug": "kenzu",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-16/kenzu.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "Kenzu: Shadow and Light follows a warrior reconnecting with the legacy of seven Kato clans as his world falls into chaos. This metroidvania combines exploration with close combat, bosses and a hand-painted world. Weapons, skills, charms and upgrades support different builds.\n\nThe current early-access release offers roughly one hour of play. The advertised eight-to-ten-hour campaign is a goal for the full game, not the length of the available browser build. Some artwork and interface elements remain unfinished. The team recommends downloading for better visual effects and controller compatibility; browser gamepad support varies.",
+        "how_to_play": "Explore the available areas, fight enemies with slashes and parries, and use the map to track your progress. Unlock new tools as you advance, including shuriken and kunai, and adjust your build with the upgrades you find. Use concentration to heal when you have an opportunity.",
+        "controls": "A / Left arrow — move left\nD / Right arrow — move right\nS / Down arrow — crouch\nSpace — jump\nS + Space — drop down\nJ — slash/attack\nK — parry\nL — shuriken (unlock required)\nU — kunai (unlock required)\nR — concentration/heal\nLeft Shift — dash\nM — map\nE — interact\nTab — menu\nP — cheat panel",
+        "tips": "Practice parrying alongside attacking before difficult encounters.\nCheck the map when deciding where to explore next.\nDo not expect shuriken or kunai to work before their unlocks.\nUse Chrome for the developer’s recommended browser controller experience, while keeping compatibility limits in mind.",
+        "features": "Approximately one hour in the current early-access build\nMetroidvania exploration\nSlashing, parrying and dashing\nUnlockable shuriken and kunai\nWeapons, skills, charms and upgrades\nHand-painted environments",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-15T16:25:54.885213+00:00",
+        "updated_at": "2026-10-15T16:26:12+00:00",
+        "external_url": "https://lambdaforge.itch.io/kenzu",
+        "developer": "lambdaforge, Boldojones, fcarrone, Nico-Sanchez, Manuel Camejo",
+        "publisher": null,
+        "source_url": "https://lambdaforge.itch.io/kenzu",
+        "source_type": "itch.io",
+        "original_game_url": "https://lambdaforge.itch.io/kenzu",
+        "developer_url": "https://lambdaforge.itch.io",
+        "steam_url": null,
+        "itch_url": "https://lambdaforge.itch.io/kenzu",
+        "last_verified_at": "2026-10-15T16:24:28+00:00",
+        "sources": [
+          {
+            "url": "https://lambdaforge.itch.io/kenzu",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-15T16:24:28+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-15T16:26:12+00:00",
+        "last_updated_at": null,
+        "short_description": "Explore a hand-painted metroidvania with slashing, parrying and unlockable tools.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "lambdaforge/kenzu",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "early-access",
+        "graphics": "2D",
+        "multiplayer": "single-player",
+        "engine": "Unity",
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/kenzu-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/kenzu-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/kenzu-2.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/kenzu-3.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/kenzu-4.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/kenzu-5.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "action",
+        "adventure"
+      ],
+      "media": [
+        {
+          "kind": "cover",
+          "file": "kenzu.webp",
+          "source": "https://img.itch.zone/aW1nLzI0Mjk1NDA0LnBuZw==/original/5fpUUi.png",
+          "object": "covers/2026-10-16/kenzu.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-16/kenzu.webp",
+          "bytes": 24760,
+          "width": 640,
+          "height": 299,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            920,
+            430
+          ],
+          "sha256": "f02045e8bd9e6a7dc01c90e158944776224c80628233964e7f9b4f998f73ba18",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "kenzu-screen-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDAxMTkzOS8yNDAzOTcwNC5wbmc=/347x500/AnFNcz.png",
+          "object": "screenshots/2026-10-16/kenzu-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/kenzu-0.webp",
+          "bytes": 13576,
+          "width": 347,
+          "height": 193,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            193
+          ],
+          "sha256": "f5a7b4500724d2bb5649d684855b03f729e01d6b4fce81bdc4a8b1b5d6026458",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "kenzu-screen-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDAxMTkzOS8yNDA4NTc5OC5wbmc=/347x500/VzYaQQ.png",
+          "object": "screenshots/2026-10-16/kenzu-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/kenzu-1.webp",
+          "bytes": 11890,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "0f3fbb8526689adca3dd2f204de60f9c9482322b59b20230fdd2809fa33a590d",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "kenzu-screen-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDAxMTkzOS8yNDAzOTcwNS5wbmc=/347x500/YT4ASD.png",
+          "object": "screenshots/2026-10-16/kenzu-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/kenzu-2.webp",
+          "bytes": 9406,
+          "width": 347,
+          "height": 192,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            192
+          ],
+          "sha256": "60928c30ff92efe917377e06be2c8467a48075649610f24b2d58ba495c73f62f",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "kenzu-screen-3.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDAxMTkzOS8yNDAyNzMyMS5wbmc=/347x500/6s9vD1.png",
+          "object": "screenshots/2026-10-16/kenzu-3.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/kenzu-3.webp",
+          "bytes": 12520,
+          "width": 347,
+          "height": 150,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            150
+          ],
+          "sha256": "b15c395e420a72c27e8647acdb502c09c68a2ee555e91adcd2545b7c0e72a51f",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "kenzu-screen-4.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDAxMTkzOS8yNDAyNzMyMy5wbmc=/347x500/%2B%2BQtaH.png",
+          "object": "screenshots/2026-10-16/kenzu-4.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/kenzu-4.webp",
+          "bytes": 8802,
+          "width": 347,
+          "height": 180,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            180
+          ],
+          "sha256": "b240cd544d06778be7eab4e678a2613a81985a8e475225ad695ed34d01eb3223",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "kenzu-screen-5.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDAxMTkzOS8yNDAzOTcwMy5wbmc=/347x500/9Lgsqb.png",
+          "object": "screenshots/2026-10-16/kenzu-5.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/kenzu-5.webp",
+          "bytes": 14264,
+          "width": 347,
+          "height": 219,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            219
+          ],
+          "sha256": "92baa50aa7c59600468aa30260505ceb0be4f897d1f918ca472de6ea3d0fab83",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "url": "https://html-classic.itch.zone/html/19772479/index.html?v=1792035644",
+        "resolvedUrl": "https://html-classic.itch.zone/html/19772479/index.html?v=1792035644",
+        "httpStatus": 200,
+        "bytes": 6427
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://lambdaforge.itch.io/kenzu",
+          "verifiedAt": "2026-10-15T16:24:28+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "status"
+          ],
+          "tipsBasis": "Editorial suggestions based on documented mechanics"
+        }
+      ],
+      "editorialEvidence": {
+        "attention": [
+          "Only current playable features included; roadmap and full-game promises excluded.",
+          "Tips are editorial suggestions inferred from documented mechanics."
+        ],
+        "missingDetailFields": []
+      },
+      "metadataNotes": [
+        "Radar publication time retained as input only; no verified original release date.",
+        "Tips are editorial advice inferred from verified mechanics.",
+        "Only current playable features included; roadmap and full-game promises excluded.",
+        "Tips are editorial suggestions inferred from documented mechanics.",
+        "No Added to PlayBloo game_updates entry was created: catalogue publication is not a developer version update.",
+        "Cover GIFs are represented by a compressed static first frame."
+      ],
+      "missingDetailFields": [],
+      "gameId": "578bcb55-98f3-4f1d-afc1-f51c04febc74",
+      "publishedAt": "2026-10-15T16:26:12+00:00",
+      "searchNotes": "Targeted supplementary controls searches were reviewed; unrelated similarly named games were not used."
+    },
+    {
+      "index": 10,
+      "inputTitle": "Pokémon Overlord",
+      "sourceUrl": "https://jab-lao.itch.io/pokemon-overlord",
+      "resolvedUrl": "https://jab-lao.itch.io/pokemon-overlord",
+      "identity": "jab-lao/pokemon-overlord",
+      "inputPublishedAt": "2025-12-15 08:28 UTC+8",
+      "decision": "published",
+      "game": {
+        "id": "90d64b2f-fe40-47c3-95b4-d26337f87a85",
+        "title": "Pokémon Overlord",
+        "slug": "pokemon-overlord",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-16/pokemon-overlord.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "Pokémon Overlord is an unofficial fan game inspired by Unicorn Overlord. Build teams of up to three Pokémon for battles lasting about a minute. Front- and back-row placement matters: a protected back row avoids most attacks while a front-row ally remains, but acts 30% more slowly.\n\nEach Pokémon has two attack slots and one ability slot to configure for the opposition. Stat-boosting items benefit lower-rarity creatures more, giving favorites a route to compete with stronger species. A hotel tournament provides the story setting. League Challenge uses established character teams, Battle Frontier offers 30 consecutive battles, and an offline Versus mode supports local multiplayer.",
+        "how_to_play": "Choose up to three Pokémon, arrange their rows and select their attacks and ability for the upcoming opponent. Adjust the squad as you progress. Use stat-boosting items to strengthen chosen teammates. Select the tournament, League Challenge, Battle Frontier or local Versus mode for a different format.",
+        "controls": "",
+        "tips": "Balance back-row protection against its speed penalty.\nReview the opposing squad before choosing moves.\nConsider investing in lower-rarity favorites, since stat items benefit them more.",
+        "features": "Unofficial Pokémon fan game\nThree-member teams\nFront- and back-row tactics\nLeague Challenge\n30-battle Battle Frontier\nOffline Versus mode",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-15T16:25:54.885213+00:00",
+        "updated_at": "2026-10-15T16:26:12+00:00",
+        "external_url": "https://jab-lao.itch.io/pokemon-overlord",
+        "developer": "jab_lao",
+        "publisher": null,
+        "source_url": "https://jab-lao.itch.io/pokemon-overlord",
+        "source_type": "itch.io",
+        "original_game_url": "https://jab-lao.itch.io/pokemon-overlord",
+        "developer_url": "https://jab-lao.itch.io",
+        "steam_url": null,
+        "itch_url": "https://jab-lao.itch.io/pokemon-overlord",
+        "last_verified_at": "2026-10-15T16:24:28+00:00",
+        "sources": [
+          {
+            "url": "https://jab-lao.itch.io/pokemon-overlord",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-15T16:24:28+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-15T16:26:12+00:00",
+        "last_updated_at": null,
+        "short_description": "Arrange three-Pokémon squads for quick roguelike tactical battles.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "jab-lao/pokemon-overlord",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "released",
+        "graphics": "2D",
+        "multiplayer": "single-player and local multiplayer",
+        "engine": "Godot",
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/pokemon-overlord-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/pokemon-overlord-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/pokemon-overlord-2.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/pokemon-overlord-3.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/pokemon-overlord-4.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/pokemon-overlord-5.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "strategy",
+        "rpg",
+        "multiplayer"
+      ],
+      "media": [
+        {
+          "kind": "cover",
+          "file": "pokemon-overlord.webp",
+          "source": "https://img.itch.zone/aW1nLzI0Njk4MDE1LnBuZw==/original/xqRqpq.png",
+          "object": "covers/2026-10-16/pokemon-overlord.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-16/pokemon-overlord.webp",
+          "bytes": 38798,
+          "width": 630,
+          "height": 500,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            630,
+            500
+          ],
+          "sha256": "596e1cac0e2f4bfbcf3ae783b5f362f09e364b4a6b524fb9bebaa8cc79d24383",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "pokemon-overlord-screen-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDEyMTI1OS8yNDY5ODYzNS5wbmc=/347x500/6RrscI.png",
+          "object": "screenshots/2026-10-16/pokemon-overlord-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/pokemon-overlord-0.webp",
+          "bytes": 9594,
+          "width": 347,
+          "height": 199,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            199
+          ],
+          "sha256": "d86c998700899672f6ea82705aef70bc4d4360e2f139ff4a0f76ca6b91c2dbcd",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "pokemon-overlord-screen-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDEyMTI1OS8yNDY5ODY0MC5wbmc=/347x500/J9r%2BXa.png",
+          "object": "screenshots/2026-10-16/pokemon-overlord-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/pokemon-overlord-1.webp",
+          "bytes": 8470,
+          "width": 347,
+          "height": 199,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            199
+          ],
+          "sha256": "bbb56e7317fc8527caebd6ece6f585293ab5f49f09da64f5913aed2ef662c439",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "pokemon-overlord-screen-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDEyMTI1OS8yNDY5ODY0Ny5wbmc=/347x500/6Hjn3z.png",
+          "object": "screenshots/2026-10-16/pokemon-overlord-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/pokemon-overlord-2.webp",
+          "bytes": 8582,
+          "width": 347,
+          "height": 199,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            199
+          ],
+          "sha256": "5016f367e33d3eadf6eb3cb165ac19bc907df01ce6c13efbec81e244c39335ef",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "pokemon-overlord-screen-3.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDEyMTI1OS8yNDY5ODY1MS5wbmc=/347x500/xgZYEI.png",
+          "object": "screenshots/2026-10-16/pokemon-overlord-3.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/pokemon-overlord-3.webp",
+          "bytes": 8582,
+          "width": 347,
+          "height": 199,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            199
+          ],
+          "sha256": "c0650726673370ad318e2bd33c472202f58aa03cb027fea8685ee1881e987a2f",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "pokemon-overlord-screen-4.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDEyMTI1OS8yNDY5ODY1NC5wbmc=/347x500/9Zx90a.png",
+          "object": "screenshots/2026-10-16/pokemon-overlord-4.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/pokemon-overlord-4.webp",
+          "bytes": 12020,
+          "width": 347,
+          "height": 199,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            199
+          ],
+          "sha256": "a8e5bb7ec9b9a23085b7b87cf14e6133b7c23c8b6f083c457bb3fe1bd0066781",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "pokemon-overlord-screen-5.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDEyMTI1OS8yNDY5ODY1Ni5wbmc=/347x500/W7xAm5.png",
+          "object": "screenshots/2026-10-16/pokemon-overlord-5.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-16/pokemon-overlord-5.webp",
+          "bytes": 8318,
+          "width": 347,
+          "height": 199,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            199
+          ],
+          "sha256": "1de4ebacbe6eb3d8619c51bef1aa256f7b8395ab8a3d5291f4ff8db3cb9a1024",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "url": "https://html-classic.itch.zone/html/19768461/index.html?v=1792018401",
+        "resolvedUrl": "https://html-classic.itch.zone/html/19768461/index.html?v=1792018401",
+        "httpStatus": 200,
+        "bytes": 5536
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://jab-lao.itch.io/pokemon-overlord",
+          "verifiedAt": "2026-10-15T16:24:28+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "features",
+            "developer",
+            "status"
+          ],
+          "tipsBasis": "Editorial suggestions based on documented mechanics"
+        }
+      ],
+      "editorialEvidence": {
+        "attention": [
+          "Only current playable features included; roadmap and full-game promises excluded.",
+          "Tips are editorial suggestions inferred from documented mechanics."
+        ],
+        "missingDetailFields": [
+          {
+            "field": "controls",
+            "reason": "Current project page and targeted searches do not establish reliable browser key bindings."
+          }
+        ]
+      },
+      "metadataNotes": [
+        "Radar publication time retained as input only; no verified original release date.",
+        "Tips are editorial advice inferred from verified mechanics.",
+        "Only current playable features included; roadmap and full-game promises excluded.",
+        "Tips are editorial suggestions inferred from documented mechanics.",
+        "No Added to PlayBloo game_updates entry was created: catalogue publication is not a developer version update.",
+        "Cover GIFs are represented by a compressed static first frame."
+      ],
+      "missingDetailFields": [
+        {
+          "field": "controls",
+          "reason": "Current project page and targeted searches do not establish reliable browser key bindings."
+        }
+      ],
+      "gameId": "90d64b2f-fe40-47c3-95b4-d26337f87a85",
+      "publishedAt": "2026-10-15T16:26:12+00:00",
+      "searchNotes": "Targeted supplementary controls searches were reviewed; unrelated similarly named games were not used."
+    }
+  ],
+  "verification": {
+    "anonymousDraftExclusion": true,
+    "anonymousPublishedRead": true,
+    "fieldsAndCategories": true,
+    "mediaPublicRead": true,
+    "catalogueUpdatesCreated": 0,
+    "originalReleaseAndUpdateDatesNotInferred": true,
+    "oldGameRowsUnchanged": 960,
+    "oldCategoryLinksUnchanged": true,
+    "totalGamesAfter": 970,
+    "livePages": [
+      {
+        "slug": "dust-buster",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "metaDescription": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "respect-the-horde",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "metaDescription": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "amber-forest",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "metaDescription": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "the-chimera-gameboy",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "metaDescription": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "better-on-paper",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "metaDescription": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "midas-crutch",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "metaDescription": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "bombermaid",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "metaDescription": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "007",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "metaDescription": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "kenzu",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "metaDescription": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "pokemon-overlord",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "metaDescription": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      }
+    ],
+    "liveSitemap": {
+      "httpStatus": 200,
+      "newEntries": [
+        {
+          "slug": "dust-buster",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "respect-the-horde",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "amber-forest",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "the-chimera-gameboy",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "better-on-paper",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "midas-crutch",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "bombermaid",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "007",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "kenzu",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "pokemon-overlord",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        }
+      ],
+      "oldGameTimestampChanges": [],
+      "cacheHeaders": {
+        "Age": "289",
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "x-vercel-cache": "HIT"
+      }
+    },
+    "homepage": {
+      "httpStatus": 200,
+      "newSlugsVisible": [],
+      "noImageOptimizer": true
+    },
+    "verifiedAt": "2026-10-15T16:26:48+00:00",
+    "build": {
+      "status": "passed",
+      "exitCode": 0,
+      "summary": "npm run build 通过；本批 10/10 正式 URL 已在构建 sitemap 收录，lastmod 与发布时间一致；953 个老游戏的 sitemap 时间戳与导入前一致；本批 0/10 被预渲染（当前按热度选取前 500 款）；10 个线上详情页的正文已另行验证",
+      "entries": [
+        {
+          "slug": "dust-buster",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": false
+        },
+        {
+          "slug": "respect-the-horde",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": false
+        },
+        {
+          "slug": "amber-forest",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": false
+        },
+        {
+          "slug": "the-chimera-gameboy",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": false
+        },
+        {
+          "slug": "better-on-paper",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": false
+        },
+        {
+          "slug": "midas-crutch",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": false
+        },
+        {
+          "slug": "bombermaid",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": false
+        },
+        {
+          "slug": "007",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": false
+        },
+        {
+          "slug": "kenzu",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": false
+        },
+        {
+          "slug": "pokemon-overlord",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": false
+        }
+      ],
+      "oldPublishedTimestampsChecked": 953,
+      "timestampPrecision": "JavaScript Date / sitemap ISO output uses milliseconds; database comparison normalized to milliseconds, prior XML compared exactly",
+      "draftsExcluded": true
+    },
+    "browserResources": [
+      {
+        "slug": "dust-buster",
+        "externalResources": [
+          {
+            "url": "https://html-classic.itch.zone/html/18813867/DustBuster.js",
+            "resolvedUrl": "https://html-classic.itch.zone/html/18813867/DustBuster.js",
+            "httpStatus": 200,
+            "bytes": 372663,
+            "contentType": "text/javascript; charset=utf-8"
+          }
+        ],
+        "note": "Static availability check; not a gameplay or multiplayer test."
+      },
+      {
+        "slug": "respect-the-horde",
+        "externalResources": [],
+        "note": "Game code embedded in HTML or loaded by runtime-specific loader; HTML entry checked."
+      },
+      {
+        "slug": "amber-forest",
+        "externalResources": [
+          {
+            "url": "https://html-classic.itch.zone/html/19430201/web/index.js",
+            "resolvedUrl": "https://html-classic.itch.zone/html/19430201/web/index.js",
+            "httpStatus": 200,
+            "bytes": 315759,
+            "contentType": "text/javascript; charset=utf-8"
+          }
+        ],
+        "note": "Static availability check; not a gameplay or multiplayer test."
+      },
+      {
+        "slug": "the-chimera-gameboy",
+        "externalResources": [
+          {
+            "url": "https://html-classic.itch.zone/html/19773876/TheChimera1.4/binjgb.js",
+            "resolvedUrl": "https://html-classic.itch.zone/html/19773876/TheChimera1.4/binjgb.js",
+            "httpStatus": 200,
+            "bytes": 21032,
+            "contentType": "text/javascript; charset=utf-8"
+          }
+        ],
+        "note": "Static availability check; not a gameplay or multiplayer test."
+      },
+      {
+        "slug": "better-on-paper",
+        "externalResources": [
+          {
+            "url": "https://html-classic.itch.zone/html/19439054/renpy-pre.js",
+            "resolvedUrl": "https://html-classic.itch.zone/html/19439054/renpy-pre.js",
+            "httpStatus": 200,
+            "bytes": 29575,
+            "contentType": "text/javascript; charset=utf-8"
+          }
+        ],
+        "note": "Static availability check; not a gameplay or multiplayer test."
+      },
+      {
+        "slug": "midas-crutch",
+        "externalResources": [
+          {
+            "url": "https://html-classic.itch.zone/html/19676497/runner.js",
+            "resolvedUrl": "https://html-classic.itch.zone/html/19676497/runner.js",
+            "httpStatus": 200,
+            "bytes": 6765806,
+            "contentType": "text/javascript; charset=utf-8"
+          }
+        ],
+        "note": "Static availability check; not a gameplay or multiplayer test."
+      },
+      {
+        "slug": "bombermaid",
+        "externalResources": [
+          {
+            "url": "https://html-classic.itch.zone/html/18826026/js/main.js",
+            "resolvedUrl": "https://html-classic.itch.zone/html/18826026/js/main.js",
+            "httpStatus": 200,
+            "bytes": 4985,
+            "contentType": "text/javascript; charset=utf-8"
+          }
+        ],
+        "note": "Static availability check; not a gameplay or multiplayer test."
+      },
+      {
+        "slug": "007",
+        "externalResources": [
+          {
+            "url": "https://html-classic.itch.zone/html/18528905/WebGL/Build/WebGL.loader.js",
+            "resolvedUrl": "https://html-classic.itch.zone/html/18528905/WebGL/Build/WebGL.loader.js",
+            "httpStatus": 200,
+            "bytes": 117893,
+            "contentType": "text/javascript; charset=utf-8"
+          }
+        ],
+        "note": "Static availability check; not a gameplay or multiplayer test."
+      },
+      {
+        "slug": "kenzu",
+        "externalResources": [],
+        "note": "Game code embedded in HTML or loaded by runtime-specific loader; HTML entry checked."
+      },
+      {
+        "slug": "pokemon-overlord",
+        "externalResources": [
+          {
+            "url": "https://html-classic.itch.zone/html/19768461/index.js",
+            "resolvedUrl": "https://html-classic.itch.zone/html/19768461/index.js",
+            "httpStatus": 200,
+            "bytes": 305185,
+            "contentType": "text/javascript; charset=utf-8"
+          }
+        ],
+        "note": "Static availability check; not a gameplay or multiplayer test."
+      }
+    ],
+    "llmsTxt": {
+      "checked": "public/llms.txt",
+      "changed": false,
+      "reason": "Current catalogue routes, external play and sitemap descriptions remain accurate."
+    }
+  },
+  "inputFeed": "https://itch.io/games/new-and-popular/free/platform-web.xml",
+  "inputFetchedAt": "2026-10-15 16:16 (as supplied)",
+  "counts": {
+    "published": 10,
+    "draft": 0,
+    "duplicate": 0,
+    "skipped": 0,
+    "failed": 0
+  }
+}
