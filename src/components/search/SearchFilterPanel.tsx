@@ -1,6 +1,6 @@
 "use client";
 
-import { Filter, Search, X } from "lucide-react";
+import { Filter, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
@@ -15,7 +15,6 @@ function optionLabel(value: string) {
 function Fields({ filters, options }: { filters: PublicSearchFilters; options: FilterOptions }) {
   const field = "h-11 w-full rounded-xl border bg-background px-3 text-sm";
   return <>
-    <label className="relative"><span className="mb-1.5 block text-xs font-bold">Search</span><Search className="absolute bottom-3.5 left-3.5 h-4 w-4 text-muted-foreground" /><input name="q" type="search" defaultValue={filters.q} placeholder="Name, developer, genre or tag" className={`${field} pl-10`} /></label>
     <label><span className="mb-1.5 block text-xs font-bold">Genre</span><select name="category" defaultValue={filters.category || ""} className={field}><option value="">All genres</option>{options.categories.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label>
     <label><span className="mb-1.5 block text-xs font-bold">Playable</span><select name="playMode" defaultValue={filters.playMode} className={field}><option value="all">All games</option><option value="embedded">Playable Here</option></select></label>
     {options.platforms.length > 0 && <label><span className="mb-1.5 block text-xs font-bold">Platform</span><select name="platform" defaultValue={filters.platform || ""} className={field}><option value="">All platforms</option>{options.platforms.map((item) => <option key={item} value={item}>{optionLabel(item)}</option>)}</select></label>}
@@ -26,7 +25,7 @@ function Fields({ filters, options }: { filters: PublicSearchFilters; options: F
 }
 
 function Form({ filters, options, mobile = false }: { filters: PublicSearchFilters; options: FilterOptions; mobile?: boolean }) {
-  return <form action="/search" method="get" className={mobile ? "grid gap-4" : "grid gap-4 rounded-xl border bg-card p-4"}><input type="hidden" name="view" value={filters.view} /><Fields filters={filters} options={options} /><Button type="submit" className="w-full"><Filter className="mr-2 h-4 w-4" />Apply filters</Button></form>;
+  return <form action="/search" method="get" className={mobile ? "grid gap-4" : "grid gap-4 rounded-xl border bg-card p-4"}>{filters.q && <input type="hidden" name="q" value={filters.q} />}<input type="hidden" name="view" value={filters.view} /><Fields filters={filters} options={options} /><Button type="submit" className="w-full"><Filter className="mr-2 h-4 w-4" />Apply filters</Button></form>;
 }
 
 export function SearchFilterPanel({ filters, options }: { filters: PublicSearchFilters; options: FilterOptions }) {
