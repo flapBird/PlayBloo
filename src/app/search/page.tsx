@@ -6,7 +6,7 @@ import { createAdminClient } from "@/lib/supabase/admin";
 import { getCachedCategoryCatalog, normalizePublicGameCards, PUBLIC_GAME_CARD_FIELDS } from "@/lib/discovery-data";
 import { GameCard, type GameCardGame } from "@/components/games/GameCard";
 import { GameListItem } from "@/components/games/GameListItem";
-import { ActiveFilterChips, SearchFilterPanel, type FilterOptions, type PublicSearchFilters } from "@/components/search/SearchFilterPanel";
+import { ActiveFilterChips, type FilterOptions, type PublicSearchFilters } from "@/components/search/ActiveFilterChips";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { PAGE_SIZE, SITE_URL } from "@/lib/constants";
 
@@ -173,46 +173,43 @@ export default async function SearchPage({ searchParams }: Props) {
         <p className="mb-1.5 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground"><SlidersHorizontal className="h-3.5 w-3.5" />Game discovery</p>
         <h1 className="text-2xl font-extrabold tracking-tight md:text-3xl">{filters.q ? `Results for “${filters.q}”` : filters.playMode === "embedded" ? "Games playable here" : sortLabels[filters.sort]}</h1>
       </div>
-      <div className="grid gap-6 md:grid-cols-[220px_minmax(0,1fr)]">
-        <SearchFilterPanel filters={filters} options={options} />
-        <section aria-label="Search results" className="min-w-0 space-y-5">
-          <div className="flex flex-wrap items-center justify-between gap-3 border-b pb-4">
-            <div>
-              <p className="text-sm text-muted-foreground"><strong className="text-foreground">{total}</strong> games found</p>
-              <ActiveFilterChips filters={filters} options={options} />
-            </div>
-            <div className="flex items-center gap-1 rounded-lg border bg-card p-1">
-              <Link href={href(filters, 1, "list")} aria-label="List view" className={`grid h-8 w-8 place-items-center rounded-md ${filters.view === "list" ? "bg-muted text-foreground" : "text-muted-foreground hover:text-foreground"}`}><List className="h-4 w-4" /></Link>
-              <Link href={href(filters, 1, "grid")} aria-label="Grid view" className={`grid h-8 w-8 place-items-center rounded-md ${filters.view === "grid" ? "bg-muted text-foreground" : "text-muted-foreground hover:text-foreground"}`}><LayoutGrid className="h-4 w-4" /></Link>
-            </div>
+      <section aria-label="Search results" className="min-w-0 space-y-5">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b pb-4">
+          <div>
+            <p className="text-sm text-muted-foreground"><strong className="text-foreground">{total}</strong> games found</p>
+            <ActiveFilterChips filters={filters} options={options} />
           </div>
-          {games.length ? (
-            <>
-              {filters.view === "grid" ? (
-                <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-                  {games.map((game) => <GameCard key={game.id} game={game} showDate dateField={dateField} />)}
-                </div>
-              ) : (
-                <div className="discovery-list">
-                  {games.map((game, index) => <GameListItem key={game.id} game={game} dateField={dateField} eagerImage={index === 0} />)}
-                </div>
-              )}
-              {pages > 1 && (
-                <nav className="flex justify-center gap-2 pt-3">
-                  {filters.page > 1 && <Link href={href(filters, filters.page - 1)} className="rounded-lg border px-4 py-2 text-sm font-semibold">Previous</Link>}
-                  <span className="px-3 py-2 text-sm text-muted-foreground">Page {filters.page} of {pages}</span>
-                  {filters.page < pages && <Link href={href(filters, filters.page + 1)} className="rounded-lg border px-4 py-2 text-sm font-semibold">Next</Link>}
-                </nav>
-              )}
-            </>
-          ) : (
-            <div className="rounded-xl border border-dashed p-12 text-center text-muted-foreground">
-              {failed ? "Games could not be loaded. Please try again." : total > 0 ? "No games on this page." : filters.sort === "recently-updated" ? "No verified game updates have been recorded yet." : "No games match these filters."}{" "}
-              <Link href={failed ? href(filters, filters.page) : total > 0 ? href(filters, 1) : "/search"} className="font-bold text-primary">{failed ? "Try again" : total > 0 ? "Back to first page" : "Clear all"}</Link>.
-            </div>
-          )}
-        </section>
-      </div>
+          <div className="flex items-center gap-1 rounded-lg border bg-card p-1">
+            <Link href={href(filters, 1, "list")} aria-label="List view" className={`grid h-8 w-8 place-items-center rounded-md ${filters.view === "list" ? "bg-muted text-foreground" : "text-muted-foreground hover:text-foreground"}`}><List className="h-4 w-4" /></Link>
+            <Link href={href(filters, 1, "grid")} aria-label="Grid view" className={`grid h-8 w-8 place-items-center rounded-md ${filters.view === "grid" ? "bg-muted text-foreground" : "text-muted-foreground hover:text-foreground"}`}><LayoutGrid className="h-4 w-4" /></Link>
+          </div>
+        </div>
+        {games.length ? (
+          <>
+            {filters.view === "grid" ? (
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+                {games.map((game) => <GameCard key={game.id} game={game} showDate dateField={dateField} />)}
+              </div>
+            ) : (
+              <div className="discovery-list">
+                {games.map((game, index) => <GameListItem key={game.id} game={game} dateField={dateField} eagerImage={index === 0} />)}
+              </div>
+            )}
+            {pages > 1 && (
+              <nav className="flex justify-center gap-2 pt-3">
+                {filters.page > 1 && <Link href={href(filters, filters.page - 1)} className="rounded-lg border px-4 py-2 text-sm font-semibold">Previous</Link>}
+                <span className="px-3 py-2 text-sm text-muted-foreground">Page {filters.page} of {pages}</span>
+                {filters.page < pages && <Link href={href(filters, filters.page + 1)} className="rounded-lg border px-4 py-2 text-sm font-semibold">Next</Link>}
+              </nav>
+            )}
+          </>
+        ) : (
+          <div className="rounded-xl border border-dashed p-12 text-center text-muted-foreground">
+            {failed ? "Games could not be loaded. Please try again." : total > 0 ? "No games on this page." : filters.sort === "recently-updated" ? "No verified game updates have been recorded yet." : "No games match these filters."}{" "}
+            <Link href={failed ? href(filters, filters.page) : total > 0 ? href(filters, 1) : "/search"} className="font-bold text-primary">{failed ? "Try again" : total > 0 ? "Back to first page" : "Clear all"}</Link>.
+          </div>
+        )}
+      </section>
     </div>
   );
 }

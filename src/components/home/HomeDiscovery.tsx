@@ -2,7 +2,7 @@
 
 import { useState, type KeyboardEvent, type ReactNode } from "react";
 import Link from "next/link";
-import { ArrowRight, CalendarDays, Flame, LayoutGrid, List, SlidersHorizontal } from "lucide-react";
+import { ArrowRight, CalendarDays, Flame, LayoutGrid, List } from "lucide-react";
 import { GameCard } from "@/components/games/GameCard";
 import { GameListItem } from "@/components/games/GameListItem";
 import type { HomeFeeds, HomeFeedSort } from "@/lib/home-feeds";
@@ -47,7 +47,7 @@ export function HomeDiscovery({ feeds, sidebar }: { feeds: HomeFeeds; sidebar: R
           ))}
         </div>
         <div className="discovery-tools flex shrink-0 items-center gap-3">
-          <Link href={browseHref} prefetch={false} className="discovery-tool-button home-filter-button"><SlidersHorizontal className="h-4 w-4" />Filters</Link>
+          <Link href={browseHref} prefetch={false} className="discovery-tool-button home-browse-button">Browse all<ArrowRight className="h-4 w-4" /></Link>
           <div role="group" aria-label="Display games as" className="home-view-switch">
             <button type="button" onClick={() => setView("grid")} aria-label="Grid view" aria-pressed={view === "grid"} className={`discovery-tool-button ${view === "grid" ? "is-selected" : ""}`}><LayoutGrid className="h-4 w-4" /></button>
             <button type="button" onClick={() => setView("list")} aria-label="List view" aria-pressed={view === "list"} className={`discovery-tool-button ${view === "list" ? "is-selected" : ""}`}><List className="h-4 w-4" /></button>

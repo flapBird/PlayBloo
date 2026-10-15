@@ -596,7 +596,7 @@ body.game-fullscreen .site-main {
 .home-view-switch { display: flex; gap: .125rem; border: 1px solid var(--border); border-radius: .6rem; padding: .2rem; }
 .home-view-switch .discovery-tool-button { min-width: 2rem; min-height: 2rem; border: 0; border-radius: .4rem; background: transparent; padding: .4rem; }
 .home-view-switch .discovery-tool-button.is-selected { background: var(--muted); color: var(--foreground); }
-.home-filter-button { border-color: transparent; background: transparent; }
+.home-browse-button { border-color: transparent; background: transparent; }
 .game-card { height: 100%; }
 .game-card-link { display: flex; height: 100%; flex-direction: column; border-radius: .85rem; }
 .game-card-copy { padding: .7rem .1rem .25rem; }
