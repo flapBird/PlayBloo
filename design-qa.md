@@ -3,33 +3,34 @@
 final result: passed
 
 ## Reference and evidence
-- Source: `/var/folders/ll/zfhgnxpx1sl87rndkww8r32w0000gq/T/codex-clipboard-0b878a38-4125-416c-9198-c82d7bcf99f4.png` (772 × 392); second user screenshot documents the incomplete five-column grid.
-- Desktop: `reports/card-refresh-2026-10-15/desktop.png` (1274 × 717 pixels, browser default viewport, 1× capture).
-- Mobile: `reports/card-refresh-2026-10-15/mobile.png` (390 × 844 pixels, 390 × 844 CSS viewport, 1× capture).
+- Desktop visual target: `/var/folders/ll/zfhgnxpx1sl87rndkww8r32w0000gq/T/codex-clipboard-0b878a38-4125-416c-9198-c82d7bcf99f4.png` (772 × 392).
+- Mobile regression supplied by user: `/var/folders/ll/zfhgnxpx1sl87rndkww8r32w0000gq/T/codex-clipboard-99511590-f7ee-4fbc-9f15-1197be057be6.png`.
+- Desktop verification: `reports/card-refresh-2026-10-15/desktop.png`, 1434 × 996 image pixels from a 1440 × 1000 CSS viewport, 1× content capture.
+- Mobile verification: `reports/card-refresh-2026-10-15/mobile.png`, 384 × 831 image pixels from a 390 × 844 CSS viewport, 1× content capture.
 - URL: http://127.0.0.1:3000/search
-- The source card is shown enlarged, while implementation uses existing PlayBloo grid dimensions and real catalog data. Comparison is component-level, not a pixel-identical page clone.
-- Source and desktop captures were opened together for visual comparison. The focused card is legible in the full capture, so a separate crop was unnecessary.
+- Component-level comparison: existing PlayBloo game assets and content are intentional adaptations of the desktop source. Desktop and mobile have different interaction models.
 
-## Findings and fidelity
-- No remaining P0/P1/P2 findings.
-- Typography: bold white title and smaller category/mode/date metadata; preserve the existing site font. Long titles wrap to two lines.
-- Layout: rounded cover-only tiles, no text below the image, purple lower overlay on keyboard focus (same selectors as hover). Subtle scaling does not reflow adjacent tiles.
-- Colors: purple gradient, white text, dark category pill and purple border follow the reference. Keyboard focus adds a separate accessible outline.
-- Assets: existing game covers remain unchanged and load from original URLs; no invented popularity metrics or generated game imagery.
-- Content: real title/category/play mode/date/views replace the reference's title/category/play/like statistics. This is intentional adaptation to available product data.
-- Narrow screens show title/category continuously and omit date/mode to keep the cover readable. Coarse-pointer and non-hover media rules provide the same treatment.
+## Findings and corrections
+- [P1, resolved] All mobile cards permanently displayed the purple desktop information layer, obscuring the covers. The earlier QA incorrectly accepted that treatment as the touch fallback.
+- Move card information outside the media container. On small screens, coarse pointers and non-hover devices, display only a two-line title below the unobstructed cover; hide secondary metadata and remove the overlay background.
+- Limit hover reveal, media highlight and enlargement to fine-pointer devices with hover and width >= 640px. Mobile keyboard focus keeps its outline without an overlay or enlargement.
+- Keep the media at 16:10 with flex-shrink disabled. Preserve bottom overlay rounding for the desktop sibling layout.
+- No outstanding P0/P1/P2 findings in the verified states.
 
-## Verification and iteration
-- Desktop DOM measured 24 cards in six rows of four; page two also returned 24 cards after clicking Next.
-- Keyboard Tab reveals the information overlay. Default light appearance and dark appearance inspected.
-- 390px viewport: two columns, no horizontal overflow (document client/scroll width both 384px with scrollbar). Final screenshot confirms visible titles/categories.
-- First narrow-screen check exposed stale development CSS. Switched the local preview from Turbopack to Webpack and recaptured; final computed overlay opacity is 1.
-- Browser console error log empty. Existing Next.js LCP image-loading advisory is not an application error.
-- Actual touchscreen hardware and physical mouse hover were not separately exercised; keyboard focus validates the shared reveal rules. No outstanding visual mismatch identified.
+## Fidelity surfaces
+- Typography: existing site font; compact mobile titles use theme foreground, 14px/1.35 and weight 600. Two-line space keeps grid rows aligned.
+- Spacing/layout: mobile captions follow their cover without overlap; desktop keeps six columns and absolute-positioned information. Caption and cover remain one link.
+- Colors: no mobile gradient; readable foreground in light/dark themes. Desktop retains the purple reveal layer and accessible focus outline.
+- Assets: existing compressed covers, original URLs and global unoptimized image setting preserved.
+- Content: title always available on mobile; category, mode, dates and views are desktop reveal details. No fabricated statistics.
 
-## Implementation checklist
-- [x] Cover-first shared card, keyboard and touch fallback, reduced-motion support.
-- [x] Search grid column counts divide the existing 24-item page size.
-- [x] Preserve normal incomplete last pages when fewer than 24 results remain.
-- [x] Update llms.txt display description.
-- [x] No game publishing/data changes; sitemap generator and timestamps unchanged.
+## Verification
+- 320px and 390px viewport checks: computed caption background image is none; no horizontal overflow.
+- 390px: caption position static, below media; cover width/height ratio 1.6.
+- Mobile keyboard focus: no transform, no media shadow, no caption gradient; solid outline remains.
+- A single card click navigated to `/game/gyra` with navigation completion awaited.
+- Homepage: all 20 mobile cards have no overlay. Light and dark theme text inspected.
+- Desktop: default copy absolute and opacity 0; keyboard focus changes opacity to 1, keeps 16px bottom corners and expected enlargement.
+- Browser console errors: none observed.
+- Actual touch hardware and physical mouse hover were not separately exercised. Browser viewport checks and CSS media conditions cover the corresponding layouts; no claim of a real-device test.
+- TypeScript, targeted ESLint and diff checks pass. llms.txt synchronized. No game publishing/data or sitemap timestamp changes.
