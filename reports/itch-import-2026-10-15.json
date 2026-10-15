@@ -1,0 +1,2963 @@
+{
+  "batchDate": "2026-10-15",
+  "inputCount": 10,
+  "baselineCount": 950,
+  "entries": [
+    {
+      "index": 1,
+      "inputTitle": "魔法の数字",
+      "sourceUrl": "https://mongoumery.itch.io/magicnumbers",
+      "resolvedUrl": "https://mongoumery.itch.io/magicnumbers",
+      "identity": "mongoumery/magicnumbers",
+      "inputPublishedAt": "2026-10-14 18:07（UTC+8）",
+      "decision": "published",
+      "game": {
+        "id": "5b429c63-8dcf-4e75-a12a-88c3be053a15",
+        "title": "魔法の数字",
+        "slug": "magicnumbers",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-15/magicnumbers.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "Magic Numbers (魔法の数字) is a small Japanese number-swiping game set in a cave covered in darkness. The developer presents it as an intentionally niche experience for people who understand its mysterious numbers.\n\nIts premise is simple: respond to the displayed numbers with a swipe in either direction. The creator also suggests sharing the experience with a friend or an audience.",
+        "how_to_play": "Look at the number on screen and swipe it left or right. Follow the game’s own prompts to explore its magic-number premise.",
+        "controls": "Swipe a displayed number left or right. See the original itch.io page and in-game prompts for further control notes.",
+        "tips": "Read the on-screen prompts before choosing a direction.\nThe official page is in Japanese.",
+        "features": "Left-or-right number swiping\nDark cave premise\nJapanese-language presentation\nFree browser release",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-15T04:02:58.964685+00:00",
+        "updated_at": "2026-10-15T04:03:44+00:00",
+        "external_url": "https://mongoumery.itch.io/magicnumbers",
+        "developer": "紋甲メリー",
+        "publisher": null,
+        "source_url": "https://mongoumery.itch.io/magicnumbers",
+        "source_type": "itch.io",
+        "original_game_url": "https://mongoumery.itch.io/magicnumbers",
+        "developer_url": "https://mongoumery.itch.io",
+        "steam_url": null,
+        "itch_url": "https://mongoumery.itch.io/magicnumbers",
+        "last_verified_at": "2026-10-15T03:58:49+00:00",
+        "sources": [
+          {
+            "url": "https://mongoumery.itch.io/magicnumbers",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-15T03:58:49+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-15T04:03:44+00:00",
+        "last_updated_at": null,
+        "short_description": "Swipe numbers left or right to find your own magic number in a dark cave.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "mongoumery/magicnumbers",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "released",
+        "graphics": null,
+        "multiplayer": "single-player",
+        "engine": null,
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/magicnumbers-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/magicnumbers-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/magicnumbers-2.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/magicnumbers-3.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "card",
+        "casual"
+      ],
+      "media": [
+        {
+          "kind": "cover",
+          "file": "magicnumbers.webp",
+          "source": "https://img.itch.zone/aW1nLzMwODY5NTgzLnBuZw==/original/YX190E.png",
+          "object": "covers/2026-10-15/magicnumbers.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-15/magicnumbers.webp",
+          "bytes": 28616,
+          "width": 630,
+          "height": 500,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            630,
+            500
+          ],
+          "sha256": "13b89ac6d6511f0b3442428f9071a014d26d6026663eef579ea52219b571b4fa",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "magicnumbers-screen-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE1NTk4NS8zMDg3MDQ0NC5wbmc=/347x500/6FRK6G.png",
+          "object": "screenshots/2026-10-15/magicnumbers-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/magicnumbers-0.webp",
+          "bytes": 12448,
+          "width": 347,
+          "height": 275,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            275
+          ],
+          "sha256": "fe0fa67870a3e0c3955c83f8c196ced095e2aaceae63f0b11661782f573109da",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "magicnumbers-screen-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE1NTk4NS8zMDg3MDI3Ni5wbmc=/347x500/b0fxoC.png",
+          "object": "screenshots/2026-10-15/magicnumbers-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/magicnumbers-1.webp",
+          "bytes": 8370,
+          "width": 347,
+          "height": 275,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            275
+          ],
+          "sha256": "4217fb19f7e9d70e90daf66dc9c293974df16767d266fae1317a3fdbea205977",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "magicnumbers-screen-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE1NTk4NS8zMDg3MDI3Ny5wbmc=/347x500/epDwJh.png",
+          "object": "screenshots/2026-10-15/magicnumbers-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/magicnumbers-2.webp",
+          "bytes": 12534,
+          "width": 347,
+          "height": 275,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            275
+          ],
+          "sha256": "bae3fc0f4443a747e241da06d64d061d32f9bb63c17acf5c81ea9d1a61d701f1",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "magicnumbers-screen-3.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE1NTk4NS8zMDg5MTg3My5wbmc=/347x500/0jodYl.png",
+          "object": "screenshots/2026-10-15/magicnumbers-3.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/magicnumbers-3.webp",
+          "bytes": 7198,
+          "width": 347,
+          "height": 275,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            275
+          ],
+          "sha256": "9f9489b77fd03b61e742dbe95fa6369c7693d7975cda490ead29b35725709767",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "url": "https://html-classic.itch.zone/html/19767635/index.html?v=1792014884",
+        "resolvedUrl": "https://html-classic.itch.zone/html/19767635/index.html?v=1792014884",
+        "httpStatus": 200,
+        "bytes": 1214933,
+        "resourceCheck": {
+          "slug": "magicnumbers",
+          "externalResources": [],
+          "note": "Game code embedded in HTML or loaded by runtime-specific loader; HTML entry checked."
+        }
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://mongoumery.itch.io/magicnumbers",
+          "verifiedAt": "2026-10-15T03:58:49+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "status"
+          ],
+          "tipsBasis": "Editorial suggestions based on documented mechanics"
+        }
+      ],
+      "editorialEvidence": {
+        "sourceUrl": "https://mongoumery.itch.io/magicnumbers",
+        "author": "紋甲メリー",
+        "authorUrl": "https://mongoumery.itch.io",
+        "evidence": [
+          "Official formatted_description: niche game for users of magic numbers; swipe displayed number left or right; cave shrouded in darkness.",
+          "Official page in Japanese; sidebar lists Released, HTML5, Card Game."
+        ],
+        "attention": [
+          "Very sparse official description; no scoring, winning, progression, or detailed rules claimed.",
+          "Social suggestions in prose do not establish an implemented multiplayer mode.",
+          "Engine and graphics left null; Japanese interface inferred only from presentation, should verify screenshot if important."
+        ]
+      },
+      "metadataNotes": [
+        "Radar publication time retained as input only; no verified original release date.",
+        "Tips are editorial advice inferred from verified mechanics.",
+        "Very sparse official description; no scoring, winning, progression, or detailed rules claimed.",
+        "Social suggestions in prose do not establish an implemented multiplayer mode.",
+        "Engine and graphics left null; Japanese interface inferred only from presentation, should verify screenshot if important."
+      ],
+      "missingDetailFields": [],
+      "gameId": "5b429c63-8dcf-4e75-a12a-88c3be053a15",
+      "publishedAt": "2026-10-15T04:03:44+00:00",
+      "updates": [
+        {
+          "id": "419733f0-0b2f-401e-baca-3f00f027b5d2",
+          "game_id": "5b429c63-8dcf-4e75-a12a-88c3be053a15",
+          "version": null,
+          "title": "Added to PlayBloo",
+          "summary": "Added to the PlayBloo catalogue with researched game details and an official itch.io play link.",
+          "published_at": "2026-10-15T04:03:44+00:00",
+          "source_url": "https://mongoumery.itch.io/magicnumbers",
+          "created_at": "2026-10-15T04:03:02.247944+00:00",
+          "updated_at": "2026-10-15T04:03:02.247944+00:00"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "inputTitle": "Erwin Smith Run",
+      "sourceUrl": "https://natsu-madao.itch.io/erwin-smith-run",
+      "resolvedUrl": "https://natsu-madao.itch.io/erwin-smith-run",
+      "identity": "natsu-madao/erwin-smith-run",
+      "inputPublishedAt": "2026-10-14 13:34（UTC+8）",
+      "decision": "published",
+      "game": {
+        "id": "0fc27c56-50e3-4c0b-8c7d-9716b6b560c6",
+        "title": "Erwin Smith Run",
+        "slug": "erwin-smith-run",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-15/erwin-smith-run.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "This unofficial Attack on Titan fan game celebrates Erwin Smith’s birthday with a horseback charge through ruins and open fields. Slash approaching Titans and return incoming boulders while surviving on three health points.\n\nThe Beast Titan appears after roughly two and a half minutes. Defeat his reaching arms or reflect his projectiles until Levi arrives. Chinese-language instructions explain the two-action combat system.",
+        "how_to_play": "Jump over low hazards, slash Titans, and parry boulders. A warning mark on the right announces incoming rocks. If defeated during the boss encounter, restart directly from that fight.",
+        "controls": "Jump – Space, Up, or W; left-side screen tap; controller A\nSlash/parry – J, X, K, or Right; right-side screen tap; controller X\nPause – Esc or P; top-right pause icon; controller Back\nMobile – landscape orientation; portrait pauses play",
+        "tips": "Slash at close range for double-score perfect kills.\nAvoid swinging early: a missed slash briefly prevents another attack.",
+        "features": "Two-action combat\nThree-point health bar\nBoss checkpoint\nKeyboard, touch, and controller support\n2D pixel artwork\nGodot browser build",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-15T04:02:58.964685+00:00",
+        "updated_at": "2026-10-15T04:03:44+00:00",
+        "external_url": "https://natsu-madao.itch.io/erwin-smith-run",
+        "developer": "Natsu-madao",
+        "publisher": null,
+        "source_url": "https://natsu-madao.itch.io/erwin-smith-run",
+        "source_type": "itch.io",
+        "original_game_url": "https://natsu-madao.itch.io/erwin-smith-run",
+        "developer_url": "https://natsu-madao.itch.io",
+        "steam_url": null,
+        "itch_url": "https://natsu-madao.itch.io/erwin-smith-run",
+        "last_verified_at": "2026-10-15T03:58:49+00:00",
+        "sources": [
+          {
+            "url": "https://natsu-madao.itch.io/erwin-smith-run",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-15T03:58:49+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-15T04:03:44+00:00",
+        "last_updated_at": null,
+        "short_description": "Ride with Erwin in an unofficial Attack on Titan fan game built around jumps and timed parries.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "natsu-madao/erwin-smith-run",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "early-access",
+        "graphics": "2D",
+        "multiplayer": "single-player",
+        "engine": "Godot",
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/erwin-smith-run-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/erwin-smith-run-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/erwin-smith-run-2.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/erwin-smith-run-3.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/erwin-smith-run-4.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/erwin-smith-run-5.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "action",
+        "arcade"
+      ],
+      "media": [
+        {
+          "kind": "cover",
+          "file": "erwin-smith-run.webp",
+          "source": "https://img.itch.zone/aW1nLzMwODU5MDQ2LnBuZw==/original/WWMtJo.png",
+          "object": "covers/2026-10-15/erwin-smith-run.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-15/erwin-smith-run.webp",
+          "bytes": 70384,
+          "width": 630,
+          "height": 500,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            630,
+            500
+          ],
+          "sha256": "dc6cf0ea09bc3d51305f6b684ee3701c138149fe0f03bdc2646ca4048d1fba69",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "erwin-smith-run-screen-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE1NTExMi8zMDg1OTA3My5wbmc=/347x500/%2FpNSo%2B.png",
+          "object": "screenshots/2026-10-15/erwin-smith-run-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/erwin-smith-run-0.webp",
+          "bytes": 18870,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "cf804c5e112102823287819e1ce5f2101154ebbb73289826ffff4b13e6d2229b",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "erwin-smith-run-screen-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE1NTExMi8zMDg1OTA3Mi5wbmc=/347x500/S50J0v.png",
+          "object": "screenshots/2026-10-15/erwin-smith-run-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/erwin-smith-run-1.webp",
+          "bytes": 18256,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "a4f246be11b7d4a3d91291ec07ece4169252ae2162c29dd7f31438f36677ce8f",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "erwin-smith-run-screen-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE1NTExMi8zMDg1OTA3NS5wbmc=/347x500/OUZ14B.png",
+          "object": "screenshots/2026-10-15/erwin-smith-run-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/erwin-smith-run-2.webp",
+          "bytes": 20656,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "456e760e5ddb102488e5a90d105a9773b1a40071df2b1aa2c3165bb006804cfc",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "erwin-smith-run-screen-3.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE1NTExMi8zMDg1OTA3NC5wbmc=/347x500/yJt4p4.png",
+          "object": "screenshots/2026-10-15/erwin-smith-run-3.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/erwin-smith-run-3.webp",
+          "bytes": 18652,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "da9ee4002f12247f5d905c2544f7c87a021879255fb6d5737ec67d6e59a06eff",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "erwin-smith-run-screen-4.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE1NTExMi8zMDg1OTA3MS5wbmc=/347x500/1cazD7.png",
+          "object": "screenshots/2026-10-15/erwin-smith-run-4.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/erwin-smith-run-4.webp",
+          "bytes": 17854,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "a42ad0b38793adf23029334bbdd51e659b3966156dcc6471de8c5bcdcaa46711",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "erwin-smith-run-screen-5.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE1NTExMi8zMDg1OTA3Ni5wbmc=/347x500/S%2B1sqx.png",
+          "object": "screenshots/2026-10-15/erwin-smith-run-5.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/erwin-smith-run-5.webp",
+          "bytes": 19170,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "a42e8a3adae1d48657f39d7df6695f8c2161847e2d6ff460a5b422a9e5277b8b",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "url": "https://html-classic.itch.zone/html/19752997/index.html?v=1791957093",
+        "resolvedUrl": "https://html-classic.itch.zone/html/19752997/index.html?v=1791957093",
+        "httpStatus": 200,
+        "bytes": 5535,
+        "resourceCheck": {
+          "slug": "erwin-smith-run",
+          "externalResources": [
+            {
+              "url": "https://html-classic.itch.zone/html/19752997/index.js",
+              "resolvedUrl": "https://html-classic.itch.zone/html/19752997/index.js",
+              "httpStatus": 200,
+              "bytes": 279840,
+              "contentType": "text/javascript; charset=utf-8"
+            }
+          ],
+          "note": "Static availability check; not a gameplay or multiplayer test."
+        }
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://natsu-madao.itch.io/erwin-smith-run",
+          "verifiedAt": "2026-10-15T03:58:49+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "status"
+          ],
+          "tipsBasis": "Editorial suggestions based on documented mechanics"
+        }
+      ],
+      "editorialEvidence": {
+        "sourceUrl": "https://natsu-madao.itch.io/erwin-smith-run",
+        "author": "Natsu-madao",
+        "authorUrl": "https://natsu-madao.itch.io",
+        "evidence": [
+          "Official Chinese description provides jump/slash controls, parry warning, three health, two-and-half-minute boss arrival, and direct boss restart.",
+          "Sidebar: In development, HTML5, Action, Godot, 2D, Pixel Art, Singleplayer."
+        ],
+        "attention": [
+          "Clearly an unofficial Attack on Titan fan game.",
+          "Official page says AI-generated character/background pixel graphics were manually cropped and palette-limited; no claim of entirely handmade art.",
+          "Mobile portrait orientation pauses the game; keep landscape requirement."
+        ]
+      },
+      "metadataNotes": [
+        "Radar publication time retained as input only; no verified original release date.",
+        "Tips are editorial advice inferred from verified mechanics.",
+        "Clearly an unofficial Attack on Titan fan game.",
+        "Official page says AI-generated character/background pixel graphics were manually cropped and palette-limited; no claim of entirely handmade art.",
+        "Mobile portrait orientation pauses the game; keep landscape requirement."
+      ],
+      "missingDetailFields": [],
+      "gameId": "0fc27c56-50e3-4c0b-8c7d-9716b6b560c6",
+      "publishedAt": "2026-10-15T04:03:44+00:00",
+      "updates": [
+        {
+          "id": "740404af-df11-4e3b-8fab-8fccda89aff9",
+          "game_id": "0fc27c56-50e3-4c0b-8c7d-9716b6b560c6",
+          "version": null,
+          "title": "Added to PlayBloo",
+          "summary": "Added to the PlayBloo catalogue with researched game details and an official itch.io play link.",
+          "published_at": "2026-10-15T04:03:44+00:00",
+          "source_url": "https://natsu-madao.itch.io/erwin-smith-run",
+          "created_at": "2026-10-15T04:03:02.247944+00:00",
+          "updated_at": "2026-10-15T04:03:02.247944+00:00"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "inputTitle": "Diglings Demo",
+      "sourceUrl": "https://ryanforrester.itch.io/diglings-demo",
+      "resolvedUrl": "https://ryanforrester.itch.io/diglings-demo",
+      "identity": "ryanforrester/diglings-demo",
+      "inputPublishedAt": "2026-10-09 22:24（UTC+8）",
+      "decision": "published",
+      "game": {
+        "id": "6f051dd4-7d45-4c33-8581-e0ec28fd815d",
+        "title": "Diglings Demo",
+        "slug": "diglings-demo",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-15/diglings-demo.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "Diglings Demo is an early prototype of an incremental digging simulation. A wizard has hidden your pants far beneath the ground, giving your expanding excavation an unusually personal goal.\n\nRecruit Diglings, build homes for a larger workforce, and invest the materials you uncover into research and upgrades. Your workers can become better at excavation, hauling, and climbing, while wizard upgrades support more active involvement. The developer is seeking feedback on this unfinished demo.",
+        "how_to_play": "Hire workers and expand your housing, then use resources from the hole to improve your operation. Develop your workforce and upgrade the wagon; its improvements carry over between holes.",
+        "controls": "Move camera – WASD\nInteract – mouse click",
+        "tips": "Plan resource spending around both workforce growth and worker improvements.\nConsider wagon upgrades for progress that persists between holes.\nExplore wizard upgrades if you prefer active play.",
+        "features": "Incremental excavation\nWorker hiring and housing\nResearch and resource spending\nDigging, hauling, and climbing upgrades\nPersistent wagon improvements\nActive wizard upgrades\nGodot browser demo",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-15T04:02:58.964685+00:00",
+        "updated_at": "2026-10-15T04:03:44+00:00",
+        "external_url": "https://ryanforrester.itch.io/diglings-demo",
+        "developer": "Ryan Forrester",
+        "publisher": null,
+        "source_url": "https://ryanforrester.itch.io/diglings-demo",
+        "source_type": "itch.io",
+        "original_game_url": "https://ryanforrester.itch.io/diglings-demo",
+        "developer_url": "https://ryanforrester.itch.io",
+        "steam_url": null,
+        "itch_url": "https://ryanforrester.itch.io/diglings-demo",
+        "last_verified_at": "2026-10-15T03:58:49+00:00",
+        "sources": [
+          {
+            "url": "https://ryanforrester.itch.io/diglings-demo",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-15T03:58:49+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-15T04:03:44+00:00",
+        "last_updated_at": null,
+        "short_description": "Hire tiny workers and grow a digging operation to recover the pants a wizard buried underground.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "ryanforrester/diglings-demo",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "demo",
+        "graphics": null,
+        "multiplayer": "single-player",
+        "engine": "Godot",
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/diglings-demo-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/diglings-demo-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/diglings-demo-2.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/diglings-demo-3.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/diglings-demo-4.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/diglings-demo-5.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "idle",
+        "simulation"
+      ],
+      "media": [
+        {
+          "kind": "cover",
+          "file": "diglings-demo.webp",
+          "source": "https://img.itch.zone/aW1nLzMwNjkxNTI0LnBuZw==/original/diIgcx.png",
+          "object": "covers/2026-10-15/diglings-demo.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-15/diglings-demo.webp",
+          "bytes": 27738,
+          "width": 640,
+          "height": 299,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            920,
+            430
+          ],
+          "sha256": "cd17079544da05ba620836e3c8fd07503e2c91aad4f666ee45f578d014a8c327",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "diglings-demo-screen-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTEyNjkxOC8zMDY5MTU4NS5wbmc=/347x500/fL6X8f.png",
+          "object": "screenshots/2026-10-15/diglings-demo-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/diglings-demo-0.webp",
+          "bytes": 4166,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "7a2b2d3d40ee29f2a49d9f5a37270416ced944ec27aac15638c74f7b0b26e6cc",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "diglings-demo-screen-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTEyNjkxOC8zMDY5MTU4Mi5wbmc=/347x500/ezpap4.png",
+          "object": "screenshots/2026-10-15/diglings-demo-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/diglings-demo-1.webp",
+          "bytes": 6556,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "e5fead32f6c5b70e192a883ac4d72399318e4a66fa680e79d45231a081ea04a9",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "diglings-demo-screen-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTEyNjkxOC8zMDY5MTU4Ny5wbmc=/347x500/9gC8ea.png",
+          "object": "screenshots/2026-10-15/diglings-demo-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/diglings-demo-2.webp",
+          "bytes": 6684,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "083f1199af1833b248424bfd82b04fe115c224203588f7bac0d24802dfda1cb2",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "diglings-demo-screen-3.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTEyNjkxOC8zMDY5MTU4NC5wbmc=/347x500/oOjJzM.png",
+          "object": "screenshots/2026-10-15/diglings-demo-3.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/diglings-demo-3.webp",
+          "bytes": 3288,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "1317fc90cb4f29f083f002887104ce281049e774b240e0bc2ade02a72625b58c",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "diglings-demo-screen-4.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTEyNjkxOC8zMDY5MTU4My5wbmc=/347x500/gkdfam.png",
+          "object": "screenshots/2026-10-15/diglings-demo-4.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/diglings-demo-4.webp",
+          "bytes": 7688,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "7bcd0b6a394b6cc76a1646b0b2ce48ec5f8fa40c476466922a4e7ef5dfc7bcf3",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "diglings-demo-screen-5.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTEyNjkxOC8zMDY5MTU4Ni5wbmc=/347x500/Codlhv.png",
+          "object": "screenshots/2026-10-15/diglings-demo-5.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/diglings-demo-5.webp",
+          "bytes": 6004,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "08391a4fdb9aebdf2fc95cca6996b199e4d887bcadaabd4a98d2e32461a7539b",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "url": "https://html-classic.itch.zone/html/19741721/Game.web/AppBundle/index.html?v=1791911820",
+        "resolvedUrl": "https://html-classic.itch.zone/html/19741721/Game.web/AppBundle/index.html?v=1791911820",
+        "httpStatus": 200,
+        "bytes": 23079,
+        "resourceCheck": {
+          "slug": "diglings-demo",
+          "externalResources": [
+            {
+              "url": "https://html-classic.itch.zone/html/19741721/Game.web/AppBundle/godot.js",
+              "resolvedUrl": "https://html-classic.itch.zone/html/19741721/Game.web/AppBundle/godot.js",
+              "httpStatus": 200,
+              "bytes": 35948,
+              "contentType": "text/javascript; charset=utf-8"
+            }
+          ],
+          "note": "Static availability check; not a gameplay or multiplayer test."
+        }
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://ryanforrester.itch.io/diglings-demo",
+          "verifiedAt": "2026-10-15T03:58:49+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "status"
+          ],
+          "tipsBasis": "Editorial suggestions based on documented mechanics"
+        }
+      ],
+      "editorialEvidence": {
+        "sourceUrl": "https://ryanforrester.itch.io/diglings-demo",
+        "author": "Ryan Forrester",
+        "authorUrl": "https://ryanforrester.itch.io",
+        "evidence": [
+          "Official OG description gives stolen-pants/wizard premise.",
+          "Official body: early feedback build; WASD camera, click interaction; hire/research; housing; resource allocation; wagon upgrades persist across holes; wizard upgrades; worker digging/hauling/climbing upgrades.",
+          "Sidebar lists Prototype, HTML5, Simulation, Godot, Clicker/Idle/Incremental."
+        ],
+        "attention": [
+          "Title explicitly says Demo, so status is demo despite Prototype sidebar.",
+          "Do not incorporate hauling complaints, old reset key, or fixed bug reports from comments.",
+          "Graphics null until visual confirmation."
+        ]
+      },
+      "metadataNotes": [
+        "Radar publication time retained as input only; no verified original release date.",
+        "Tips are editorial advice inferred from verified mechanics.",
+        "Title explicitly says Demo, so status is demo despite Prototype sidebar.",
+        "Do not incorporate hauling complaints, old reset key, or fixed bug reports from comments.",
+        "Graphics null until visual confirmation."
+      ],
+      "missingDetailFields": [],
+      "gameId": "6f051dd4-7d45-4c33-8581-e0ec28fd815d",
+      "publishedAt": "2026-10-15T04:03:44+00:00",
+      "updates": [
+        {
+          "id": "51cd7857-1f48-44f5-a997-2db15968fd28",
+          "game_id": "6f051dd4-7d45-4c33-8581-e0ec28fd815d",
+          "version": null,
+          "title": "Added to PlayBloo",
+          "summary": "Added to the PlayBloo catalogue with researched game details and an official itch.io play link.",
+          "published_at": "2026-10-15T04:03:44+00:00",
+          "source_url": "https://ryanforrester.itch.io/diglings-demo",
+          "created_at": "2026-10-15T04:03:02.247944+00:00",
+          "updated_at": "2026-10-15T04:03:02.247944+00:00"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "inputTitle": "Morningbelle",
+      "sourceUrl": "https://wednesday888.itch.io/morningbelle",
+      "resolvedUrl": "https://wednesday888.itch.io/morningbelle",
+      "identity": "wednesday888/morningbelle",
+      "inputPublishedAt": "2026-09-30 07:08（UTC+8）",
+      "decision": "published",
+      "game": {
+        "id": "4a13d20d-58b2-4221-ab65-95c79d4ad129",
+        "title": "Morningbelle",
+        "slug": "morningbelle",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-15/morningbelle.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "Your new graveyard job in Wisperell becomes complicated when cleaning an abandoned grave introduces you to Noel. The mysterious ghost needs help passing on before Halloween, but his missing memories and your uneasy coworker suggest a deeper mystery.\n\nMorningbelle is an English visual novel combining ghost romance with point-and-click investigation. Name a gender-neutral protagonist whose pronouns are unspecified, then uncover the town’s secrets.\n\nContent warnings: death, blood, murder, gaslighting, manipulation, physical restraint, nonsexual touch, obsessive and possessive behavior, and screen shaking.",
+        "how_to_play": "Read the story, explore by pointing and clicking, and make decisions as you investigate Noel’s past. The story has two good endings and two bad endings.",
+        "controls": "Point and click to explore. See the original itch.io page and in-game menus for additional control notes.",
+        "tips": "Pay attention to the contrast between Noel’s account and your coworker’s concerns.\nThe developer provides an endings guide in the itch.io devlogs.",
+        "features": "Over 15,000 words\nOne romanceable male ghost\nNameable protagonist\nFour endings\nSix CG illustrations with variations\nEnglish Ren’Py visual novel",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-15T04:02:58.964685+00:00",
+        "updated_at": "2026-10-15T04:03:44+00:00",
+        "external_url": "https://wednesday888.itch.io/morningbelle",
+        "developer": "wednesday888",
+        "publisher": null,
+        "source_url": "https://wednesday888.itch.io/morningbelle",
+        "source_type": "itch.io",
+        "original_game_url": "https://wednesday888.itch.io/morningbelle",
+        "developer_url": "https://wednesday888.itch.io",
+        "steam_url": null,
+        "itch_url": "https://wednesday888.itch.io/morningbelle",
+        "last_verified_at": "2026-10-15T03:58:49+00:00",
+        "sources": [
+          {
+            "url": "https://wednesday888.itch.io/morningbelle",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-15T03:58:49+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-15T04:03:44+00:00",
+        "last_updated_at": null,
+        "short_description": "Help a forgetful ghost pass on before Halloween in a romantic graveyard mystery with four endings.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "wednesday888/morningbelle",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "released",
+        "graphics": "2D",
+        "multiplayer": "single-player",
+        "engine": "Ren'Py",
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/morningbelle-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/morningbelle-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/morningbelle-2.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/morningbelle-3.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/morningbelle-4.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/morningbelle-5.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "casual",
+        "horror"
+      ],
+      "media": [
+        {
+          "kind": "cover",
+          "file": "morningbelle.webp",
+          "source": "https://img.itch.zone/aW1nLzMwNzQ3MzUwLnBuZw==/original/Yj6MEI.png",
+          "object": "covers/2026-10-15/morningbelle.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-15/morningbelle.webp",
+          "bytes": 28820,
+          "width": 630,
+          "height": 500,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            630,
+            500
+          ],
+          "sha256": "12726e0514dcff0fed680d37e49f36a5c69e80c2965f35a81ea4ff5e605febb4",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "morningbelle-screen-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTA3NjcwNi8zMDQwMDIwMC5wbmc=/347x500/KHC0qV.png",
+          "object": "screenshots/2026-10-15/morningbelle-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/morningbelle-0.webp",
+          "bytes": 12406,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "d57926d3f06711ceed68040bd307c11f8f420d5b34052a214c38798ca8be56a1",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "morningbelle-screen-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTA3NjcwNi8zMDM5NzM3Ni5qcGc=/347x500/o8QvdH.jpg",
+          "object": "screenshots/2026-10-15/morningbelle-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/morningbelle-1.webp",
+          "bytes": 15204,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "JPEG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "8b4add0ccb7cfaad469421cc566d2a76c89b6b98d169619e22f8f0b4518e89a9",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "morningbelle-screen-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTA3NjcwNi8zMDQwMDIzNy5qcGc=/347x500/V7H7x8.jpg",
+          "object": "screenshots/2026-10-15/morningbelle-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/morningbelle-2.webp",
+          "bytes": 14892,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "JPEG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "812ad22d2e42d74d197cfa350d797d79d3949a459eace22da68459c7b352d990",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "morningbelle-screen-3.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTA3NjcwNi8zMDQwMDIzOS5qcGc=/347x500/21FBK0.jpg",
+          "object": "screenshots/2026-10-15/morningbelle-3.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/morningbelle-3.webp",
+          "bytes": 18430,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "JPEG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "7b3f2b07e2123e10b54bdb6cc7a55efe0c340213023a19b36ac16a5751a65310",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "morningbelle-screen-4.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTA3NjcwNi8zMDQwMDE4NC5wbmc=/347x500/2Yx4xb.png",
+          "object": "screenshots/2026-10-15/morningbelle-4.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/morningbelle-4.webp",
+          "bytes": 12468,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "b0f5a3e0d8f1b9035327e04c30abf4d0bfcaa854eff1b7a61ecf2e870a64caaf",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "morningbelle-screen-5.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTA3NjcwNi8zMDQwMDIzOC5qcGc=/347x500/XX%2FCh7.jpg",
+          "object": "screenshots/2026-10-15/morningbelle-5.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/morningbelle-5.webp",
+          "bytes": 15098,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "JPEG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "5d031af16a65cda7ff8e0ee269e6316b0e741cbc1536d9de6e1d64d780bce662",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "url": "https://html-classic.itch.zone/html/19686619/index.html?v=1791693093",
+        "resolvedUrl": "https://html-classic.itch.zone/html/19686619/index.html?v=1791693093",
+        "httpStatus": 200,
+        "bytes": 6397,
+        "resourceCheck": {
+          "slug": "morningbelle",
+          "externalResources": [
+            {
+              "url": "https://html-classic.itch.zone/html/19686619/renpy-pre.js",
+              "resolvedUrl": "https://html-classic.itch.zone/html/19686619/renpy-pre.js",
+              "httpStatus": 200,
+              "bytes": 29575,
+              "contentType": "text/javascript; charset=utf-8"
+            }
+          ],
+          "note": "Static availability check; not a gameplay or multiplayer test."
+        }
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://wednesday888.itch.io/morningbelle",
+          "verifiedAt": "2026-10-15T03:58:49+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "status"
+          ],
+          "tipsBasis": "Editorial suggestions based on documented mechanics"
+        }
+      ],
+      "editorialEvidence": {
+        "sourceUrl": "https://wednesday888.itch.io/morningbelle",
+        "author": "wednesday888",
+        "authorUrl": "https://wednesday888.itch.io",
+        "evidence": [
+          "Official body specifies Wisperell graveyard premise; Noel; 15k+ words; nameable gender-neutral protagonist without specified pronouns; point-and-click; six CGs with variations; two good/two bad endings.",
+          "Official body contains full warning list including physical restraint/touch and screen shakes.",
+          "Sidebar: Released, Ren’Py, English; author credited for writing/art/programming."
+        ],
+        "attention": [
+          "Retain every content warning in prose; physical touch is sfw.",
+          "Page first h1 is itch.io masthead; real game title is Morningbelle.",
+          "No story spoilers or comment-derived plot resolutions used."
+        ]
+      },
+      "metadataNotes": [
+        "Radar publication time retained as input only; no verified original release date.",
+        "Tips are editorial advice inferred from verified mechanics.",
+        "Retain every content warning in prose; physical touch is sfw.",
+        "Page first h1 is itch.io masthead; real game title is Morningbelle.",
+        "No story spoilers or comment-derived plot resolutions used."
+      ],
+      "missingDetailFields": [],
+      "gameId": "4a13d20d-58b2-4221-ab65-95c79d4ad129",
+      "publishedAt": "2026-10-15T04:03:44+00:00",
+      "updates": [
+        {
+          "id": "ef0a1a41-9a2f-4376-a073-2427cc1555c3",
+          "game_id": "4a13d20d-58b2-4221-ab65-95c79d4ad129",
+          "version": null,
+          "title": "Added to PlayBloo",
+          "summary": "Added to the PlayBloo catalogue with researched game details and an official itch.io play link.",
+          "published_at": "2026-10-15T04:03:44+00:00",
+          "source_url": "https://wednesday888.itch.io/morningbelle",
+          "created_at": "2026-10-15T04:03:02.247944+00:00",
+          "updated_at": "2026-10-15T04:03:02.247944+00:00"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "inputTitle": "Trust the System",
+      "sourceUrl": "https://soliles.itch.io/trust-the-system",
+      "resolvedUrl": "https://soliles.itch.io/trust-the-system",
+      "identity": "soliles/trust-the-system",
+      "inputPublishedAt": "2026-07-30 05:04（UTC+8）",
+      "decision": "published",
+      "game": {
+        "id": "46c0c533-4cc7-4426-9010-5f3922b78fcf",
+        "title": "Trust the System",
+        "slug": "trust-the-system",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-15/trust-the-system.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "An anonymous note interrupts your bureaucratic routine with a request to meet on the fifth floor. Trust the System ties an incremental desk job to exploration: each stamped document earns points that can buy movement through the building’s restricted corridors.\n\nImprove your tools, earn promotions, and meet employees in departments such as HR and IT as you investigate your employer. An automated terminal can eventually take over stamping. This English browser demo contains chapter one; the developer estimates about 40 minutes of play.",
+        "how_to_play": "Stamp documents for points, buy upgrades, and spend points on exploration steps. Search the maze-like floors for employees and useful equipment. Collect chips and seek IT’s help to improve your automated terminal.",
+        "controls": "Mouse input. Follow the in-game interface and the original itch.io page for specific interaction instructions.",
+        "tips": "Plan routes carefully because movement uses purchased steps.\nUpgrade your stamping tools to fund further exploration.",
+        "features": "Incremental office work\nRestricted-floor exploration\nPromotions and tool upgrades\nUnlockable stamping automation\nHand-drawn pixel artwork\nAtmospheric audio\nChapter-one Unity demo",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-15T04:02:58.964685+00:00",
+        "updated_at": "2026-10-15T04:03:44+00:00",
+        "external_url": "https://soliles.itch.io/trust-the-system",
+        "developer": "tabouret",
+        "publisher": null,
+        "source_url": "https://soliles.itch.io/trust-the-system",
+        "source_type": "itch.io",
+        "original_game_url": "https://soliles.itch.io/trust-the-system",
+        "developer_url": "https://soliles.itch.io",
+        "steam_url": null,
+        "itch_url": "https://soliles.itch.io/trust-the-system",
+        "last_verified_at": "2026-10-15T03:58:49+00:00",
+        "sources": [
+          {
+            "url": "https://soliles.itch.io/trust-the-system",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-15T03:58:49+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-15T04:03:44+00:00",
+        "last_updated_at": null,
+        "short_description": "Turn office stamping into an escape route through forbidden corridors in this chapter-one mystery demo.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "soliles/trust-the-system",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "demo",
+        "graphics": null,
+        "multiplayer": "single-player",
+        "engine": "Unity",
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/trust-the-system-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/trust-the-system-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/trust-the-system-2.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/trust-the-system-3.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/trust-the-system-4.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/trust-the-system-5.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "idle",
+        "adventure"
+      ],
+      "media": [
+        {
+          "kind": "cover",
+          "file": "trust-the-system.webp",
+          "source": "https://img.itch.zone/aW1nLzI5NzM2MzExLmdpZg==/original/czqJsg.gif",
+          "object": "covers/2026-10-15/trust-the-system.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-15/trust-the-system.webp",
+          "bytes": 105534,
+          "width": 630,
+          "height": 500,
+          "originalFormat": "GIF",
+          "originalFrames": 89,
+          "originalSize": [
+            630,
+            500
+          ],
+          "sha256": "3ef17f83ce563dcfad56677325e91253ab47b8a7da95107f1aa183ddb470ee8a",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "trust-the-system-screen-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDg0Mjc1Mi8zMDAwNjI4Mi5naWY=/original/%2Fy1aXF.gif",
+          "object": "screenshots/2026-10-15/trust-the-system-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/trust-the-system-0.webp",
+          "bytes": 15978,
+          "width": 720,
+          "height": 405,
+          "originalFormat": "GIF",
+          "originalFrames": 96,
+          "originalSize": [
+            720,
+            405
+          ],
+          "sha256": "a28834de7e775aa48177fbdb068737dc51dcc28121a07d1f0b9594ffe985f437",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "trust-the-system-screen-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDg0Mjc1Mi8zMDAwNjQ4OC5naWY=/original/7nH5KZ.gif",
+          "object": "screenshots/2026-10-15/trust-the-system-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/trust-the-system-1.webp",
+          "bytes": 27460,
+          "width": 720,
+          "height": 405,
+          "originalFormat": "GIF",
+          "originalFrames": 47,
+          "originalSize": [
+            720,
+            405
+          ],
+          "sha256": "02329f29643cf35a7a0af98e9feca76da6e2a8cc304c84111e2fb4f77b8ab3ab",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "trust-the-system-screen-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDg0Mjc1Mi8zMDAwNjQ5My5naWY=/original/C5MqYR.gif",
+          "object": "screenshots/2026-10-15/trust-the-system-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/trust-the-system-2.webp",
+          "bytes": 10926,
+          "width": 720,
+          "height": 405,
+          "originalFormat": "GIF",
+          "originalFrames": 85,
+          "originalSize": [
+            720,
+            405
+          ],
+          "sha256": "940588d34ac54b8f3778840c24ca54ba0f43b4e4cc239d5ada616433c8e86214",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "trust-the-system-screen-3.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDg0Mjc1Mi8zMDAwNjU3Ny5naWY=/original/AvBWpf.gif",
+          "object": "screenshots/2026-10-15/trust-the-system-3.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/trust-the-system-3.webp",
+          "bytes": 33000,
+          "width": 720,
+          "height": 405,
+          "originalFormat": "GIF",
+          "originalFrames": 86,
+          "originalSize": [
+            720,
+            405
+          ],
+          "sha256": "79ba66095532279650781564090557d28e7572dea043d9058c6aab6a3fb9dae7",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "trust-the-system-screen-4.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDg0Mjc1Mi8yODkzMzQzNS5wbmc=/347x500/nRfP5z.png",
+          "object": "screenshots/2026-10-15/trust-the-system-4.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/trust-the-system-4.webp",
+          "bytes": 5426,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "95ec43f5760819bcf3558cd0a20ed0ae6d19d7abad11605b0e52fc6770097a0d",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "trust-the-system-screen-5.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDg0Mjc1Mi8yODkzMzQ4My5wbmc=/347x500/SgG5U9.png",
+          "object": "screenshots/2026-10-15/trust-the-system-5.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/trust-the-system-5.webp",
+          "bytes": 7354,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "820263572f3677063501562d08cf8adbd7ae442d823ccbf117aaa8fcc0bcb62f",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "url": "https://html-classic.itch.zone/html/19350678/TrustTheSystem 1.22/index.html?v=1790070788",
+        "resolvedUrl": "https://html-classic.itch.zone/html/19350678/TrustTheSystem%201.22/index.html?v=1790070788",
+        "httpStatus": 200,
+        "bytes": 5738,
+        "resourceCheck": {
+          "slug": "trust-the-system",
+          "externalResources": [],
+          "note": "Game code embedded in HTML or loaded by runtime-specific loader; HTML entry checked."
+        }
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://soliles.itch.io/trust-the-system",
+          "verifiedAt": "2026-10-15T03:58:49+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "status"
+          ],
+          "tipsBasis": "Editorial suggestions based on documented mechanics"
+        }
+      ],
+      "editorialEvidence": {
+        "sourceUrl": "https://soliles.itch.io/trust-the-system",
+        "author": "tabouret",
+        "authorUrl": "https://soliles.itch.io",
+        "evidence": [
+          "Official body: fifth-floor sticky-note request, stamping points, promotions and tool upgrades, buy steps, maze-like floors, flashlight/compass seller suggestion, HR/IT staff, terminal automation upgraded with chips/IT.",
+          "Official ABOUT THIS DEMO section explicitly limits playable content to chapter 1; body estimates 40min.",
+          "Sidebar: In development, HTML5, Unity/Aseprite, English, Mouse."
+        ],
+        "attention": [
+          "development_status must be demo despite sidebar In development and title without Demo.",
+          "Engine is Unity runtime, not Aseprite.",
+          "No comment-derived combat keys, future consumables, slot mechanics, or floor selection claims used.",
+          "Graphics null: body promises pixel art but does not specify 2D/3D dimensionality."
+        ]
+      },
+      "metadataNotes": [
+        "Radar publication time retained as input only; no verified original release date.",
+        "Tips are editorial advice inferred from verified mechanics.",
+        "development_status must be demo despite sidebar In development and title without Demo.",
+        "Engine is Unity runtime, not Aseprite.",
+        "No comment-derived combat keys, future consumables, slot mechanics, or floor selection claims used.",
+        "Graphics null: body promises pixel art but does not specify 2D/3D dimensionality."
+      ],
+      "missingDetailFields": [],
+      "gameId": "46c0c533-4cc7-4426-9010-5f3922b78fcf",
+      "publishedAt": "2026-10-15T04:03:44+00:00",
+      "updates": [
+        {
+          "id": "84f4c6b3-2601-41ef-9f91-71d986137fd5",
+          "game_id": "46c0c533-4cc7-4426-9010-5f3922b78fcf",
+          "version": null,
+          "title": "Added to PlayBloo",
+          "summary": "Added to the PlayBloo catalogue with researched game details and an official itch.io play link.",
+          "published_at": "2026-10-15T04:03:44+00:00",
+          "source_url": "https://soliles.itch.io/trust-the-system",
+          "created_at": "2026-10-15T04:03:02.247944+00:00",
+          "updated_at": "2026-10-15T04:03:02.247944+00:00"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "inputTitle": "Say That You Love Me",
+      "sourceUrl": "https://writer31.itch.io/say-that-you-love-me",
+      "resolvedUrl": "https://writer31.itch.io/say-that-you-love-me",
+      "identity": "writer31/say-that-you-love-me",
+      "inputPublishedAt": "2026-07-21 01:00（UTC+8）",
+      "decision": "published",
+      "game": {
+        "id": "40fc304f-6e73-441b-a43c-db5cd7ea57da",
+        "title": "Say That You Love Me",
+        "slug": "say-that-you-love-me",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-15/say-that-you-love-me.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "Your knight says he loves you, but his declaration comes after he has kidnapped and imprisoned you. Say That You Love Me turns this unsettling encounter into a compact dark fantasy visual novel, with roughly 1,000 words and full voice acting.\n\nSix endings give you reasons to return to the conversation. The single CG appears only in certain endings, so the illustration is something to uncover rather than a constant backdrop. The developer recommends the downloadable edition for a smoother experience. Content warning: yandere themes, unhealthy relationships, death and discussion of death, kidnapping, and imprisonment.",
+        "how_to_play": "Read the encounter, respond to the knight, and follow the resulting branch. Try different responses on later runs to discover more endings and the routes that reveal the CG.",
+        "controls": "See the original itch.io page and in-game menus for the developer's control notes.",
+        "tips": "Try different responses across replays.\nUse the downloadable edition if browser playback feels rough.",
+        "features": "Six endings\nFull voice acting\nOne ending-dependent CG\nOne music track\nSpanish, Brazilian Portuguese, and Chinese translations\nRen'Py visual novel",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-15T04:02:58.964685+00:00",
+        "updated_at": "2026-10-15T04:03:44+00:00",
+        "external_url": "https://writer31.itch.io/say-that-you-love-me",
+        "developer": "Writer",
+        "publisher": null,
+        "source_url": "https://writer31.itch.io/say-that-you-love-me",
+        "source_type": "itch.io",
+        "original_game_url": "https://writer31.itch.io/say-that-you-love-me",
+        "developer_url": "https://writer31.itch.io",
+        "steam_url": null,
+        "itch_url": "https://writer31.itch.io/say-that-you-love-me",
+        "last_verified_at": "2026-10-15T03:58:49+00:00",
+        "sources": [
+          {
+            "url": "https://writer31.itch.io/say-that-you-love-me",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-15T03:58:49+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-15T04:03:44+00:00",
+        "last_updated_at": null,
+        "short_description": "Wake up as your knight's prisoner in a voiced dark romance with six endings.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "writer31/say-that-you-love-me",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "released",
+        "graphics": "2D",
+        "multiplayer": "single-player",
+        "engine": "Ren'Py",
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/say-that-you-love-me-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/say-that-you-love-me-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/say-that-you-love-me-2.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/say-that-you-love-me-3.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "casual",
+        "horror"
+      ],
+      "media": [
+        {
+          "kind": "cover",
+          "file": "say-that-you-love-me.webp",
+          "source": "https://img.itch.zone/aW1nLzI4NjMwMzg5LnBuZw==/original/fvSuzF.png",
+          "object": "covers/2026-10-15/say-that-you-love-me.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-15/say-that-you-love-me.webp",
+          "bytes": 14478,
+          "width": 630,
+          "height": 500,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            630,
+            500
+          ],
+          "sha256": "72306412889ce505d196197f13c5e600caf270d57ced7407ecf0655055ed99fb",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "say-that-you-love-me-screen-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDc5OTQ4OS8yODYzNDIzNi5wbmc=/347x500/uI8ERE.png",
+          "object": "screenshots/2026-10-15/say-that-you-love-me-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/say-that-you-love-me-0.webp",
+          "bytes": 1776,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "72dc871c614fdb11c8f131d42ba118274df95c9e3bba8ca628135ea4be21f05a",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "say-that-you-love-me-screen-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDc5OTQ4OS8yODYzNDIzNy5wbmc=/347x500/PRyeHf.png",
+          "object": "screenshots/2026-10-15/say-that-you-love-me-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/say-that-you-love-me-1.webp",
+          "bytes": 4252,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "5977f03b7c997cd48791b113a8da29fc91bc848772ccc8654931f36dce173b75",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "say-that-you-love-me-screen-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDc5OTQ4OS8yODYzNDIzOC5wbmc=/347x500/Ek%2BPmh.png",
+          "object": "screenshots/2026-10-15/say-that-you-love-me-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/say-that-you-love-me-2.webp",
+          "bytes": 7360,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "7a07aeb634a29d7d3b956534ee7aa4a57ab49b0f5e4347e5d2cae20c34de7760",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "say-that-you-love-me-screen-3.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDc5OTQ4OS8yODYzNDIzMy5wbmc=/347x500/3arKtl.png",
+          "object": "screenshots/2026-10-15/say-that-you-love-me-3.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/say-that-you-love-me-3.webp",
+          "bytes": 8852,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "74c8242fa5a176f75401e67610c1e2aad674368909e331b3131541a9e7b70a83",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "url": "https://html-classic.itch.zone/html/18619588/index.html?v=1785519627",
+        "resolvedUrl": "https://html-classic.itch.zone/html/18619588/index.html?v=1785519627",
+        "httpStatus": 200,
+        "bytes": 6172,
+        "resourceCheck": {
+          "slug": "say-that-you-love-me",
+          "externalResources": [
+            {
+              "url": "https://html-classic.itch.zone/html/18619588/renpy-pre.js",
+              "resolvedUrl": "https://html-classic.itch.zone/html/18619588/renpy-pre.js",
+              "httpStatus": 200,
+              "bytes": 29575,
+              "contentType": "text/javascript; charset=utf-8"
+            }
+          ],
+          "note": "Static availability check; not a gameplay or multiplayer test."
+        }
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://writer31.itch.io/say-that-you-love-me",
+          "verifiedAt": "2026-10-15T03:58:49+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "status"
+          ],
+          "tipsBasis": "Editorial suggestions based on documented mechanics"
+        }
+      ],
+      "editorialEvidence": {
+        "sourceUrl": "https://writer31.itch.io/say-that-you-love-me",
+        "facts": [
+          "Six endings; approximately 1,000 words; fully voiced; one conditional CG; one music track.",
+          "正文保留死亡/讨论死亡、绑架/囚禁、病娇及不健康关系提示。",
+          "2026-07-30 正文更新列出西语、巴葡、中文；下载版更顺畅。"
+        ],
+        "attention": [
+          "不采用评论中的新故事计划或额外事实；当前正文没有闪光提示。",
+          "作者栏仅 Writer；下方有其他团队成员，勿把 Writer 当作所有音画技术工作唯一创作者。"
+        ],
+        "authors": [
+          {
+            "name": "Writer",
+            "url": "https://writer31.itch.io"
+          }
+        ]
+      },
+      "metadataNotes": [
+        "Radar publication time retained as input only; no verified original release date.",
+        "Tips are editorial advice inferred from verified mechanics.",
+        "不采用评论中的新故事计划或额外事实；当前正文没有闪光提示。",
+        "作者栏仅 Writer；下方有其他团队成员，勿把 Writer 当作所有音画技术工作唯一创作者。"
+      ],
+      "missingDetailFields": [],
+      "gameId": "40fc304f-6e73-441b-a43c-db5cd7ea57da",
+      "publishedAt": "2026-10-15T04:03:44+00:00",
+      "updates": [
+        {
+          "id": "e2747be5-a2ef-4aa8-9946-4264f478c1a3",
+          "game_id": "40fc304f-6e73-441b-a43c-db5cd7ea57da",
+          "version": null,
+          "title": "Added to PlayBloo",
+          "summary": "Added to the PlayBloo catalogue with researched game details and an official itch.io play link.",
+          "published_at": "2026-10-15T04:03:44+00:00",
+          "source_url": "https://writer31.itch.io/say-that-you-love-me",
+          "created_at": "2026-10-15T04:03:02.247944+00:00",
+          "updated_at": "2026-10-15T04:03:02.247944+00:00"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "inputTitle": "Gyra - Top Fighting",
+      "sourceUrl": "https://lucaju.itch.io/gyra",
+      "resolvedUrl": "https://lucaju.itch.io/gyra",
+      "identity": "lucaju/gyra",
+      "inputPublishedAt": "2025-06-21 08:19（UTC+8）",
+      "decision": "published",
+      "game": {
+        "id": "0a804c85-7748-4c26-adb2-52f420444173",
+        "title": "Gyra - Top Fighting",
+        "slug": "gyra",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-15/gyra.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "Gyra - Top Fighting puts you in direct control of a customizable spinning top. Combine a tip, body, blade, and spirit to change its behavior, then steer it around a 3D arena. Your spirit supplies a special move that becomes available once charged.\n\nMatches reward positioning as well as construction: dashes can evade or strengthen a hit, shields help you hold ground, and victory comes from a ring-out or exhausting the opponent's stamina. Tournament victories earn caps for shopping between rounds. Browser and mobile editions have some feature limitations; the developer recommends desktop for the complete experience.",
+        "how_to_play": "Choose four components, enter a match, and control your top's movement. Combine dashes, shielding, and a charged spirit attack. In tournaments, spend winnings between rounds to adapt your build.",
+        "controls": "Remappable keyboard and controller controls; touchscreen supported. Check the in-game bindings for movement, dash, shield, and special attack.",
+        "tips": "Use dashes to reposition as well as attack.\nReview your components before the next tournament opponent.",
+        "features": "Four-part top construction\nTwo victory conditions\nTournament shop\nLocal two-player battles\nEnglish and Brazilian Portuguese\nGodot 3D arenas",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-15T04:02:58.964685+00:00",
+        "updated_at": "2026-10-15T04:03:44+00:00",
+        "external_url": "https://lucaju.itch.io/gyra",
+        "developer": "lucaju",
+        "publisher": null,
+        "source_url": "https://lucaju.itch.io/gyra",
+        "source_type": "itch.io",
+        "original_game_url": "https://lucaju.itch.io/gyra",
+        "developer_url": "https://lucaju.itch.io",
+        "steam_url": null,
+        "itch_url": "https://lucaju.itch.io/gyra",
+        "last_verified_at": "2026-10-15T03:58:49+00:00",
+        "sources": [
+          {
+            "url": "https://lucaju.itch.io/gyra",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-15T03:58:49+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-15T04:03:44+00:00",
+        "last_updated_at": null,
+        "short_description": "Assemble a spinning top and fight for ring-outs or stamina victories in a Beyblade-inspired arena.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "lucaju/gyra",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "released",
+        "graphics": "3D",
+        "multiplayer": "single-player or local multiplayer (2 players)",
+        "engine": "Godot",
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/gyra-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/gyra-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/gyra-2.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/gyra-3.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/gyra-4.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "fighting",
+        "action",
+        "multiplayer"
+      ],
+      "media": [
+        {
+          "kind": "cover",
+          "file": "gyra.webp",
+          "source": "https://img.itch.zone/aW1nLzIyNzQ1OTg4LnBuZw==/original/9kXuKl.png",
+          "object": "covers/2026-10-15/gyra.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-15/gyra.webp",
+          "bytes": 25096,
+          "width": 630,
+          "height": 500,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            630,
+            500
+          ],
+          "sha256": "758a55f7cef29121fa883c11d5835345a5d5fb8e93747e4572b53f5395e23e09",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "gyra-screen-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvMzY2MDQ4My8yMjk0NzcyOS5wbmc=/347x500/JzWy25.png",
+          "object": "screenshots/2026-10-15/gyra-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/gyra-0.webp",
+          "bytes": 7832,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "3ed083286fc8393a15114b96d57247c3854efb57de46732000609f8580c8cb4b",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "gyra-screen-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvMzY2MDQ4My8yMjk0NzczOC5wbmc=/347x500/PV2Iyo.png",
+          "object": "screenshots/2026-10-15/gyra-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/gyra-1.webp",
+          "bytes": 5800,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "e3265f3c5bb54dbff7a47a42874a61eb4baf52aa8ce2114b25a4604ac734dcc7",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "gyra-screen-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvMzY2MDQ4My8yMjk0NTU4Ny5wbmc=/347x500/0DWjqW.png",
+          "object": "screenshots/2026-10-15/gyra-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/gyra-2.webp",
+          "bytes": 8324,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "de80c9055625522dc20d844fe5ed6b8426e7e900aee1a50b691b4a85c5477958",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "gyra-screen-3.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvMzY2MDQ4My8yMjk0NTYwMC5wbmc=/347x500/SXknZi.png",
+          "object": "screenshots/2026-10-15/gyra-3.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/gyra-3.webp",
+          "bytes": 5948,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "6de939e798b4677212996bde827539d53d394f596f1e219a43bd5bdafd940f7e",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "gyra-screen-4.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvMzY2MDQ4My8yMjk0NTU5Ny5wbmc=/347x500/raCAi8.png",
+          "object": "screenshots/2026-10-15/gyra-4.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/gyra-4.webp",
+          "bytes": 6038,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "6a4a8be52429bb3a3954da56fd0db605bc5f09799a6d6cac5fdc6d4d697dff0d",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "url": "https://html-classic.itch.zone/html/14778586/web/index.html",
+        "resolvedUrl": "https://html-classic.itch.zone/html/14778586/web/index.html",
+        "httpStatus": 200,
+        "bytes": 5500,
+        "resourceCheck": {
+          "slug": "gyra",
+          "externalResources": [
+            {
+              "url": "https://html-classic.itch.zone/html/14778586/web/index.js",
+              "resolvedUrl": "https://html-classic.itch.zone/html/14778586/web/index.js",
+              "httpStatus": 200,
+              "bytes": 285305,
+              "contentType": "text/javascript; charset=utf-8"
+            }
+          ],
+          "note": "Static availability check; not a gameplay or multiplayer test."
+        }
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://lucaju.itch.io/gyra",
+          "verifiedAt": "2026-10-15T03:58:49+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "status"
+          ],
+          "tipsBasis": "Editorial suggestions based on documented mechanics"
+        }
+      ],
+      "editorialEvidence": {
+        "sourceUrl": "https://lucaju.itch.io/gyra",
+        "facts": [
+          "Four components; dash/shield/spirit special; ring-out or stamina victory; tournament cap shop.",
+          "Local 1–2 players; remappable keyboard/controller; touch; English/Brazilian Portuguese; 3D Godot."
+        ],
+        "attention": [
+          "正文说明 browser/mobile 部分功能受限，桌面提供完整体验；具体限制未列出。",
+          "Released 为当前侧栏状态；文件名含 Prototype 不等于 demo。没有在线多人依据。",
+          "Beyblade-inspired 不是官方 Beyblade 授权作品；正文按 inspired 描述。"
+        ],
+        "authors": [
+          {
+            "name": "lucaju",
+            "url": "https://lucaju.itch.io"
+          }
+        ]
+      },
+      "metadataNotes": [
+        "Radar publication time retained as input only; no verified original release date.",
+        "Tips are editorial advice inferred from verified mechanics.",
+        "正文说明 browser/mobile 部分功能受限，桌面提供完整体验；具体限制未列出。",
+        "Released 为当前侧栏状态；文件名含 Prototype 不等于 demo。没有在线多人依据。",
+        "Beyblade-inspired 不是官方 Beyblade 授权作品；正文按 inspired 描述。"
+      ],
+      "missingDetailFields": [],
+      "gameId": "0a804c85-7748-4c26-adb2-52f420444173",
+      "publishedAt": "2026-10-15T04:03:44+00:00",
+      "updates": [
+        {
+          "id": "997c3fbd-3a71-42f9-bf0b-0abbee2c19a0",
+          "game_id": "0a804c85-7748-4c26-adb2-52f420444173",
+          "version": null,
+          "title": "Added to PlayBloo",
+          "summary": "Added to the PlayBloo catalogue with researched game details and an official itch.io play link.",
+          "published_at": "2026-10-15T04:03:44+00:00",
+          "source_url": "https://lucaju.itch.io/gyra",
+          "created_at": "2026-10-15T04:03:02.247944+00:00",
+          "updated_at": "2026-10-15T04:03:02.247944+00:00"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "inputTitle": "Plaguebound",
+      "sourceUrl": "https://ostsergey.itch.io/plaguebound",
+      "resolvedUrl": "https://ostsergey.itch.io/plaguebound",
+      "identity": "ostsergey/plaguebound",
+      "inputPublishedAt": "2026-07-02 00:04（UTC+8）",
+      "decision": "published",
+      "game": {
+        "id": "8c1ba4ee-f1ec-47f1-8da0-1f3a320a226b",
+        "title": "Plaguebound",
+        "slug": "plaguebound",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-15/plaguebound.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "Plaguebound follows the Rat King as an awakened mind seeks a way out of the dungeon. You cannot remember your own name, but the pack still depends on your leadership. People locked you away to prevent a great evil; the escape unfolds through a dark fantasy story.\n\nThe game combines incremental growth with automatic battles across 50 floors. New opponents interrupt the ascent, while a flexible leveling system and combat synergies give you different ways to develop the pack. Progress means coordinating its strength and finding combinations that can carry it through the next confrontation.",
+        "how_to_play": "Guide the pack through the dungeon's floors, observe the automatic battles, and develop it using the available leveling options. Look for synergies between your choices as new enemies appear during the climb.",
+        "controls": "See the original itch.io page and in-game interface for the developer's control notes.",
+        "tips": "Reconsider your leveling choices when a new opponent stops your progress.\nLook for combinations that complement one another.",
+        "features": "50 dungeon floors\nIncremental progression\nAutomatic combat\nCombat synergies\nVariable leveling system\nDark fantasy story\nGodot browser game",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-15T04:02:58.964685+00:00",
+        "updated_at": "2026-10-15T04:03:44+00:00",
+        "external_url": "https://ostsergey.itch.io/plaguebound",
+        "developer": "ostsergey, Keedjie",
+        "publisher": null,
+        "source_url": "https://ostsergey.itch.io/plaguebound",
+        "source_type": "itch.io",
+        "original_game_url": "https://ostsergey.itch.io/plaguebound",
+        "developer_url": "https://ostsergey.itch.io",
+        "steam_url": null,
+        "itch_url": "https://ostsergey.itch.io/plaguebound",
+        "last_verified_at": "2026-10-15T03:58:49+00:00",
+        "sources": [
+          {
+            "url": "https://ostsergey.itch.io/plaguebound",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-15T03:58:49+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-15T04:03:44+00:00",
+        "last_updated_at": null,
+        "short_description": "Lead the Rat King's pack through 50 dungeon floors in a dark incremental auto-battler.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "ostsergey/plaguebound",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "released",
+        "graphics": null,
+        "multiplayer": "single-player",
+        "engine": "Godot",
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/plaguebound-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/plaguebound-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/plaguebound-2.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/plaguebound-3.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/plaguebound-4.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/plaguebound-5.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "strategy",
+        "idle"
+      ],
+      "media": [
+        {
+          "kind": "cover",
+          "file": "plaguebound.webp",
+          "source": "https://img.itch.zone/aW1nLzI4MzI5ODI1LnBuZw==/original/gIjfY8.png",
+          "object": "covers/2026-10-15/plaguebound.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-15/plaguebound.webp",
+          "bytes": 56654,
+          "width": 640,
+          "height": 508,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            1149,
+            912
+          ],
+          "sha256": "3ddde261d1745d5723e98ae907c049b03fa19dce3080f7d35f1868c12f27dc3b",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "plaguebound-screen-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDczNDc1Mi8yODMyODIzOS5naWY=/original/QeUpj0.gif",
+          "object": "screenshots/2026-10-15/plaguebound-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/plaguebound-0.webp",
+          "bytes": 67862,
+          "width": 694,
+          "height": 390,
+          "originalFormat": "GIF",
+          "originalFrames": 40,
+          "originalSize": [
+            694,
+            390
+          ],
+          "sha256": "2e91fad9aa6c8224f074ca40a9efaf9f12e1684eba9ccedbe0179903bd2a2ca2",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "plaguebound-screen-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDczNDc1Mi8yODMxMzg5My5naWY=/original/2l9yfc.gif",
+          "object": "screenshots/2026-10-15/plaguebound-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/plaguebound-1.webp",
+          "bytes": 47120,
+          "width": 694,
+          "height": 390,
+          "originalFormat": "GIF",
+          "originalFrames": 29,
+          "originalSize": [
+            694,
+            390
+          ],
+          "sha256": "dfdcd657d4e7f6519ce141fa44edf48d5593de1d416e6d5bd73fbc42175c596e",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "plaguebound-screen-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDczNDc1Mi8yODMyODUxNy5qcGc=/347x500/VkqE9p.jpg",
+          "object": "screenshots/2026-10-15/plaguebound-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/plaguebound-2.webp",
+          "bytes": 5646,
+          "width": 347,
+          "height": 216,
+          "originalFormat": "JPEG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            216
+          ],
+          "sha256": "f3c74581ddb5ec19879f4ce6c56adf222e6d6913074f0d724be1b7803df54f9f",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "plaguebound-screen-3.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDczNDc1Mi8yODMxMDg1My5qcGc=/347x500/G8inm%2B.jpg",
+          "object": "screenshots/2026-10-15/plaguebound-3.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/plaguebound-3.webp",
+          "bytes": 12110,
+          "width": 347,
+          "height": 216,
+          "originalFormat": "JPEG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            216
+          ],
+          "sha256": "bab319bbf8187b3774770e514a5684927b456eac7f1d6dc2a085b5053aefe548",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "plaguebound-screen-4.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDczNDc1Mi8yODMyNzI4MS5qcGc=/347x500/znkY84.jpg",
+          "object": "screenshots/2026-10-15/plaguebound-4.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/plaguebound-4.webp",
+          "bytes": 17474,
+          "width": 347,
+          "height": 216,
+          "originalFormat": "JPEG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            216
+          ],
+          "sha256": "4f5a0197f9437edee3ab555ad2c23c65b8f4879638e47d406c0916ef6b8636ac",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "plaguebound-screen-5.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDczNDc1Mi8yODMyODQ0OC5qcGc=/347x500/pPW2Go.jpg",
+          "object": "screenshots/2026-10-15/plaguebound-5.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/plaguebound-5.webp",
+          "bytes": 9880,
+          "width": 347,
+          "height": 216,
+          "originalFormat": "JPEG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            216
+          ],
+          "sha256": "80ef3b726f8ab253fa211004e2b6d2800f263545448a5b83e79a73e20226240c",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "url": "https://html-classic.itch.zone/html/18243172/index.html?v=1783441156",
+        "resolvedUrl": "https://html-classic.itch.zone/html/18243172/index.html?v=1783441156",
+        "httpStatus": 200,
+        "bytes": 5496,
+        "resourceCheck": {
+          "slug": "plaguebound",
+          "externalResources": [
+            {
+              "url": "https://html-classic.itch.zone/html/18243172/index.js",
+              "resolvedUrl": "https://html-classic.itch.zone/html/18243172/index.js",
+              "httpStatus": 200,
+              "bytes": 317142,
+              "contentType": "text/javascript; charset=utf-8"
+            }
+          ],
+          "note": "Static availability check; not a gameplay or multiplayer test."
+        }
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://ostsergey.itch.io/plaguebound",
+          "verifiedAt": "2026-10-15T03:58:49+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "status"
+          ],
+          "tipsBasis": "Editorial suggestions based on documented mechanics"
+        }
+      ],
+      "editorialEvidence": {
+        "sourceUrl": "https://ostsergey.itch.io/plaguebound",
+        "facts": [
+          "Rat King escape; 50 floors; auto-battle, synergies and variable leveling; Godot; Released.",
+          "Authors 复数：ostsergey、Keedjie。"
+        ],
+        "attention": [
+          "不根据评论把本游戏标记为 I Am Plague demo，也不加入谜题、成就或其他未在正文说明的机制。",
+          "未见具体控制或存档说明；graphics 保持 null，避免仅凭 Godot 推断维度。"
+        ],
+        "authors": [
+          {
+            "name": "ostsergey",
+            "url": "https://ostsergey.itch.io"
+          },
+          {
+            "name": "Keedjie",
+            "url": "https://keedjie.itch.io"
+          }
+        ]
+      },
+      "metadataNotes": [
+        "Radar publication time retained as input only; no verified original release date.",
+        "Tips are editorial advice inferred from verified mechanics.",
+        "不根据评论把本游戏标记为 I Am Plague demo，也不加入谜题、成就或其他未在正文说明的机制。",
+        "未见具体控制或存档说明；graphics 保持 null，避免仅凭 Godot 推断维度。"
+      ],
+      "missingDetailFields": [],
+      "gameId": "8c1ba4ee-f1ec-47f1-8da0-1f3a320a226b",
+      "publishedAt": "2026-10-15T04:03:44+00:00",
+      "updates": [
+        {
+          "id": "fe7db684-2575-49a4-a304-cde05e81ff57",
+          "game_id": "8c1ba4ee-f1ec-47f1-8da0-1f3a320a226b",
+          "version": null,
+          "title": "Added to PlayBloo",
+          "summary": "Added to the PlayBloo catalogue with researched game details and an official itch.io play link.",
+          "published_at": "2026-10-15T04:03:44+00:00",
+          "source_url": "https://ostsergey.itch.io/plaguebound",
+          "created_at": "2026-10-15T04:03:02.247944+00:00",
+          "updated_at": "2026-10-15T04:03:02.247944+00:00"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "inputTitle": "Physician Simulator (Demo)",
+      "sourceUrl": "https://shishkin-blog.itch.io/therapist-simulator",
+      "resolvedUrl": "https://shishkin-blog.itch.io/therapist-simulator",
+      "identity": "shishkin-blog/therapist-simulator",
+      "inputPublishedAt": "2026-03-14 04:27（UTC+8）",
+      "decision": "published",
+      "game": {
+        "id": "0001f2d6-8728-4729-b5e1-0c2978a486bc",
+        "title": "Physician Simulator (Demo)",
+        "slug": "therapist-simulator",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-15/therapist-simulator.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "Physician Simulator places a newly qualified doctor in Clinic No. 67 for mandatory service. Patients arrive with genuine symptoms, questionable requests, and occasionally forged referrals. Read their records, examine them, and decide whether to prescribe, refer, issue a certificate, or refuse.\n\nEvery examination takes time. You have an hour of appointments, with 12 minutes allocated per patient; delays can send booked patients away with complaints. This demo contains five working days and up to 40 patients, with progress resumable from the last day. The longer full game remains in development. Browser play works best on a computer; use landscape orientation on phones.",
+        "how_to_play": "Check allergies, conditions, and medications before choosing examinations. Inspect referral details, select an appropriate decision, then sign and stamp the paperwork while watching the clock.",
+        "controls": "Follow the in-game interface and original itch.io page for control instructions.",
+        "tips": "Read the whole chart before prescribing.\nInspect document dates, stamps, and license formats.\nBudget examination time.",
+        "features": "Five-day demo\nUp to 40 patients\nMedical charts and document checks\nManual signatures and stamps\nDay-based continuation saves\nTen languages, including English, Russian, and Chinese\nGodot browser build",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-15T04:02:58.964685+00:00",
+        "updated_at": "2026-10-15T04:03:44+00:00",
+        "external_url": "https://shishkin-blog.itch.io/therapist-simulator",
+        "developer": "shishkin_blog",
+        "publisher": null,
+        "source_url": "https://shishkin-blog.itch.io/therapist-simulator",
+        "source_type": "itch.io",
+        "original_game_url": "https://shishkin-blog.itch.io/therapist-simulator",
+        "developer_url": "https://shishkin-blog.itch.io",
+        "steam_url": null,
+        "itch_url": "https://shishkin-blog.itch.io/therapist-simulator",
+        "last_verified_at": "2026-10-15T03:58:49+00:00",
+        "sources": [
+          {
+            "url": "https://shishkin-blog.itch.io/therapist-simulator",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-15T03:58:49+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-15T04:03:44+00:00",
+        "last_updated_at": null,
+        "short_description": "Examine patients and check suspicious paperwork during five demanding days at a district clinic.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "shishkin-blog/therapist-simulator",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "demo",
+        "graphics": "2D",
+        "multiplayer": "single-player",
+        "engine": "Godot",
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/therapist-simulator-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/therapist-simulator-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/therapist-simulator-2.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/therapist-simulator-3.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "simulation"
+      ],
+      "media": [
+        {
+          "kind": "cover",
+          "file": "therapist-simulator.webp",
+          "source": "https://img.itch.zone/aW1nLzI4NDk3MzczLnBuZw==/original/pIMEUU.png",
+          "object": "covers/2026-10-15/therapist-simulator.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-15/therapist-simulator.webp",
+          "bytes": 18634,
+          "width": 630,
+          "height": 500,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            630,
+            500
+          ],
+          "sha256": "58e2813d0d01b20d247487b9377f043d21001f21c9e262c7389d1695d671e722",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "therapist-simulator-screen-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDM3NTA1OS8zMDg2NzA5OS5wbmc=/347x500/u0Uekv.png",
+          "object": "screenshots/2026-10-15/therapist-simulator-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/therapist-simulator-0.webp",
+          "bytes": 9412,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "2e11fc979572510b034f8d850bbcb04b764851c24a01f012579cffee9ab679b5",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "therapist-simulator-screen-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDM3NTA1OS8zMDg2NzEwMi5wbmc=/347x500/3mflHX.png",
+          "object": "screenshots/2026-10-15/therapist-simulator-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/therapist-simulator-1.webp",
+          "bytes": 10740,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "b726527c01a56d5ac8fa656f335b76303ac293c75c160c9f5644f261745416f8",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "therapist-simulator-screen-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDM3NTA1OS8zMDg2NzEwMC5wbmc=/347x500/Ngs3Bh.png",
+          "object": "screenshots/2026-10-15/therapist-simulator-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/therapist-simulator-2.webp",
+          "bytes": 11986,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "5a1ffbf2c13567ca4ba5aeb16eeccf21844994603ba5239445739bfe9cf15cf1",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "therapist-simulator-screen-3.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDM3NTA1OS8zMDg2NzEwMS5wbmc=/347x500/TxjfIL.png",
+          "object": "screenshots/2026-10-15/therapist-simulator-3.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/therapist-simulator-3.webp",
+          "bytes": 4928,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "fe6dce11d73b85781fe6639fe5f76ef773792b55a847e145cfdd7475c9140636",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "url": "https://html-classic.itch.zone/html/19760997/index.html?v=1791992282",
+        "resolvedUrl": "https://html-classic.itch.zone/html/19760997/index.html?v=1791992282",
+        "httpStatus": 200,
+        "bytes": 7261,
+        "resourceCheck": {
+          "slug": "therapist-simulator",
+          "externalResources": [
+            {
+              "url": "https://html-classic.itch.zone/html/19760997/index.js",
+              "resolvedUrl": "https://html-classic.itch.zone/html/19760997/index.js",
+              "httpStatus": 200,
+              "bytes": 315759,
+              "contentType": "text/javascript; charset=utf-8"
+            }
+          ],
+          "note": "Static availability check; not a gameplay or multiplayer test."
+        }
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://shishkin-blog.itch.io/therapist-simulator",
+          "verifiedAt": "2026-10-15T03:58:49+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "status"
+          ],
+          "tipsBasis": "Editorial suggestions based on documented mechanics"
+        }
+      ],
+      "editorialEvidence": {
+        "sourceUrl": "https://shishkin-blog.itch.io/therapist-simulator",
+        "facts": [
+          "Current demo: 5 working days, up to 40 patients; continue from last day; ten languages.",
+          "Charts, examinations, forged referrals, prescribing/referral/certificate/refusal; sign/stamp; timed appointments."
+        ],
+        "attention": [
+          "导出 og 旧简介 Day 1 of 10 已过时，必须使用当前正文五日试玩信息。",
+          "完整版仍开发中，六周/三年剧情和返回患者后果不属于此试玩内容。",
+          "最佳电脑游玩，手机横屏；保留 demo 状态。官方侧栏公开 AI-assisted code/graphics/sounds。"
+        ],
+        "authors": [
+          {
+            "name": "shishkin_blog",
+            "url": "https://shishkin-blog.itch.io"
+          }
+        ]
+      },
+      "metadataNotes": [
+        "Radar publication time retained as input only; no verified original release date.",
+        "Tips are editorial advice inferred from verified mechanics.",
+        "导出 og 旧简介 Day 1 of 10 已过时，必须使用当前正文五日试玩信息。",
+        "完整版仍开发中，六周/三年剧情和返回患者后果不属于此试玩内容。",
+        "最佳电脑游玩，手机横屏；保留 demo 状态。官方侧栏公开 AI-assisted code/graphics/sounds。"
+      ],
+      "missingDetailFields": [],
+      "gameId": "0001f2d6-8728-4729-b5e1-0c2978a486bc",
+      "publishedAt": "2026-10-15T04:03:44+00:00",
+      "updates": [
+        {
+          "id": "7bae2f64-bec6-430e-b3d7-a2c53401656d",
+          "game_id": "0001f2d6-8728-4729-b5e1-0c2978a486bc",
+          "version": null,
+          "title": "Added to PlayBloo",
+          "summary": "Added to the PlayBloo catalogue with researched game details and an official itch.io play link.",
+          "published_at": "2026-10-15T04:03:44+00:00",
+          "source_url": "https://shishkin-blog.itch.io/therapist-simulator",
+          "created_at": "2026-10-15T04:03:02.247944+00:00",
+          "updated_at": "2026-10-15T04:03:02.247944+00:00"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "inputTitle": "I Can Smell You from Here",
+      "sourceUrl": "https://catproblem9735.itch.io/i-can-smell-you-from-here",
+      "resolvedUrl": "https://catproblem9735.itch.io/i-can-smell-you-from-here",
+      "identity": "catproblem9735/i-can-smell-you-from-here",
+      "inputPublishedAt": "2026-09-15 06:44（UTC+8）",
+      "decision": "published",
+      "game": {
+        "id": "929a382c-c9f0-4ef8-a29f-80dedff4510c",
+        "title": "I Can Smell You from Here",
+        "slug": "i-can-smell-you-from-here",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-15/i-can-smell-you-from-here.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "An incel meets his first dating-app match for his first date. One lie creates pressure for another, and maintaining a consistent story demands increasingly ridiculous explanations. I Can Smell You from Here builds its horror around that spiral and the excuses justifying it.\n\nYour decisions lead toward five endings. Each run produces a psychological evaluation showing how close you came to your date's heart. The game is available in English and Russian. Content warning: body horror, violence, cannibalism, references to murder, strong language, and sexual themes.",
+        "how_to_play": "Follow the date, choose responses, and see where your version of events leads. Review the end-of-run evaluation, then try different decisions to explore other outcomes.",
+        "controls": "Advance dialogue – Enter, Space, or left click\nNavigate choices – Arrow keys or mouse wheel\nConfirm choice – Hold Enter, Space, or left click\nFast-forward – Hold one of those inputs for 3 seconds\nReview dialogue – Mouse wheel\nOptions – Tab",
+        "tips": "Review recent dialogue to track your story.\nHold the confirmation input to commit a choice.",
+        "features": "Five endings\nConsequential choices\nRun-specific psychological evaluation\nEnglish and Russian\nSubtitles\nGodot visual novel",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-15T04:02:58.964685+00:00",
+        "updated_at": "2026-10-15T04:03:44+00:00",
+        "external_url": "https://catproblem9735.itch.io/i-can-smell-you-from-here",
+        "developer": "catproblem9735",
+        "publisher": null,
+        "source_url": "https://catproblem9735.itch.io/i-can-smell-you-from-here",
+        "source_type": "itch.io",
+        "original_game_url": "https://catproblem9735.itch.io/i-can-smell-you-from-here",
+        "developer_url": "https://catproblem9735.itch.io",
+        "steam_url": null,
+        "itch_url": "https://catproblem9735.itch.io/i-can-smell-you-from-here",
+        "last_verified_at": "2026-10-15T03:58:49+00:00",
+        "sources": [
+          {
+            "url": "https://catproblem9735.itch.io/i-can-smell-you-from-here",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-15T03:58:49+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-15T04:03:44+00:00",
+        "last_updated_at": null,
+        "short_description": "Keep an increasingly absurd lie together during a first date in this branching horror visual novel.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "catproblem9735/i-can-smell-you-from-here",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "released",
+        "graphics": "2D",
+        "multiplayer": "single-player",
+        "engine": "Godot",
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/i-can-smell-you-from-here-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/i-can-smell-you-from-here-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/i-can-smell-you-from-here-2.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/i-can-smell-you-from-here-3.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "casual",
+        "horror"
+      ],
+      "media": [
+        {
+          "kind": "cover",
+          "file": "i-can-smell-you-from-here.webp",
+          "source": "https://img.itch.zone/aW1nLzMwMjEwNTQyLmpwZw==/original/yTIz7O.jpg",
+          "object": "covers/2026-10-15/i-can-smell-you-from-here.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-15/i-can-smell-you-from-here.webp",
+          "bytes": 25380,
+          "width": 630,
+          "height": 500,
+          "originalFormat": "JPEG",
+          "originalFrames": 1,
+          "originalSize": [
+            630,
+            500
+          ],
+          "sha256": "1170bb58c7c244189ab81db4dcf82792f60285a29852452a9a73632800b08583",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "i-can-smell-you-from-here-screen-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTAxMDUyNi8yOTk5NzU0MC5qcGVn/347x500/3j14kA.jpeg",
+          "object": "screenshots/2026-10-15/i-can-smell-you-from-here-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/i-can-smell-you-from-here-0.webp",
+          "bytes": 6448,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "JPEG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "cd31971e654cf05bc1f5b0f49da564441fda1234bdb7777c5eef68c93e28d71c",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "i-can-smell-you-from-here-screen-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTAxMDUyNi8zMDAzNjgwMy5qcGVn/347x500/kJbXtN.jpeg",
+          "object": "screenshots/2026-10-15/i-can-smell-you-from-here-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/i-can-smell-you-from-here-1.webp",
+          "bytes": 9064,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "JPEG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "891e44b1b7da22c2e0075e71e81857510a1af5c9d9599438d263b1546444c422",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "i-can-smell-you-from-here-screen-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTAxMDUyNi8yOTk5NzU0My5qcGVn/347x500/fszDvj.jpeg",
+          "object": "screenshots/2026-10-15/i-can-smell-you-from-here-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/i-can-smell-you-from-here-2.webp",
+          "bytes": 4410,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "JPEG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "6ffafb207ee80fd9886211f443263c2888a4f03fc65d9a626283d9fdf43eca10",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "i-can-smell-you-from-here-screen-3.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTAxMDUyNi8yOTk5NzU0MS5qcGVn/347x500/kiWr%2FT.jpeg",
+          "object": "screenshots/2026-10-15/i-can-smell-you-from-here-3.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-15/i-can-smell-you-from-here-3.webp",
+          "bytes": 4664,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "JPEG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "c9ad49c09bbe71c2a246e5e79b37e4271342d7ffb30cd5de4be9fe7823631ebe",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "url": "https://html.itch.zone/html/19722064/index.html?v=1791831792",
+        "resolvedUrl": "https://html.itch.zone/html/19722064/index.html?v=1791831792",
+        "httpStatus": 200,
+        "bytes": 5543,
+        "resourceCheck": {
+          "slug": "i-can-smell-you-from-here",
+          "externalResources": [
+            {
+              "url": "https://html.itch.zone/html/19722064/index.js",
+              "resolvedUrl": "https://html.itch.zone/html/19722064/index.js",
+              "httpStatus": 200,
+              "bytes": 314653,
+              "contentType": "text/javascript; charset=utf-8"
+            }
+          ],
+          "note": "Static availability check; not a gameplay or multiplayer test."
+        }
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://catproblem9735.itch.io/i-can-smell-you-from-here",
+          "verifiedAt": "2026-10-15T03:58:49+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "status"
+          ],
+          "tipsBasis": "Editorial suggestions based on documented mechanics"
+        }
+      ],
+      "editorialEvidence": {
+        "sourceUrl": "https://catproblem9735.itch.io/i-can-smell-you-from-here",
+        "facts": [
+          "Dating-app first date; escalating lies; five endings; run-specific psychological evaluation.",
+          "English/Russian; exact six control rows from official body; subtitles; Godot; Released."
+        ],
+        "attention": [
+          "保留全部内容提示：body horror, violence, cannibalism, references to murder, strong language, sexual themes。",
+          "无需从评论推断存档、路线树或新增语言计划；当前正文的俄语本地化已上线。"
+        ],
+        "authors": [
+          {
+            "name": "catproblem9735",
+            "url": "https://catproblem9735.itch.io"
+          }
+        ]
+      },
+      "metadataNotes": [
+        "Radar publication time retained as input only; no verified original release date.",
+        "Tips are editorial advice inferred from verified mechanics.",
+        "保留全部内容提示：body horror, violence, cannibalism, references to murder, strong language, sexual themes。",
+        "无需从评论推断存档、路线树或新增语言计划；当前正文的俄语本地化已上线。"
+      ],
+      "missingDetailFields": [],
+      "gameId": "929a382c-c9f0-4ef8-a29f-80dedff4510c",
+      "publishedAt": "2026-10-15T04:03:44+00:00",
+      "updates": [
+        {
+          "id": "9f40a5f2-adbd-4da6-8316-5b2932eec2d7",
+          "game_id": "929a382c-c9f0-4ef8-a29f-80dedff4510c",
+          "version": null,
+          "title": "Added to PlayBloo",
+          "summary": "Added to the PlayBloo catalogue with researched game details and an official itch.io play link.",
+          "published_at": "2026-10-15T04:03:44+00:00",
+          "source_url": "https://catproblem9735.itch.io/i-can-smell-you-from-here",
+          "created_at": "2026-10-15T04:03:02.247944+00:00",
+          "updated_at": "2026-10-15T04:03:02.247944+00:00"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "anonymousDraftExclusion": true,
+    "anonymousPublishedRead": true,
+    "fieldsAndCategories": true,
+    "mediaPublicRead": true,
+    "catalogueUpdatesCreated": 10,
+    "originalReleaseAndUpdateDatesNotInferred": true,
+    "oldGameRowsUnchanged": 950,
+    "oldCategoryLinksUnchanged": true,
+    "totalGamesAfter": 960,
+    "livePages": [
+      {
+        "slug": "magicnumbers",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "metaDescription": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "catalogueUpdate": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "erwin-smith-run",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "metaDescription": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "catalogueUpdate": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "diglings-demo",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "metaDescription": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "catalogueUpdate": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "morningbelle",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "metaDescription": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "catalogueUpdate": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "trust-the-system",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "metaDescription": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "catalogueUpdate": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "say-that-you-love-me",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "metaDescription": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "catalogueUpdate": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "gyra",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "metaDescription": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "catalogueUpdate": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "plaguebound",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "metaDescription": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "catalogueUpdate": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "therapist-simulator",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "metaDescription": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "catalogueUpdate": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "i-can-smell-you-from-here",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "metaDescription": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "catalogueUpdate": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      }
+    ],
+    "liveSitemap": {
+      "httpStatus": 200,
+      "newEntries": [
+        {
+          "slug": "magicnumbers",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "erwin-smith-run",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "diglings-demo",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "morningbelle",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "trust-the-system",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "say-that-you-love-me",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "gyra",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "plaguebound",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "therapist-simulator",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "i-can-smell-you-from-here",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        }
+      ],
+      "oldGameTimestampChanges": [],
+      "cacheHeaders": {
+        "Age": "758",
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "x-vercel-cache": "HIT"
+      }
+    },
+    "homepage": {
+      "httpStatus": 200,
+      "newSlugsVisible": [],
+      "noImageOptimizer": true
+    },
+    "verifiedAt": "2026-10-15T04:05:13+00:00",
+    "productionBuild": {
+      "status": "passed",
+      "exitCode": 0,
+      "summary": "npm run build 通过；本批 10/10 正式 URL 已在构建 sitemap 收录，lastmod 与发布时间一致；943 个老游戏的 sitemap 时间戳与导入前一致；本批 0/10 被预渲染（当前按热度选取前 500 款）；10 个线上详情页的正文已另行验证",
+      "entries": [
+        {
+          "slug": "magicnumbers",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": false
+        },
+        {
+          "slug": "erwin-smith-run",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": false
+        },
+        {
+          "slug": "diglings-demo",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": false
+        },
+        {
+          "slug": "morningbelle",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": false
+        },
+        {
+          "slug": "trust-the-system",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": false
+        },
+        {
+          "slug": "say-that-you-love-me",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": false
+        },
+        {
+          "slug": "gyra",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": false
+        },
+        {
+          "slug": "plaguebound",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": false
+        },
+        {
+          "slug": "therapist-simulator",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": false
+        },
+        {
+          "slug": "i-can-smell-you-from-here",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": false
+        }
+      ],
+      "oldPublishedTimestampsChecked": 943,
+      "timestampPrecision": "JavaScript Date / sitemap ISO output uses milliseconds; database comparison normalized to milliseconds, prior XML compared exactly",
+      "draftsExcluded": true
+    },
+    "llmsTxt": {
+      "path": "public/llms.txt",
+      "checked": true,
+      "changed": false,
+      "sha256": "29eae94891537a7db75293406961316ec4c64d2ce97a87b9b1ccc806784f0251",
+      "reason": "Existing game detail, external play, catalogue, and sitemap descriptions remain accurate."
+    },
+    "baselineSha256": "d8311b833bfd5119453b6fc7003904a1c6ac0efac4cb62297a3836965da2941e",
+    "categoryBaselineSha256": "9009c34b49dd2d69190b645df6f608f4306529e7195bff258c399048b7d031b8"
+  }
+}
