@@ -189,7 +189,7 @@ export default async function SearchPage({ searchParams }: Props) {
           {games.length ? (
             <>
               {filters.view === "grid" ? (
-                <div className="grid grid-cols-2 gap-x-3 gap-y-6 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
                   {games.map((game) => <GameCard key={game.id} game={game} showDate dateField={dateField} />)}
                 </div>
               ) : (

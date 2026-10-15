@@ -44,7 +44,7 @@ export function GameCard({ game, badges = [], showDate = false, dateField = "add
               fill
               loading={eagerImage ? "eager" : "lazy"}
               unoptimized={shouldBypassImageOptimization(game.thumbnail_url)}
-              className="object-cover transition-opacity duration-200 group-hover:opacity-90"
+              className="object-cover"
               sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 20vw, 16vw"
             />
           ) : (
@@ -53,21 +53,21 @@ export function GameCard({ game, badges = [], showDate = false, dateField = "add
             </span>
           )}
           {visibleBadge && <span className={`game-card-status ${visibleBadge === "TRENDING" ? "is-trending" : ""}`}>{visibleBadge === "TRENDING" ? "Trending" : visibleBadge === "NEW" ? "New" : visibleBadge === "UPDATED" ? "Updated" : visibleBadge}</span>}
-        </div>
-        <div className="game-card-copy">
-          <h3 className="game-card-title line-clamp-2">{game.title}</h3>
-          <div className="game-card-meta">
-            <span className="min-w-0 truncate">{primaryCategory?.name || "Browser game"}</span>
-            <span className={`game-card-mode ${playMode === "embedded" ? "is-playable" : ""}`}>
-              {playMode === "embedded" ? <><Play className="h-3 w-3" aria-hidden="true" />Play here</> : playMode === "external" ? <><ExternalLink className="h-3 w-3" aria-hidden="true" />External</> : "Details only"}
-            </span>
-          </div>
-          {(showDate && dateValue && !Number.isNaN(dateValue.getTime()) || game.view_count > 0) && (
-            <div className="game-card-details">
-              {showDate && dateValue && !Number.isNaN(dateValue.getTime()) && <time dateTime={rawDate || undefined}>{dateField === "released" ? "Released" : dateField === "updated" ? "Updated" : "Added"} {dateValue.toLocaleDateString("en", { month: "short", day: "numeric", timeZone: "UTC" })}</time>}
-              {game.view_count > 0 && <span className="inline-flex items-center gap-1"><Eye className="h-3 w-3" aria-hidden="true" />{formatCount(game.view_count)} views</span>}
+          <div className="game-card-copy">
+            <h3 className="game-card-title line-clamp-2">{game.title}</h3>
+            <div className="game-card-meta">
+              <span className="min-w-0 truncate">{primaryCategory?.name || "Browser game"}</span>
+              <span className={`game-card-mode ${playMode === "embedded" ? "is-playable" : ""}`}>
+                {playMode === "embedded" ? <><Play className="h-3 w-3" aria-hidden="true" />Play here</> : playMode === "external" ? <><ExternalLink className="h-3 w-3" aria-hidden="true" />External</> : "Details only"}
+              </span>
             </div>
-          )}
+            {(showDate && dateValue && !Number.isNaN(dateValue.getTime()) || game.view_count > 0) && (
+              <div className="game-card-details">
+                {showDate && dateValue && !Number.isNaN(dateValue.getTime()) && <time dateTime={rawDate || undefined}>{dateField === "released" ? "Released" : dateField === "updated" ? "Updated" : "Added"} {dateValue.toLocaleDateString("en", { month: "short", day: "numeric", timeZone: "UTC" })}</time>}
+                {game.view_count > 0 && <span className="inline-flex items-center gap-1"><Eye className="h-3 w-3" aria-hidden="true" />{formatCount(game.view_count)} views</span>}
+              </div>
+            )}
+          </div>
         </div>
       </Link>
     </article>

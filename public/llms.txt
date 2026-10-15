@@ -28,6 +28,8 @@ PlayBloo's public content is written in English. Game pages provide researched i
 
 ## Display Preferences
 
+- Game grids use cover-first cards; hovering or keyboard focus reveals the title and game information. Touch devices keep the title and primary information visible on the cover. Search pages show up to 24 games in a responsive two-, three-, or four-column grid.
+
 - Homepage tabs show rankings from the full published catalog. Switching tabs preserves the selected grid or list view; Filters and Browse all continue with the selected ranking.
 - The site uses a dark theme by default. A theme toggle beside Favorites in the header switches between light and dark appearances and saves the choice in this browser.
 
