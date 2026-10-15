@@ -31,7 +31,12 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
   },
   icons: {
-    icon: "/favicon.png",
+    icon: [
+      { url: "/favicon.ico?v=ribbon-1", sizes: "16x16 32x32 48x48 256x256" },
+      { url: "/favicon.png?v=ribbon-1", sizes: "48x48", type: "image/png" },
+      { url: "/icon.png?v=ribbon-1", sizes: "512x512", type: "image/png" },
+    ],
+    apple: { url: "/apple-touch-icon.png?v=ribbon-1", sizes: "180x180", type: "image/png" },
   },
   robots: {
     index: true,

@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useCallback, useEffect, useRef } from "react";
 import { useRouter, usePathname } from "next/navigation";
-import { Search, Menu, X, Gamepad2, Heart, History, BookOpen } from "lucide-react";
+import { Search, Menu, X, Heart, History, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
@@ -42,7 +43,14 @@ export function Header() {
         <div className="flex h-16 items-center justify-between px-0 sm:px-4">
           <div className="flex shrink-0 items-center gap-7">
             <Link href="/" className="flex items-center gap-2 text-lg font-black sm:text-xl tracking-tight text-foreground transition-colors hover:text-primary">
-              <span className="brand-mark grid h-8 w-8 place-items-center rounded-lg text-primary-foreground"><Gamepad2 className="h-4 w-4" /></span>
+              <Image
+                src="/images/brand/playbloo-ribbon.webp"
+                alt=""
+                width={36}
+                height={36}
+                loading="eager"
+                className="h-9 w-9 shrink-0 object-contain"
+              />
               {SITE_NAME}
             </Link>
             <nav aria-label="Primary" className="hidden items-center gap-1 lg:flex">

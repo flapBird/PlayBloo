@@ -159,10 +159,6 @@
   box-shadow: none;
   backdrop-filter: blur(12px);
 }
-.brand-mark {
-  background: var(--primary);
-  box-shadow: none;
-}
 .header-search {
   border: 1px solid transparent !important;
   background: var(--muted);
