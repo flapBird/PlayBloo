@@ -28,7 +28,7 @@ async function getFeed(sort: HomeFeedSort | "playable"): Promise<HomeFeed> {
         request = request.order("created_at", { ascending: false });
       }
 
-      return request.order("id", { ascending: true }).limit(sort === "playable" ? 6 : 16);
+      return request.order("id", { ascending: true }).limit(sort === "playable" ? 6 : 20);
     };
 
     let result = await query(PUBLIC_GAME_DISCOVERY_FIELDS);
