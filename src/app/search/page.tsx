@@ -175,11 +175,8 @@ export default async function SearchPage({ searchParams }: Props) {
       </div>
       <section aria-label="Search results" className="min-w-0 space-y-5">
         <div className="flex flex-wrap items-center justify-between gap-3 border-b pb-4">
-          <div>
-            <p className="text-sm text-muted-foreground"><strong className="text-foreground">{total}</strong> games found</p>
-            <ActiveFilterChips filters={filters} options={options} />
-          </div>
-          <div className="flex items-center gap-1 rounded-lg border bg-card p-1">
+          <ActiveFilterChips filters={filters} options={options} />
+          <div className="ml-auto flex items-center gap-1 rounded-lg border bg-card p-1">
             <Link href={href(filters, 1, "list")} aria-label="List view" className={`grid h-8 w-8 place-items-center rounded-md ${filters.view === "list" ? "bg-muted text-foreground" : "text-muted-foreground hover:text-foreground"}`}><List className="h-4 w-4" /></Link>
             <Link href={href(filters, 1, "grid")} aria-label="Grid view" className={`grid h-8 w-8 place-items-center rounded-md ${filters.view === "grid" ? "bg-muted text-foreground" : "text-muted-foreground hover:text-foreground"}`}><LayoutGrid className="h-4 w-4" /></Link>
           </div>
@@ -187,7 +184,7 @@ export default async function SearchPage({ searchParams }: Props) {
         {games.length ? (
           <>
             {filters.view === "grid" ? (
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
                 {games.map((game) => <GameCard key={game.id} game={game} showDate dateField={dateField} />)}
               </div>
             ) : (
