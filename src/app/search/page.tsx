@@ -167,20 +167,20 @@ export default async function SearchPage({ searchParams }: Props) {
 
 
   return (
-    <div className="container mx-auto space-y-6 px-4 py-6 md:py-8">
+    <div className="container mx-auto space-y-4 px-4 py-6 md:py-8">
       <BreadcrumbJsonLd items={[{ name: "Home", url: SITE_URL }, { name: "Search", url: `${SITE_URL}/search` }]} />
-      <div>
-        <p className="mb-1.5 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground"><SlidersHorizontal className="h-3.5 w-3.5" />Game discovery</p>
-        <h1 className="text-2xl font-extrabold tracking-tight md:text-3xl">{filters.q ? `Results for “${filters.q}”` : filters.playMode === "embedded" ? "Games playable here" : sortLabels[filters.sort]}</h1>
+      <div className="flex items-end justify-between gap-4">
+        <div className="min-w-0 flex-1">
+          <p className="mb-1.5 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground"><SlidersHorizontal className="h-3.5 w-3.5" />Game discovery</p>
+          <h1 className="break-words text-2xl font-extrabold tracking-tight md:text-3xl">{filters.q ? `Results for “${filters.q}”` : filters.playMode === "embedded" ? "Games playable here" : sortLabels[filters.sort]}</h1>
+        </div>
+        <div className="flex shrink-0 items-center gap-1 rounded-lg border bg-card p-1">
+          <Link href={href(filters, 1, "list")} aria-label="List view" className={`grid h-8 w-8 place-items-center rounded-md ${filters.view === "list" ? "bg-muted text-foreground" : "text-muted-foreground hover:text-foreground"}`}><List className="h-4 w-4" /></Link>
+          <Link href={href(filters, 1, "grid")} aria-label="Grid view" className={`grid h-8 w-8 place-items-center rounded-md ${filters.view === "grid" ? "bg-muted text-foreground" : "text-muted-foreground hover:text-foreground"}`}><LayoutGrid className="h-4 w-4" /></Link>
+        </div>
       </div>
       <section aria-label="Search results" className="min-w-0 space-y-5">
-        <div className="flex flex-wrap items-center justify-between gap-3 border-b pb-4">
-          <ActiveFilterChips filters={filters} options={options} />
-          <div className="ml-auto flex items-center gap-1 rounded-lg border bg-card p-1">
-            <Link href={href(filters, 1, "list")} aria-label="List view" className={`grid h-8 w-8 place-items-center rounded-md ${filters.view === "list" ? "bg-muted text-foreground" : "text-muted-foreground hover:text-foreground"}`}><List className="h-4 w-4" /></Link>
-            <Link href={href(filters, 1, "grid")} aria-label="Grid view" className={`grid h-8 w-8 place-items-center rounded-md ${filters.view === "grid" ? "bg-muted text-foreground" : "text-muted-foreground hover:text-foreground"}`}><LayoutGrid className="h-4 w-4" /></Link>
-          </div>
-        </div>
+        <ActiveFilterChips filters={filters} options={options} />
         {games.length ? (
           <>
             {filters.view === "grid" ? (
