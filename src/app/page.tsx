@@ -61,13 +61,13 @@ export default async function HomePage() {
   return (
     <div className="home-page pb-8">
       <div className="container mx-auto px-4 pt-5 md:pt-7">
-        <section className="home-intro pb-2">
+        <section className="home-intro">
           <div className="max-w-2xl">
-            <h1 className="home-title text-2xl font-bold leading-tight tracking-[-0.035em] sm:text-3xl">
-              Discover what&apos;s new. <span className="text-primary">Play instantly.</span>
+            <h1 className="home-title">
+              Discover your next game.
             </h1>
             <p className="mt-2 max-w-xl text-sm leading-6 text-muted-foreground">
-              Find a browser game and start playing. No download required.
+              New browser games, ready to play. No download required.
             </p>
           </div>
         </section>

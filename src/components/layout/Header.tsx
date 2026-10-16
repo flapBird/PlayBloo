@@ -40,7 +40,7 @@ export function Header() {
     <header className="site-header sticky top-0 z-50 w-full">
       <div className="container mx-auto">
         {/* Main row */}
-        <div className="flex h-16 items-center justify-between px-0 sm:px-4">
+        <div className="flex h-16 items-center justify-between">
           <div className="flex shrink-0 items-center gap-7">
             <Link href="/" className="flex items-center gap-2 text-lg font-black sm:text-xl tracking-tight text-foreground transition-colors hover:text-primary">
               <Image
