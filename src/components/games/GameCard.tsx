@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Eye, ExternalLink, Gamepad2, Play } from "lucide-react";
+import { ExternalLink, Gamepad2, Play } from "lucide-react";
 import { getDiscoveryStatusBadge, getGamePlayMode, shouldBypassImageOptimization } from "@/lib/game-utils";
 import type { Category, Game } from "@/lib/types";
 
@@ -14,10 +14,6 @@ interface GameCardProps {
   showDate?: boolean;
   dateField?: "added" | "released" | "updated";
   eagerImage?: boolean;
-}
-
-function formatCount(value: number | undefined): string {
-  return new Intl.NumberFormat("en", { notation: "compact", maximumFractionDigits: 1 }).format(value || 0);
 }
 
 export function GameCard({ game, badges = [], showDate = false, dateField = "added", eagerImage = false }: GameCardProps) {
@@ -35,7 +31,7 @@ export function GameCard({ game, badges = [], showDate = false, dateField = "add
 
   return (
     <article className="game-card group relative min-w-0">
-      <Link href={`/game/${game.slug}`} prefetch={false} aria-label={`View ${game.title}`} className="game-card-link relative">
+      <Link href={`/game/${game.slug}`} prefetch={false} aria-label={`View ${game.title}`} title={game.title} className="game-card-link relative">
         <div className="game-card-media relative aspect-[16/10] shrink-0 overflow-hidden rounded-xl bg-muted">
           {game.thumbnail_url ? (
             <Image
@@ -62,10 +58,9 @@ export function GameCard({ game, badges = [], showDate = false, dateField = "add
               {playMode === "embedded" ? <><Play className="h-3 w-3" aria-hidden="true" />Play here</> : playMode === "external" ? <><ExternalLink className="h-3 w-3" aria-hidden="true" />External</> : "Details only"}
             </span>
           </div>
-          {(showDate && dateValue && !Number.isNaN(dateValue.getTime()) || game.view_count > 0) && (
+          {(showDate && dateValue && !Number.isNaN(dateValue.getTime())) && (
             <div className="game-card-details">
               {showDate && dateValue && !Number.isNaN(dateValue.getTime()) && <time dateTime={rawDate || undefined}>{dateField === "released" ? "Released" : dateField === "updated" ? "Updated" : "Added"} {dateValue.toLocaleDateString("en", { month: "short", day: "numeric", timeZone: "UTC" })}</time>}
-              {game.view_count > 0 && <span className="inline-flex items-center gap-1"><Eye className="h-3 w-3" aria-hidden="true" />{formatCount(game.view_count)} views</span>}
             </div>
           )}
         </div>

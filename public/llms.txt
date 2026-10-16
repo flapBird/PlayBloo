@@ -28,7 +28,7 @@ PlayBloo's public content is written in English. Game pages provide researched i
 
 ## Display Preferences
 
-- Game grids use cover-first cards; hovering or keyboard focus reveals the title and game information. Touch devices and small screens show an unobstructed cover with the game title below it. Search pages show up to 24 games per page, using six columns on wide desktop screens and two, three, or four columns on smaller screens.
+- Game grids use cover-first cards; hovering or keyboard focus reveals a compact bottom overlay with the title, genre, and play mode. Search grid cards omit dates and view counts. Touch devices and small screens show an unobstructed cover with the game title below it. Search pages show up to 24 games per page, using six columns on wide desktop screens and two, three, or four columns on smaller screens.
 
 - Homepage tabs show up to 20 games ranked from the full published catalog, filling five rows in the four-column desktop grid. Switching tabs preserves the selected grid or list view; Browse all continues with the selected ranking.
 - The site uses a dark theme by default. A theme toggle beside Favorites in the header switches between light and dark appearances and saves the choice in this browser.
