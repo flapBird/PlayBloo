@@ -49,7 +49,7 @@ export function Header() {
                 width={36}
                 height={36}
                 loading="eager"
-                className="h-9 w-9 shrink-0 object-contain"
+                className="site-brand-icon h-9 w-9 shrink-0 object-contain"
               />
               {SITE_NAME}
             </Link>

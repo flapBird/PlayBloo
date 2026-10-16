@@ -64,7 +64,7 @@ export default async function HomePage() {
         <section className="home-intro">
           <div className="max-w-2xl">
             <h1 className="home-title">
-              Discover your next game.
+              Discover your <span className="text-primary">next game.</span>
             </h1>
             <p className="mt-2 max-w-xl text-sm leading-6 text-muted-foreground">
               New browser games, ready to play. No download required.
