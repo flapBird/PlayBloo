@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, ArrowUpRight, BookOpen, CalendarDays, ChevronRight } from "lucide-react";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
-import { formatGuideDate, getGuideArticles, GUIDE_AUTHOR, guidePath } from "@/lib/guides";
+import { formatGuideDate, getGuideArticles, getGuideCover, GUIDE_AUTHOR, guidePath } from "@/lib/guides";
 import type { GuideArticle, GuideSection, GuideTopic } from "@/lib/guides/types";
 import { GuideTrailer } from "./GuideTrailer";
 import styles from "./guides.module.css";
@@ -30,6 +30,7 @@ export function GuideBreadcrumbs({ topic, article }: { topic?: GuideTopic; artic
 
 export function GuideSchema({ topic, article }: { topic: GuideTopic; article?: GuideArticle }) {
   const content = article || topic;
+  const cover = getGuideCover(topic, article);
   const url = `${SITE_URL}${guidePath(topic, article)}`;
   const schema = {
     "@context": "https://schema.org",
@@ -37,7 +38,7 @@ export function GuideSchema({ topic, article }: { topic: GuideTopic; article?: G
     "@id": `${url}#article`,
     headline: content.title,
     description: content.description,
-    image: `${SITE_URL}${topic.cover.src}`,
+    image: `${SITE_URL}${cover.src}`,
     datePublished: content.publishedAt,
     dateModified: content.updatedAt,
     inLanguage: "en",
@@ -76,8 +77,9 @@ export function GuideHero({ topic, listing = false }: { topic: GuideTopic; listi
 }
 
 export function GuideCard({ topic, article }: { topic: GuideTopic; article?: GuideArticle }) {
+  const cover = getGuideCover(topic, article);
   return <Link href={guidePath(topic, article)} className={styles.guideCard}>
-    <div className={styles.cardImage}><Image src={topic.cover.src} style={topic.cover.fit ? { objectFit: topic.cover.fit, objectPosition: "center" } : undefined} alt="" fill sizes="(max-width: 767px) 88px, 120px" /></div>
+    <div className={styles.cardImage}><Image src={cover.src} style={cover.fit || cover.position ? { objectFit: cover.fit, objectPosition: cover.position ?? "center" } : undefined} alt="" fill sizes="(max-width: 767px) 88px, 120px" /></div>
     <div className={styles.cardCopy}>
       <div className={styles.cardTop}><span className={styles.gameName}>{topic.name}</span><ArrowUpRight size={16} /></div>
       <h3>{article?.shortTitle ?? topic.title}</h3>

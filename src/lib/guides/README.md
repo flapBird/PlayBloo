@@ -15,6 +15,13 @@ new deployment; there is no admin editor for Guides yet.
    within each article, and `sourceIds` must resolve to the topic's source list.
 5. Set related article slugs and verify that they resolve to published articles.
 
+Give each new article a subject-specific `cover` using inspected official artwork
+or screenshots, with its own alt text, source URL, credit and intrinsic dimensions.
+Use distinct images for sibling articles and the topic hub. Article covers are
+shared by the article header, every article card, Open Graph/Twitter and Article
+JSON-LD. Existing articles without a `cover` fall back to the topic cover.
+`fit` and `position` control cropping consistently across article surfaces.
+
 The templates generate `/guides`, `/guides/[slug]` and
 `/guides/[slug]/[articleSlug]`. Existing site conventions normalize trailing slashes
 to the non-trailing-slash canonical. Unknown topics/articles return 404.

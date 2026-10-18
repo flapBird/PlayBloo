@@ -27,6 +27,15 @@ const attr = (html, tag, match, name) => {
 const titles = new Set();
 const descriptions = new Set();
 const internalLinks = new Set();
+const articleCovers = new Map([
+  [`${castlevaniaHub}/getting-started`, "/images/guides/castlevania-belmonts-curse-getting-started.webp"],
+  [`${castlevaniaHub}/launch-fixes`, "/images/guides/castlevania-belmonts-curse-launch-fixes.webp"],
+  [`${enshroudedHub}/beginners-guide`, "/images/guides/enshrouded-beginners-guide.webp"],
+  [`${enshroudedHub}/skill-tree`, "/images/guides/enshrouded-skill-tree.webp"],
+  [`${mw4Hub}/release-date`, "/images/guides/modern-warfare-4-release-date.webp"],
+  [`${mw4Hub}/campaign-early-access`, "/images/guides/modern-warfare-4-campaign-early-access.webp"],
+]);
+const checkedCoverCards = new Map([...articleCovers.keys()].map((path) => [path, new Set()]));
 
 for (const path of [...pages, preview]) {
   const response = await get(path);
@@ -45,6 +54,24 @@ for (const path of [...pages, preview]) {
   const robots = attr(html, "meta", 'name="robots"', "content");
   assert.equal(robots?.includes("noindex"), path === preview, `${path}: correct index state`);
   const schemas = [...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)].map((match) => JSON.parse(match[1]));
+  const cover = articleCovers.get(path);
+  if (cover) {
+    const expectedImage = `${canonicalOrigin}${cover}`;
+    assert.equal(attr(html, "meta", 'property="og:image"', "content"), expectedImage, `${path}: article-specific OG image`);
+    assert.equal(attr(html, "meta", 'name="twitter:image"', "content"), expectedImage, `${path}: article-specific Twitter image`);
+    assert.equal(schemas.find((schema) => schema["@type"] === "Article")?.image, expectedImage, `${path}: article-specific schema image`);
+    const articleCover = html.match(/<figure\b[^>]*articleCover[^>]*>([\s\S]*?)<\/figure>/)?.[1];
+    assert.equal(attr(articleCover ?? "", "img", "src=", "src"), cover, `${path}: article header uses its own cover`);
+    const response = await get(cover);
+    assert.equal(response.status, 200, `${cover}: image loads`);
+    assert.ok(response.headers.get("content-type")?.includes("image/webp"), `${cover}: precompressed WebP`);
+  }
+  for (const [, href, card] of html.matchAll(/<a\b[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/g)) {
+    if (!articleCovers.has(href) || !card.includes("<img")) continue;
+    assert.equal(attr(card, "img", "src=", "src"), articleCovers.get(href), `${path}: ${href} card uses its own cover`);
+    const surface = path === "/guides" ? "listing" : path === href.slice(0, href.lastIndexOf("/")) ? "hub" : "related";
+    checkedCoverCards.get(href).add(surface);
+  }
   assert.ok(schemas.some((schema) => schema["@type"] === "BreadcrumbList"), `${path}: breadcrumbs`);
   if (path !== "/guides") {
     const article = schemas.find((schema) => schema["@type"] === "Article");
@@ -56,6 +83,8 @@ for (const path of [...pages, preview]) {
   console.log(`PASS ${path}`);
 }
 assert.deepEqual([...internalLinks].sort(), [...pages, preview].sort(), "All guide links resolve to public content");
+for (const [path, surfaces] of checkedCoverCards) assert.deepEqual([...surfaces].sort(), ["hub", "listing", "related"], `${path}: cover checked in listing, hub and related cards`);
+console.log("PASS six article covers across headers, cards, share metadata and structured data");
 
 for (const path of ["/guides/not-a-real-topic", `${hub}/not-a-real-article`, "/guides/not-a-real-topic/release-date"]) {
   assert.equal((await get(path)).status, 404, `${path}: no empty indexable pages`);

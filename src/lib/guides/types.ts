@@ -4,6 +4,17 @@ export interface GuideSource {
   url: string;
 }
 
+export interface GuideCover {
+  src: string;
+  alt: string;
+  credit: string;
+  sourceUrl: string;
+  width?: number;
+  height?: number;
+  fit?: "contain" | "cover";
+  position?: string;
+}
+
 export interface GuideSection {
   id: string;
   title: string;
@@ -28,6 +39,7 @@ export interface GuideArticle {
   title: string;
   shortTitle: string;
   description: string;
+  cover?: GuideCover;
   category: string;
   status: "published" | "preview" | "draft";
   publishedAt: string;
@@ -48,7 +60,7 @@ export interface GuideTopic {
   releaseKind?: "demo";
   releaseStatus: "upcoming" | "released";
   publisher: string;
-  cover: { src: string; alt: string; credit: string; sourceUrl: string; width?: number; height?: number; fit?: "contain" | "cover" };
+  cover: GuideCover;
   trailer?: { youtubeId: string; title: string; publishedAt: string };
   publishedAt: string;
   updatedAt: string;

@@ -74,6 +74,15 @@ export const modernWarfare4: GuideTopic = {
       slug: "release-date", shortTitle: "Release date, platforms & launch schedule", category: "Release information",
       title: "MW4 Release Date: When Does Modern Warfare 4 Come Out?",
       description: "MW4 releases October 23, 2026. Compare the full launch with campaign and DMZ early access, PC preload details, supported platforms and Game Pass availability.",
+      cover: {
+        src: "/images/guides/modern-warfare-4-release-date.webp",
+        alt: "A masked Modern Warfare 4 soldier beside a transport helicopter in official PC launch artwork",
+        credit: "Official PC launch artwork © Activision Publishing, Inc.",
+        sourceUrl: "https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/pc-trailer-blog/MW4-PC-TECH-007.webp",
+        width: 1600,
+        height: 900,
+        position: "40% center",
+      },
       status: "published", ...dates, relatedSlugs: ["campaign-early-access"],
       sections: [
         {
@@ -112,6 +121,14 @@ export const modernWarfare4: GuideTopic = {
       slug: "campaign-early-access", shortTitle: "Campaign early access & 16 missions", category: "Campaign",
       title: "MW4 Campaign Early Access: How to Play & How Many Missions",
       description: "MW4 campaign early access began October 16. Learn which digital editions qualify, whether you need Vault, and how many missions Modern Warfare 4 contains.",
+      cover: {
+        src: "/images/guides/modern-warfare-4-campaign-early-access.webp",
+        alt: "Park wearing a helmet and South Korean tactical gear inside a military vehicle in Modern Warfare 4",
+        credit: "Official campaign screenshot © Activision Publishing, Inc.",
+        sourceUrl: "https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/body/mw4/campaign-live/MW4-CAMPAIGNLIVE-001.webp",
+        width: 1600,
+        height: 900,
+      },
       status: "published", ...dates, relatedSlugs: ["release-date"],
       sections: [
         {

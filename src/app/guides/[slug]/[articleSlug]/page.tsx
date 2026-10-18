@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { GuideBreadcrumbs, GuideByline, GuideSchema, GuideSections, GuideSidebar, RelatedGuides } from "@/components/guides/GuideContent";
-import { getGuideArticle, getGuideTopic, getGuideTopics, guideMetadata } from "@/lib/guides";
+import { getGuideArticle, getGuideCover, getGuideTopic, getGuideTopics, guideMetadata } from "@/lib/guides";
 import styles from "@/components/guides/guides.module.css";
 
 type Props = { params: Promise<{ slug: string; articleSlug: string }> };
@@ -26,6 +26,7 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function GuideArticlePage({ params }: Props) {
   const { topic, article } = await resolveArticle(params);
+  const cover = getGuideCover(topic, article);
   return <div className={styles.page}>
     <GuideBreadcrumbs topic={topic} article={article} />
     <article>
@@ -37,7 +38,7 @@ export default async function GuideArticlePage({ params }: Props) {
       {article.status === "preview" && <div className={styles.previewBanner}><strong>Coverage in preparation.</strong> This page is not a tested Switch 2 walkthrough. Published guides below cover confirmed pre-release information.</div>}
       <div className={styles.body}>
         <div>
-          <figure className={styles.articleCover}><Image src={topic.cover.src} style={topic.cover.fit ? { objectFit: topic.cover.fit, objectPosition: "center" } : undefined} alt={topic.cover.alt} fill preload sizes="(max-width: 1023px) 100vw, 800px" /></figure>
+          <figure className={styles.articleCover}><Image src={cover.src} style={cover.fit || cover.position ? { objectFit: cover.fit, objectPosition: cover.position ?? "center" } : undefined} alt={cover.alt} fill preload sizes="(max-width: 1023px) 100vw, 800px" /></figure>
           <div className={styles.articleBody}><GuideSections topic={topic} sections={article.sections} /></div>
         </div>
         <GuideSidebar topic={topic} sections={article.sections} article={article} />

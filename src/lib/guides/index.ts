@@ -24,22 +24,24 @@ export const getGuideTopic = (slug: string) => getGuideTopics().find((topic) => 
 export const getLatestGuideTopic = () => [...getGuideTopics()].sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt))[0];
 export const getGuideArticles = (topic: GuideTopic) => topic.articles.filter((article) => article.status === "published");
 export const getGuideArticle = (topic: GuideTopic, slug: string) => topic.articles.find((article) => article.slug === slug && article.status !== "draft");
+export const getGuideCover = (topic: GuideTopic, article?: GuideArticle) => article?.cover ?? topic.cover;
 export const guidePath = (topic: GuideTopic, article?: GuideArticle) => `/guides/${topic.slug}${article ? `/${article.slug}` : ""}`;
 export const formatGuideDate = (date: string) => new Intl.DateTimeFormat("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" }).format(new Date(date));
 export const getTopicModified = (topic: GuideTopic) => [topic.updatedAt, ...getGuideArticles(topic).map((article) => article.updatedAt)].sort((a, b) => Date.parse(b) - Date.parse(a))[0];
 
 export function guideMetadata(topic: GuideTopic, article?: GuideArticle): Metadata {
   const content = article || topic;
+  const cover = getGuideCover(topic, article);
   const title = `${content.title} | ${SITE_NAME}`;
   const url = `${SITE_URL}${guidePath(topic, article)}`;
-  const images = [{ url: topic.cover.src, width: topic.cover.width ?? 1600, height: topic.cover.height ?? 1000, alt: topic.cover.alt }];
+  const images = [{ url: cover.src, width: cover.width ?? 1600, height: cover.height ?? 1000, alt: cover.alt }];
   return {
     title: content.title,
     description: content.description,
     alternates: { canonical: url },
     robots: { index: article ? article.status === "published" : true, follow: true },
     openGraph: { type: "article", title, description: content.description, url, siteName: SITE_NAME, images, publishedTime: content.publishedAt, modifiedTime: content.updatedAt },
-    twitter: { card: "summary_large_image", title, description: content.description, images: [topic.cover.src] },
+    twitter: { card: "summary_large_image", title, description: content.description, images: [cover.src] },
   };
 }
 
