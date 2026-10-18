@@ -157,6 +157,35 @@ card crops. No trailer, browser-game entry or Supabase mutation is added. All th
 published URLs use this guide's actual publication date in sitemap, independently
 of the October 23 game release date. Existing game timestamps stay unchanged.
 
+## Castlevania: Belmont's Curse and Enshrouded (October 18, 2026)
+
+Both games' publishers confirm October 15 full releases. The six published URLs
+use October 18 as the PlayBloo publication date; it is independent of each game's
+release date. The supplied trend screenshots are research leads, without verified
+search volume or a traffic forecast. Routes retain the nested topic/article form.
+
+`castlevania-belmonts-curse` includes `getting-started` and `launch-fixes`.
+The first-boss and Arcana material draws on Konami, PlayStation's firsthand
+preview, the developer interview and a limited part of KeenGamer's launch route.
+The preview's version is identified; this is not a PlayBloo playthrough. The
+troubleshooting page follows Konami's October 14 known-issues notice. Complete
+walkthrough, map and true-ending pages are not published without further checks.
+
+`enshrouded` includes `beginners-guide` and `skill-tree`, based on the launch FAQ,
+1.0 changelog, combat announcement and support documentation. Early Access tips
+are used for basic systems with their scope recorded; current changes take
+precedence. Do not publish old node allocations, best-build rankings or precise
+resource coordinates as 1.0-tested data. Individual skill resets were introduced
+in Pact of the Flame; the current game displays the cost to confirm.
+
+Covers are an official Castlevania promotional still from PlayStation Blog and
+Enshrouded's official 1.0 press-kit key art. Both originals were visually inspected
+and compressed to 1600 × 900 WebP; `cover.sourceUrl` preserves their source URLs.
+No playable catalog entry or Supabase mutation is involved. The existing sitemap
+generator picks up all six URLs; existing topic and game timestamps are retained.
+Pass a pre-change XML snapshot as the optional third argument to
+`verify-guides.mjs` to check timestamp preservation as well as the route checks.
+
 ## September 15 topics
 
 World of Warcraft Forever and Marvel’s Wolverine use official promotional artwork

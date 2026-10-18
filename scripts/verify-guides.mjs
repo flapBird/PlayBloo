@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 
 const base = process.argv[2] || "http://localhost:3000";
 const hub = "/guides/ocarina-of-time-remake";
@@ -7,6 +8,10 @@ const preview = `${hub}/walkthrough`;
 const mw4Hub = "/guides/modern-warfare-4";
 const mw4Pages = [mw4Hub, `${mw4Hub}/release-date`, `${mw4Hub}/campaign-early-access`];
 pages.push(...mw4Pages);
+const castlevaniaHub = "/guides/castlevania-belmonts-curse";
+const enshroudedHub = "/guides/enshrouded";
+const newGuidePages = [castlevaniaHub, `${castlevaniaHub}/getting-started`, `${castlevaniaHub}/launch-fixes`, enshroudedHub, `${enshroudedHub}/beginners-guide`, `${enshroudedHub}/skill-tree`];
+pages.push(...newGuidePages);
 const canonicalOrigin = "https://playbloo.net";
 const demoTopics = [
   { slug: "remember", officialUrl: "https://xlaucifer.itch.io/remember" },
@@ -71,7 +76,7 @@ const home = await homeResponse.text();
 const header = home.match(/<header\b[\s\S]*?<\/header>/)?.[0] || "";
 assert.ok(header.includes('href="/guides"'), "Primary navigation links to Guides");
 assert.ok(!header.includes("playMode=embedded"), "Redundant Playable navigation removed");
-assert.ok(home.includes(`href="${mw4Hub}"`), "Homepage feature links to the newest guide");
+assert.ok(home.includes(`href="${castlevaniaHub}"`), "Homepage feature links to the newest guide");
 assert.ok(!(home.match(/<nav aria-label="Game feed"[\s\S]*?<\/nav>/)?.[0] || "").includes("playMode=embedded"), "Redundant feed tab removed");
 console.log("PASS unknown routes, canonical redirect, sitemap, internal links and homepage navigation");
 
@@ -126,6 +131,42 @@ console.log("PASS Hellraiser Revival official entry, screenshots and contents an
 
 const listing = await (await get("/guides")).text();
 const latestUpdates = listing.split('id="latest-guides"')[1]?.split("</section>")[0] ?? "";
+const sitemapEntries = (xml) => new Map([...xml.matchAll(/<url>([\s\S]*?)<\/url>/g)].map(([, entry]) => [entry.match(/<loc>([^<]+)<\/loc>/)?.[1], entry.match(/<lastmod>([^<]+)<\/lastmod>/)?.[1]]));
+const currentEntries = sitemapEntries(sitemap);
+for (const path of newGuidePages) {
+  const html = await (await get(path)).text();
+  assert.ok(!html.includes("/_next/image"), `${path}: direct image URLs`);
+  assert.ok(!html.includes("<iframe"), `${path}: no game embed`);
+  const ids = [...html.matchAll(/<section[^>]*\bid="([^"]+)"/g)].map((match) => match[1]);
+  assert.equal(new Set(ids).size, ids.length, `${path}: unique section IDs`);
+  for (const [, target] of html.matchAll(/href="#([^"]+)"/g)) assert.ok(ids.includes(target), `${path}: anchor ${target} exists`);
+  assert.equal(currentEntries.get(`${canonicalOrigin}${path}`), "2026-10-18T10:00:00.000Z", `${path}: sitemap uses guide publication date`);
+  if (![castlevaniaHub, enshroudedHub].includes(path)) assert.ok(latestUpdates.includes(`href="${path}"`), `${path}: appears in Latest Updates`);
+}
+for (const slug of ["castlevania-belmonts-curse", "enshrouded"]) {
+  const cover = await get(`/images/guides/${slug}.webp`);
+  assert.equal(cover.status, 200, `${slug}: official cover loads`);
+  assert.ok(cover.headers.get("content-type")?.includes("image/webp"), `${slug}: WebP cover`);
+  const html = await (await get(`/guides/${slug}`)).text();
+  assert.ok(/datetime="2026-10-15"/i.test(html), `${slug}: game release date is separate from guide publication`);
+  assert.ok(html.includes("Released"), `${slug}: released status`);
+}
+for (const path of [`${castlevaniaHub}/walkthrough`, `${castlevaniaHub}/map`, `${castlevaniaHub}/true-ending`, `${enshroudedHub}/best-builds`, `${enshroudedHub}/resource-locations`]) {
+  assert.equal((await get(path)).status, 404, `${path}: no unverified placeholder`);
+}
+if (process.argv[3]) {
+  const previousEntries = sitemapEntries(await readFile(process.argv[3], "utf8"));
+  let unchanged = 0;
+  for (const [url, lastmod] of previousEntries) {
+    const path = new URL(url).pathname;
+    if (!/^\/(game\/[^/]+(?:\/level\/[^/]+)?|guides\/.+)$/.test(path)) continue;
+    assert.equal(currentEntries.get(url), lastmod, `${path}: existing content keeps its sitemap timestamp`);
+    unchanged++;
+  }
+  assert.ok(unchanged > 0, "Baseline includes existing content");
+  console.log(`PASS ${unchanged} existing game and guide sitemap timestamps unchanged`);
+}
+console.log("PASS Castlevania and Enshrouded routes, publication dates, covers and article links");
 for (const path of mw4Pages) {
   const html = await (await get(path)).text();
   assert.ok(!html.includes("/_next/image"), `${path}: cover bypasses the image optimizer`);
@@ -172,5 +213,5 @@ console.log("PASS visual novel Demo status, official entries, covers and Latest 
 
 const hubSection = listing.split('aria-label="Game guide hubs"')[1]?.split("</section>")[0] ?? "";
 const firstHub = hubSection.match(/href="(\/guides\/[^"?#]+)"/)?.[1];
-assert.equal(firstHub, mw4Hub, "Guide hubs list leads with the newest published topic");
+assert.equal(firstHub, castlevaniaHub, "Guide hubs list leads with the newest published topic");
 console.log("PASS guide hubs list is newest-first");
