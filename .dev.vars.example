@@ -1,0 +1,3 @@
+# Keep this consistent with the production build used by npm run preview.
+# Application variables are loaded from .env.local; this file selects the mode.
+NEXTJS_ENV=production

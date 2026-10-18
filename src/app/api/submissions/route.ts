@@ -74,7 +74,8 @@ function plainText(value: unknown, maxLength: number): string | null {
 }
 
 function fingerprintRequest(request: NextRequest): string {
-  const forwarded = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+  const forwarded = request.headers.get("cf-connecting-ip")?.trim() ||
+    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
   const secret = process.env.SUBMISSION_FINGERPRINT_SECRET || process.env.SUPABASE_SERVICE_ROLE_KEY || "playbloo-submission-v1";
   return createHmac("sha256", secret).update(forwarded).digest("hex");
 }

@@ -1,4 +1,4 @@
-import { lookup } from "node:dns/promises";
+import { resolve4, resolve6 } from "node:dns/promises";
 import { isIP } from "node:net";
 import type { ClassifiedSubmissionUrl } from "./types";
 
@@ -64,11 +64,28 @@ export function classifySubmissionUrl(raw: string): ClassifiedSubmissionUrl {
   };
 }
 
-async function lookupWithTimeout(host: string, timeoutMs: number): Promise<Array<{ address: string; family: number }>> {
-  return new Promise<Array<{ address: string; family: number }>>((resolve, reject) => {
+async function resolveAddressFamily(resolveAddresses: () => Promise<string[]>): Promise<string[]> {
+  try {
+    return await resolveAddresses();
+  } catch (error) {
+    // A host may publish only A or only AAAA records. Other DNS errors must
+    // block the request because the unverified family could contain private IPs.
+    const code = error && typeof error === "object" && "code" in error ? error.code : undefined;
+    if (code === "ENODATA" || code === "ENOTFOUND") return [];
+    throw error;
+  }
+}
+
+async function resolveWithTimeout(host: string, timeoutMs: number): Promise<string[]> {
+  return new Promise<string[]>((resolve, reject) => {
     const timer = setTimeout(() => reject(new Error("Source DNS lookup timed out.")), timeoutMs);
-    lookup(host, { all: true, verbatim: true }).then(
-      (addresses) => { clearTimeout(timer); resolve(addresses); },
+    // Workers supports resolve4/resolve6, while dns.lookup is unimplemented.
+    // Check both families before fetching, including when one resolves first.
+    Promise.all([
+      resolveAddressFamily(() => resolve4(host)),
+      resolveAddressFamily(() => resolve6(host)),
+    ]).then(
+      (families) => { clearTimeout(timer); resolve(families.flat()); },
       (error) => { clearTimeout(timer); reject(error); },
     );
   });
@@ -81,8 +98,15 @@ async function assertPublicDestination(url: URL, allowedHost: ((hostname: string
   }
   if (allowedHost && !allowedHost(host)) throw new Error("The source redirected to an unsupported host.");
   if (BLOCKED_HOSTS.has(host) || host.endsWith(".local") || host.endsWith(".internal")) throw new Error("Unsafe destination blocked.");
-  const addresses = await lookupWithTimeout(host, timeoutMs);
-  if (!addresses.length || addresses.some((item) => isUnsafeAddress(item.address))) throw new Error("Unsafe destination blocked.");
+  // URL.hostname keeps brackets on IPv6 literals; DNS resolvers need only
+  // domain names, and IP literals must still receive the same safety checks.
+  const addressHost = host.replace(/^\[|\]$/g, "");
+  if (isIP(addressHost)) {
+    if (isUnsafeAddress(addressHost)) throw new Error("Unsafe destination blocked.");
+    return;
+  }
+  const addresses = await resolveWithTimeout(host, timeoutMs);
+  if (!addresses.length || addresses.some(isUnsafeAddress)) throw new Error("Unsafe destination blocked.");
 }
 
 export async function safeFetchText(

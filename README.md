@@ -35,6 +35,7 @@ A full admin dashboard at `/admin` (login-protected):
 - **Tailwind CSS 4** — Custom design with light UI, responsive grids, and hover effects.
 - **Radix UI primitives** — Accessible dialog, select, tabs, dropdown, toast, and switch components.
 - **TypeScript** — Full type coverage with shared types across components and API routes.
+- **Cloudflare Workers** — OpenNext deployment with R2 caching and Durable Objects for scheduled and on-demand revalidation.
 
 ## Tech stack
 
@@ -103,6 +104,16 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to see the site.
+
+### Cloudflare deployment
+
+Use Node.js 24 or later and `npm ci`. The Cloudflare build is `npm run build:cloudflare`;
+`npm run preview` builds and runs the app in the local Workers runtime, and `npm run deploy`
+builds, initializes the remote cache, and deploys the Worker. Supabase remains the database,
+authentication provider, and game-image storage. Images continue to use their original URLs.
+
+See [the Cloudflare deployment guide](docs/cloudflare.md) for R2 setup, build and runtime secrets,
+Workers Builds commands, domain migration, and verification steps.
 
 ### Bulk game editing
 
