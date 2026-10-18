@@ -74,7 +74,23 @@ npx wrangler secret put SUBMISSION_FINGERPRINT_SECRET
 
 最后一个变量可按前述回退规则省略。`SUPABASE_SERVICE_ROLE_KEY` 和 `SUBMISSION_FINGERPRINT_SECRET` 必须使用 secrets，不要放入可提交的配置或加上 `NEXT_PUBLIC_` 前缀。部署脚本带 `--keep-vars`，保留在 Dashboard 中配置的运行时普通变量；secrets 由 Cloudflare 保存。
 
-如果使用 Workers Builds，在 **Build variables and secrets** 中另外配置两个 `NEXT_PUBLIC_SUPABASE_*` 变量，以及构建时静态页面查询所需的 `SUPABASE_SERVICE_ROLE_KEY`。公共变量会写入浏览器产物，修改后需要重新构建；只更新 Worker 运行时值无法替换已有客户端代码中的值。详见 [OpenNext 环境变量说明](https://opennext.js.org/cloudflare/howtos/env-vars)。
+如果使用 Workers Builds，进入 **Workers & Pages → playbloo → Settings → Build → Variables and secrets**（构建设置中的 **Build variables and secrets**），另外配置以下三个同名变量：
+
+| 变量 | 构建配置类型 | 必需原因 |
+| --- | --- | --- |
+| `NEXT_PUBLIC_SUPABASE_URL` | Variable | 注入客户端，并在静态生成时连接 Supabase |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Variable | 注入浏览器的 Supabase 客户端 |
+| `SUPABASE_SERVICE_ROLE_KEY` | Secret | 构建时读取游戏、关卡和 sitemap 数据 |
+
+`Settings → Variables and Secrets` 配置的是运行时，不能代替这一步；保留已有运行时配置。保存构建变量后，再重新运行失败的构建。公共变量会写入浏览器产物，修改后需要重新构建；只更新 Worker 运行时值无法替换已有客户端代码中的值。详见 [OpenNext 环境变量说明](https://opennext.js.org/cloudflare/howtos/env-vars)。
+
+### 排查 `supabaseUrl is required`
+
+若日志在 `Collecting page data` 阶段报 `supabaseUrl is required`，表示构建进程未获得 `NEXT_PUBLIC_SUPABASE_URL`。仅添加运行时变量后依然会失败。先检查上述构建设置中的三个变量是否同名、非空并已保存；若使用不同构建环境，也要检查本次构建对应的变量配置。
+
+生产构建会在编译前检查这三个变量，缺失时只报告变量名和配置位置，不输出变量值。不要把 service role key 填到公共变量、构建命令或提交进仓库。
+
+Next.js telemetry 提示不会中止构建。本地绑定代理只在 `next dev` 中初始化；生产构建不会为它启动本地 DO。若在开发日志里看到 `DOQueueHandler` 或 `DOShardedTagCache` 的内部绑定提示，不要为此删除正式部署需要的 DO 绑定；Workers 产物由 OpenNext 导出对应类。
 
 ## 预览与发布
 

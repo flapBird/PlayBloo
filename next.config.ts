@@ -1,7 +1,6 @@
 import type { NextConfig } from "next";
+import { PHASE_DEVELOPMENT_SERVER, PHASE_PRODUCTION_BUILD } from "next/constants.js";
 import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
-
-initOpenNextCloudflareForDev();
 
 const nextConfig: NextConfig = {
   images: {
@@ -30,4 +29,28 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default function configureNext(phase: string): NextConfig {
+  if (phase === PHASE_DEVELOPMENT_SERVER) {
+    initOpenNextCloudflareForDev();
+  }
+
+  if (phase === PHASE_PRODUCTION_BUILD) {
+    const required = [
+      "NEXT_PUBLIC_SUPABASE_URL",
+      "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+      "SUPABASE_SERVICE_ROLE_KEY",
+    ];
+    const missing = required.filter((name) => !process.env[name]?.trim());
+    if (missing.length) {
+      throw new Error(
+        `[PlayBloo build] Missing required environment variables: ${missing.join(", ")}.\n` +
+        "Cloudflare Workers Builds: add these under Settings > Build > Variables and secrets (Build variables and secrets). " +
+        "Settings > Variables and Secrets only configures the Worker runtime; those values are not available during builds. " +
+        "Keep the runtime variables too, save the build settings, then retry the build. " +
+        "For local builds, configure .env.local. See docs/cloudflare.md.",
+      );
+    }
+  }
+
+  return nextConfig;
+}
