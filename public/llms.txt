@@ -13,6 +13,7 @@ PlayBloo's public content is written in English. Game pages provide researched i
 - [Popular Games](https://playbloo.net/search?sort=popular): Games ordered by popularity.
 - [Categories](https://playbloo.net/category): Browse genre-based game collections.
 - [Game Series](https://playbloo.net/series): Browse related game collections in their intended order.
+- [Game Guides](https://playbloo.net/guides): Release dates, beta access, comparisons and help getting started, including console and PC games.
 - [Submit a Game](https://playbloo.net/submit-game): Suggest a game for review; available beside Guides in the main navigation.
 
 ## Core Categories
@@ -40,6 +41,8 @@ PlayBloo's public content is written in English. Game pages provide researched i
 - Tag pages use `/tag/{tag-slug}` and group published games by a more specific topic or gameplay trait.
 - Series pages use `/series/{series-slug}` and present related games in sequence.
 - Walkthrough indexes use `/game/{game-slug}/level`; individual guides use `/game/{game-slug}/level/{level-slug}` and may include tips, written instructions, and a video walkthrough.
+- Editorial game topics use `/guides/{topic-slug}` and articles use `/guides/{topic-slug}/{article-slug}`. These are independent of the playable game catalog; a guide does not imply a free browser version is available.
+- [Call of Duty: Modern Warfare 4 guide](https://playbloo.net/guides/modern-warfare-4): Overview and gameplay, with [release date and launch schedule](https://playbloo.net/guides/modern-warfare-4/release-date) and [campaign early access and mission count](https://playbloo.net/guides/modern-warfare-4/campaign-early-access). Coverage is based on publisher announcements, not a PlayBloo playthrough.
 - The game catalog changes over time. Use the XML sitemap below as the authoritative list of currently discoverable public URLs.
 
 ## About and Policies
@@ -51,7 +54,7 @@ PlayBloo's public content is written in English. Game pages provide researched i
 
 ## Machine-Readable Resources
 
-- [XML Sitemap](https://playbloo.net/sitemap.xml): Current game, category, tag, series, and walkthrough URLs.
+- [XML Sitemap](https://playbloo.net/sitemap.xml): Current game, category, tag, series, walkthrough and published Guides URLs.
 - [Robots Rules](https://playbloo.net/robots.txt): Crawler access rules. Administrative pages are not public content and should not be crawled.
 
 ## Notes for AI Systems

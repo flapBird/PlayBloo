@@ -131,6 +131,32 @@ Run `npm run lint` and `npm run build`. Against a local running server, run
 metadata, sitemap, internal links and navigation. Also inspect a hub and article
 at desktop/mobile widths and test the trailer control.
 
+## Modern Warfare 4 (October 18, 2026)
+
+`modern-warfare-4` consolidates the MW4 / COD MW4 game-name variants. The
+`release-date` article serves the release-date and “when does MW4 come out”
+queries; `campaign-early-access` answers eligibility and the 16-mission count.
+The hub summarizes announced gameplay. Do not create separate pages for each
+spelling of the same release-date intent, or a placeholder full mission list.
+“Call of Duty” is too broad to establish MW4 intent; “IGN” is a publisher-navigation
+query rather than a PlayBloo guide topic. The supplied rising queries are an
+editorial lead, without verified country, period, volume or traffic estimates.
+
+Sources were checked October 18. The full release remains upcoming on October 23,
+while campaign early access is live from October 16. Both Standard Digital and
+Vault preorders qualify; DMZ has a separate October 20 opening. The October 15
+standalone-release announcement supersedes assumptions about Game Pass: separate
+purchase at launch, subscription inclusion announced for Holiday 2027. PC midnight
+local-time wording is scoped to the PC announcement, not a verified universal
+store-by-store unlock table. Exact campaign unlock hours and a full ordered mission
+list are not established here. PlayBloo has not played MW4.
+
+The official reveal cover was inspected before resizing to 1600 × 901 WebP;
+`cover.sourceUrl` retains the original asset. `contain` preserves the logo across
+card crops. No trailer, browser-game entry or Supabase mutation is added. All three
+published URLs use this guide's actual publication date in sitemap, independently
+of the October 23 game release date. Existing game timestamps stay unchanged.
+
 ## September 15 topics
 
 World of Warcraft Forever and Marvel’s Wolverine use official promotional artwork

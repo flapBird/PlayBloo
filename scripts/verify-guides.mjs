@@ -4,6 +4,9 @@ const base = process.argv[2] || "http://localhost:3000";
 const hub = "/guides/ocarina-of-time-remake";
 const pages = ["/guides/sploob", "/guides/sploob/how-to-play", "/guides/shape-walkthrough", "/guides/shape-walkthrough/controls-and-camera", "/guides", hub, ...["release-date", "new-features", "remake-vs-original", "gameplay"].map((slug) => `${hub}/${slug}`), "/guides/world-of-warcraft-forever", "/guides/world-of-warcraft-forever/beta", "/guides/marvels-wolverine", "/guides/marvels-wolverine/settings-and-accessibility", "/guides/hellraiser-revival", "/guides/hellraiser-revival/getting-started"];
 const preview = `${hub}/walkthrough`;
+const mw4Hub = "/guides/modern-warfare-4";
+const mw4Pages = [mw4Hub, `${mw4Hub}/release-date`, `${mw4Hub}/campaign-early-access`];
+pages.push(...mw4Pages);
 const canonicalOrigin = "https://playbloo.net";
 const demoTopics = [
   { slug: "remember", officialUrl: "https://xlaucifer.itch.io/remember" },
@@ -68,7 +71,7 @@ const home = await homeResponse.text();
 const header = home.match(/<header\b[\s\S]*?<\/header>/)?.[0] || "";
 assert.ok(header.includes('href="/guides"'), "Primary navigation links to Guides");
 assert.ok(!header.includes("playMode=embedded"), "Redundant Playable navigation removed");
-assert.ok(home.includes('href="/guides/hellraiser-revival"'), "Homepage feature links to the newest guide");
+assert.ok(home.includes(`href="${mw4Hub}"`), "Homepage feature links to the newest guide");
 assert.ok(!(home.match(/<nav aria-label="Game feed"[\s\S]*?<\/nav>/)?.[0] || "").includes("playMode=embedded"), "Redundant feed tab removed");
 console.log("PASS unknown routes, canonical redirect, sitemap, internal links and homepage navigation");
 
@@ -123,6 +126,33 @@ console.log("PASS Hellraiser Revival official entry, screenshots and contents an
 
 const listing = await (await get("/guides")).text();
 const latestUpdates = listing.split('id="latest-guides"')[1]?.split("</section>")[0] ?? "";
+for (const path of mw4Pages) {
+  const html = await (await get(path)).text();
+  assert.ok(!html.includes("/_next/image"), `${path}: cover bypasses the image optimizer`);
+  assert.ok(!html.includes("<iframe"), `${path}: no game embed`);
+  const ids = [...html.matchAll(/<section[^>]*\bid="([^"]+)"/g)].map((match) => match[1]);
+  assert.equal(new Set(ids).size, ids.length, `${path}: unique section IDs`);
+  for (const [, target] of html.matchAll(/href="#([^"]+)"/g)) {
+    assert.ok(html.includes(`id="${target}"`), `${path}: contents target ${target} exists`);
+  }
+  const entry = [...sitemap.matchAll(/<url>([\s\S]*?)<\/url>/g)].find((match) => match[1].includes(`<loc>${canonicalOrigin}${path}</loc>`))?.[1];
+  assert.equal(entry?.match(/<lastmod>([^<]+)<\/lastmod>/)?.[1], "2026-10-18T09:53:50.000Z", `${path}: first publication date in sitemap`);
+}
+const mw4 = await (await get(mw4Hub)).text();
+assert.ok(mw4.includes('dateTime="2026-10-23"') || mw4.includes('datetime="2026-10-23"'), "MW4 full release date is separate from publication date");
+assert.ok(mw4.includes("Upcoming") && mw4.includes("campaign is available early"), "MW4 early campaign access does not mark the full game released");
+const mw4Campaign = await (await get(`${mw4Hub}/campaign-early-access`)).text();
+assert.ok(mw4Campaign.includes("16 campaign missions"), "MW4 campaign answers the mission count");
+assert.ok(mw4Campaign.includes("Standard Digital Edition") && mw4Campaign.includes("do not need the Vault Edition"), "MW4 standard digital eligibility is explicit");
+assert.ok(mw4Campaign.includes("October 16") && mw4Campaign.includes("October 20"), "MW4 campaign and DMZ access dates remain distinct");
+const mw4Release = await (await get(`${mw4Hub}/release-date`)).text();
+assert.ok(mw4Release.includes("Holiday 2027"), "MW4 uses the latest Game Pass announcement");
+for (const path of mw4Pages.slice(1)) assert.ok(latestUpdates.includes(`href="${path}"`), `${path}: article appears in Latest Updates`);
+const mw4Cover = await get("/images/guides/modern-warfare-4.webp");
+assert.equal(mw4Cover.status, 200, "MW4 official cover loads");
+assert.ok(mw4Cover.headers.get("content-type")?.includes("image/webp"), "MW4 cover format");
+assert.equal((await get(`${mw4Hub}/missions`)).status, 404, "MW4 has no placeholder mission-list route");
+console.log("PASS MW4 dates, campaign eligibility, mission count, cover, anchors and sitemap publication dates");
 for (const { slug, officialUrl } of demoTopics) {
   const path = `/guides/${slug}`;
   const html = await (await get(path)).text();
@@ -142,5 +172,5 @@ console.log("PASS visual novel Demo status, official entries, covers and Latest 
 
 const hubSection = listing.split('aria-label="Game guide hubs"')[1]?.split("</section>")[0] ?? "";
 const firstHub = hubSection.match(/href="(\/guides\/[^"?#]+)"/)?.[1];
-assert.equal(firstHub, "/guides/hellraiser-revival", "Guide hubs list leads with the newest published topic");
+assert.equal(firstHub, mw4Hub, "Guide hubs list leads with the newest published topic");
 console.log("PASS guide hubs list is newest-first");

@@ -11,8 +11,9 @@ import { remember } from "./remember";
 import { nextStationTheMoon } from "./next-station-the-moon";
 import { biteYourTongue } from "./bite-your-tongue";
 import { hellraiserRevival } from "./hellraiser-revival";
+import { modernWarfare4 } from "./modern-warfare-4";
 
-const topics: GuideTopic[] = [worldOfWarcraftForever, marvelsWolverine, ocarinaOfTimeRemake, remember, nextStationTheMoon, biteYourTongue, sploob, shapeWalkthrough, hellraiserRevival];
+const topics: GuideTopic[] = [worldOfWarcraftForever, marvelsWolverine, ocarinaOfTimeRemake, remember, nextStationTheMoon, biteYourTongue, sploob, shapeWalkthrough, hellraiserRevival, modernWarfare4];
 export const GUIDE_AUTHOR = { name: "PlayBloo Editorial", url: `${SITE_URL}/about` };
 export const GUIDES_DESCRIPTION = "Release dates, beta access, and help getting started with your next game.";
 
