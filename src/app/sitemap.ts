@@ -5,14 +5,33 @@ import { MIN_INDEXABLE_CATEGORY_GAMES, MIN_INDEXABLE_SERIES_GAMES, MIN_INDEXABLE
 
 export const revalidate = 3600;
 
+async function getSitemapGames(supabase: ReturnType<typeof createAdminClient>) {
+  const pageSize = 500;
+  const loadPage = (offset: number) => supabase
+    .from("games")
+    .select("slug, updated_at, categories:game_categories(category_id), tags:game_tags(tag_id), series:game_series(series_id)")
+    .eq("is_published", true)
+    .order("id")
+    .range(offset, offset + pageSize - 1);
+
+  const first = await loadPage(0);
+  if (first.error) throw new Error(`Could not load sitemap games: ${first.error.message}`);
+  const data = [...(first.data || [])];
+  let page = first.data || [];
+  while (page.length === pageSize) {
+    const next = await loadPage(data.length);
+    if (next.error) throw new Error(`Could not load sitemap games: ${next.error.message}`);
+    page = next.data || [];
+    data.push(...page);
+  }
+  return { data };
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const supabase = createAdminClient();
 
   const [games, categories, tags, series, levels] = await Promise.all([
-    supabase
-      .from("games")
-      .select("slug, updated_at, categories:game_categories(category_id), tags:game_tags(tag_id), series:game_series(series_id)")
-      .eq("is_published", true),
+    getSitemapGames(supabase),
     supabase.from("categories").select("id, slug, updated_at"),
     supabase.from("tags").select("id, slug, updated_at"),
     supabase.from("series").select("id, slug, updated_at"),
