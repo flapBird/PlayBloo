@@ -1,0 +1,1946 @@
+{
+  "batchDate": "2026-10-19",
+  "inputCount": 8,
+  "baselineCount": 1019,
+  "entries": [
+    {
+      "index": 1,
+      "inputTitle": "Sheep Per Second",
+      "sourceUrl": "https://xkhannx.itch.io/sheep-per-second",
+      "resolvedUrl": "https://xkhannx.itch.io/sheep-per-second",
+      "identity": "xkhannx/sheep-per-second",
+      "inputPublishedAt": "2026-08-29 01:48（UTC+8）",
+      "decision": "published",
+      "game": {
+        "id": "e3b397d8-2f73-483a-a566-e00d6d93735d",
+        "title": "Sheep Per Second",
+        "slug": "sheep-per-second",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-19/sheep-per-second.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "Sheep Per Second is a farming incremental demo about sorting a flock at a gate. Send lambs and grown sheep down their separate paths: correctly sorted lambs grow up, expand the flock and produce the wool that pays for improvements.\n\nStart with a manual gate, put another family member to work and build sorting machinery. Retirement and the next generation extend the farm's progression. This Godot prototype uses low-poly 3D visuals. The developer collects non-identifying progression data, with an opt-out in Settings.",
+        "how_to_play": "Watch the approaching sheep and flick the gate to separate lambs from adults. Correctly sorted lambs join the flock and eventually generate more wool. Spend wool in the shop, add help and automate sorting, then continue through retirement and the family's next generation.",
+        "controls": "Flick the gate – Space or mouse click\nOpen shop – S\nOpen statistics – Tab\nOpen settings – Esc\nPan the shop tree – Drag\nZoom the shop tree – Mouse wheel\nFit the shop tree – Double-click",
+        "tips": "Prioritize accurate sorting: each correctly handled lamb can grow the wool-producing flock.\nCheck the shop as wool accumulates to find help and automation.\nThe shop tree supports zooming and a double-click fit view if an upgrade is hard to find.",
+        "features": "Manual sheep-sorting gate\nWool-funded farm upgrades\nFamily helpers and sorting automation\nRetirement and generational progression\nLow-poly 3D presentation\nFree browser demo made with Godot\nOptional progression telemetry can be disabled in Settings",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-19T03:32:39.141412+00:00",
+        "updated_at": "2026-10-19T03:33:14+00:00",
+        "external_url": "https://xkhannx.itch.io/sheep-per-second",
+        "developer": "xkhannx",
+        "publisher": null,
+        "source_url": "https://xkhannx.itch.io/sheep-per-second",
+        "source_type": "itch.io",
+        "original_game_url": "https://xkhannx.itch.io/sheep-per-second",
+        "developer_url": "https://xkhannx.itch.io",
+        "steam_url": null,
+        "itch_url": "https://xkhannx.itch.io/sheep-per-second",
+        "last_verified_at": "2026-10-19T03:30:45+00:00",
+        "sources": [
+          {
+            "url": "https://xkhannx.itch.io/sheep-per-second",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-19T03:30:45+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-19T03:33:14+00:00",
+        "last_updated_at": null,
+        "short_description": "Sort lambs, grow a wool business and hand an increasingly automated sheep farm to the next generation.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "xkhannx/sheep-per-second",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "demo",
+        "graphics": "3D",
+        "multiplayer": "single-player",
+        "engine": "Godot",
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/sheep-per-second-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/sheep-per-second-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/sheep-per-second-2.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/sheep-per-second-3.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/sheep-per-second-4.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "idle",
+        "simulation"
+      ],
+      "media": [
+        {
+          "kind": "cover",
+          "file": "sheep-per-second.webp",
+          "source": "https://img.itch.zone/aW1nLzMxMDI2MTQyLnBuZw==/original/4xo1bt.png",
+          "object": "covers/2026-10-19/sheep-per-second.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-19/sheep-per-second.webp",
+          "bytes": 61512,
+          "width": 630,
+          "height": 500,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            630,
+            500
+          ],
+          "sha256": "18896f4f5ee6cbc9ef25f521d2c3eb16f2e1cc6635d35f5befc6026d46d4519a",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "sheep-per-second-screen-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDk0NjYzMy8zMTAyMzEyMi5wbmc=/347x500/Zca9Fn.png",
+          "object": "screenshots/2026-10-19/sheep-per-second-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/sheep-per-second-0.webp",
+          "bytes": 17030,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "f9186e3f84c6ea5bbc40916d4b1200078cf9cafa9fe0caa1fc41c34188812b99",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "sheep-per-second-screen-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDk0NjYzMy8zMTAyMzExMS5wbmc=/347x500/mhcO1S.png",
+          "object": "screenshots/2026-10-19/sheep-per-second-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/sheep-per-second-1.webp",
+          "bytes": 19416,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "12df650664eb593d5bb1465731009b9d99d44bbbd5e82c4f186698adb22b27cb",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "sheep-per-second-screen-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDk0NjYzMy8zMTAyMzEwOC5wbmc=/347x500/EKfg8J.png",
+          "object": "screenshots/2026-10-19/sheep-per-second-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/sheep-per-second-2.webp",
+          "bytes": 9870,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "e3d2a47ce0beee7b7e9467170cd01a33d7dfa1d09e568a36ad6d9526c82ca5d3",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "sheep-per-second-screen-3.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDk0NjYzMy8zMTAyMzExMC5wbmc=/347x500/VPVH4W.png",
+          "object": "screenshots/2026-10-19/sheep-per-second-3.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/sheep-per-second-3.webp",
+          "bytes": 10896,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "d28d095622ddc398b492fce7304e4936b957f484f3d779e6ad8e2685b4466317",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "sheep-per-second-screen-4.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDk0NjYzMy8zMTAyMzEwOS5wbmc=/347x500/XuTNSA.png",
+          "object": "screenshots/2026-10-19/sheep-per-second-4.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/sheep-per-second-4.webp",
+          "bytes": 11532,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "519a9f457c709da04236c76e48e4eee3e660f7a21782fa3fb03a3330c67ae32d",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "url": "https://html-classic.itch.zone/html/19847862/web/index.html?v=1792332360",
+        "resolvedUrl": "https://html-classic.itch.zone/html/19847862/web/index.html?v=1792332360",
+        "httpStatus": 200,
+        "bytes": 5535
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://xkhannx.itch.io/sheep-per-second",
+          "verifiedAt": "2026-10-19T03:30:45+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "status"
+          ],
+          "tipsBasis": "Editorial suggestions based on documented mechanics"
+        }
+      ],
+      "editorialEvidence": {
+        "attention": [
+          "Copy grounded in official itch description; no full playthrough performed.",
+          "Demo status and optional progression telemetry preserved."
+        ],
+        "missingDetailFields": []
+      },
+      "metadataNotes": [
+        "Radar publication time retained as input only; no verified original release date.",
+        "Tips are editorial advice inferred from verified mechanics.",
+        "Copy grounded in official itch description; no full playthrough performed.",
+        "Demo status and optional progression telemetry preserved."
+      ],
+      "missingDetailFields": [],
+      "gameId": "e3b397d8-2f73-483a-a566-e00d6d93735d",
+      "publishedAt": "2026-10-19T03:33:14+00:00"
+    },
+    {
+      "index": 2,
+      "inputTitle": "Burst Blackjack",
+      "sourceUrl": "https://just-look-ing.itch.io/burst-blackjack",
+      "resolvedUrl": "https://just-look-ing.itch.io/burst-blackjack",
+      "identity": "just-look-ing/burst-blackjack",
+      "inputPublishedAt": "2026-10-19 03:21（UTC+8）",
+      "decision": "published",
+      "game": {
+        "id": "181d56fc-61f2-4a38-ad19-6be32800ec1a",
+        "title": "Burst Blackjack",
+        "slug": "burst-blackjack",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-19/burst-blackjack.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "Burst Blackjack changes the stakes of a blackjack hand: losses add penalty points and alter the character's appearance through several transformation stages. The first side to reach 50 penalty points loses the match.\n\nA blackjack inflicts a 21-point penalty on the opponent, while going bust immediately converts the overage into penalties. The dealer draws one card at a time and character reactions change as the match progresses. English and Japanese are available. The game includes weight-gain and body-transformation themes, with illustrations credited to Just_look_ing.",
+        "how_to_play": "Use the game's hit and stand choices to play each hand. Keep track of the custom penalty total as well as the cards: losses cause transformations, a blackjack applies 21 penalty points to the opponent, and busting immediately adds the excess. Avoid being the first to accumulate 50 penalty points.",
+        "controls": "Use the on-screen blackjack choices. See the original itch.io page and in-game prompts for control details; no keyboard shortcuts are specified on the page.",
+        "tips": "Track penalty totals between hands, because 50 penalties lose the match.\nAccount for the immediate penalty from busting before choosing another card.\nA blackjack's 21-point penalty can make a large difference late in a match.",
+        "features": "Custom blackjack penalty rules\n50-point match limit\n21-point penalty for a blackjack\nStaged character appearance changes\nChanging character reactions\nEnglish and Japanese options\nFree browser version",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-19T03:32:39.141412+00:00",
+        "updated_at": "2026-10-19T03:33:14+00:00",
+        "external_url": "https://just-look-ing.itch.io/burst-blackjack",
+        "developer": "Just_look_ing",
+        "publisher": null,
+        "source_url": "https://just-look-ing.itch.io/burst-blackjack",
+        "source_type": "itch.io",
+        "original_game_url": "https://just-look-ing.itch.io/burst-blackjack",
+        "developer_url": "https://just-look-ing.itch.io",
+        "steam_url": null,
+        "itch_url": "https://just-look-ing.itch.io/burst-blackjack",
+        "last_verified_at": "2026-10-19T03:30:45+00:00",
+        "sources": [
+          {
+            "url": "https://just-look-ing.itch.io/burst-blackjack",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-19T03:30:45+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-19T03:33:14+00:00",
+        "last_updated_at": null,
+        "short_description": "Play custom-rule blackjack where losing points trigger character transformations and 50 penalties end the match.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "just-look-ing/burst-blackjack",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "released",
+        "graphics": "2D",
+        "multiplayer": "single-player",
+        "engine": "HTML5",
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/burst-blackjack-0.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "card",
+        "strategy"
+      ],
+      "media": [
+        {
+          "kind": "cover",
+          "file": "burst-blackjack.webp",
+          "source": "https://img.itch.zone/aW1nLzMxMDQ2MTczLnBuZw==/original/%2BMrFg6.png",
+          "object": "covers/2026-10-19/burst-blackjack.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-19/burst-blackjack.webp",
+          "bytes": 9872,
+          "width": 400,
+          "height": 640,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            800,
+            1280
+          ],
+          "sha256": "d8ca3c0ae98a99160e3deb003d1851b2e1f411f9c2b71710b2efee4fcc99fb44",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "burst-blackjack-screen-0.webp",
+          "source": "https://img.itch.zone/aW1nLzMxMDQ2MTczLnBuZw==/347x500/WbyKz3.png",
+          "object": "screenshots/2026-10-19/burst-blackjack-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/burst-blackjack-0.webp",
+          "bytes": 9534,
+          "width": 312,
+          "height": 500,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            312,
+            500
+          ],
+          "sha256": "a8510e48b06869847b71f9841cbf8b9f2b7199607d4685a0ddbf8ddc5419bc6b",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "url": "https://html-classic.itch.zone/html/19855998/index.html?v=1792351990",
+        "resolvedUrl": "https://html-classic.itch.zone/html/19855998/index.html?v=1792351990",
+        "httpStatus": 200,
+        "bytes": 117830
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://just-look-ing.itch.io/burst-blackjack",
+          "verifiedAt": "2026-10-19T03:30:45+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "status"
+          ],
+          "tipsBasis": "Editorial suggestions based on documented mechanics"
+        }
+      ],
+      "editorialEvidence": {
+        "attention": [
+          "Copy grounded in official itch description; no full playthrough performed.",
+          "Body-transformation and weight-gain themes disclosed."
+        ],
+        "missingDetailFields": []
+      },
+      "metadataNotes": [
+        "Radar publication time retained as input only; no verified original release date.",
+        "Tips are editorial advice inferred from verified mechanics.",
+        "Copy grounded in official itch description; no full playthrough performed.",
+        "Body-transformation and weight-gain themes disclosed."
+      ],
+      "missingDetailFields": [],
+      "gameId": "181d56fc-61f2-4a38-ad19-6be32800ec1a",
+      "publishedAt": "2026-10-19T03:33:14+00:00"
+    },
+    {
+      "index": 3,
+      "inputTitle": "Hypnosnake Simulator",
+      "sourceUrl": "https://kaaexperienced.itch.io/hypnosnake-simulator",
+      "resolvedUrl": "https://kaaexperienced.itch.io/hypnosnake-simulator",
+      "identity": "kaaexperienced/hypnosnake-simulator",
+      "inputPublishedAt": "2026-10-19 00:37（UTC+8）",
+      "decision": "published",
+      "game": {
+        "id": "3eaa2a09-fe6d-44d6-9189-fb99d4a80ba2",
+        "title": "Hypnosnake Simulator",
+        "slug": "hypnosnake-simulator",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-19/hypnosnake-simulator.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "Hypnosnake Simulator is a free browser simulation in development by kaaexperienced. Play as Kaa, the snake from The Jungle Book, and encounter Kara, Kat and Khana as they wander the jungle.\n\nThe developer describes finding and interacting with the characters, including wrapping them in Kaa's coils. Expect hypnosis and restraint themes. The official page provides only a short introduction, so detailed objectives and controls should be checked in the game itself.",
+        "how_to_play": "Open the browser game on the developer's itch.io page and follow its prompts to find and interact with the jungle characters. The official page does not explain a detailed progression or win condition.",
+        "controls": "See the game's prompts for available actions. The developer's itch.io page does not specify a key layout.",
+        "tips": "Read the in-game prompts before choosing an interaction; the official page does not provide a full tutorial.\nTreat this as a work in progress rather than a finished release.",
+        "features": "Play as Kaa from The Jungle Book\nJungle character interactions\nKara, Kat and Khana in the stated cast\nHypnosis and restraint themes\nFree browser simulation in development",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-19T03:32:39.141412+00:00",
+        "updated_at": "2026-10-19T03:33:14+00:00",
+        "external_url": "https://kaaexperienced.itch.io/hypnosnake-simulator",
+        "developer": "kaaexperienced",
+        "publisher": null,
+        "source_url": "https://kaaexperienced.itch.io/hypnosnake-simulator",
+        "source_type": "itch.io",
+        "original_game_url": "https://kaaexperienced.itch.io/hypnosnake-simulator",
+        "developer_url": "https://kaaexperienced.itch.io",
+        "steam_url": null,
+        "itch_url": "https://kaaexperienced.itch.io/hypnosnake-simulator",
+        "last_verified_at": "2026-10-19T03:30:45+00:00",
+        "sources": [
+          {
+            "url": "https://kaaexperienced.itch.io/hypnosnake-simulator",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-19T03:30:45+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-19T03:33:14+00:00",
+        "last_updated_at": null,
+        "short_description": "Play as Kaa and meet Kara, Kat and Khana in a jungle interaction simulator.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "kaaexperienced/hypnosnake-simulator",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "early-access",
+        "graphics": null,
+        "multiplayer": "single-player",
+        "engine": "HTML5",
+        "screenshots": [],
+        "external_click_count": 0
+      },
+      "categories": [
+        "simulation"
+      ],
+      "media": [
+        {
+          "kind": "cover",
+          "file": "hypnosnake-simulator.webp",
+          "source": "https://html-classic.itch.zone/html/19853232/Hypnosnake-Simulator/game-files/data.js#assets.title",
+          "sourceNote": "Official title background embedded in DEFAULT_PROJECT.assets.title",
+          "object": "covers/2026-10-19/hypnosnake-simulator.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-19/hypnosnake-simulator.webp",
+          "bytes": 38842,
+          "width": 640,
+          "height": 360,
+          "originalFormat": "JPEG",
+          "originalFrames": 1,
+          "originalSize": [
+            2444,
+            1375
+          ],
+          "sha256": "b000f5ef8d8ac63bbb40d6c8da26a9e83c4b456015b9e84a984fca46d91086ea",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "url": "https://html-classic.itch.zone/html/19853232/Hypnosnake-Simulator/index.html?v=1792345388",
+        "resolvedUrl": "https://html-classic.itch.zone/html/19853232/Hypnosnake-Simulator/index.html?v=1792345388",
+        "httpStatus": 200,
+        "bytes": 1095
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://kaaexperienced.itch.io/hypnosnake-simulator",
+          "verifiedAt": "2026-10-19T03:30:45+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "status"
+          ],
+          "tipsBasis": "Editorial suggestions based on documented mechanics"
+        },
+        {
+          "url": "https://html-classic.itch.zone/html/19853232/Hypnosnake-Simulator/game-files/data.js#assets.title",
+          "supports": [
+            "official cover asset"
+          ],
+          "verifiedAt": "2026-10-19T03:30:45+00:00"
+        }
+      ],
+      "editorialEvidence": {
+        "attention": [
+          "Copy grounded in official itch description; no full playthrough performed.",
+          "Official page has no cover or screenshots; cover is its official browser build title background, extracted from public data.js.",
+          "Hypnosis and restraint themes noted; copy stays within the short official introduction."
+        ],
+        "missingDetailFields": [
+          "Detailed controls and objectives not published on the official page."
+        ]
+      },
+      "metadataNotes": [
+        "Radar publication time retained as input only; no verified original release date.",
+        "Tips are editorial advice inferred from verified mechanics.",
+        "Copy grounded in official itch description; no full playthrough performed.",
+        "Official page has no cover or screenshots; cover is its official browser build title background, extracted from public data.js.",
+        "Hypnosis and restraint themes noted; copy stays within the short official introduction."
+      ],
+      "missingDetailFields": [
+        "Detailed controls and objectives not published on the official page."
+      ],
+      "gameId": "3eaa2a09-fe6d-44d6-9189-fb99d4a80ba2",
+      "publishedAt": "2026-10-19T03:33:14+00:00"
+    },
+    {
+      "index": 4,
+      "inputTitle": "Scrap Yard Tycoon",
+      "sourceUrl": "https://xstrooier.itch.io/scrap-yard-tycoon",
+      "resolvedUrl": "https://xstrooier.itch.io/scrap-yard-tycoon",
+      "identity": "xstrooier/scrap-yard-tycoon",
+      "inputPublishedAt": "2026-10-18 04:06（UTC+8）",
+      "decision": "published",
+      "game": {
+        "id": "0e81038e-7a61-4b5c-b39c-4d0e686e5638",
+        "title": "Scrap Yard Tycoon",
+        "slug": "scrap-yard-tycoon",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-19/scrap-yard-tycoon.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "Scrap Yard Tycoon starts with a rundown yard, R500 and one rusty hatchback. Inspect wrecks, remove valuable parts and crush the stripped shells for cash. Engines, wheels, batteries, doors and other components disappear from the hand-drawn top-down cars as you dismantle them.\n\nReinvest in tools, storage, machinery and workers while expanding from two bays to ten. The developer lists 14 vehicles, rolling contracts, random market events, 18 achievements and 12 yard ranks. Autosave and offline worker earnings support short sessions. The browser game supports desktop and mobile controls without ads or accounts, according to the developer.",
+        "how_to_play": "Complete the interactive tutorial, select a wreck and inspect it for condition and value. Remove parts to sell, check trunks for finds and crush the remaining shell. Use the proceeds to acquire more wrecks, improve tools, expand storage and bays, and hire workers. Work toward contracts, yard ranks and the vehicle catalogue.",
+        "controls": "Select a car or remove a glowing part – Click or tap\nPan – Drag\nZoom – Scroll or pinch\nInspect – E\nRemove next part – R\nStrip all – A\nCrush – C\nNext car – Tab\nSell all – S\nOpen panels – M / U / Y / I / G\nPause – P\nClose – Esc",
+        "tips": "Inspect a wreck before stripping it to learn its condition and potential value.\nRemove worthwhile parts and check the trunk before crushing the shell.\nExpand storage and bays alongside your dismantling capacity.\nWorkers can earn while you are away, so hiring supports progress between sessions.",
+        "features": "Part-by-part vehicle dismantling\nHydraulic crushing and scrap sales\n14 vehicles to discover\nSeven upgrade lines and four yard expansions\nWorkers with offline earnings\nRolling contracts and random events\n18 achievements and 12 yard ranks\nMouse, keyboard and touch controls\nBrowser autosave\nNo ads or account required, as stated by the developer",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-19T03:32:39.141412+00:00",
+        "updated_at": "2026-10-19T03:33:14+00:00",
+        "external_url": "https://xstrooier.itch.io/scrap-yard-tycoon",
+        "developer": "Xstrooier",
+        "publisher": null,
+        "source_url": "https://xstrooier.itch.io/scrap-yard-tycoon",
+        "source_type": "itch.io",
+        "original_game_url": "https://xstrooier.itch.io/scrap-yard-tycoon",
+        "developer_url": "https://xstrooier.itch.io",
+        "steam_url": null,
+        "itch_url": "https://xstrooier.itch.io/scrap-yard-tycoon",
+        "last_verified_at": "2026-10-19T03:30:45+00:00",
+        "sources": [
+          {
+            "url": "https://xstrooier.itch.io/scrap-yard-tycoon",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-19T03:30:45+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-19T03:33:14+00:00",
+        "last_updated_at": null,
+        "short_description": "Turn R500 and a rusty hatchback into a salvage business by stripping parts, crushing shells and expanding the yard.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "xstrooier/scrap-yard-tycoon",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "released",
+        "graphics": "2D",
+        "multiplayer": "single-player",
+        "engine": "HTML5",
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/scrap-yard-tycoon-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/scrap-yard-tycoon-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/scrap-yard-tycoon-2.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/scrap-yard-tycoon-3.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/scrap-yard-tycoon-4.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "simulation",
+        "idle"
+      ],
+      "media": [
+        {
+          "kind": "cover",
+          "file": "scrap-yard-tycoon.webp",
+          "source": "https://img.itch.zone/aW1nLzMxMDAxMjcyLnBuZw==/original/z6hgQP.png",
+          "object": "covers/2026-10-19/scrap-yard-tycoon.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-19/scrap-yard-tycoon.webp",
+          "bytes": 35640,
+          "width": 630,
+          "height": 500,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            630,
+            500
+          ],
+          "sha256": "5134f46cb029499dd18d3d79b7425b031e7beb2e7c53bf5e8cd7c13dfc9499d0",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "scrap-yard-tycoon-screen-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE3NjkwNy8zMTAwMTI1OS5wbmc=/347x500/UATF4g.png",
+          "object": "screenshots/2026-10-19/scrap-yard-tycoon-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/scrap-yard-tycoon-0.webp",
+          "bytes": 8844,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "312de05997a7f03744b3aa04c19a9d513233adc08421b5160aa08e65bb02e33d",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "scrap-yard-tycoon-screen-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE3NjkwNy8zMTAwMTI2MC5wbmc=/347x500/BPkLGa.png",
+          "object": "screenshots/2026-10-19/scrap-yard-tycoon-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/scrap-yard-tycoon-1.webp",
+          "bytes": 8418,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "0292a38ec01024c0fade97b6e16785335eb6cd4852f88c8c24d3e8bffc47fe2f",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "scrap-yard-tycoon-screen-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE3NjkwNy8zMTAwMTI2Mi5wbmc=/347x500/wil1D3.png",
+          "object": "screenshots/2026-10-19/scrap-yard-tycoon-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/scrap-yard-tycoon-2.webp",
+          "bytes": 8892,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "c5b971f57e505f9d931477303670494b2db771da517edc75f60d5bec0f1da148",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "scrap-yard-tycoon-screen-3.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE3NjkwNy8zMTAwMTI2MS5wbmc=/347x500/xHfNwR.png",
+          "object": "screenshots/2026-10-19/scrap-yard-tycoon-3.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/scrap-yard-tycoon-3.webp",
+          "bytes": 8432,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "e0e2eaac4fe67deeaa6fcb6293fe401b4711185ec8ee021640bd235d429112a8",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "scrap-yard-tycoon-screen-4.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE3NjkwNy8zMTAwMTI1OC5wbmc=/347x500/n6DJsq.png",
+          "object": "screenshots/2026-10-19/scrap-yard-tycoon-4.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/scrap-yard-tycoon-4.webp",
+          "bytes": 7062,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "e8471401abde2c0f9a539869cb1899ec92e2b5e0b19b579d664c2366655428d0",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "url": "https://html-classic.itch.zone/html/19861184/index.html?v=1792362923",
+        "resolvedUrl": "https://html-classic.itch.zone/html/19861184/index.html?v=1792362923",
+        "httpStatus": 200,
+        "bytes": 234272
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://xstrooier.itch.io/scrap-yard-tycoon",
+          "verifiedAt": "2026-10-19T03:30:45+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "status"
+          ],
+          "tipsBasis": "Editorial suggestions based on documented mechanics"
+        }
+      ],
+      "editorialEvidence": {
+        "attention": [
+          "Copy grounded in official itch description; no full playthrough performed."
+        ],
+        "missingDetailFields": []
+      },
+      "metadataNotes": [
+        "Radar publication time retained as input only; no verified original release date.",
+        "Tips are editorial advice inferred from verified mechanics.",
+        "Copy grounded in official itch description; no full playthrough performed."
+      ],
+      "missingDetailFields": [],
+      "gameId": "0e81038e-7a61-4b5c-b39c-4d0e686e5638",
+      "publishedAt": "2026-10-19T03:33:14+00:00"
+    },
+    {
+      "index": 5,
+      "inputTitle": "Boristan (playtest)",
+      "sourceUrl": "https://lifeofboris.itch.io/boristan",
+      "resolvedUrl": "https://lifeofboris.itch.io/boristan",
+      "identity": "lifeofboris/boristan",
+      "inputPublishedAt": "2026-10-17 14:34（UTC+8）",
+      "decision": "published",
+      "game": {
+        "id": "162d2144-86b7-485d-b75f-b025cc9d866e",
+        "title": "Boristan (playtest)",
+        "slug": "boristan",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-19/boristan.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "Boristan (playtest) is lifeofboris's in-development simulation with driving, low-poly visuals and an open-world setting. This is a temporary free test: the developer states that the build stops working on October 20, 2026 at 20:00 EEST (17:00 UTC; October 21 at 01:00 in China).\n\nThe browser version is offered for a quick look, including on phones; the developer recommends downloads for smoother performance. Two-to-four-player co-op is available, but hosting requires the downloaded version. Browser players can join a host using a room code. Expect bugs and unfinished behavior during the test.",
+        "how_to_play": "Open the browser build during the stated playtest window and follow its in-game prompts. Click inside the game to enable camera control. For co-op, a player with the downloaded version opens Esc → Co-op and hosts a game; other players join with the shared room code using the latest version. If performance is poor, lower Graphics quality in Settings.",
+        "controls": "Enable camera input – Click inside the game\nSettings, co-op and restart – Esc menu\nTow a stuck car back to the road – T or controller LB\nCapture a bug report – F4 (fn+F4 on Mac)\nXbox and PlayStation controllers supported\nPhones show touch controls in the browser\nConsult in-game prompts for movement and other actions",
+        "tips": "The test expires on October 20, 2026 at 17:00 UTC; check availability before planning a session.\nUse Low graphics quality if the browser build is choppy.\nCo-op needs a downloaded host, and all players must use the latest version.\nUse T while in a stuck car to return it to the road.",
+        "features": "Temporary free playtest\nDriving and open-world simulation\nLow-poly visuals\nTwo-to-four-player co-op with a downloaded host\nBrowser clients can join by room code\nGamepad support and phone touch controls\nGraphics and mouse-lock settings\nGodot browser build",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-19T03:32:39.141412+00:00",
+        "updated_at": "2026-10-19T03:33:14+00:00",
+        "external_url": "https://lifeofboris.itch.io/boristan",
+        "developer": "lifeofboris",
+        "publisher": null,
+        "source_url": "https://lifeofboris.itch.io/boristan",
+        "source_type": "itch.io",
+        "original_game_url": "https://lifeofboris.itch.io/boristan",
+        "developer_url": "https://lifeofboris.itch.io",
+        "steam_url": null,
+        "itch_url": "https://lifeofboris.itch.io/boristan",
+        "last_verified_at": "2026-10-19T03:30:45+00:00",
+        "sources": [
+          {
+            "url": "https://lifeofboris.itch.io/boristan",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-19T03:30:45+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-19T03:33:14+00:00",
+        "last_updated_at": null,
+        "short_description": "Try Boristan's driving sandbox during a free playtest that ends on October 20, 2026 at 17:00 UTC.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "lifeofboris/boristan",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "demo",
+        "graphics": "3D",
+        "multiplayer": "single-player or online co-op (2–4 players; downloaded host required)",
+        "engine": "Godot",
+        "screenshots": [],
+        "external_click_count": 0
+      },
+      "categories": [
+        "simulation",
+        "driving",
+        "multiplayer"
+      ],
+      "media": [
+        {
+          "kind": "cover",
+          "file": "boristan.webp",
+          "source": "https://html-classic.itch.zone/html/19818017-2155001/index.png",
+          "sourceNote": "Official browser build splash image",
+          "object": "covers/2026-10-19/boristan.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-19/boristan.webp",
+          "bytes": 7398,
+          "width": 640,
+          "height": 360,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            1280,
+            720
+          ],
+          "sha256": "b8df9fa5b6dc9102f5982adeafc7a0c4ab8bd8a363503eb44a32be5538a5e37c",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "url": "https://html-classic.itch.zone/html/19818017-2155001/index.html?v=1792346170",
+        "resolvedUrl": "https://html-classic.itch.zone/html/19818017-2155001/index.html?v=1792346170",
+        "httpStatus": 200,
+        "bytes": 7461
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://lifeofboris.itch.io/boristan",
+          "verifiedAt": "2026-10-19T03:30:45+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "status"
+          ],
+          "tipsBasis": "Editorial suggestions based on documented mechanics"
+        },
+        {
+          "url": "https://html-classic.itch.zone/html/19818017-2155001/index.png",
+          "supports": [
+            "official cover asset"
+          ],
+          "verifiedAt": "2026-10-19T03:30:45+00:00"
+        }
+      ],
+      "editorialEvidence": {
+        "attention": [
+          "Copy grounded in official itch description; no full playthrough performed.",
+          "Temporary playtest expires 2026-10-20T17:00:00Z (2026-10-21T01:00:00+08:00); deadline shown prominently in short description, description and tips.",
+          "Browser co-op requires a downloaded host; no independent browser hosting claim.",
+          "Cover taken from official build index.png splash; no gameplay screenshot fabricated."
+        ],
+        "missingDetailFields": []
+      },
+      "metadataNotes": [
+        "Radar publication time retained as input only; no verified original release date.",
+        "Tips are editorial advice inferred from verified mechanics.",
+        "Copy grounded in official itch description; no full playthrough performed.",
+        "Temporary playtest expires 2026-10-20T17:00:00Z (2026-10-21T01:00:00+08:00); deadline shown prominently in short description, description and tips.",
+        "Browser co-op requires a downloaded host; no independent browser hosting claim.",
+        "Cover taken from official build index.png splash; no gameplay screenshot fabricated."
+      ],
+      "missingDetailFields": [],
+      "gameId": "162d2144-86b7-485d-b75f-b025cc9d866e",
+      "publishedAt": "2026-10-19T03:33:14+00:00",
+      "availability": {
+        "kind": "temporary-playtest",
+        "endsAt": "2026-10-20T17:00:00Z",
+        "endsAtAsiaShanghai": "2026-10-21T01:00:00+08:00",
+        "sourceUrl": "https://lifeofboris.itch.io/boristan",
+        "note": "Official build expires after this time; availability needs review after the playtest."
+      }
+    },
+    {
+      "index": 6,
+      "inputTitle": "Idle Fantasy Shop",
+      "sourceUrl": "https://drevengames.itch.io/idle-fantasy-shop",
+      "resolvedUrl": "https://drevengames.itch.io/idle-fantasy-shop",
+      "identity": "drevengames/idle-fantasy-shop",
+      "inputPublishedAt": "2026-09-08 01:30（UTC+8）",
+      "decision": "published",
+      "game": {
+        "id": "465d112d-c43a-4379-969d-939773df7ab2",
+        "title": "Idle Fantasy Shop",
+        "slug": "idle-fantasy-shop",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-19/idle-fantasy-shop.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "Idle Fantasy Shop is an information-rich shop management game set in Latchford, on the edge of the Ashwater Marches. Gather materials, smelt metals and craft goods across six skills, then stock shelves and choose prices for customers with distinct buying habits. The current official description covers version 0.12 and hours of progression.\n\nBuild reputation with four societies, learn their tastes and complete six Ledger goals, ending at 1,000,000 Gold. At Trading level 4, the Staff Board opens Management and lets you hire six workers over time. Workshop level 10 unlocks finite Crafting Batches.\n\nOffline simulation runs by the same deterministic rules as live play, up to 24 hours per return. English and Russian are available. Progress is stored in the browser; export a backup from Settings before clearing site data or changing devices. The developer states that the game has no ads or purchases.",
+        "how_to_play": "Start Gather Brushwood in Gathering and turn on repeat. In Workshop, make a Reed Cord and then a Kindling Bundle. Put bundles on a shelf and open the shop; Discount helps the first goods sell. Pay the first Ledger entry at 10 Gold, then grow production, unlock skills and stock a wider selection. Use reputation and the Codex to learn what different customers want.",
+        "controls": "Use the on-screen skill, job, shop and Ledger controls.\nOpen item and customer links to consult the Codex.\nOpen numerical figures to inspect their breakdowns.\nExport or import a save – Settings\nNo keyboard shortcuts are specified on the official page.",
+        "tips": "Follow the brushwood-to-kindling introduction to reach the first 10-Gold Ledger goal.\nWatch customer information when adjusting stock and prices.\nBuy the Staff Board at Trading level 4 to begin hiring workers.\nKeep materials available for workers, which use the same stock as your own jobs.\nExport a backup before clearing browser storage or moving to another device.\nReturn within 24 hours to avoid exceeding the stated offline simulation cap.",
+        "features": "Six production skills and job Mastery\nUp to four stocked shelves\nCustomer groups with distinct buying behavior\nFour societies and reputation rewards\nSix workers unlocked through Management\nFinite Crafting Batches from Workshop level 10\nSix Ledger goals through 1,000,000 Gold\nDeterministic offline progress up to 24 hours\nEnglish and Russian interfaces\nBrowser saves with export and import",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-19T03:32:39.141412+00:00",
+        "updated_at": "2026-10-19T03:33:14+00:00",
+        "external_url": "https://drevengames.itch.io/idle-fantasy-shop",
+        "developer": "Dreven Games",
+        "publisher": null,
+        "source_url": "https://drevengames.itch.io/idle-fantasy-shop",
+        "source_type": "itch.io",
+        "original_game_url": "https://drevengames.itch.io/idle-fantasy-shop",
+        "developer_url": "https://drevengames.itch.io",
+        "steam_url": null,
+        "itch_url": "https://drevengames.itch.io/idle-fantasy-shop",
+        "last_verified_at": "2026-10-19T03:30:45+00:00",
+        "sources": [
+          {
+            "url": "https://drevengames.itch.io/idle-fantasy-shop",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-19T03:30:45+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-19T03:33:14+00:00",
+        "last_updated_at": null,
+        "short_description": "Gather, craft and price goods for Latchford's shoppers in an idle trading game with workers and offline progress.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "drevengames/idle-fantasy-shop",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "released",
+        "graphics": "2D",
+        "multiplayer": "single-player",
+        "engine": "HTML5",
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/idle-fantasy-shop-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/idle-fantasy-shop-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/idle-fantasy-shop-2.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/idle-fantasy-shop-3.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/idle-fantasy-shop-4.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/idle-fantasy-shop-5.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "idle",
+        "simulation"
+      ],
+      "media": [
+        {
+          "kind": "cover",
+          "file": "idle-fantasy-shop.webp",
+          "source": "https://img.itch.zone/aW1nLzI5ODM1OTg2LnBuZw==/original/96VJnR.png",
+          "object": "covers/2026-10-19/idle-fantasy-shop.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-19/idle-fantasy-shop.webp",
+          "bytes": 11896,
+          "width": 630,
+          "height": 500,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            630,
+            500
+          ],
+          "sha256": "496a7c9b3242ac1ec723045644f0ef16103cdf73de18eeb928e84db12cbbc060",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "idle-fantasy-shop-screen-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDk4NDEyNC8yOTk5NTQ4Ni5wbmc=/347x500/7WOQ9r.png",
+          "object": "screenshots/2026-10-19/idle-fantasy-shop-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/idle-fantasy-shop-0.webp",
+          "bytes": 4456,
+          "width": 347,
+          "height": 216,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            216
+          ],
+          "sha256": "893da8453453a9fd644cdc9077d2c69ccb3993ced584e0150953d059002b497f",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "idle-fantasy-shop-screen-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDk4NDEyNC8yOTk5NTQ4My5wbmc=/347x500/x90MzQ.png",
+          "object": "screenshots/2026-10-19/idle-fantasy-shop-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/idle-fantasy-shop-1.webp",
+          "bytes": 7756,
+          "width": 347,
+          "height": 216,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            216
+          ],
+          "sha256": "2806d1280921f22fd009a80f2338462f22ec85197f52061063550e4cda4e4ea0",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "idle-fantasy-shop-screen-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDk4NDEyNC8yOTk5NTQ4NC5wbmc=/347x500/PuEhRc.png",
+          "object": "screenshots/2026-10-19/idle-fantasy-shop-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/idle-fantasy-shop-2.webp",
+          "bytes": 8418,
+          "width": 347,
+          "height": 216,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            216
+          ],
+          "sha256": "a3932909fb1076fc4513018c377b8cb4e5cebdac4bdc955b44fa2ba230e46e02",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "idle-fantasy-shop-screen-3.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDk4NDEyNC8yOTk5NTQ4Ny5wbmc=/347x500/OYtdtg.png",
+          "object": "screenshots/2026-10-19/idle-fantasy-shop-3.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/idle-fantasy-shop-3.webp",
+          "bytes": 6166,
+          "width": 347,
+          "height": 216,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            216
+          ],
+          "sha256": "0866b9581b19b2a4e5d7c267f739c7afc4eeb91b7fd963174a617d1ec82b4f0c",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "idle-fantasy-shop-screen-4.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDk4NDEyNC8yOTk5NTQ4NS5wbmc=/347x500/72PFaA.png",
+          "object": "screenshots/2026-10-19/idle-fantasy-shop-4.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/idle-fantasy-shop-4.webp",
+          "bytes": 7780,
+          "width": 347,
+          "height": 216,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            216
+          ],
+          "sha256": "0cf029351779d1a320780f93546f4c18418b1cc18aedcded2100cfa7790bb57b",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "idle-fantasy-shop-screen-5.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNDk4NDEyNC8yOTk5NTQ4OS5wbmc=/347x500/w6P9JQ.png",
+          "object": "screenshots/2026-10-19/idle-fantasy-shop-5.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/idle-fantasy-shop-5.webp",
+          "bytes": 4672,
+          "width": 347,
+          "height": 216,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            216
+          ],
+          "sha256": "173730e9b8da453a9283a352beb5574dfbd58c9a969d94ba93b185534eeb456d",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "url": "https://html-classic.itch.zone/html/19853043/index.html?v=1792344800",
+        "resolvedUrl": "https://html-classic.itch.zone/html/19853043/index.html?v=1792344800",
+        "httpStatus": 200,
+        "bytes": 1630
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://drevengames.itch.io/idle-fantasy-shop",
+          "verifiedAt": "2026-10-19T03:30:45+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "status"
+          ],
+          "tipsBasis": "Editorial suggestions based on documented mechanics"
+        }
+      ],
+      "editorialEvidence": {
+        "attention": [
+          "Copy grounded in official itch description; no full playthrough performed.",
+          "Official page currently describes 0.12 and hours of progression; radar summary is older.",
+          "24-hour offline cap and browser-save backup instructions preserved."
+        ],
+        "missingDetailFields": []
+      },
+      "metadataNotes": [
+        "Radar publication time retained as input only; no verified original release date.",
+        "Tips are editorial advice inferred from verified mechanics.",
+        "Copy grounded in official itch description; no full playthrough performed.",
+        "Official page currently describes 0.12 and hours of progression; radar summary is older.",
+        "24-hour offline cap and browser-save backup instructions preserved."
+      ],
+      "missingDetailFields": [],
+      "gameId": "465d112d-c43a-4379-969d-939773df7ab2",
+      "publishedAt": "2026-10-19T03:33:14+00:00"
+    },
+    {
+      "index": 7,
+      "inputTitle": "ケモショタがエナドリキめてたらかわいいよね",
+      "sourceUrl": "https://kitsunenene.itch.io/te-kun-energy",
+      "resolvedUrl": "https://kitsunenene.itch.io/te-kun-energy",
+      "identity": "kitsunenene/te-kun-energy",
+      "inputPublishedAt": "2026-10-18 03:14（UTC+8）",
+      "decision": "published",
+      "game": {
+        "id": "8b68bb04-3e82-48fd-86df-d860978c3f9a",
+        "title": "ケモショタがエナドリキめてたらかわいいよね",
+        "slug": "te-kun-energy",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-19/te-kun-energy.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "ケモショタがエナドリキめてたらかわいいよね is a Japanese-language score-attack puzzle about Te-kun working overtime. Place colored sticky notes on his desk and connect three matching notes to clear tasks and earn wages. Automatic arrivals speed up over time, and the game ends when a new automatic note has nowhere to go.\n\nGreen matches in the central 3×3 area build caffeine for a fever mode that clears notes as you sweep the cursor across them. Other colors charge skills for clearing notes, extending combos or increasing pay. A coworker can take unwanted tasks, and a name-entry leaderboard records your earnings after game over. The illustrations are hand-drawn; the developer credits AI-assisted programming and some short text.",
+        "how_to_play": "Click to place the sticky note attached to the cursor. Connect three of the same color to clear them, chaining clears for combos and larger groups for bonuses. A blocking note shifts away from the side you click. Watch the dashed previews of automatic arrivals and keep room available. Clear green notes in the center to charge fever, and use the other colored skills to handle the growing workload.",
+        "controls": "Place a note – Mouse click\nPass tasks to the coworker – Click the gray dog\nClear notes during fever – Sweep the cursor across them\nUse the charged red skill – Click its lower-left frame\nPause – Lower-right button or Esc\nSubmit earnings – Enter a name on the game-over screen",
+        "tips": "Watch dashed arrival previews so new automatic notes have somewhere to land.\nUse the central 3×3 area for green matches to build caffeine.\nThe red clearing skill waits for your click, so save it for a crowded desk.\nBlue, purple and yellow skills activate automatically when charged.\nHand awkward tasks to the gray dog coworker when needed.",
+        "features": "Three-note color matching\nIncreasing automatic task pressure\nCombos and large-clear bonuses\nCaffeine-powered cursor-clearing fever\nFour colored skills\nCoworker task handoff\nOnline earnings leaderboard\nJapanese-language presentation\nMouse-based Unity browser game",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-19T03:32:39.141412+00:00",
+        "updated_at": "2026-10-19T03:33:14+00:00",
+        "external_url": "https://kitsunenene.itch.io/te-kun-energy",
+        "developer": "kitsunenene",
+        "publisher": null,
+        "source_url": "https://kitsunenene.itch.io/te-kun-energy",
+        "source_type": "itch.io",
+        "original_game_url": "https://kitsunenene.itch.io/te-kun-energy",
+        "developer_url": "https://kitsunenene.itch.io",
+        "steam_url": null,
+        "itch_url": "https://kitsunenene.itch.io/te-kun-energy",
+        "last_verified_at": "2026-10-19T03:30:45+00:00",
+        "sources": [
+          {
+            "url": "https://kitsunenene.itch.io/te-kun-energy",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-19T03:30:45+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-19T03:33:14+00:00",
+        "last_updated_at": null,
+        "short_description": "Match three sticky notes, manage an accelerating workload and trigger caffeine-powered fever in a Japanese office puzzle.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "kitsunenene/te-kun-energy",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "released",
+        "graphics": "2D",
+        "multiplayer": "single-player with online leaderboard",
+        "engine": "Unity",
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/te-kun-energy-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/te-kun-energy-1.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "puzzle",
+        "arcade"
+      ],
+      "media": [
+        {
+          "kind": "cover",
+          "file": "te-kun-energy.webp",
+          "source": "https://img.itch.zone/aW1nLzMwOTk5MjY2LnBuZw==/original/kHL2Lj.png",
+          "object": "covers/2026-10-19/te-kun-energy.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-19/te-kun-energy.webp",
+          "bytes": 21584,
+          "width": 365,
+          "height": 363,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            365,
+            363
+          ],
+          "sha256": "170ecf4bb6410e70b2eb365561b2a5ff414bc114f4e16519638e998cd93dd0b6",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "te-kun-energy-screen-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE3NjYzOC8zMDk5OTMxNy5wbmc=/347x500/on6ZwK.png",
+          "object": "screenshots/2026-10-19/te-kun-energy-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/te-kun-energy-0.webp",
+          "bytes": 11548,
+          "width": 347,
+          "height": 191,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            191
+          ],
+          "sha256": "b1f6ecd93c1c8ea433029cbfebc500dc5a26813b1ea71277180055db18c6a412",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "te-kun-energy-screen-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE3NjYzOC8zMDk5OTMxOC5wbmc=/347x500/QUix96.png",
+          "object": "screenshots/2026-10-19/te-kun-energy-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/te-kun-energy-1.webp",
+          "bytes": 14228,
+          "width": 347,
+          "height": 194,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            194
+          ],
+          "sha256": "2fe48cf12322e867f27d730b740bc37585a580c27ae29fee34a6f5bd89868da3",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "url": "https://html-classic.itch.zone/html/19846710/index.html?v=1792329238",
+        "resolvedUrl": "https://html-classic.itch.zone/html/19846710/index.html?v=1792329238",
+        "httpStatus": 200,
+        "bytes": 2585
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://kitsunenene.itch.io/te-kun-energy",
+          "verifiedAt": "2026-10-19T03:30:45+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "status"
+          ],
+          "tipsBasis": "Editorial suggestions based on documented mechanics"
+        }
+      ],
+      "editorialEvidence": {
+        "attention": [
+          "Copy grounded in official itch description; no full playthrough performed."
+        ],
+        "missingDetailFields": []
+      },
+      "metadataNotes": [
+        "Radar publication time retained as input only; no verified original release date.",
+        "Tips are editorial advice inferred from verified mechanics.",
+        "Copy grounded in official itch description; no full playthrough performed."
+      ],
+      "missingDetailFields": [],
+      "gameId": "8b68bb04-3e82-48fd-86df-d860978c3f9a",
+      "publishedAt": "2026-10-19T03:33:14+00:00"
+    },
+    {
+      "index": 8,
+      "inputTitle": "狐カフェ！Moreru&Moreta",
+      "sourceUrl": "https://hatoda.itch.io/morerumoreta",
+      "resolvedUrl": "https://hatoda.itch.io/morerumoreta",
+      "identity": "hatoda/morerumoreta",
+      "inputPublishedAt": "2026-10-18 00:26（UTC+8）",
+      "decision": "published",
+      "game": {
+        "id": "5e934564-084c-43e2-a9ba-e3e0ee42522e",
+        "title": "狐カフェ！Moreru&Moreta",
+        "slug": "morerumoreta",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-19/morerumoreta.webp",
+        "cover_url": null,
+        "iframe_url": null,
+        "description": "狐カフェ！Moreru&Moreta is a Japanese-language card game set in a café with fox staff. Its unusual blackjack variant rewards drink totals close to zero, rather than a conventional blackjack target. Coins earned when a character goes to the bathroom can buy upgrades on the title screen.\n\nThe developer describes two opponents and a further event tied to repeated PERFECT results. The game uses pixel-art furry characters and includes bathroom and holding-it-in humor. PC and Android are listed, with mobile support described as a recent addition.",
+        "how_to_play": "Follow the in-game card prompts to manage drinks and aim for a total close to zero. Earn coins when a character visits the bathroom, then return to the title screen to purchase upgrades. The official page does not document every card action or special outcome.",
+        "controls": "Use the game's on-screen card and upgrade prompts. The official page lists PC and Android support but does not specify keyboard shortcuts.",
+        "tips": "Aim close to zero: the stated scoring target differs from ordinary blackjack.\nCheck title-screen upgrades after earning coins.\nRead the Japanese in-game prompts for card effects and special outcomes.",
+        "features": "Unusual blackjack-inspired rules\nDrink totals scored near zero\nCoins and title-screen upgrades\nTwo opponents described by the developer\nPixel-art fox-café setting\nJapanese-language presentation\nPC and Android browser support\nBathroom humor",
+        "release_date": null,
+        "is_published": true,
+        "is_featured": false,
+        "is_trending": false,
+        "view_count": 0,
+        "play_count": 0,
+        "hot_score": 0.0,
+        "created_at": "2026-10-19T03:32:39.141412+00:00",
+        "updated_at": "2026-10-19T03:33:14+00:00",
+        "external_url": "https://hatoda.itch.io/morerumoreta",
+        "developer": "hatoda",
+        "publisher": null,
+        "source_url": "https://hatoda.itch.io/morerumoreta",
+        "source_type": "itch.io",
+        "original_game_url": "https://hatoda.itch.io/morerumoreta",
+        "developer_url": "https://hatoda.itch.io",
+        "steam_url": null,
+        "itch_url": "https://hatoda.itch.io/morerumoreta",
+        "last_verified_at": "2026-10-19T03:30:45+00:00",
+        "sources": [
+          {
+            "url": "https://hatoda.itch.io/morerumoreta",
+            "type": "itch.io",
+            "verifiedAt": "2026-10-19T03:30:45+00:00"
+          }
+        ],
+        "content_verified": true,
+        "added_at": "2026-10-19T03:33:14+00:00",
+        "last_updated_at": null,
+        "short_description": "Balance drink totals near zero and buy upgrades in a Japanese fox-café card game with bathroom humor.",
+        "official_website_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": "hatoda/morerumoreta",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": "released",
+        "graphics": "2D",
+        "multiplayer": "single-player",
+        "engine": "Unity",
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/morerumoreta-0.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/morerumoreta-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/morerumoreta-2.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/morerumoreta-3.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/morerumoreta-4.webp"
+        ],
+        "external_click_count": 0
+      },
+      "categories": [
+        "card",
+        "casual"
+      ],
+      "media": [
+        {
+          "kind": "cover",
+          "file": "morerumoreta.webp",
+          "source": "https://img.itch.zone/aW1nLzMxMDExODAwLnBuZw==/original/PW9iS3.png",
+          "object": "covers/2026-10-19/morerumoreta.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-19/morerumoreta.webp",
+          "bytes": 58996,
+          "width": 640,
+          "height": 640,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            1024,
+            1024
+          ],
+          "sha256": "9a5b127062e74a3b377fd5f1e7a11969df69dd601995119741f44b892e67d514",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "morerumoreta-screen-0.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE3NTcwNy8zMTAxMTgxMy5wbmc=/347x500/EzRp6A.png",
+          "object": "screenshots/2026-10-19/morerumoreta-0.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/morerumoreta-0.webp",
+          "bytes": 14714,
+          "width": 347,
+          "height": 196,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            196
+          ],
+          "sha256": "50bb10f6adbab8107370f49882496ba326ef36e9fc134d02a22703dfec47e7d3",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "morerumoreta-screen-1.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE3NTcwNy8zMDk5Mzc3MC5wbmc=/347x500/Mjsc1v.png",
+          "object": "screenshots/2026-10-19/morerumoreta-1.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/morerumoreta-1.webp",
+          "bytes": 14238,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "97fad8f4a57f0e2f19a614d48912b1962b4d80b4f7694e46570abf11bbd17136",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "morerumoreta-screen-2.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE3NTcwNy8zMDk5Mzc4MC5wbmc=/347x500/4KFAYj.png",
+          "object": "screenshots/2026-10-19/morerumoreta-2.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/morerumoreta-2.webp",
+          "bytes": 15344,
+          "width": 347,
+          "height": 195,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            195
+          ],
+          "sha256": "7c8c915077c12c9e967ef2b3902aab6f273395e214e6b2883e4d8df4f1c62175",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "morerumoreta-screen-3.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE3NTcwNy8zMDk5MzgzMS5wbmc=/347x500/BrY2Ct.png",
+          "object": "screenshots/2026-10-19/morerumoreta-3.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/morerumoreta-3.webp",
+          "bytes": 19588,
+          "width": 347,
+          "height": 258,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            258
+          ],
+          "sha256": "5d0d02992a8a816848d8edb0cc984594702d65ae76a669005af7ca74feefe908",
+          "publicVerified": true
+        },
+        {
+          "kind": "screenshot",
+          "file": "morerumoreta-screen-4.webp",
+          "source": "https://img.itch.zone/aW1hZ2UvNTE3NTcwNy8zMTAxMTE3NS5wbmc=/347x500/vWx9kA.png",
+          "object": "screenshots/2026-10-19/morerumoreta-4.webp",
+          "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-19/morerumoreta-4.webp",
+          "bytes": 10554,
+          "width": 347,
+          "height": 194,
+          "originalFormat": "PNG",
+          "originalFrames": 1,
+          "originalSize": [
+            347,
+            194
+          ],
+          "sha256": "57c276fd8c31a7e1198b70d817fcb3d25434d075f39f3e16c19dd6c627dc75b7",
+          "publicVerified": true
+        }
+      ],
+      "browserEntry": {
+        "url": "https://html-classic.itch.zone/html/19863763/index.html?v=1792370661",
+        "resolvedUrl": "https://html-classic.itch.zone/html/19863763/index.html?v=1792370661",
+        "httpStatus": 200,
+        "bytes": 5729
+      },
+      "detailResearchSources": [
+        {
+          "url": "https://hatoda.itch.io/morerumoreta",
+          "verifiedAt": "2026-10-19T03:30:45+00:00",
+          "supports": [
+            "identity",
+            "browser availability",
+            "description",
+            "how_to_play",
+            "controls",
+            "features",
+            "developer",
+            "status"
+          ],
+          "tipsBasis": "Editorial suggestions based on documented mechanics"
+        }
+      ],
+      "editorialEvidence": {
+        "attention": [
+          "Copy grounded in official itch description; no full playthrough performed.",
+          "Bathroom and holding-it-in humor disclosed."
+        ],
+        "missingDetailFields": []
+      },
+      "metadataNotes": [
+        "Radar publication time retained as input only; no verified original release date.",
+        "Tips are editorial advice inferred from verified mechanics.",
+        "Copy grounded in official itch description; no full playthrough performed.",
+        "Bathroom and holding-it-in humor disclosed."
+      ],
+      "missingDetailFields": [],
+      "gameId": "5e934564-084c-43e2-a9ba-e3e0ee42522e",
+      "publishedAt": "2026-10-19T03:33:14+00:00"
+    }
+  ],
+  "verification": {
+    "anonymousDraftExclusion": true,
+    "anonymousPublishedRead": true,
+    "fieldsAndCategories": true,
+    "mediaPublicRead": true,
+    "catalogueUpdatesCreated": 8,
+    "originalReleaseAndUpdateDatesNotInferred": true,
+    "oldGameRowsUnchanged": 1019,
+    "oldCategoryLinksUnchanged": true,
+    "totalGamesAfter": 1027,
+    "livePages": [
+      {
+        "slug": "sheep-per-second",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "metaDescription": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "burst-blackjack",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "metaDescription": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "hypnosnake-simulator",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "metaDescription": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "scrap-yard-tycoon",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "metaDescription": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "boristan",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "metaDescription": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "idle-fantasy-shop",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "metaDescription": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "te-kun-energy",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "metaDescription": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      },
+      {
+        "slug": "morerumoreta",
+        "httpStatus": 200,
+        "checks": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true,
+          "metaDescription": true,
+          "title": true,
+          "cover": true,
+          "external": true,
+          "noImageOptimizer": true
+        },
+        "passed": true
+      }
+    ],
+    "liveSitemap": {
+      "httpStatus": 200,
+      "newEntries": [
+        {
+          "slug": "sheep-per-second",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "burst-blackjack",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "hypnosnake-simulator",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "scrap-yard-tycoon",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "boristan",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "idle-fantasy-shop",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "te-kun-energy",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        },
+        {
+          "slug": "morerumoreta",
+          "included": false,
+          "lastmod": null,
+          "matchesPublication": false
+        }
+      ],
+      "oldGameTimestampChanges": [],
+      "cacheHeaders": {}
+    },
+    "homepage": {
+      "httpStatus": 200,
+      "newSlugsVisible": [],
+      "noImageOptimizer": true
+    },
+    "verifiedAt": "2026-10-19T03:48:26+00:00",
+    "coverStorageRecheck": [
+      {
+        "slug": "sheep-per-second",
+        "databaseUrlVerified": true,
+        "publicHttpStatus": 200,
+        "sha256Verified": true
+      },
+      {
+        "slug": "burst-blackjack",
+        "databaseUrlVerified": true,
+        "publicHttpStatus": 200,
+        "sha256Verified": true
+      },
+      {
+        "slug": "hypnosnake-simulator",
+        "databaseUrlVerified": true,
+        "publicHttpStatus": 200,
+        "sha256Verified": true
+      },
+      {
+        "slug": "scrap-yard-tycoon",
+        "databaseUrlVerified": true,
+        "publicHttpStatus": 200,
+        "sha256Verified": true
+      },
+      {
+        "slug": "boristan",
+        "databaseUrlVerified": true,
+        "publicHttpStatus": 200,
+        "sha256Verified": true
+      },
+      {
+        "slug": "idle-fantasy-shop",
+        "databaseUrlVerified": true,
+        "publicHttpStatus": 200,
+        "sha256Verified": true
+      },
+      {
+        "slug": "te-kun-energy",
+        "databaseUrlVerified": true,
+        "publicHttpStatus": 200,
+        "sha256Verified": true
+      },
+      {
+        "slug": "morerumoreta",
+        "databaseUrlVerified": true,
+        "publicHttpStatus": 200,
+        "sha256Verified": true
+      }
+    ],
+    "visibleBodyAndUpdates": [
+      {
+        "slug": "sheep-per-second",
+        "visibleBodyFields": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true
+        },
+        "catalogueUpdateVerified": true,
+        "mirroredWebPOnly": true
+      },
+      {
+        "slug": "burst-blackjack",
+        "visibleBodyFields": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true
+        },
+        "catalogueUpdateVerified": true,
+        "mirroredWebPOnly": true
+      },
+      {
+        "slug": "hypnosnake-simulator",
+        "visibleBodyFields": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true
+        },
+        "catalogueUpdateVerified": true,
+        "mirroredWebPOnly": true
+      },
+      {
+        "slug": "scrap-yard-tycoon",
+        "visibleBodyFields": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true
+        },
+        "catalogueUpdateVerified": true,
+        "mirroredWebPOnly": true
+      },
+      {
+        "slug": "boristan",
+        "visibleBodyFields": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true
+        },
+        "catalogueUpdateVerified": true,
+        "mirroredWebPOnly": true
+      },
+      {
+        "slug": "idle-fantasy-shop",
+        "visibleBodyFields": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true
+        },
+        "catalogueUpdateVerified": true,
+        "mirroredWebPOnly": true
+      },
+      {
+        "slug": "te-kun-energy",
+        "visibleBodyFields": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true
+        },
+        "catalogueUpdateVerified": true,
+        "mirroredWebPOnly": true
+      },
+      {
+        "slug": "morerumoreta",
+        "visibleBodyFields": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true
+        },
+        "catalogueUpdateVerified": true,
+        "mirroredWebPOnly": true
+      }
+    ],
+    "catalogueUpdatesVerified": 8,
+    "llmsTxt": "Checked public/llms.txt: game routes, external play, demo availability and sitemap information remain accurate; no changes needed.",
+    "build": {
+      "status": "passed",
+      "exitCode": 0,
+      "summary": "npm run build 通过；本批 8/8 正式 URL 已在构建 sitemap 收录，lastmod 与发布时间一致；1012 个老游戏的 sitemap 时间戳与导入前一致；本批 0/8 被预渲染（当前按热度选取前 500 款）",
+      "entries": [
+        {
+          "slug": "sheep-per-second",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": false
+        },
+        {
+          "slug": "burst-blackjack",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": false
+        },
+        {
+          "slug": "hypnosnake-simulator",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": false
+        },
+        {
+          "slug": "scrap-yard-tycoon",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": false
+        },
+        {
+          "slug": "boristan",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": false
+        },
+        {
+          "slug": "idle-fantasy-shop",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": false
+        },
+        {
+          "slug": "te-kun-energy",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": false
+        },
+        {
+          "slug": "morerumoreta",
+          "sitemapIncluded": true,
+          "lastmodMatchesPublication": true,
+          "prerendered": false
+        }
+      ],
+      "oldPublishedTimestampsChecked": 1012,
+      "timestampPrecision": "JavaScript Date / sitemap ISO output uses milliseconds; database comparison normalized to milliseconds, prior XML compared exactly",
+      "draftsExcluded": true,
+      "cacheNote": "Rebuilt after preserving and clearing only stale local sitemap fetch-cache entries; application source was unchanged."
+    },
+    "verificationScope": "Official page research, browser entry HTML availability, public image byte checks, database readback, live rendered body text and sitemap build verification; no complete gameplay test."
+  },
+  "sourceFeed": "https://itch.io/games/new-and-popular/free/platform-web.xml",
+  "sourceCapturedAt": "2026-10-19T03:15:00+08:00"
+}
