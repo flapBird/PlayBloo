@@ -71,8 +71,8 @@ export const getCachedCategoryCatalog = unstable_cache(
       game_count: counts.get(category.id) || 0,
     }));
   },
-  ["public-category-catalog-v1"],
-  { revalidate: 1800 },
+  ["public-category-catalog-v2"],
+  { revalidate: 3600, tags: ["public-category-catalog"] },
 );
 
 export async function getNavigationCategories(limit = 8): Promise<PublicCategory[]> {

@@ -21,9 +21,9 @@ const getCategory = unstable_cache(async (slug: string) => {
     .eq("slug", slug)
     .single();
   return data;
-}, ["category-by-slug-v2"], { revalidate: 1800 });
+}, ["category-by-slug-v2"], { revalidate: 3600 });
 
-const getGames = unstable_cache(async (slug: string, page: number) => {
+const getGames = (slug: string, page: number) => unstable_cache(async () => {
   const supabase = createAdminClient();
   const from = (page - 1) * PAGE_SIZE;
   const to = from + PAGE_SIZE - 1;
@@ -54,7 +54,7 @@ const getGames = unstable_cache(async (slug: string, page: number) => {
     .range(from, to);
 
   return { games: normalizePublicGameCards(gamesData), total: count || 0 };
-}, ["category-games-v2"], { revalidate: 1800 });
+}, ["category-games-v3", slug, String(page)], { revalidate: 3600, tags: [`category:${slug}`] })();
 
 export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
   const { slug } = await params;
@@ -90,7 +90,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
    };
 }
 
-export const revalidate = 1800;
+export const revalidate = 3600;
 
 export default async function CategoryPage({ params, searchParams }: Props) {
   const { slug } = await params;

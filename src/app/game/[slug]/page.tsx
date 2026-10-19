@@ -24,7 +24,7 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
-export const revalidate = 300;
+export const revalidate = 3600;
 
 // Prerender every published game at build time. A visitor hitting a page that
 // was never rendered pays the full server render (several Supabase round
@@ -51,14 +51,22 @@ function getMetaDescription(description: string | null, title: string) {
   return `${shortened}…`;
 }
 
+// Bulk prerendering can wait longer; visitor-triggered regeneration stays bounded.
+function queryTimeout(runtimeMs: number) {
+  return process.env.NEXT_PHASE === "phase-production-build" ? 30000 : runtimeMs;
+}
+
 const getGame = cache(async (slug: string) => {
   const supabase = createAdminClient();
-  const { data } = await supabase
+  const { data, error } = await supabase
     .from("games")
     .select("*, categories:game_categories(category_id, categories:categories(*)), tags:game_tags(tag_id, tags:tags(*)), series:game_series(series_id, series:series(*))")
     .eq("is_published", true)
     .eq("slug", slug)
-    .single();
+    .abortSignal(AbortSignal.timeout(queryTimeout(4000)))
+    .maybeSingle();
+  // A database failure must not overwrite a valid cached page with a 404.
+  if (error) throw new Error(`Could not load game: ${error.message}`);
   return data as unknown as RawGameRelations | null;
 });
 
@@ -95,11 +103,13 @@ const getRecommendationPool = unstable_cache(async (): Promise<RecommendationCan
     .select("id, title, slug, thumbnail_url, iframe_url, external_url, view_count, play_count, created_at, updated_at, release_date, is_trending, hot_score, categories:game_categories(category_id, categories:categories(id, name, slug)), tags:game_tags(tag_id), series:game_series(series_id)")
     .eq("is_published", true)
     .order("hot_score", { ascending: false })
-    .limit(500);
+    .limit(500)
+    .abortSignal(AbortSignal.timeout(queryTimeout(3000)));
 
   if (error) {
-    console.error("Could not load recommendation pool:", error.message);
-    return [];
+    // Throw inside the cache callback so a transient failure cannot cache an
+    // empty recommendation catalog for the next hour.
+    throw new Error(`Could not load recommendation pool: ${error.message}`);
   }
 
   return ((data || []) as unknown as RawRecommendationCandidate[]).map((candidate) => ({
@@ -110,34 +120,37 @@ const getRecommendationPool = unstable_cache(async (): Promise<RecommendationCan
       tagIds: candidate.tags?.map((membership) => membership.tag_id) || [],
       seriesIds: candidate.series?.map((membership) => membership.series_id) || [],
     }));
-}, ["public-recommendation-pool-v2"], { revalidate: 1800 });
+}, ["public-recommendation-pool-v3"], { revalidate: 3600, tags: ["public-recommendations"] });
 
 function getRelatedGames(game: Game, categoryIds: string[], tagIds: string[], seriesIds: string[], candidates: RecommendationCandidate[]) {
   const categorySet = new Set(categoryIds);
   const tagSet = new Set(tagIds);
   const seriesSet = new Set(seriesIds);
   const currentMode = getGamePlayMode(game);
-  return candidates
-    .filter((candidate) => candidate.id !== game.id)
-    .map((candidate) => ({
+  const best: Array<{ candidate: RecommendationCandidate; reason: string; score: number }> = [];
+  for (const candidate of candidates) {
+    if (candidate.id === game.id) continue;
+    const sameSeries = candidate.seriesIds.some((id) => seriesSet.has(id));
+    const sameCategory = candidate.categoryIds.some((id) => categorySet.has(id));
+    const sameTag = candidate.tagIds.some((id) => tagSet.has(id));
+    const sameMode = getGamePlayMode(candidate) === currentMode;
+    const entry = {
       candidate,
-      reason:
-        candidate.seriesIds.some((id) => seriesSet.has(id)) ? "Same game series" :
-        candidate.categoryIds.some((id) => categorySet.has(id)) ? "Similar genre" :
-        candidate.tagIds.some((id) => tagSet.has(id)) ? "Shared gameplay tags" :
-        getGamePlayMode(candidate) === currentMode && currentMode === "embedded" ? "Also playable here" :
+      reason: sameSeries ? "Same game series" : sameCategory ? "Similar genre" :
+        sameTag ? "Shared gameplay tags" : sameMode && currentMode === "embedded" ? "Also playable here" :
         candidate.is_trending ? "Trending with players" : "Popular discovery",
-      score:
-        (candidate.seriesIds.some((id) => seriesSet.has(id)) ? 10000 : 0) +
-        (candidate.categoryIds.some((id) => categorySet.has(id)) ? 1000 : 0) +
-        (candidate.tagIds.some((id) => tagSet.has(id)) ? 100 : 0) +
-        (getGamePlayMode(candidate) === currentMode ? 10 : 0) +
-        (candidate.is_trending ? 5 : 0) +
-        Math.min(Number(candidate.hot_score) || 0, 4),
-    }))
-    .sort((a, b) => b.score - a.score || (b.candidate.play_count || 0) - (a.candidate.play_count || 0))
-    .slice(0, 6)
-    .map(({ candidate, reason }) => ({ ...candidate, recommendationReason: reason }));
+      score: (sameSeries ? 10000 : 0) + (sameCategory ? 1000 : 0) + (sameTag ? 100 : 0) +
+        (sameMode ? 10 : 0) + (candidate.is_trending ? 5 : 0) + Math.min(Number(candidate.hot_score) || 0, 4),
+    };
+    // Keep only the six winners, preserving input order for exact ties. Avoid
+    // allocating and sorting a second 500-game array on every regeneration.
+    const index = best.findIndex((item) => entry.score > item.score ||
+      (entry.score === item.score && (candidate.play_count || 0) > (item.candidate.play_count || 0)));
+    if (index >= 0) best.splice(index, 0, entry);
+    else if (best.length < 6) best.push(entry);
+    if (best.length > 6) best.pop();
+  }
+  return best.map(({ candidate, reason }) => ({ ...candidate, recommendationReason: reason }));
 }
 
 async function gameHasLevels(gameId: string) {
@@ -146,12 +159,13 @@ async function gameHasLevels(gameId: string) {
     .from("game_levels")
     .select("id", { count: "exact", head: true })
     .eq("game_id", gameId)
-    .eq("is_published", true);
+    .eq("is_published", true)
+    .abortSignal(AbortSignal.timeout(queryTimeout(2000)));
   return (count || 0) > 0;
 }
 
 async function getUpdates(gameId: string): Promise<GameUpdate[]> {
-  const { data } = await createAdminClient().from("game_updates").select("*").eq("game_id", gameId).lte("published_at", new Date().toISOString()).order("published_at", { ascending: false }).limit(20);
+  const { data } = await createAdminClient().from("game_updates").select("*").eq("game_id", gameId).lte("published_at", new Date().toISOString()).order("published_at", { ascending: false }).limit(20).abortSignal(AbortSignal.timeout(queryTimeout(2000)));
   return (data || []) as GameUpdate[];
 }
 
@@ -219,7 +233,10 @@ export default async function GamePage({ params }: Props) {
   const rawSeriesList = gameRow.series?.map((membership) => membership.series).filter((series): series is SeriesSummary => Boolean(series)) || [];
 
   const [recommendationPool, updates, hasLevels] = await Promise.all([
-    getRecommendationPool(),
+    getRecommendationPool().catch((error: unknown) => {
+      console.error("Recommendation data unavailable:", error instanceof Error ? error.message : "Unknown error");
+      return [] as RecommendationCandidate[];
+    }),
     getUpdates(game.id),
     gameHasLevels(game.id),
   ]);

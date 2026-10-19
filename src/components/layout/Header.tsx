@@ -42,7 +42,7 @@ export function Header() {
         {/* Main row */}
         <div className="flex h-16 items-center justify-between">
           <div className="flex shrink-0 items-center gap-7">
-            <Link href="/" className="flex items-center gap-2 text-lg font-black sm:text-xl tracking-tight text-foreground transition-colors hover:text-primary">
+            <Link prefetch={false} href="/" className="flex items-center gap-2 text-lg font-black sm:text-xl tracking-tight text-foreground transition-colors hover:text-primary">
               <Image
                 src="/images/brand/playbloo-ribbon.webp"
                 alt=""
@@ -54,9 +54,9 @@ export function Header() {
               {SITE_NAME}
             </Link>
             <nav aria-label="Primary" className="hidden items-center gap-1 lg:flex">
-              <Link href="/" className={`header-nav-link ${pathname === "/" ? "is-active" : ""}`}>Games</Link>
-              <Link href="/guides" aria-current={pathname === "/guides" || pathname.startsWith("/guides/") ? "page" : undefined} className={`header-nav-link ${pathname === "/guides" || pathname.startsWith("/guides/") ? "is-active" : ""}`}><BookOpen className="h-3.5 w-3.5" />Guides</Link>
-              <Link href="/submit-game" aria-current={pathname === "/submit-game" ? "page" : undefined} className={`header-nav-link ${pathname === "/submit-game" ? "is-active" : ""}`}>Submit a Game</Link>
+              <Link prefetch={false} href="/" className={`header-nav-link ${pathname === "/" ? "is-active" : ""}`}>Games</Link>
+              <Link prefetch={false} href="/guides" aria-current={pathname === "/guides" || pathname.startsWith("/guides/") ? "page" : undefined} className={`header-nav-link ${pathname === "/guides" || pathname.startsWith("/guides/") ? "is-active" : ""}`}><BookOpen className="h-3.5 w-3.5" />Guides</Link>
+              <Link prefetch={false} href="/submit-game" aria-current={pathname === "/submit-game" ? "page" : undefined} className={`header-nav-link ${pathname === "/submit-game" ? "is-active" : ""}`}>Submit a Game</Link>
             </nav>
           </div>
 
@@ -77,10 +77,10 @@ export function Header() {
 
           <div className="flex items-center gap-1 sm:gap-2">
             <div className="flex items-center gap-1">
-              <Link href="/recently-played" aria-label="Recently played" className="hidden md:grid h-9 w-9 place-items-center rounded-xl text-muted-foreground transition hover:bg-muted hover:text-primary">
+              <Link prefetch={false} href="/recently-played" aria-label="Recently played" className="hidden md:grid h-9 w-9 place-items-center rounded-xl text-muted-foreground transition hover:bg-muted hover:text-primary">
                 <History className="h-4 w-4" />
               </Link>
-              <Link href="/favorites" aria-label="Your favorites" className="grid h-9 w-9 place-items-center rounded-xl text-muted-foreground transition hover:bg-muted hover:text-rose-500">
+              <Link prefetch={false} href="/favorites" aria-label="Your favorites" className="grid h-9 w-9 place-items-center rounded-xl text-muted-foreground transition hover:bg-muted hover:text-rose-500">
                 <Heart className="h-4 w-4" />
               </Link>
             </div>
@@ -135,21 +135,22 @@ export function Header() {
           <div id="mobile-menu" className="lg:hidden border-t border-border/50">
             <div className="px-4 py-3 space-y-1">
               <Link
+                prefetch={false}
                 href="/"
                 className="block px-3 py-2 text-sm font-medium rounded-lg hover:bg-muted transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Games
               </Link>
-              <Link href="/guides" aria-current={pathname === "/guides" || pathname.startsWith("/guides/") ? "page" : undefined} className={`block px-3 py-2 text-sm font-medium rounded-lg hover:bg-muted ${pathname === "/guides" || pathname.startsWith("/guides/") ? "text-primary bg-muted" : ""}`} onClick={() => setMobileMenuOpen(false)}>Guides</Link>
-              <Link href="/submit-game" className="block px-3 py-2 text-sm font-medium rounded-lg hover:bg-muted" onClick={() => setMobileMenuOpen(false)}>Submit a Game</Link>
-              <Link href="/favorites" className="flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-lg hover:bg-muted" onClick={() => setMobileMenuOpen(false)}>
+              <Link prefetch={false} href="/guides" aria-current={pathname === "/guides" || pathname.startsWith("/guides/") ? "page" : undefined} className={`block px-3 py-2 text-sm font-medium rounded-lg hover:bg-muted ${pathname === "/guides" || pathname.startsWith("/guides/") ? "text-primary bg-muted" : ""}`} onClick={() => setMobileMenuOpen(false)}>Guides</Link>
+              <Link prefetch={false} href="/submit-game" className="block px-3 py-2 text-sm font-medium rounded-lg hover:bg-muted" onClick={() => setMobileMenuOpen(false)}>Submit a Game</Link>
+              <Link prefetch={false} href="/favorites" className="flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-lg hover:bg-muted" onClick={() => setMobileMenuOpen(false)}>
                 <Heart className="h-4 w-4" /> Favorites
               </Link>
-              <Link href="/recently-played" className="flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-lg hover:bg-muted" onClick={() => setMobileMenuOpen(false)}>
+              <Link prefetch={false} href="/recently-played" className="flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-lg hover:bg-muted" onClick={() => setMobileMenuOpen(false)}>
                 <History className="h-4 w-4" /> Recently Played
               </Link>
-              <Link href="/category" className="block px-3 py-2 text-sm font-medium rounded-lg hover:bg-muted text-muted-foreground hover:text-foreground" onClick={() => setMobileMenuOpen(false)}>Browse genres</Link>
+              <Link prefetch={false} href="/category" className="block px-3 py-2 text-sm font-medium rounded-lg hover:bg-muted text-muted-foreground hover:text-foreground" onClick={() => setMobileMenuOpen(false)}>Browse genres</Link>
             </div>
           </div>
         )}

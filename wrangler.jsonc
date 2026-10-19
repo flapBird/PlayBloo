@@ -7,6 +7,12 @@
   "observability": {
     "enabled": true
   },
+  "vars": {
+    "MAX_REVALIDATE_CONCURRENCY": "2",
+    "NEXT_CACHE_DO_QUEUE_MAX_REVALIDATION": "2",
+    "NEXT_CACHE_DO_QUEUE_MAX_RETRIES": "2",
+    "NEXT_CACHE_DO_QUEUE_RETRY_INTERVAL_MS": "5000"
+  },
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"

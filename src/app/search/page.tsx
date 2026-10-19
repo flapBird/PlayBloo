@@ -117,7 +117,7 @@ const getOptions = unstable_cache(async (): Promise<FilterOptions> => {
     hasReleaseDates: rows.some((game) => Boolean(game.release_date)),
     hasUpdates: rows.some((game) => Boolean(game.last_updated_at)),
   };
-}, ["public-search-filter-options-v3"], { revalidate: 1800 });
+}, ["public-search-filter-options-v4"], { revalidate: 3600, tags: ["public-search-options"] });
 
 function href(filters: PublicSearchFilters, page: number, view = filters.view) {
   const p = new URLSearchParams();

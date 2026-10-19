@@ -1,13 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-import { revalidatePath } from "next/cache";
+import { getGameCacheSnapshot, revalidateGameChange } from "@/lib/game-cache";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { getAuthenticatedAdmin } from "@/lib/admin-auth";
 
 export const dynamic = "force-dynamic";
 
 type SourceRecord = { type?: unknown; url?: unknown };
-type JoinedCategory = { categories?: { slug?: string } | { slug?: string }[] | null };
-type GameWithJoinedCategories = { categories?: JoinedCategory[] | null };
 
 const GAME_MUTABLE_FIELDS = [
   "title", "slug", "thumbnail_url", "cover_url", "iframe_url", "external_url", "description",
@@ -148,43 +146,6 @@ async function resolveCategories(
   return ids;
 }
 
-/** Extract category slugs from a game's joined categories */
-function extractCategorySlugs(game: GameWithJoinedCategories | null): string[] {
-  const cats = game?.categories || [];
-  return cats
-    .flatMap((membership) => {
-      const category = membership.categories;
-      if (Array.isArray(category)) return category.map((item) => item.slug);
-      return [category?.slug];
-    })
-    .filter((slug): slug is string => Boolean(slug));
-}
-
-/** Revalidate only the pages affected by this game */
-function revalidateGamePages(slug: string, categorySlugs: string[]) {
-  const paths = [
-    // Homepage (game lists)
-    "/",
-    // This game's detail page
-    `/game/${slug}`,
-    // Category pages this game belongs to
-    ...categorySlugs.map((cs) => `/category/${cs}`),
-    // Taxonomy relationships may be changed by the bulk editor.
-    "/category",
-    "/category/[slug]",
-    "/tag/[slug]",
-    "/series",
-    "/series/[slug]",
-    // Search page (game lists)
-    "/search",
-    "/sitemap.xml",
-  ];
-
-  for (const path of paths) {
-    try { revalidatePath(path, "page"); } catch {}
-  }
-}
-
 export async function POST(request: NextRequest) {
   if (!await getAuthenticatedAdmin()) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const body: unknown = await request.json().catch(() => null);
@@ -226,7 +187,7 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  revalidateGamePages(data.slug, extractCategorySlugs(data));
+  revalidateGameChange(null, await getGameCacheSnapshot(gameId));
 
   return NextResponse.json({ data }, { status: 201 });
 }
@@ -257,8 +218,7 @@ export async function PUT(request: NextRequest) {
     if (verificationError) return NextResponse.json({ error: verificationError }, { status: 400 });
   }
 
-  // Fetch existing game first to know its slug and old categories
-  const { data: existing } = await supabase.from("games").select("slug").eq("id", id).single();
+  const existing = await getGameCacheSnapshot(id);
 
   const { data, error } = await supabase.from("games").update(updates).eq("id", id).select("*, categories:game_categories(category_id, categories:categories(*))").single();
   if (error) return gameWriteError(supabase, error, updates);
@@ -294,14 +254,7 @@ export async function PUT(request: NextRequest) {
     }
   }
 
-  // Revalidate old slug too (in case slug changed)
-  const slugs = new Set<string>(extractCategorySlugs(data));
-  const newSlug = data.slug;
-  const oldSlug = existing?.slug;
-  revalidateGamePages(newSlug, [...slugs]);
-  if (oldSlug && oldSlug !== newSlug) {
-    try { revalidatePath(`/game/${oldSlug}`, "page"); } catch {}
-  }
+  revalidateGameChange(existing, await getGameCacheSnapshot(id));
 
   return NextResponse.json({ data });
 }
@@ -314,18 +267,13 @@ export async function DELETE(request: NextRequest) {
 
   const supabase = createAdminClient();
 
-  // Fetch game info before deleting (for cache revalidation)
-  const { data: game } = await supabase
-    .from("games")
-    .select("slug, categories:game_categories(category_id, categories:categories(*))")
-    .eq("id", id)
-    .single();
+  const game = await getGameCacheSnapshot(id);
 
   const { error } = await supabase.from("games").delete().eq("id", id);
   if (error) return NextResponse.json({ error: error.message }, { status: 400 });
 
   if (game) {
-    revalidateGamePages(game.slug, extractCategorySlugs(game));
+    revalidateGameChange(game, null);
   }
 
   return NextResponse.json({ success: true });

@@ -121,11 +121,23 @@ npm run deploy
 
 ## 缓存与图片
 
-站点已有页面 ISR、`unstable_cache` 和后台 `revalidatePath`。`open-next.config.ts` 使用 R2 保存页面和数据缓存，DO Queue 协调定时刷新，分片 DO Tag Cache 保存按需失效记录，`baseShardSize` 为 4，`regionalCache` 为 `false`。
+站点使用页面 ISR、`unstable_cache` 和后台按需失效。首页有效期为 15 分钟，游戏详情为 1 小时，分类总览、系列页面以及分类/标签列表数据为 1 小时（带查询参数的分类/标签详情仍动态渲染），关卡页面仍为 30 分钟。到期后有访问才刷新，不会定时扫描整个目录。游戏推荐、分类导航和搜索筛选数据缓存 1 小时；后台发布、下架、改名或调整游戏关联会让对应共享数据立即过期，普通内容编辑只刷新相关页面和分类/标签列表。后台修改通过 API 后在下一次访问重新生成，不代表保存接口同步生成整站。
 
-当前未启用 regional cache、cache interception 或 Cache API purge，不需要 purge Durable Object、`CACHE_PURGE_API_TOKEN` 或 `CACHE_PURGE_ZONE_ID`。以后若增加区域缓存，需要重新评估按需失效与 purge 配置，避免后台修改后继续返回旧缓存。详见 [OpenNext 缓存说明](https://opennext.js.org/cloudflare/caching)。
+`open-next.config.ts` 使用 R2 保存页面和数据缓存，并启用 `enableCacheInterception`，缓存命中时跳过 NextServer 页面代码加载。DO Queue 外包一层 30 秒的 `queueCache`，只抑制同一旧缓存版本的重复刷新入队，不缓存 HTML 或失效标签；先等队列确认再记录去重。后台 `revalidatePath`/`revalidateTag` 的有效性仍直接由 Tag Cache 决定，不依赖刷新队列的缓存。
+
+`wrangler.jsonc` 的 `MAX_REVALIDATE_CONCURRENCY=2` 将新刷新任务分散到两个队列分片，每个分片 `NEXT_CACHE_DO_QUEUE_MAX_REVALIDATION=2`（正常刷新最多约 4 个并发）；`NEXT_CACHE_DO_QUEUE_MAX_RETRIES=2` 降低失败重试上限，`NEXT_CACHE_DO_QUEUE_RETRY_INTERVAL_MS=5000` 延长后续指数退避。重试 Alarm 和旧部署已排队任务不受这一并发估算保证。升级后核对线上变量与配置一致；这些设置减少无效重试，不能提高 Free 的 CPU 限额。
+
+分片 DO Tag Cache 保持 `baseShardSize: 4, regionalCache: false`。当前未配置全局 purge 凭据，因此不增加页面/标签的区域缓存，避免后台下架之后其他地区继续读到旧数据；不需要 purge Durable Object、`CACHE_PURGE_API_TOKEN` 或 `CACHE_PURGE_ZONE_ID`。以后启用这些缓存层必须一起验证全局按需清理。详见 [OpenNext 缓存说明](https://opennext.js.org/cloudflare/caching)。
+
+构建阶段批量预渲染的游戏查询允许等待 30 秒；线上游戏详情的主数据查询最多等 4 秒，数据库错误会使本次生成失败而非写入错误的 404；推荐查询最多等 3 秒，失败不把空目录写入共享数据缓存，页面可暂时不显示推荐。更新记录和关卡存在性查询最多等 2 秒。推荐排名只保留六个最佳候选，不再对整池候选排序；导航链接关闭预加载，减少未点击页面的 RSC 请求。这些措施不能保证冷启动或重新生成一定低于 Free 的 10ms CPU 预算；网络等待和 CPU 执行时间是不同指标。
+
+直接通过 Supabase、脚本或其他绕过后台 API 的写入不会自动调用这些失效函数，需在导入流程中另行失效缓存或重新构建发布。缓存优化不修改游戏的上线日期或 sitemap 时间戳。
 
 图片继续通过原始 URL 加载，`images.unoptimized: true` 保持启用，无需配置 Cloudflare Images 绑定。新增图片仍须预先压缩；不要运行已停用的 `scripts/warm-image-cache.mjs`。`public/_headers` 为 `/_next/static/*` 设置长期不可变缓存。
+
+## 扫描请求拦截
+
+2026-10-19 在 `playbloo.net` 的 Cloudflare 自定义 WAF 规则中启用 `playbloo_block_sensitive_file_probes`，拦截 `/.env`、`/.env.*`、`/@fs/.env`、`/@fs/.env.*`、`/.git` 和 `/.git/` 下的请求，在进入 Worker 前返回 403。规则位于 zone 的 `http_request_firewall_custom` 阶段，不随代码部署创建；新环境需要单独配置。不封锁正常游戏页面、搜索引擎或所有 HEAD 请求（ISR 本身使用 HEAD）。
 
 ## 正式域名与 Supabase Auth
 

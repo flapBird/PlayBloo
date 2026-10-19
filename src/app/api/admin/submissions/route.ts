@@ -1,4 +1,4 @@
-import { revalidatePath } from "next/cache";
+import { getGameCacheSnapshot, revalidateGameChange } from "@/lib/game-cache";
 import { NextRequest, NextResponse } from "next/server";
 import { getAuthenticatedAdmin } from "@/lib/admin-auth";
 import { createAdminClient } from "@/lib/supabase/admin";
@@ -191,11 +191,6 @@ export async function PATCH(request: NextRequest) {
     await supabase.from("games").delete().eq("id", game.id);
     return NextResponse.json({ error: approvalError instanceof Error ? approvalError.message : "Could not approve submission." }, { status: 400 });
   }
-  revalidatePath("/");
-  revalidatePath("/search");
-  revalidatePath("/category");
-  revalidatePath("/series");
-  revalidatePath("/sitemap.xml");
-  revalidatePath(`/game/${game.slug}`);
+  revalidateGameChange(null, await getGameCacheSnapshot(game.id));
   return NextResponse.json({ success: true, game });
 }

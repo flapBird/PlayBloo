@@ -7,7 +7,7 @@ import { HomeLibraryPanel } from "@/components/home/HomeLibraryPanel";
 import { HomeGuideFeature } from "@/components/guides/HomeGuideFeature";
 import { getHomeContent } from "@/lib/home-feeds";
 
-export const revalidate = 300;
+export const revalidate = 900;
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
