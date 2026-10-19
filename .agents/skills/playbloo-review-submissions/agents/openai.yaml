@@ -1,0 +1,3 @@
+interface:
+  display_name: "PlayBloo 用户投稿审核"
+  short_description: "审核待审游戏投稿，查重并完善浏览器游戏详情、素材及后台状态"
