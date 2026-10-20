@@ -1,12 +1,25 @@
 {
  "batchDate": "2026-10-20",
- "inputCount": 10,
+ "batches": [
+  {
+   "id": "06:34",
+   "sourceCapturedAt": "2026-10-20 06:34",
+   "inputCount": 10
+  },
+  {
+   "id": "08:23",
+   "sourceCapturedAt": "2026-10-20 08:23",
+   "inputCount": 2
+  }
+ ],
+ "inputCount": 12,
  "baselineCount": 1027,
  "sourceFeed": "https://itch.io/games/new-and-popular/free/platform-web.xml",
- "sourceCapturedAt": "2026-10-20 06:34",
+ "sourceCapturedAt": "2026-10-20 06:34 / 08:23",
  "entries": [
   {
    "index": 1,
+   "batch": "06:34",
    "inputTitle": "Pack Ripper",
    "sourceUrl": "https://bigbonkstudio.itch.io/pack-ripper",
    "resolvedUrl": "https://bigbonkstudio.itch.io/pack-ripper",
@@ -191,6 +204,7 @@
   },
   {
    "index": 2,
+   "batch": "06:34",
    "inputTitle": "Chartward",
    "sourceUrl": "https://beider.itch.io/chartward-demo",
    "resolvedUrl": "https://beider.itch.io/chartward-demo",
@@ -291,17 +305,17 @@
      "source": "https://img.itch.zone/aW1hZ2UvNTA3ODE5MS8zMTA3MDAwNS5naWY=/original/VI%2Bxwe.gif",
      "object": "screenshots/2026-10-20/chartward-demo-3.webp",
      "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/chartward-demo-3.webp",
-     "bytes": 473694,
+     "bytes": 256718,
      "width": 640,
      "height": 360,
      "format": "webp",
-     "originalFrames": 48,
+     "originalFrames": 32,
      "animated": true,
      "originalSize": [
       640,
       360
      ],
-     "sha256": "79ae356b8610f213a039ae614d2820a32c3544117003ec6e5873e88eed2040de",
+     "sha256": "bf2904acf975010e47febec9f17b40d61a1730c7e87edb2996ac047f4abbd21c",
      "contentType": "image/webp",
      "publicVerified": true
     },
@@ -374,6 +388,7 @@
   },
   {
    "index": 3,
+   "batch": "06:34",
    "inputTitle": "Harlequinade [Demo]",
    "sourceUrl": "https://crystalgameworks.itch.io/harlequinade",
    "resolvedUrl": "https://crystalgameworks.itch.io/harlequinade",
@@ -557,6 +572,7 @@
   },
   {
    "index": 4,
+   "batch": "06:34",
    "inputTitle": "Kirby ~ Soft & Wet",
    "sourceUrl": "https://strimps-kitchen.itch.io/kirby-soft-and-wet",
    "resolvedUrl": "https://strimps-kitchen.itch.io/kirby-soft-and-wet",
@@ -740,6 +756,7 @@
   },
   {
    "index": 5,
+   "batch": "06:34",
    "inputTitle": "OnePixel",
    "sourceUrl": "https://alexdotcodes.itch.io/onepixel",
    "resolvedUrl": "https://alexdotcodes.itch.io/onepixel",
@@ -903,6 +920,7 @@
   },
   {
    "index": 6,
+   "batch": "06:34",
    "inputTitle": "Twilight at the Banyan Tree (Beta)",
    "sourceUrl": "https://meniir.itch.io/twilight-at-the-banyan-tree",
    "resolvedUrl": "https://meniir.itch.io/twilight-at-the-banyan-tree",
@@ -1026,6 +1044,7 @@
   },
   {
    "index": 7,
+   "batch": "06:34",
    "inputTitle": "Paragra - Paragliding Adventures",
    "sourceUrl": "https://targaciej.itch.io/paragra",
    "resolvedUrl": "https://targaciej.itch.io/paragra",
@@ -1209,6 +1228,7 @@
   },
   {
    "index": 8,
+   "batch": "06:34",
    "inputTitle": "The Cursed Box",
    "sourceUrl": "https://deby-studio.itch.io/the-cursed-box",
    "resolvedUrl": "https://deby-studio.itch.io/the-cursed-box",
@@ -1392,6 +1412,7 @@
   },
   {
    "index": 9,
+   "batch": "06:34",
    "inputTitle": "Marketfield",
    "sourceUrl": "https://pollikk-studios.itch.io/marketfield",
    "resolvedUrl": "https://pollikk-studios.itch.io/marketfield",
@@ -1575,6 +1596,7 @@
   },
   {
    "index": 10,
+   "batch": "06:34",
    "inputTitle": "Breadwinner",
    "sourceUrl": "https://mithikagames.itch.io/breadwinner",
    "resolvedUrl": "https://mithikagames.itch.io/breadwinner",
@@ -1755,6 +1777,274 @@
     "published_at": "2026-10-20T07:06:15+00:00",
     "source_url": "https://mithikagames.itch.io/breadwinner"
    }
+  },
+  {
+   "index": 11,
+   "batch": "08:23",
+   "inputTitle": "ONE OF THESE IS YOU",
+   "sourceUrl": "https://raxeris.itch.io/one-of-these-is-you",
+   "resolvedUrl": "https://raxeris.itch.io/one-of-these-is-you",
+   "identity": "raxeris/one-of-these-is-you",
+   "inputPublishedAt": "2026-09-28 07:40（UTC+8）",
+   "decision": "published",
+   "game": {
+    "id": "e94ee64f-5ef0-4673-b5cc-0727f3526338",
+    "title": "ONE OF THESE IS YOU",
+    "slug": "one-of-these-is-you",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-20/one-of-these-is-you.webp",
+    "cover_url": "",
+    "iframe_url": "",
+    "external_url": "https://raxeris.itch.io/one-of-these-is-you",
+    "developer": "raxeris",
+    "release_date": "2026-09-28",
+    "added_at": "2026-10-20T08:28:01+00:00",
+    "updated_at": "2026-10-20T08:28:07.202429+00:00",
+    "development_status": "released",
+    "engine": "HTML5",
+    "graphics": "2D",
+    "multiplayer": "single-player",
+    "platforms": [
+     "browser"
+    ],
+    "monetization": "free",
+    "short_description": "Every cursor moves when you move your mouse — only one of them is you."
+   },
+   "categories": [
+    "casual",
+    "puzzle"
+   ],
+   "developmentStatus": "released",
+   "media": [
+    {
+     "kind": "cover",
+     "file": "one-of-these-is-you.webp",
+     "source": "https://img.itch.zone/aW1nLzMwMzUyNzA3LnBuZw==/original/vm06wq.png",
+     "object": "covers/2026-10-20/one-of-these-is-you.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-20/one-of-these-is-you.webp",
+     "bytes": 11842,
+     "width": 640,
+     "height": 336,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      640,
+      336
+     ],
+     "sha256": "8f7977852e89bb2eb9031960a3c74d1ae3719aee147427f5a33da0fb9efada62",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "one-of-these-is-you-1.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNTA2NTIxNS8zMDMyNTIwNS5wbmc=/347x500/TVyg2M.png",
+     "object": "screenshots/2026-10-20/one-of-these-is-you-1.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/one-of-these-is-you-1.webp",
+     "bytes": 2530,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "9a4c53c2770020d63a6ce7598b43fa405f6367576820a3759a63a125d188de28",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "one-of-these-is-you-2.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNTA2NTIxNS8zMDMyNTIwNi5wbmc=/347x500/KqzyOb.png",
+     "object": "screenshots/2026-10-20/one-of-these-is-you-2.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/one-of-these-is-you-2.webp",
+     "bytes": 2446,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "55f0107eb2fe38bf6f1397309afb439c721bd4c325d968f031dcacedeea3c6c3",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "one-of-these-is-you-3.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNTA2NTIxNS8zMDMyNTIwOS5wbmc=/347x500/c8rujj.png",
+     "object": "screenshots/2026-10-20/one-of-these-is-you-3.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/one-of-these-is-you-3.webp",
+     "bytes": 3962,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "88eaee7713dfb59696f5e660bafd2ea364bc93fc1c923d01d7cf85c97a49a612",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "one-of-these-is-you-4.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNTA2NTIxNS8zMDMyNTIwNC5wbmc=/347x500/SP2uQF.png",
+     "object": "screenshots/2026-10-20/one-of-these-is-you-4.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/one-of-these-is-you-4.webp",
+     "bytes": 3838,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "a406bba97cdd1b190edb1bd656227ff46f89e1b2dac550b1cf2269e95e9fe57b",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "one-of-these-is-you-5.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNTA2NTIxNS8zMDMyNTIwOC5wbmc=/347x500/7BIX1J.png",
+     "object": "screenshots/2026-10-20/one-of-these-is-you-5.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/one-of-these-is-you-5.webp",
+     "bytes": 2800,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "c01aeda51e6ca1a03a4d7d27bd8976aa6466c20dac6f0bac91ce1b5dbdd3ec73",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "one-of-these-is-you-6.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNTA2NTIxNS8zMDMyNTIwNy5wbmc=/347x500/VLSYA9.png",
+     "object": "screenshots/2026-10-20/one-of-these-is-you-6.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/one-of-these-is-you-6.webp",
+     "bytes": 2722,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "a4a5cbcbc833a39152563fe99d87e8e0e3a8486c9f0e4d31d0d709e1271c32c4",
+     "contentType": "image/webp",
+     "publicVerified": true
+    }
+   ],
+   "update": {
+    "title": "Added to PlayBloo",
+    "published_at": "2026-10-20T08:28:01+00:00",
+    "source_url": "https://raxeris.itch.io/one-of-these-is-you"
+   }
+  },
+  {
+   "index": 12,
+   "batch": "08:23",
+   "inputTitle": "Spot Master",
+   "sourceUrl": "https://fidelsoto.itch.io/spotmaster",
+   "resolvedUrl": "https://fidelsoto.itch.io/spotmaster",
+   "identity": "fidelsoto/spotmaster",
+   "inputPublishedAt": "2025-09-20 07:30（UTC+8）",
+   "decision": "published",
+   "game": {
+    "id": "1a6987ce-f536-4d04-b56b-67e2ca8a67f1",
+    "title": "Spot Master",
+    "slug": "spotmaster",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-20/spotmaster.webp",
+    "cover_url": "",
+    "iframe_url": "",
+    "external_url": "https://fidelsoto.itch.io/spotmaster",
+    "developer": "Fidel Soto",
+    "release_date": "2026-10-19",
+    "added_at": "2026-10-20T08:28:01+00:00",
+    "updated_at": "2026-10-20T08:28:07.202429+00:00",
+    "development_status": "released",
+    "engine": "Unity",
+    "graphics": "2D",
+    "multiplayer": "single-player",
+    "platforms": [
+     "browser"
+    ],
+    "monetization": "free",
+    "short_description": "A Ludo-style race board for four colors, with crowned dice, numbered tracks, shields and swords."
+   },
+   "categories": [
+    "board-game",
+    "casual"
+   ],
+   "developmentStatus": "released",
+   "media": [
+    {
+     "kind": "cover",
+     "file": "spotmaster.webp",
+     "source": "https://img.itch.zone/aW1nLzMxMDY0MzE1LnBuZw==/original/gnT10c.png",
+     "object": "covers/2026-10-20/spotmaster.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-20/spotmaster.webp",
+     "bytes": 74790,
+     "width": 640,
+     "height": 640,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      640,
+      640
+     ],
+     "sha256": "c1a896cc23c306fdf82655ff1dc398ad5b601883d228377373784ce4a819daee",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "spotmaster-1.webp",
+     "source": "https://img.itch.zone/aW1nLzMxMDY0MzE1LnBuZw==/347x500/K5S8bM.png",
+     "object": "screenshots/2026-10-20/spotmaster-1.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/spotmaster-1.webp",
+     "bytes": 32258,
+     "width": 347,
+     "height": 347,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      347
+     ],
+     "sha256": "b5da2c38b46f8845c5787712696b7f8ac25116e7f21b0ffb135d2b120678d054",
+     "contentType": "image/webp",
+     "publicVerified": true
+    }
+   ],
+   "update": {
+    "title": "Added to PlayBloo",
+    "published_at": "2026-10-20T08:28:01+00:00",
+    "source_url": "https://fidelsoto.itch.io/spotmaster"
+   }
   }
  ],
  "verification": {
@@ -1762,16 +2052,16 @@
   "anonymousPublishedRead": true,
   "fieldsAndCategories": true,
   "mediaPublicRead": true,
-  "catalogueUpdatesCreated": 10,
+  "catalogueUpdatesCreated": 12,
   "originalReleaseAndUpdateDatesNotInferred": true,
   "oldGameRowsUnchanged": 1027,
   "oldCategoryLinksUnchanged": true,
-  "totalGamesAfter": 1037,
-  "publishedGamesAfter": 1030,
+  "totalGamesAfter": 1039,
+  "publishedGamesAfter": 1032,
   "draftGamesExcluded": 7,
   "livePages": [
    {
-    "slug": "pack-ripper",
+    "slug": "breadwinner",
     "httpStatus": 200,
     "checks": {
      "title": true,
@@ -1839,6 +2129,40 @@
     "passed": true
    },
    {
+    "slug": "marketfield",
+    "httpStatus": 200,
+    "checks": {
+     "title": true,
+     "metaDescription": true,
+     "description": true,
+     "how_to_play": true,
+     "controls": true,
+     "tips": true,
+     "features": true,
+     "cover": true,
+     "external": true,
+     "noImageOptimizer": true
+    },
+    "passed": true
+   },
+   {
+    "slug": "one-of-these-is-you",
+    "httpStatus": 200,
+    "checks": {
+     "title": true,
+     "metaDescription": true,
+     "description": true,
+     "how_to_play": true,
+     "controls": true,
+     "tips": true,
+     "features": true,
+     "cover": true,
+     "external": true,
+     "noImageOptimizer": true
+    },
+    "passed": true
+   },
+   {
     "slug": "onepixel",
     "httpStatus": 200,
     "checks": {
@@ -1856,7 +2180,7 @@
     "passed": true
    },
    {
-    "slug": "twilight-at-the-banyan-tree",
+    "slug": "pack-ripper",
     "httpStatus": 200,
     "checks": {
      "title": true,
@@ -1890,6 +2214,23 @@
     "passed": true
    },
    {
+    "slug": "spotmaster",
+    "httpStatus": 200,
+    "checks": {
+     "title": true,
+     "metaDescription": true,
+     "description": true,
+     "how_to_play": true,
+     "controls": true,
+     "tips": true,
+     "features": true,
+     "cover": true,
+     "external": true,
+     "noImageOptimizer": true
+    },
+    "passed": true
+   },
+   {
     "slug": "the-cursed-box",
     "httpStatus": 200,
     "checks": {
@@ -1907,24 +2248,7 @@
     "passed": true
    },
    {
-    "slug": "marketfield",
-    "httpStatus": 200,
-    "checks": {
-     "title": true,
-     "metaDescription": true,
-     "description": true,
-     "how_to_play": true,
-     "controls": true,
-     "tips": true,
-     "features": true,
-     "cover": true,
-     "external": true,
-     "noImageOptimizer": true
-    },
-    "passed": true
-   },
-   {
-    "slug": "breadwinner",
+    "slug": "twilight-at-the-banyan-tree",
     "httpStatus": 200,
     "checks": {
      "title": true,
@@ -1942,11 +2266,26 @@
    }
   ],
   "builtSitemap": {
-   "totalUrls": 1090,
-   "gameUrls": 1030,
-   "newGamesIncluded": 10,
-   "newGameLastmod": "2026-10-20T07:06:22.029Z",
+   "totalUrls": 1092,
+   "gameUrls": 1032,
+   "newGamesIncluded": 12,
+   "newGameLastmod": "2026-10-20T08:28:07.202Z (08:23 批次) / 2026-10-20T07:06:22.029Z (06:34 批次)",
    "oldGameLastmodChanged": 0
-  }
+  },
+  "totalCategoryLinksAfter": 2171,
+  "pagesChecked": 12,
+  "pagesPassed": 12,
+  "batches": [
+   {
+    "id": "06:34",
+    "games": 10,
+    "firstOnline": "2026-10-20T07:06:15Z"
+   },
+   {
+    "id": "08:23",
+    "games": 2,
+    "firstOnline": "2026-10-20T08:28:01Z"
+   }
+  ]
  }
 }
