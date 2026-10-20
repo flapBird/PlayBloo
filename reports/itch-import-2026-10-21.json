@@ -1,0 +1,1291 @@
+{
+ "batchDate": "2026-10-21",
+ "batches": [
+  {
+   "id": "16:44",
+   "sourceCapturedAt": "2026-10-20 16:44",
+   "inputCount": 10
+  }
+ ],
+ "inputCount": 10,
+ "baselineCount": 1039,
+ "sourceFeed": "https://itch.io/games/new-and-popular/free/platform-web.xml",
+ "sourceCapturedAt": "2026-10-20 16:44",
+ "entries": [
+  {
+   "index": 1,
+   "batch": "16:44",
+   "inputTitle": "Get to Work, Gnomes! Christmas Factory",
+   "sourceUrl": "https://tinyworkers.itch.io/get-to-work-gnome",
+   "resolvedUrl": "https://tinyworkers.itch.io/get-to-work-gnome",
+   "identity": "tinyworkers/get-to-work-gnome",
+   "inputPublishedAt": "2026-03-11 13:46（UTC+8）",
+   "pagePublishedAt": "2026-03-11",
+   "decision": "published",
+   "game": {
+    "id": "72d7777b-a688-444c-9994-fd74fcf28ec6",
+    "title": "Get to Work, Gnomes! Christmas Factory",
+    "slug": "get-to-work-gnome",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-21/get-to-work-gnome.webp",
+    "external_url": "https://tinyworkers.itch.io/get-to-work-gnome",
+    "developer": "tinyWorkers",
+    "release_date": "2026-03-11",
+    "added_at": "2026-10-20T17:05:37+00:00",
+    "updated_at": "2026-10-20T17:05:44.65315+00:00",
+    "development_status": "demo",
+    "engine": "Unity",
+    "graphics": "2D",
+    "multiplayer": "single-player",
+    "platforms": [
+     "browser"
+    ],
+    "monetization": "free",
+    "short_description": "Run a chaotic Christmas gift factory staffed by mischievous, lazy gnomes."
+   },
+   "categories": [
+    "idle",
+    "simulation"
+   ],
+   "developmentStatus": "demo",
+   "media": [
+    {
+     "kind": "cover",
+     "file": "get-to-work-gnome.webp",
+     "object": "covers/2026-10-21/get-to-work-gnome.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-21/get-to-work-gnome.webp",
+     "bytes": 34188,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": false,
+     "sha256": "2978a2eafda9eed538da75ecc4826c947e4952b3e3cc2178363a2817a1fdf633",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "get-to-work-gnome-1.webp",
+     "object": "screenshots/2026-10-21/get-to-work-gnome-1.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-21/get-to-work-gnome-1.webp",
+     "bytes": 11986,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": false,
+     "sha256": "3b8c1ec37a0a89635df69ca895bdb6af02f4a195ff9b9b87304d2a860fdffe81",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "get-to-work-gnome-2.webp",
+     "object": "screenshots/2026-10-21/get-to-work-gnome-2.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-21/get-to-work-gnome-2.webp",
+     "bytes": 12520,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": false,
+     "sha256": "6ef3d177d25cc0cb2fa62a41ffa7ef0f134f20f0d9be543dead1d81e314a5b75",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "get-to-work-gnome-3.webp",
+     "object": "screenshots/2026-10-21/get-to-work-gnome-3.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-21/get-to-work-gnome-3.webp",
+     "bytes": 14506,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": false,
+     "sha256": "efbcd77b083fe7cc1b42849953b3cbc071d2dcf95e3068cdc1eb47458aa3e262",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "get-to-work-gnome-4.webp",
+     "object": "screenshots/2026-10-21/get-to-work-gnome-4.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-21/get-to-work-gnome-4.webp",
+     "bytes": 9738,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": false,
+     "sha256": "5dcc988ebdb689c94091d273e5c4fd2b99a8c841c014060350046abc87002f64",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "get-to-work-gnome-5.webp",
+     "object": "screenshots/2026-10-21/get-to-work-gnome-5.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-21/get-to-work-gnome-5.webp",
+     "bytes": 14466,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": false,
+     "sha256": "04ecd59203fd59c72367a215ec2c82f881998d98ecfa9f64ac74ff46c812fd65",
+     "contentType": "image/webp",
+     "publicVerified": true
+    }
+   ],
+   "livePage": {
+    "url": "https://playbloo.net/game/get-to-work-gnome",
+    "httpStatus": 200,
+    "passed": true,
+    "checks": {
+     "title": true,
+     "metaDescription": true,
+     "description": true,
+     "how_to_play": true,
+     "controls": true,
+     "tips": true,
+     "features": true,
+     "cover": true,
+     "external": true,
+     "noImageOptimizer": true
+    }
+   },
+   "notes": null
+  },
+  {
+   "index": 2,
+   "batch": "16:44",
+   "inputTitle": "Candy Quest 3: Edge of Sweetness",
+   "sourceUrl": "https://smestorp.itch.io/candy-quest-3-edge-of-sweetness",
+   "resolvedUrl": "https://smestorp.itch.io/candy-quest-3-edge-of-sweetness",
+   "identity": "smestorp/candy-quest-3-edge-of-sweetness",
+   "inputPublishedAt": "2014-01-24 19:03（UTC+8）",
+   "pagePublishedAt": "2014-01-24",
+   "decision": "published",
+   "game": {
+    "id": "1b9134d9-2492-4657-a525-4bfffa91c48b",
+    "title": "Candy Quest 3: Edge of Sweetness",
+    "slug": "candy-quest-3-edge-of-sweetness",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-21/candy-quest-3-edge-of-sweetness.webp",
+    "external_url": "https://smestorp.itch.io/candy-quest-3-edge-of-sweetness",
+    "developer": "Michael Brough",
+    "release_date": "2014-01-24",
+    "added_at": "2026-10-20T17:05:37+00:00",
+    "updated_at": "2026-10-20T17:05:44.65315+00:00",
+    "development_status": "released",
+    "engine": "Twine",
+    "graphics": "2D",
+    "multiplayer": "single-player",
+    "platforms": [
+     "browser"
+    ],
+    "monetization": "free",
+    "short_description": "A text-driven Candy Jam role-playing game by Michael Brough."
+   },
+   "categories": [
+    "casual",
+    "rpg"
+   ],
+   "developmentStatus": "released",
+   "media": [
+    {
+     "kind": "cover",
+     "file": "candy-quest-3-edge-of-sweetness.webp",
+     "object": "covers/2026-10-21/candy-quest-3-edge-of-sweetness.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-21/candy-quest-3-edge-of-sweetness.webp",
+     "bytes": 9082,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": false,
+     "sha256": "3a7c07df3c53d5ea10bfccd3274ebb5d7aacbf40ed12aa20577df524ef7cc6c3",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "candy-quest-3-edge-of-sweetness-1.webp",
+     "object": "screenshots/2026-10-21/candy-quest-3-edge-of-sweetness-1.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-21/candy-quest-3-edge-of-sweetness-1.webp",
+     "bytes": 36116,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": false,
+     "sha256": "5dd2ace56aec9d81e41dd81e30f49d2fedc8eda337a223ba2e858b98710a716a",
+     "contentType": "image/webp",
+     "publicVerified": true
+    }
+   ],
+   "livePage": {
+    "url": "https://playbloo.net/game/candy-quest-3-edge-of-sweetness",
+    "httpStatus": 200,
+    "passed": true,
+    "checks": {
+     "title": true,
+     "metaDescription": true,
+     "description": true,
+     "how_to_play": true,
+     "controls": true,
+     "tips": true,
+     "features": true,
+     "cover": true,
+     "external": true,
+     "noImageOptimizer": true
+    }
+   },
+   "notes": null
+  },
+  {
+   "index": 3,
+   "batch": "16:44",
+   "inputTitle": "Coup of Appliance",
+   "sourceUrl": "https://filgreen3.itch.io/coup-of-appliance",
+   "resolvedUrl": "https://filgreen3.itch.io/coup-of-appliance",
+   "identity": "filgreen3/coup-of-appliance",
+   "inputPublishedAt": "2026-10-19 00:11（UTC+8）",
+   "pagePublishedAt": "2026-10-18",
+   "decision": "published",
+   "game": {
+    "id": "62856d3c-081c-4c68-9183-d2628ff69897",
+    "title": "Coup of Appliance",
+    "slug": "coup-of-appliance",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-21/coup-of-appliance.webp",
+    "external_url": "https://filgreen3.itch.io/coup-of-appliance",
+    "developer": "filgreen3",
+    "release_date": "2026-10-18",
+    "added_at": "2026-10-20T17:05:37+00:00",
+    "updated_at": "2026-10-20T17:05:44.65315+00:00",
+    "development_status": "released",
+    "engine": "Godot",
+    "graphics": "2D",
+    "multiplayer": "single-player",
+    "platforms": [
+     "browser"
+    ],
+    "monetization": "free",
+    "short_description": "Your appliances stage a coup — a pixel-art JRPG about surviving a house-wide breakdown."
+   },
+   "categories": [
+    "adventure",
+    "rpg",
+    "survival"
+   ],
+   "developmentStatus": "released",
+   "media": [
+    {
+     "kind": "cover",
+     "file": "coup-of-appliance.webp",
+     "object": "covers/2026-10-21/coup-of-appliance.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-21/coup-of-appliance.webp",
+     "bytes": 1064338,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": true,
+     "sha256": "de73fa487e728c592e00b0e4e4823e7217466dab0b7c7d5c0216e6cf6393f63c",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "coup-of-appliance-1.webp",
+     "object": "screenshots/2026-10-21/coup-of-appliance-1.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-21/coup-of-appliance-1.webp",
+     "bytes": 10454,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": false,
+     "sha256": "eecccd17d736881d8893e4a512dd7252f4c98b8352951e5f5e80a2a26c6bc3ef",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "coup-of-appliance-2.webp",
+     "object": "screenshots/2026-10-21/coup-of-appliance-2.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-21/coup-of-appliance-2.webp",
+     "bytes": 9710,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": false,
+     "sha256": "af69134684182822a679b6120702411812fc6ac23403e9801c7d06fe9045533a",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "coup-of-appliance-3.webp",
+     "object": "screenshots/2026-10-21/coup-of-appliance-3.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-21/coup-of-appliance-3.webp",
+     "bytes": 3914,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": false,
+     "sha256": "0f9330c1447b6b75bc85154b581da8f2f4738d399ef600b39ab4227636ee7ff2",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "coup-of-appliance-4.webp",
+     "object": "screenshots/2026-10-21/coup-of-appliance-4.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-21/coup-of-appliance-4.webp",
+     "bytes": 4474,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": false,
+     "sha256": "79de6ba0e4f8d66df205b1a6c1c5cfc476a0e61b5b3f45508cb0200d96d1960e",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "coup-of-appliance-5.webp",
+     "object": "screenshots/2026-10-21/coup-of-appliance-5.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-21/coup-of-appliance-5.webp",
+     "bytes": 4416,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": false,
+     "sha256": "4615debab74c3363edf417d28746503a93076cf56f599eec76653f9c1fb838d1",
+     "contentType": "image/webp",
+     "publicVerified": true
+    }
+   ],
+   "livePage": {
+    "url": "https://playbloo.net/game/coup-of-appliance",
+    "httpStatus": 200,
+    "passed": true,
+    "checks": {
+     "title": true,
+     "metaDescription": true,
+     "description": true,
+     "how_to_play": true,
+     "controls": true,
+     "tips": true,
+     "features": true,
+     "cover": true,
+     "external": true,
+     "noImageOptimizer": true
+    }
+   },
+   "notes": null
+  },
+  {
+   "index": 4,
+   "batch": "16:44",
+   "inputTitle": "Blokia Designer",
+   "sourceUrl": "https://outstar.itch.io/blokia-designer",
+   "resolvedUrl": "https://outstar.itch.io/blokia-designer",
+   "identity": "outstar/blokia-designer",
+   "inputPublishedAt": "2026-10-19 05:33（UTC+8）",
+   "pagePublishedAt": "2026-10-18",
+   "decision": "published",
+   "game": {
+    "id": "d079e00e-81ea-48ba-920e-5a8477b27e23",
+    "title": "Blokia Designer",
+    "slug": "blokia-designer",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-21/blokia-designer.webp",
+    "external_url": "https://outstar.itch.io/blokia-designer",
+    "developer": "outstar",
+    "release_date": "2026-10-18",
+    "added_at": "2026-10-20T17:05:37+00:00",
+    "updated_at": "2026-10-20T17:05:44.65315+00:00",
+    "development_status": "released",
+    "engine": "Godot",
+    "graphics": "2D",
+    "multiplayer": "single-player",
+    "platforms": [
+     "browser"
+    ],
+    "monetization": "free",
+    "short_description": "Design 2000s-era mobile phones pixel by pixel, then climb from junior PM to CEO."
+   },
+   "categories": [
+    "simulation",
+    "strategy"
+   ],
+   "developmentStatus": "released",
+   "media": [
+    {
+     "kind": "cover",
+     "file": "blokia-designer.webp",
+     "object": "covers/2026-10-21/blokia-designer.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-21/blokia-designer.webp",
+     "bytes": 13972,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": false,
+     "sha256": "cae4d6ccf762853ed718d887aa11eb6854631e26340851819608ed4d568b67c2",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "blokia-designer-1.webp",
+     "object": "screenshots/2026-10-21/blokia-designer-1.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-21/blokia-designer-1.webp",
+     "bytes": 11100,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": false,
+     "sha256": "d507a61442b55de1ef025f7d891eeff58df45dfd9fb8e4b347ecfb5ffabad48e",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "blokia-designer-2.webp",
+     "object": "screenshots/2026-10-21/blokia-designer-2.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-21/blokia-designer-2.webp",
+     "bytes": 11834,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": false,
+     "sha256": "42fc5e66120cd6b58744deae3a590fa521d190905676d24e31a5c389a9ff0e2a",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "blokia-designer-3.webp",
+     "object": "screenshots/2026-10-21/blokia-designer-3.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-21/blokia-designer-3.webp",
+     "bytes": 8832,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": false,
+     "sha256": "6230810bf489ae66e383c50e60f560834f2d4843906b9494a375bc57d756ebe2",
+     "contentType": "image/webp",
+     "publicVerified": true
+    }
+   ],
+   "livePage": {
+    "url": "https://playbloo.net/game/blokia-designer",
+    "httpStatus": 200,
+    "passed": true,
+    "checks": {
+     "title": true,
+     "metaDescription": true,
+     "description": true,
+     "how_to_play": true,
+     "controls": true,
+     "tips": true,
+     "features": true,
+     "cover": true,
+     "external": true,
+     "noImageOptimizer": true
+    }
+   },
+   "notes": null
+  },
+  {
+   "index": 5,
+   "batch": "16:44",
+   "inputTitle": "Echoes of Twilight",
+   "sourceUrl": "https://misha.itch.io/echoes-of-twilight",
+   "resolvedUrl": "https://misha.itch.io/echoes-of-twilight",
+   "identity": "misha/echoes-of-twilight",
+   "inputPublishedAt": "2026-10-10 10:49（UTC+8）",
+   "pagePublishedAt": "2026-10-12",
+   "decision": "published",
+   "game": {
+    "id": "dd7a92a9-9c54-407a-b6f6-3305dafe09dc",
+    "title": "Echoes of Twilight",
+    "slug": "echoes-of-twilight",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-21/echoes-of-twilight.webp",
+    "external_url": "https://misha.itch.io/echoes-of-twilight",
+    "developer": "Misha",
+    "release_date": "2026-10-12",
+    "added_at": "2026-10-20T17:05:37+00:00",
+    "updated_at": "2026-10-20T17:05:44.65315+00:00",
+    "development_status": "released",
+    "engine": "Godot",
+    "graphics": "2D",
+    "multiplayer": "single-player",
+    "platforms": [
+     "browser"
+    ],
+    "monetization": "free",
+    "short_description": "Your MMO shut down overnight — now detective your way back to your friends."
+   },
+   "categories": [
+    "adventure",
+    "puzzle"
+   ],
+   "developmentStatus": "released",
+   "media": [
+    {
+     "kind": "cover",
+     "file": "echoes-of-twilight.webp",
+     "object": "covers/2026-10-21/echoes-of-twilight.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-21/echoes-of-twilight.webp",
+     "bytes": 61372,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": false,
+     "sha256": "29cf62c98001fd02e84d66d5d17af0c580a7bf88a368ca24b98c757562a84457",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "echoes-of-twilight-1.webp",
+     "object": "screenshots/2026-10-21/echoes-of-twilight-1.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-21/echoes-of-twilight-1.webp",
+     "bytes": 9516,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": false,
+     "sha256": "f8ce0d8da94edff3fa97d357c1cb0dbe532cbb79f9490466e98731a5a893e497",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "echoes-of-twilight-2.webp",
+     "object": "screenshots/2026-10-21/echoes-of-twilight-2.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-21/echoes-of-twilight-2.webp",
+     "bytes": 10704,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": false,
+     "sha256": "761c1ca97607aa68bb6191d7bf947df9ed1f74ceae6b16fae096078af9fdd805",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "echoes-of-twilight-3.webp",
+     "object": "screenshots/2026-10-21/echoes-of-twilight-3.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-21/echoes-of-twilight-3.webp",
+     "bytes": 11404,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": false,
+     "sha256": "30151aa743d91275512813392aa2f95026df15890766070d8de3a14217a4d0b9",
+     "contentType": "image/webp",
+     "publicVerified": true
+    }
+   ],
+   "livePage": {
+    "url": "https://playbloo.net/game/echoes-of-twilight",
+    "httpStatus": 200,
+    "passed": true,
+    "checks": {
+     "title": true,
+     "metaDescription": true,
+     "description": true,
+     "how_to_play": true,
+     "controls": true,
+     "tips": true,
+     "features": true,
+     "cover": true,
+     "external": true,
+     "noImageOptimizer": true
+    }
+   },
+   "notes": "official page unreachable from this machine (host unreachable globally); details recovered from the Internet Archive snapshot captured 2026-10-17"
+  },
+  {
+   "index": 6,
+   "batch": "16:44",
+   "inputTitle": "Manymancer",
+   "sourceUrl": "https://torcado.itch.io/manymancer",
+   "resolvedUrl": "https://torcado.itch.io/manymancer",
+   "identity": "torcado/manymancer",
+   "inputPublishedAt": "2026-10-20 07:01（UTC+8）",
+   "pagePublishedAt": "2026-10-20",
+   "decision": "published",
+   "game": {
+    "id": "e033144c-7e30-4ecd-9a89-28beee11e6e5",
+    "title": "Manymancer",
+    "slug": "manymancer",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-21/manymancer.webp",
+    "external_url": "https://torcado.itch.io/manymancer",
+    "developer": "torcado",
+    "release_date": "2026-10-20",
+    "added_at": "2026-10-20T17:05:37+00:00",
+    "updated_at": "2026-10-20T17:05:44.65315+00:00",
+    "development_status": "released",
+    "engine": "Godot",
+    "graphics": "2D",
+    "multiplayer": "single-player",
+    "platforms": [
+     "browser"
+    ],
+    "monetization": "free",
+    "short_description": "A minimalist magic roguelite built in three days — use your items wisely."
+   },
+   "categories": [
+    "action",
+    "arcade"
+   ],
+   "developmentStatus": "released",
+   "media": [
+    {
+     "kind": "cover",
+     "file": "manymancer.webp",
+     "object": "covers/2026-10-21/manymancer.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-21/manymancer.webp",
+     "bytes": 26210,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": false,
+     "sha256": "51845223226e1dfa4881d1c3f4a4f2bb7863ff8bdb189e125fea7e7cd07490b2",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "manymancer-1.webp",
+     "object": "screenshots/2026-10-21/manymancer-1.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-21/manymancer-1.webp",
+     "bytes": 11546,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": false,
+     "sha256": "73ae8a2d42bf7d555bc363939dbf77cfd1215f1df3f623e9ccd9d1b57e275b93",
+     "contentType": "image/webp",
+     "publicVerified": true
+    }
+   ],
+   "livePage": {
+    "url": "https://playbloo.net/game/manymancer",
+    "httpStatus": 200,
+    "passed": true,
+    "checks": {
+     "title": true,
+     "metaDescription": true,
+     "description": true,
+     "how_to_play": true,
+     "controls": true,
+     "tips": true,
+     "features": true,
+     "cover": true,
+     "external": true,
+     "noImageOptimizer": true
+    }
+   },
+   "notes": null
+  },
+  {
+   "index": 7,
+   "batch": "16:44",
+   "inputTitle": "VVVVVVV",
+   "sourceUrl": "https://rarelikeaunicorn.itch.io/vvvvvvv",
+   "resolvedUrl": "https://rarelikeaunicorn.itch.io/vvvvvvv",
+   "identity": "rarelikeaunicorn/vvvvvvv",
+   "inputPublishedAt": "2026-10-04 04:04（UTC+8）",
+   "pagePublishedAt": "2026-10-17",
+   "decision": "published",
+   "game": {
+    "id": "0d941ab4-a0f2-4529-9bf5-8af390905365",
+    "title": "VVVVVVV",
+    "slug": "vvvvvvv",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-21/vvvvvvv.webp",
+    "external_url": "https://rarelikeaunicorn.itch.io/vvvvvvv",
+    "developer": "rare",
+    "release_date": "2026-10-17",
+    "added_at": "2026-10-20T17:05:37+00:00",
+    "updated_at": "2026-10-20T17:05:44.65315+00:00",
+    "development_status": "released",
+    "engine": "PICO-8",
+    "graphics": "2D",
+    "multiplayer": "single-player",
+    "platforms": [
+     "browser"
+    ],
+    "monetization": "free",
+    "short_description": "A short PICO-8 fan game set in the world of VVVVVV — 32 screens of gravity-flipping action."
+   },
+   "categories": [
+    "action",
+    "platformer"
+   ],
+   "developmentStatus": "released",
+   "media": [
+    {
+     "kind": "cover",
+     "file": "vvvvvvv.webp",
+     "object": "covers/2026-10-21/vvvvvvv.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-21/vvvvvvv.webp",
+     "bytes": 265530,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": true,
+     "sha256": "308658e960f329583e432cc3ab58d3be4ef1f5527f3245e974ec78df727a9651",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "vvvvvvv-1.webp",
+     "object": "screenshots/2026-10-21/vvvvvvv-1.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-21/vvvvvvv-1.webp",
+     "bytes": 155972,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": true,
+     "sha256": "8bd1174bde3203df2ad7ab92c73c5b25fb248d6ad6a995e4f38be5ede53f3a87",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "vvvvvvv-2.webp",
+     "object": "screenshots/2026-10-21/vvvvvvv-2.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-21/vvvvvvv-2.webp",
+     "bytes": 315104,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": true,
+     "sha256": "5bbc22ce7da892f99baf5c391597932e4a2e9a342410f4aa7aea964b17cd3462",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "vvvvvvv-3.webp",
+     "object": "screenshots/2026-10-21/vvvvvvv-3.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-21/vvvvvvv-3.webp",
+     "bytes": 410490,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": true,
+     "sha256": "274b926f9a5213643bad65e42ab559bb930733f06164001ba725e5a458fb2083",
+     "contentType": "image/webp",
+     "publicVerified": true
+    }
+   ],
+   "livePage": {
+    "url": "https://playbloo.net/game/vvvvvvv",
+    "httpStatus": 200,
+    "passed": true,
+    "checks": {
+     "title": true,
+     "metaDescription": true,
+     "description": true,
+     "how_to_play": true,
+     "controls": true,
+     "tips": true,
+     "features": true,
+     "cover": true,
+     "external": true,
+     "noImageOptimizer": true
+    }
+   },
+   "notes": null
+  },
+  {
+   "index": 8,
+   "batch": "16:44",
+   "inputTitle": "Cake Clicker - Recake",
+   "sourceUrl": "https://gabrielcassimiro.itch.io/cake-clicker-recake",
+   "resolvedUrl": "https://gabrielcassimiro.itch.io/cake-clicker-recake",
+   "identity": "gabrielcassimiro/cake-clicker-recake",
+   "inputPublishedAt": "2019-07-26 09:26（UTC+8）",
+   "pagePublishedAt": "2019-07-26",
+   "decision": "published",
+   "game": {
+    "id": "42dc8abe-767b-4235-9e01-555f8a15ca50",
+    "title": "Cake Clicker - Recake",
+    "slug": "cake-clicker-recake",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-21/cake-clicker-recake.webp",
+    "external_url": "https://gabrielcassimiro.itch.io/cake-clicker-recake",
+    "developer": "Gabriel Cassimiro",
+    "release_date": "2019-07-26",
+    "added_at": "2026-10-20T17:05:37+00:00",
+    "updated_at": "2026-10-20T17:05:44.65315+00:00",
+    "development_status": "released",
+    "engine": "HTML5",
+    "graphics": null,
+    "multiplayer": "single-player",
+    "platforms": [
+     "browser"
+    ],
+    "monetization": "free",
+    "short_description": "An idle bakery clicker where one cake at a time grows into a palace of cakes."
+   },
+   "categories": [
+    "casual",
+    "clicker",
+    "idle"
+   ],
+   "developmentStatus": "released",
+   "media": [
+    {
+     "kind": "cover",
+     "file": "cake-clicker-recake.webp",
+     "object": "covers/2026-10-21/cake-clicker-recake.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-21/cake-clicker-recake.webp",
+     "bytes": 24354,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": false,
+     "sha256": "b426f1fa5922045daaac0fa310a6785d93590aecc0e4618bbe9ed70fcc8d29d3",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "cake-clicker-recake-1.webp",
+     "object": "screenshots/2026-10-21/cake-clicker-recake-1.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-21/cake-clicker-recake-1.webp",
+     "bytes": 13030,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": false,
+     "sha256": "6ce25813fbc6d0662184ea1cf68a1f72c7f9c0e76dc61c06f309d05ba25ff8ed",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "cake-clicker-recake-2.webp",
+     "object": "screenshots/2026-10-21/cake-clicker-recake-2.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-21/cake-clicker-recake-2.webp",
+     "bytes": 14534,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": false,
+     "sha256": "9359363e785b5dd34c6c0fec4b7f875fc974f2bcb71454423236eefbcccd4e0d",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "cake-clicker-recake-3.webp",
+     "object": "screenshots/2026-10-21/cake-clicker-recake-3.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-21/cake-clicker-recake-3.webp",
+     "bytes": 13372,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": false,
+     "sha256": "13679943f4b66f312a4a2c16547c1571bff077e5275663adad2c3ef95d78cb5d",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "cake-clicker-recake-4.webp",
+     "object": "screenshots/2026-10-21/cake-clicker-recake-4.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-21/cake-clicker-recake-4.webp",
+     "bytes": 14004,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": false,
+     "sha256": "9bf47fc480faa7e1f3c89f88e1b163d73bc32ef034ac693dabe5ac0c4f5a4f5a",
+     "contentType": "image/webp",
+     "publicVerified": true
+    }
+   ],
+   "livePage": {
+    "url": "https://playbloo.net/game/cake-clicker-recake",
+    "httpStatus": 200,
+    "passed": true,
+    "checks": {
+     "title": true,
+     "metaDescription": true,
+     "description": true,
+     "how_to_play": true,
+     "controls": true,
+     "tips": true,
+     "features": true,
+     "cover": true,
+     "external": true,
+     "noImageOptimizer": true
+    }
+   },
+   "notes": null
+  },
+  {
+   "index": 9,
+   "batch": "16:44",
+   "inputTitle": "Booster Pack Heroes",
+   "sourceUrl": "https://funday-games.itch.io/booster-pack-heroes",
+   "resolvedUrl": "https://funday-games.itch.io/booster-pack-heroes",
+   "identity": "funday-games/booster-pack-heroes",
+   "inputPublishedAt": "2026-04-10 02:11（UTC+8）",
+   "pagePublishedAt": "2026-04-09",
+   "decision": "published",
+   "game": {
+    "id": "a111b601-cb9b-4c0a-810c-9a1b9e23710c",
+    "title": "Booster Pack Heroes",
+    "slug": "booster-pack-heroes",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-21/booster-pack-heroes.webp",
+    "external_url": "https://funday-games.itch.io/booster-pack-heroes",
+    "developer": "Funday Games, Jordy",
+    "release_date": "2026-04-09",
+    "added_at": "2026-10-20T17:05:37+00:00",
+    "updated_at": "2026-10-20T17:05:44.65315+00:00",
+    "development_status": "early-access",
+    "engine": "Unity",
+    "graphics": "2D",
+    "multiplayer": "single-player",
+    "platforms": [
+     "browser"
+    ],
+    "monetization": "free",
+    "short_description": "Open booster packs full of heroes and hold back the monster hordes."
+   },
+   "categories": [
+    "simulation",
+    "strategy"
+   ],
+   "developmentStatus": "early-access",
+   "media": [
+    {
+     "kind": "cover",
+     "file": "booster-pack-heroes.webp",
+     "object": "covers/2026-10-21/booster-pack-heroes.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-21/booster-pack-heroes.webp",
+     "bytes": 91468,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": false,
+     "sha256": "85d32eb07c2ef29a93d1c46dacb131e1ffafadf54c462170e555436b8636dbe5",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "booster-pack-heroes-1.webp",
+     "object": "screenshots/2026-10-21/booster-pack-heroes-1.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-21/booster-pack-heroes-1.webp",
+     "bytes": 6194,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": false,
+     "sha256": "4e664184194a46cd77694c6a0c341de466ed6e7837b38908e257bfa6ba622004",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "booster-pack-heroes-2.webp",
+     "object": "screenshots/2026-10-21/booster-pack-heroes-2.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-21/booster-pack-heroes-2.webp",
+     "bytes": 7486,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": false,
+     "sha256": "7ec46cd27aa5b95c4faa155a6139036d73c23dd4e2f84f98171a06fa92c0ecab",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "booster-pack-heroes-3.webp",
+     "object": "screenshots/2026-10-21/booster-pack-heroes-3.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-21/booster-pack-heroes-3.webp",
+     "bytes": 3860,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": false,
+     "sha256": "04fbf0acc1dcda67aff60148d389af7b4d5d12546fd52c1cb3bba722d6b2d1ec",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "booster-pack-heroes-4.webp",
+     "object": "screenshots/2026-10-21/booster-pack-heroes-4.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-21/booster-pack-heroes-4.webp",
+     "bytes": 4366,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": false,
+     "sha256": "c1c45fc1b6a6ddeffd4d936308edd38e59d02bf119c6f491970ebe1cf4bf0b0c",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "booster-pack-heroes-5.webp",
+     "object": "screenshots/2026-10-21/booster-pack-heroes-5.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-21/booster-pack-heroes-5.webp",
+     "bytes": 6988,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": false,
+     "sha256": "23fcc3f10d794fceef2b78acea8ba2f964d0359b45f8b3cfb74c2d01da798d5e",
+     "contentType": "image/webp",
+     "publicVerified": true
+    }
+   ],
+   "livePage": {
+    "url": "https://playbloo.net/game/booster-pack-heroes",
+    "httpStatus": 200,
+    "passed": true,
+    "checks": {
+     "title": true,
+     "metaDescription": true,
+     "description": true,
+     "how_to_play": true,
+     "controls": true,
+     "tips": true,
+     "features": true,
+     "cover": true,
+     "external": true,
+     "noImageOptimizer": true
+    }
+   },
+   "notes": null
+  },
+  {
+   "index": 10,
+   "batch": "16:44",
+   "inputTitle": "lurkers.io",
+   "sourceUrl": "https://bergice.itch.io/lurkers",
+   "resolvedUrl": "https://bergice.itch.io/lurkers",
+   "identity": "bergice/lurkers",
+   "inputPublishedAt": "2018-06-02 10:52（UTC+8）",
+   "pagePublishedAt": "2018-06-02",
+   "decision": "published",
+   "game": {
+    "id": "7a63e2e8-3ab5-4087-9035-26c12c0edef0",
+    "title": "lurkers.io",
+    "slug": "lurkers",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-21/lurkers.webp",
+    "external_url": "https://bergice.itch.io/lurkers",
+    "developer": "bergice",
+    "release_date": "2018-06-02",
+    "added_at": "2026-10-20T17:05:37+00:00",
+    "updated_at": "2026-10-20T17:05:44.65315+00:00",
+    "development_status": "released",
+    "engine": "libGDX",
+    "graphics": "2D",
+    "multiplayer": "online multiplayer",
+    "platforms": [
+     "browser"
+    ],
+    "monetization": "free",
+    "short_description": "Browser-based online zombie survival: build a base, buy weapons and take on the horde."
+   },
+   "categories": [
+    "multiplayer",
+    "shooting",
+    "survival"
+   ],
+   "developmentStatus": "released",
+   "media": [
+    {
+     "kind": "cover",
+     "file": "lurkers.webp",
+     "object": "covers/2026-10-21/lurkers.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-21/lurkers.webp",
+     "bytes": 126412,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": true,
+     "sha256": "f1e1054f209ea1713810e5f529f414e50ccd82343abfda99b2da7d94ab45cec6",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "lurkers-1.webp",
+     "object": "screenshots/2026-10-21/lurkers-1.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-21/lurkers-1.webp",
+     "bytes": 248070,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": true,
+     "sha256": "1f2d2cdc49c87a460cd4b44e51c005d83e298a52b3fad8631b6dd2996c616388",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "lurkers-2.webp",
+     "object": "screenshots/2026-10-21/lurkers-2.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-21/lurkers-2.webp",
+     "bytes": 411280,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": true,
+     "sha256": "807e529605fcbd7b96ce00898aec47084227a1a0cc2671a3e6304eebf5f62ff5",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "lurkers-3.webp",
+     "object": "screenshots/2026-10-21/lurkers-3.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-21/lurkers-3.webp",
+     "bytes": 937034,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": true,
+     "sha256": "ae7e1f151cd3bcf73149fc046a07ea7f78df62d415d17bdf2176f4a9a35c1c2e",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "lurkers-4.webp",
+     "object": "screenshots/2026-10-21/lurkers-4.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-21/lurkers-4.webp",
+     "bytes": 427564,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": true,
+     "sha256": "891b980f1e5275a5e941e29cd2ea3a6ba762d5b5dcd6a30d7b5d1dab24c669b0",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "lurkers-5.webp",
+     "object": "screenshots/2026-10-21/lurkers-5.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-21/lurkers-5.webp",
+     "bytes": 441074,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": true,
+     "sha256": "52782dac6fec8921a94ac7bb8ae8f434e5681c3808cedb807b10bd24d2ac7614",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "lurkers-6.webp",
+     "object": "screenshots/2026-10-21/lurkers-6.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-21/lurkers-6.webp",
+     "bytes": 369672,
+     "width": null,
+     "height": null,
+     "format": "webp",
+     "animated": true,
+     "sha256": "fb33b4e7d21102c4284deddbd59d49932e33f32b9497bd35b604c218b81c4a97",
+     "contentType": "image/webp",
+     "publicVerified": true
+    }
+   ],
+   "livePage": {
+    "url": "https://playbloo.net/game/lurkers",
+    "httpStatus": 200,
+    "passed": true,
+    "checks": {
+     "title": true,
+     "metaDescription": true,
+     "description": true,
+     "how_to_play": true,
+     "controls": true,
+     "tips": true,
+     "features": true,
+     "cover": true,
+     "external": true,
+     "noImageOptimizer": true
+    }
+   },
+   "notes": null
+  }
+ ],
+ "verification": {
+  "livePages": [
+   {
+    "slug": "get-to-work-gnome",
+    "httpStatus": 200,
+    "passed": true
+   },
+   {
+    "slug": "candy-quest-3-edge-of-sweetness",
+    "httpStatus": 200,
+    "passed": true
+   },
+   {
+    "slug": "coup-of-appliance",
+    "httpStatus": 200,
+    "passed": true
+   },
+   {
+    "slug": "blokia-designer",
+    "httpStatus": 200,
+    "passed": true
+   },
+   {
+    "slug": "echoes-of-twilight",
+    "httpStatus": 200,
+    "passed": true
+   },
+   {
+    "slug": "manymancer",
+    "httpStatus": 200,
+    "passed": true
+   },
+   {
+    "slug": "vvvvvvv",
+    "httpStatus": 200,
+    "passed": true
+   },
+   {
+    "slug": "cake-clicker-recake",
+    "httpStatus": 200,
+    "passed": true
+   },
+   {
+    "slug": "booster-pack-heroes",
+    "httpStatus": 200,
+    "passed": true
+   },
+   {
+    "slug": "lurkers",
+    "httpStatus": 200,
+    "passed": true
+   }
+  ],
+  "pagesChecked": 10,
+  "pagesPassed": 10,
+  "mediaObjects": 46,
+  "mediaProblems": 0,
+  "mediaBytes": 5724256,
+  "animatedCovers": [
+   "coup-of-appliance",
+   "vvvvvvv",
+   "lurkers"
+  ],
+  "animatedScreenshots": [
+   "vvvvvvv",
+   "lurkers"
+  ]
+ }
+}

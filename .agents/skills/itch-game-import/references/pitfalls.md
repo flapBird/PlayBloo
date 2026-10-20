@@ -16,6 +16,9 @@
 - 页面 404 = 游戏在雷达抓取后已删除/隐藏，**跳过并在汇报中说明**，不要强行入库。
 - 解析点：`og:image`（original 尺寸封面）、`og:description`、`<h1>`（页面实际标题）、侧栏 `<tr><td>Author/Made with/Genre/Published/Status/Platforms</td>...`、`formatted_description` div、`screenshot_list`。Author 缺失时用子域名兜底。
 - 高频抓取时 itch 可能限速：并发 ≤6、失败重试。**HTTP 429 = 代理出口 IP 进入冷却**，单发请求是通的——降到 `--workers 2`、间隔几分钟再补抓；抓之前先单发验证。**404 要单发复核**再判定下架：同一批里既出现过真 404（开发者当天删页面，如 static-saints/last-lift），也可能只是限速误报（单发 200 的要重抓）。
+- **某个 itch 子域整体不可达**（不是 404）：直连、代理、多个 DNS 解析出的 IP、境外中转服务全部超时或 522，说明是源站当前不可用（2026-10-21 的 misha.itch.io 就是这样）。别急着跳过——用 **Internet Archive 快照**取回官方页面：`http://web.archive.org/cdx/search/cdx?url=<host>/<slug>&output=json` 找最近快照，再抓 `https://web.archive.org/web/<timestamp>id_/<url>`（**必须加 `--compressed`**，否则拿到的是 gzip 原始字节）。快照里的正文、侧栏、截图与官方一致；发行日取快照里的 Published。
+- itch **主站（itch.io 域名）是可达的**，即使子域不可达：用 `https://itch.io/search?q=<关键词>` 拿作者名、Genre、平台和评分，用官方 RSS（`https://itch.io/games/new-and-popular/free/platform-web.xml`）拿 pubDate 与封面。注意搜索里可能有**同名不同作者**的游戏，别张冠李戴。
+- **封面来源冲突**：页面 `og:image` 有时不是封面（比如 lurkers.io 的 og:image 是张静态截图，而 RSS 给的是动图封面）。以 RSS 的 `imageurl` 为准；用户要求保留动效时优先选 GIF。
 
 ## 3. Supabase（生产库）
 
@@ -34,6 +37,9 @@
 - 镜像目标：公开 bucket `game-media`（不存在则创建，创建后等 2 秒再传），对象路径 `covers/{slug}.{ext}`，然后 PATCH `games.thumbnail_url`。旧 URL 存 mapping json 备查（itch 页面也可随时找回）。
 - 上传用 `x-upsert: true` 头 + 正确 Content-Type。
 - 下载 itch 封面：直连 + 0.35s 节奏 + 失败重试；单图 <200B 视为可疑（HTML 错误页），报错。
+- **GIF 素材要保留动效**：itch 封面/截图里经常有动图。sharp 处理 GIF 会把帧拼成一条超高长条（800×25650），必须走 ffmpeg + libwebp 转**动画 WebP**（`fps=10,scale='min(640,iw)':-2`、`-quality 52`、`-loop 0`）。转完要按帧核对：libwebp 解码页数 > 1、抽帧哈希各不相同，才算动图真的保住了；只看后缀名不算数。
+- **上传后立刻读公开 URL 可能拿到 CDN 旧缓存**（同一路径重传后仍返回上一版字节与 sha）。校验要用带 cache-busting 参数的请求（`?cb=<ts>`），否则会误判成"改了没生效"。
+- Storage CDN 回源对动画 WebP 的 Content-Type 是 `image/webp`，但 `ffprobe` 解不出动画 WebP（报 "image data not found"）；用 libwebp/sharp 读 `pages` 或直接数 RIFF 里的 `ANMF` 块。
 - **站点前端套了 Cloudflare**：非浏览器 UA（Python-urllib、curl 默认 UA）访问 playbloo.net 会被 403。任何打站点的脚本都要带浏览器 UA。
 - **Vercel Transformations 按（图片 × 宽度）计费，配额耗尽后所有新转换 402**，症状是"线上裂图、本地正常"（2026-10-11 事故：本地图片走 `/_next/image` 全裂）。2026-10-11 起 `next.config.ts` 已设 `images.unoptimized: true` 全局关闭优化器，所有图片直连原始 URL，页面不再产生 srcset/`/_next/image` 引用。**不要再运行 `scripts/warm-image-cache.mjs`**（优化器时代脚本，现在运行只会白烧配额）；若线上裂图复发，先查是否有人重新启用了优化器或删了该配置。
 

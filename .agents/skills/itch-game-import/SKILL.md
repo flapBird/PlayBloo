@@ -41,11 +41,16 @@ python3 .agents/skills/itch-game-import/scripts/import_games.py \
 ```
 PROBLEM 行必须清零再执行正式入库。脚本会自动查重（slug / itch_project_slug / external_url 对 DB 和批内）、创建每款游戏的 "Added to PlayBloo" Updates 记录（否则前台 Updates 模块永远空白）。
 
-### 5. 封面镜像（mirror_covers.py）
+### 5. 素材镜像（mirror_media.mjs）
 ```bash
-cd /tmp/itch-import && python3 /Users/admin/Documents/Codex/PlayBloo/.agents/skills/itch-game-import/scripts/mirror_covers.py
+node .agents/skills/itch-game-import/scripts/mirror_media.mjs \
+  --enriched /tmp/itch-import/enriched.json --batch 2026-10-21
 ```
-把 `img.itch.zone` 热链封面（含历史游戏）转存到 Supabase Storage 公开 bucket `game-media` 并 PATCH `thumbnail_url`——图片从此走自家存储直连（站点已全局关闭 Vercel 图片优化），不再受 itch 热链影响。**不要直接热链 itch 封面**（国内访客裂图，这是加镜像机制前的事故形态）。
+把 `img.itch.zone` 的封面与截图转存到 Supabase Storage 公开 bucket `game-media`（`covers/<日期>/`、`screenshots/<日期>/`），并 PATCH `thumbnail_url` 与 `screenshots`——图片从此走自家存储直连（站点已全局关闭 Vercel 图片优化），不再受 itch 热链影响。**不要直接热链 itch 封面**（国内访客裂图，这是加镜像机制前的事故形态）。
+
+- **GIF 封面/截图必须保留动效**：脚本对 GIF 走 ffmpeg + libwebp 转成**动画 WebP**（封面 6fps/560px/q42，截图 10fps/640px/q52），sharp 不能用（会把帧拼成超高长条）。转完按帧校验：libwebp 解码后页数 > 1 且抽帧哈希各不相同，才算动图保住。
+- 静态图走 sharp 转 WebP（封面最长边 640，截图最长边 1280，不放大）。
+- `mirror_covers.py` 是早期只处理封面的旧脚本，处理历史遗留封面时仍可用。
 
 ### 6. 验证与收尾
 - 抓 2-3 个 `/game/<slug>` 页面确认标题/简介/图片/外链按钮渲染正常（grep 时注意 srcset 里的 URL 是 %2F 编码的）。
