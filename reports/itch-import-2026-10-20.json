@@ -1,0 +1,1952 @@
+{
+ "batchDate": "2026-10-20",
+ "inputCount": 10,
+ "baselineCount": 1027,
+ "sourceFeed": "https://itch.io/games/new-and-popular/free/platform-web.xml",
+ "sourceCapturedAt": "2026-10-20 06:34",
+ "entries": [
+  {
+   "index": 1,
+   "inputTitle": "Pack Ripper",
+   "sourceUrl": "https://bigbonkstudio.itch.io/pack-ripper",
+   "resolvedUrl": "https://bigbonkstudio.itch.io/pack-ripper",
+   "identity": "bigbonkstudio/pack-ripper",
+   "inputPublishedAt": "2026-10-18 20:17（UTC+8）",
+   "decision": "published",
+   "game": {
+    "id": "431b8172-03eb-41cc-8c88-ee3d166eded2",
+    "title": "Pack Ripper",
+    "slug": "pack-ripper",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-20/pack-ripper.webp",
+    "cover_url": "",
+    "iframe_url": "",
+    "external_url": "https://bigbonkstudio.itch.io/pack-ripper",
+    "developer": "BigBonkStudio",
+    "release_date": "2026-10-18",
+    "added_at": "2026-10-20T07:06:15+00:00",
+    "updated_at": "2026-10-20T07:06:22.02955+00:00",
+    "development_status": "released",
+    "engine": "Unity",
+    "graphics": "2D",
+    "multiplayer": "single-player",
+    "platforms": [
+     "browser"
+    ],
+    "monetization": "free",
+    "short_description": "Rip, sort, sell, repeat — a hands-on trading card incremental where the next big pull is one rip away."
+   },
+   "categories": [
+    "card",
+    "idle",
+    "simulation"
+   ],
+   "developmentStatus": "released",
+   "media": [
+    {
+     "kind": "cover",
+     "file": "pack-ripper.webp",
+     "source": "https://img.itch.zone/aW1nLzMxMDkwNTY2LnBuZw==/original/OPdxr7.png",
+     "object": "covers/2026-10-20/pack-ripper.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-20/pack-ripper.webp",
+     "bytes": 42986,
+     "width": 640,
+     "height": 367,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      640,
+      367
+     ],
+     "sha256": "c32a7fb958f05b9c27d76c35f7138af3a9472a77cefae29ea268fe817b26720a",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "pack-ripper-1.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNTE4MDg5MS8zMTAzNTA4MC5naWY=/original/YVxJ77.gif",
+     "object": "screenshots/2026-10-20/pack-ripper-1.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/pack-ripper-1.webp",
+     "bytes": 609156,
+     "width": 640,
+     "height": 360,
+     "format": "webp",
+     "originalFrames": 57,
+     "animated": true,
+     "originalSize": [
+      640,
+      360
+     ],
+     "sha256": "2935b057e0c35e5b8210cc450dc97a91b155f82e52a433c13841c38b390b8a7d",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "pack-ripper-2.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNTE4MDg5MS8zMTAzMDg2Ny5qcGc=/347x500/4zGH6w.jpg",
+     "object": "screenshots/2026-10-20/pack-ripper-2.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/pack-ripper-2.webp",
+     "bytes": 8738,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "9086d3475ff1d2ee6ab0373cf817b51b4c10841476dda0e08c04565a05eef5d3",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "pack-ripper-3.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNTE4MDg5MS8zMTAzMDg2NS5qcGc=/347x500/qUDD21.jpg",
+     "object": "screenshots/2026-10-20/pack-ripper-3.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/pack-ripper-3.webp",
+     "bytes": 6916,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "1ce9037d8f9b6a37f846eb05a648c15f8850afec02d1f11096b36959207acad1",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "pack-ripper-4.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNTE4MDg5MS8zMTAzMDg2OC5qcGc=/347x500/xc9Fqm.jpg",
+     "object": "screenshots/2026-10-20/pack-ripper-4.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/pack-ripper-4.webp",
+     "bytes": 6602,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "94cd7d916600d93f0e86201af96ae5d70025760edca4eb70e139ae97b90aec3c",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "pack-ripper-5.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNTE4MDg5MS8zMTAzMDg2Ni5qcGc=/347x500/NRjP7W.jpg",
+     "object": "screenshots/2026-10-20/pack-ripper-5.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/pack-ripper-5.webp",
+     "bytes": 6166,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "61be6a519f9a21b35856164d73570c6808c68febe9948845a517f1eb9fc12bab",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "pack-ripper-6.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNTE4MDg5MS8zMTAzMDg2NC5qcGc=/347x500/7r1EGI.jpg",
+     "object": "screenshots/2026-10-20/pack-ripper-6.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/pack-ripper-6.webp",
+     "bytes": 6552,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "eba6bd25d7c64af7a6e639aa650a7871cf4211778d4f3936041980ca53460f6e",
+     "contentType": "image/webp",
+     "publicVerified": true
+    }
+   ],
+   "update": {
+    "title": "Added to PlayBloo",
+    "published_at": "2026-10-20T07:06:15+00:00",
+    "source_url": "https://bigbonkstudio.itch.io/pack-ripper"
+   }
+  },
+  {
+   "index": 2,
+   "inputTitle": "Chartward",
+   "sourceUrl": "https://beider.itch.io/chartward-demo",
+   "resolvedUrl": "https://beider.itch.io/chartward-demo",
+   "identity": "beider/chartward-demo",
+   "inputPublishedAt": "2026-09-30 15:01（UTC+8）",
+   "decision": "published",
+   "game": {
+    "id": "4ccb0e16-6f93-476e-99d5-dbdab3882ef6",
+    "title": "Chartward",
+    "slug": "chartward-demo",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-20/chartward-demo.webp",
+    "cover_url": "",
+    "iframe_url": "",
+    "external_url": "https://beider.itch.io/chartward-demo",
+    "developer": "beider",
+    "release_date": "2026-09-30",
+    "added_at": "2026-10-20T07:06:15+00:00",
+    "updated_at": "2026-10-20T07:06:22.02955+00:00",
+    "development_status": "demo",
+    "engine": null,
+    "graphics": "2D",
+    "multiplayer": "single-player",
+    "platforms": [
+     "browser"
+    ],
+    "monetization": "free",
+    "short_description": "An open-world incremental where every zone is a fresh challenge and every challenge upgrades your character."
+   },
+   "categories": [
+    "adventure",
+    "idle"
+   ],
+   "developmentStatus": "demo",
+   "media": [
+    {
+     "kind": "cover",
+     "file": "chartward-demo.webp",
+     "source": "https://img.itch.zone/aW1nLzMxMDg2NjI4LnBuZw==/original/dWL9c8.png",
+     "object": "covers/2026-10-20/chartward-demo.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-20/chartward-demo.webp",
+     "bytes": 32328,
+     "width": 630,
+     "height": 500,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      630,
+      500
+     ],
+     "sha256": "3a94a4a7f87ce286dd89d925c1be1a0a6105474dc428c978e2decb008b1160a0",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "chartward-demo-1.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNTA3ODE5MS8zMTA3MDAwNC5naWY=/original/ZzpoCM.gif",
+     "object": "screenshots/2026-10-20/chartward-demo-1.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/chartward-demo-1.webp",
+     "bytes": 358768,
+     "width": 640,
+     "height": 360,
+     "format": "webp",
+     "originalFrames": 29,
+     "animated": true,
+     "originalSize": [
+      640,
+      360
+     ],
+     "sha256": "733dad46f6b35eef1412196e284d8a60ae483fd2357db122f97b58d807f1707e",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "chartward-demo-2.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNTA3ODE5MS8zMTA3MDY4NC5wbmc=/347x500/zqFUmr.png",
+     "object": "screenshots/2026-10-20/chartward-demo-2.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/chartward-demo-2.webp",
+     "bytes": 8712,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "2a5ed1df452ece45865e34ca4bb507a2075f4733c6361f21761b0ecf75e3cd87",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "chartward-demo-3.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNTA3ODE5MS8zMTA3MDAwNS5naWY=/original/VI%2Bxwe.gif",
+     "object": "screenshots/2026-10-20/chartward-demo-3.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/chartward-demo-3.webp",
+     "bytes": 473694,
+     "width": 640,
+     "height": 360,
+     "format": "webp",
+     "originalFrames": 48,
+     "animated": true,
+     "originalSize": [
+      640,
+      360
+     ],
+     "sha256": "79ae356b8610f213a039ae614d2820a32c3544117003ec6e5873e88eed2040de",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "chartward-demo-4.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNTA3ODE5MS8zMTA3MTA1Mi5wbmc=/347x500/0BG8z9.png",
+     "object": "screenshots/2026-10-20/chartward-demo-4.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/chartward-demo-4.webp",
+     "bytes": 11318,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "536b3989348004e001ffbb99694929dd318c523a10fe03afa3210f34e9c27e1d",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "chartward-demo-5.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNTA3ODE5MS8zMTA3MDAwNi5naWY=/original/DGE4%2Be.gif",
+     "object": "screenshots/2026-10-20/chartward-demo-5.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/chartward-demo-5.webp",
+     "bytes": 660290,
+     "width": 640,
+     "height": 360,
+     "format": "webp",
+     "originalFrames": 41,
+     "animated": true,
+     "originalSize": [
+      640,
+      360
+     ],
+     "sha256": "7d545ae63d7fc6e8df12e8fdb9c57b0cd6b9b32e0e8f7b910a22199c5d5a08c9",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "chartward-demo-6.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNTA3ODE5MS8zMTA3NTg4OC5wbmc=/347x500/DNLG1d.png",
+     "object": "screenshots/2026-10-20/chartward-demo-6.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/chartward-demo-6.webp",
+     "bytes": 4520,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "71ae3d1a7be22308fa7bf405bd3dd2b81acd473635c777f73c9400f605971cd0",
+     "contentType": "image/webp",
+     "publicVerified": true
+    }
+   ],
+   "update": {
+    "title": "Added to PlayBloo",
+    "published_at": "2026-10-20T07:06:15+00:00",
+    "source_url": "https://beider.itch.io/chartward-demo"
+   }
+  },
+  {
+   "index": 3,
+   "inputTitle": "Harlequinade [Demo]",
+   "sourceUrl": "https://crystalgameworks.itch.io/harlequinade",
+   "resolvedUrl": "https://crystalgameworks.itch.io/harlequinade",
+   "identity": "crystalgameworks/harlequinade",
+   "inputPublishedAt": "2026-06-20 01:34（UTC+8）",
+   "decision": "published",
+   "game": {
+    "id": "6e5215d9-1268-4cfd-bf28-d2e95aff8b20",
+    "title": "Harlequinade [Demo]",
+    "slug": "harlequinade",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-20/harlequinade.webp",
+    "cover_url": "",
+    "iframe_url": "",
+    "external_url": "https://crystalgameworks.itch.io/harlequinade",
+    "developer": "Crystal Game Works",
+    "release_date": "2026-06-20",
+    "added_at": "2026-10-20T07:06:15+00:00",
+    "updated_at": "2026-10-20T07:06:22.02955+00:00",
+    "development_status": "demo",
+    "engine": "Ren'Py",
+    "graphics": "2D",
+    "multiplayer": "single-player",
+    "platforms": [
+     "browser"
+    ],
+    "monetization": "free",
+    "short_description": "A timeloop horror romance where the carnival resets every time you die — and the clowns want to help."
+   },
+   "categories": [
+    "casual",
+    "horror"
+   ],
+   "developmentStatus": "demo",
+   "media": [
+    {
+     "kind": "cover",
+     "file": "harlequinade.webp",
+     "source": "https://img.itch.zone/aW1nLzI4MDMzOTMyLmpwZw==/original/41RVYl.jpg",
+     "object": "covers/2026-10-20/harlequinade.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-20/harlequinade.webp",
+     "bytes": 58012,
+     "width": 640,
+     "height": 578,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      640,
+      578
+     ],
+     "sha256": "623cb946eb86625e4f6c15567ff6843cba863367aa4c639b8fc9c8ed0113fa1f",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "harlequinade-1.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNDY5Mjk3MS8yNzk2NzM3NS5wbmc=/347x500/S8%2FMrC.png",
+     "object": "screenshots/2026-10-20/harlequinade-1.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/harlequinade-1.webp",
+     "bytes": 8870,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "3ad908f9914912a83d4723b8bf8de1132455fa0783dabbbf8fe595f75171b347",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "harlequinade-2.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNDY5Mjk3MS8zMTA4ODQzOS5qcGc=/347x500/huKEPS.jpg",
+     "object": "screenshots/2026-10-20/harlequinade-2.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/harlequinade-2.webp",
+     "bytes": 13940,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "ba79f238bc55be0bf7d5967151a4c9ac53b18a3e4e8404ce551d54a4c13802c6",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "harlequinade-3.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNDY5Mjk3MS8yNzk3NTYwOS5wbmc=/347x500/LQotOO.png",
+     "object": "screenshots/2026-10-20/harlequinade-3.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/harlequinade-3.webp",
+     "bytes": 14996,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "f9be3e07c1c1d637914494ab9ad28723355d103a72cfe87ad0fa1b427fe804f0",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "harlequinade-4.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNDY5Mjk3MS8zMTA4ODQzNy5qcGc=/347x500/zUyN6M.jpg",
+     "object": "screenshots/2026-10-20/harlequinade-4.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/harlequinade-4.webp",
+     "bytes": 17704,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "7b35b3360f50889bd80a55a89469063b729e6c94169ec7f02e7faa240d27b474",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "harlequinade-5.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNDY5Mjk3MS8zMTA4ODQzOC5qcGc=/347x500/C7RHGo.jpg",
+     "object": "screenshots/2026-10-20/harlequinade-5.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/harlequinade-5.webp",
+     "bytes": 14826,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "896b20954541cc336a9f80a7193c8b1004fc0ffd6eb34b7648eff6f1bc1ae88a",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "harlequinade-6.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNDY5Mjk3MS8yNzk2NzM3My5wbmc=/347x500/Quo7qa.png",
+     "object": "screenshots/2026-10-20/harlequinade-6.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/harlequinade-6.webp",
+     "bytes": 8088,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "1ec8a98fcac69ad82ba0f62432e7dd1b34b1e86eb8df16b01d4b94148ca0dd5b",
+     "contentType": "image/webp",
+     "publicVerified": true
+    }
+   ],
+   "update": {
+    "title": "Added to PlayBloo",
+    "published_at": "2026-10-20T07:06:15+00:00",
+    "source_url": "https://crystalgameworks.itch.io/harlequinade"
+   }
+  },
+  {
+   "index": 4,
+   "inputTitle": "Kirby ~ Soft & Wet",
+   "sourceUrl": "https://strimps-kitchen.itch.io/kirby-soft-and-wet",
+   "resolvedUrl": "https://strimps-kitchen.itch.io/kirby-soft-and-wet",
+   "identity": "strimps-kitchen/kirby-soft-and-wet",
+   "inputPublishedAt": "2025-08-11 14:50（UTC+8）",
+   "decision": "published",
+   "game": {
+    "id": "214cd491-8c1a-4f55-bba2-e0d597ab9eec",
+    "title": "Kirby ~ Soft & Wet",
+    "slug": "kirby-soft-and-wet",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-20/kirby-soft-and-wet.webp",
+    "cover_url": "",
+    "iframe_url": "",
+    "external_url": "https://strimps-kitchen.itch.io/kirby-soft-and-wet",
+    "developer": "Strimp's Kitchen",
+    "release_date": "2025-08-11",
+    "added_at": "2026-10-20T07:06:15+00:00",
+    "updated_at": "2026-10-20T07:06:22.02955+00:00",
+    "development_status": "released",
+    "engine": null,
+    "graphics": "2D",
+    "multiplayer": "single-player",
+    "platforms": [
+     "browser"
+    ],
+    "monetization": "free",
+    "short_description": "A fan-made Kirby fishing adventure: catch every fish, fill the Fishbook, and build your own aquarium."
+   },
+   "categories": [
+    "casual",
+    "simulation"
+   ],
+   "developmentStatus": "released",
+   "media": [
+    {
+     "kind": "cover",
+     "file": "kirby-soft-and-wet.webp",
+     "source": "https://img.itch.zone/aW1nLzIyOTk0MTA2LnBuZw==/original/4j2gqa.png",
+     "object": "covers/2026-10-20/kirby-soft-and-wet.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-20/kirby-soft-and-wet.webp",
+     "bytes": 37896,
+     "width": 630,
+     "height": 500,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      630,
+      500
+     ],
+     "sha256": "7b99e8df9b0d78ba86283320db7ebd8eee50ffe56ca1a1da0c9f4a6bcf05f400",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "kirby-soft-and-wet-1.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvMzgwMzgwNy8yMzE1MjMwOS5wbmc=/347x500/0L4Kcr.png",
+     "object": "screenshots/2026-10-20/kirby-soft-and-wet-1.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/kirby-soft-and-wet-1.webp",
+     "bytes": 17092,
+     "width": 347,
+     "height": 231,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      231
+     ],
+     "sha256": "3ef8c7f7f6dbbed95f73fe186753fe2c8e73585e4fa2e466c89ef7ff88b47d95",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "kirby-soft-and-wet-2.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvMzgwMzgwNy8yMzE1MjMxMi5wbmc=/347x500/c8GAyb.png",
+     "object": "screenshots/2026-10-20/kirby-soft-and-wet-2.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/kirby-soft-and-wet-2.webp",
+     "bytes": 16280,
+     "width": 347,
+     "height": 231,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      231
+     ],
+     "sha256": "6e6a695ebb665e5221f8a93ed2af47a543a5c73e5a32b8841029d8b5170a7c31",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "kirby-soft-and-wet-3.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvMzgwMzgwNy8yMzE1MjMxMy5wbmc=/347x500/k92Oii.png",
+     "object": "screenshots/2026-10-20/kirby-soft-and-wet-3.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/kirby-soft-and-wet-3.webp",
+     "bytes": 9068,
+     "width": 347,
+     "height": 231,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      231
+     ],
+     "sha256": "76006bebb4de198a444b9429d36824fce2bbd46411a875d8754f185e6de8153b",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "kirby-soft-and-wet-4.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvMzgwMzgwNy8yMzE1MjMxMS5wbmc=/347x500/ThNYs7.png",
+     "object": "screenshots/2026-10-20/kirby-soft-and-wet-4.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/kirby-soft-and-wet-4.webp",
+     "bytes": 22196,
+     "width": 347,
+     "height": 231,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      231
+     ],
+     "sha256": "a3b7f53c02db0176a57b90320b5ac3916ab334114b115ded764824cd66a97fa0",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "kirby-soft-and-wet-5.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvMzgwMzgwNy8yMzE1MjMxMC5wbmc=/347x500/K%2FXbM6.png",
+     "object": "screenshots/2026-10-20/kirby-soft-and-wet-5.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/kirby-soft-and-wet-5.webp",
+     "bytes": 12800,
+     "width": 347,
+     "height": 231,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      231
+     ],
+     "sha256": "0126e5e68114dc29282330cb78684f0bf18aa1a0cc9f58fb38a6dabcfa90fcbe",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "kirby-soft-and-wet-6.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvMzgwMzgwNy8yOTExMjEzMC5wbmc=/347x500/w4i2Nw.png",
+     "object": "screenshots/2026-10-20/kirby-soft-and-wet-6.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/kirby-soft-and-wet-6.webp",
+     "bytes": 17534,
+     "width": 347,
+     "height": 231,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      231
+     ],
+     "sha256": "b60f0ba1aa2d9600332cd35b65201ad3457de391cf0b12bbae84537f56b4e1a2",
+     "contentType": "image/webp",
+     "publicVerified": true
+    }
+   ],
+   "update": {
+    "title": "Added to PlayBloo",
+    "published_at": "2026-10-20T07:06:15+00:00",
+    "source_url": "https://strimps-kitchen.itch.io/kirby-soft-and-wet"
+   }
+  },
+  {
+   "index": 5,
+   "inputTitle": "OnePixel",
+   "sourceUrl": "https://alexdotcodes.itch.io/onepixel",
+   "resolvedUrl": "https://alexdotcodes.itch.io/onepixel",
+   "identity": "alexdotcodes/onepixel",
+   "inputPublishedAt": "2026-10-19 09:23（UTC+8）",
+   "decision": "published",
+   "game": {
+    "id": "5a19bfe0-23c6-49e0-816b-adb033c0f5ba",
+    "title": "OnePixel",
+    "slug": "onepixel",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-20/onepixel.webp",
+    "cover_url": "",
+    "iframe_url": "",
+    "external_url": "https://alexdotcodes.itch.io/onepixel",
+    "developer": "Alex",
+    "release_date": "2026-10-19",
+    "added_at": "2026-10-20T07:06:15+00:00",
+    "updated_at": "2026-10-20T07:06:22.02955+00:00",
+    "development_status": "released",
+    "engine": null,
+    "graphics": "2D",
+    "multiplayer": "single-player",
+    "platforms": [
+     "browser"
+    ],
+    "monetization": "free",
+    "short_description": "One pixel. Click it. Then destroy a whole screenful of them, one explosion at a time."
+   },
+   "categories": [
+    "clicker",
+    "idle"
+   ],
+   "developmentStatus": "released",
+   "media": [
+    {
+     "kind": "cover",
+     "file": "onepixel.webp",
+     "source": "https://img.itch.zone/aW1nLzMxMDYxMTk2LnBuZw==/original/N1HDlH.png",
+     "object": "covers/2026-10-20/onepixel.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-20/onepixel.webp",
+     "bytes": 42034,
+     "width": 640,
+     "height": 508,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      640,
+      508
+     ],
+     "sha256": "12e3c5b423f243db7f9589cdcdf19efb47d339ff19f1212c637c0bb780c5feb2",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "onepixel-1.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNTE4NjExOS8zMTA2MTIwMC5wbmc=/347x500/vF2WxD.png",
+     "object": "screenshots/2026-10-20/onepixel-1.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/onepixel-1.webp",
+     "bytes": 910,
+     "width": 347,
+     "height": 216,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      216
+     ],
+     "sha256": "db581642d46b7fd162cb47f16aa85709e0d2103ffb455527f50abf36047a592e",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "onepixel-2.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNTE4NjExOS8zMTA2MTE5OS5wbmc=/347x500/TqjCew.png",
+     "object": "screenshots/2026-10-20/onepixel-2.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/onepixel-2.webp",
+     "bytes": 9938,
+     "width": 347,
+     "height": 216,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      216
+     ],
+     "sha256": "68982016bc33fcf82f1fa55ece3023b657bcf6fa8e34dda67f2afd932e47f086",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "onepixel-3.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNTE4NjExOS8zMTA2MTIwMi5wbmc=/347x500/oDkSQE.png",
+     "object": "screenshots/2026-10-20/onepixel-3.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/onepixel-3.webp",
+     "bytes": 9682,
+     "width": 347,
+     "height": 216,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      216
+     ],
+     "sha256": "37a18c674f43d81ccc6c1572b90b64826309897b6097466ba89f3753dbd77d90",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "onepixel-4.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNTE4NjExOS8zMTA2MTIwMS5wbmc=/347x500/wwKlI0.png",
+     "object": "screenshots/2026-10-20/onepixel-4.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/onepixel-4.webp",
+     "bytes": 14996,
+     "width": 347,
+     "height": 216,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      216
+     ],
+     "sha256": "3c12a6010f7848eada0b2a6ea5473d83a64e83aafbb879fe4575a3e252c5f230",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "onepixel-5.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNTE4NjExOS8zMTA2MTIwMy5wbmc=/347x500/zPLZUu.png",
+     "object": "screenshots/2026-10-20/onepixel-5.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/onepixel-5.webp",
+     "bytes": 12678,
+     "width": 347,
+     "height": 216,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      216
+     ],
+     "sha256": "8dce22e82deb1685e9809613d7d4effd7bfb9bf937e5cb548579406bb88657bc",
+     "contentType": "image/webp",
+     "publicVerified": true
+    }
+   ],
+   "update": {
+    "title": "Added to PlayBloo",
+    "published_at": "2026-10-20T07:06:15+00:00",
+    "source_url": "https://alexdotcodes.itch.io/onepixel"
+   }
+  },
+  {
+   "index": 6,
+   "inputTitle": "Twilight at the Banyan Tree (Beta)",
+   "sourceUrl": "https://meniir.itch.io/twilight-at-the-banyan-tree",
+   "resolvedUrl": "https://meniir.itch.io/twilight-at-the-banyan-tree",
+   "identity": "meniir/twilight-at-the-banyan-tree",
+   "inputPublishedAt": "2026-08-30 21:34（UTC+8）",
+   "decision": "published",
+   "game": {
+    "id": "dfa996c5-864e-4b75-9138-966e1cbc627e",
+    "title": "Twilight at the Banyan Tree (Beta)",
+    "slug": "twilight-at-the-banyan-tree",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-20/twilight-at-the-banyan-tree.webp",
+    "cover_url": "",
+    "iframe_url": "",
+    "external_url": "https://meniir.itch.io/twilight-at-the-banyan-tree",
+    "developer": "Meniir",
+    "release_date": "2026-08-30",
+    "added_at": "2026-10-20T07:06:15+00:00",
+    "updated_at": "2026-10-20T07:06:22.02955+00:00",
+    "development_status": "early-access",
+    "engine": "Lightweight Java Game Library (LWJGL)",
+    "graphics": "2D",
+    "multiplayer": "single-player",
+    "platforms": [
+     "browser"
+    ],
+    "monetization": "free",
+    "short_description": "June 1999: can B.J. Habibie survive the fall of the New Order? A 23-turn political survival sim."
+   },
+   "categories": [
+    "simulation",
+    "strategy"
+   ],
+   "developmentStatus": "early-access",
+   "media": [
+    {
+     "kind": "cover",
+     "file": "twilight-at-the-banyan-tree.webp",
+     "source": "https://img.itch.zone/aW1nLzMxMDg2ODM0LnBuZw==/original/IDR3vO.png",
+     "object": "covers/2026-10-20/twilight-at-the-banyan-tree.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-20/twilight-at-the-banyan-tree.webp",
+     "bytes": 29248,
+     "width": 640,
+     "height": 164,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      640,
+      164
+     ],
+     "sha256": "bf1c1f9f92b91b5aa091cfa38ce1083e829f824daf6e4459d7ce5bce5e0f879a",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "twilight-at-the-banyan-tree-1.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNDk1NDYxOC8zMTA3NjkyOS5wbmc=/347x500/3dY12y.png",
+     "object": "screenshots/2026-10-20/twilight-at-the-banyan-tree-1.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/twilight-at-the-banyan-tree-1.webp",
+     "bytes": 12774,
+     "width": 347,
+     "height": 214,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      214
+     ],
+     "sha256": "a85bf791a2a0b070fc8444d88eb91bbcefbce9adf4747b8305c8e6796d6bcbe9",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "twilight-at-the-banyan-tree-2.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNDk1NDYxOC8zMTA3NjkzMS5wbmc=/347x500/rCfEK7.png",
+     "object": "screenshots/2026-10-20/twilight-at-the-banyan-tree-2.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/twilight-at-the-banyan-tree-2.webp",
+     "bytes": 12846,
+     "width": 347,
+     "height": 206,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      206
+     ],
+     "sha256": "cb677c8e084390f0f9f9a9009aa3cdd4b62dca34bf6fe9c2bc3804bd2ca790b8",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "twilight-at-the-banyan-tree-3.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNDk1NDYxOC8zMTA3NjkzNS5wbmc=/347x500/0QTTDx.png",
+     "object": "screenshots/2026-10-20/twilight-at-the-banyan-tree-3.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/twilight-at-the-banyan-tree-3.webp",
+     "bytes": 13838,
+     "width": 347,
+     "height": 253,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      253
+     ],
+     "sha256": "0a706b036ec1747c1c9b1491402d39f809b6cae2a4e4e7dbc7bdc0146cded662",
+     "contentType": "image/webp",
+     "publicVerified": true
+    }
+   ],
+   "update": {
+    "title": "Added to PlayBloo",
+    "published_at": "2026-10-20T07:06:15+00:00",
+    "source_url": "https://meniir.itch.io/twilight-at-the-banyan-tree"
+   }
+  },
+  {
+   "index": 7,
+   "inputTitle": "Paragra - Paragliding Adventures",
+   "sourceUrl": "https://targaciej.itch.io/paragra",
+   "resolvedUrl": "https://targaciej.itch.io/paragra",
+   "identity": "targaciej/paragra",
+   "inputPublishedAt": "2026-10-19 17:48（UTC+8）",
+   "decision": "published",
+   "game": {
+    "id": "5f95c219-5cdd-4e08-88b6-9b8ec31391dd",
+    "title": "Paragra - Paragliding Adventures",
+    "slug": "paragra",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-20/paragra.webp",
+    "cover_url": "",
+    "iframe_url": "",
+    "external_url": "https://targaciej.itch.io/paragra",
+    "developer": "RainbowTrain",
+    "release_date": "2026-10-19",
+    "added_at": "2026-10-20T07:06:15+00:00",
+    "updated_at": "2026-10-20T07:06:22.02955+00:00",
+    "development_status": "demo",
+    "engine": null,
+    "graphics": "2D",
+    "multiplayer": "single-player",
+    "platforms": [
+     "browser"
+    ],
+    "monetization": "free",
+    "short_description": "Find thermals, climb under clouds, and fly cross-country in a 2D arcade paraglider."
+   },
+   "categories": [
+    "arcade",
+    "sports"
+   ],
+   "developmentStatus": "demo",
+   "media": [
+    {
+     "kind": "cover",
+     "file": "paragra.webp",
+     "source": "https://img.itch.zone/aW1nLzMxMDc0ODc1LnBuZw==/original/BSc2A%2F.png",
+     "object": "covers/2026-10-20/paragra.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-20/paragra.webp",
+     "bytes": 57340,
+     "width": 640,
+     "height": 508,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      640,
+      508
+     ],
+     "sha256": "3f03e1b0c1e1a391b3dad82b6b53ca810d56c8ce3f30b7cd7cd92995993a4b00",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "paragra-1.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNTE4ODQzNC8zMTA3NDQ5NC5wbmc=/347x500/2sVVm%2B.png",
+     "object": "screenshots/2026-10-20/paragra-1.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/paragra-1.webp",
+     "bytes": 5282,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "311efae4cdecfe938c4c989dc790452d4c8a341ef6a9e90bf77911d5d2234170",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "paragra-2.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNTE4ODQzNC8zMTA3NDQ5Ni5wbmc=/347x500/8Q570o.png",
+     "object": "screenshots/2026-10-20/paragra-2.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/paragra-2.webp",
+     "bytes": 5550,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "f726b5a767f9c51932e4ce13e1eeaef395085fccb309f071bfe3ea44a98fbd85",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "paragra-3.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNTE4ODQzNC8zMTA3NDQ5NS5wbmc=/347x500/Lo5%2BKE.png",
+     "object": "screenshots/2026-10-20/paragra-3.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/paragra-3.webp",
+     "bytes": 3356,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "c93b30278c780f5dba3e322cb1572995f59d0bda2e59c69b47f7b0bb9b9e6bda",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "paragra-4.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNTE4ODQzNC8zMTA3NDUwMi5wbmc=/347x500/I3CiIe.png",
+     "object": "screenshots/2026-10-20/paragra-4.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/paragra-4.webp",
+     "bytes": 5970,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "9ab5e5070493af55b0a98a45b83ea667b6d0a91db526a151133f08dd6cf2e406",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "paragra-5.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNTE4ODQzNC8zMTA3NDg4MC5wbmc=/347x500/DB6iyu.png",
+     "object": "screenshots/2026-10-20/paragra-5.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/paragra-5.webp",
+     "bytes": 5142,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "2814fcfb6cc72b8b02a266ad804bca38620cc9f284490b56f95b0c831da96537",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "paragra-6.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNTE4ODQzNC8zMTA3NDg4My5wbmc=/347x500/aJwkmJ.png",
+     "object": "screenshots/2026-10-20/paragra-6.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/paragra-6.webp",
+     "bytes": 5278,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "d7c518ebaac073fec84ba4b3840cf98d23888718712b4d2ecf71078d120fa0a7",
+     "contentType": "image/webp",
+     "publicVerified": true
+    }
+   ],
+   "update": {
+    "title": "Added to PlayBloo",
+    "published_at": "2026-10-20T07:06:15+00:00",
+    "source_url": "https://targaciej.itch.io/paragra"
+   }
+  },
+  {
+   "index": 8,
+   "inputTitle": "The Cursed Box",
+   "sourceUrl": "https://deby-studio.itch.io/the-cursed-box",
+   "resolvedUrl": "https://deby-studio.itch.io/the-cursed-box",
+   "identity": "deby-studio/the-cursed-box",
+   "inputPublishedAt": "2026-08-02 06:59（UTC+8）",
+   "decision": "published",
+   "game": {
+    "id": "e357eb84-a60a-4d15-82eb-f6836a6e25d6",
+    "title": "The Cursed Box",
+    "slug": "the-cursed-box",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-20/the-cursed-box.webp",
+    "cover_url": "",
+    "iframe_url": "",
+    "external_url": "https://deby-studio.itch.io/the-cursed-box",
+    "developer": "Deby_studio",
+    "release_date": "2026-08-02",
+    "added_at": "2026-10-20T07:06:15+00:00",
+    "updated_at": "2026-10-20T07:06:22.02955+00:00",
+    "development_status": "demo",
+    "engine": "Ren'Py",
+    "graphics": "2D",
+    "multiplayer": "single-player",
+    "platforms": [
+     "browser"
+    ],
+    "monetization": "free",
+    "short_description": "A cursed box, a dangerous obsession, and choices that change everything — a supernatural romance demo."
+   },
+   "categories": [
+    "adventure",
+    "casual"
+   ],
+   "developmentStatus": "demo",
+   "media": [
+    {
+     "kind": "cover",
+     "file": "the-cursed-box.webp",
+     "source": "https://img.itch.zone/aW1nLzMwNDU0ODk2LnBuZw==/original/nwufU5.png",
+     "object": "covers/2026-10-20/the-cursed-box.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-20/the-cursed-box.webp",
+     "bytes": 24854,
+     "width": 640,
+     "height": 360,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      640,
+      360
+     ],
+     "sha256": "687a772b697ec666722a36da2fbf7e0ed27de50f3ad7ef37f5f47d3f55ffce0c",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "the-cursed-box-1.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNDg1MzcyNS8yOTY4MDAxMC5qcGc=/347x500/HdiU7b.jpg",
+     "object": "screenshots/2026-10-20/the-cursed-box-1.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/the-cursed-box-1.webp",
+     "bytes": 10256,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "eb44c807a1fb8c2b2e611c4a1e41e536ba3a2794b52aae3ea538b6c50a4722d5",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "the-cursed-box-2.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNDg1MzcyNS8zMDQ4NTYyNy5qcGc=/347x500/YJTU9U.jpg",
+     "object": "screenshots/2026-10-20/the-cursed-box-2.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/the-cursed-box-2.webp",
+     "bytes": 11724,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "d3df0c52bf4dd12f35d48275b8ddf52cd346699a33b61598ee9fbe01dd602b10",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "the-cursed-box-3.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNDg1MzcyNS8zMDQ1NDgwNi5qcGc=/347x500/vqw1ih.jpg",
+     "object": "screenshots/2026-10-20/the-cursed-box-3.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/the-cursed-box-3.webp",
+     "bytes": 10086,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "df33579f661cb6be42155f8d921e6c29dbee986108c2543c8f36416f308ce8b0",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "the-cursed-box-4.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNDg1MzcyNS8zMDQ1NDgzNS5qcGc=/347x500/NIZg5b.jpg",
+     "object": "screenshots/2026-10-20/the-cursed-box-4.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/the-cursed-box-4.webp",
+     "bytes": 8630,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "eb516c859f1b9a4234e0af4266225cdc48ae2df4ef301d664b5563f82ad11831",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "the-cursed-box-5.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNDg1MzcyNS8yOTkzMDA0NS5qcGc=/347x500/Fri2jN.jpg",
+     "object": "screenshots/2026-10-20/the-cursed-box-5.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/the-cursed-box-5.webp",
+     "bytes": 7704,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "5da8131f2764644c3e78e039cd98f04fd0a6547133ee674601670dba0c33e67b",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "the-cursed-box-6.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNDg1MzcyNS8zMDQ4NTYyOS5qcGc=/347x500/KAu1zV.jpg",
+     "object": "screenshots/2026-10-20/the-cursed-box-6.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/the-cursed-box-6.webp",
+     "bytes": 12224,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "b38e43fa24248c0b8a4a2787b81b512ee65114c9fa2f4ec2dbbaf2a3629e627d",
+     "contentType": "image/webp",
+     "publicVerified": true
+    }
+   ],
+   "update": {
+    "title": "Added to PlayBloo",
+    "published_at": "2026-10-20T07:06:15+00:00",
+    "source_url": "https://deby-studio.itch.io/the-cursed-box"
+   }
+  },
+  {
+   "index": 9,
+   "inputTitle": "Marketfield",
+   "sourceUrl": "https://pollikk-studios.itch.io/marketfield",
+   "resolvedUrl": "https://pollikk-studios.itch.io/marketfield",
+   "identity": "pollikk-studios/marketfield",
+   "inputPublishedAt": "2026-05-20 18:36（UTC+8）",
+   "decision": "published",
+   "game": {
+    "id": "7c650450-2ae4-42cc-bade-2857a75be346",
+    "title": "Marketfield",
+    "slug": "marketfield",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-20/marketfield.webp",
+    "cover_url": "",
+    "iframe_url": "",
+    "external_url": "https://pollikk-studios.itch.io/marketfield",
+    "developer": "pollikk_studios",
+    "release_date": "2026-05-20",
+    "added_at": "2026-10-20T07:06:15+00:00",
+    "updated_at": "2026-10-20T07:06:22.02955+00:00",
+    "development_status": "early-access",
+    "engine": "Unity",
+    "graphics": "2D",
+    "multiplayer": "single-player",
+    "platforms": [
+     "browser"
+    ],
+    "monetization": "free",
+    "short_description": "A cozy farming incremental with 1200+ upgrades, automation, synergies, and prestige progression."
+   },
+   "categories": [
+    "idle",
+    "strategy"
+   ],
+   "developmentStatus": "early-access",
+   "media": [
+    {
+     "kind": "cover",
+     "file": "marketfield.webp",
+     "source": "https://img.itch.zone/aW1nLzMxMDc1NjI4LnBuZw==/original/5835g4.png",
+     "object": "covers/2026-10-20/marketfield.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-20/marketfield.webp",
+     "bytes": 54426,
+     "width": 640,
+     "height": 360,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      640,
+      360
+     ],
+     "sha256": "32d5f4784f935128408dfca6f91cec09d82cd1b612c10f908a9876ae58e83a0c",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "marketfield-1.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNDU5NDIxNi8zMTA3NTU4MS5wbmc=/347x500/uBZTcd.png",
+     "object": "screenshots/2026-10-20/marketfield-1.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/marketfield-1.webp",
+     "bytes": 14276,
+     "width": 347,
+     "height": 192,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      192
+     ],
+     "sha256": "bf880c278fac850ff6a25361470233b72897a18ed7f36175fbf079688ac80eb6",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "marketfield-2.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNDU5NDIxNi8yOTIzMDA1MS5wbmc=/347x500/5fxqzg.png",
+     "object": "screenshots/2026-10-20/marketfield-2.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/marketfield-2.webp",
+     "bytes": 17284,
+     "width": 347,
+     "height": 194,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      194
+     ],
+     "sha256": "91f2565d28c3ce1f37bfcbf632199ede291bad4d42a640fc3df369a8b98ccea2",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "marketfield-3.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNDU5NDIxNi8yOTIzMDAzOC5wbmc=/347x500/3UlT0U.png",
+     "object": "screenshots/2026-10-20/marketfield-3.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/marketfield-3.webp",
+     "bytes": 16402,
+     "width": 347,
+     "height": 193,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      193
+     ],
+     "sha256": "0450fa181abe779bc03218539aff23c3ea0d387f44774c38ef101bff634e1ad9",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "marketfield-4.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNDU5NDIxNi8yOTIzMDA0MC5wbmc=/347x500/Y3cNtq.png",
+     "object": "screenshots/2026-10-20/marketfield-4.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/marketfield-4.webp",
+     "bytes": 19298,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "e33a400e8c680ebd45cfda5651cb832a1063ab904834d75c3c380f78f62740c3",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "marketfield-5.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNDU5NDIxNi8yOTIzMDA0MS5wbmc=/347x500/TYVzST.png",
+     "object": "screenshots/2026-10-20/marketfield-5.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/marketfield-5.webp",
+     "bytes": 17052,
+     "width": 347,
+     "height": 193,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      193
+     ],
+     "sha256": "7b9796a263efd53a90492805d96d4e529fad5a309a3dcb4e15e2df31c681470f",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "marketfield-6.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNDU5NDIxNi8yOTIzMDA0Mi5wbmc=/347x500/6diwgm.png",
+     "object": "screenshots/2026-10-20/marketfield-6.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/marketfield-6.webp",
+     "bytes": 12030,
+     "width": 347,
+     "height": 194,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      194
+     ],
+     "sha256": "c5c8f60d491ca70f28c6a2bdc40b042671551fa6a46193bc8a78c585f9572a7f",
+     "contentType": "image/webp",
+     "publicVerified": true
+    }
+   ],
+   "update": {
+    "title": "Added to PlayBloo",
+    "published_at": "2026-10-20T07:06:15+00:00",
+    "source_url": "https://pollikk-studios.itch.io/marketfield"
+   }
+  },
+  {
+   "index": 10,
+   "inputTitle": "Breadwinner",
+   "sourceUrl": "https://mithikagames.itch.io/breadwinner",
+   "resolvedUrl": "https://mithikagames.itch.io/breadwinner",
+   "identity": "mithikagames/breadwinner",
+   "inputPublishedAt": "2026-10-04 21:47（UTC+8）",
+   "decision": "published",
+   "game": {
+    "id": "c2969fa4-d9ec-4dd1-a454-972178ba6dfa",
+    "title": "Breadwinner",
+    "slug": "breadwinner",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-20/breadwinner.webp",
+    "cover_url": "",
+    "iframe_url": "",
+    "external_url": "https://mithikagames.itch.io/breadwinner",
+    "developer": "Mithika Games",
+    "release_date": "2026-10-04",
+    "added_at": "2026-10-20T07:06:15+00:00",
+    "updated_at": "2026-10-20T07:06:22.02955+00:00",
+    "development_status": "early-access",
+    "engine": "Unity",
+    "graphics": "3D",
+    "multiplayer": "single-player",
+    "platforms": [
+     "browser"
+    ],
+    "monetization": "free",
+    "short_description": "A short horror game about splitting one salary across a whole family — six paydays until Christmas."
+   },
+   "categories": [
+    "horror",
+    "simulation"
+   ],
+   "developmentStatus": "early-access",
+   "media": [
+    {
+     "kind": "cover",
+     "file": "breadwinner.webp",
+     "source": "https://img.itch.zone/aW1nLzMwNjkzMDc0LnBuZw==/original/htL8cP.png",
+     "object": "covers/2026-10-20/breadwinner.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-20/breadwinner.webp",
+     "bytes": 39646,
+     "width": 640,
+     "height": 508,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      640,
+      508
+     ],
+     "sha256": "066faf51c354b31d71d11778e3f382da2854050faae57d68d491532773307fed",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "breadwinner-1.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNTEwMDMxNi8zMTA4MTU2MS5wbmc=/347x500/tThsBv.png",
+     "object": "screenshots/2026-10-20/breadwinner-1.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/breadwinner-1.webp",
+     "bytes": 7858,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "525b3f8bfadd1beae95d9003dd1cde7909ce13681184b6c4a53133e2c474204c",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "breadwinner-2.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNTEwMDMxNi8zMTA4MTU3Mi5wbmc=/347x500/qDLwGH.png",
+     "object": "screenshots/2026-10-20/breadwinner-2.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/breadwinner-2.webp",
+     "bytes": 11306,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "b00e8224418081ac91443677f025d1119fdbd00c0d0b378e2ecce03723e8f5f8",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "breadwinner-3.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNTEwMDMxNi8zMTA4MTU4MC5wbmc=/347x500/QkFia%2B.png",
+     "object": "screenshots/2026-10-20/breadwinner-3.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/breadwinner-3.webp",
+     "bytes": 12258,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "341187afa3781862202da3694464394a3210e3d9522a0c1caeaf4f7a6632fcff",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "breadwinner-4.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNTEwMDMxNi8zMTA4MTYxNS5wbmc=/347x500/pT%2FlWA.png",
+     "object": "screenshots/2026-10-20/breadwinner-4.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/breadwinner-4.webp",
+     "bytes": 6698,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "f2317a29a5913986c2cbd3a2d0cc299c06d274974dd66439bafdecda8b4ebfa5",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "breadwinner-5.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNTEwMDMxNi8zMTA4MTU4OS5wbmc=/347x500/tVbMSn.png",
+     "object": "screenshots/2026-10-20/breadwinner-5.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/breadwinner-5.webp",
+     "bytes": 9744,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "44dc1abd9086dccda3d9ac7d6fd9f0beec2ba2dad4a660e8d2d2ee5bb5971813",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "breadwinner-6.webp",
+     "source": "https://img.itch.zone/aW1hZ2UvNTEwMDMxNi8zMTA4MTYwNy5wbmc=/347x500/ca5%2B9%2B.png",
+     "object": "screenshots/2026-10-20/breadwinner-6.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-20/breadwinner-6.webp",
+     "bytes": 6834,
+     "width": 347,
+     "height": 195,
+     "format": "webp",
+     "originalFrames": 1,
+     "animated": false,
+     "originalSize": [
+      347,
+      195
+     ],
+     "sha256": "d5edeef02b2a08335b8e29249fad9d07d7d5294fe0af3b7b8aa8e72c20d27893",
+     "contentType": "image/webp",
+     "publicVerified": true
+    }
+   ],
+   "update": {
+    "title": "Added to PlayBloo",
+    "published_at": "2026-10-20T07:06:15+00:00",
+    "source_url": "https://mithikagames.itch.io/breadwinner"
+   }
+  }
+ ],
+ "verification": {
+  "anonymousDraftExclusion": true,
+  "anonymousPublishedRead": true,
+  "fieldsAndCategories": true,
+  "mediaPublicRead": true,
+  "catalogueUpdatesCreated": 10,
+  "originalReleaseAndUpdateDatesNotInferred": true,
+  "oldGameRowsUnchanged": 1027,
+  "oldCategoryLinksUnchanged": true,
+  "totalGamesAfter": 1037,
+  "publishedGamesAfter": 1030,
+  "draftGamesExcluded": 7,
+  "livePages": [
+   {
+    "slug": "pack-ripper",
+    "httpStatus": 200,
+    "checks": {
+     "title": true,
+     "metaDescription": true,
+     "description": true,
+     "how_to_play": true,
+     "controls": true,
+     "tips": true,
+     "features": true,
+     "cover": true,
+     "external": true,
+     "noImageOptimizer": true
+    },
+    "passed": true
+   },
+   {
+    "slug": "chartward-demo",
+    "httpStatus": 200,
+    "checks": {
+     "title": true,
+     "metaDescription": true,
+     "description": true,
+     "how_to_play": true,
+     "controls": true,
+     "tips": true,
+     "features": true,
+     "cover": true,
+     "external": true,
+     "noImageOptimizer": true
+    },
+    "passed": true
+   },
+   {
+    "slug": "harlequinade",
+    "httpStatus": 200,
+    "checks": {
+     "title": true,
+     "metaDescription": true,
+     "description": true,
+     "how_to_play": true,
+     "controls": true,
+     "tips": true,
+     "features": true,
+     "cover": true,
+     "external": true,
+     "noImageOptimizer": true
+    },
+    "passed": true
+   },
+   {
+    "slug": "kirby-soft-and-wet",
+    "httpStatus": 200,
+    "checks": {
+     "title": true,
+     "metaDescription": true,
+     "description": true,
+     "how_to_play": true,
+     "controls": true,
+     "tips": true,
+     "features": true,
+     "cover": true,
+     "external": true,
+     "noImageOptimizer": true
+    },
+    "passed": true
+   },
+   {
+    "slug": "onepixel",
+    "httpStatus": 200,
+    "checks": {
+     "title": true,
+     "metaDescription": true,
+     "description": true,
+     "how_to_play": true,
+     "controls": true,
+     "tips": true,
+     "features": true,
+     "cover": true,
+     "external": true,
+     "noImageOptimizer": true
+    },
+    "passed": true
+   },
+   {
+    "slug": "twilight-at-the-banyan-tree",
+    "httpStatus": 200,
+    "checks": {
+     "title": true,
+     "metaDescription": true,
+     "description": true,
+     "how_to_play": true,
+     "controls": true,
+     "tips": true,
+     "features": true,
+     "cover": true,
+     "external": true,
+     "noImageOptimizer": true
+    },
+    "passed": true
+   },
+   {
+    "slug": "paragra",
+    "httpStatus": 200,
+    "checks": {
+     "title": true,
+     "metaDescription": true,
+     "description": true,
+     "how_to_play": true,
+     "controls": true,
+     "tips": true,
+     "features": true,
+     "cover": true,
+     "external": true,
+     "noImageOptimizer": true
+    },
+    "passed": true
+   },
+   {
+    "slug": "the-cursed-box",
+    "httpStatus": 200,
+    "checks": {
+     "title": true,
+     "metaDescription": true,
+     "description": true,
+     "how_to_play": true,
+     "controls": true,
+     "tips": true,
+     "features": true,
+     "cover": true,
+     "external": true,
+     "noImageOptimizer": true
+    },
+    "passed": true
+   },
+   {
+    "slug": "marketfield",
+    "httpStatus": 200,
+    "checks": {
+     "title": true,
+     "metaDescription": true,
+     "description": true,
+     "how_to_play": true,
+     "controls": true,
+     "tips": true,
+     "features": true,
+     "cover": true,
+     "external": true,
+     "noImageOptimizer": true
+    },
+    "passed": true
+   },
+   {
+    "slug": "breadwinner",
+    "httpStatus": 200,
+    "checks": {
+     "title": true,
+     "metaDescription": true,
+     "description": true,
+     "how_to_play": true,
+     "controls": true,
+     "tips": true,
+     "features": true,
+     "cover": true,
+     "external": true,
+     "noImageOptimizer": true
+    },
+    "passed": true
+   }
+  ],
+  "builtSitemap": {
+   "totalUrls": 1090,
+   "gameUrls": 1030,
+   "newGamesIncluded": 10,
+   "newGameLastmod": "2026-10-20T07:06:22.029Z",
+   "oldGameLastmodChanged": 0
+  }
+ }
+}
