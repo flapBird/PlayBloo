@@ -264,3 +264,15 @@ images. The own browser session verified the shopping-list answer; later steps w
 checked against video frames and EscapeGames24 player notes. The four-pad color
 interaction is deliberately described by its observable behavior rather than a
 fixed color code, since the footage does not establish a single stable sequence.
+
+## Enshrouded starter build (October 21, 2026)
+
+`enshrouded-early-game-build.ts` adds a 35-point solo melee route to the existing
+Enshrouded topic. The inline planner uses total points or level plus earned
+exploration points and leaves unaffordable ranks or points above 35 unallocated.
+The exact costs and connected path are checked against a pinned community 1.0
+export; the suggested purchase order has not been playtested. See
+`docs/enshrouded-build.md` for provenance, scope and revalidation commands.
+The new article has its own inspected official WebP cover. `llms.txt` and route
+checks include it; the hub update changes only that topic's sitemap timestamp,
+while existing sibling articles and playable game timestamps stay unchanged.

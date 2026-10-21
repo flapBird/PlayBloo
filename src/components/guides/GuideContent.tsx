@@ -6,6 +6,7 @@ import { SITE_NAME, SITE_URL } from "@/lib/constants";
 import { formatGuideDate, getGuideArticles, getGuideCover, GUIDE_AUTHOR, guidePath } from "@/lib/guides";
 import type { GuideArticle, GuideSection, GuideTopic } from "@/lib/guides/types";
 import { GuideTrailer } from "./GuideTrailer";
+import { EnshroudedStarterPlanner } from "./EnshroudedStarterPlanner";
 import styles from "./guides.module.css";
 
 export function GuideBreadcrumbs({ topic, article }: { topic?: GuideTopic; article?: GuideArticle }) {
@@ -126,6 +127,7 @@ export function GuideSections({ topic, sections }: { topic: GuideTopic; sections
       </>}
       {section.releaseFacts && <GuideFacts topic={topic} />}
       {section.paragraphs?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+      {section.starterPlanner && <EnshroudedStarterPlanner />}
       {section.link && <a href={section.link.href} className={styles.heroGuideLink}>{section.link.label}<ArrowUpRight size={16} aria-hidden="true" /></a>}
       {section.bullets && <ul>{section.bullets.map((item) => <li key={item}>{item}</li>)}</ul>}
       {section.table && <div className={styles.tableScroll} role="region" aria-label={`${section.title} comparison table`} tabIndex={0}><table>

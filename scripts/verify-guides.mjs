@@ -12,6 +12,9 @@ const mw4Pages = [mw4Hub, `${mw4Hub}/release-date`, `${mw4Hub}/campaign-early-ac
 pages.push(...mw4Pages);
 const castlevaniaHub = "/guides/castlevania-belmonts-curse";
 const enshroudedHub = "/guides/enshrouded";
+const starterPath = `${enshroudedHub}/early-game-build`;
+const starterUpdatedAt = "2026-10-21T04:54:14.000Z";
+pages.push(starterPath);
 const newGuidePages = [castlevaniaHub, `${castlevaniaHub}/getting-started`, `${castlevaniaHub}/launch-fixes`, enshroudedHub, `${enshroudedHub}/beginners-guide`, `${enshroudedHub}/skill-tree`];
 pages.push(...newGuidePages);
 const canonicalOrigin = "https://playbloo.net";
@@ -30,6 +33,7 @@ const titles = new Set();
 const descriptions = new Set();
 const internalLinks = new Set();
 const articleCovers = new Map([
+  [starterPath, "/images/guides/enshrouded-early-game-build.webp"],
   [`${mw4Hub}/dmz`, "/images/guides/modern-warfare-4-dmz.webp"],
   [`${mw4Hub}/dmz-fob`, "/images/guides/modern-warfare-4-fob.webp"],
   [`${castlevaniaHub}/getting-started`, "/images/guides/castlevania-belmonts-curse-getting-started.webp"],
@@ -173,7 +177,7 @@ for (const path of newGuidePages) {
   const ids = [...html.matchAll(/<section[^>]*\bid="([^"]+)"/g)].map((match) => match[1]);
   assert.equal(new Set(ids).size, ids.length, `${path}: unique section IDs`);
   for (const [, target] of html.matchAll(/href="#([^"]+)"/g)) assert.ok(ids.includes(target), `${path}: anchor ${target} exists`);
-  assert.equal(currentEntries.get(`${canonicalOrigin}${path}`), "2026-10-18T10:00:00.000Z", `${path}: sitemap uses guide publication date`);
+  assert.equal(currentEntries.get(`${canonicalOrigin}${path}`), path === enshroudedHub ? starterUpdatedAt : "2026-10-18T10:00:00.000Z", `${path}: sitemap reflects only substantive updates`);
   if (![castlevaniaHub, enshroudedHub].includes(path)) assert.ok(latestUpdates.includes(`href="${path}"`), `${path}: appears in Latest Updates`);
 }
 for (const slug of ["castlevania-belmonts-curse", "enshrouded"]) {
@@ -193,6 +197,10 @@ if (process.argv[3]) {
   for (const [url, lastmod] of previousEntries) {
     const path = new URL(url).pathname;
     if (!/^\/(game\/[^/]+(?:\/level\/[^/]+)?|guides\/.+)$/.test(path)) continue;
+    if (path === enshroudedHub) {
+      assert.equal(currentEntries.get(url), starterUpdatedAt, "Enshrouded hub reflects the starter-build addition");
+      continue;
+    }
     if (path === mw4Hub) {
       assert.equal(currentEntries.get(url), dmzUpdatedAt, "MW4 hub reflects the substantive DMZ update");
       continue;
@@ -265,3 +273,15 @@ const hubSection = listing.split('aria-label="Game guide hubs"')[1]?.split("</se
 const firstHub = hubSection.match(/href="(\/guides\/[^"?#]+)"/)?.[1];
 assert.equal(firstHub, castlevaniaHub, "Guide hubs list leads with the newest published topic");
 console.log("PASS guide hubs list is newest-first");
+
+const starter = await (await get(starterPath)).text();
+assert.equal(currentEntries.get(`${canonicalOrigin}${starterPath}`), starterUpdatedAt, "Starter guide uses its own publication date");
+assert.ok(latestUpdates.includes(`href="${starterPath}"`), "Starter build appears in Latest Updates");
+assert.ok(starter.includes("Full 35-point allocation, including connecting nodes"), "Allocation renders in server HTML");
+assert.ok(starter.includes("not a damage ranking or an in-game-tested build"), "Starter build does not claim hands-on testing");
+assert.ok(!starter.includes("/_next/image"), "Starter cover uses its compressed original");
+for (const [, target] of starter.matchAll(/href="#([^"]+)"/g)) assert.ok(starter.includes(`id="${target}"`), `Starter contents target ${target} exists`);
+for (const sibling of ["beginners-guide", "skill-tree"]) {
+  assert.ok((await (await get(`${enshroudedHub}/${sibling}`)).text()).includes(`href="${starterPath}"`), "Existing guides link to the starter build");
+}
+console.log("PASS Enshrouded starter route, server-rendered plan, related links and sitemap date");

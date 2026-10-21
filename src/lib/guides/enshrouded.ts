@@ -1,4 +1,5 @@
 import type { GuideTopic } from "./types";
+import { enshroudedEarlyGameBuild, enshroudedBuildUpdatedAt } from "./enshrouded-early-game-build";
 
 const dates = {
   publishedAt: "2026-10-18T18:00:00+08:00",
@@ -25,8 +26,11 @@ export const enshrouded: GuideTopic = {
     sourceUrl: "https://download.enshrouded.com/Press%20Kit/KeyArts/Keyart%201.0/EN_1.0_KEYART_16x9_4k.png",
   },
   ...dates,
-  verifiedAt: "2026-10-18",
+  updatedAt: enshroudedBuildUpdatedAt,
+  verifiedAt: "2026-10-21",
   sources: [
+    { id: "starter-skill-data", label: "Community game-file export — 1.0 build 1267041, pinned source revision checked October 21", url: "https://github.com/rossicler/enshrouded-skill-tree/blob/4dc5df898234c1c2dc09bf8a264df2970a1634de/packages/core/src/constants/gameSkillData.json" },
+    { id: "starter-progression", label: "Community progression export — 1.0 build 1269579, checked October 21", url: "https://github.com/rossicler/enshrouded-skill-tree/blob/4dc5df898234c1c2dc09bf8a264df2970a1634de/packages/core/src/constants/gameProgression.json" },
     { id: "official", label: "Keen Games — Enshrouded official game site", url: "https://enshrouded.com/en-US" },
     { id: "steam", label: "Steam — Enshrouded store page", url: "https://store.steampowered.com/app/1203620/Enshrouded/" },
     { id: "release-video", label: "Enshrouded — official 1.0 release date reveal, June 25, 2026", url: "https://www.youtube.com/watch?v=_6atVNfcECU" },
@@ -43,6 +47,13 @@ export const enshrouded: GuideTopic = {
     { id: "key-art", label: "Keen Games press kit — Enshrouded 1.0 key art", url: "https://download.enshrouded.com/Press%20Kit/KeyArts/Keyart%201.0/" },
   ],
   sections: [
+    {
+      id: "starter-build",
+      title: "Plan a solo build with your current points",
+      paragraphs: ["Start with an ordinary one-handed weapon and shield. Our 35-point progression guide includes an adjustable budget, connecting nodes and a purchase order, with equipment alternatives for early exploration. The allocation is checked against 1.0 data; it has not been playtested by PlayBloo."],
+      link: { label: "35-point early game build and budget tool", href: "/guides/enshrouded/early-game-build" },
+      sourceIds: ["starter-skill-data", "starter-progression"],
+    },
     {
       id: "overview",
       title: "What is Enshrouded?",
@@ -89,6 +100,7 @@ export const enshrouded: GuideTopic = {
     },
   ],
   articles: [
+    enshroudedEarlyGameBuild,
     {
       slug: "beginners-guide",
       title: "Enshrouded 1.0 Beginner's Guide: First Quests, Gear & the Shroud",
@@ -106,7 +118,7 @@ export const enshrouded: GuideTopic = {
       },
       status: "published",
       ...dates,
-      relatedSlugs: ["skill-tree"],
+      relatedSlugs: ["skill-tree", "early-game-build"],
       sections: [
         {
           id: "first-quests",
@@ -184,7 +196,7 @@ export const enshrouded: GuideTopic = {
       },
       status: "published",
       ...dates,
-      relatedSlugs: ["beginners-guide"],
+      relatedSlugs: ["beginners-guide", "early-game-build"],
       sections: [
         {
           id: "reset",
