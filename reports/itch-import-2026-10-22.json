@@ -1,0 +1,1306 @@
+{
+ "batchDate": "2026-10-22",
+ "batches": [
+  {
+   "capturedAt": "2026-10-21 16:03",
+   "count": 10
+  }
+ ],
+ "inputCount": 10,
+ "baselineCount": 1055,
+ "sourceFeed": "https://itch.io/games/new-and-popular/free/platform-web.xml",
+ "sourceCapturedAt": "2026-10-21 16:03",
+ "entries": [
+  {
+   "index": 1,
+   "batch": "16:03",
+   "inputTitle": "yuasama cardgame",
+   "sourceUrl": "https://yotogi-chan.itch.io/yuasama-cardgame",
+   "resolvedUrl": "https://yotogi-chan.itch.io/yuasama-cardgame",
+   "identity": "yotogi-chan/yuasama-cardgame",
+   "inputPublishedAt": "2026-07-04 21:14（UTC+8）",
+   "pagePublishedAt": null,
+   "decision": "published",
+   "game": {
+    "id": "647c86e2-f3fb-4f70-a755-e989e9aebc69",
+    "title": "yuasama cardgame",
+    "slug": "yuasama-cardgame",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-22/yuasama-cardgame.webp",
+    "external_url": "https://yotogi-chan.itch.io/yuasama-cardgame",
+    "developer": "yotogi_chan",
+    "release_date": "2026-07-04",
+    "added_at": "2026-10-21T17:46:04+00:00",
+    "updated_at": "2026-10-21T17:46:07.546216+00:00",
+    "development_status": "early-access",
+    "engine": "HTML5",
+    "graphics": "2D",
+    "multiplayer": "single-player",
+    "platforms": [
+     "browser"
+    ],
+    "monetization": "free",
+    "short_description": "A Japanese gothic card battle where every card you summon feeds the tribute you owe."
+   },
+   "categories": [
+    "card",
+    "strategy"
+   ],
+   "developmentStatus": "early-access",
+   "media": [
+    {
+     "kind": "cover",
+     "file": "yuasama-cardgame.webp",
+     "object": "covers/2026-10-22/yuasama-cardgame.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-22/yuasama-cardgame.webp",
+     "bytes": 56332,
+     "sourceUrl": "https://html-classic.itch.zone/html/18790619/BLOOD_OFFERING_TESTPLAY/assets/ai-temp/embedded/styles_01_099cd4ef54.png",
+     "format": "webp",
+     "animated": false,
+     "sha256": "3b921dba63fe0f81b3884c0875c7d1dc5719269d714d3463d837da9d827d9504",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "yuasama-cardgame-1.webp",
+     "object": "screenshots/2026-10-22/yuasama-cardgame-1.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/yuasama-cardgame-1.webp",
+     "bytes": 113884,
+     "sourceUrl": "https://html-classic.itch.zone/html/18790619/BLOOD_OFFERING_TESTPLAY/assets/ai-temp/embedded/novel_system_08_bcef764a85.jpg",
+     "format": "webp",
+     "animated": false,
+     "sha256": "0098e8080806dccba4f59d3f75a5b2927239e100f3659d6e9c614a3db1ff52e8",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "yuasama-cardgame-2.webp",
+     "object": "screenshots/2026-10-22/yuasama-cardgame-2.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/yuasama-cardgame-2.webp",
+     "bytes": 156678,
+     "sourceUrl": "https://html-classic.itch.zone/html/18790619/BLOOD_OFFERING_TESTPLAY/assets/ai-temp/embedded/novel_system_01_c30ba9c21c.jpg",
+     "format": "webp",
+     "animated": false,
+     "sha256": "8f5f5f86c825097eaa101a6b8cb0ca9f7d8f64a2222e72c0d82ca3df74ffee89",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "yuasama-cardgame-3.webp",
+     "object": "screenshots/2026-10-22/yuasama-cardgame-3.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/yuasama-cardgame-3.webp",
+     "bytes": 88954,
+     "sourceUrl": "https://html-classic.itch.zone/html/18790619/BLOOD_OFFERING_TESTPLAY/assets/ai-temp/existing/gara_phase1_defeat.jpeg",
+     "format": "webp",
+     "animated": false,
+     "sha256": "2d09705ddc2c0f233a7c7ef0dd11f4ac081310d331cf19d020ba7e290838faa3",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "yuasama-cardgame-4.webp",
+     "object": "screenshots/2026-10-22/yuasama-cardgame-4.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/yuasama-cardgame-4.webp",
+     "bytes": 20904,
+     "sourceUrl": "https://html-classic.itch.zone/html/18790619/BLOOD_OFFERING_TESTPLAY/assets/ai-temp/embedded/game_data_06_dbe3d35a68.webp",
+     "format": "webp",
+     "animated": false,
+     "sha256": "d8c473f729dd7d2fd189c9e73bd433be52523f8802832a85c599d47fcccfdae5",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "yuasama-cardgame-5.webp",
+     "object": "screenshots/2026-10-22/yuasama-cardgame-5.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/yuasama-cardgame-5.webp",
+     "bytes": 81838,
+     "sourceUrl": "https://html-classic.itch.zone/html/18790619/BLOOD_OFFERING_TESTPLAY/assets/ai-temp/existing/gara-beauty-breakdown-cg.png",
+     "format": "webp",
+     "animated": false,
+     "sha256": "e392223d2db92d4eddd565c05ba84b739339326c4cffc6583ae7f8bb0289104c",
+     "contentType": "image/webp",
+     "publicVerified": true
+    }
+   ],
+   "livePage": {
+    "url": "https://playbloo.net/game/yuasama-cardgame",
+    "httpStatus": 200,
+    "passed": true,
+    "checks": {
+     "title": true,
+     "metaDescription": true,
+     "description": true,
+     "how_to_play": true,
+     "controls": true,
+     "tips": true,
+     "features": true,
+     "cover": true,
+     "external": true,
+     "noImageOptimizer": true
+    }
+   },
+   "notes": "itch 页面本身没有简介/封面/截图/评分/标签；正文与机制取自其官方浏览器包 html-classic.itch.zone/html/18790619/BLOOD_OFFERING_TESTPLAY（页面 iframe 指向同一地址），封面与 5 张截图亦取自该官方包。包的 data-build-channel 为 testplay，页面状态 In development，故标 early-access。素材含暗示性角色美术，未选用。"
+  },
+  {
+   "index": 2,
+   "batch": "16:03",
+   "inputTitle": "Trauma lab",
+   "sourceUrl": "https://traumalab.itch.io/trauma-lab",
+   "resolvedUrl": "https://traumalab.itch.io/trauma-lab",
+   "identity": "traumalab/trauma-lab",
+   "inputPublishedAt": "2026-10-20 22:57（UTC+8）",
+   "pagePublishedAt": "2026-10-20",
+   "decision": "published",
+   "game": {
+    "id": "162dc903-0dbd-4019-8546-786f932af701",
+    "title": "Trauma lab",
+    "slug": "trauma-lab",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-22/trauma-lab.webp",
+    "external_url": "https://traumalab.itch.io/trauma-lab",
+    "developer": "TraumaLab",
+    "release_date": "2026-10-20",
+    "added_at": "2026-10-21T17:46:04+00:00",
+    "updated_at": "2026-10-21T17:46:07.546216+00:00",
+    "development_status": "early-access",
+    "engine": "HTML5",
+    "graphics": "2D",
+    "multiplayer": "single-player",
+    "platforms": [
+     "browser"
+    ],
+    "monetization": "free",
+    "short_description": "An anatomy and physics sandbox where every bullet is tracked through skin, muscle, bone and organ."
+   },
+   "categories": [
+    "horror",
+    "simulation"
+   ],
+   "developmentStatus": "early-access",
+   "media": [
+    {
+     "kind": "cover",
+     "file": "trauma-lab.webp",
+     "object": "covers/2026-10-22/trauma-lab.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-22/trauma-lab.webp",
+     "bytes": 25800,
+     "sourceUrl": "https://img.itch.zone/aW1nLzMxMTI5MDA2LnBuZw==/original/wLPm93.png",
+     "format": "webp",
+     "animated": false,
+     "sha256": "7bcfc9f40d287dd332d9445db42a82c68dd31a252db4062edc72b5fe740f4172",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "trauma-lab-1.webp",
+     "object": "screenshots/2026-10-22/trauma-lab-1.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/trauma-lab-1.webp",
+     "bytes": 3048,
+     "sourceUrl": "https://img.itch.zone/aW1hZ2UvNTE5NjU2MS8zMTEyOTAyMi5qcGc=/347x500/Pg3avQ.jpg",
+     "format": "webp",
+     "animated": false,
+     "sha256": "352526bb63730389d802cb26a945a4515d8b8c7cf22cecee45abd55e416865e5",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "trauma-lab-2.webp",
+     "object": "screenshots/2026-10-22/trauma-lab-2.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/trauma-lab-2.webp",
+     "bytes": 5342,
+     "sourceUrl": "https://img.itch.zone/aW1hZ2UvNTE5NjU2MS8zMTEyOTAyMy5qcGc=/347x500/kf9xO2.jpg",
+     "format": "webp",
+     "animated": false,
+     "sha256": "e1dc2494b01eaa78c06c9a718f277e92d4b7e0dc4a4aeae1f4b9fe4394ede6c7",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "trauma-lab-3.webp",
+     "object": "screenshots/2026-10-22/trauma-lab-3.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/trauma-lab-3.webp",
+     "bytes": 4288,
+     "sourceUrl": "https://img.itch.zone/aW1hZ2UvNTE5NjU2MS8zMTEyOTAyNC5qcGc=/347x500/IdP9FY.jpg",
+     "format": "webp",
+     "animated": false,
+     "sha256": "bf484fff6ab6b5b48e5e529c47309ae1adacf5cb8ea1dae828f6506dd92f38fb",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "trauma-lab-4.webp",
+     "object": "screenshots/2026-10-22/trauma-lab-4.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/trauma-lab-4.webp",
+     "bytes": 7578,
+     "sourceUrl": "https://img.itch.zone/aW1hZ2UvNTE5NjU2MS8zMTEyOTAyNS5qcGc=/347x500/jjOBQZ.jpg",
+     "format": "webp",
+     "animated": false,
+     "sha256": "9b541af4a221a679d39c7daf669395e48dff7bb51c6e7b717d12f2ff90678744",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "trauma-lab-5.webp",
+     "object": "screenshots/2026-10-22/trauma-lab-5.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/trauma-lab-5.webp",
+     "bytes": 6118,
+     "sourceUrl": "https://img.itch.zone/aW1hZ2UvNTE5NjU2MS8zMTEyOTAyNi5qcGc=/347x500/KAPdW6.jpg",
+     "format": "webp",
+     "animated": false,
+     "sha256": "a0498b4f2ea4e8cd7d68b15569fecfe21490462e0dba58a6584b216398714563",
+     "contentType": "image/webp",
+     "publicVerified": true
+    }
+   ],
+   "livePage": {
+    "url": "https://playbloo.net/game/trauma-lab",
+    "httpStatus": 200,
+    "passed": true,
+    "checks": {
+     "title": true,
+     "metaDescription": true,
+     "description": true,
+     "how_to_play": true,
+     "controls": true,
+     "tips": true,
+     "features": true,
+     "cover": true,
+     "external": true,
+     "noImageOptimizer": true
+    }
+   },
+   "notes": "保留官方 18+ 内容提示；官方有 AI Disclosure（Code/Graphics/Sounds），如实注明。"
+  },
+  {
+   "index": 3,
+   "batch": "16:03",
+   "inputTitle": "Choo Choo Mania",
+   "sourceUrl": "https://featurekreep.itch.io/choo-choo-mania",
+   "resolvedUrl": "https://featurekreep.itch.io/choo-choo-mania",
+   "identity": "featurekreep/choo-choo-mania",
+   "inputPublishedAt": "2026-10-20 20:23（UTC+8）",
+   "pagePublishedAt": "2026-10-21",
+   "decision": "published",
+   "game": {
+    "id": "d64c0aa8-4b1a-4390-a7af-d614fcb8359f",
+    "title": "Choo Choo Mania",
+    "slug": "choo-choo-mania",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-22/choo-choo-mania.webp",
+    "external_url": "https://featurekreep.itch.io/choo-choo-mania",
+    "developer": "FeatureKreep",
+    "release_date": "2026-10-21",
+    "added_at": "2026-10-21T17:46:04+00:00",
+    "updated_at": "2026-10-21T17:46:07.546216+00:00",
+    "development_status": "released",
+    "engine": "PICO-8",
+    "graphics": "2D",
+    "multiplayer": "single-player",
+    "platforms": [
+     "browser"
+    ],
+    "monetization": "free",
+    "short_description": "Draw rails across a grid to connect matching stations without crossing any other line."
+   },
+   "categories": [
+    "casual",
+    "puzzle"
+   ],
+   "developmentStatus": "released",
+   "media": [
+    {
+     "kind": "cover",
+     "file": "choo-choo-mania.webp",
+     "object": "covers/2026-10-22/choo-choo-mania.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-22/choo-choo-mania.webp",
+     "bytes": 21372,
+     "sourceUrl": "https://img.itch.zone/aW1nLzMxMTU5NDY4LnBuZw==/original/Z9Yg30.png",
+     "format": "webp",
+     "animated": false,
+     "sha256": "942142707c555e43eb0468f8cdeb2937796f3b8687096f4f403b04f0ff347e7b",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "choo-choo-mania-1.webp",
+     "object": "screenshots/2026-10-22/choo-choo-mania-1.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/choo-choo-mania-1.webp",
+     "bytes": 2177542,
+     "sourceUrl": "https://img.itch.zone/aW1hZ2UvNTE5NTgzOC8zMTEyNTE0MC5naWY=/original/SBEh1x.gif",
+     "format": "webp",
+     "animated": true,
+     "sha256": "cc57196cb228a478e3e6fcec1169d7ffecfe1208a61cecd8cc8b43721fb22f16",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "choo-choo-mania-2.webp",
+     "object": "screenshots/2026-10-22/choo-choo-mania-2.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/choo-choo-mania-2.webp",
+     "bytes": 2059878,
+     "sourceUrl": "https://img.itch.zone/aW1hZ2UvNTE5NTgzOC8zMTEyNTE0Mi5naWY=/original/710r9X.gif",
+     "format": "webp",
+     "animated": true,
+     "sha256": "bf44e4538ab286dd3ccb0650a4d268846ce242045b57eef2d54e80cd1556bdc1",
+     "contentType": "image/webp",
+     "publicVerified": true
+    }
+   ],
+   "livePage": {
+    "url": "https://playbloo.net/game/choo-choo-mania",
+    "httpStatus": 200,
+    "passed": true,
+    "checks": {
+     "title": true,
+     "metaDescription": true,
+     "description": true,
+     "how_to_play": true,
+     "controls": true,
+     "tips": true,
+     "features": true,
+     "cover": true,
+     "external": true,
+     "noImageOptimizer": true
+    }
+   },
+   "notes": "官方标注 No generative AI was used，如实保留。封面取 og:image original（630x500），RSS 为同图 315x250 缩略。"
+  },
+  {
+   "index": 4,
+   "batch": "16:03",
+   "inputTitle": "Hyperspin Demo",
+   "sourceUrl": "https://starpelly.itch.io/hyperspin",
+   "resolvedUrl": "https://starpelly.itch.io/hyperspin",
+   "identity": "starpelly/hyperspin",
+   "inputPublishedAt": "2025-12-21 05:17（UTC+8）",
+   "pagePublishedAt": null,
+   "decision": "published",
+   "game": {
+    "id": "3b3988a9-0c44-4a61-aff5-6211cb63d3ff",
+    "title": "Hyperspin Demo",
+    "slug": "hyperspin",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-22/hyperspin.webp",
+    "external_url": "https://starpelly.itch.io/hyperspin",
+    "developer": "Starpelly",
+    "release_date": "2025-12-20",
+    "added_at": "2026-10-21T17:46:04+00:00",
+    "updated_at": "2026-10-21T17:46:07.546216+00:00",
+    "development_status": "demo",
+    "engine": "Custom engine",
+    "graphics": "2D",
+    "multiplayer": "single-player",
+    "platforms": [
+     "browser"
+    ],
+    "monetization": "free",
+    "short_description": "An experimental rhythm game where you spin a circle on a circle and tap the circles."
+   },
+   "categories": [
+    "casual",
+    "music"
+   ],
+   "developmentStatus": "demo",
+   "media": [
+    {
+     "kind": "cover",
+     "file": "hyperspin.webp",
+     "object": "covers/2026-10-22/hyperspin.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-22/hyperspin.webp",
+     "bytes": 102692,
+     "sourceUrl": "https://img.itch.zone/aW1nLzMxMDk0MTg3LmdpZg==/original/Th%2BBBN.gif",
+     "format": "webp",
+     "animated": true,
+     "sha256": "7a25e7af8a7e2711f3bd6065ad8f82a81455229918f0983ebdb1152ad7b04705",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "hyperspin-1.webp",
+     "object": "screenshots/2026-10-22/hyperspin-1.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/hyperspin-1.webp",
+     "bytes": 5532,
+     "sourceUrl": "https://img.itch.zone/aW1hZ2UvNDEzNjA4OS8zMTA5MjE5MC5qcGc=/347x500/cWDeIl.jpg",
+     "format": "webp",
+     "animated": false,
+     "sha256": "69ee059afa0b7a75e5aff3ce8733afd04538ec84c5e804a9db5e75fd2a517982",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "hyperspin-2.webp",
+     "object": "screenshots/2026-10-22/hyperspin-2.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/hyperspin-2.webp",
+     "bytes": 15064,
+     "sourceUrl": "https://img.itch.zone/aW1hZ2UvNDEzNjA4OS8zMTA5MjE4OS5qcGc=/347x500/NA4TW3.jpg",
+     "format": "webp",
+     "animated": false,
+     "sha256": "4abdeda40731acb6c29c44602f1a8b187a82e045f387a5bb6bfe75981bb99f05",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "hyperspin-3.webp",
+     "object": "screenshots/2026-10-22/hyperspin-3.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/hyperspin-3.webp",
+     "bytes": 4760,
+     "sourceUrl": "https://img.itch.zone/aW1hZ2UvNDEzNjA4OS8zMTA5MjE5Mi5qcGc=/347x500/NiPAPY.jpg",
+     "format": "webp",
+     "animated": false,
+     "sha256": "530b7349c2fc41b5036b04561e6c7a7dfeb32adb618db956e219d77b3d272245",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "hyperspin-4.webp",
+     "object": "screenshots/2026-10-22/hyperspin-4.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/hyperspin-4.webp",
+     "bytes": 3942,
+     "sourceUrl": "https://img.itch.zone/aW1hZ2UvNDEzNjA4OS8zMTA5MjE5MS5qcGc=/347x500/TwZYu%2B.jpg",
+     "format": "webp",
+     "animated": false,
+     "sha256": "7268519d55b787c3ea73f0a378901b14de330d2be34be83b4a8a1f90b8b1e585",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "hyperspin-5.webp",
+     "object": "screenshots/2026-10-22/hyperspin-5.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/hyperspin-5.webp",
+     "bytes": 7534,
+     "sourceUrl": "https://img.itch.zone/aW1hZ2UvNDEzNjA4OS8zMTA5MjE5My5qcGc=/347x500/njQ2X6.jpg",
+     "format": "webp",
+     "animated": false,
+     "sha256": "b108025187b67f26d67d1dbb4690ba564bee87c578fcea1e5e842320efe55f4a",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "hyperspin-6.webp",
+     "object": "screenshots/2026-10-22/hyperspin-6.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/hyperspin-6.webp",
+     "bytes": 5272,
+     "sourceUrl": "https://img.itch.zone/aW1hZ2UvNDEzNjA4OS8yNjgzMzgxMS5wbmc=/347x500/BfdcYi.png",
+     "format": "webp",
+     "animated": false,
+     "sha256": "82c16de96b661879f599893c42ecf84443fdc2d1454dc9bbc58b5c09d5e1db24",
+     "contentType": "image/webp",
+     "publicVerified": true
+    }
+   ],
+   "livePage": {
+    "url": "https://playbloo.net/game/hyperspin",
+    "httpStatus": 200,
+    "passed": true,
+    "checks": {
+     "title": true,
+     "metaDescription": true,
+     "description": true,
+     "how_to_play": true,
+     "controls": true,
+     "tips": true,
+     "features": true,
+     "cover": true,
+     "external": true,
+     "noImageOptimizer": true
+    }
+   },
+   "notes": "页面标题与正文均写明是 full game 的 demo，标 demo；正文写明自研引擎，故 engine 记为自研引擎而非侧栏的 Photoshop/Illustrator。封面为 GIF，转成动画 WebP。页面另列 release date 2026-05-08。"
+  },
+  {
+   "index": 5,
+   "batch": "16:03",
+   "inputTitle": "Project Hail Meowy",
+   "sourceUrl": "https://cosmicadventuresquad.itch.io/project-hail-meowy",
+   "resolvedUrl": "https://cosmicadventuresquad.itch.io/project-hail-meowy",
+   "identity": "cosmicadventuresquad/project-hail-meowy",
+   "inputPublishedAt": "2026-10-18 10:59（UTC+8）",
+   "pagePublishedAt": "2026-10-19",
+   "decision": "published",
+   "game": {
+    "id": "68629b9e-bf6d-403b-8474-f01ed599e0e8",
+    "title": "Project Hail Meowy",
+    "slug": "project-hail-meowy",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-22/project-hail-meowy.webp",
+    "external_url": "https://cosmicadventuresquad.itch.io/project-hail-meowy",
+    "developer": "Cosmic Adventure Squad",
+    "release_date": "2026-10-19",
+    "added_at": "2026-10-21T17:46:04+00:00",
+    "updated_at": "2026-10-21T17:46:07.546216+00:00",
+    "development_status": "demo",
+    "engine": "Godot",
+    "graphics": "2D",
+    "multiplayer": "single-player",
+    "platforms": [
+     "browser"
+    ],
+    "monetization": "free",
+    "short_description": "Punch out your moves and shots one row at a time, hit RUN, and blast your way to the Fat Cat."
+   },
+   "categories": [
+    "simulation",
+    "strategy"
+   ],
+   "developmentStatus": "demo",
+   "media": [
+    {
+     "kind": "cover",
+     "file": "project-hail-meowy.webp",
+     "object": "covers/2026-10-22/project-hail-meowy.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-22/project-hail-meowy.webp",
+     "bytes": 121670,
+     "sourceUrl": "https://img.itch.zone/aW1nLzMxMDk2MzkwLmdpZg==/original/u1oxzb.gif",
+     "format": "webp",
+     "animated": true,
+     "sha256": "c18fec1bd2c578494a059169734692a596845ebc028487480967ded017ed8385",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "project-hail-meowy-1.webp",
+     "object": "screenshots/2026-10-22/project-hail-meowy-1.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/project-hail-meowy-1.webp",
+     "bytes": 405464,
+     "sourceUrl": "https://img.itch.zone/aW1hZ2UvNTE3ODU2Ny8zMTA5ODYyOC5naWY=/original/2daZ3i.gif",
+     "format": "webp",
+     "animated": true,
+     "sha256": "cf7240161f3c5e5c578794847710eddf9c7a6daaeb9cd55cb74a45f05b2e1392",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "project-hail-meowy-2.webp",
+     "object": "screenshots/2026-10-22/project-hail-meowy-2.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/project-hail-meowy-2.webp",
+     "bytes": 1481716,
+     "sourceUrl": "https://img.itch.zone/aW1hZ2UvNTE3ODU2Ny8zMTEwMTYyNC5naWY=/original/A4Qs2k.gif",
+     "format": "webp",
+     "animated": true,
+     "sha256": "be27409f5d747008e0ecec39a57dce22a0fbec3d890d257b7ab79dbee1855a0f",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "project-hail-meowy-3.webp",
+     "object": "screenshots/2026-10-22/project-hail-meowy-3.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/project-hail-meowy-3.webp",
+     "bytes": 1191274,
+     "sourceUrl": "https://img.itch.zone/aW1hZ2UvNTE3ODU2Ny8zMTEwMTY0MS5naWY=/original/FJItMn.gif",
+     "format": "webp",
+     "animated": true,
+     "sha256": "242b6eea41b4c2a22adf7d5ddcf71d2b36474cca25553c0371d7a5f65017fb7b",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "project-hail-meowy-4.webp",
+     "object": "screenshots/2026-10-22/project-hail-meowy-4.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/project-hail-meowy-4.webp",
+     "bytes": 5922,
+     "sourceUrl": "https://img.itch.zone/aW1hZ2UvNTE3ODU2Ny8zMTEwMTY0OS5wbmc=/347x500/npngdT.png",
+     "format": "webp",
+     "animated": false,
+     "sha256": "a25c13c0c9c02cd73f74ebaf65cd6afd765cb486f81273a39a1c1ba6af80c0d2",
+     "contentType": "image/webp",
+     "publicVerified": true
+    }
+   ],
+   "livePage": {
+    "url": "https://playbloo.net/game/project-hail-meowy",
+    "httpStatus": 200,
+    "passed": true,
+    "checks": {
+     "title": true,
+     "metaDescription": true,
+     "description": true,
+     "how_to_play": true,
+     "controls": true,
+     "tips": true,
+     "features": true,
+     "cover": true,
+     "external": true,
+     "noImageOptimizer": true
+    }
+   },
+   "notes": "官方状态 Prototype、Ludum Dare 60 参赛作，标 demo；官方有 AI Disclosure（Code/Graphics/Text），如实注明。封面与 3 张截图为 GIF，转成动画 WebP。"
+  },
+  {
+   "index": 6,
+   "batch": "16:03",
+   "inputTitle": "Troll the King",
+   "sourceUrl": "https://sheepolution.itch.io/troll-the-king",
+   "resolvedUrl": "https://sheepolution.itch.io/troll-the-king",
+   "identity": "sheepolution/troll-the-king",
+   "inputPublishedAt": "2026-10-20 04:51（UTC+8）",
+   "pagePublishedAt": "2026-10-20",
+   "decision": "published",
+   "game": {
+    "id": "89ec04df-2617-4b15-94f8-df8ae45a6753",
+    "title": "Troll the King",
+    "slug": "troll-the-king",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-22/troll-the-king.webp",
+    "external_url": "https://sheepolution.itch.io/troll-the-king",
+    "developer": "Sheepolution, Shores",
+    "release_date": "2026-10-20",
+    "added_at": "2026-10-21T17:46:04+00:00",
+    "updated_at": "2026-10-21T17:46:07.546216+00:00",
+    "development_status": "released",
+    "engine": "LÖVE",
+    "graphics": "2D",
+    "multiplayer": "single-player",
+    "platforms": [
+     "browser"
+    ],
+    "monetization": "free",
+    "short_description": "Chop wood, shoot robot pigeons, and rewrite their letters to annoy the kings."
+   },
+   "categories": [
+    "action",
+    "arcade"
+   ],
+   "developmentStatus": "released",
+   "media": [
+    {
+     "kind": "cover",
+     "file": "troll-the-king.webp",
+     "object": "covers/2026-10-22/troll-the-king.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-22/troll-the-king.webp",
+     "bytes": 44128,
+     "sourceUrl": "https://img.itch.zone/aW1nLzMxMTI1NTAzLnBuZw==/original/ucalhj.png",
+     "format": "webp",
+     "animated": false,
+     "sha256": "aa7dfe6448099b3ac8877a0fb4dff517a9caefe75e12b0ddb105362c91edfe2c",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "troll-the-king-1.webp",
+     "object": "screenshots/2026-10-22/troll-the-king-1.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/troll-the-king-1.webp",
+     "bytes": 21252,
+     "sourceUrl": "https://img.itch.zone/aW1nLzMxMTI1NTAzLnBuZw==/347x500/PNdApr.png",
+     "format": "webp",
+     "animated": false,
+     "sha256": "3e61fd1d5800765f029b78b040939f1b0eaea1f00eccf2fe1df10c256b1c650c",
+     "contentType": "image/webp",
+     "publicVerified": true
+    }
+   ],
+   "livePage": {
+    "url": "https://playbloo.net/game/troll-the-king",
+    "httpStatus": 200,
+    "passed": true,
+    "checks": {
+     "title": true,
+     "metaDescription": true,
+     "description": true,
+     "how_to_play": true,
+     "controls": true,
+     "tips": true,
+     "features": true,
+     "cover": true,
+     "external": true,
+     "noImageOptimizer": true
+    }
+   },
+   "notes": "itch 页面无 Genre 行，按描述归为 arcade + action。官方标注 No generative AI was used，如实保留。"
+  },
+  {
+   "index": 7,
+   "batch": "16:03",
+   "inputTitle": "Castle: Build&Defend",
+   "sourceUrl": "https://cineeeekk.itch.io/castle-builddefend",
+   "resolvedUrl": "https://cineeeekk.itch.io/castle-builddefend",
+   "identity": "cineeeekk/castle-builddefend",
+   "inputPublishedAt": "2026-10-15 01:52（UTC+8）",
+   "pagePublishedAt": "2026-10-14",
+   "decision": "published",
+   "game": {
+    "id": "607328ac-2ab4-445c-a57c-824ebd036a8f",
+    "title": "Castle: Build&Defend",
+    "slug": "castle-builddefend",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-22/castle-builddefend.webp",
+    "external_url": "https://cineeeekk.itch.io/castle-builddefend",
+    "developer": "Cineeeekk",
+    "release_date": "2026-10-14",
+    "added_at": "2026-10-21T17:46:04+00:00",
+    "updated_at": "2026-10-21T17:46:07.546216+00:00",
+    "development_status": "early-access",
+    "engine": "HTML5",
+    "graphics": "3D",
+    "multiplayer": "single-player",
+    "platforms": [
+     "browser"
+    ],
+    "monetization": "free",
+    "short_description": "Build a medieval village by day, then hold its walls until dawn."
+   },
+   "categories": [
+    "simulation",
+    "strategy"
+   ],
+   "developmentStatus": "early-access",
+   "media": [
+    {
+     "kind": "cover",
+     "file": "castle-builddefend.webp",
+     "object": "covers/2026-10-22/castle-builddefend.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-22/castle-builddefend.webp",
+     "bytes": 70768,
+     "sourceUrl": "https://img.itch.zone/aW1nLzMwOTE4MDI3LmpwZw==/original/NJs7zi.jpg",
+     "format": "webp",
+     "animated": false,
+     "sha256": "0dc6a9322c2af80730eae260ed4aa82095f6a1168fdc577d2fbd6fccd589695b",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "castle-builddefend-1.webp",
+     "object": "screenshots/2026-10-22/castle-builddefend-1.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/castle-builddefend-1.webp",
+     "bytes": 21252,
+     "sourceUrl": "https://img.itch.zone/aW1hZ2UvNTE1ODEzMS8zMDkwNzg4Mi5qcGc=/347x500/V7rAX8.jpg",
+     "format": "webp",
+     "animated": false,
+     "sha256": "f27ec0592029b7ceabd18637e28b0f39e9f10ab76bfb850c2041e4aa052874cf",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "castle-builddefend-2.webp",
+     "object": "screenshots/2026-10-22/castle-builddefend-2.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/castle-builddefend-2.webp",
+     "bytes": 14630,
+     "sourceUrl": "https://img.itch.zone/aW1hZ2UvNTE1ODEzMS8zMDkwNzg3OS5qcGc=/347x500/hXfgFe.jpg",
+     "format": "webp",
+     "animated": false,
+     "sha256": "4039fd8b6a26bf62ef8c666cc04a0a7d67738133e5b1d8ed46b50dc8e427b9e3",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "castle-builddefend-3.webp",
+     "object": "screenshots/2026-10-22/castle-builddefend-3.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/castle-builddefend-3.webp",
+     "bytes": 14812,
+     "sourceUrl": "https://img.itch.zone/aW1hZ2UvNTE1ODEzMS8zMDkwNzg4MS5qcGc=/347x500/QL%2BfcK.jpg",
+     "format": "webp",
+     "animated": false,
+     "sha256": "ad7cda4bc65ad58b4a34687b708785bbcd5ee5a55b442e183c015f9d5727762d",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "castle-builddefend-4.webp",
+     "object": "screenshots/2026-10-22/castle-builddefend-4.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/castle-builddefend-4.webp",
+     "bytes": 21102,
+     "sourceUrl": "https://img.itch.zone/aW1hZ2UvNTE1ODEzMS8zMDkwNzg4MC5qcGc=/347x500/%2B5wg%2BF.jpg",
+     "format": "webp",
+     "animated": false,
+     "sha256": "4d86256b35213926a39e94e0c2e0ab76848b660d76de36978aaede94c4177774",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "castle-builddefend-5.webp",
+     "object": "screenshots/2026-10-22/castle-builddefend-5.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/castle-builddefend-5.webp",
+     "bytes": 8764,
+     "sourceUrl": "https://img.itch.zone/aW1hZ2UvNTE1ODEzMS8zMDkwNzg3OC5qcGc=/347x500/uMOgfH.jpg",
+     "format": "webp",
+     "animated": false,
+     "sha256": "9000efa8ebd6f902ec88fb9292b58b07f863fcdcf8069ea530bab7f90c09af37",
+     "contentType": "image/webp",
+     "publicVerified": true
+    }
+   ],
+   "livePage": {
+    "url": "https://playbloo.net/game/castle-builddefend",
+    "httpStatus": 200,
+    "passed": true,
+    "checks": {
+     "title": true,
+     "metaDescription": true,
+     "description": true,
+     "how_to_play": true,
+     "controls": true,
+     "tips": true,
+     "features": true,
+     "cover": true,
+     "external": true,
+     "noImageOptimizer": true
+    }
+   },
+   "notes": "og:image 为 2318x1303 完整画面，RSS 仅 315x250 缩略，取原图；官方有 AI Disclosure（Code/Graphics/Sounds/Text），如实注明。"
+  },
+  {
+   "index": 8,
+   "batch": "16:03",
+   "inputTitle": "Relicta in Memoriam",
+   "sourceUrl": "https://saveslot0.itch.io/relicta-in-memoriam",
+   "resolvedUrl": "https://saveslot0.itch.io/relicta-in-memoriam",
+   "identity": "saveslot0/relicta-in-memoriam",
+   "inputPublishedAt": "2025-10-12 05:46（UTC+8）",
+   "pagePublishedAt": null,
+   "decision": "published",
+   "game": {
+    "id": "661c4a85-6cd4-449a-84f7-42a733528a1d",
+    "title": "Relicta in Memoriam",
+    "slug": "relicta-in-memoriam",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-22/relicta-in-memoriam.webp",
+    "external_url": "https://saveslot0.itch.io/relicta-in-memoriam",
+    "developer": "SaveSlot0",
+    "release_date": "2025-10-11",
+    "added_at": "2026-10-21T17:46:04+00:00",
+    "updated_at": "2026-10-21T17:46:07.546216+00:00",
+    "development_status": "released",
+    "engine": "Unity",
+    "graphics": "3D",
+    "multiplayer": "single-player",
+    "platforms": [
+     "browser"
+    ],
+    "monetization": "free",
+    "short_description": "Italy, 1931 — seek the truth in rooms where folklore takes shape and waits to be remembered."
+   },
+   "categories": [
+    "adventure",
+    "horror",
+    "puzzle"
+   ],
+   "developmentStatus": "released",
+   "media": [
+    {
+     "kind": "cover",
+     "file": "relicta-in-memoriam.webp",
+     "object": "covers/2026-10-22/relicta-in-memoriam.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-22/relicta-in-memoriam.webp",
+     "bytes": 8708,
+     "sourceUrl": "https://img.itch.zone/aW1nLzIzNTczODg4LnBuZw==/original/%2Fo%2BviY.png",
+     "format": "webp",
+     "animated": false,
+     "sha256": "4fb9e580f31c12d2a535ae6cabd4021b312f3db092547730dd20e7b665c02286",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "relicta-in-memoriam-1.webp",
+     "object": "screenshots/2026-10-22/relicta-in-memoriam-1.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/relicta-in-memoriam-1.webp",
+     "bytes": 7222,
+     "sourceUrl": "https://img.itch.zone/aW1hZ2UvMzk1MjYxMy8yMzU3MjYyMS5wbmc=/347x500/1Osi5u.png",
+     "format": "webp",
+     "animated": false,
+     "sha256": "5960bbb956fa65794ca56d1d76f69f77eaea53e250a74a0ab621ccb839e8de1b",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "relicta-in-memoriam-2.webp",
+     "object": "screenshots/2026-10-22/relicta-in-memoriam-2.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/relicta-in-memoriam-2.webp",
+     "bytes": 10422,
+     "sourceUrl": "https://img.itch.zone/aW1hZ2UvMzk1MjYxMy8yMzU3MjYyMi5wbmc=/347x500/mrCdrx.png",
+     "format": "webp",
+     "animated": false,
+     "sha256": "912adcd9cbca72e6c2121e8a25e9e64c93e3e6b09ce3d357ab41993a50d747ad",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "relicta-in-memoriam-3.webp",
+     "object": "screenshots/2026-10-22/relicta-in-memoriam-3.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/relicta-in-memoriam-3.webp",
+     "bytes": 3360,
+     "sourceUrl": "https://img.itch.zone/aW1hZ2UvMzk1MjYxMy8yMzU3MzkwMC5wbmc=/347x500/%2B9ykyB.png",
+     "format": "webp",
+     "animated": false,
+     "sha256": "4a85fff69ff114eef9fcd5914355331611b8f02b28e4bab378becdb352b73a99",
+     "contentType": "image/webp",
+     "publicVerified": true
+    }
+   ],
+   "livePage": {
+    "url": "https://playbloo.net/game/relicta-in-memoriam",
+    "httpStatus": 200,
+    "passed": true,
+    "checks": {
+     "title": true,
+     "metaDescription": true,
+     "description": true,
+     "how_to_play": true,
+     "controls": true,
+     "tips": true,
+     "features": true,
+     "cover": true,
+     "external": true,
+     "noImageOptimizer": true
+    }
+   },
+   "notes": "保留官方 content warning（mental illness / mature themes / mild violence）；页面无 Genre 之外的操作说明，未编造按键。官方标注 No generative AI was used，如实保留。"
+  },
+  {
+   "index": 9,
+   "batch": "16:03",
+   "inputTitle": "Von Neumann",
+   "sourceUrl": "https://veltes.itch.io/von-neumann",
+   "resolvedUrl": "https://veltes.itch.io/von-neumann",
+   "identity": "veltes/von-neumann",
+   "inputPublishedAt": "2026-04-04 01:19（UTC+8）",
+   "pagePublishedAt": null,
+   "decision": "published",
+   "game": {
+    "id": "5cdcd30a-5aea-40eb-9924-a80936bb6e92",
+    "title": "Von Neumann",
+    "slug": "von-neumann",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-22/von-neumann.webp",
+    "external_url": "https://veltes.itch.io/von-neumann",
+    "developer": "veltes",
+    "release_date": "2026-04-03",
+    "added_at": "2026-10-21T17:46:04+00:00",
+    "updated_at": "2026-10-21T17:46:07.546216+00:00",
+    "development_status": "early-access",
+    "engine": "Godot",
+    "graphics": "2D",
+    "multiplayer": "single-player",
+    "platforms": [
+     "browser"
+    ],
+    "monetization": "free",
+    "short_description": "An incremental game about repairing yourself and printing helper probes to explore the galaxy."
+   },
+   "categories": [
+    "idle",
+    "simulation"
+   ],
+   "developmentStatus": "early-access",
+   "media": [
+    {
+     "kind": "cover",
+     "file": "von-neumann.webp",
+     "object": "covers/2026-10-22/von-neumann.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-22/von-neumann.webp",
+     "bytes": 18014,
+     "sourceUrl": "https://img.itch.zone/aW1nLzMxMTY4NzA4LnBuZw==/original/rncriW.png",
+     "format": "webp",
+     "animated": false,
+     "sha256": "f1b4c76f84a5cf115411c15075d6882afc3294fc30a3068816d7643f87109927",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "von-neumann-1.webp",
+     "object": "screenshots/2026-10-22/von-neumann-1.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/von-neumann-1.webp",
+     "bytes": 4376,
+     "sourceUrl": "https://img.itch.zone/aW1hZ2UvNDQ0NTM4Mi8yODEwMDM2MS5wbmc=/347x500/TSx439.png",
+     "format": "webp",
+     "animated": false,
+     "sha256": "10048e87756f4a8c6f9c0bf127a7286aa56dfe401580f9e5815795614cc93a32",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "von-neumann-2.webp",
+     "object": "screenshots/2026-10-22/von-neumann-2.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/von-neumann-2.webp",
+     "bytes": 3684,
+     "sourceUrl": "https://img.itch.zone/aW1hZ2UvNDQ0NTM4Mi8yODEwMDM2Mi5wbmc=/347x500/AtY6Qo.png",
+     "format": "webp",
+     "animated": false,
+     "sha256": "8c9e78918ca5671b1f9d891d7cda1becf5897a2aa4f4d4faf8faf368ba8c84f2",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "von-neumann-3.webp",
+     "object": "screenshots/2026-10-22/von-neumann-3.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/von-neumann-3.webp",
+     "bytes": 5848,
+     "sourceUrl": "https://img.itch.zone/aW1hZ2UvNDQ0NTM4Mi8yODEwMDM1OS5wbmc=/347x500/ENxnbr.png",
+     "format": "webp",
+     "animated": false,
+     "sha256": "a9d6d1e454f4b03d633536ee385506ea4c16449d125cc2b4cfb97971ac217a55",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "von-neumann-4.webp",
+     "object": "screenshots/2026-10-22/von-neumann-4.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/von-neumann-4.webp",
+     "bytes": 4310,
+     "sourceUrl": "https://img.itch.zone/aW1hZ2UvNDQ0NTM4Mi8yODEwMDM2MC5wbmc=/347x500/ghehPL.png",
+     "format": "webp",
+     "animated": false,
+     "sha256": "73b6e89415a95557e5ee760b076bdeb638b5e2cfa851601177dd9cd6befbe945",
+     "contentType": "image/webp",
+     "publicVerified": true
+    }
+   ],
+   "livePage": {
+    "url": "https://playbloo.net/game/von-neumann",
+    "httpStatus": 200,
+    "passed": true,
+    "checks": {
+     "title": true,
+     "metaDescription": true,
+     "description": true,
+     "how_to_play": true,
+     "controls": true,
+     "tips": true,
+     "features": true,
+     "cover": true,
+     "external": true,
+     "noImageOptimizer": true
+    }
+   },
+   "notes": "官方有 AI Disclosure（Code），如实注明；侧栏 Made with 为 Blender/Godot/Inkscape，运行时取 Godot。"
+  },
+  {
+   "index": 10,
+   "batch": "16:03",
+   "inputTitle": "Tamaweb: Virtual Pet Game",
+   "sourceUrl": "https://samandev.itch.io/tamaweb",
+   "resolvedUrl": "https://samandev.itch.io/tamaweb",
+   "identity": "samandev/tamaweb",
+   "inputPublishedAt": "2024-02-25 03:41（UTC+8）",
+   "pagePublishedAt": null,
+   "decision": "published",
+   "game": {
+    "id": "cc07a7ae-01d3-4473-b51d-5d75da6b459c",
+    "title": "Tamaweb: Virtual Pet Game",
+    "slug": "tamaweb",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-22/tamaweb.webp",
+    "external_url": "https://samandev.itch.io/tamaweb",
+    "developer": "SamanDev",
+    "release_date": "2024-02-24",
+    "added_at": "2026-10-21T17:46:04+00:00",
+    "updated_at": "2026-10-21T17:46:07.546216+00:00",
+    "development_status": "early-access",
+    "engine": "HTML5",
+    "graphics": "2D",
+    "multiplayer": "single-player",
+    "platforms": [
+     "browser"
+    ],
+    "monetization": "free",
+    "short_description": "A modern Tamagotchi-inspired virtual pet you can raise on desktop and phone."
+   },
+   "categories": [
+    "casual",
+    "simulation"
+   ],
+   "developmentStatus": "early-access",
+   "media": [
+    {
+     "kind": "cover",
+     "file": "tamaweb.webp",
+     "object": "covers/2026-10-22/tamaweb.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-22/tamaweb.webp",
+     "bytes": 52978,
+     "sourceUrl": "https://img.itch.zone/aW1nLzE3Nzk3NDg4LnBuZw==/original/KD8tKu.png",
+     "format": "webp",
+     "animated": false,
+     "sha256": "137a96f6f6f01a4015987ef3507196e010201532b4e53ad3468aae20847a1014",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "tamaweb-1.webp",
+     "object": "screenshots/2026-10-22/tamaweb-1.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/tamaweb-1.webp",
+     "bytes": 12400,
+     "sourceUrl": "https://img.itch.zone/aW1hZ2UvMjU0NzYyMi8yOTI2OTUxMS5wbmc=/347x500/s8p0rz.png",
+     "format": "webp",
+     "animated": false,
+     "sha256": "db5ea1d512747ae525570df2f16b7ffa9de68a6483f40f0f0f432fd828a83e93",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "tamaweb-2.webp",
+     "object": "screenshots/2026-10-22/tamaweb-2.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/tamaweb-2.webp",
+     "bytes": 11652,
+     "sourceUrl": "https://img.itch.zone/aW1hZ2UvMjU0NzYyMi8yOTI2OTQ4OC5wbmc=/347x500/by%2F7uL.png",
+     "format": "webp",
+     "animated": false,
+     "sha256": "5ede6f9f0507c4747fa8a6b7a0f0be18272bccb59f4f34e5dc458c3786c8d029",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "tamaweb-3.webp",
+     "object": "screenshots/2026-10-22/tamaweb-3.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/tamaweb-3.webp",
+     "bytes": 11602,
+     "sourceUrl": "https://img.itch.zone/aW1hZ2UvMjU0NzYyMi8yOTI2OTUwMi5wbmc=/347x500/p6GQFJ.png",
+     "format": "webp",
+     "animated": false,
+     "sha256": "eb729185f56b2f70cdb41aea8282624e21be1974273bb58893bb3bd7e571bf33",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "tamaweb-4.webp",
+     "object": "screenshots/2026-10-22/tamaweb-4.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/tamaweb-4.webp",
+     "bytes": 12066,
+     "sourceUrl": "https://img.itch.zone/aW1hZ2UvMjU0NzYyMi8yOTI2OTUxMC5wbmc=/347x500/YxjEiY.png",
+     "format": "webp",
+     "animated": false,
+     "sha256": "8ffc4815df4165fb905b541880d5fd591bcccc8e8889bb2c8613c72a45252a0d",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "tamaweb-5.webp",
+     "object": "screenshots/2026-10-22/tamaweb-5.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/tamaweb-5.webp",
+     "bytes": 15364,
+     "sourceUrl": "https://img.itch.zone/aW1hZ2UvMjU0NzYyMi8yOTI2ODIzNy5wbmc=/347x500/f5S0q3.png",
+     "format": "webp",
+     "animated": false,
+     "sha256": "59828ed15f669cc4aea505eb34d6505d6131e19498a7532d3566f1c10a6d3183",
+     "contentType": "image/webp",
+     "publicVerified": true
+    },
+    {
+     "kind": "screenshot",
+     "file": "tamaweb-6.webp",
+     "object": "screenshots/2026-10-22/tamaweb-6.webp",
+     "url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/2026-10-22/tamaweb-6.webp",
+     "bytes": 25680,
+     "sourceUrl": "https://img.itch.zone/aW1hZ2UvMjU0NzYyMi8yOTI2ODIyOC5wbmc=/347x500/MuuNTp.png",
+     "format": "webp",
+     "animated": false,
+     "sha256": "38c21c7f2c62004de9d036f3edbcb63f35601adf407c89609730ddd1fdf92ae3",
+     "contentType": "image/webp",
+     "publicVerified": true
+    }
+   ],
+   "livePage": {
+    "url": "https://playbloo.net/game/tamaweb",
+    "httpStatus": 200,
+    "passed": true,
+    "checks": {
+     "title": true,
+     "metaDescription": true,
+     "description": true,
+     "how_to_play": true,
+     "controls": true,
+     "tips": true,
+     "features": true,
+     "cover": true,
+     "external": true,
+     "noImageOptimizer": true
+    }
+   },
+   "notes": "官方标注 No generative AI was used，如实保留；页面未给操作说明，只写明去原页面看。"
+  }
+ ],
+ "verification": {
+  "livePages": [
+   {
+    "slug": "yuasama-cardgame",
+    "httpStatus": 200,
+    "passed": true
+   },
+   {
+    "slug": "trauma-lab",
+    "httpStatus": 200,
+    "passed": true
+   },
+   {
+    "slug": "choo-choo-mania",
+    "httpStatus": 200,
+    "passed": true
+   },
+   {
+    "slug": "hyperspin",
+    "httpStatus": 200,
+    "passed": true
+   },
+   {
+    "slug": "project-hail-meowy",
+    "httpStatus": 200,
+    "passed": true
+   },
+   {
+    "slug": "troll-the-king",
+    "httpStatus": 200,
+    "passed": true
+   },
+   {
+    "slug": "castle-builddefend",
+    "httpStatus": 200,
+    "passed": true
+   },
+   {
+    "slug": "relicta-in-memoriam",
+    "httpStatus": 200,
+    "passed": true
+   },
+   {
+    "slug": "von-neumann",
+    "httpStatus": 200,
+    "passed": true
+   },
+   {
+    "slug": "tamaweb",
+    "httpStatus": 200,
+    "passed": true
+   }
+  ],
+  "pagesChecked": 10,
+  "pagesPassed": 10,
+  "mediaObjects": 51,
+  "mediaProblems": 0,
+  "mediaBytes": 8604792,
+  "animatedCovers": [
+   "hyperspin",
+   "project-hail-meowy"
+  ],
+  "animatedScreenshots": [
+   "choo-choo-mania",
+   "project-hail-meowy"
+  ]
+ }
+}
