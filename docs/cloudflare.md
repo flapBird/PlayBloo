@@ -125,11 +125,21 @@ npm run deploy
 
 `open-next.config.ts` 使用 R2 保存页面和数据缓存，并启用 `enableCacheInterception`，缓存命中时跳过 NextServer 页面代码加载。DO Queue 外包一层 30 秒的 `queueCache`，只抑制同一旧缓存版本的重复刷新入队，不缓存 HTML 或失效标签；先等队列确认再记录去重。后台 `revalidatePath`/`revalidateTag` 的有效性仍直接由 Tag Cache 决定，不依赖刷新队列的缓存。
 
-`wrangler.jsonc` 的 `MAX_REVALIDATE_CONCURRENCY=2` 将新刷新任务分散到两个队列分片，每个分片 `NEXT_CACHE_DO_QUEUE_MAX_REVALIDATION=2`（正常刷新最多约 4 个并发）；`NEXT_CACHE_DO_QUEUE_MAX_RETRIES=2` 降低失败重试上限，`NEXT_CACHE_DO_QUEUE_RETRY_INTERVAL_MS=5000` 延长后续指数退避。重试 Alarm 和旧部署已排队任务不受这一并发估算保证。升级后核对线上变量与配置一致；这些设置减少无效重试，不能提高 Free 的 CPU 限额。
+`wrangler.jsonc` 的 `MAX_REVALIDATE_CONCURRENCY=10` 将新刷新任务分散到十个队列分片，每个分片 `NEXT_CACHE_DO_QUEUE_MAX_REVALIDATION=8`（正常刷新最多约 80 个并发）；`NEXT_CACHE_DO_QUEUE_MAX_RETRIES=3` 提高失败重试上限，`NEXT_CACHE_DO_QUEUE_RETRY_INTERVAL_MS=1000` 缩短指数退避，`NEXT_CACHE_DO_QUEUE_REVALIDATION_TIMEOUT_MS=30000` 覆盖慢页面重渲染所需时间（默认 10 秒会让慢页面刷新一律失败）。这些上限原先设为 2/2/2，即实际只有 4 个并发，批量导入时刷新队列会整体排队。重试 Alarm 和旧部署已排队任务不受这一并发估算保证。升级后核对线上变量与配置一致；这些设置减少无效重试，不能提高 Free 的 CPU 限额。
 
 分片 DO Tag Cache 保持 `baseShardSize: 4, regionalCache: false`。当前未配置全局 purge 凭据，因此不增加页面/标签的区域缓存，避免后台下架之后其他地区继续读到旧数据；不需要 purge Durable Object、`CACHE_PURGE_API_TOKEN` 或 `CACHE_PURGE_ZONE_ID`。以后启用这些缓存层必须一起验证全局按需清理。详见 [OpenNext 缓存说明](https://opennext.js.org/cloudflare/caching)。
 
 构建阶段批量预渲染的游戏查询允许等待 30 秒；线上游戏详情的主数据查询最多等 4 秒，数据库错误会使本次生成失败而非写入错误的 404；推荐查询最多等 3 秒，失败不把空目录写入共享数据缓存，页面可暂时不显示推荐。更新记录和关卡存在性查询最多等 2 秒。推荐排名只保留六个最佳候选，不再对整池候选排序；导航链接关闭预加载，减少未点击页面的 RSC 请求。这些措施不能保证冷启动或重新生成一定低于 Free 的 10ms CPU 预算；网络等待和 CPU 执行时间是不同指标。
+
+游戏详情页的预渲染按上线时间倒序取最近 1500 款，而不是按 `hot_score`。在架游戏的 `hot_score` 全为 0，按它排序等于取最旧的一批，最新游戏反而落在按需渲染路径上，而新 URL 只有一次抓取机会，冷渲染超时就会永久停在「已发现但未抓取」。预渲染顺序改动后，新游戏在构建时即写入缓存，首次抓取直接命中。
+
+推荐池与 sitemap 统一走 `src/lib/catalog.ts`：从分类、标签、系列各自一侧读取成员关系，而不是在每行游戏上做三层嵌套 JOIN；上千行宽 JOIN 贴近超时上限，且曾使推荐池间歇性失败，页面渲染不出相关推荐。
+
+## 部署与缓存预热
+
+`npm run deploy` 通过临时创建的 `open-next-cache-populate` Worker（`*.workers.dev`）把构建产物上传到 R2。在 workers.dev 不可达的网络中，这一步会重试 15 次后失败并中止整次部署，线上仍停留在旧版本。此时改用 `node scripts/populate-r2-cache.mjs` 走 Cloudflare REST API 直传：键名与适配器的 `computeCacheKey` 一致，遇到 429 按 `retry-after` 全局退避，写入幂等、可中断续传。R2 REST API 对对象写入有速率限制，全量预热约需一小时。
+
+绕过 OpenNext 的自动转发可直接部署 Worker：`OPEN_NEXT_DEPLOY=true npx wrangler deploy --keep-vars`。
 
 直接通过 Supabase、脚本或其他绕过后台 API 的写入不会自动调用这些失效函数，需在导入流程中另行失效缓存或重新构建发布。缓存优化不修改游戏的上线日期或 sitemap 时间戳。
 
