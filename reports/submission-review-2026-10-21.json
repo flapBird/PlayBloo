@@ -1,0 +1,1298 @@
+{
+  "batchDate": "2026-10-21",
+  "reviewStartedAt": "2026-10-21T12:32:13.555Z",
+  "scope": "Review the initial pending queue; browser games only. Do not change existing games or previously reviewed submissions.",
+  "inputCount": 6,
+  "baseline": {
+    "games": 1049,
+    "publishedGames": 1042,
+    "submissions": 45
+  },
+  "entries": [
+    {
+      "submissionId": "021d0aaf-7532-461e-a328-f1fde66d84b0",
+      "decision": "approve",
+      "reason": "Verified dedicated official browser game, free without a required account. No matching dedicated URL or title found among the baseline published games and drafts; recheck identity before insertion.",
+      "identity": {
+        "type": "official",
+        "canonicalUrl": "https://crokocat.com/game/lettersweep/",
+        "publicEntryUrl": "https://crokocat.com/games/lettersweep/"
+      },
+      "game": {
+        "title": "Letter Sweep",
+        "slug": "letter-sweep",
+        "iframe_url": null,
+        "external_url": "https://crokocat.com/game/lettersweep/",
+        "source_url": "https://crokocat.com/game/lettersweep/",
+        "source_type": "official",
+        "original_game_url": "https://crokocat.com/game/lettersweep",
+        "developer": "croko cat",
+        "publisher": "croko cat",
+        "developer_url": "https://crokocat.com/",
+        "official_website_url": "https://crokocat.com/game/lettersweep/",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free-with-ads",
+        "development_status": "released",
+        "graphics": "3D",
+        "engine": null,
+        "release_date": null,
+        "last_updated_at": null,
+        "steam_url": null,
+        "itch_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": null,
+        "screenshots": [],
+        "short_description": "Find themed words among 3D letter tiles, then drag through each answer to clear increasingly complex grids.",
+        "description": "Letter Sweep is a browser word-search puzzle from croko cat. Match the listed words to straight sequences on the board. Later levels introduce diagonal and reverse reading. Speed determines stars; incorrect selections carry no penalty. Progress stays on your device, and the highest level can appear on a leaderboard. No registration is required.",
+        "how_to_play": "Check the theme and target list. Trace a word from its starting letter to its final letter, then release. Complete the entire list to advance. Begin with horizontal and vertical searches, adding other directions as they unlock.",
+        "controls": "Mouse: hold the first letter, drag to the last and release. Touchscreen: trace the same path with a finger. Escape opens the menu on desktop. Portrait orientation suits phones.",
+        "tips": "Use unusual letters to reduce your search area. Check adjacent letters before tracing a whole word. On advanced boards, examine both reading directions. Accuracy is safe to practice before pursuing faster clears.",
+        "features": "Themed, expanding word grids; eight-direction selection in later levels; speed-based stars; saved local progress; leaderboard; mouse and touch input. Requires WebGL.",
+        "multiplayer": "single-player with online leaderboard",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/submissions-2026-10-21/letter-sweep.webp",
+        "cover_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/submissions-2026-10-21/letter-sweep.webp",
+        "sources": [
+          {
+            "type": "official",
+            "url": "https://crokocat.com/game/lettersweep/",
+            "verifiedAt": "2026-10-21T12:34:09Z"
+          },
+          {
+            "type": "official",
+            "url": "https://crokocat.com/games/lettersweep/",
+            "verifiedAt": "2026-10-21T12:34:09Z"
+          }
+        ],
+        "last_verified_at": "2026-10-21T12:47:12.110Z",
+        "content_verified": true,
+        "is_featured": false,
+        "is_trending": false,
+        "is_published": true
+      },
+      "categories": [
+        "puzzle",
+        "educational",
+        "casual"
+      ],
+      "thumbnailSource": "https://crokocat.com/assets/covers/lettersweep.webp",
+      "thumbnailKind": "official promotional cover artwork; not a gameplay screenshot",
+      "screenshotSources": [],
+      "researchSources": [
+        {
+          "type": "official",
+          "url": "https://crokocat.com/game/lettersweep/",
+          "verifiedAt": "2026-10-21T12:34:09Z",
+          "facts": [
+            "Official page confirms themed word search, increasing directions, speed stars and local progress."
+          ]
+        },
+        {
+          "type": "official",
+          "url": "https://crokocat.com/games/lettersweep/",
+          "verifiedAt": "2026-10-21T12:34:09Z",
+          "facts": [
+            "Dedicated browser entry returned HTTP 200 and includes the matching help overlay and WebGL requirement.",
+            "Static source includes the CrokoSDK interstitial advertising integration; no unknown code was executed and no playtest is claimed."
+          ]
+        }
+      ],
+      "missingDetailFields": [
+        {
+          "field": "engine",
+          "reason": "No named engine confirmed from the checked page and entry."
+        },
+        {
+          "field": "release_date",
+          "reason": "Official page supplies September 2026 only; no precise day verified."
+        },
+        {
+          "field": "last_updated_at",
+          "reason": "Official page supplies September 2026 only; no precise day verified."
+        }
+      ],
+      "missingDetailNotes": {
+        "engine": "No named engine confirmed from the checked page and entry.",
+        "release_date": "Official page supplies September 2026 only; no precise day verified.",
+        "last_updated_at": "Official page supplies September 2026 only; no precise day verified."
+      },
+      "inputUrl": "https://crokocat.com/game/lettersweep/",
+      "inputTitle": "crokocat",
+      "outcome": "approved",
+      "media": [
+        {
+          "type": "cover",
+          "sourceUrl": "https://crokocat.com/assets/covers/lettersweep.webp",
+          "publicUrl": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/submissions-2026-10-21/letter-sweep.webp",
+          "width": 640,
+          "height": 400,
+          "bytes": 52764,
+          "sha256": "0a4bf355c8094148638d46f0aeba28f21d1aabdbbc8442a4f06611fb0013b20e",
+          "verifiedAt": "2026-10-21T12:42:22.286Z"
+        }
+      ],
+      "creationAttemptedAt": "2026-10-21T12:47:12.110Z",
+      "gameId": "db8e23b8-08f5-4415-846c-1a6060b2892b",
+      "draftCreatedAt": "2026-10-21T12:47:13.034485+00:00",
+      "categoryIds": [
+        "23ade369-e46f-4496-884b-ae5c9eb02c16",
+        "c831520e-1105-4417-802c-899986bc5fec",
+        "cc014dd9-1270-463b-974e-a2ebced27ecb"
+      ],
+      "draftVerified": true,
+      "pendingPublicationAt": "2026-10-21T12:47:17.852Z",
+      "publishedAt": "2026-10-21T12:47:17.852+00:00",
+      "submissionResult": {
+        "id": "021d0aaf-7532-461e-a328-f1fde66d84b0",
+        "status": "approved",
+        "approved_game_id": "db8e23b8-08f5-4415-846c-1a6060b2892b",
+        "duplicate_game_id": null,
+        "reviewed_at": "2026-10-21T12:47:18.379+00:00"
+      },
+      "reviewedAt": "2026-10-21T12:47:18.379Z",
+      "verification": {
+        "anonymousPublicFields": true,
+        "draftWasHidden": true,
+        "approvedGameLink": true,
+        "publicationLastmodMatches": true
+      },
+      "publicPageVerification": {
+        "submissionId": "021d0aaf-7532-461e-a328-f1fde66d84b0",
+        "url": "https://playbloo.net/game/letter-sweep",
+        "status": 200,
+        "cacheHeaders": {
+          "Cache-Control": "s-maxage=3600, stale-while-revalidate=31532400",
+          "x-nextjs-cache": "MISS"
+        },
+        "titlePresent": true,
+        "sections": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true
+        },
+        "externalLinkPresent": true,
+        "coverPresent": true,
+        "imageOptimizerAbsent": true,
+        "passed": true,
+        "checkedAt": "2026-10-21T12:59:11.917009+00:00",
+        "shortDescriptionRendered": false,
+        "shortDescriptionVerifiedInDatabase": true,
+        "metaDescriptionMatchedCurrentImplementation": true,
+        "metaDescription": "Letter Sweep is a browser word-search puzzle from croko cat. Match the listed words to straight sequences on the board. Later levels introduce diagonal and…",
+        "metaRule": "Current page uses a normalized, word-trimmed description at 160 characters, not short_description."
+      }
+    },
+    {
+      "submissionId": "1472cb8f-616c-41e3-8de1-cac1b44c8ea6",
+      "decision": "approve",
+      "reason": "Verified dedicated official browser game, free without a required account. No matching dedicated URL or title found among the baseline published games and drafts; recheck identity before insertion.",
+      "identity": {
+        "type": "official",
+        "canonicalUrl": "https://crokocat.com/game/boxclaim/",
+        "publicEntryUrl": "https://crokocat.com/games/boxclaim/"
+      },
+      "game": {
+        "title": "Box Claim",
+        "slug": "box-claim",
+        "iframe_url": null,
+        "external_url": "https://crokocat.com/game/boxclaim/",
+        "source_url": "https://crokocat.com/game/boxclaim/",
+        "source_type": "official",
+        "original_game_url": "https://crokocat.com/game/boxclaim",
+        "developer": "croko cat",
+        "publisher": "croko cat",
+        "developer_url": "https://crokocat.com/",
+        "official_website_url": "https://crokocat.com/game/boxclaim/",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free-with-ads",
+        "development_status": "released",
+        "graphics": "3D",
+        "engine": null,
+        "release_date": null,
+        "last_updated_at": null,
+        "steam_url": null,
+        "itch_url": null,
+        "steam_app_id": null,
+        "itch_project_slug": null,
+        "screenshots": [],
+        "short_description": "Claim squares in a 3D dots-and-boxes game against the computer or a friend sharing your screen.",
+        "description": "Box Claim adapts dots and boxes for the browser. Players alternate placing an edge between neighbouring dots. Completing a square adds it to your score and grants another move. The higher total wins after the board fills. Computer levels increase board size and strategic difficulty; a separate two-player mode shares one device. No registration is required.",
+        "how_to_play": "Choose computer levels or the two-player option. Add one unoccupied edge on your turn. Close a square to score and continue playing. Once no edges remain, compare the claimed boxes.",
+        "controls": "Click or tap the gap between neighbouring dots to place an edge. Mouse hover previews its position. Two human players alternate using the same screen.",
+        "tips": "Keep safe edges available rather than offering the opponent a nearly complete square. Before sacrificing a chain, compare its length with the alternatives. A small immediate gain can expose a larger chain on the next turn.",
+        "features": "Computer progression; local two-player matches; expanding boards; extra turns for completed squares; star ratings; 3D presentation; mouse and touch input. Requires WebGL.",
+        "multiplayer": "single-player or local multiplayer (2 players)",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/submissions-2026-10-21/box-claim.webp",
+        "cover_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/submissions-2026-10-21/box-claim.webp",
+        "sources": [
+          {
+            "type": "official",
+            "url": "https://crokocat.com/game/boxclaim/",
+            "verifiedAt": "2026-10-21T12:34:09Z"
+          },
+          {
+            "type": "official",
+            "url": "https://crokocat.com/games/boxclaim/",
+            "verifiedAt": "2026-10-21T12:34:09Z"
+          }
+        ],
+        "last_verified_at": "2026-10-21T12:47:27.022Z",
+        "content_verified": true,
+        "is_featured": false,
+        "is_trending": false,
+        "is_published": true
+      },
+      "categories": [
+        "board-game",
+        "strategy",
+        "multiplayer"
+      ],
+      "thumbnailSource": "https://crokocat.com/assets/covers/boxclaim.webp",
+      "thumbnailKind": "official promotional cover artwork; not a gameplay screenshot",
+      "screenshotSources": [],
+      "researchSources": [
+        {
+          "type": "official",
+          "url": "https://crokocat.com/game/boxclaim/",
+          "verifiedAt": "2026-10-21T12:34:09Z",
+          "facts": [
+            "Official page confirms dots-and-boxes rules, AI levels and same-device two-player mode."
+          ]
+        },
+        {
+          "type": "official",
+          "url": "https://crokocat.com/games/boxclaim/",
+          "verifiedAt": "2026-10-21T12:34:09Z",
+          "facts": [
+            "Dedicated browser entry returned HTTP 200 and includes matching help and a WebGL requirement.",
+            "Static source includes the CrokoSDK interstitial advertising integration; no unknown code was executed and no playtest is claimed."
+          ]
+        }
+      ],
+      "missingDetailFields": [
+        {
+          "field": "engine",
+          "reason": "No named engine confirmed from the checked page and entry."
+        },
+        {
+          "field": "release_date",
+          "reason": "Official page supplies September 2026 only; no precise day verified."
+        },
+        {
+          "field": "last_updated_at",
+          "reason": "Official page supplies September 2026 only; no precise day verified."
+        }
+      ],
+      "missingDetailNotes": {
+        "engine": "No named engine confirmed from the checked page and entry.",
+        "release_date": "Official page supplies September 2026 only; no precise day verified.",
+        "last_updated_at": "Official page supplies September 2026 only; no precise day verified."
+      },
+      "inputUrl": "https://crokocat.com/game/boxclaim/",
+      "inputTitle": "crokocat",
+      "outcome": "approved",
+      "media": [
+        {
+          "type": "cover",
+          "sourceUrl": "https://crokocat.com/assets/covers/boxclaim.webp",
+          "publicUrl": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/submissions-2026-10-21/box-claim.webp",
+          "width": 640,
+          "height": 400,
+          "bytes": 35594,
+          "sha256": "6f7dd662f7395c5f5de8da073f364dd529bebe87fb850ec10f821bc147614ec2",
+          "verifiedAt": "2026-10-21T12:42:32.023Z"
+        }
+      ],
+      "creationAttemptedAt": "2026-10-21T12:47:27.022Z",
+      "gameId": "d62d67c5-2b32-4d9e-ad77-c3d4036913f6",
+      "draftCreatedAt": "2026-10-21T12:49:09.405679+00:00",
+      "categoryIds": [
+        "31de4bb2-8f1e-45e9-9b33-3a792592a722",
+        "ee7630e6-b63b-4ad8-855e-d6a5d50d598d",
+        "e0271bd5-bec4-4e85-8552-0f67ca0d4ab8"
+      ],
+      "draftVerified": true,
+      "pendingPublicationAt": "2026-10-21T12:49:16.404Z",
+      "publishedAt": "2026-10-21T12:49:16.404+00:00",
+      "submissionResult": {
+        "id": "1472cb8f-616c-41e3-8de1-cac1b44c8ea6",
+        "status": "approved",
+        "approved_game_id": "d62d67c5-2b32-4d9e-ad77-c3d4036913f6",
+        "duplicate_game_id": null,
+        "reviewed_at": "2026-10-21T12:49:17.463+00:00"
+      },
+      "reviewedAt": "2026-10-21T12:49:17.463Z",
+      "verification": {
+        "anonymousPublicFields": true,
+        "draftWasHidden": true,
+        "approvedGameLink": true,
+        "publicationLastmodMatches": true
+      },
+      "publicPageVerification": {
+        "submissionId": "1472cb8f-616c-41e3-8de1-cac1b44c8ea6",
+        "url": "https://playbloo.net/game/box-claim",
+        "status": 200,
+        "cacheHeaders": {
+          "Cache-Control": "s-maxage=3600, stale-while-revalidate=31532400",
+          "x-nextjs-cache": "MISS"
+        },
+        "titlePresent": true,
+        "sections": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true
+        },
+        "externalLinkPresent": true,
+        "coverPresent": true,
+        "imageOptimizerAbsent": true,
+        "passed": true,
+        "checkedAt": "2026-10-21T12:59:10.652026+00:00",
+        "shortDescriptionRendered": false,
+        "shortDescriptionVerifiedInDatabase": true,
+        "metaDescriptionMatchedCurrentImplementation": true,
+        "metaDescription": "Box Claim adapts dots and boxes for the browser. Players alternate placing an edge between neighbouring dots. Completing a square adds it to your score and…",
+        "metaRule": "Current page uses a normalized, word-trimmed description at 160 characters, not short_description."
+      }
+    },
+    {
+      "submissionId": "7b2477bc-2116-41fa-9d20-d2aa440e4ad2",
+      "decision": "approve",
+      "reason": "Verified a dedicated free browser game. Its canonical /deadcentre/ URL has no match in the full baseline or refreshed catalog; the shared Bludle homepage is an author/catalog URL, not a duplicate identity.",
+      "game": {
+        "slug": "dead-centre",
+        "short_description": "Memorize a disappearing target, then mark its centre through eight daily spatial-memory rounds.",
+        "description": "Dead Centre is Bludle’s free browser challenge about remembering one precise position. A target flashes on the board, disappears, and leaves you to place its centre from memory. Eight rounds gradually reduce the target size and viewing time while extending the blank pause. Each placement receives an accuracy score based on distance, normalized to the board size. Completed daily results and statistics are stored in your current browser; clearing its storage removes that record.",
+        "how_to_play": "Start a round, study the target’s centre, and wait until the guessing phase. Place one marker, inspect your accuracy and distance, then continue through all eight rounds.",
+        "controls": "Click or tap to place your marker. On the focused board, use arrow keys to position it and Enter or Space to submit. Hold Shift for smaller arrow-key movements.",
+        "tips": "Remember the target’s position relative to the board edges. Aim at its centre rather than an edge, and use the smaller keyboard movements when fine adjustments help.",
+        "features": "Eight daily rounds; increasing memory difficulty; screen-normalized accuracy; round comparisons; browser-local statistics and streaks; shareable daily results.",
+        "title": "Dead Centre",
+        "external_url": "https://bludle.com/deadcentre/",
+        "source_url": "https://bludle.com/deadcentre/",
+        "source_type": "official",
+        "original_game_url": "https://bludle.com/deadcentre",
+        "developer": "Bludle",
+        "publisher": "Bludle",
+        "developer_url": "https://bludle.com/",
+        "official_website_url": "https://bludle.com/deadcentre/",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": null,
+        "release_date": null,
+        "last_updated_at": null,
+        "graphics": null,
+        "multiplayer": null,
+        "engine": null,
+        "iframe_url": null,
+        "screenshots": [],
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/submissions-2026-10-21/dead-centre.webp",
+        "cover_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/submissions-2026-10-21/dead-centre.webp",
+        "sources": [
+          {
+            "type": "official",
+            "url": "https://bludle.com/deadcentre/",
+            "verifiedAt": "2026-10-21T12:34:42.146380Z"
+          },
+          {
+            "type": "official",
+            "url": "https://bludle.com/deadcentre/deadcentre.js",
+            "verifiedAt": "2026-10-21T12:34:42.146380Z"
+          },
+          {
+            "type": "official",
+            "url": "https://bludle.com/",
+            "verifiedAt": "2026-10-21T12:34:42.146380Z"
+          },
+          {
+            "type": "official",
+            "url": "https://bludle.com/brain-training-games/",
+            "verifiedAt": "2026-10-21T12:34:42.146380Z"
+          }
+        ],
+        "last_verified_at": "2026-10-21T12:49:23.006Z",
+        "content_verified": true,
+        "is_featured": false,
+        "is_trending": false,
+        "is_published": true
+      },
+      "categories": [
+        "puzzle",
+        "casual"
+      ],
+      "thumbnailSource": "https://bludle.com/images/social/deadcentre.jpg",
+      "screenshotSources": [],
+      "researchSources": [
+        {
+          "type": "official",
+          "url": "https://bludle.com/deadcentre/",
+          "verifiedAt": "2026-10-21T12:34:42.146380Z",
+          "facts": [
+            "Official dedicated browser game with eight daily spatial-memory rounds and free access."
+          ]
+        },
+        {
+          "type": "official",
+          "url": "https://bludle.com/deadcentre/deadcentre.js",
+          "verifiedAt": "2026-10-21T12:34:42.146380Z",
+          "facts": [
+            "Static JS confirms pointer placement, arrow keys, Shift fine movement, Enter/Space submission, local-date seeded rounds, and localStorage for completed results/history.",
+            "Public JavaScript was read statically; this review does not claim an interactive playtest."
+          ]
+        },
+        {
+          "type": "official",
+          "url": "https://bludle.com/",
+          "verifiedAt": "2026-10-21T12:34:42.146380Z",
+          "facts": [
+            "Catalog links all three distinct games and identifies them as free browser games without sign-up."
+          ]
+        },
+        {
+          "type": "official",
+          "url": "https://bludle.com/brain-training-games/",
+          "verifiedAt": "2026-10-21T12:34:42.146380Z",
+          "facts": [
+            "Bludle lists these distinct colour and spatial memory games and states its selections are built and maintained by Bludle."
+          ]
+        }
+      ],
+      "missingDetailFields": [
+        {
+          "field": "release_date",
+          "reason": "No reliable exact game release/update date was established."
+        },
+        {
+          "field": "last_updated_at",
+          "reason": "No reliable exact game release/update date was established."
+        },
+        {
+          "field": "development_status",
+          "reason": "No explicit reliable confirmation for this metadata field was established in the inspected sources."
+        },
+        {
+          "field": "graphics",
+          "reason": "No explicit reliable confirmation for this metadata field was established in the inspected sources."
+        },
+        {
+          "field": "multiplayer",
+          "reason": "No explicit reliable confirmation for this metadata field was established in the inspected sources."
+        },
+        {
+          "field": "engine",
+          "reason": "No explicit reliable confirmation for this metadata field was established in the inspected sources."
+        }
+      ],
+      "mediaNotes": "Official social cover downloaded and visually inspected; WebP 640x336. Dead Centre and Afterimage images are official title artwork, not gameplay screenshots. No separate screenshot added.",
+      "identity": "https://bludle.com/deadcentre/",
+      "duplicateCheck": {
+        "snapshot": "/tmp/playbloo-review-2026-10-21-resume.json",
+        "match": null
+      },
+      "inputUrl": "https://bludle.com/deadcentre/",
+      "inputTitle": null,
+      "outcome": "approved",
+      "media": [
+        {
+          "type": "cover",
+          "sourceUrl": "https://bludle.com/images/social/deadcentre.jpg",
+          "publicUrl": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/submissions-2026-10-21/dead-centre.webp",
+          "width": 640,
+          "height": 336,
+          "bytes": 12350,
+          "sha256": "712ad40114233d2f94a0f8efaf0150358a0ba529879a31187e27128d2ab014dd",
+          "verifiedAt": "2026-10-21T12:42:36.692Z"
+        }
+      ],
+      "creationAttemptedAt": "2026-10-21T12:49:23.006Z",
+      "gameId": "05320f7e-ca9a-49a0-942b-afeedc2db803",
+      "draftCreatedAt": "2026-10-21T12:49:23.382676+00:00",
+      "categoryIds": [
+        "23ade369-e46f-4496-884b-ae5c9eb02c16",
+        "cc014dd9-1270-463b-974e-a2ebced27ecb"
+      ],
+      "draftVerified": true,
+      "pendingPublicationAt": "2026-10-21T12:50:03.125Z",
+      "publishedAt": "2026-10-21T12:50:03.125+00:00",
+      "submissionResult": {
+        "id": "7b2477bc-2116-41fa-9d20-d2aa440e4ad2",
+        "status": "approved",
+        "approved_game_id": "05320f7e-ca9a-49a0-942b-afeedc2db803",
+        "duplicate_game_id": null,
+        "reviewed_at": "2026-10-21T12:50:04.628+00:00"
+      },
+      "reviewedAt": "2026-10-21T12:50:04.628Z",
+      "verification": {
+        "anonymousPublicFields": true,
+        "draftWasHidden": true,
+        "approvedGameLink": true,
+        "publicationLastmodMatches": true
+      },
+      "publicPageVerification": {
+        "submissionId": "7b2477bc-2116-41fa-9d20-d2aa440e4ad2",
+        "url": "https://playbloo.net/game/dead-centre",
+        "status": 200,
+        "cacheHeaders": {
+          "Cache-Control": "s-maxage=3600, stale-while-revalidate=31532400",
+          "x-nextjs-cache": "MISS"
+        },
+        "titlePresent": true,
+        "sections": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true
+        },
+        "externalLinkPresent": true,
+        "coverPresent": true,
+        "imageOptimizerAbsent": true,
+        "passed": true,
+        "checkedAt": "2026-10-21T12:59:11.695060+00:00",
+        "shortDescriptionRendered": false,
+        "shortDescriptionVerifiedInDatabase": true,
+        "metaDescriptionMatchedCurrentImplementation": true,
+        "metaDescription": "Dead Centre is Bludle’s free browser challenge about remembering one precise position. A target flashes on the board, disappears, and leaves you to place…",
+        "metaRule": "Current page uses a normalized, word-trimmed description at 160 characters, not short_description."
+      }
+    },
+    {
+      "submissionId": "e36905d2-4f43-480a-9348-811aa24432d5",
+      "decision": "approve",
+      "reason": "Verified a distinct Bludle colour-memory browser game at /afterimage/. Existing slug afterimage belongs to Recks Studio’s separate itch.io work (game 7f1f1745-c3ec-4ec4-9b6d-6aa9b1a471fa), so this entry uses afterimage-bludle and preserves the original game.",
+      "game": {
+        "slug": "afterimage-bludle",
+        "short_description": "Study a colour, let it disappear, and recreate it with RGB controls in five daily memory rounds.",
+        "description": "Afterimage is Bludle’s free browser colour-memory game. You briefly study a shade without seeing its RGB values, then rebuild it after the reference disappears. Five daily rounds reduce the viewing period and introduce stronger visual interruptions. When you submit, the game reveals both colours, channel differences, and accuracy. The reconstruction phase has no timer. Completed results, statistics, and streaks remain in the current browser’s local storage rather than an account; clearing that storage removes them.",
+        "how_to_play": "Start the colour display and memorize its warmth, brightness, and intensity. After it vanishes, adjust the RGB mix, reveal the comparison, and continue until all five colours are complete.",
+        "controls": "Use the red, green, and blue sliders or their numeric inputs. Click or tap the start, reveal, and next-round buttons.",
+        "tips": "Separate brightness from colour intensity while studying. Take time with the untimed mixer, and inspect each channel’s revealed error to see which part of your recollection drifted.",
+        "features": "Five daily colours; decreasing study time; visual interference; untimed RGB reconstruction; channel-by-channel feedback; browser-local statistics and shareable results.",
+        "title": "Afterimage",
+        "external_url": "https://bludle.com/afterimage/",
+        "source_url": "https://bludle.com/afterimage/",
+        "source_type": "official",
+        "original_game_url": "https://bludle.com/afterimage",
+        "developer": "Bludle",
+        "publisher": "Bludle",
+        "developer_url": "https://bludle.com/",
+        "official_website_url": "https://bludle.com/afterimage/",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": null,
+        "release_date": null,
+        "last_updated_at": null,
+        "graphics": null,
+        "multiplayer": null,
+        "engine": null,
+        "iframe_url": null,
+        "screenshots": [],
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/submissions-2026-10-21/afterimage-bludle.webp",
+        "cover_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/submissions-2026-10-21/afterimage-bludle.webp",
+        "sources": [
+          {
+            "type": "official",
+            "url": "https://bludle.com/afterimage/",
+            "verifiedAt": "2026-10-21T12:34:42.146380Z"
+          },
+          {
+            "type": "official",
+            "url": "https://bludle.com/afterimage/afterimage.js",
+            "verifiedAt": "2026-10-21T12:34:42.146380Z"
+          },
+          {
+            "type": "official",
+            "url": "https://bludle.com/",
+            "verifiedAt": "2026-10-21T12:34:42.146380Z"
+          },
+          {
+            "type": "official",
+            "url": "https://bludle.com/brain-training-games/",
+            "verifiedAt": "2026-10-21T12:34:42.146380Z"
+          }
+        ],
+        "last_verified_at": "2026-10-21T12:53:41.815Z",
+        "content_verified": true,
+        "is_featured": false,
+        "is_trending": false,
+        "is_published": true
+      },
+      "categories": [
+        "puzzle",
+        "casual"
+      ],
+      "thumbnailSource": "https://bludle.com/images/social/afterimage.jpg",
+      "screenshotSources": [],
+      "researchSources": [
+        {
+          "type": "official",
+          "url": "https://bludle.com/afterimage/",
+          "verifiedAt": "2026-10-21T12:34:42.146380Z",
+          "facts": [
+            "Official dedicated browser colour-memory game with five daily rounds, RGB reconstruction, untimed mixing, and free access."
+          ]
+        },
+        {
+          "type": "official",
+          "url": "https://bludle.com/afterimage/afterimage.js",
+          "verifiedAt": "2026-10-21T12:34:42.146380Z",
+          "facts": [
+            "Static JS confirms 5-to-3-second study times, RGB sliders/numeric controls, local-date seeded colours, localStorage for completed results/history, and no account persistence.",
+            "Public JavaScript was read statically; this review does not claim an interactive playtest."
+          ]
+        },
+        {
+          "type": "official",
+          "url": "https://bludle.com/",
+          "verifiedAt": "2026-10-21T12:34:42.146380Z",
+          "facts": [
+            "Catalog links all three distinct games and identifies them as free browser games without sign-up."
+          ]
+        },
+        {
+          "type": "official",
+          "url": "https://bludle.com/brain-training-games/",
+          "verifiedAt": "2026-10-21T12:34:42.146380Z",
+          "facts": [
+            "Bludle lists these distinct colour and spatial memory games and states its selections are built and maintained by Bludle."
+          ]
+        }
+      ],
+      "missingDetailFields": [
+        {
+          "field": "release_date",
+          "reason": "No reliable exact game release/update date was established."
+        },
+        {
+          "field": "last_updated_at",
+          "reason": "No reliable exact game release/update date was established."
+        },
+        {
+          "field": "development_status",
+          "reason": "No explicit reliable confirmation for this metadata field was established in the inspected sources."
+        },
+        {
+          "field": "graphics",
+          "reason": "No explicit reliable confirmation for this metadata field was established in the inspected sources."
+        },
+        {
+          "field": "multiplayer",
+          "reason": "No explicit reliable confirmation for this metadata field was established in the inspected sources."
+        },
+        {
+          "field": "engine",
+          "reason": "No explicit reliable confirmation for this metadata field was established in the inspected sources."
+        }
+      ],
+      "mediaNotes": "Official social cover downloaded and visually inspected; WebP 640x336. Dead Centre and Afterimage images are official title artwork, not gameplay screenshots. No separate screenshot added.",
+      "identity": "https://bludle.com/afterimage/",
+      "duplicateCheck": {
+        "snapshot": "/tmp/playbloo-review-2026-10-21-resume.json",
+        "match": null
+      },
+      "inputUrl": "https://bludle.com/afterimage/",
+      "inputTitle": null,
+      "outcome": "approved",
+      "media": [
+        {
+          "type": "cover",
+          "sourceUrl": "https://bludle.com/images/social/afterimage.jpg",
+          "publicUrl": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/submissions-2026-10-21/afterimage-bludle.webp",
+          "width": 640,
+          "height": 336,
+          "bytes": 12978,
+          "sha256": "3a007db68bca871533b364b56df002d4c4a27a78d379f9f3bad19ec5a2bf3305",
+          "verifiedAt": "2026-10-21T12:42:39.624Z"
+        }
+      ],
+      "creationAttemptedAt": "2026-10-21T12:53:41.815Z",
+      "gameId": "14b74869-750f-4dd2-b840-f6b0c121fe07",
+      "draftCreatedAt": "2026-10-21T12:53:42.238085+00:00",
+      "categoryIds": [
+        "23ade369-e46f-4496-884b-ae5c9eb02c16",
+        "cc014dd9-1270-463b-974e-a2ebced27ecb"
+      ],
+      "draftVerified": true,
+      "pendingPublicationAt": "2026-10-21T12:54:53.980Z",
+      "publishedAt": "2026-10-21T12:54:53.98+00:00",
+      "submissionResult": {
+        "id": "e36905d2-4f43-480a-9348-811aa24432d5",
+        "status": "approved",
+        "approved_game_id": "14b74869-750f-4dd2-b840-f6b0c121fe07",
+        "duplicate_game_id": null,
+        "reviewed_at": "2026-10-21T12:57:35.172+00:00"
+      },
+      "reviewedAt": "2026-10-21T12:57:35.172Z",
+      "verification": {
+        "anonymousPublicFields": true,
+        "draftWasHidden": true,
+        "approvedGameLink": true,
+        "publicationLastmodMatches": true
+      },
+      "publicPageVerification": {
+        "submissionId": "e36905d2-4f43-480a-9348-811aa24432d5",
+        "url": "https://playbloo.net/game/afterimage-bludle",
+        "status": 200,
+        "cacheHeaders": {
+          "Cache-Control": "s-maxage=3600, stale-while-revalidate=31532400",
+          "x-nextjs-cache": "MISS"
+        },
+        "titlePresent": true,
+        "sections": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true
+        },
+        "externalLinkPresent": true,
+        "coverPresent": true,
+        "imageOptimizerAbsent": true,
+        "passed": true,
+        "checkedAt": "2026-10-21T12:59:10.946470+00:00",
+        "shortDescriptionRendered": false,
+        "shortDescriptionVerifiedInDatabase": true,
+        "metaDescriptionMatchedCurrentImplementation": true,
+        "metaDescription": "Afterimage is Bludle’s free browser colour-memory game. You briefly study a shade without seeing its RGB values, then rebuild it after the reference…",
+        "metaRule": "Current page uses a normalized, word-trimmed description at 160 characters, not short_description."
+      }
+    },
+    {
+      "submissionId": "eddebdc3-c430-4912-ba14-eb96d847dd9b",
+      "decision": "approve",
+      "reason": "Verified the official title is Word Bridge (submission URL /wordbridge/). Its canonical game URL is not present in the full baseline or refreshed catalog; existing Werdle is a different game.",
+      "game": {
+        "slug": "word-bridge",
+        "short_description": "Find one linking word that completes two compound words or phrases in three daily attempts.",
+        "description": "Word Bridge is a free daily browser word puzzle from Bludle. Two outer words need the same missing link: it follows the first and precedes the second to make familiar compounds or phrases. You have three attempts, and the first incorrect answer reveals a clue and the answer length. The puzzle changes with the date in Europe/London. Your attempts and completion are saved in the current browser, so clearing local storage loses that progress. No download or sign-up is required.",
+        "how_to_play": "Read both outer words. Type one word that makes valid connections in both directions and submit it. Use the clue after a miss, solve within three attempts, then share the result.",
+        "controls": "Type in the answer field and press Enter or click or tap Build bridge. Use Share result after finishing.",
+        "tips": "Test a candidate against both outer words before submitting. Consider common phrases as well as single-word compounds, and use the clue’s letter count to narrow the remaining guesses.",
+        "features": "One daily linking-word puzzle; three attempts; clue after the first miss; live answer preview; completed connection reveal; local attempt saving; shareable results.",
+        "title": "Word Bridge",
+        "external_url": "https://bludle.com/wordbridge/",
+        "source_url": "https://bludle.com/wordbridge/",
+        "source_type": "official",
+        "original_game_url": "https://bludle.com/wordbridge",
+        "developer": "Bludle",
+        "publisher": "Bludle",
+        "developer_url": "https://bludle.com/",
+        "official_website_url": "https://bludle.com/wordbridge/",
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": null,
+        "release_date": null,
+        "last_updated_at": null,
+        "graphics": null,
+        "multiplayer": null,
+        "engine": null,
+        "iframe_url": null,
+        "screenshots": [],
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/submissions-2026-10-21/word-bridge.webp",
+        "cover_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/submissions-2026-10-21/word-bridge.webp",
+        "sources": [
+          {
+            "type": "official",
+            "url": "https://bludle.com/wordbridge/",
+            "verifiedAt": "2026-10-21T12:34:42.146380Z"
+          },
+          {
+            "type": "official",
+            "url": "https://bludle.com/wordbridge/wordbridge.js",
+            "verifiedAt": "2026-10-21T12:34:42.146380Z"
+          },
+          {
+            "type": "official",
+            "url": "https://bludle.com/",
+            "verifiedAt": "2026-10-21T12:34:42.146380Z"
+          },
+          {
+            "type": "official",
+            "url": "https://bludle.com/daily-word-games/",
+            "verifiedAt": "2026-10-21T12:34:42.146380Z"
+          }
+        ],
+        "last_verified_at": "2026-10-21T12:57:42.624Z",
+        "content_verified": true,
+        "is_featured": false,
+        "is_trending": false,
+        "is_published": true
+      },
+      "categories": [
+        "puzzle",
+        "casual"
+      ],
+      "thumbnailSource": "https://bludle.com/images/social/wordbridge.jpg",
+      "screenshotSources": [],
+      "researchSources": [
+        {
+          "type": "official",
+          "url": "https://bludle.com/wordbridge/",
+          "verifiedAt": "2026-10-21T12:34:42.146380Z",
+          "facts": [
+            "Official dedicated browser word game: one daily linking-word puzzle, three attempts, clue after first miss, and free no-download access."
+          ]
+        },
+        {
+          "type": "official",
+          "url": "https://bludle.com/wordbridge/wordbridge.js",
+          "verifiedAt": "2026-10-21T12:34:42.146380Z",
+          "facts": [
+            "Static JS confirms London-date puzzle selection, browser-local attempt/completion saving, answer preview, form submission, and result sharing.",
+            "Public JavaScript was read statically; this review does not claim an interactive playtest."
+          ]
+        },
+        {
+          "type": "official",
+          "url": "https://bludle.com/",
+          "verifiedAt": "2026-10-21T12:34:42.146380Z",
+          "facts": [
+            "Catalog links all three distinct games and identifies them as free browser games without sign-up."
+          ]
+        },
+        {
+          "type": "official",
+          "url": "https://bludle.com/daily-word-games/",
+          "verifiedAt": "2026-10-21T12:34:42.146380Z",
+          "facts": [
+            "Bludle states that the listed games are built and maintained by Bludle."
+          ]
+        }
+      ],
+      "missingDetailFields": [
+        {
+          "field": "release_date",
+          "reason": "No reliable exact game release/update date was established."
+        },
+        {
+          "field": "last_updated_at",
+          "reason": "No reliable exact game release/update date was established."
+        },
+        {
+          "field": "development_status",
+          "reason": "No explicit reliable confirmation for this metadata field was established in the inspected sources."
+        },
+        {
+          "field": "graphics",
+          "reason": "No explicit reliable confirmation for this metadata field was established in the inspected sources."
+        },
+        {
+          "field": "multiplayer",
+          "reason": "No explicit reliable confirmation for this metadata field was established in the inspected sources."
+        },
+        {
+          "field": "engine",
+          "reason": "No explicit reliable confirmation for this metadata field was established in the inspected sources."
+        }
+      ],
+      "mediaNotes": "Official social cover downloaded and visually inspected; WebP 640x336. Dead Centre and Afterimage images are official title artwork, not gameplay screenshots. No separate screenshot added.",
+      "identity": "https://bludle.com/wordbridge/",
+      "duplicateCheck": {
+        "snapshot": "/tmp/playbloo-review-2026-10-21-resume.json",
+        "match": null
+      },
+      "inputUrl": "https://bludle.com/wordbridge/",
+      "inputTitle": null,
+      "outcome": "approved",
+      "media": [
+        {
+          "type": "cover",
+          "sourceUrl": "https://bludle.com/images/social/wordbridge.jpg",
+          "publicUrl": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/submissions-2026-10-21/word-bridge.webp",
+          "width": 640,
+          "height": 336,
+          "bytes": 11832,
+          "sha256": "892942397d804143560f63452e00a2040e6e0e291d3705fe67b97145a3b69bb1",
+          "verifiedAt": "2026-10-21T12:42:44.265Z"
+        }
+      ],
+      "creationAttemptedAt": "2026-10-21T12:57:42.624Z",
+      "gameId": "26d71327-cdd3-4574-9246-8b1b4e9d652a",
+      "draftCreatedAt": "2026-10-21T12:57:43.003815+00:00",
+      "categoryIds": [
+        "23ade369-e46f-4496-884b-ae5c9eb02c16",
+        "cc014dd9-1270-463b-974e-a2ebced27ecb"
+      ],
+      "draftVerified": true,
+      "pendingPublicationAt": "2026-10-21T12:57:46.511Z",
+      "publishedAt": "2026-10-21T12:57:46.511+00:00",
+      "submissionResult": {
+        "id": "eddebdc3-c430-4912-ba14-eb96d847dd9b",
+        "status": "approved",
+        "approved_game_id": "26d71327-cdd3-4574-9246-8b1b4e9d652a",
+        "duplicate_game_id": null,
+        "reviewed_at": "2026-10-21T12:57:47.529+00:00"
+      },
+      "reviewedAt": "2026-10-21T12:57:47.529Z",
+      "verification": {
+        "anonymousPublicFields": true,
+        "draftWasHidden": true,
+        "approvedGameLink": true,
+        "publicationLastmodMatches": true
+      },
+      "publicPageVerification": {
+        "submissionId": "eddebdc3-c430-4912-ba14-eb96d847dd9b",
+        "url": "https://playbloo.net/game/word-bridge",
+        "status": 200,
+        "cacheHeaders": {
+          "Cache-Control": "s-maxage=3600, stale-while-revalidate=31532400",
+          "x-nextjs-cache": "MISS"
+        },
+        "titlePresent": true,
+        "sections": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true
+        },
+        "externalLinkPresent": true,
+        "coverPresent": true,
+        "imageOptimizerAbsent": true,
+        "passed": true,
+        "checkedAt": "2026-10-21T12:59:11.344243+00:00",
+        "shortDescriptionRendered": false,
+        "shortDescriptionVerifiedInDatabase": true,
+        "metaDescriptionMatchedCurrentImplementation": true,
+        "metaDescription": "Word Bridge is a free daily browser word puzzle from Bludle. Two outer words need the same missing link: it follows the first and precedes the second to…",
+        "metaRule": "Current page uses a normalized, word-trimmed description at 160 characters, not short_description."
+      }
+    },
+    {
+      "submissionId": "953feb03-f979-4f28-8471-e04c42d83ccc",
+      "decision": "approve",
+      "reason": "Verified a dedicated free browser geography game at its official canonical single-game domain. The refreshed full catalog contains no match for alienstrike.app or this title; unrelated same-name Steam and Ben 10 games were excluded from the research.",
+      "game": {
+        "title": "Alien Strike",
+        "slug": "alien-strike",
+        "short_description": "Find five target countries on a 3D Earth, aim orbital strikes, and chase a daily score of up to 5,000 points.",
+        "description": "Alien Strike is a free daily geography arcade game set around an interactive 3D Earth. Each target gives you a country to locate: rotate the globe, choose an impact point, then fire an orbital strike. Landing within the target’s border earns 1,000 points, while misses score less as their distance from its territory increases, reaching zero at 3,500 km. You have five attacks and one SAVE that replaces a difficult target without spending an attack. After each shot, red and gold markers show your impact and the nearest target territory. A daily attempt resets at midnight in America/New_York. Results can be shared, and worldwide daily rankings appear once at least 20 players have completed that day’s challenge. A WebGL-capable browser is required.",
+        "how_to_play": "Open the daily mission and read the target country. Rotate and zoom the Earth to find it, select a location on land or sea, and press FIRE. Review the impact, nearest territory and distance before continuing. Complete all five attacks, using SAVE once if you want a replacement target, then inspect and share your total.",
+        "controls": "Drag with a mouse or finger to rotate Earth. Scroll the mouse wheel, pinch with two fingers, or use + and − to zoom. Click or tap the globe to aim, then select FIRE to commit the shot. SAVE COUNTRY replaces one target once per daily round.",
+        "tips": "Zoom in before committing a shot near a small country or coastline. Aim inside the target’s territory rather than at a nearby capital or landmark: any point within its border earns full points. Use the nearest-territory marker to learn from misses, and reserve SAVE for a country you cannot confidently locate.",
+        "features": "Five daily country targets; 3D Earth navigation; distance-based scoring up to 5,000 points; one target replacement; visual impact and nearest-territory feedback; shareable results; worldwide daily rankings after 20 completions; midnight Eastern daily reset.",
+        "external_url": "https://alienstrike.app/",
+        "source_url": "https://alienstrike.app/",
+        "source_type": "official",
+        "original_game_url": "https://alienstrike.app",
+        "official_website_url": "https://alienstrike.app/",
+        "developer": null,
+        "publisher": null,
+        "developer_url": null,
+        "platforms": [
+          "browser"
+        ],
+        "monetization": "free",
+        "development_status": null,
+        "release_date": null,
+        "last_updated_at": null,
+        "graphics": "3D",
+        "multiplayer": "Single-player",
+        "engine": "Three.js",
+        "iframe_url": null,
+        "screenshots": [],
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/submissions-2026-10-21/alien-strike.webp",
+        "cover_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/submissions-2026-10-21/alien-strike.webp",
+        "sources": [
+          {
+            "type": "official",
+            "url": "https://alienstrike.app/",
+            "verifiedAt": "2026-10-21T12:40:41.022923Z"
+          },
+          {
+            "type": "official",
+            "url": "https://alienstrike.app/game.js?v=229f111b8f54cefb52c7",
+            "verifiedAt": "2026-10-21T12:40:41.022923Z"
+          },
+          {
+            "type": "official",
+            "url": "https://alienstrike.app/assets/earth-day.webp?v=02055ffa08f2a84fb588",
+            "verifiedAt": "2026-10-21T12:40:41.022923Z"
+          }
+        ],
+        "last_verified_at": "2026-10-21T12:57:51.408Z",
+        "content_verified": true,
+        "is_featured": false,
+        "is_trending": false,
+        "is_published": true
+      },
+      "categories": [
+        "educational",
+        "trivia",
+        "arcade"
+      ],
+      "thumbnailSource": "https://alienstrike.app/assets/earth-day.webp?v=02055ffa08f2a84fb588",
+      "screenshotSources": [],
+      "researchSources": [
+        {
+          "type": "official",
+          "url": "https://alienstrike.app/",
+          "verifiedAt": "2026-10-21T12:40:41.022923Z",
+          "facts": [
+            "Official canonical page and JSON-LD identify Alien Strike as a free single-player geography arcade game for WebGL-capable web browsers; the browser interface includes a playable 3D Earth, five daily targets, FIRE, SAVE COUNTRY, help, zoom, results and daily leaderboard controls.",
+            "The official page advertises five attacks and up to 5,000 points; its Open Graph image is the Earth map asset used as this batch’s official cover.",
+            "HTML and the current public JavaScript were read statically. No interactive playtest or submitted notes were used as proof of gameplay."
+          ]
+        },
+        {
+          "type": "official",
+          "url": "https://alienstrike.app/game.js?v=229f111b8f54cefb52c7",
+          "verifiedAt": "2026-10-21T12:40:41.022923Z",
+          "facts": [
+            "The embedded field manual confirms drag to rotate, pinch or +/− to zoom, tap land/ocean to aim, and FIRE to submit an orbital strike; pointer handlers additionally confirm mouse-wheel zoom.",
+            "A hit inside the target border earns 1,000 points. Misses lose points with distance and reach zero at 3,500 km. SAVE replaces one country without reducing the five attacks; it can be used once and targets do not repeat within the round.",
+            "The result displays the red impact marker, nearest gold territory marker and distance; completed daily attempts reset at 00:00 America/New_York.",
+            "Built-in share/copy flow and a worldwide daily leaderboard exist; the current client intentionally withholds rankings until at least 20 players have completed that daily challenge.",
+            "Bundled rendering code includes Three.js and a 3D globe. No official developer/publisher credit, release date or separate game-update date was found."
+          ]
+        },
+        {
+          "type": "official",
+          "url": "https://alienstrike.app/assets/earth-day.webp?v=02055ffa08f2a84fb588",
+          "verifiedAt": "2026-10-21T12:40:41.022923Z",
+          "facts": [
+            "The page designates this as og:image with alt text Earth in Alien Strike. It is an Earth texture/map, not an interactive gameplay screenshot.",
+            "Full source file was decoded and visually inspected; 4096×2048 WebP compressed without enlargement to 640×320 WebP in /tmp/playbloo-alien-strike.webp."
+          ]
+        }
+      ],
+      "missingDetailFields": [
+        {
+          "field": "developer",
+          "reason": "No explicit reliable confirmation for this metadata field was established in the inspected sources."
+        },
+        {
+          "field": "publisher",
+          "reason": "No explicit reliable confirmation for this metadata field was established in the inspected sources."
+        },
+        {
+          "field": "developer_url",
+          "reason": "No explicit reliable confirmation for this metadata field was established in the inspected sources."
+        },
+        {
+          "field": "release_date",
+          "reason": "No reliable exact game release/update date was established."
+        },
+        {
+          "field": "last_updated_at",
+          "reason": "No reliable exact game release/update date was established."
+        },
+        {
+          "field": "development_status",
+          "reason": "No explicit reliable confirmation for this metadata field was established in the inspected sources."
+        }
+      ],
+      "identity": "https://alienstrike.app/",
+      "duplicateCheck": {
+        "snapshot": "/tmp/playbloo-review-2026-10-21-resume.json",
+        "match": null
+      },
+      "mediaNotes": "Official og:image is a flat Earth texture/map, visually inspected and compressed to 640×320 WebP; it is not a gameplay screenshot. No separate screenshot is supplied.",
+      "reviewNotes": "Submission developer_name funifygame was not independently confirmed by the official page or public script and is left unverified. Rankings are deliberately unavailable below 20 daily completions; the fetched bootstrap had fewer than 20. Anonymous HTML loaded without sign-in and provided a generated browser identity, but no game session was started.",
+      "inputUrl": "https://alienstrike.app/",
+      "inputTitle": "funifygame",
+      "outcome": "approved",
+      "media": [
+        {
+          "type": "cover",
+          "sourceUrl": "https://alienstrike.app/assets/earth-day.webp?v=02055ffa08f2a84fb588",
+          "publicUrl": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/submissions-2026-10-21/alien-strike.webp",
+          "width": 640,
+          "height": 320,
+          "bytes": 22504,
+          "sha256": "a51cbfaf10b8fdea2ff570a083bccba71465b104dc5acded2e6767b2a690a99c",
+          "verifiedAt": "2026-10-21T12:42:49.487Z"
+        }
+      ],
+      "creationAttemptedAt": "2026-10-21T12:57:51.408Z",
+      "gameId": "d64f937a-1b97-4df8-8eac-df9849777bb8",
+      "draftCreatedAt": "2026-10-21T12:57:51.780898+00:00",
+      "categoryIds": [
+        "c831520e-1105-4417-802c-899986bc5fec",
+        "c47f0e1a-2ddc-4573-b54d-b9d4ac7206ef",
+        "95a84517-8f9e-479a-ac3c-0e5a8c8d5d79"
+      ],
+      "draftVerified": true,
+      "pendingPublicationAt": "2026-10-21T12:57:57.110Z",
+      "publishedAt": "2026-10-21T12:57:57.11+00:00",
+      "submissionResult": {
+        "id": "953feb03-f979-4f28-8471-e04c42d83ccc",
+        "status": "approved",
+        "approved_game_id": "d64f937a-1b97-4df8-8eac-df9849777bb8",
+        "duplicate_game_id": null,
+        "reviewed_at": "2026-10-21T12:57:57.619+00:00"
+      },
+      "reviewedAt": "2026-10-21T12:57:57.619Z",
+      "verification": {
+        "anonymousPublicFields": true,
+        "draftWasHidden": true,
+        "approvedGameLink": true,
+        "publicationLastmodMatches": true
+      },
+      "publicPageVerification": {
+        "submissionId": "953feb03-f979-4f28-8471-e04c42d83ccc",
+        "url": "https://playbloo.net/game/alien-strike",
+        "status": 200,
+        "cacheHeaders": {
+          "Cache-Control": "s-maxage=3600, stale-while-revalidate=31532400",
+          "x-nextjs-cache": "MISS"
+        },
+        "titlePresent": true,
+        "sections": {
+          "description": true,
+          "how_to_play": true,
+          "controls": true,
+          "tips": true,
+          "features": true
+        },
+        "externalLinkPresent": true,
+        "coverPresent": true,
+        "imageOptimizerAbsent": true,
+        "passed": true,
+        "checkedAt": "2026-10-21T12:59:11.881225+00:00",
+        "shortDescriptionRendered": false,
+        "shortDescriptionVerifiedInDatabase": true,
+        "metaDescriptionMatchedCurrentImplementation": true,
+        "metaDescription": "Alien Strike is a free daily geography arcade game set around an interactive 3D Earth. Each target gives you a country to locate: rotate the globe, choose…",
+        "metaRule": "Current page uses a normalized, word-trimmed description at 160 characters, not short_description."
+      }
+    }
+  ],
+  "verification": {
+    "llmsTxt": {
+      "checked": true,
+      "changedByThisTask": false,
+      "reason": "Existing browser catalog, external play and route information remains consistent. Preexisting Guides edits are preserved."
+    },
+    "media": {
+      "count": 6,
+      "bytes": 148022,
+      "allUploadedPubliclyReadAndHashVerified": true
+    },
+    "database": {
+      "verifiedAt": "2026-10-21T12:59:20.136Z",
+      "oldGamesChecked": 1049,
+      "oldNonCounterFieldsAndDatesUnchanged": true,
+      "oldCategoryTagSeriesLinksUnchanged": true,
+      "previouslyReviewedSubmissionsUnchanged": true,
+      "statuses": {
+        "approved": 36,
+        "rejected": 9
+      }
+    },
+    "generatedSitemap": {
+      "method": "Execute current sitemap.ts via TypeScript transpilation against live database; editorial Guides generator stubbed to [] to isolate catalog validation. No application build or deployment.",
+      "newGames": [
+        {
+          "slug": "letter-sweep",
+          "included": true,
+          "lastmodMatches": true
+        },
+        {
+          "slug": "box-claim",
+          "included": true,
+          "lastmodMatches": true
+        },
+        {
+          "slug": "dead-centre",
+          "included": true,
+          "lastmodMatches": true
+        },
+        {
+          "slug": "afterimage-bludle",
+          "included": true,
+          "lastmodMatches": true
+        },
+        {
+          "slug": "word-bridge",
+          "included": true,
+          "lastmodMatches": true
+        },
+        {
+          "slug": "alien-strike",
+          "included": true,
+          "lastmodMatches": true
+        }
+      ],
+      "oldPublishedChecked": 1042,
+      "oldDatesChanged": 0,
+      "draftsIncluded": 0,
+      "publishedGameUrls": 1048,
+      "verifiedAt": "2026-10-21T13:00:34.730Z"
+    },
+    "publicDetails": {
+      "checked": 6,
+      "passed": 6,
+      "allFiveSections": true,
+      "shortDescriptionsVerifiedInDatabase": true,
+      "metaDescriptionMatchedCurrentImplementation": true,
+      "allExternalLinksAndCovers": true,
+      "imageOptimizerAbsent": true
+    },
+    "productionSitemap": {
+      "name": "sitemap",
+      "url": "https://playbloo.net/sitemap.xml",
+      "requestCacheControl": "no-cache",
+      "status": 200,
+      "cacheHeaders": {
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "x-opennext-cache": "HIT"
+      },
+      "newUrlsVisible": 0,
+      "checkedAt": "2026-10-21T13:02:49.363449+00:00",
+      "newIncluded": 0,
+      "newPublicationDatesMatched": 0,
+      "oldPublishedXmlDatesChecked": 1042,
+      "oldDatesChanged": 0,
+      "observedAt": "2026-10-21T13:03:02.285Z",
+      "limitation": "Production XML still reflects cache; direct service-role writes do not trigger Next revalidation. No authenticated invalidation, deployment or timestamp refresh was performed."
+    },
+    "home": {
+      "name": "home",
+      "url": "https://playbloo.net/",
+      "requestCacheControl": "no-cache",
+      "status": 200,
+      "cacheHeaders": {
+        "Cache-Control": "s-maxage=1, stale-while-revalidate=2592000",
+        "x-opennext-cache": "STALE"
+      },
+      "newUrlsVisible": 0,
+      "checkedAt": "2026-10-21T13:02:31.270849+00:00"
+    },
+    "tests": {
+      "command": "node --test tests/sitemap/pagination.test.mjs tests/game-cache.test.mjs",
+      "passed": 7,
+      "failed": 0
+    },
+    "applicationBuild": {
+      "performed": false,
+      "reason": "This batch changed only catalog data, public storage and reports. Validation executed the actual current sitemap catalog generator and existing relevant regression tests; no frontend implementation was modified."
+    },
+    "scope": {
+      "gamesUnpublishedOrDeleted": 0,
+      "existingDraftsRepublished": 0,
+      "noCodeDeploymentOrPush": true,
+      "existingStagedAndUnstagedWorkPreserved": true,
+      "reviewedBy": "null; no authenticated administrator identity was available for service-role editorial review",
+      "noFullGameplayPlaytestClaimed": true
+    }
+  },
+  "appliedAt": "2026-10-21T12:57:58.575Z",
+  "summary": {
+    "approved": 6,
+    "games": 1055,
+    "publishedGames": 1048
+  }
+}
