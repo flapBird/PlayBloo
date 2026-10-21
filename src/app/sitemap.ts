@@ -1,40 +1,21 @@
 import { MetadataRoute } from "next";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { getGuidesSitemap } from "@/lib/guides";
+import { loadCatalog, type Membership } from "@/lib/catalog";
 import { MIN_INDEXABLE_CATEGORY_GAMES, MIN_INDEXABLE_SERIES_GAMES, MIN_INDEXABLE_TAG_GAMES, SITE_URL } from "@/lib/constants";
 
 export const revalidate = 3600;
 
-async function getSitemapGames(supabase: ReturnType<typeof createAdminClient>) {
-  const pageSize = 500;
-  const loadPage = (offset: number) => supabase
-    .from("games")
-    .select("slug, updated_at, categories:game_categories(category_id), tags:game_tags(tag_id), series:game_series(series_id)")
-    .eq("is_published", true)
-    .order("id")
-    .range(offset, offset + pageSize - 1);
-
-  const first = await loadPage(0);
-  if (first.error) throw new Error(`Could not load sitemap games: ${first.error.message}`);
-  const data = [...(first.data || [])];
-  let page = first.data || [];
-  while (page.length === pageSize) {
-    const next = await loadPage(data.length);
-    if (next.error) throw new Error(`Could not load sitemap games: ${next.error.message}`);
-    page = next.data || [];
-    data.push(...page);
-  }
-  return { data };
-}
-
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const supabase = createAdminClient();
 
-  const [games, categories, tags, series, levels] = await Promise.all([
-    getSitemapGames(supabase),
-    supabase.from("categories").select("id, slug, updated_at"),
-    supabase.from("tags").select("id, slug, updated_at"),
-    supabase.from("series").select("id, slug, updated_at"),
+  // The catalogue is read through the shared helper. It used to be one wide
+  // `games` query with three nested joins, paged 500 rows at a time, which
+  // made every sitemap regeneration take seconds and sometimes time out
+  // entirely. Reading the taxonomy from its own side keeps the same counts
+  // and timestamps while cutting the read to a fraction of the cost.
+  const [catalog, levels] = await Promise.all([
+    loadCatalog(),
     supabase
       .from("game_levels")
       .select("slug, updated_at, games:games!inner(slug)")
@@ -48,31 +29,35 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE_URL}/submit-game`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.5 },
   ];
 
-  const gamePages: MetadataRoute.Sitemap = (games.data || []).map((g) => ({
-    url: `${SITE_URL}/game/${g.slug}`,
-    lastModified: new Date(g.updated_at),
+  const gamePages: MetadataRoute.Sitemap = catalog.games.map((game) => ({
+    url: `${SITE_URL}/game/${game.slug}`,
+    lastModified: new Date(game.updated_at),
     changeFrequency: "weekly" as const,
     priority: 0.9,
   }));
 
-  const categoryCounts = new Map<string, number>();
+  // Each category inherits the most recent change among the games it holds,
+  // so a category page is re-crawled when one of its games is touched.
+  const gameUpdatedAt = new Map(catalog.games.map((game) => [game.id, new Date(game.updated_at)]));
   const categoryLastModified = new Map<string, Date>();
-  for (const game of games.data || []) {
-    for (const membership of game.categories || []) {
-      categoryCounts.set(
-        membership.category_id,
-        (categoryCounts.get(membership.category_id) || 0) + 1,
-      );
-
-      const gameUpdatedAt = new Date(game.updated_at);
-      const previousUpdatedAt = categoryLastModified.get(membership.category_id);
-      if (!previousUpdatedAt || gameUpdatedAt > previousUpdatedAt) {
-        categoryLastModified.set(membership.category_id, gameUpdatedAt);
-      }
+  for (const membership of catalog.categoryMembership) {
+    let latest: Date | undefined;
+    for (const gameId of membership.gameIds) {
+      const updatedAt = gameUpdatedAt.get(gameId);
+      if (!updatedAt) continue;
+      if (!latest || updatedAt > latest) latest = updatedAt;
     }
+    if (latest) categoryLastModified.set(membership.id, latest);
   }
 
-  const categoryPages: MetadataRoute.Sitemap = (categories.data || [])
+  const countById = (memberships: Membership[]) =>
+    new Map(memberships.map((membership) => [membership.id, membership.gameIds.length]));
+
+  const categoryCounts = countById(catalog.categoryMembership);
+  const tagCounts = countById(catalog.tagMembership);
+  const seriesCounts = countById(catalog.seriesMembership);
+
+  const categoryPages: MetadataRoute.Sitemap = catalog.categories
     .filter((category) => (categoryCounts.get(category.id) || 0) >= MIN_INDEXABLE_CATEGORY_GAMES)
     .map((category) => ({
       url: `${SITE_URL}/category/${category.slug}`,
@@ -86,18 +71,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     }));
 
-  const tagCounts = new Map<string, number>();
-  const seriesCounts = new Map<string, number>();
-  for (const game of games.data || []) {
-    for (const membership of game.tags || []) tagCounts.set(membership.tag_id, (tagCounts.get(membership.tag_id) || 0) + 1);
-    for (const membership of game.series || []) seriesCounts.set(membership.series_id, (seriesCounts.get(membership.series_id) || 0) + 1);
-  }
-
-  const tagPages: MetadataRoute.Sitemap = (tags.data || [])
+  const tagPages: MetadataRoute.Sitemap = catalog.tags
     .filter((tag) => (tagCounts.get(tag.id) || 0) >= MIN_INDEXABLE_TAG_GAMES)
     .map((tag) => ({ url: `${SITE_URL}/tag/${tag.slug}`, lastModified: new Date(tag.updated_at), changeFrequency: "weekly" as const, priority: 0.4 }));
 
-  const seriesPages: MetadataRoute.Sitemap = (series.data || [])
+  const seriesPages: MetadataRoute.Sitemap = catalog.series
     .filter((item) => (seriesCounts.get(item.id) || 0) >= MIN_INDEXABLE_SERIES_GAMES)
     .map((item) => ({ url: `${SITE_URL}/series/${item.slug}`, lastModified: new Date(item.updated_at), changeFrequency: "weekly" as const, priority: 0.6 }));
 

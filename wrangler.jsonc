@@ -1,50 +1,61 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "playbloo",
-  "main": ".open-next/worker.js",
-  "compatibility_date": "2026-10-18",
-  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
-  "observability": {
-    "enabled": true
-  },
-  "vars": {
-    "MAX_REVALIDATE_CONCURRENCY": "2",
-    "NEXT_CACHE_DO_QUEUE_MAX_REVALIDATION": "2",
-    "NEXT_CACHE_DO_QUEUE_MAX_RETRIES": "2",
-    "NEXT_CACHE_DO_QUEUE_RETRY_INTERVAL_MS": "5000"
-  },
-  "assets": {
-    "directory": ".open-next/assets",
-    "binding": "ASSETS"
-  },
-  "services": [
-    {
-      "binding": "WORKER_SELF_REFERENCE",
-      "service": "playbloo"
-    }
-  ],
-  "r2_buckets": [
-    {
-      "binding": "NEXT_INC_CACHE_R2_BUCKET",
-      "bucket_name": "playbloo-next-cache"
-    }
-  ],
-  "durable_objects": {
-    "bindings": [
-      {
-        "name": "NEXT_CACHE_DO_QUEUE",
-        "class_name": "DOQueueHandler"
-      },
-      {
-        "name": "NEXT_TAG_CACHE_DO_SHARDED",
-        "class_name": "DOShardedTagCache"
-      }
-    ]
-  },
-  "migrations": [
-    {
-      "tag": "v1",
-      "new_sqlite_classes": ["DOQueueHandler", "DOShardedTagCache"]
-    }
-  ]
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "playbloo",
+	"main": ".open-next/worker.js",
+	"compatibility_date": "2026-10-18",
+	"compatibility_flags": [
+		"nodejs_compat",
+		"global_fetch_strictly_public"
+	],
+	"observability": {
+		"enabled": true
+	},
+	"vars": {
+		"MAX_REVALIDATE_CONCURRENCY": "10",
+		"NEXT_CACHE_DO_QUEUE_MAX_REVALIDATION": "8",
+		"NEXT_CACHE_DO_QUEUE_MAX_RETRIES": "3",
+		"NEXT_CACHE_DO_QUEUE_RETRY_INTERVAL_MS": "1000",
+		"NEXT_CACHE_DO_QUEUE_REVALIDATION_TIMEOUT_MS": "30000"
+	},
+	"assets": {
+		"directory": ".open-next/assets",
+		"binding": "ASSETS"
+	},
+	"services": [
+		{
+			"binding": "WORKER_SELF_REFERENCE",
+			"service": "playbloo"
+		}
+	],
+	"r2_buckets": [
+		{
+			"binding": "NEXT_INC_CACHE_R2_BUCKET",
+			"bucket_name": "playbloo-next-cache"
+		},
+		{
+			"bucket_name": "playbloo-next-cache",
+			"binding": "y"
+		}
+	],
+	"durable_objects": {
+		"bindings": [
+			{
+				"name": "NEXT_CACHE_DO_QUEUE",
+				"class_name": "DOQueueHandler"
+			},
+			{
+				"name": "NEXT_TAG_CACHE_DO_SHARDED",
+				"class_name": "DOShardedTagCache"
+			}
+		]
+	},
+	"migrations": [
+		{
+			"tag": "v1",
+			"new_sqlite_classes": [
+				"DOQueueHandler",
+				"DOShardedTagCache"
+			]
+		}
+	]
 }

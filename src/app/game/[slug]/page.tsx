@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { cache } from "react";
 import { unstable_cache } from "next/cache";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { loadCatalog, type CatalogCategory } from "@/lib/catalog";
 import type { GameCardGame } from "@/components/games/GameCard";
 import { RelatedGameItem } from "@/components/games/RelatedGameItem";
 import { Badge } from "@/components/ui/badge";
@@ -31,14 +32,24 @@ export const revalidate = 3600;
 // trips) synchronously — after each deploy that used to be the first visitor
 // of every game outside the top-24. Capped so a huge catalogue cannot blow up
 // build times; the tail renders on demand through ISR.
+//
+// Order by publish date, not popularity. The engagement counters start at zero
+// and only a few dozen games in the whole catalogue have ever been played, so
+// sorting by hot_score/play_count degenerated into "the oldest 500" and left
+// every recently published game on the cold on-demand path. That is the worst
+// possible split: a new URL gets one crawl attempt, and a cold render of a
+// fresh game page took tens of seconds, so the crawler abandoned it and the
+// URL stayed "discovered, never crawled" in Search Console. Prerendering the
+// newest games puts them in the cache before the crawler arrives. The cap
+// still bounds build time; once it is reached the oldest games drop off
+// first, and those are the ones already indexed.
 export async function generateStaticParams() {
   const { data } = await createAdminClient()
     .from("games")
     .select("slug")
     .eq("is_published", true)
-    .order("hot_score", { ascending: false })
-    .order("play_count", { ascending: false })
-    .limit(500);
+    .order("created_at", { ascending: false })
+    .limit(1500);
   return (data || []).map((game) => ({ slug: game.slug }));
 }
 
@@ -90,37 +101,64 @@ interface RecommendationCandidate extends GameCardGame {
   is_trending?: boolean;
 }
 
-type RawRecommendationCandidate = Omit<RecommendationCandidate, "categories" | "categoryIds" | "tagIds" | "seriesIds" | "original_game_url"> & {
-  categories?: Array<{ category_id: string; categories: CategorySummary | null }>;
-  tags?: Array<{ tag_id: string }>;
-  series?: Array<{ series_id: string }>;
-};
+type RawRecommendationCandidate = Omit<RecommendationCandidate, "categories" | "categoryIds" | "tagIds" | "seriesIds" | "original_game_url">;
 
 const getRecommendationPool = unstable_cache(async (): Promise<RecommendationCandidate[]> => {
-  const supabase = createAdminClient();
-  const { data, error } = await supabase
-    .from("games")
-    .select("id, title, slug, thumbnail_url, iframe_url, external_url, view_count, play_count, created_at, updated_at, release_date, is_trending, hot_score, categories:game_categories(category_id, categories:categories(id, name, slug)), tags:game_tags(tag_id), series:game_series(series_id)")
-    .eq("is_published", true)
-    .order("hot_score", { ascending: false })
-    .limit(500)
-    .abortSignal(AbortSignal.timeout(queryTimeout(3000)));
+  // The pool covers the whole published catalogue, not a top-N slice. It used
+  // to be limited to 500 rows ordered by hot_score, and because every
+  // published game has hot_score = 0 the slice fell on the oldest games: the
+  // ~550 newest games were never candidates, so their pages rendered without
+  // related games and without previous/next links. The catalogue is read
+  // through the shared helper, which loads the taxonomy from its own side
+  // instead of joining it onto every game row.
+  const catalog = await loadCatalog({
+    gameColumns:
+      "id, title, slug, thumbnail_url, view_count, iframe_url, external_url, play_count, created_at, updated_at, release_date, is_trending, hot_score",
+    order: { column: "created_at", ascending: false },
+  });
 
-  if (error) {
-    // Throw inside the cache callback so a transient failure cannot cache an
-    // empty recommendation catalog for the next hour.
-    throw new Error(`Could not load recommendation pool: ${error.message}`);
+  const categoryById = new Map(catalog.categories.map((category) => [category.id, category]));
+  const categoryIdsByGame = new Map<string, string[]>();
+  for (const membership of catalog.categoryMembership) {
+    for (const gameId of membership.gameIds) {
+      const list = categoryIdsByGame.get(gameId) || [];
+      list.push(membership.id);
+      categoryIdsByGame.set(gameId, list);
+    }
+  }
+  const tagIdsByGame = new Map<string, string[]>();
+  for (const membership of catalog.tagMembership) {
+    for (const gameId of membership.gameIds) {
+      const list = tagIdsByGame.get(gameId) || [];
+      list.push(membership.id);
+      tagIdsByGame.set(gameId, list);
+    }
+  }
+  const seriesIdsByGame = new Map<string, string[]>();
+  for (const membership of catalog.seriesMembership) {
+    for (const gameId of membership.gameIds) {
+      const list = seriesIdsByGame.get(gameId) || [];
+      list.push(membership.id);
+      seriesIdsByGame.set(gameId, list);
+    }
   }
 
-  return ((data || []) as unknown as RawRecommendationCandidate[]).map((candidate) => ({
+  return catalog.games.map((game) => {
+    const candidate = game as unknown as RawRecommendationCandidate;
+    const categoryIds = categoryIdsByGame.get(game.id) || [];
+    return {
       ...candidate,
       original_game_url: null,
-      categories: candidate.categories?.map((membership) => membership.categories).filter((category): category is CategorySummary => Boolean(category)) || [],
-      categoryIds: candidate.categories?.map((membership) => membership.category_id) || [],
-      tagIds: candidate.tags?.map((membership) => membership.tag_id) || [],
-      seriesIds: candidate.series?.map((membership) => membership.series_id) || [],
-    }));
-}, ["public-recommendation-pool-v3"], { revalidate: 3600, tags: ["public-recommendations"] });
+      categories: categoryIds
+        .map((id) => categoryById.get(id))
+        .filter((category): category is CatalogCategory => Boolean(category))
+        .map((category) => ({ id: category.id, name: category.name, slug: category.slug })),
+      categoryIds,
+      tagIds: tagIdsByGame.get(game.id) || [],
+      seriesIds: seriesIdsByGame.get(game.id) || [],
+    };
+  });
+}, ["public-recommendation-pool-v4"], { revalidate: 3600, tags: ["public-recommendations"] });
 
 function getRelatedGames(game: Game, categoryIds: string[], tagIds: string[], seriesIds: string[], candidates: RecommendationCandidate[]) {
   const categorySet = new Set(categoryIds);
