@@ -6,7 +6,9 @@ const hub = "/guides/ocarina-of-time-remake";
 const pages = ["/guides/sploob", "/guides/sploob/how-to-play", "/guides/shape-walkthrough", "/guides/shape-walkthrough/controls-and-camera", "/guides", hub, ...["release-date", "new-features", "remake-vs-original", "gameplay"].map((slug) => `${hub}/${slug}`), "/guides/world-of-warcraft-forever", "/guides/world-of-warcraft-forever/beta", "/guides/marvels-wolverine", "/guides/marvels-wolverine/settings-and-accessibility", "/guides/hellraiser-revival", "/guides/hellraiser-revival/getting-started"];
 const preview = `${hub}/walkthrough`;
 const mw4Hub = "/guides/modern-warfare-4";
-const mw4Pages = [mw4Hub, `${mw4Hub}/release-date`, `${mw4Hub}/campaign-early-access`];
+const dmzPages = [`${mw4Hub}/dmz`, `${mw4Hub}/dmz-fob`];
+const dmzUpdatedAt = "2026-10-21T04:48:19.000Z";
+const mw4Pages = [mw4Hub, `${mw4Hub}/release-date`, `${mw4Hub}/campaign-early-access`, ...dmzPages];
 pages.push(...mw4Pages);
 const castlevaniaHub = "/guides/castlevania-belmonts-curse";
 const enshroudedHub = "/guides/enshrouded";
@@ -28,6 +30,8 @@ const titles = new Set();
 const descriptions = new Set();
 const internalLinks = new Set();
 const articleCovers = new Map([
+  [`${mw4Hub}/dmz`, "/images/guides/modern-warfare-4-dmz.webp"],
+  [`${mw4Hub}/dmz-fob`, "/images/guides/modern-warfare-4-fob.webp"],
   [`${castlevaniaHub}/getting-started`, "/images/guides/castlevania-belmonts-curse-getting-started.webp"],
   [`${castlevaniaHub}/launch-fixes`, "/images/guides/castlevania-belmonts-curse-launch-fixes.webp"],
   [`${enshroudedHub}/beginners-guide`, "/images/guides/enshrouded-beginners-guide.webp"],
@@ -84,7 +88,7 @@ for (const path of [...pages, preview]) {
 }
 assert.deepEqual([...internalLinks].sort(), [...pages, preview].sort(), "All guide links resolve to public content");
 for (const [path, surfaces] of checkedCoverCards) assert.deepEqual([...surfaces].sort(), ["hub", "listing", "related"], `${path}: cover checked in listing, hub and related cards`);
-console.log("PASS six article covers across headers, cards, share metadata and structured data");
+console.log("PASS article covers across headers, cards, share metadata and structured data");
 
 for (const path of ["/guides/not-a-real-topic", `${hub}/not-a-real-article`, "/guides/not-a-real-topic/release-date"]) {
   assert.equal((await get(path)).status, 404, `${path}: no empty indexable pages`);
@@ -189,6 +193,10 @@ if (process.argv[3]) {
   for (const [url, lastmod] of previousEntries) {
     const path = new URL(url).pathname;
     if (!/^\/(game\/[^/]+(?:\/level\/[^/]+)?|guides\/.+)$/.test(path)) continue;
+    if (path === mw4Hub) {
+      assert.equal(currentEntries.get(url), dmzUpdatedAt, "MW4 hub reflects the substantive DMZ update");
+      continue;
+    }
     assert.equal(currentEntries.get(url), lastmod, `${path}: existing content keeps its sitemap timestamp`);
     unchanged++;
   }
@@ -206,11 +214,24 @@ for (const path of mw4Pages) {
     assert.ok(html.includes(`id="${target}"`), `${path}: contents target ${target} exists`);
   }
   const entry = [...sitemap.matchAll(/<url>([\s\S]*?)<\/url>/g)].find((match) => match[1].includes(`<loc>${canonicalOrigin}${path}</loc>`))?.[1];
-  assert.equal(entry?.match(/<lastmod>([^<]+)<\/lastmod>/)?.[1], "2026-10-18T09:53:50.000Z", `${path}: first publication date in sitemap`);
+  assert.equal(entry?.match(/<lastmod>([^<]+)<\/lastmod>/)?.[1], path === mw4Hub || dmzPages.includes(path) ? dmzUpdatedAt : "2026-10-18T09:53:50.000Z", `${path}: sitemap reflects only substantive updates`);
 }
 const mw4 = await (await get(mw4Hub)).text();
 assert.ok(mw4.includes('dateTime="2026-10-23"') || mw4.includes('datetime="2026-10-23"'), "MW4 full release date is separate from publication date");
 assert.ok(mw4.includes("Upcoming") && mw4.includes("campaign is available early"), "MW4 early campaign access does not mark the full game released");
+for (const path of dmzPages) {
+  const html = await (await get(path)).text();
+  const schemas = [...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)].map((match) => JSON.parse(match[1]));
+  const article = schemas.find((schema) => schema["@type"] === "Article");
+  assert.equal(new Date(article.datePublished).toISOString(), dmzUpdatedAt, `${path}: new article publication date`);
+  assert.ok(html.includes("PlayBloo has not played MW4 DMZ"), `${path}: no implied hands-on testing`);
+  assert.ok(html.includes(`href="${dmzPages.find((other) => other !== path)}"`), `${path}: sibling guide linked`);
+}
+const mw4HubSchema = [...mw4.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)].map((match) => JSON.parse(match[1])).find((schema) => schema["@type"] === "Article");
+assert.equal(new Date(mw4HubSchema.datePublished).toISOString(), "2026-10-18T09:53:50.000Z", "MW4 hub original publication is preserved");
+const fob = await (await get(`${mw4Hub}/dmz-fob`)).text();
+assert.ok(fob.includes("Complete your second DMZ Order"), "Boss Board uses an Order milestone, not a player-level gate");
+for (const slug of ["dmz-map", "dmz-bosses", "dmz/fob"]) assert.equal((await get(`${mw4Hub}/${slug}`)).status, 404, `${slug}: no duplicate or placeholder route`);
 const mw4Campaign = await (await get(`${mw4Hub}/campaign-early-access`)).text();
 assert.ok(mw4Campaign.includes("16 campaign missions"), "MW4 campaign answers the mission count");
 assert.ok(mw4Campaign.includes("Standard Digital Edition") && mw4Campaign.includes("do not need the Vault Edition"), "MW4 standard digital eligibility is explicit");

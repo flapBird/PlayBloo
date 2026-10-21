@@ -1,4 +1,5 @@
 import type { GuideTopic } from "./types";
+import { dmzUpdatedAt, modernWarfare4DmzArticles } from "./modern-warfare-4-dmz";
 
 const dates = { publishedAt: "2026-10-18T17:53:50+08:00", updatedAt: "2026-10-18T17:53:50+08:00" };
 
@@ -6,8 +7,8 @@ export const modernWarfare4: GuideTopic = {
   slug: "modern-warfare-4",
   name: "Call of Duty: Modern Warfare 4",
   officialName: "Call of Duty: Modern Warfare 4",
-  title: "MW4 Guide: Release Date, Campaign & Gameplay",
-  description: "Modern Warfare 4 launches October 23, 2026. Find MW4 release details, campaign early access eligibility, the mission count and an overview of gameplay.",
+  title: "MW4 Guide: DMZ, Campaign & Release Date",
+  description: "Explore Modern Warfare 4 DMZ and FOB guides, campaign early access, and the October 23, 2026 release schedule.",
   status: "published",
   platforms: ["PlayStation 5", "Xbox Series X|S", "PC", "Nintendo Switch 2"],
   releaseDate: "2026-10-23",
@@ -23,8 +24,13 @@ export const modernWarfare4: GuideTopic = {
     fit: "contain",
   },
   ...dates,
-  verifiedAt: "2026-10-18",
+  updatedAt: dmzUpdatedAt,
+  verifiedAt: "2026-10-21",
   sources: [
+    { id: "dmz-product", label: "Call of Duty — DMZ mode overview", url: "https://www.callofduty.com/modernwarfare4/dmz" },
+    { id: "dmz-hajin", label: "Call of Duty — October 5 Hajin environments and extraction", url: "https://www.callofduty.com/en/blog/2026/10/call-of-duty-modern-warfare-4-dmz-deep-dive-hajin" },
+    { id: "dmz-reveal", label: "Call of Duty — June 6 DMZ systems overview", url: "https://www.callofduty.com/blog/2026/06/call-of-duty-modern-warfare-4-dmz-deep-dive" },
+    { id: "dmz-expel", label: "Expel — October 19 facilities and crafting cross-check", url: "https://expel.gg/pages/dmz" },
     { id: "reveal", label: "Call of Duty — May 28 announcement and platforms", url: "https://www.callofduty.com/blog/2026/05/call-of-duty-modern-warfare-4-announcement.html" },
     { id: "campaign-announcement", label: "Call of Duty — June 12 campaign early access announcement", url: "https://www.callofduty.com/blog/2026/06/call-of-duty-modern-warfare-4-campaign-early-access" },
     { id: "campaign-live", label: "Call of Duty — October 16 campaign availability and sixteen missions", url: "https://www.callofduty.com/blog/2026/10/call-of-duty-modern-warfare-4-campaign-early-access-live-now" },
@@ -43,8 +49,13 @@ export const modernWarfare4: GuideTopic = {
     },
     {
       id: "release-date", title: "When does MW4 come out?", releaseFacts: true,
-      paragraphs: ["The full release is Friday, October 23, 2026. Campaign early access started October 16 for eligible digital preorders; DMZ early access is scheduled for October 20. As checked on October 18, the campaign is available early, while the full release is still upcoming. There is no PS4 or Xbox One version."],
+      paragraphs: ["The full release is Friday, October 23, 2026. Campaign early access started October 16 for eligible digital preorders. The announced DMZ early-access window starts October 20. As checked on October 21, the campaign is available early and the announced DMZ opening date has passed, while the full release is still upcoming. There is no PS4 or Xbox One version."],
       sourceIds: ["reveal", "campaign-live", "dmz"],
+    },
+    {
+      id: "dmz-guides", title: "DMZ and the Forward Operating Base",
+      paragraphs: ["Start with the DMZ overview for access, deployment and extraction. Use the FOB guide for facility unlocks, crafting and upgrade decisions. Both guides distinguish published mechanics from suggested preparation priorities."],
+      link: { label: "Read the DMZ getting-started guide", href: "/guides/modern-warfare-4/dmz" },
     },
     {
       id: "campaign", title: "MW4 campaign: story and mission count",
@@ -70,6 +81,7 @@ export const modernWarfare4: GuideTopic = {
     },
   ],
   articles: [
+    ...modernWarfare4DmzArticles,
     {
       slug: "release-date", shortTitle: "Release date, platforms & launch schedule", category: "Release information",
       title: "MW4 Release Date: When Does Modern Warfare 4 Come Out?",

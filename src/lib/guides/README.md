@@ -160,9 +160,31 @@ list are not established here. PlayBloo has not played MW4.
 
 The official reveal cover was inspected before resizing to 1600 × 901 WebP;
 `cover.sourceUrl` retains the original asset. `contain` preserves the logo across
-card crops. No trailer, browser-game entry or Supabase mutation is added. All three
-published URLs use this guide's actual publication date in sitemap, independently
-of the October 23 game release date. Existing game timestamps stay unchanged.
+card crops. No trailer, browser-game entry or Supabase mutation is added. The original
+three pages were published October 18, independently of the October 23 game release.
+Existing game timestamps stay unchanged.
+
+### DMZ and FOB expansion (October 21, 2026)
+
+`modern-warfare-4-dmz.ts` adds `dmz` for the extraction-mode overview and
+`dmz-fob` for the facilities reference. Both use the existing article route and
+link to each other; access details point to the existing release-date article.
+Do not create a duplicate game entity or a separate DMZ release-date page.
+
+The October 5 Hajin and October 9 FOB publisher guides take precedence over
+the June systems overview. The October 19 Expel guide cross-checks crafting
+and facilities. October 20 is the announced early-access opening, not evidence
+of current server health. Advice about first runs and upgrades is explicitly
+editorial; no live playthrough, maximum storage capacity or fastest route is claimed.
+The official DMZ skyline and FOB overview assets were inspected and compressed
+to 1600 × 900 WebP; original URLs and credits remain in each article cover.
+
+The hub keeps its original publication date and receives a substantive-update
+date. The two new articles have their own publication dates. Existing release-date
+and campaign articles remain unchanged. Run verify-guides with a pre-change
+sitemap as its third argument to verify all other game/guide timestamps.
+`llms.txt` describes both new routes. Publication in this data requires deployment
+before it becomes available on the live site.
 
 ## Castlevania: Belmont's Curse and Enshrouded (October 18, 2026)
 
