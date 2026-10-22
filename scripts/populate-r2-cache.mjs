@@ -28,6 +28,11 @@ const CONCURRENCY = concurrencyArg > -1 ? Number(process.argv[concurrencyArg + 1
 // stopped and restarted freely.
 const MIN_REQUEST_INTERVAL_MS = 260;
 
+// How many times a single write may be throttled before it is reported as
+// failed. The account-level quota window can last a long while, so this is
+// generous enough to ride out a window rather than dropping the entry.
+const MAX_THROTTLED_RETRIES = 40;
+
 async function readOAuthToken() {
   const config = await readFile(join(homedir(), ".wrangler/config/default.toml"), "utf8");
   const match = config.match(/oauth_token\s*=\s*"([^"]+)"/);
@@ -126,7 +131,13 @@ async function main() {
       const url = `${API}/accounts/${ACCOUNT_ID}/r2/buckets/${BUCKET}/objects/${encodeURIComponent(cacheKey)}`;
       let ok = false;
 
-      for (let attempt = 1; attempt <= 12 && !ok; attempt++) {
+      // A quota window can throttle writes for many minutes at a time, so the
+      // 429 budget is separate from the error budget: throttled writes wait
+      // out the window, while real errors are retried a few times and then
+      // reported as failed.
+      let throttled = 0;
+      let errors = 0;
+      while (!ok) {
         await rateLimit();
         try {
           const response = await fetch(url, {
@@ -145,28 +156,37 @@ async function main() {
           } else if (response.status === 429) {
             // The REST API rate limits object writes. Honour the retry-after
             // hint and pause every worker, otherwise the whole run stalls on
-            // 429s and each worker keeps hitting the same ceiling. The attempt
-            // counter is deliberately not rewound: a write that is throttled
-            // for minutes must eventually be reported as failed rather than
-            // retried forever.
+            // 429s and each worker keeps hitting the same ceiling.
             const retryAfter = Number(response.headers.get("retry-after")) || 30;
             cooldownUntil = Date.now() + retryAfter * 1000;
             nextSlot = Math.max(nextSlot, cooldownUntil);
-            continue;
+            throttled++;
+            if (throttled > MAX_THROTTLED_RETRIES) {
+              failed++;
+              failures.push(`${cacheKey}: throttled ${throttled} times`);
+              break;
+            }
           } else {
             const text = await response.text();
-            throw new Error(`HTTP ${response.status}: ${text.slice(0, 200)}`);
+            errors++;
+            if (errors >= 5) {
+              failed++;
+              failures.push(`${cacheKey}: HTTP ${response.status}: ${text.slice(0, 200)}`);
+              break;
+            }
+            await new Promise((resolve) => setTimeout(resolve, 1000 * errors));
           }
         } catch (error) {
-          if (attempt === 12) {
+          errors++;
+          if (errors >= 5) {
             failed++;
             failures.push(`${cacheKey}: ${error instanceof Error ? error.message : String(error)}`);
-          } else {
-            await new Promise((resolve) => setTimeout(resolve, 1000 * attempt));
+            break;
           }
+          await new Promise((resolve) => setTimeout(resolve, 1000 * errors));
         }
       }
-      if (processed % 250 === 0) {
+      if (processed > 0 && processed % 250 === 0) {
         console.log(`  ${uploaded}/${assets.length} (${processed} attempted)`);
         await writeCheckpoint();
       }
