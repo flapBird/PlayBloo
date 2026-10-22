@@ -10,7 +10,7 @@
 // Usage: node scripts/populate-r2-cache.mjs [--concurrency N]
 
 import { createHash } from "node:crypto";
-import { readFile, readdir, stat } from "node:fs/promises";
+import { readFile, readdir, writeFile } from "node:fs/promises";
 import { join, relative, sep } from "node:path";
 import { homedir } from "node:os";
 
@@ -82,6 +82,17 @@ async function main() {
   const failures = [];
   const queue = assets.slice();
 
+  // Progress is checkpointed so an interrupted run can resume without
+  // re-uploading the entries that already landed.
+  const checkpointPath = process.env.R2_POPULATE_CHECKPOINT || ".open-next/r2-populate-checkpoint.txt";
+  let done = new Set();
+  try {
+    done = new Set((await readFile(checkpointPath, "utf8")).split("\n").filter(Boolean));
+  } catch {
+    // No checkpoint yet — this is a fresh run.
+  }
+  if (done.size) console.log(`Resuming: ${done.size} entries already uploaded`);
+
   // The REST API allows a limited number of object writes per second. A
   // shared gate keeps the whole run under that ceiling no matter how many
   // workers are pulling from the queue.
@@ -89,6 +100,11 @@ async function main() {
   // When the API throttles, every worker has to wait — a per-worker backoff
   // would keep hammering the same limit and slow the run down further.
   let cooldownUntil = 0;
+
+  async function writeCheckpoint() {
+    await writeFile(checkpointPath, [...done].join("\n"), "utf8");
+  }
+
   async function rateLimit() {
     const now = Date.now();
     const wait = Math.max(0, nextSlot - now, cooldownUntil - now);
@@ -104,6 +120,8 @@ async function main() {
         buildId: asset.buildId,
         cacheType: asset.isFetch ? "fetch" : "cache",
       });
+      if (done.has(cacheKey)) continue;
+
       const body = await readFile(asset.fullPath);
       const url = `${API}/accounts/${ACCOUNT_ID}/r2/buckets/${BUCKET}/objects/${encodeURIComponent(cacheKey)}`;
       let ok = false;
@@ -123,14 +141,17 @@ async function main() {
             ok = true;
             uploaded++;
             processed++;
+            done.add(cacheKey);
           } else if (response.status === 429) {
             // The REST API rate limits object writes. Honour the retry-after
             // hint and pause every worker, otherwise the whole run stalls on
-            // 429s and each worker keeps hitting the same ceiling.
+            // 429s and each worker keeps hitting the same ceiling. The attempt
+            // counter is deliberately not rewound: a write that is throttled
+            // for minutes must eventually be reported as failed rather than
+            // retried forever.
             const retryAfter = Number(response.headers.get("retry-after")) || 30;
             cooldownUntil = Date.now() + retryAfter * 1000;
             nextSlot = Math.max(nextSlot, cooldownUntil);
-            attempt--;
             continue;
           } else {
             const text = await response.text();
@@ -147,11 +168,13 @@ async function main() {
       }
       if (processed % 250 === 0) {
         console.log(`  ${uploaded}/${assets.length} (${processed} attempted)`);
+        await writeCheckpoint();
       }
     }
   }
 
   await Promise.all(Array.from({ length: CONCURRENCY }, () => worker()));
+  await writeCheckpoint();
   console.log(`Done: ${uploaded} uploaded, ${failed} failed`);
   if (failures.length) {
     console.log("First failures:");
