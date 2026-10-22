@@ -137,9 +137,13 @@ npm run deploy
 
 ## 部署与缓存预热
 
-`npm run deploy` 通过临时创建的 `open-next-cache-populate` Worker（`*.workers.dev`）把构建产物上传到 R2。在 workers.dev 不可达的网络中，这一步会重试 15 次后失败并中止整次部署，线上仍停留在旧版本。此时改用 `node scripts/populate-r2-cache.mjs` 走 Cloudflare REST API 直传：键名与适配器的 `computeCacheKey` 一致，遇到 429 按 `retry-after` 全局退避，写入幂等、可中断续传。R2 REST API 对对象写入有速率限制，全量预热约需一小时。
+`npm run deploy` 通过临时创建的 `open-next-cache-populate` Worker（`*.workers.dev`）把构建产物上传到 R2。在 workers.dev 不可达的网络中，这一步会重试 15 次后失败并中止整次部署，线上仍停留在旧版本。此时改用 `node scripts/populate-r2-cache.mjs` 走 Cloudflare REST API 直传：遇到 429 按 `retry-after` 全局退避，写入幂等、可中断续传。R2 REST API 对对象写入有速率限制，全量预热约需一小时；配额耗尽时返回 429，凭据过期时返回 401（跑一次 `npx wrangler whoami` 即可刷新）。
 
 绕过 OpenNext 的自动转发可直接部署 Worker：`OPEN_NEXT_DEPLOY=true npx wrangler deploy --keep-vars`。
+
+预热脚本的键名必须与适配器一致：`__fetch` 条目直接用文件名做键，`route-cache` 条目先剥掉 `.cache` 后缀再做键（`.cache` 只是磁盘上的文件名，不属于键的一部分）。键名写错时对象照样上传成功，但 Worker 读不到，页面会退化成每次按需渲染。
+
+部署后如果线上内容与构建产物不一致，通常是 R2 里残留了旧构建 ID 的缓存。删掉对应路由的 `route-cache` 条目即可让下次访问重新生成。
 
 直接通过 Supabase、脚本或其他绕过后台 API 的写入不会自动调用这些失效函数，需在导入流程中另行失效缓存或重新构建发布。缓存优化不修改游戏的上线日期或 sitemap 时间戳。
 
