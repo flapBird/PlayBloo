@@ -35,6 +35,10 @@
 		{
 			"bucket_name": "playbloo-next-cache",
 			"binding": "y"
+		},
+		{
+			"binding": "METRICS_BUCKET",
+			"bucket_name": "playbloo-metrics"
 		}
 	],
 	"durable_objects": {

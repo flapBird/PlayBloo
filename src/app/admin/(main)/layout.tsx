@@ -5,7 +5,7 @@ import { getAuthenticatedAdmin } from "@/lib/admin-auth";
 import { SITE_NAME } from "@/lib/constants";
 import {
   LayoutDashboard, Gamepad2, Tags, ListTree, FolderTree, Search,
-  FileSpreadsheet, ExternalLink, Inbox
+  FileSpreadsheet, ExternalLink, Inbox, Activity
 } from "lucide-react";
 
 export const metadata: Metadata = { robots: { index: false, follow: false } };
@@ -18,6 +18,7 @@ const adminNav = [
   { label: "Tags", href: "/admin/tags", icon: Tags },
   { label: "Series", href: "/admin/series", icon: ListTree },
   { label: "SEO", href: "/admin/seo", icon: Search },
+  { label: "Monitoring", href: "/admin/monitoring", icon: Activity },
   { label: "Import CSV", href: "/admin/import", icon: FileSpreadsheet },
 ];
 

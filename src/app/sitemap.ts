@@ -2,11 +2,13 @@ import { MetadataRoute } from "next";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { getGuidesSitemap } from "@/lib/guides";
 import { loadCatalog, type Membership } from "@/lib/catalog";
+import { recordMetric, startTimer } from "@/lib/metrics";
 import { MIN_INDEXABLE_CATEGORY_GAMES, MIN_INDEXABLE_SERIES_GAMES, MIN_INDEXABLE_TAG_GAMES, SITE_URL } from "@/lib/constants";
 
 export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const elapsed = startTimer();
   const supabase = createAdminClient();
 
   // The catalogue is read through the shared helper. It used to be one wide
@@ -105,5 +107,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }];
   });
 
-  return [...staticPages, ...gamePages, ...categoryPages, ...tagPages, ...seriesPages, ...levelIndexPages, ...levelPages, ...getGuidesSitemap()];
+  const entries = [...staticPages, ...gamePages, ...categoryPages, ...tagPages, ...seriesPages, ...levelIndexPages, ...levelPages, ...getGuidesSitemap()];
+  recordMetric("sitemap_generate_ms", elapsed());
+  recordMetric("sitemap_urls", entries.length);
+  return entries;
 }

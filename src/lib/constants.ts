@@ -15,6 +15,17 @@ export const MAX_RECENTLY_PLAYED_GAMES = 25;
 export const NEW_GAME_BADGE_DAYS = 14;
 export const UPDATED_GAME_BADGE_DAYS = 30;
 
+// Catalogue size at which a single sitemap should be split into an index plus
+// per-range parts. Google caps a sitemap at 50k URLs / 50MB; this threshold
+// stays well inside that while the split is still cheap to implement.
+export const SITEMAP_SHARD_THRESHOLD = 20000;
+
+// How many days of monitoring history the admin panel shows.
+export const MONITORING_HISTORY_DAYS = 7;
+
+// Game pages sampled per crawl-readiness probe.
+export const MONITORING_PROBE_SAMPLES = 12;
+
 export const FAVORITES_STORAGE_KEY = "playbloo:favorites:v1";
 export const RECENTLY_PLAYED_STORAGE_KEY = "playbloo:recently-played:v1";
 

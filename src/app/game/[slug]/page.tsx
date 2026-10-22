@@ -5,6 +5,7 @@ import { cache } from "react";
 import { unstable_cache } from "next/cache";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { loadCatalog, type CatalogCategory } from "@/lib/catalog";
+import { recordMetric, startTimer } from "@/lib/metrics";
 import type { GameCardGame } from "@/components/games/GameCard";
 import { RelatedGameItem } from "@/components/games/RelatedGameItem";
 import { Badge } from "@/components/ui/badge";
@@ -261,6 +262,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function GamePage({ params }: Props) {
   const { slug } = await params;
+  // The page body only runs when the R2 cache did not answer, so this is the
+  // server-side render a crawler would otherwise have waited for.
+  const elapsed = startTimer();
   const gameRow = await getGame(slug);
 
   if (!gameRow) notFound();
@@ -278,6 +282,7 @@ export default async function GamePage({ params }: Props) {
     getUpdates(game.id),
     gameHasLevels(game.id),
   ]);
+  recordMetric("game_render_ms", elapsed(), slug);
   const neighbors = getNeighbors(game, recommendationPool);
   const seriesList = getVisibleSeries(rawSeriesList, recommendationPool);
   const relatedGames = getRelatedGames(game, categories.map((category) => category.id), tags.map((tag) => tag.id), seriesList.map((series) => series.id), recommendationPool);
