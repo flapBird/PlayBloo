@@ -71,38 +71,37 @@ type AdminClient = ReturnType<typeof createAdminClient>;
 /**
  * Read every published game in 1000-row pages using the caller's columns.
  *
- * The first two pages are requested together because the catalogue already
- * exceeds one response, and a single extra round trip would otherwise
- * dominate the read. Further pages are only requested if a page comes back
- * completely full.
+ * PostgREST caps a response at 1000 rows, so the catalogue has to be paged.
+ * The first page is read with `count: "exact"`, which reports the total row
+ * count without an extra round trip, and every remaining page is then
+ * requested in parallel. Reading them one after another would make the read
+ * cost grow with the number of pages instead of staying flat.
  */
 export async function fetchPublishedGames<T extends CatalogGame>(
   supabase: AdminClient,
   columns: string,
   order: { column: string; ascending: boolean } = { column: "id", ascending: true },
 ): Promise<T[]> {
-  const readPage = async (offset: number) => {
-    const { data, error } = await supabase
+  const readPage = async (offset: number, withCount = false) => {
+    const { data, error, count } = await supabase
       .from("games")
-      .select(columns)
+      .select(columns, withCount ? { count: "exact" } : undefined)
       .eq("is_published", true)
       .order(order.column, { ascending: order.ascending })
       .range(offset, offset + PAGE_SIZE - 1);
     if (error) throw new Error(`Could not load catalogue games: ${error.message}`);
-    return (data || []) as unknown as T[];
+    return { rows: (data || []) as unknown as T[], count: count ?? null };
   };
 
-  const [first, second] = await Promise.all([readPage(0), readPage(PAGE_SIZE)]);
-  const rows: T[] = [...first, ...second];
-  if (second.length < PAGE_SIZE) return rows;
+  const first = await readPage(0, true);
+  const total = first.count;
+  if (total === null || total <= PAGE_SIZE) return first.rows;
 
-  // The catalogue outgrew two pages; keep reading the rest one at a time.
-  for (let offset = PAGE_SIZE * 2; ; offset += PAGE_SIZE) {
-    const page = await readPage(offset);
-    rows.push(...page);
-    if (page.length < PAGE_SIZE) break;
-  }
-  return rows;
+  const pageCount = Math.ceil(total / PAGE_SIZE);
+  const offsets = [];
+  for (let page = 1; page < pageCount; page++) offsets.push(page * PAGE_SIZE);
+  const remaining = await Promise.all(offsets.map((offset) => readPage(offset)));
+  return [first.rows, ...remaining.map((page) => page.rows)].flat();
 }
 
 type MembershipRow = { game_id: string; games: { id: string } | null };
