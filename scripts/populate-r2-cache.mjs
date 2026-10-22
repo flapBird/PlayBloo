@@ -69,7 +69,16 @@ async function buildAssets() {
       }
       assets.push({ fullPath, key: `/${keyParts.join("/")}`, buildId, isFetch: true });
     } else {
-      const [buildId, ...keyParts] = relativePath.split("/");
+      // The `.cache` suffix is part of the file name on disk, not part of the
+      // cache key. The adapter strips it before hashing; keeping it would
+      // store every route-cache entry under a key the Worker never reads.
+      if (!relativePath.endsWith(".cache")) {
+        throw new Error(`Invalid cache asset path: ${relativePath}`);
+      }
+      const [buildId, ...keyParts] = relativePath.slice(0, -".cache".length).split("/");
+      if (buildId === undefined || keyParts.length === 0) {
+        throw new Error(`Invalid cache asset path: ${relativePath}`);
+      }
       assets.push({ fullPath, key: `/${keyParts.join("/")}`, buildId, isFetch: false });
     }
   }
