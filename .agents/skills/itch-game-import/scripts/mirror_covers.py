@@ -34,6 +34,11 @@ import urllib.request
 BUCKET = "game-media"
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
 EXTS = (".png", ".jpg", ".jpeg", ".gif", ".webp")
+# Stored as the object's cacheControl. Without it the object is stored as
+# `no-cache`, so the CDN revalidates the cover on every page view — that is
+# what burned the Free plan's log-ingestion quota. The `cacheControl` query
+# parameter does NOT work here; it resets the object back to `no-cache`.
+CACHE_CONTROL = "max-age=604800"
 
 
 def find_env(cli_path):
@@ -106,7 +111,8 @@ def main():
                 raise RuntimeError(f"suspicious tiny download ({len(data)}B)")
             ctype = mimetypes.guess_type("x" + ext)[0] or "image/png"
             up = urllib.request.Request(f"{base}/storage/v1/object/{object_path}", data=data, method="POST",
-                                        headers={"apikey": key, "Authorization": f"Bearer {key}", "Content-Type": ctype, "x-upsert": "true"})
+                                        headers={"apikey": key, "Authorization": f"Bearer {key}", "Content-Type": ctype, "x-upsert": "true",
+                                                 "cache-control": CACHE_CONTROL})
             direct.open(up, timeout=30)
             rest(f"/rest/v1/games?id=eq.{g['id']}", {"thumbnail_url": public_url}, method="PATCH")
             mapping.append({"slug": g["slug"], "old": url, "new": public_url, "bytes": len(data)})

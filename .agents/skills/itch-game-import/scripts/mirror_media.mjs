@@ -39,6 +39,10 @@ const sharp = require(path.join(process.env.PLAYBLOO_REPO || "/Users/admin/Docum
 
 const UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36";
 const BUCKET = "game-media";
+// Seven days. Long enough for the CDN and the browser to stop revalidating
+// the cover on every view, short enough that a replaced cover still reaches
+// visitors within a week.
+const CACHE_CONTROL = "max-age=604800";
 const args = process.argv.slice(2);
 const opt = (name, fallback = "") => {
   const i = args.indexOf(name);
@@ -90,7 +94,12 @@ async function download(url) {
 async function upload(objectPath, buf) {
   const res = await fetch(`${BASE}/storage/v1/object/${BUCKET}/${objectPath}`, {
     method: "POST",
-    headers: { ...auth, "Content-Type": "image/webp", "x-upsert": "true" },
+    // The cache-control header is what the Storage API stores as the object's
+    // cacheControl. Without it the object is stored as `no-cache`, which makes
+    // the CDN revalidate every cover on every page view — that alone burned
+    // the Free plan's log-ingestion quota. The `cacheControl` query parameter
+    // does NOT work here: it resets the object back to `no-cache`.
+    headers: { ...auth, "Content-Type": "image/webp", "x-upsert": "true", "cache-control": CACHE_CONTROL },
     body: buf,
   });
   if (!res.ok) throw new Error(`upload ${objectPath} -> ${res.status}: ${(await res.text()).slice(0, 200)}`);

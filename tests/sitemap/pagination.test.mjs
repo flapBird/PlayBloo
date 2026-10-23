@@ -7,65 +7,101 @@ import ts from 'typescript';
 const source = await readFile(new URL('../../src/app/sitemap.ts', import.meta.url), 'utf8');
 const compiled = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 } }).outputText;
 
-function loadSitemap(games, failAt = -1) {
-  const calls = [];
-  const client = { from(table) {
-    let publishedOnly = false;
-    const query = {
-      select() { return query; },
-      eq(column, value) { if (column === 'is_published' && value) publishedOnly = true; return query; },
-      order(column) { assert.equal(column, 'id'); return query; },
-      async range(start, end) {
-        calls.push([start, end]);
-        if (start === failAt) return { data: null, error: { message: 'database unavailable' } };
-        const rows = games.filter(game => !publishedOnly || game.is_published);
-        return { data: rows.slice(start, end + 1), error: null };
-      },
-      then(resolve, reject) {
-        const data = table === 'categories' ? [{ id: 'category', slug: 'puzzle', updated_at: '2025-01-01' }] : [];
-        return Promise.resolve({ data, error: null }).then(resolve, reject);
-      },
-    };
-    return query;
-  } };
+/**
+ * The catalogue read moved into `src/lib/catalog.ts`, which pages through
+ * Postgres and groups the taxonomy memberships. This file covers what the
+ * sitemap does with that catalogue; the paging itself is covered by
+ * tests/catalog/paging.test.mjs.
+ */
+function loadSitemap(catalog, levels = []) {
   const exports = {};
+  const client = {
+    from(table) {
+      const query = {
+        select() { return query; },
+        eq() { return query; },
+        then(resolve, reject) {
+          const data = table === 'game_levels' ? levels : [];
+          return Promise.resolve({ data, error: null }).then(resolve, reject);
+        },
+      };
+      return query;
+    },
+  };
   vm.runInNewContext(compiled, { exports, Date, Map, Set, require(name) {
     if (name === '@/lib/supabase/admin') return { createAdminClient: () => client };
+    if (name === '@/lib/catalog') return { loadCatalog: async () => catalog };
     if (name === '@/lib/guides') return { getGuidesSitemap: () => [] };
+    if (name === '@/lib/metrics') return { recordMetric: () => {}, startTimer: () => () => 0 };
     if (name === '@/lib/constants') return { SITE_URL: 'https://playbloo.net', MIN_INDEXABLE_CATEGORY_GAMES: 3, MIN_INDEXABLE_TAG_GAMES: 3, MIN_INDEXABLE_SERIES_GAMES: 3 };
     throw new Error(`Unexpected import ${name}`);
   } });
-  return { sitemap: exports.default, calls };
+  return exports.default;
 }
 
-const game = (index, is_published = true) => ({ slug: `game-${index}`, updated_at: index < 1000 ? '2025-05-06T00:00:00Z' : '2026-10-19T00:00:00Z', is_published, categories: index >= 1000 ? [{ category_id: 'category' }] : [], tags: [], series: [] });
+const game = (index) => ({
+  id: `id-${index}`,
+  slug: `game-${index}`,
+  updated_at: index < 1000 ? '2025-05-06T00:00:00Z' : '2026-10-19T00:00:00Z',
+});
 
-test('includes more than 1000 published games, preserves dates and counts later-page categories', async () => {
-  const games = [...Array.from({ length: 1003 }, (_, index) => game(index)), game('draft', false)];
-  const { sitemap, calls } = loadSitemap(games);
-  const entries = await sitemap();
-  const gameEntries = entries.filter(entry => /\/game\//.test(entry.url));
+const catalogOf = (games, overrides = {}) => ({
+  games,
+  categories: [{ id: 'category', name: 'Puzzle', slug: 'puzzle', updated_at: '2025-01-01T00:00:00Z' }],
+  tags: [{ id: 'tag', slug: 'cozy', updated_at: '2025-01-01T00:00:00Z' }],
+  series: [{ id: 'series', slug: 'escape-road', updated_at: '2025-01-01T00:00:00Z' }],
+  categoryMembership: [],
+  tagMembership: [],
+  seriesMembership: [],
+  ...overrides,
+});
+
+test('emits every published game with its own lastmod', async () => {
+  const games = [...Array.from({ length: 1003 }, (_, index) => game(index))];
+  const entries = await loadSitemap(catalogOf(games))();
+  const gameEntries = entries.filter(entry => /\/game\/game-\d+$/.test(entry.url));
   assert.equal(gameEntries.length, 1003);
   assert.equal(new Set(gameEntries.map(entry => entry.url)).size, 1003);
   assert.equal(gameEntries[0].lastModified.toISOString(), '2025-05-06T00:00:00.000Z');
   assert.equal(gameEntries.at(-1).lastModified.toISOString(), '2026-10-19T00:00:00.000Z');
-  assert.ok(!entries.some(entry => entry.url.endsWith('game-draft')));
-  assert.ok(entries.some(entry => entry.url.endsWith('/category/puzzle')));
-  assert.deepEqual(calls, [[0, 499], [500, 999], [1000, 1499]]);
 });
 
-test('handles empty catalogs and an exact page boundary', async () => {
-  for (const count of [0, 500]) {
-    const { sitemap, calls } = loadSitemap(Array.from({ length: count }, (_, index) => game(index)));
-    const entries = await sitemap();
-    assert.equal(entries.filter(entry => /\/game\//.test(entry.url)).length, count);
-    assert.equal(calls.length, count === 0 ? 1 : 2);
-  }
+test('includes a category page once it holds enough published games', async () => {
+  const games = Array.from({ length: 5 }, (_, index) => game(index));
+  const catalog = catalogOf(games, {
+    categoryMembership: [{ id: 'category', gameIds: games.map(entry => entry.id) }],
+  });
+  const entries = await loadSitemap(catalog)();
+  const categoryEntry = entries.find(entry => entry.url.endsWith('/category/puzzle'));
+  assert.ok(categoryEntry, 'category page should be listed');
+  assert.equal(categoryEntry.lastModified.toISOString(), '2025-05-06T00:00:00.000Z');
 });
 
-test('fails instead of caching a partial sitemap when any database page fails', async () => {
-  for (const failAt of [0, 500]) {
-    const { sitemap } = loadSitemap(Array.from({ length: 1003 }, (_, index) => game(index)), failAt);
-    await assert.rejects(sitemap(), /Could not load sitemap games: database unavailable/);
-  }
+test('leaves out a category page that holds too few published games', async () => {
+  const games = Array.from({ length: 2 }, (_, index) => game(index));
+  const catalog = catalogOf(games, {
+    categoryMembership: [{ id: 'category', gameIds: games.map(entry => entry.id) }],
+  });
+  const entries = await loadSitemap(catalog)();
+  assert.ok(!entries.some(entry => entry.url.endsWith('/category/puzzle')));
+});
+
+test('handles an empty catalogue', async () => {
+  const entries = await loadSitemap(catalogOf([]))();
+  assert.equal(entries.filter(entry => /\/game\/game-/.test(entry.url)).length, 0);
+  assert.ok(entries.some(entry => entry.url === 'https://playbloo.net/'));
+});
+
+test('lists the level pages of games that have levels', async () => {
+  const levels = [
+    { slug: 'level-one', updated_at: '2025-03-01T00:00:00Z', games: { slug: 'game-0' } },
+    { slug: 'level-two', updated_at: '2025-04-01T00:00:00Z', games: { slug: 'game-0' } },
+  ];
+  const entries = await loadSitemap(catalogOf([game(0)]), levels)();
+  assert.ok(entries.some(entry => entry.url.endsWith('/game/game-0/level')));
+  assert.ok(entries.some(entry => entry.url.endsWith('/game/game-0/level/level-one')));
+  assert.equal(
+    entries.find(entry => entry.url.endsWith('/game/game-0/level/level-one')).lastModified.toISOString(),
+    '2025-03-01T00:00:00.000Z',
+  );
 });

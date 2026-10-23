@@ -1,7 +1,7 @@
 import "server-only";
 
 import { createAdminClient } from "@/lib/supabase/admin";
-import { LEGACY_GAME_CARD_FIELDS, normalizePublicGameCards, PUBLIC_GAME_DISCOVERY_FIELDS } from "@/lib/discovery-data";
+import { HOME_GAME_CARD_FIELDS, LEGACY_GAME_CARD_FIELDS, normalizePublicGameCards } from "@/lib/discovery-data";
 import type { GameCardGame } from "@/components/games/GameCard";
 
 export type HomeFeedSort = "newest" | "trending" | "released" | "popular";
@@ -31,7 +31,7 @@ async function getFeed(sort: HomeFeedSort | "playable"): Promise<HomeFeed> {
       return request.order("id", { ascending: true }).limit(sort === "playable" ? 6 : 20);
     };
 
-    let result = await query(PUBLIC_GAME_DISCOVERY_FIELDS);
+    let result = await query(HOME_GAME_CARD_FIELDS);
     // Preserve support for catalogs without the optional discovery migration.
     if (result.error) result = await query(LEGACY_GAME_CARD_FIELDS);
     if (result.error) throw result.error;

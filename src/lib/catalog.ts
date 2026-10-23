@@ -42,11 +42,14 @@ export interface CatalogSeries {
   updated_at: string;
 }
 
-/** A published game, without the relation joins the callers fetch separately. */
+/** A published game, with the taxonomy memberships nested on the row. */
 export interface CatalogGame {
   id: string;
   slug: string;
   updated_at: string;
+  game_categories?: { category_id: string }[] | null;
+  game_tags?: { tag_id: string }[] | null;
+  game_series?: { series_id: string }[] | null;
 }
 
 export interface Membership {
@@ -104,28 +107,40 @@ export async function fetchPublishedGames<T extends CatalogGame>(
   return [first.rows, ...remaining.map((page) => page.rows)].flat();
 }
 
-type MembershipRow = { game_id: string; games: { id: string } | null };
+/**
+ * The taxonomy memberships, read from the game side.
+ *
+ * Reading them from the taxonomy side costs one row per membership, and each
+ * of those rows carried a 36-character game UUID plus a nested copy of the
+ * same UUID — about 230 KB for a catalogue with 2,230 memberships. Nesting the
+ * membership on the game row instead keeps the UUIDs out of the payload and
+ * turns seven queries into four.
+ */
+const MEMBERSHIP_COLUMNS = "game_categories(category_id), game_tags(tag_id), game_series(series_id)";
 
-type MembershipSourceRow = { id: string } & Partial<Record<string, MembershipRow[]>>;
+type MembershipRelationKey = "game_categories" | "game_tags" | "game_series";
+type MembershipIdKey = "category_id" | "tag_id" | "series_id";
 
 /**
- * Group the join rows by taxonomy id, keeping only published games.
+ * Group the memberships by taxonomy id.
  *
- * The taxonomy id is the row's own id; the nested `games` row exists only so
- * the database can apply the publish filter through `games!inner(...)`, so an
- * unpublished game never reaches the caller.
+ * The games are already filtered to the published ones, so every membership
+ * that comes back belongs to a published game.
  */
 function groupMembership(
-  rows: MembershipSourceRow[],
-  relationKey: "game_categories" | "game_tags" | "game_series",
+  games: CatalogGame[],
+  relationKey: MembershipRelationKey,
+  idKey: MembershipIdKey,
 ): Membership[] {
   const grouped = new Map<string, string[]>();
-  for (const row of rows) {
-    for (const relation of row[relationKey] || []) {
-      if (!relation?.game_id) continue;
-      const list = grouped.get(row.id) || [];
-      list.push(relation.game_id);
-      grouped.set(row.id, list);
+  for (const game of games) {
+    const relations = (game[relationKey] || []) as Array<Record<string, string> | null>;
+    for (const relation of relations) {
+      const taxonomyId = relation?.[idKey];
+      if (!taxonomyId) continue;
+      const list = grouped.get(taxonomyId) || [];
+      list.push(game.id);
+      grouped.set(taxonomyId, list);
     }
   }
   return [...grouped.entries()].map(([id, gameIds]) => ({ id, gameIds }));
@@ -146,23 +161,11 @@ export async function loadCatalog(options: {
   const gameColumns = options.gameColumns || "id, slug, updated_at";
   const order = options.order || { column: "id", ascending: true };
 
-  const [games, categories, tags, series, categoryRows, tagRows, seriesRows] = await Promise.all([
-    fetchPublishedGames<CatalogGame>(supabase, gameColumns, order),
+  const [games, categories, tags, series] = await Promise.all([
+    fetchPublishedGames<CatalogGame>(supabase, `${gameColumns}, ${MEMBERSHIP_COLUMNS}`, order),
     supabase.from("categories").select("id, name, slug, updated_at"),
     supabase.from("tags").select("id, slug, updated_at"),
     supabase.from("series").select("id, slug, updated_at"),
-    supabase
-      .from("categories")
-      .select("id, game_categories(game_id, games!inner(id))")
-      .filter("game_categories.games.is_published", "eq", true),
-    supabase
-      .from("tags")
-      .select("id, game_tags(game_id, games!inner(id))")
-      .filter("game_tags.games.is_published", "eq", true),
-    supabase
-      .from("series")
-      .select("id, game_series(game_id, games!inner(id))")
-      .filter("game_series.games.is_published", "eq", true),
   ]);
 
   return {
@@ -170,17 +173,8 @@ export async function loadCatalog(options: {
     categories: (categories.data || []) as CatalogCategory[],
     tags: (tags.data || []) as CatalogTag[],
     series: (series.data || []) as CatalogSeries[],
-    categoryMembership: groupMembership(
-      (categoryRows.data || []) as unknown as MembershipSourceRow[],
-      "game_categories",
-    ),
-    tagMembership: groupMembership(
-      (tagRows.data || []) as unknown as MembershipSourceRow[],
-      "game_tags",
-    ),
-    seriesMembership: groupMembership(
-      (seriesRows.data || []) as unknown as MembershipSourceRow[],
-      "game_series",
-    ),
+    categoryMembership: groupMembership(games, "game_categories", "category_id"),
+    tagMembership: groupMembership(games, "game_tags", "tag_id"),
+    seriesMembership: groupMembership(games, "game_series", "series_id"),
   };
 }

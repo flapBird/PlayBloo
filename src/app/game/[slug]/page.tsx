@@ -110,11 +110,16 @@ const getRecommendationPool = unstable_cache(async (): Promise<RecommendationCan
   // published game has hot_score = 0 the slice fell on the oldest games: the
   // ~550 newest games were never candidates, so their pages rendered without
   // related games and without previous/next links. The catalogue is read
-  // through the shared helper, which loads the taxonomy from its own side
-  // instead of joining it onto every game row.
+  // through the shared helper, which nests the taxonomy memberships on the
+  // game rows instead of joining them onto every row.
+  //
+  // The columns are the ones the pool actually uses: `view_count`,
+  // `updated_at` and `release_date` are not read by the related-game cards,
+  // the neighbour links or the ranking, and every column costs a key and a
+  // value on all thousand rows.
   const catalog = await loadCatalog({
     gameColumns:
-      "id, title, slug, thumbnail_url, view_count, iframe_url, external_url, play_count, created_at, updated_at, release_date, is_trending, hot_score",
+      "id, title, slug, thumbnail_url, iframe_url, external_url, play_count, created_at, is_trending, hot_score",
     order: { column: "created_at", ascending: false },
   });
 

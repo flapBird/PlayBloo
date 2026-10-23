@@ -4,8 +4,8 @@ import { ExternalLink, Gamepad2, Play } from "lucide-react";
 import { getDiscoveryStatusBadge, getGamePlayMode, shouldBypassImageOptimization } from "@/lib/game-utils";
 import type { Category, Game } from "@/lib/types";
 
-export type GameCardGame = Pick<Game, "id" | "title" | "slug" | "thumbnail_url" | "view_count"> &
-  Partial<Pick<Game, "play_count" | "iframe_url" | "external_url" | "original_game_url" | "official_website_url" | "is_trending" | "hot_score" | "created_at" | "updated_at" | "added_at" | "release_date" | "last_updated_at" | "description" | "short_description" | "content_verified">> &
+export type GameCardGame = Pick<Game, "id" | "title" | "slug" | "thumbnail_url"> &
+  Partial<Pick<Game, "view_count" | "play_count" | "iframe_url" | "external_url" | "original_game_url" | "official_website_url" | "is_trending" | "hot_score" | "created_at" | "updated_at" | "added_at" | "release_date" | "last_updated_at" | "description" | "short_description" | "content_verified">> &
   { categories?: Array<Pick<Category, "id" | "name" | "slug">> };
 
 interface GameCardProps {

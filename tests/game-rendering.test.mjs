@@ -19,6 +19,9 @@ function load(result, env = {}) {
     if (name === "next/cache") return { unstable_cache: (fn) => fn };
     if (name === "@/lib/supabase/admin") return { createAdminClient: () => ({ from: () => query }) };
     if (name === "@/lib/game-utils") return { getGamePlayMode: (game) => game.mode };
+    // The recommendation pool reads the catalogue through the shared helper,
+    // so a catalogue read failure is what has to surface to the caller.
+    if (name === "@/lib/catalog") return { loadCatalog: async () => { throw new Error("timeout"); } };
     return {};
   } });
   return exports;

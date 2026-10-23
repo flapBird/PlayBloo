@@ -9,6 +9,19 @@ export const PUBLIC_GAME_CARD_FIELDS = "id, title, slug, thumbnail_url, iframe_u
 export const LEGACY_GAME_CARD_FIELDS = "id, title, slug, thumbnail_url, iframe_url, external_url, view_count, play_count, created_at, updated_at, release_date, is_trending, hot_score, categories:game_categories(category_id, categories:categories(id, name, slug))";
 export const PUBLIC_GAME_DISCOVERY_FIELDS = PUBLIC_GAME_CARD_FIELDS;
 
+/**
+ * Columns the homepage cards actually render.
+ *
+ * The homepage used to read the full card field set, which drags
+ * `description` and `short_description` — roughly 750 characters per row —
+ * out of Postgres for a card that never shows them. Five feeds times twenty
+ * games times a regeneration every fifteen minutes was one of the largest
+ * single sources of egress on the site. The feeds still sort by `hot_score`,
+ * `play_count` and `view_count`, which is an ORDER BY and needs no column in
+ * the select list.
+ */
+export const HOME_GAME_CARD_FIELDS = "id, title, slug, thumbnail_url, iframe_url, external_url, original_game_url, official_website_url, added_at, last_updated_at, created_at, release_date, is_trending, categories:game_categories(category_id, categories:categories(id, name, slug))";
+
 type CategorySummary = Pick<Category, "id" | "name" | "slug">;
 type RawPublicGameCard = Omit<GameCardGame, "categories"> & {
   categories?: Array<{ categories: CategorySummary | CategorySummary[] | null }>;

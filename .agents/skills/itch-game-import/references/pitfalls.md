@@ -36,6 +36,7 @@
 
 - 镜像目标：公开 bucket `game-media`（不存在则创建，创建后等 2 秒再传），对象路径 `covers/{slug}.{ext}`，然后 PATCH `games.thumbnail_url`。旧 URL 存 mapping json 备查（itch 页面也可随时找回）。
 - 上传用 `x-upsert: true` 头 + 正确 Content-Type。
+- **上传必须带 `cache-control` 请求头（`max-age=604800`）**：Storage API 以该头作为对象的 cacheControl 存储；不带会存成 `no-cache`，CDN 每次浏览都回源校验每个封面——Supabase 免费版 1GB/月的 Log Ingestion 主要就是被这类请求烧掉的（2026-10-23 已用 `scripts/fix-storage-cache-control.mjs` 把存量 1489 个对象全部修成长缓存）。注意 `?cacheControl=` 查询参数不生效，会把对象重置回 `no-cache`；改完缓存头后公开 URL 的响应头要过一两分钟才跟着变，别当成没生效。
 - 下载 itch 封面：直连 + 0.35s 节奏 + 失败重试；单图 <200B 视为可疑（HTML 错误页），报错。
 - **GIF 素材要保留动效**：itch 封面/截图里经常有动图。sharp 处理 GIF 会把帧拼成一条超高长条（800×25650），必须走 ffmpeg + libwebp 转**动画 WebP**（`fps=10,scale='min(640,iw)':-2`、`-quality 52`、`-loop 0`）。转完要按帧核对：libwebp 解码页数 > 1、抽帧哈希各不相同，才算动图真的保住了；只看后缀名不算数。
 - **上传后立刻读公开 URL 可能拿到 CDN 旧缓存**（同一路径重传后仍返回上一版字节与 sha）。校验要用带 cache-busting 参数的请求（`?cb=<ts>`），否则会误判成"改了没生效"。
