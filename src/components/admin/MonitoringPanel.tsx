@@ -20,6 +20,7 @@ export interface MonitoringData {
   shardUsage: number;
   gameRender: MetricTrend;
   sitemapGenerate: MetricTrend;
+  slowestRenders: Array<{ slug: string; durationMs: number }>;
   historyDays: number;
 }
 
@@ -251,6 +252,30 @@ export function MonitoringPanel({ initial }: { initial: MonitoringData }) {
           </div>
         </div>
       </div>
+
+      {data.slowestRenders.length > 0 && (
+        <div className="rounded-xl border bg-card p-6">
+          <h2 className="font-semibold mb-4">Slowest Renders Today</h2>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b">
+                  <th className="text-left py-2 font-medium">Game</th>
+                  <th className="text-right py-2 font-medium">Render Time</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.slowestRenders.map((render, index) => (
+                  <tr key={render.slug + index} className="border-b last:border-0">
+                    <td className="py-2 font-mono text-xs">{render.slug}</td>
+                    <td className="text-right py-2">{formatMs(render.durationMs)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
 
       <p className="text-xs text-muted-foreground flex items-center gap-1.5">
         <Activity className="h-3.5 w-3.5" />

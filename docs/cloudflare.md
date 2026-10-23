@@ -141,6 +141,8 @@ npm run deploy
 
 绕过 OpenNext 的自动转发可直接部署 Worker：`OPEN_NEXT_DEPLOY=true npx wrangler deploy --keep-vars`。
 
+`wrangler deploy` 只上传已有的 `.open-next` 产物，不会重新构建。改了代码后必须先跑 `npm run build:cloudflare`，否则上线的仍是旧代码——这一点在排查"埋点没生效"时尤其容易误判。新构建的 build ID 会变，R2 里旧 build ID 的缓存条目随之失效，部署后需要重新预热。
+
 预热脚本的键名必须与适配器一致：`__fetch` 条目直接用文件名做键，`route-cache` 条目先剥掉 `.cache` 后缀再做键（`.cache` 只是磁盘上的文件名，不属于键的一部分）。键名写错时对象照样上传成功，但 Worker 读不到，页面会退化成每次按需渲染。
 
 部署后如果线上内容与构建产物不一致，通常是 R2 里残留了旧构建 ID 的缓存。删掉对应路由的 `route-cache` 条目即可让下次访问重新生成。

@@ -1,5 +1,5 @@
 import { createAdminClient } from "@/lib/supabase/admin";
-import { readMetric, summarize } from "@/lib/metrics";
+import { readMetric, readRecentMetric, summarize } from "@/lib/metrics";
 import {
   MONITORING_HISTORY_DAYS,
   SITEMAP_SHARD_THRESHOLD,
@@ -10,10 +10,11 @@ export const dynamic = "force-dynamic";
 
 async function getMonitoringData(): Promise<MonitoringData> {
   const supabase = createAdminClient();
-  const [renderSamples, sitemapSamples, urlSamples, publishedGames] = await Promise.all([
-    readMetric("game_render_ms"),
-    readMetric("sitemap_generate_ms"),
-    readMetric("sitemap_urls"),
+  const [renderSamples, sitemapSamples, urlSamples, slowestRenders, publishedGames] = await Promise.all([
+    readMetric("game_render_ms", MONITORING_HISTORY_DAYS),
+    readMetric("sitemap_generate_ms", MONITORING_HISTORY_DAYS),
+    readMetric("sitemap_urls", MONITORING_HISTORY_DAYS),
+    readRecentMetric("game_render_ms", 1),
     supabase.from("games").select("id", { count: "exact", head: true }).eq("is_published", true),
   ]);
 
@@ -45,6 +46,10 @@ async function getMonitoringData(): Promise<MonitoringData> {
       average: sitemap.average,
       daily: sitemap.daily,
     },
+    slowestRenders: slowestRenders.slice(0, 10).map((sample) => ({
+      slug: sample.detail || "—",
+      durationMs: sample.value,
+    })),
     historyDays: MONITORING_HISTORY_DAYS,
   };
 }

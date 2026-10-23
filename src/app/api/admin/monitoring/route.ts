@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { getAuthenticatedAdmin } from "@/lib/admin-auth";
-import { readMetric, summarize } from "@/lib/metrics";
+import { readMetric, readRecentMetric, summarize } from "@/lib/metrics";
 import {
   MONITORING_HISTORY_DAYS,
   MONITORING_PROBE_SAMPLES,
@@ -83,10 +83,11 @@ export async function GET() {
   if (!await getAuthenticatedAdmin()) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const supabase = createAdminClient();
-  const [renderSamples, sitemapSamples, sitemapUrlSamples, publishedGames] = await Promise.all([
-    readMetric("game_render_ms"),
-    readMetric("sitemap_generate_ms"),
-    readMetric("sitemap_urls"),
+  const [renderSamples, sitemapSamples, sitemapUrlSamples, slowestRenders, publishedGames] = await Promise.all([
+    readMetric("game_render_ms", MONITORING_HISTORY_DAYS),
+    readMetric("sitemap_generate_ms", MONITORING_HISTORY_DAYS),
+    readMetric("sitemap_urls", MONITORING_HISTORY_DAYS),
+    readRecentMetric("game_render_ms", 1),
     supabase.from("games").select("id", { count: "exact", head: true }).eq("is_published", true),
   ]);
 
@@ -109,6 +110,10 @@ export async function GET() {
       gameRender: renderSummary,
       sitemapGenerate: sitemapSummary,
       sitemapUrls: urlSummary,
+      slowestRenders: slowestRenders.slice(0, 10).map((sample) => ({
+        slug: sample.detail || "—",
+        durationMs: sample.value,
+      })),
       historyDays: MONITORING_HISTORY_DAYS,
     },
   });
