@@ -1,0 +1,241 @@
+{
+ "batchDate": "2026-10-23",
+ "batches": [
+  {
+   "capturedAt": "2026-10-23 11:08",
+   "count": 10
+  }
+ ],
+ "inputCount": 10,
+ "baselineCount": 1065,
+ "skippedFromPaste": {
+  "batchDate": "2026-10-22",
+  "reason": "already imported on 2026-10-22 (commit cdbedfe)",
+  "count": 10
+ },
+ "sourceFeed": "https://itch.io/games/new-and-popular/free/platform-web.xml",
+ "sourceCapturedAt": "2026-10-23 11:08",
+ "entries": [
+  {
+   "index": 1,
+   "inputTitle": "Run the Earth: Idle Runner",
+   "sourceUrl": "https://cakeloverr.itch.io/run-the-earth-idle-runner",
+   "identity": "cakeloverr.itch.io/run-the-earth-idle-runner",
+   "decision": "published",
+   "game": {
+    "id": "c7223bdb-9fa1-46ff-b6f6-717f4e9bd950",
+    "title": "Run the Earth: Idle Runner",
+    "slug": "run-the-earth-idle-runner",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-23/run-the-earth-idle-runner.webp",
+    "external_url": "https://cakeloverr.itch.io/run-the-earth-idle-runner",
+    "developer": "CakeLoverr",
+    "release_date": "2026-10-20",
+    "development_status": "early-access",
+    "engine": "Godot",
+    "categories": [
+     "idle",
+     "simulation"
+    ]
+   }
+  },
+  {
+   "index": 2,
+   "inputTitle": "Idle Mage: Conquest",
+   "sourceUrl": "https://enricobc.itch.io/idle-mage-conquest",
+   "identity": "enricobc.itch.io/idle-mage-conquest",
+   "decision": "published",
+   "game": {
+    "id": "5448a12f-9458-48c8-a23f-6dd7578fbbbd",
+    "title": "Idle Mage: Conquest",
+    "slug": "idle-mage-conquest",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-23/idle-mage-conquest.webp",
+    "external_url": "https://enricobc.itch.io/idle-mage-conquest",
+    "developer": "EnricoBC",
+    "release_date": "2026-10-21",
+    "development_status": "demo",
+    "engine": "raylib",
+    "categories": [
+     "idle",
+     "rpg"
+    ]
+   }
+  },
+  {
+   "index": 3,
+   "inputTitle": "Give Me Back My Goat!",
+   "sourceUrl": "https://blindhermit.itch.io/give-me-back-my-goat",
+   "identity": "blindhermit.itch.io/give-me-back-my-goat",
+   "decision": "published",
+   "game": {
+    "id": "e9a1acb5-91be-4c6c-8cdc-dbb79e239030",
+    "title": "Give Me Back My Goat!",
+    "slug": "give-me-back-my-goat",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-23/give-me-back-my-goat.webp",
+    "external_url": "https://blindhermit.itch.io/give-me-back-my-goat",
+    "developer": "BlindHermit",
+    "release_date": "2026-10-22",
+    "development_status": "released",
+    "engine": "HTML5",
+    "categories": [
+     "strategy",
+     "idle"
+    ]
+   }
+  },
+  {
+   "index": 4,
+   "inputTitle": "Island Crusade - Demo",
+   "sourceUrl": "https://neovalpox.itch.io/island-crusade",
+   "identity": "neovalpox.itch.io/island-crusade",
+   "decision": "published",
+   "game": {
+    "id": "0d0346bd-9b90-47b3-b428-b4f9c4674976",
+    "title": "Island Crusade - Demo",
+    "slug": "island-crusade",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-23/island-crusade.webp",
+    "external_url": "https://neovalpox.itch.io/island-crusade",
+    "developer": "neovalpox",
+    "release_date": "2026-10-22",
+    "development_status": "demo",
+    "engine": "Godot",
+    "categories": [
+     "strategy",
+     "idle"
+    ]
+   }
+  },
+  {
+   "index": 5,
+   "inputTitle": "[UPD] Duck Hunt Incremental",
+   "sourceUrl": "https://rontyn.itch.io/duck-hunt-incremental",
+   "identity": "rontyn.itch.io/duck-hunt-incremental",
+   "decision": "published",
+   "game": {
+    "id": "b73e0d42-092f-49e8-a720-85357670eb07",
+    "title": "Duck Hunt Incremental",
+    "slug": "duck-hunt-incremental",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-23/duck-hunt-incremental.webp",
+    "external_url": "https://rontyn.itch.io/duck-hunt-incremental",
+    "developer": "Rontyn",
+    "release_date": "2026-10-21",
+    "development_status": "early-access",
+    "engine": "HTML5",
+    "categories": [
+     "shooting",
+     "idle"
+    ]
+   }
+  },
+  {
+   "index": 6,
+   "inputTitle": "FOGBOUND",
+   "sourceUrl": "https://werizu1208.itch.io/fogbound",
+   "identity": "werizu1208.itch.io/fogbound",
+   "decision": "published",
+   "game": {
+    "id": "e732f815-2f66-4bbf-97e7-fda2075c6938",
+    "title": "FOGBOUND",
+    "slug": "fogbound",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-23/fogbound.webp",
+    "external_url": "https://werizu1208.itch.io/fogbound",
+    "developer": "werizu1208",
+    "release_date": "2026-10-22",
+    "development_status": "released",
+    "engine": "HTML5",
+    "categories": [
+     "simulation",
+     "survival",
+     "horror"
+    ]
+   }
+  },
+  {
+   "index": 7,
+   "inputTitle": "Grow a Rock",
+   "sourceUrl": "https://dorivoltgames.itch.io/grow-a-rock",
+   "identity": "dorivoltgames.itch.io/grow-a-rock",
+   "decision": "published",
+   "game": {
+    "id": "45c1e537-557b-4e84-bd31-fa7f10e5a9ad",
+    "title": "Grow a Rock",
+    "slug": "grow-a-rock",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-23/grow-a-rock.webp",
+    "external_url": "https://dorivoltgames.itch.io/grow-a-rock",
+    "developer": "dorivoltgames",
+    "release_date": "2026-10-21",
+    "development_status": "demo",
+    "engine": "HTML5",
+    "categories": [
+     "idle",
+     "casual"
+    ]
+   }
+  },
+  {
+   "index": 8,
+   "inputTitle": "Automated Love Obsession",
+   "sourceUrl": "https://laurzzz.itch.io/automated-love-obsession",
+   "identity": "laurzzz.itch.io/automated-love-obsession",
+   "decision": "published",
+   "game": {
+    "id": "d97ff630-f7a6-4802-9030-e405cb51115e",
+    "title": "Automated Love Obsession",
+    "slug": "automated-love-obsession",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-23/automated-love-obsession.webp",
+    "external_url": "https://laurzzz.itch.io/automated-love-obsession",
+    "developer": "Laurs/Levi",
+    "release_date": "2026-10-21",
+    "development_status": "demo",
+    "engine": "Ren'Py",
+    "categories": [
+     "casual",
+     "horror"
+    ]
+   }
+  },
+  {
+   "index": 9,
+   "inputTitle": "Trash Inc.",
+   "sourceUrl": "https://sunbeam-studio.itch.io/trash-inc",
+   "identity": "sunbeam-studio.itch.io/trash-inc",
+   "decision": "published",
+   "game": {
+    "id": "5f059231-5bad-4e9d-993d-c94b04c57a01",
+    "title": "Trash Inc.",
+    "slug": "trash-inc",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-23/trash-inc.webp",
+    "external_url": "https://sunbeam-studio.itch.io/trash-inc",
+    "developer": "Sunbeam Studio",
+    "release_date": "2026-10-21",
+    "development_status": "demo",
+    "engine": "HTML5",
+    "categories": [
+     "simulation",
+     "idle"
+    ]
+   }
+  },
+  {
+   "index": 10,
+   "inputTitle": "Increlight",
+   "sourceUrl": "https://thinking-cat-games.itch.io/increlight",
+   "identity": "thinking-cat-games.itch.io/increlight",
+   "decision": "published",
+   "game": {
+    "id": "9d39b10b-5aad-4653-9ec9-5a25af8a3dcb",
+    "title": "Increlight",
+    "slug": "increlight",
+    "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-10-23/increlight.webp",
+    "external_url": "https://thinking-cat-games.itch.io/increlight",
+    "developer": "ThinKING Cat Game",
+    "release_date": "2026-10-21",
+    "development_status": "demo",
+    "engine": "Unity",
+    "categories": [
+     "idle",
+     "strategy"
+    ]
+   }
+  }
+ ]
+}
