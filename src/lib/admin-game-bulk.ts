@@ -5,6 +5,7 @@ export const GAME_BULK_FORMAT = "playbloo.game.v1" as const;
 export const EMPTY_GAME_FORM = {
   title: "", slug: "", thumbnail_url: "", cover_url: "", iframe_url: "", external_url: "",
   description: "", how_to_play: "", controls: "", tips: "", features: "",
+  editorial_take: "", meta_title: "", meta_description: "",
   developer: "", publisher: "", source_url: "", source_type: "", original_game_url: "",
   developer_url: "", steam_url: "", itch_url: "", last_verified_at: "", sources_text: "",
   release_date: "", added_at: "", last_updated_at: "", short_description: "", official_website_url: "",
@@ -39,6 +40,9 @@ export type GameBulkDocument = {
   controls: string;
   tips: string;
   features: string;
+  editorial_take: string;
+  meta_title: string;
+  meta_description: string;
   developer: string;
   publisher: string;
   source_type: string;
@@ -87,6 +91,11 @@ const STRING_FIELDS = [
   "engine",
 ] as const;
 
+// Editorial fields joined after playbloo.game.v1 shipped. Documents exported
+// before they existed stay importable: they parse as empty strings instead of
+// failing the missing-fields check.
+const OPTIONAL_STRING_FIELDS = ["editorial_take", "meta_title", "meta_description"] as const;
+
 const STRING_ARRAY_FIELDS = ["platforms", "screenshots", "categories", "tags", "series"] as const;
 const BOOLEAN_FIELDS = ["is_published", "is_featured", "is_trending", "content_verified"] as const;
 const URL_FIELDS = [
@@ -94,7 +103,7 @@ const URL_FIELDS = [
   "developer_url", "steam_url", "itch_url", "official_website_url",
 ] as const;
 const TOP_LEVEL_FIELDS = new Set<string>([
-  "format", "read_only", "sources", ...STRING_FIELDS, ...STRING_ARRAY_FIELDS, ...BOOLEAN_FIELDS,
+  "format", "read_only", "sources", ...STRING_FIELDS, ...OPTIONAL_STRING_FIELDS, ...STRING_ARRAY_FIELDS, ...BOOLEAN_FIELDS,
 ]);
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -134,6 +143,9 @@ export function createGameBulkDocument(
     controls: form.controls,
     tips: form.tips,
     features: form.features,
+    editorial_take: form.editorial_take,
+    meta_title: form.meta_title,
+    meta_description: form.meta_description,
     developer: form.developer,
     publisher: form.publisher,
     source_type: form.source_type,
@@ -187,10 +199,17 @@ export function parseGameBulkDocument(text: string): GameBulkDocument {
   const unknownFields = Object.keys(value).filter((key) => !TOP_LEVEL_FIELDS.has(key));
   if (unknownFields.length) throw new Error(`Unknown fields: ${unknownFields.join(", ")}. Check their spelling.`);
 
-  const missingFields = [...TOP_LEVEL_FIELDS].filter((key) => !(key in value));
+  const missingFields = [...TOP_LEVEL_FIELDS].filter((key) => !(key in value) && !(
+    (OPTIONAL_STRING_FIELDS as readonly string[]).includes(key)
+  ));
   if (missingFields.length) throw new Error(`Missing fields: ${missingFields.join(", ")}. Export the current format again.`);
 
-  for (const field of STRING_FIELDS) {
+  // Absent editorial fields behave as empty strings so downstream code never
+  // sees undefined in a string-typed field.
+  for (const field of OPTIONAL_STRING_FIELDS) {
+    if (value[field] === undefined) value[field] = "";
+  }
+  for (const field of [...STRING_FIELDS, ...OPTIONAL_STRING_FIELDS]) {
     if (typeof value[field] !== "string") throw new Error(`${field} must be a string. Use an empty string when unknown.`);
   }
   for (const field of STRING_ARRAY_FIELDS) {
@@ -283,6 +302,9 @@ export function gameBulkDocumentToForm(document: GameBulkDocument): GameForm {
     controls: document.controls,
     tips: document.tips,
     features: document.features,
+    editorial_take: document.editorial_take,
+    meta_title: document.meta_title,
+    meta_description: document.meta_description,
     developer: document.developer,
     publisher: document.publisher,
     source_type: document.source_type,

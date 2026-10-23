@@ -14,16 +14,18 @@ export default function AdminGames() {
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
+  const [missingEditorial, setMissingEditorial] = useState(false);
   const [loading, setLoading] = useState(true);
   const PAGE_SIZE = 20;
 
   const loadGames = useCallback(async () => {
     setLoading(true);
     const params = new URLSearchParams({ page: String(page), q: search });
+    if (missingEditorial) params.set("missing", "editorial");
     const res = await fetch("/api/admin/games?" + params.toString());
     const json = await res.json();
     setGames(json.data || []); setTotal(json.total || 0); setLoading(false);
-  }, [page, search]);
+  }, [page, search, missingEditorial]);
 
   useEffect(() => {
     queueMicrotask(() => { void loadGames(); });
@@ -52,11 +54,20 @@ export default function AdminGames() {
         <div><h1 className="text-2xl font-bold">Games</h1><p className="text-sm text-muted-foreground">{total} games total</p></div>
         <Link href="/admin/games/new"><Button><Plus className="h-4 w-4 mr-2" />Add Game</Button></Link>
       </div>
-      <div className="flex gap-2">
+      <div className="flex flex-wrap items-center gap-2">
         <div className="relative flex-1 max-w-sm">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input placeholder="Search games..." value={search} onChange={(e) => { setSearch(e.target.value); setPage(1); }} className="pl-9" />
         </div>
+        <label className="inline-flex cursor-pointer items-center gap-2 rounded-lg border px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:border-primary/50 has-[:checked]:border-primary/60 has-[:checked]:text-primary">
+          <input
+            type="checkbox"
+            className="h-4 w-4 accent-primary"
+            checked={missingEditorial}
+            onChange={(e) => { setMissingEditorial(e.target.checked); setPage(1); }}
+          />
+          Missing editorial take
+        </label>
       </div>
       <div className="rounded-xl border bg-card">
         <Table>

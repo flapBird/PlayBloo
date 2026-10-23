@@ -28,7 +28,7 @@ mkdir -p /tmp/itch-import && python3 .agents/skills/itch-game-import/scripts/par
 产出 enriched.json：每款游戏的 og:image / og:description / 作者 / Genre / 引擎 / 截图 / 页面正文。结尾会列出抓取失败清单——404 的游戏已下架，记录后跳过；网络类失败重跑一次。
 
 ### 3. 撰写文案（模型手工活，最花工时的一步）
-按 `references/content-guide.md` 的格式和写作规则，为每款游戏写 content.json（英文 description/how_to_play/controls/tips/features + 分类 + engine/graphics 等）。铁律：**只写页面里有依据的内容**，信息薄就写薄；demo 标 `development_status: "demo"`。52 款约需 1-2 个大批次写入。
+按 `references/content-guide.md` 的格式和写作规则，为每款游戏写 content.json（英文 description/how_to_play/controls/tips/features + **editorial_take/meta_title/meta_description 原创性三件套（必写）** + 分类 + engine/graphics 等）。铁律：**只写页面里有依据的内容**，信息薄就写薄；short_description/meta_description 必须原创改写、不得照搬 og:description；demo 标 `development_status: "demo"`。52 款约需 1-2 个大批次写入。
 
 ### 4. 入库（import_games.py）
 ```bash
@@ -60,10 +60,11 @@ node .agents/skills/itch-game-import/scripts/mirror_media.mjs \
 
 ## 部署相关（代码有改动时）
 
-详情页构建期全量预渲染（上限 500），部署不会造成首访慢。站点图片全部直连原始 URL（`next.config.ts` 已设 `images.unoptimized: true`），没有图片优化缓存需要预热；**不要再运行 `scripts/warm-image-cache.mjs`**——那是优化器时代的脚本，现在运行只会白烧 Transformations 配额。
+详情页构建期预渲染最近 1500 款（按上线时间倒序，`generateStaticParams`），新游戏在构建时即入缓存。站点图片全部直连原始 URL（`next.config.ts` 已设 `images.unoptimized: true`），没有图片优化缓存需要预热；**不要再运行 `scripts/warm-image-cache.mjs`**——那是优化器时代的脚本，现在运行只会白烧 Transformations 配额。
 
 ## 已知边界
 
+- 老游戏的内容回填（editorial_take / meta_title / meta_description 三件套）不在本 skill 的导入流程里，但写作规范复用 `references/content-guide.md` 的「原创性三件套」一节；工作清单 = 后台 Games 列表勾选 "Missing editorial take"（按 view_count 倒序）。回填只写这三个字段，不动 updated_at/last_updated_at。
 - 后台手工添加的 itch 游戏 thumbnail 仍指向 itch CDN，需再跑一次 mirror_covers.py 收编。
 - `/api/stats` 接口 devtools 显示 2s+ 属正常（serverless 冷启动），fire-and-forget 不影响渲染，不要"优化"它。
-- 游戏页打开慢先分清源站 vs 线路：看 `x-vercel-cache` 命中情况（命中还慢 = 国内到 CF/Vercel 线路问题，改代码无用）。
+- 游戏页打开慢先分清源站 vs 线路：看 `x-opennext-cache` 命中情况（命中还慢 = 本地到 Cloudflare 线路问题，改代码无用）。

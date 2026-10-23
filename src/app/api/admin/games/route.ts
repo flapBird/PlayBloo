@@ -9,7 +9,8 @@ type SourceRecord = { type?: unknown; url?: unknown };
 
 const GAME_MUTABLE_FIELDS = [
   "title", "slug", "thumbnail_url", "cover_url", "iframe_url", "external_url", "description",
-  "short_description", "how_to_play", "controls", "tips", "features", "developer", "publisher",
+  "short_description", "how_to_play", "controls", "tips", "features", "editorial_take",
+  "meta_title", "meta_description", "developer", "publisher",
   "source_url", "source_type", "original_game_url", "developer_url", "steam_url", "itch_url",
   "official_website_url", "steam_app_id", "itch_project_slug", "release_date", "added_at",
   "last_updated_at", "last_verified_at", "platforms", "monetization", "development_status", "graphics",
@@ -28,6 +29,11 @@ function pickMutableGameFields(body: Record<string, unknown>): Record<string, un
   // Optional unique identifiers must use SQL NULL, never an empty string.
   for (const field of ["steam_app_id", "itch_project_slug"] as const) {
     if (typeof fields[field] === "string") fields[field] = fields[field].trim() || null;
+  }
+  // Same for the editorial texts: an emptied textarea means "no editorial
+  // content", which the public pages treat as absent.
+  for (const field of ["editorial_take", "meta_title", "meta_description"] as const) {
+    if (typeof fields[field] === "string") fields[field] = (fields[field] as string).trim() || null;
   }
   return fields;
 }
@@ -91,13 +97,21 @@ export async function GET(request: NextRequest) {
 
   const page = Math.max(1, parseInt(searchParams.get("page") || "1") || 1);
   const search = searchParams.get("q") || "";
+  const missing = searchParams.get("missing") || "";
   const limit = 20;
   const from = (page - 1) * limit;
   const to = from + limit - 1;
 
   let query = supabase.from("games").select("*", { count: "exact" });
   if (search) query = query.or(`title.ilike.%${search}%,slug.ilike.%${search}%`);
-  query = query.order("created_at", { ascending: false }).range(from, to);
+  // Backfill worklist: games that still lack the original editorial blurb,
+  // hottest first, so enrichment batches start where crawlers will look first.
+  if (missing === "editorial") {
+    query = query.is("editorial_take", null).eq("is_published", true).order("view_count", { ascending: false });
+  } else {
+    query = query.order("created_at", { ascending: false });
+  }
+  query = query.range(from, to);
 
   const { data, count } = await query;
 

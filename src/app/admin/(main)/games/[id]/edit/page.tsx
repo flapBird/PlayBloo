@@ -161,6 +161,9 @@ export default function EditGame() {
         controls: data.controls || "",
         tips: data.tips || "",
         features: data.features || "",
+        editorial_take: data.editorial_take || "",
+        meta_title: data.meta_title || "",
+        meta_description: data.meta_description || "",
         developer: data.developer || "",
         publisher: data.publisher || "",
         source_url: data.source_url || "",
@@ -525,6 +528,18 @@ export default function EditGame() {
               <div className="space-y-2 md:col-span-2">
                 <Label htmlFor="features">Features</Label>
                 <Textarea id="features" name="features" value={form.features} onChange={handleChange} rows={3} />
+              </div>
+              <div className="space-y-2 md:col-span-2">
+                <Label htmlFor="editorial_take">Editorial Take</Label>
+                <Textarea id="editorial_take" name="editorial_take" value={form.editorial_take} onChange={handleChange} rows={3} placeholder="Our own recommendation angle — why this game is worth playing. Must be original, never copied from the source page." />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="meta_title">Meta Title</Label>
+                <Input id="meta_title" name="meta_title" value={form.meta_title} onChange={handleChange} placeholder="Overrides the default <title> when set" />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="meta_description">Meta Description</Label>
+                <Input id="meta_description" name="meta_description" value={form.meta_description} onChange={handleChange} placeholder="Overrides the derived meta description when set" />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="release_date">Release Date</Label>

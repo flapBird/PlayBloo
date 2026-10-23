@@ -11,6 +11,7 @@ import { parseSourcesText } from "@/lib/game-utils";
 const EMPTY_GAME_FORM = {
   title: "", slug: "", thumbnail_url: "", cover_url: "", iframe_url: "", external_url: "",
   description: "", how_to_play: "", controls: "", tips: "", features: "",
+  editorial_take: "", meta_title: "", meta_description: "",
   developer: "", publisher: "", source_url: "", source_type: "", original_game_url: "",
   developer_url: "", steam_url: "", itch_url: "", last_verified_at: "", sources_text: "",
   release_date: "", added_at: "", last_updated_at: "", short_description: "", official_website_url: "",
@@ -177,6 +178,18 @@ export default function NewGame() {
           <div className="space-y-2 md:col-span-2">
             <Label htmlFor="features">Features</Label>
             <Textarea id="features" name="features" value={form.features} onChange={handleChange} rows={3} />
+          </div>
+          <div className="space-y-2 md:col-span-2">
+            <Label htmlFor="editorial_take">Editorial Take</Label>
+            <Textarea id="editorial_take" name="editorial_take" value={form.editorial_take} onChange={handleChange} rows={3} placeholder="Our own recommendation angle — original content, never copied from the source page." />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="meta_title">Meta Title</Label>
+            <Input id="meta_title" name="meta_title" value={form.meta_title} onChange={handleChange} placeholder="Overrides the default <title> when set" />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="meta_description">Meta Description</Label>
+            <Input id="meta_description" name="meta_description" value={form.meta_description} onChange={handleChange} placeholder="Overrides the derived meta description when set" />
           </div>
           
           <div className="space-y-2">

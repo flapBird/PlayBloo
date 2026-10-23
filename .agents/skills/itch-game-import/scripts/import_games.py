@@ -36,7 +36,10 @@ VALID_CATEGORIES = {
     "platformer", "puzzle", "racing", "rpg", "shooting", "simulation", "sports",
     "strategy", "survival", "trivia",
 }
-CONTENT_FIELDS = ["short_description", "description", "how_to_play", "controls", "tips", "features"]
+CONTENT_FIELDS = [
+    "short_description", "description", "how_to_play", "controls", "tips", "features",
+    "editorial_take", "meta_title", "meta_description",
+]
 
 
 def find_env(cli_path):
@@ -114,6 +117,9 @@ def build_rows(recs, content, now, cats):
             "controls": c["controls"],
             "tips": c["tips"],
             "features": c["features"],
+            "editorial_take": c["editorial_take"],
+            "meta_title": c["meta_title"],
+            "meta_description": c["meta_description"],
             "release_date": (r.get("published_at") or "")[:10] or now[:10],
             "is_published": True, "is_featured": False, "is_trending": False,
             "developer": author, "publisher": "",

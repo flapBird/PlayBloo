@@ -11,6 +11,9 @@ export interface Game {
   controls: string | null;
   tips: string | null;
   features: string | null;
+  editorial_take?: string | null;
+  meta_title?: string | null;
+  meta_description?: string | null;
   developer: string | null;
   publisher: string | null;
   source_url?: string | null;

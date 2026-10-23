@@ -112,9 +112,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const gameRow = await getGame(slug);
   if (!gameRow) return { title: "Game Not Found" };
   const game = gameRow as unknown as Game;
-  const description = getMetaDescription(game.content_verified ? game.description : null, game.title);
+  const description = game.meta_description?.trim() ||
+    getMetaDescription(game.content_verified ? game.description : null, game.title);
   const playMode = getGamePlayMode(game);
-  const title = playMode === "embedded" ? `${game.title} - Play Here` : `${game.title} - Game Details`;
+  const title = game.meta_title?.trim() ||
+    (playMode === "embedded" ? `${game.title} - Play Here` : `${game.title} - Game Details`);
 
   return {
     title,
@@ -258,6 +260,16 @@ export default async function GamePage({ params }: Props) {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Main Content */}
         <div className="lg:col-span-2 space-y-8">
+          {/* Editorial voice: the one block that is ours, not the source page's. */}
+          {game.editorial_take?.trim() && (
+            <section className="rounded-xl border border-primary/25 bg-primary/5 p-4">
+              <h2 className="text-xl font-bold mb-3">Why we&apos;re featuring {game.title}</h2>
+              <div className="text-muted-foreground leading-relaxed whitespace-pre-wrap">
+                {game.editorial_take}
+              </div>
+            </section>
+          )}
+
           {game.content_verified && game.description && (
             <section>
               <h2 className="text-xl font-bold mb-3">About {game.title}</h2>
