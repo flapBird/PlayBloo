@@ -33,6 +33,9 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
+# local wrangler R2 persistence (metrics written during preview/dev)
+/metrics/
+
 # env files (can opt-in for committing if needed)
 .env*
 !.env.example

@@ -2,15 +2,20 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { cache } from "react";
-import { unstable_cache } from "next/cache";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { loadCatalog, type CatalogCategory } from "@/lib/catalog";
+import { queryTimeout } from "@/lib/query-timeout";
+import {
+  getRecommendationPool,
+  getRelatedGames,
+  getNeighbors,
+  getVisibleSeries,
+  type RecommendationCandidate,
+} from "@/lib/related-games";
 import { recordMetric, startTimer } from "@/lib/metrics";
-import type { GameCardGame } from "@/components/games/GameCard";
 import { RelatedGameItem } from "@/components/games/RelatedGameItem";
 import { Badge } from "@/components/ui/badge";
 import { GameJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
-import { MIN_INDEXABLE_SERIES_GAMES, SITE_NAME, SITE_URL } from "@/lib/constants";
+import { SITE_NAME, SITE_URL } from "@/lib/constants";
 import { Play, Eye, Calendar, Grid3X3, ArrowRight, ExternalLink, ShieldAlert, ShieldCheck, Zap } from "lucide-react";
 import { GameIframe } from "@/components/games/GameIframe";
 import type { Category, Game, GameUpdate, Series, Tag } from "@/lib/types";
@@ -63,11 +68,6 @@ function getMetaDescription(description: string | null, title: string) {
   return `${shortened}…`;
 }
 
-// Bulk prerendering can wait longer; visitor-triggered regeneration stays bounded.
-function queryTimeout(runtimeMs: number) {
-  return process.env.NEXT_PHASE === "phase-production-build" ? 30000 : runtimeMs;
-}
-
 const getGame = cache(async (slug: string) => {
   const supabase = createAdminClient();
   const { data, error } = await supabase
@@ -91,112 +91,6 @@ type RawGameRelations = Omit<Game, "categories" | "tags" | "series"> & {
   series?: Array<{ series_id: string; series: SeriesSummary | null }>;
 };
 
-interface RecommendationCandidate extends GameCardGame {
-  iframe_url: string | null;
-  external_url: string | null;
-  original_game_url: string | null;
-  categoryIds: string[];
-  tagIds: string[];
-  seriesIds: string[];
-  hot_score?: number;
-  is_trending?: boolean;
-}
-
-type RawRecommendationCandidate = Omit<RecommendationCandidate, "categories" | "categoryIds" | "tagIds" | "seriesIds" | "original_game_url">;
-
-const getRecommendationPool = unstable_cache(async (): Promise<RecommendationCandidate[]> => {
-  // The pool covers the whole published catalogue, not a top-N slice. It used
-  // to be limited to 500 rows ordered by hot_score, and because every
-  // published game has hot_score = 0 the slice fell on the oldest games: the
-  // ~550 newest games were never candidates, so their pages rendered without
-  // related games and without previous/next links. The catalogue is read
-  // through the shared helper, which nests the taxonomy memberships on the
-  // game rows instead of joining them onto every row.
-  //
-  // The columns are the ones the pool actually uses: `view_count`,
-  // `updated_at` and `release_date` are not read by the related-game cards,
-  // the neighbour links or the ranking, and every column costs a key and a
-  // value on all thousand rows.
-  const catalog = await loadCatalog({
-    gameColumns:
-      "id, title, slug, thumbnail_url, iframe_url, external_url, play_count, created_at, is_trending, hot_score",
-    order: { column: "created_at", ascending: false },
-  });
-
-  const categoryById = new Map(catalog.categories.map((category) => [category.id, category]));
-  const categoryIdsByGame = new Map<string, string[]>();
-  for (const membership of catalog.categoryMembership) {
-    for (const gameId of membership.gameIds) {
-      const list = categoryIdsByGame.get(gameId) || [];
-      list.push(membership.id);
-      categoryIdsByGame.set(gameId, list);
-    }
-  }
-  const tagIdsByGame = new Map<string, string[]>();
-  for (const membership of catalog.tagMembership) {
-    for (const gameId of membership.gameIds) {
-      const list = tagIdsByGame.get(gameId) || [];
-      list.push(membership.id);
-      tagIdsByGame.set(gameId, list);
-    }
-  }
-  const seriesIdsByGame = new Map<string, string[]>();
-  for (const membership of catalog.seriesMembership) {
-    for (const gameId of membership.gameIds) {
-      const list = seriesIdsByGame.get(gameId) || [];
-      list.push(membership.id);
-      seriesIdsByGame.set(gameId, list);
-    }
-  }
-
-  return catalog.games.map((game) => {
-    const candidate = game as unknown as RawRecommendationCandidate;
-    const categoryIds = categoryIdsByGame.get(game.id) || [];
-    return {
-      ...candidate,
-      original_game_url: null,
-      categories: categoryIds
-        .map((id) => categoryById.get(id))
-        .filter((category): category is CatalogCategory => Boolean(category))
-        .map((category) => ({ id: category.id, name: category.name, slug: category.slug })),
-      categoryIds,
-      tagIds: tagIdsByGame.get(game.id) || [],
-      seriesIds: seriesIdsByGame.get(game.id) || [],
-    };
-  });
-}, ["public-recommendation-pool-v4"], { revalidate: 3600, tags: ["public-recommendations"] });
-
-function getRelatedGames(game: Game, categoryIds: string[], tagIds: string[], seriesIds: string[], candidates: RecommendationCandidate[]) {
-  const categorySet = new Set(categoryIds);
-  const tagSet = new Set(tagIds);
-  const seriesSet = new Set(seriesIds);
-  const currentMode = getGamePlayMode(game);
-  const best: Array<{ candidate: RecommendationCandidate; reason: string; score: number }> = [];
-  for (const candidate of candidates) {
-    if (candidate.id === game.id) continue;
-    const sameSeries = candidate.seriesIds.some((id) => seriesSet.has(id));
-    const sameCategory = candidate.categoryIds.some((id) => categorySet.has(id));
-    const sameTag = candidate.tagIds.some((id) => tagSet.has(id));
-    const sameMode = getGamePlayMode(candidate) === currentMode;
-    const entry = {
-      candidate,
-      reason: sameSeries ? "Same game series" : sameCategory ? "Similar genre" :
-        sameTag ? "Shared gameplay tags" : sameMode && currentMode === "embedded" ? "Also playable here" :
-        candidate.is_trending ? "Trending with players" : "Popular discovery",
-      score: (sameSeries ? 10000 : 0) + (sameCategory ? 1000 : 0) + (sameTag ? 100 : 0) +
-        (sameMode ? 10 : 0) + (candidate.is_trending ? 5 : 0) + Math.min(Number(candidate.hot_score) || 0, 4),
-    };
-    // Keep only the six winners, preserving input order for exact ties. Avoid
-    // allocating and sorting a second 500-game array on every regeneration.
-    const index = best.findIndex((item) => entry.score > item.score ||
-      (entry.score === item.score && (candidate.play_count || 0) > (item.candidate.play_count || 0)));
-    if (index >= 0) best.splice(index, 0, entry);
-    else if (best.length < 6) best.push(entry);
-    if (best.length > 6) best.pop();
-  }
-  return best.map(({ candidate, reason }) => ({ ...candidate, recommendationReason: reason }));
-}
-
 async function gameHasLevels(gameId: string) {
   const supabase = createAdminClient();
   const { count } = await supabase
@@ -211,29 +105,6 @@ async function gameHasLevels(gameId: string) {
 async function getUpdates(gameId: string): Promise<GameUpdate[]> {
   const { data } = await createAdminClient().from("game_updates").select("*").eq("game_id", gameId).lte("published_at", new Date().toISOString()).order("published_at", { ascending: false }).limit(20).abortSignal(AbortSignal.timeout(queryTimeout(2000)));
   return (data || []) as GameUpdate[];
-}
-
-function getNeighbors(game: Game, candidates: RecommendationCandidate[]) {
-  const ordered = [...candidates].sort((a, b) => new Date(b.created_at || 0).getTime() - new Date(a.created_at || 0).getTime());
-  const index = ordered.findIndex((candidate) => candidate.id === game.id);
-  if (index < 0) return { previous: null, next: null };
-  const previous = ordered[index - 1];
-  const next = ordered[index + 1];
-  return {
-    previous: previous ? { title: previous.title, slug: previous.slug } : null,
-    next: next ? { title: next.title, slug: next.slug } : null,
-  };
-}
-
-function getVisibleSeries<T extends { id: string }>(series: T[], candidates: RecommendationCandidate[]): T[] {
-  if (!series.length) return [];
-  const counts = new Map(series.map((item) => [item.id, 0]));
-  for (const candidate of candidates) {
-    for (const seriesId of candidate.seriesIds) {
-      if (counts.has(seriesId)) counts.set(seriesId, (counts.get(seriesId) || 0) + 1);
-    }
-  }
-  return series.filter((item) => (counts.get(item.id) || 0) >= MIN_INDEXABLE_SERIES_GAMES);
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

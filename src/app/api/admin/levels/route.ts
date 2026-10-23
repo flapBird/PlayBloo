@@ -1,8 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { getAuthenticatedAdmin } from "@/lib/admin-auth";
 
 export const dynamic = "force-dynamic";
+
+// Level rows feed the sitemap through a cached read; a publish, edit or
+// delete must drop that entry or the URL set goes stale for up to an hour.
+function invalidateSitemapLevels() {
+  revalidateTag("sitemap-levels", { expire: 0 });
+  revalidatePath("/sitemap.xml");
+}
 
 // GET /api/admin/levels?game_id=xxx
 export async function GET(request: NextRequest) {
@@ -28,6 +36,7 @@ export async function POST(request: NextRequest) {
   const supabase = createAdminClient();
   const { error } = await supabase.from("game_levels").insert([body]).select().single();
   if (error) return NextResponse.json({ error: error.message }, { status: 400 });
+  invalidateSitemapLevels();
   return NextResponse.json({ success: true }, { status: 201 });
 }
 
@@ -41,6 +50,7 @@ export async function PUT(request: NextRequest) {
   const supabase = createAdminClient();
   const { error } = await supabase.from("game_levels").update(updates).eq("id", id);
   if (error) return NextResponse.json({ error: error.message }, { status: 400 });
+  invalidateSitemapLevels();
   return NextResponse.json({ success: true });
 }
 
@@ -54,5 +64,6 @@ export async function DELETE(request: NextRequest) {
   const supabase = createAdminClient();
   const { error } = await supabase.from("game_levels").delete().eq("id", id);
   if (error) return NextResponse.json({ error: error.message }, { status: 400 });
+  invalidateSitemapLevels();
   return NextResponse.json({ success: true });
 }

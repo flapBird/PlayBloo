@@ -1,6 +1,8 @@
 import "server-only";
 
+import { unstable_cache } from "next/cache";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { queryTimeout } from "@/lib/query-timeout";
 
 /**
  * Shared catalogue reads for pages that need the whole published catalogue.
@@ -91,7 +93,8 @@ export async function fetchPublishedGames<T extends CatalogGame>(
       .select(columns, withCount ? { count: "exact" } : undefined)
       .eq("is_published", true)
       .order(order.column, { ascending: order.ascending })
-      .range(offset, offset + PAGE_SIZE - 1);
+      .range(offset, offset + PAGE_SIZE - 1)
+      .abortSignal(AbortSignal.timeout(queryTimeout(5000)));
     if (error) throw new Error(`Could not load catalogue games: ${error.message}`);
     return { rows: (data || []) as unknown as T[], count: count ?? null };
   };
@@ -163,9 +166,9 @@ export async function loadCatalog(options: {
 
   const [games, categories, tags, series] = await Promise.all([
     fetchPublishedGames<CatalogGame>(supabase, `${gameColumns}, ${MEMBERSHIP_COLUMNS}`, order),
-    supabase.from("categories").select("id, name, slug, updated_at"),
-    supabase.from("tags").select("id, slug, updated_at"),
-    supabase.from("series").select("id, slug, updated_at"),
+    supabase.from("categories").select("id, name, slug, updated_at").abortSignal(AbortSignal.timeout(queryTimeout(5000))),
+    supabase.from("tags").select("id, slug, updated_at").abortSignal(AbortSignal.timeout(queryTimeout(5000))),
+    supabase.from("series").select("id, slug, updated_at").abortSignal(AbortSignal.timeout(queryTimeout(5000))),
   ]);
 
   return {
@@ -178,3 +181,31 @@ export async function loadCatalog(options: {
     seriesMembership: groupMembership(games, "game_series", "series_id"),
   };
 }
+
+// The column superset every shared-catalogue consumer needs: the
+// recommendation pool renders cards from thumbnail/iframe/play-count fields,
+// the sitemap reads `updated_at` for lastmod, and the neighbour links need
+// `created_at` ordering. Memberships are appended by loadCatalog.
+const SHARED_GAME_COLUMNS =
+  "id, title, slug, updated_at, thumbnail_url, iframe_url, external_url, play_count, created_at, is_trending, hot_score";
+
+/**
+ * The published catalogue behind a shared cache entry.
+ *
+ * The recommendation pool and the sitemap both used to re-read the whole
+ * catalogue from Supabase on their own regeneration (a `count: "exact"` page
+ * scan plus a taxonomy read), which is what made a cold sitemap response take
+ * tens of seconds. Reading it through one cached entry means a single
+ * regeneration per TTL serves both, and the entry is invalidated through the
+ * same membership-change tags as the other public data caches, so publishing,
+ * unpublishing or retagging a game still refreshes it immediately.
+ */
+export const getCachedCatalog = unstable_cache(
+  async (): Promise<Catalog> =>
+    loadCatalog({
+      gameColumns: SHARED_GAME_COLUMNS,
+      order: { column: "created_at", ascending: false },
+    }),
+  ["public-catalog-v1"],
+  { revalidate: 3600, tags: ["public-recommendations", "public-category-catalog"] },
+);
