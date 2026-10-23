@@ -6,6 +6,8 @@ import { createAdminClient } from "@/lib/supabase/admin";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 import { LevelEpisodes } from "@/components/levels/LevelEpisodes";
+import { getRelatedGamesBySlug } from "@/lib/related-games";
+import { RelatedGameItem } from "@/components/games/RelatedGameItem";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -51,6 +53,7 @@ export default async function LevelIndexPage({ params }: Props) {
   const { slug } = await params;
   const game = await getGame(slug);
   if (!game) notFound();
+  const relatedGames = await getRelatedGamesBySlug(slug);
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
@@ -81,6 +84,19 @@ export default async function LevelIndexPage({ params }: Props) {
       </div>
 
       <LevelEpisodes gameSlug={game.slug} />
+
+      {/* Cross-game links: the level index is a dead end for catalogue browsing otherwise. */}
+      {relatedGames.length > 0 && (
+        <section className="mt-10 border-t pt-8">
+          <p className="text-[10px] font-extrabold uppercase tracking-[0.14em] text-muted-foreground">More games to play</p>
+          <h2 className="mt-1 text-2xl font-black tracking-tight">Keep exploring on {SITE_NAME}</h2>
+          <div className="mt-4 grid gap-x-7 md:grid-cols-2">
+            {relatedGames.map((relatedGame) => (
+              <RelatedGameItem key={relatedGame.id} game={relatedGame} reason={relatedGame.recommendationReason} />
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   );
 }
