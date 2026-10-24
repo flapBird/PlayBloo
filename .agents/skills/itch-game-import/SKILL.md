@@ -55,6 +55,7 @@ node .agents/skills/itch-game-import/scripts/mirror_media.mjs \
 ### 6. 验证与收尾
 - 抓 2-3 个 `/game/<slug>` 页面确认标题/简介/图片/外链按钮渲染正常（grep 时注意 srcset 里的 URL 是 %2F 编码的）。
 - 首页、sitemap（1h 刷新）稍后自动收录；详情页"相关游戏"有 30 分钟缓存，改库后短暂滞后属正常。
+- **GSC 提交加速**：汇报里附上本批全部游戏页的完整 URL 清单（`https://playbloo.net/game/<slug>`，与 reports 清单对应），提醒用户到 Google Search Console 逐个「网址检查 → 请求编入索引」。手工配额约每天 10-12 条，正好覆盖一批 10 款；GSC 没有官方提交 API，不要写脚本模拟浏览器操作 GSC（账号风控风险，配额也不会变多）。可选加速：`curl -s "https://www.google.com/ping?sitemap=https://playbloo.net/sitemap.xml"`——该 ping 端点 2023 年起已被 Google 弃用，可能无效但无害；本机直连不了 Google 时走 `http://127.0.0.1:7890` 代理。
 - 按仓库 git 规范 commit（导入记录写 `reports/itch-import-<date>.md`，含游戏清单表格）。
 - 汇报：入库 N 款 + 跳过原因；**提醒用户在 SEO 控制台把本批标记为「已用于 PlayBloo」**（人工驱动，不要代操作）。
 
