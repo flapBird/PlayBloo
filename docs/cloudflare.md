@@ -117,6 +117,8 @@ npm run deploy
 | Build command | `npm run build:cloudflare` |
 | Deploy command | `npx opennextjs-cloudflare deploy -- --keep-vars` |
 
+若已按「rclone 直传」一节配置 R2 S3 凭据，Deploy command 改用 `npx opennextjs-cloudflare deploy --rclone -- --keep-vars`，避免每次部署消耗数万次 Workers 请求额度。
+
 依赖安装应使用 `npm ci` 并安装 devDependencies，因为适配器和 Wrangler 位于 devDependencies。不要把 Build command 改成仅 `npm run build`；Workers 需要 `.open-next` 产物。详见 [Cloudflare OpenNext 配置文档](https://developers.cloudflare.com/workers/framework-guides/web-apps/opennext/)。
 
 ## 缓存与图片
@@ -137,7 +139,27 @@ npm run deploy
 
 ## 部署与缓存预热
 
-`npm run deploy` 通过临时创建的 `open-next-cache-populate` Worker（`*.workers.dev`）把构建产物上传到 R2。在 workers.dev 不可达的网络中，这一步会重试 15 次后失败并中止整次部署，线上仍停留在旧版本。此时改用 `node scripts/populate-r2-cache.mjs` 走 Cloudflare REST API 直传：遇到 429 按 `retry-after` 全局退避，写入幂等、可中断续传。R2 REST API 对对象写入有速率限制，全量预热约需一小时；配额耗尽时返回 429，凭据过期时返回 401（跑一次 `npx wrangler whoami` 即可刷新）。
+`npm run deploy` 通过临时创建的 `open-next-cache-populate` Worker（`*.workers.dev`）把构建产物上传到 R2。这条路径有两个已知问题：
+
+1. **消耗 Workers 请求额度**：每个缓存条目对应一次打到该临时 Worker 的请求（2026-10-24 全量约 2.3 万条，其中 95% 是 `__fetch` 数据缓存，随目录增长还会变多）。临时 Worker 部署完即删除，这些请求在 Analytics 里全部归入 `__unknown__`，但**计入 Free 计划全账号每天 10 万次的请求额度**；目录再翻几倍，一次部署就可能耗尽当天额度，导致所有 Worker 返回 1027 配额错误。
+2. 在 workers.dev 不可达的网络中，这一步会重试 15 次后失败并中止整次部署，线上仍停留在旧版本。
+
+### rclone 直传（推荐，不占 Workers 额度）
+
+OpenNext 内置 `--rclone` 选项：预热改走 R2 的 S3 端点（`<account>.r2.cloudflarestorage.com`）直传，完全绕开 Workers 请求额度；对象键名与 Worker 路径使用同一套 `computeCacheKey`，两者可互换。代价只计入 R2 Class A 写操作（Free 每月 100 万次，当前规模约可支撑 40+ 次全量部署），且 S3 端点速率远高于 REST API，全量预热只需几分钟。
+
+一次性配置：
+
+1. Dashboard → **R2 → Manage R2 API Tokens** 创建 API Token，权限 Object Read & Write，范围限定 `playbloo-next-cache` 桶，得到 Access Key ID 和 Secret Access Key。
+2. 本地部署：在 `.env.local` 中加入 `R2_ACCESS_KEY_ID`、`R2_SECRET_ACCESS_KEY`、`CF_ACCOUNT_ID`（账号 ID 非密钥，可与脚本默认值相同）。OpenNext 通过 `process.env` / wrangler vars / `.env*` 读取这三个变量。
+3. 之后本地用 `npm run deploy:rclone` 代替 `npm run deploy`。
+4. Workers Builds 自动部署：在 **Settings → Build → Variables and secrets** 中配置同名构建变量，Deploy command 改为 `npx opennextjs-cloudflare deploy --rclone -- --keep-vars`。
+
+`rclone.js`（devDependency）自带对应平台的 rclone 二进制；npm 安装时被 allow-scripts 拦截的 `selfupdate` postinstall 只影响版本自更新，不影响使用。缺任意一个凭据变量时 `--rclone` 会直接报错中止，因此在配置完成前不要把默认 `deploy` 脚本切到该路径。
+
+### REST API 直传（无 S3 Token 时的兜底）
+
+改用 `node scripts/populate-r2-cache.mjs` 走 Cloudflare REST API 直传：遇到 429 按 `retry-after` 全局退避，写入幂等、可中断续传。R2 REST API 对对象写入有速率限制，全量预热约需一小时；配额耗尽时返回 429，凭据过期时返回 401（跑一次 `npx wrangler whoami` 即可刷新）。REST API 请求同样不占 Workers 额度，但速度远慢于 rclone。
 
 绕过 OpenNext 的自动转发可直接部署 Worker：`OPEN_NEXT_DEPLOY=true npx wrangler deploy --keep-vars`。
 
