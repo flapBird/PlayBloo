@@ -92,7 +92,12 @@ export async function fetchPublishedGames<T extends CatalogGame>(
       .from("games")
       .select(columns, withCount ? { count: "exact" } : undefined)
       .eq("is_published", true)
+      // `id` as the final tiebreaker keeps the row order total: imported games
+      // share one created_at per batch, and without a unique trailing sort the
+      // parallel page requests can overlap and silently drop rows at the
+      // page boundaries.
       .order(order.column, { ascending: order.ascending })
+      .order("id", { ascending: true })
       .range(offset, offset + PAGE_SIZE - 1)
       .abortSignal(AbortSignal.timeout(queryTimeout(5000)));
     if (error) throw new Error(`Could not load catalogue games: ${error.message}`);
