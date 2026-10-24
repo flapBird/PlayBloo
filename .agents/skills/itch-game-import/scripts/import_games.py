@@ -84,16 +84,20 @@ def slug_of(url):
 
 
 def build_rows(recs, content, now, cats):
-    rows, cat_links, problems = [], [], []
+    rows, cat_links, problems, content_keys = [], [], [], {}
     for r in recs:
         if not r.get("ok"):
             problems.append(f"skip (fetch failed): {r.get('title')} :: {r.get('error')}")
             continue
-        slug = slug_of(r["url"])
-        c = content.get(slug)
+        url_slug = slug_of(r["url"])
+        c = content.get(url_slug)
         if not c:
-            problems.append(f"MISSING content for slug '{slug}' — write editorial copy first")
+            problems.append(f"MISSING content for slug '{url_slug}' — write editorial copy first")
             continue
+        # Optional slug override for when the itch path segment is already taken
+        # in the DB (e.g. two different games both named "pong").
+        slug = c.get("slug") or url_slug
+        content_keys[slug] = url_slug
         missing = [f for f in CONTENT_FIELDS if not c.get(f)]
         if missing:
             problems.append(f"content for '{slug}' missing fields: {missing}")
@@ -141,7 +145,7 @@ def build_rows(recs, content, now, cats):
         })
         for cat in c["categories"]:
             cat_links.append((slug, cat, cats[cat]))
-    return rows, cat_links, problems
+    return rows, cat_links, problems, content_keys
 
 
 def main():
@@ -160,7 +164,7 @@ def main():
     recs = json.load(open(enriched_path, encoding="utf-8"))
     content = json.load(open(content_path, encoding="utf-8"))
     cats = {c["slug"]: c["id"] for c in rest("/rest/v1/categories?select=id,slug")}
-    rows, cat_links, problems = build_rows(recs, content, now, cats)
+    rows, cat_links, problems, content_keys = build_rows(recs, content, now, cats)
 
     # dedupe against DB (slug and itch_project_slug are UNIQUE) and within batch
     existing = rest("/rest/v1/games?select=slug,itch_project_slug,external_url")
@@ -195,7 +199,7 @@ def main():
         have = {u["game_id"] for u in rest("/rest/v1/game_updates?select=title,game_id") if u["title"] == "Added to PlayBloo"}
         updates = [{"game_id": slug_to_id[r["slug"]],
                     "title": "Added to PlayBloo",
-                    "summary": f"{content[r['slug']]['short_description']}. Discovered on itch.io's new releases feed and added to the PlayBloo catalogue with verified source details.",
+                    "summary": f"{content[content_keys[r['slug']]]['short_description']}. Discovered on itch.io's new releases feed and added to the PlayBloo catalogue with verified source details.",
                     "published_at": now,
                     "source_url": r["external_url"]}
                    for r in rows if r["slug"] in slug_to_id and slug_to_id[r["slug"]] not in have]

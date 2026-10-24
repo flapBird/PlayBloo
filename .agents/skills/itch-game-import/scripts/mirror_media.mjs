@@ -162,14 +162,16 @@ const COVER_OPTS = { maxWidth: 640, quality: 82, anim: { maxWidth: 560, fps: 6, 
 const SHOT_OPTS = { maxWidth: 1280, quality: 78, anim: { maxWidth: 640, fps: 10, quality: 52 } };
 
 const enriched = JSON.parse(readFileSync(ENRICHED, "utf8"));
-const slugs = enriched.map((g) => g.url.split(".itch.io/")[1]);
+// Records may carry db_slug when the itch path segment was already taken and
+// import_games.py inserted the game under an overridden slug.
+const slugs = enriched.map((g) => g.db_slug || g.url.split(".itch.io/")[1]);
 const games = await rest(`/rest/v1/games?select=id,slug,title,thumbnail_url,screenshots&slug=in.(${slugs.join(",")})`);
 const bySlug = new Map(games.map((g) => [g.slug, g]));
 
 const manifest = { batch: BATCH, entries: [], errors: [] };
 
 for (const rec of enriched) {
-  const slug = rec.url.split(".itch.io/")[1];
+  const slug = rec.db_slug || rec.url.split(".itch.io/")[1];
   const game = bySlug.get(slug);
   if (!game) {
     manifest.errors.push(`${slug}: not found in DB`);
