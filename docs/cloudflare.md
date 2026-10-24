@@ -146,16 +146,20 @@ npm run deploy
 
 ### rclone 直传（推荐，不占 Workers 额度）
 
-OpenNext 内置 `--rclone` 选项：预热改走 R2 的 S3 端点（`<account>.r2.cloudflarestorage.com`）直传，完全绕开 Workers 请求额度；对象键名与 Worker 路径使用同一套 `computeCacheKey`，两者可互换。代价只计入 R2 Class A 写操作（Free 每月 100 万次，当前规模约可支撑 40+ 次全量部署），且 S3 端点速率远高于 REST API，全量预热只需几分钟。
+OpenNext 内置 `--rclone` 选项：预热改走 R2 的 S3 端点（`<account>.r2.cloudflarestorage.com`）直传，完全绕开 Workers 请求额度；对象键名与 Worker 路径使用同一套 `computeCacheKey`，两者可互换。代价只计入 R2 Class A 操作：每次部署约 2.3 万次写入，加上清理旧缓存时同等数量的删除（见下节），Free 每月 100 万次约可支撑 20 次部署；S3 端点速率远高于 REST API，全量预热只需几分钟。
 
 一次性配置：
 
 1. Dashboard → **R2 → Manage R2 API Tokens** 创建 API Token，权限 Object Read & Write，范围限定 `playbloo-next-cache` 桶，得到 Access Key ID 和 Secret Access Key。
 2. 本地部署：在 `.env.local` 中加入 `R2_ACCESS_KEY_ID`、`R2_SECRET_ACCESS_KEY`、`CF_ACCOUNT_ID`（账号 ID 非密钥，可与脚本默认值相同）。OpenNext 通过 `process.env` / wrangler vars / `.env*` 读取这三个变量。
-3. 之后本地用 `npm run deploy:rclone` 代替 `npm run deploy`。
-4. Workers Builds 自动部署：在 **Settings → Build → Variables and secrets** 中配置同名构建变量，Deploy command 改为 `npx opennextjs-cloudflare deploy --rclone -- --keep-vars`。
+3. 之后本地用 `npm run deploy:rclone` 代替 `npm run deploy`；它会在部署成功后自动运行 `scripts/cleanup-r2-cache.mjs` 清理旧构建缓存。
+4. Workers Builds 自动部署：在 **Settings → Build → Variables and secrets** 中配置同名构建变量，Deploy command 改为 `npx opennextjs-cloudflare deploy --rclone -- --keep-vars && node scripts/cleanup-r2-cache.mjs`。
 
 `rclone.js`（devDependency）自带对应平台的 rclone 二进制；npm 安装时被 allow-scripts 拦截的 `selfupdate` postinstall 只影响版本自更新，不影响使用。缺任意一个凭据变量时 `--rclone` 会直接报错中止，因此在配置完成前不要把默认 `deploy` 脚本切到该路径。
+
+### 旧构建缓存清理
+
+每次部署在新 buildId 命名空间下全量写入缓存，旧命名空间的条目不会自动删除——临时上传 Worker 与适配器都没有清理逻辑，R2 会以每次部署约 340 MB 的速度累积死数据。`scripts/cleanup-r2-cache.mjs` 删除 R2 `incremental-cache/` 前缀下除当前 buildId 外的所有条目，已接入 `deploy:rclone` 尾部自动运行，首次执行会把历史上积累的旧构建一次清完。它复用 rclone 直传的 S3 凭据；当前构建的 buildId 不在桶中时拒绝删除任何内容，防止桶配置错误时误清线上缓存。删除按对象数计入 Class A 操作；`node scripts/cleanup-r2-cache.mjs --dry-run` 可预览将删除的构建及体量。默认 `npm run deploy`（Worker 路径）不执行清理，需要时手动运行上述脚本。
 
 ### REST API 直传（无 S3 Token 时的兜底）
 
