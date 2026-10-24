@@ -28,7 +28,9 @@ async function getFeed(sort: HomeFeedSort | "playable"): Promise<HomeFeed> {
         request = request.order("created_at", { ascending: false });
       }
 
-      return request.order("id", { ascending: true }).limit(sort === "playable" ? 6 : 20);
+      // 24 keeps the XL 4-column grid at six full rows — a non-multiple would
+      // orphan two cards on the last row.
+      return request.order("id", { ascending: true }).limit(sort === "playable" ? 6 : 24);
     };
 
     let result = await query(HOME_GAME_CARD_FIELDS);
