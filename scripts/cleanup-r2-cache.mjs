@@ -21,6 +21,18 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import rclone from "rclone.js";
 
+// Standalone runs don't go through the OpenNext CLI, which is what loads
+// .env* files for `deploy:rclone`; load the same files here. Real
+// environment variables keep precedence (process.loadEnvFile never
+// overwrites values that are already set).
+for (const file of [".env", ".env.local"]) {
+  try {
+    process.loadEnvFile(file);
+  } catch (error) {
+    if (error.code !== "ENOENT") console.warn(`Ignoring ${file}: ${error.message}`);
+  }
+}
+
 const ACCOUNT_ID = process.env.CF_ACCOUNT_ID || "9727dd6591b71bd19b539eb94ee91e78";
 const BUCKET = process.env.R2_BUCKET_NAME || "playbloo-next-cache";
 const CACHE_DIR = process.env.OPEN_NEXT_CACHE_DIR || ".open-next/cache";
