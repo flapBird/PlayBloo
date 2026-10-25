@@ -127,7 +127,7 @@ def build_rows(recs, content, now, cats):
             "editorial_take": c["editorial_take"],
             "meta_title": c["meta_title"],
             "meta_description": c["meta_description"],
-            "release_date": (r.get("published_at") or "")[:10] or now[:10],
+            "release_date": (r.get("published_at") or r.get("itch_published_at") or "")[:10] or now[:10],
             "is_published": True, "is_featured": False, "is_trending": False,
             "developer": author, "publisher": "",
             "source_url": r["url"], "source_type": "itch.io",
