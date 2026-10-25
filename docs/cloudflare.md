@@ -151,9 +151,9 @@ OpenNext 内置 `--rclone` 选项：预热改走 R2 的 S3 端点（`<account>.r
 一次性配置：
 
 1. Dashboard → **R2 → Manage R2 API Tokens** 创建 API Token，权限 Object Read & Write，范围限定 `playbloo-next-cache` 桶，得到 Access Key ID 和 Secret Access Key。
-2. 本地部署：在 `.env.local` 中加入 `R2_ACCESS_KEY_ID`、`R2_SECRET_ACCESS_KEY`、`CF_ACCOUNT_ID`（账号 ID 非密钥，可与脚本默认值相同）。OpenNext 通过 `process.env` / wrangler vars / `.env*` 读取这三个变量。
+2. 本地部署：在 `.env.local` 中加入 `R2_ACCESS_KEY_ID`、`R2_SECRET_ACCESS_KEY`、`CF_ACCOUNT_ID`（账号 ID 非密钥，可与脚本默认值相同）。OpenNext 通过 `process.env` / wrangler vars / `.env*` 读取这三个变量；wrangler 已把 `CF_ACCOUNT_ID` 标记为废弃名，需再补一行同值的 `CLOUDFLARE_ACCOUNT_ID`，否则部署时输出 deprecation 警告（OpenNext 的 rclone 预热只认旧名，两个都要保留）。
 3. 之后本地用 `npm run deploy:rclone` 代替 `npm run deploy`；它会在部署成功后自动运行 `scripts/cleanup-r2-cache.mjs` 清理旧构建缓存。
-4. Workers Builds 自动部署：在 **Settings → Build → Variables and secrets** 中配置同名构建变量，Deploy command 改为 `npx opennextjs-cloudflare deploy --rclone -- --keep-vars && node scripts/cleanup-r2-cache.mjs`。
+4. Workers Builds 自动部署：在 **Settings → Build → Variables and secrets** 中配置构建变量——`R2_ACCESS_KEY_ID` 与 `R2_SECRET_ACCESS_KEY`（Secret）、`CF_ACCOUNT_ID` 与 `CLOUDFLARE_ACCOUNT_ID`（Variable，同值），Deploy command 改为 `npx opennextjs-cloudflare deploy --rclone -- --keep-vars && node scripts/cleanup-r2-cache.mjs`。
 
 `rclone.js`（devDependency）自带对应平台的 rclone 二进制；npm 安装时被 allow-scripts 拦截的 `selfupdate` postinstall 只影响版本自更新，不影响使用。缺任意一个凭据变量时 `--rclone` 会直接报错中止，因此在配置完成前不要把默认 `deploy` 脚本切到该路径。
 
