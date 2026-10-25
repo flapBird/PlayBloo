@@ -8,9 +8,11 @@ import { Search, Menu, X, Heart, History, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
+import { CategoryIcon } from "@/components/layout/category-icons";
+import type { SidebarCategory } from "@/components/layout/CategorySidebar";
 import { SITE_NAME } from "@/lib/constants";
 
-export function Header() {
+export function Header({ categories = [] }: { categories?: SidebarCategory[] }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
@@ -150,8 +152,32 @@ export function Header() {
               <Link prefetch={false} href="/recently-played" className="flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-lg hover:bg-muted" onClick={() => setMobileMenuOpen(false)}>
                 <History className="h-4 w-4" /> Recently Played
               </Link>
-              <Link prefetch={false} href="/category" className="block px-3 py-2 text-sm font-medium rounded-lg hover:bg-muted text-muted-foreground hover:text-foreground" onClick={() => setMobileMenuOpen(false)}>Browse genres</Link>
             </div>
+            {categories.length > 0 && (
+              <div className="border-t border-border/50 px-4 py-3">
+                <p className="pb-2 text-[11px] font-extrabold uppercase tracking-[0.14em] text-muted-foreground">Browse genres</p>
+                <div className="grid grid-cols-2 gap-1">
+                  {categories.map((category) => (
+                    <Link
+                      prefetch={false}
+                      key={category.slug}
+                      href={`/category/${category.slug}`}
+                      aria-current={pathname === `/category/${category.slug}` ? "page" : undefined}
+                      className={`flex items-center gap-2 rounded-lg px-2 py-1.5 text-sm font-medium transition-colors hover:bg-muted ${
+                        pathname === `/category/${category.slug}` ? "text-primary" : "text-muted-foreground hover:text-foreground"
+                      }`}
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <CategoryIcon slug={category.slug} className="h-4 w-4 shrink-0" />
+                      <span className="truncate">{category.name}</span>
+                    </Link>
+                  ))}
+                </div>
+                <Link prefetch={false} href="/category" className="mt-2 block px-2 py-1.5 text-sm font-medium text-primary" onClick={() => setMobileMenuOpen(false)}>
+                  All categories
+                </Link>
+              </div>
+            )}
           </div>
         )}
       </div>

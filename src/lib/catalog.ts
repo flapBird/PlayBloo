@@ -49,6 +49,7 @@ export interface CatalogGame {
   id: string;
   slug: string;
   updated_at: string;
+  play_count?: number;
   game_categories?: { category_id: string }[] | null;
   game_tags?: { tag_id: string }[] | null;
   game_series?: { series_id: string }[] | null;

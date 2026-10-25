@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { SITE_NAME } from "@/lib/constants";
 import { getCachedCategoryCatalog } from "@/lib/discovery-data";
+import { getCategoryIcon } from "@/components/layout/category-icons";
 import { ArrowRight, LayoutGrid } from "lucide-react";
 
 export const metadata = {
@@ -32,19 +33,27 @@ export default async function CategoryListPage() {
       </div>
 
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {visibleCategories.map((cat) => (
-          <Link
-            key={cat.id}
-            href={`/category/${cat.slug}`}
-            className="group flex min-h-20 items-center justify-between rounded-lg border bg-card px-4 py-3 transition-colors hover:border-primary/45"
-          >
-            <span>
-              <span className="block font-extrabold transition-colors group-hover:text-primary">{cat.name}</span>
-              <span className="mt-1 block text-xs text-muted-foreground">{cat.game_count} game{cat.game_count === 1 ? "" : "s"}</span>
-            </span>
-            <ArrowRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
-          </Link>
-        ))}
+        {visibleCategories.map((cat) => {
+          const Icon = getCategoryIcon(cat.slug);
+          return (
+            <Link
+              key={cat.id}
+              href={`/category/${cat.slug}`}
+              className="group flex min-h-20 items-center justify-between rounded-lg border bg-card px-4 py-3 transition-colors hover:border-primary/45"
+            >
+              <span className="flex items-center gap-3">
+                <span className="brand-mark grid h-9 w-9 shrink-0 place-items-center rounded-lg text-white">
+                  <Icon className="h-4 w-4" aria-hidden="true" />
+                </span>
+                <span>
+                  <span className="block font-extrabold transition-colors group-hover:text-primary">{cat.name}</span>
+                  <span className="mt-1 block text-xs text-muted-foreground">{cat.game_count} game{cat.game_count === 1 ? "" : "s"}</span>
+                </span>
+              </span>
+              <ArrowRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

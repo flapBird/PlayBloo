@@ -5,8 +5,9 @@ import { unstable_cache } from "next/cache";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { GameListItem } from "@/components/games/GameListItem";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
+import { CategoryIcon } from "@/components/layout/category-icons";
 import { SITE_URL, PAGE_SIZE, MIN_INDEXABLE_CATEGORY_GAMES } from "@/lib/constants";
-import { normalizePublicGameCards, PUBLIC_GAME_CARD_FIELDS } from "@/lib/discovery-data";
+import { normalizePublicGameCards, PUBLIC_GAME_CARD_FIELDS, getCachedCategoryCatalog } from "@/lib/discovery-data";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -103,6 +104,9 @@ export default async function CategoryPage({ params, searchParams }: Props) {
   const { games, total } = await getGames(slug, page);
   const totalPages = Math.ceil(total / PAGE_SIZE);
   const isContentVerified = category.content_verified === true;
+  const relatedCategories = (await getCachedCategoryCatalog())
+    .filter((item) => item.game_count >= MIN_INDEXABLE_CATEGORY_GAMES && item.slug !== category.slug)
+    .slice(0, 10);
 
   return (
     <div className="container mx-auto px-4 py-8 space-y-8">
@@ -115,10 +119,17 @@ export default async function CategoryPage({ params, searchParams }: Props) {
       />
 
       <div className="border-b pb-6">
-        <p className="mb-2 text-[10px] font-extrabold uppercase tracking-[0.14em] text-muted-foreground">Browse by genre</p>
-        <h1 className="text-3xl font-black tracking-tight">{category.name} Games</h1>
+        <div className="flex items-start gap-4">
+          <span className="brand-mark grid h-11 w-11 shrink-0 place-items-center rounded-lg text-white">
+            <CategoryIcon slug={category.slug} className="h-5 w-5" />
+          </span>
+          <div>
+            <p className="mb-1 text-[10px] font-extrabold uppercase tracking-[0.14em] text-muted-foreground">Browse by genre</p>
+            <h1 className="text-3xl font-black tracking-tight">{category.name} Games</h1>
+          </div>
+        </div>
         {isContentVerified && category.description && (
-          <p className="mt-2 max-w-3xl leading-6 text-muted-foreground">{category.description}</p>
+          <p className="mt-3 max-w-3xl leading-6 text-muted-foreground">{category.description}</p>
         )}
         {isContentVerified && category.source_url && (
           <a
@@ -132,6 +143,22 @@ export default async function CategoryPage({ params, searchParams }: Props) {
         )}
         <p className="mt-2 text-sm text-muted-foreground">{total} games found</p>
       </div>
+
+      {relatedCategories.length > 0 && (
+        <nav aria-label="Related genres" className="flex flex-wrap items-center gap-2">
+          <span className="mr-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">Related genres</span>
+          {relatedCategories.map((item) => (
+            <Link
+              key={item.slug}
+              prefetch={false}
+              href={`/category/${item.slug}`}
+              className="rounded-full border px-3 py-1 text-sm text-muted-foreground transition-colors hover:border-primary/45 hover:text-foreground"
+            >
+              {item.name}
+            </Link>
+          ))}
+        </nav>
+      )}
 
       {games.length > 0 ? (
         <>

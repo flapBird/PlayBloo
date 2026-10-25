@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { getCategoryNav } from "@/lib/category-nav";
 import { SITE_NAME } from "@/lib/constants";
 
 const aboutLinks = [
@@ -8,10 +9,29 @@ const aboutLinks = [
   { label: "Contact", href: "/contact" },
 ];
 
-export function Footer() {
+export async function Footer() {
+  const categories = await getCategoryNav();
+
   return (
     <footer className="site-footer mt-16">
       <div className="container mx-auto px-4 py-12">
+        {categories.length > 0 && (
+          <div className="mb-10 border-b border-border pb-8">
+            <h3 className="mb-4 text-xs font-bold uppercase tracking-wider text-muted-foreground">Browse by genre</h3>
+            <nav aria-label="Game genres" className="flex flex-wrap gap-x-5 gap-y-2">
+              {categories.map((category) => (
+                <Link
+                  key={category.slug}
+                  prefetch={false}
+                  href={`/category/${category.slug}`}
+                  className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  {category.name} Games
+                </Link>
+              ))}
+            </nav>
+          </div>
+        )}
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
           {/* Brand column */}
           <div className="col-span-2 lg:col-span-2">

@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { CategorySidebar } from "@/components/layout/CategorySidebar";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { getCategoryNav } from "@/lib/category-nav";
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from "@/lib/constants";
 import "./globals.css";
 
@@ -51,11 +53,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Shared, cached category navigation feeds the sidebar, the mobile menu
+  // and the footer links from one read.
+  const categories = await getCategoryNav();
+
   return (
     <html lang="en" className="dark h-full antialiased" suppressHydrationWarning>
       <head>
@@ -63,9 +69,11 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col">
         <div className="site-background" aria-hidden="true" />
-        <Header />
-        <main className="site-main flex-1">{children}</main>
-        <Footer />
+        <Header categories={categories} />
+        <CategorySidebar categories={categories}>
+          <main className="site-main flex-1">{children}</main>
+          <Footer />
+        </CategorySidebar>
         <JsonLd type="WebSite" />
         {isProduction && (
           <Script id="microsoft-clarity" strategy="lazyOnload">
