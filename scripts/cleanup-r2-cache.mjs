@@ -117,17 +117,27 @@ async function main() {
       return;
     }
 
-    for (const id of stale) {
-      const size = (await run("size", `${remote}/${PREFIX}/${id}`)).trim();
-      const objects = /Total objects:\s*(\d+)/.exec(size)?.[1] ?? "?";
-      const bytes = /Total size:\s*(.+)/.exec(size)?.[1] ?? "?";
-      if (DRY_RUN) {
-        console.log(`[dry-run] would purge ${PREFIX}/${id} (${objects} objects, ${bytes})`);
-        continue;
-      }
-      await run("purge", `${remote}/${PREFIX}/${id}`, { transfers: 32 });
-      console.log(`Purged ${PREFIX}/${id} (${objects} objects, ${bytes})`);
-    }
+    // Prefixes are purged in parallel: on high-latency networks the sequential
+    // loop needs the better part of an hour for ~90k objects, while R2
+    // comfortably accepts a few hundred concurrent S3 requests.
+    const PURGE_CONCURRENCY = 4;
+    let next = 0;
+    await Promise.all(
+      Array.from({ length: Math.min(PURGE_CONCURRENCY, stale.length) }, async () => {
+        while (next < stale.length) {
+          const id = stale[next++];
+          const size = (await run("size", `${remote}/${PREFIX}/${id}`)).trim();
+          const objects = /Total objects:\s*(\d+)/.exec(size)?.[1] ?? "?";
+          const bytes = /Total size:\s*(.+)/.exec(size)?.[1] ?? "?";
+          if (DRY_RUN) {
+            console.log(`[dry-run] would purge ${PREFIX}/${id} (${objects} objects, ${bytes})`);
+            continue;
+          }
+          await run("purge", `${remote}/${PREFIX}/${id}`, { transfers: 64 });
+          console.log(`Purged ${PREFIX}/${id} (${objects} objects, ${bytes})`);
+        }
+      })
+    );
     console.log(
       DRY_RUN
         ? `Dry run: ${stale.length} stale build(s) would be purged`
