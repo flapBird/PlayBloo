@@ -5,7 +5,8 @@
 ## 1. 数据来源
 
 - **SEOGrowthManage 本地仓库的 SQLite 是旧的**（`data/backlink_manager.db` 停更于 2026-08），itch 数据在远程服务器 Docker 里（`DATABASE_URL=sqlite:////app/data/backlink_manager.db`）。别查本地库。
-- 拿数据的两条路：① 用户直接把导出 Markdown 粘进来（最常见）；② 用 `SEOGrowthManage/.env` 里的 `ADMIN_USERNAME/PASSWORD` POST 登录 `https://seo.leeswalvpn.ccwu.cc/login`（表单字段 username/password，拿 session cookie 后 GET `/itch/export?date=YYYY-MM-DD`）。本机 shell 对该站 curl 可能被取消/超时，问用户要数据最稳。
+- 拿数据首选**雷达 API**（`fetch_batch.py`）：`GET /api/itch/games?status=ready`，密钥在 PlayBloo `.env.local` 的 `ITCH_RADAR_API_KEY`（SEOGrowthManage 控制台 `/itch` 页签发，明文只显示一次）。**该站本机直连超时，必须走代理**（脚本默认 `http://127.0.0.1:7890`）。回退路：① 用户粘贴导出 Markdown（parse_and_fetch.py 仍支持）；② `SEOGrowthManage/.env` 的 `ADMIN_USERNAME/PASSWORD` 登录抓 `/itch/export`（最后手段，本机对该站 curl 可能被取消/超时）。
+- 入库成功后用 `mark_used.py` 回填已用（`POST /api/itch/mark-used`，urls 原样传 imported-urls.txt 里的）。标记失败/漏标不致命——重复拉到同一款时 import_games 的查重会兜住，下次照常标记即可。
 - 导出里的"状态：待补全 + 抓取备注 403"说明雷达服务器抓 itch 被拒——**本机走代理能抓到**，详情比导出丰富得多，值得逐款抓取。
 
 ## 2. 抓取 itch.io

@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 """Parse an itch radar export markdown and enrich each game from its itch.io page.
 
-Input : export markdown like "# itch.io 新游戏速递 · YYYY-MM-DD（共 N 款）" with
-        "## Title" + "- 游戏页面/作者/上架时间/价格/简介/封面图/..." bullet lines.
-Output: enriched.json — one record per game with parsed fields + page-extracted
+Input : either the radar API working list written by fetch_batch.py
+        (games.json — a JSON list of game records, or the raw {"games": [...]}
+        wrapper), or the legacy export markdown ("# itch.io 新游戏速递 · ...").
+Output: enriched.json — one record per game with input fields + page-extracted
         fields (og:image, author, genre, engine, screenshots, page description).
+        API-provided fields (cover_url/description/genres/tags/keywords/price/
+        quality_ok) pass through and back up the page fields where they overlap.
 
 Usage:
   python3 parse_and_fetch.py <export.md> <enriched.json> [--proxy http://127.0.0.1:7890] [--workers 6] [--direct]
@@ -42,6 +45,14 @@ def parse_export(path):
                        "封面图": "rss_cover", "建议关键词": "keywords"}[m.group(1)]
                 cur[key] = m.group(2).strip()
     return games
+
+
+def load_games(path):
+    if path.endswith(".json"):
+        data = json.load(open(path, encoding="utf-8"))
+        games = data.get("games") if isinstance(data, dict) else data
+        return [g for g in (games or []) if g.get("url")]
+    return parse_export(path)
 
 
 def fetch(opener, url, timeout=30):
@@ -116,13 +127,16 @@ def main():
     handler = urllib.request.ProxyHandler({"http": proxy, "https": proxy} if use_proxy else {})
     opener = urllib.request.build_opener(handler)
 
-    games = parse_export(src)
+    games = load_games(src)
     print(f"parsed {len(games)} games from {src}", file=sys.stderr)
     results = [None] * len(games)
 
     def work(i, g):
         try:
-            return i, {**g, **extract(g["url"], fetch(opener, g["url"]))}
+            rec = {**g, **extract(g["url"], fetch(opener, g["url"]))}
+            if not rec.get("screenshots") and g.get("screenshots"):
+                rec["screenshots"] = g["screenshots"][:6]  # radar-provided fallback
+            return i, rec
         except urllib.error.HTTPError as err:
             return i, {**g, "url": g["url"], "ok": False, "error": f"HTTP {err.code}"}
         except Exception as err:

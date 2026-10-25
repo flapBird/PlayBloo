@@ -3,6 +3,9 @@
 
 Inputs:
   enriched.json  — output of parse_and_fetch.py (one record per game; ok==true)
+  imported-urls.txt — written next to enriched.json on a real run: the
+                   external_url of every row actually inserted. Feed it to
+                   mark_used.py so the radar marks only what PlayBloo used.
   content.json   — { "<slug>": {short_description, description, how_to_play,
                    controls, tips, features, categories[], engine, graphics,
                    multiplayer, development_status} , ... } written by the model
@@ -111,7 +114,7 @@ def build_rows(recs, content, now, cats):
         rows.append({
             "title": r["title"],
             "slug": slug,
-            "thumbnail_url": r.get("rss_cover") or r.get("og_image") or "",
+            "thumbnail_url": r.get("rss_cover") or r.get("cover_url") or r.get("og_image") or "",
             "cover_url": "",
             "iframe_url": "",
             "external_url": r["url"],
@@ -195,6 +198,10 @@ def main():
     if links:
         rest("/rest/v1/game_categories?select=game_id,category_id", links, prefer="return=representation")
     print(f"inserted {len(inserted)} games, {len(links)} category links")
+    urls_out = pathlib.Path(enriched_path).parent / "imported-urls.txt"
+    inserted_urls = [r["external_url"] for r in rows if r["slug"] in slug_to_id]
+    urls_out.write_text("\n".join(inserted_urls) + ("\n" if inserted_urls else ""), encoding="utf-8")
+    print(f"wrote {len(inserted_urls)} imported urls -> {urls_out} (feed to mark_used.py)")
     if do_updates:
         have = {u["game_id"] for u in rest("/rest/v1/game_updates?select=title,game_id") if u["title"] == "Added to PlayBloo"}
         updates = [{"game_id": slug_to_id[r["slug"]],

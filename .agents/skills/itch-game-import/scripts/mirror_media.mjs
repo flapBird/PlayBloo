@@ -179,7 +179,7 @@ for (const rec of enriched) {
   }
   const entry = { slug, title: rec.title, cover: null, screenshots: [] };
 
-  const coverUrl = rec.rss_cover || rec.og_image;
+  const coverUrl = rec.rss_cover || rec.cover_url || rec.og_image;
   try {
     const raw = await download(coverUrl);
     await sleep(350);
