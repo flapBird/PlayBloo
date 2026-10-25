@@ -80,4 +80,4 @@
 
 - 上架时间 `published_at`（UTC+8）取日期部分作 `release_date`。
 - 标题用导出里的 RSS 标题（与页面 h1 通常一致；页面 h1 更权威时以 h1 为准）。
-- 汇报时说明：入库 N 款、跳过哪些及原因（404 等）、分类分布；提醒用户在 SEO 控制台把本批标记「已用于 PlayBloo」（雷达状态流转是人工驱动的，不要代操作）。
+- 汇报时说明：入库 N 款、跳过哪些及原因（404 等）、分类分布；入库成功后用 `mark_used.py` 回填雷达已用状态（urls 取 import_games.py 落盘的 imported-urls.txt）。
