@@ -1,0 +1,138 @@
+{
+  "batch": "submission-review-2026-10-26",
+  "generatedAt": "2026-10-27T00:45:00+08:00",
+  "scope": "全部待审核投稿（快照时 2 条 pending_review），仅收录有可验证浏览器版本的单款游戏",
+  "baseline": {
+    "snapshot": "私有快照（/tmp，未提交）：47 条投稿、1101 款游戏（含 7 条草稿）、24 分类",
+    "previousBatchesConsulted": ["reports/submission-review-2026-10-19.md", "reports/submission-review-2026-10-21.md"]
+  },
+  "results": [
+    {
+      "submissionId": "c4bac8b1-a179-4145-8926-b15775cdcede",
+      "inputUrl": "https://game.rivetnova.com",
+      "resolvedUrl": "https://game.rivetnova.com/",
+      "identity": "Rivet Nova: Idle Online RPG，开发者/发行商 Rivet Nova（官方 press kit factsheet 署名）；无 Steam App ID / itch 标识；无同款 slug、标题或来源 URL 命中（含未发布草稿）",
+      "decision": "approved",
+      "reason": "官方浏览器版本实测可玩：2026-10-26 实时浏览器会话点击 ENTER THE FORGE 直接进入（BUILD 0.23.160），无需登录；无目录内同款",
+      "gameId": "77de083e-f5a4-460c-9bf4-3b3b885e43f4",
+      "slug": "rivet-nova",
+      "publishedAt": "2026-10-26T15:53:29.294+00:00",
+      "game": {
+        "title": "Rivet Nova: Idle Online RPG",
+        "external_url": "https://game.rivetnova.com/",
+        "categories": ["idle", "rpg", "multiplayer"],
+        "platforms": ["browser"],
+        "monetization": "free",
+        "development_status": "early-access",
+        "graphics": "3D",
+        "engine": "Three.js",
+        "developer": "Rivet Nova",
+        "multiplayer": "Online multiplayer MMO: shared world with a PvP arena, guilds, chat and a player market"
+      },
+      "researchSources": [
+        "https://game.rivetnova.com/（实时浏览器会话：入口页、进入后工作台主界面、教程弹窗）",
+        "https://rivetnova.com/landing-assets/press/index.html（官方 press kit：factsheet、媒体来源说明）",
+        "https://rivetnova.com/landing-assets/press/factsheet.txt（官方纯文本 factsheet）",
+        "https://rivetnova.com/（官网首页 FAQ：浏览器可玩、100 机械怪物、5 大部件族、离线 4 小时）",
+        "https://play.google.com/store/apps/details?id=com.rivetnova.game（Android 正式版引用）",
+        "game.rivetnova.com/assets/beta-dWfA2eWH.js 静态阅读（教程与机制文案、HP 公式、7 天 UTC 连击、市集 5 级解锁、公会战时间表、网页版不处理 Google Play 支付、Three.js 引用）"
+      ],
+      "missingDetailFields": ["release_date（原作发行日期未公布）"],
+      "media": {
+        "cover": "game-media/covers/submissions-2026-10-26/rivet-nova.webp（来源 press kit media/robot-workshop.png，499x640 WebP，36954B）",
+        "screenshots": [
+          "game-media/screenshots/submissions-2026-10-26/rivet-nova-0.webp（pvp-battle.png，780x1000）",
+          "game-media/screenshots/submissions-2026-10-26/rivet-nova-1.webp（pve-hunt.png，780x1000）",
+          "game-media/screenshots/submissions-2026-10-26/rivet-nova-2.webp（guild-map.png，780x1000）"
+        ],
+        "provenance": "官方 press kit 明确允许带 Rivet Nova 署名用于该游戏的编辑报道；图片为真实客户端截图（staged demo state），未冒充实况对局",
+        "verification": "7/7 上传后公开读取 200、image/webp、SHA-256 与上传一致"
+      },
+      "outcome": "写入并验证通过；投稿 approved 且绑定 approved_game_id",
+      "verification": {
+        "dbReadback": "全部字段、分类关联、sources 与写入内容一致",
+        "anonymousDraftHidden": "发布前 /game/rivet-nova 匿名 404、anon 查询为空",
+        "livePage": "发布后线上先返回缓存 404（ISR revalidate=3600，服务角色写库不触发失效）；等待 TTL 自然过期后轮询确认（见 outcome 汇总）"
+      }
+    },
+    {
+      "submissionId": "ef5d0041-e06c-4950-ac43-57889421f9b7",
+      "inputUrl": "https://joinallworld.com",
+      "resolvedUrl": "https://joinallworld.com/",
+      "identity": "Allworld，开发者 kromate（官方站 Join in 区块以 github.com/kromate/joinallworld 为游戏源码，仓库 AGPL-3.0）；无同款命中",
+      "decision": "approved",
+      "reason": "官方浏览器游戏实测可玩：实时会话以游客身份直接进入（Play now，无密码无邮箱，出生点 Freedom Park · Lagos Island）；早期 beta 与 AGPL 开源经官方 /about 与 GitHub 仓库核实；无目录内同款",
+      "gameId": "3113726a-fd49-4352-bcd5-9793e90f5fcf",
+      "slug": "allworld",
+      "publishedAt": "2026-10-26T15:53:29.294+00:00",
+      "game": {
+        "title": "Allworld",
+        "external_url": "https://joinallworld.com/",
+        "categories": ["simulation", "multiplayer", "casual"],
+        "platforms": ["browser"],
+        "monetization": "free",
+        "development_status": "early-access",
+        "graphics": "3D",
+        "engine": null,
+        "developer": "kromate",
+        "multiplayer": "Online shared world with other players and labelled AI characters; community chat and voice"
+      },
+      "researchSources": [
+        "https://joinallworld.com/（实时浏览器会话：欢迎对话框 284 城市/243 国家地区、Play now/Sign up/Log in、游客开局、需求条、场所活动、31 人在线含 30 个标注 AI 角色、AGPL 源码链接；clean-screen 模式截取 3D 场景）",
+        "https://joinallworld.com/about（284 城市/242 国家、早期 beta、开源 AGPL、游戏币非真实货币、AI 角色始终标注）",
+        "https://github.com/kromate/joinallworld（AGPL-3.0、README：early beta、游客开局在 Freedom Park Lagos、可自托管）",
+        "joinallworld.com 前端 bundle 静态阅读（启动文案 'Places around the world. Free, in your browser.'、钱包/银行、市集摊位、GuestBar、注册流程）"
+      ],
+      "missingDetailFields": ["engine（自研 WebGL 栈，无具名引擎）", "release_date（未公布）", "publisher"],
+      "media": {
+        "cover": "game-media/covers/submissions-2026-10-26/allworld.webp（来源官方 og/allworld.jpg，640x336 WebP，47038B）",
+        "screenshots": [
+          "game-media/screenshots/submissions-2026-10-26/allworld-0.webp（本次实机浏览器截图：Freedom Park 3D 场景，clean-screen 模式）",
+          "game-media/screenshots/submissions-2026-10-26/allworld-1.webp（本次实机浏览器截图：场所活动 UI）"
+        ],
+        "provenance": "封面为官方站分享主视觉；截图为本次审核中真实浏览器版本实拍，非宣传图冒充",
+        "verification": "7/7 上传后公开读取 200、image/webp、SHA-256 与上传一致"
+      },
+      "outcome": "写入并验证通过；投稿 approved 且绑定 approved_game_id",
+      "verification": {
+        "dbReadback": "全部字段、分类关联、sources 与写入内容一致",
+        "anonymousDraftHidden": "发布前 /game/allworld 匿名 404、anon 查询为空",
+        "livePage": "同上，等 ISR TTL 自然过期后轮询确认"
+      }
+    }
+  ],
+  "summary": {
+    "input": 2,
+    "approved": 2,
+    "duplicate": 0,
+    "rejected": 0,
+    "pending": 0,
+    "failed": 0
+  },
+  "databaseVerification": {
+    "gamesTotalAfter": 1103,
+    "publishedAfter": 1096,
+    "oldGameTimestampChanges": 0,
+    "oldGamePublishStateChanges": 0,
+    "submissionStates": "两条均 approved，reviewed_at=2026-10-26T15:54:07.318+00:00，reviewed_by=null（服务角色直写，不冒用管理员身份），原 notes 保留并追加审核说明，原自动提取字段保留，_editorial_review 记录方法/时间/依据/缺项"
+  },
+  "sitemapVerification": {
+    "regressionTests": "node --test tests/sitemap/pagination.test.mjs 5/5 通过",
+    "localGeneration": "以实时 catalog 执行当前 sitemap.ts 生成逻辑（Guides 旁路为 []）：1124 条目；rivet-nova 与 allworld 收录且 lastmod 精确等于发布时刻 2026-10-26T15:53:29.294Z；1094 个老游戏 lastmod 与基线 0 差异；基线 7 条草稿 0 泄漏；新增游戏所属 5 个分类页按设计继承新 lastmod",
+    "liveXml": "缓存版（生成于 2026-10-26T15:33:57Z，早于发布动作）1094 个单段游戏 URL 时间戳与基线 100% 一致、无草稿泄漏；新 URL 待 ISR TTL 过期后出现并轮询确认",
+    "note": "服务角色写库不触发页面缓存失效；无管理员会话可用的认证失效路径，未伪造失效接口、未自动部署"
+  },
+  "llmsTxt": "本地 public/llms.txt 与线上一致，浏览器目录/外链游玩说明仍适配本批，未修改",
+  "liveChecks": {
+    "gamePages": {
+      "rivet-nova": "2026-10-26T16:56:44Z 起 HTTP 200（ISR 缓存的发布前 404 于 16:47Z 过期后自然刷新）；完整页面验证：标题、meta 描述（取自 description）、镜像封面、game.rivetnova.com 游玩外链、How to Play/Controls/Tips/Features 四栏、VideoGame JSON-LD、idle/rpg/multiplayer 分类链接，页面无 /_next/image（short_description 与 screenshots 为列表卡片/后台字段，详情页按全站现行行为不渲染）",
+      "allworld": "2026-10-26T17:03Z HTTP 200（404 缓存过期后刷新）；完整页面验证同上，游玩外链 joinallworld.com、simulation/multiplayer/casual 分类链接、正文含 open source 表述，页面无 /_next/image"
+    },
+    "sitemap": "2026-10-26T17:1xZ 线上 sitemap.xml（1159 条目）收录两条新 URL，lastmod 均精确等于发布时刻 2026-10-26T15:53:29.294Z；1,094 个老游戏单段 URL 时间戳与基线 0 差异；基线草稿 0 泄漏。catalog 缓存（unstable_cache revalidate=3600）经 SWR 两跳后自然更新",
+    "note": "从发布到线上全量可见约 75 分钟，全部经 ISR/缓存自然过期完成，无部署、无强刷、未改任何老游戏时间戳"
+  },
+  "notesOnEvidence": {
+    "submissionClaimsCorrected": "Rivet Nova 投稿备注称网页版需要 Google 登录：实测网页版无需登录即可开始，Google 关联是官方说明中的可选跨端续玩功能；已按核实事实撰写并在投稿 notes 追加更正",
+    "noPrivateData": "报告与 manifest 未包含投稿人邮箱、请求指纹、凭据或快照私人 notes 原文"
+  }
+}
