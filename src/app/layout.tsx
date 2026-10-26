@@ -58,8 +58,8 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Shared, cached category navigation feeds the sidebar, the mobile menu
-  // and the footer links from one read.
+  // Shared, cached category navigation feeds the sidebar and mobile menu
+  // from one read.
   const categories = await getCategoryNav();
 
   return (
@@ -72,7 +72,7 @@ export default async function RootLayout({
         <Header categories={categories} />
         <CategorySidebar categories={categories}>
           <main className="site-main flex-1">{children}</main>
-          <Footer categories={categories} />
+          <Footer />
         </CategorySidebar>
         <JsonLd type="WebSite" />
         {isProduction && (

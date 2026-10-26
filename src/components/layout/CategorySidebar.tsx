@@ -2,11 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { LayoutGrid, PanelLeftClose, PanelLeftOpen } from "lucide-react";
 import { CategoryIcon } from "@/components/layout/category-icons";
-
-const EXPANDED_STORAGE_KEY = "playbloo:sidebar-expanded:v1";
 
 export interface SidebarCategory {
   name: string;
@@ -14,51 +12,40 @@ export interface SidebarCategory {
   gameCount: number;
 }
 
-/**
- * CrazyGames-style category rail: a narrow icon strip by default, expanded to
- * a full sidebar on demand. The default is collapsed; the choice persists in
- * localStorage. Expanding pushes the page content instead of covering it, so
- * nothing shifts unexpectedly on navigation.
- */
+/** Hover reveals the labels over the page; the grid always keeps its width. */
 export function CategorySidebar({ categories, children }: { categories: SidebarCategory[]; children: React.ReactNode }) {
   const [expanded, setExpanded] = useState(false);
   const pathname = usePathname();
-
-  useEffect(() => {
-    try {
-      setExpanded(localStorage.getItem(EXPANDED_STORAGE_KEY) === "1");
-    } catch {}
-  }, []);
-
-  const toggle = () => {
-    setExpanded((value) => {
-      const next = !value;
-      try {
-        localStorage.setItem(EXPANDED_STORAGE_KEY, next ? "1" : "0");
-      } catch {}
-      return next;
-    });
-  };
+  const labelClass = `min-w-0 whitespace-nowrap transition-opacity duration-150 motion-reduce:transition-none ${expanded ? "opacity-100" : "opacity-0"}`;
 
   return (
     <>
       <aside
-        className={`fixed bottom-0 left-0 top-16 z-40 hidden flex-col border-r border-border/60 bg-background/95 backdrop-blur transition-[width] duration-200 ease-out lg:flex ${
-          expanded ? "w-60" : "w-16"
+        aria-label="Browse game categories"
+        onPointerEnter={(event) => { if (event.pointerType === "mouse") setExpanded(true); }}
+        onPointerLeave={(event) => { if (event.pointerType === "mouse") setExpanded(false); }}
+        onFocusCapture={(event) => { if (event.target.matches(":focus-visible")) setExpanded(true); }}
+        onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setExpanded(false); }}
+        onKeyDown={(event) => { if (event.key === "Escape") setExpanded(false); }}
+        className={`category-rail fixed bottom-0 left-0 top-16 z-40 hidden select-none flex-col overflow-hidden border-r border-border/60 bg-background transition-[width,box-shadow] duration-200 ease-out motion-reduce:transition-none lg:flex ${
+          expanded ? "w-56 shadow-[12px_0_32px_-12px_rgba(0,0,0,0.4)]" : "w-16"
         }`}
       >
-        <button
-          type="button"
-          onClick={toggle}
-          aria-expanded={expanded}
-          aria-label={expanded ? "Collapse categories sidebar" : "Expand categories sidebar"}
-          className="flex h-12 items-center gap-3 border-b border-border/60 px-[10px] text-muted-foreground transition-colors hover:text-foreground"
-        >
-          {expanded ? <PanelLeftClose className="h-5 w-5 shrink-0" /> : <PanelLeftOpen className="h-5 w-5 shrink-0" />}
-          {expanded && <span className="text-sm font-bold">Browse genres</span>}
-        </button>
+        <div className="px-2 pb-2 pt-3">
+          <button
+            type="button"
+            onClick={() => setExpanded((value) => !value)}
+            aria-expanded={expanded}
+            aria-controls="desktop-category-links"
+            aria-label={expanded ? "Collapse categories sidebar" : "Expand categories sidebar"}
+            className="flex h-10 w-full items-center gap-3 rounded-xl px-3.5 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary"
+          >
+            {expanded ? <PanelLeftClose className="h-5 w-5 shrink-0" /> : <PanelLeftOpen className="h-5 w-5 shrink-0" />}
+            <span className={`${labelClass} text-xs font-bold uppercase tracking-wider`}>Categories</span>
+          </button>
+        </div>
 
-        <nav aria-label="Game categories" className="flex-1 overflow-y-auto overflow-x-hidden px-2 py-3">
+        <nav id="desktop-category-links" aria-label="Game categories" className="category-rail-scroll min-h-0 flex-1 overflow-y-auto overflow-x-hidden px-2 pb-3">
           <ul className="space-y-1">
             {categories.map((category) => {
               const href = `/category/${category.slug}`;
@@ -68,21 +55,20 @@ export function CategorySidebar({ categories, children }: { categories: SidebarC
                   <Link
                     prefetch={false}
                     href={href}
-                    title={expanded ? undefined : `${category.name} Games`}
+                    aria-label={`${category.name} Games`}
+                    onClick={() => setExpanded(false)}
                     aria-current={isActive ? "page" : undefined}
-                    className={`flex h-10 items-center gap-3 rounded-lg px-[10px] text-sm font-semibold transition-colors ${
+                    className={`flex h-11 items-center gap-3 rounded-xl px-3.5 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary ${
                       isActive
                         ? "bg-primary/10 text-primary"
                         : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                    } ${expanded ? "" : "justify-start"}`}
+                    }`}
                   >
                     <CategoryIcon slug={category.slug} className="h-5 w-5 shrink-0" />
-                    {expanded && (
-                      <span className="flex min-w-0 flex-1 items-center justify-between gap-2">
-                        <span className="truncate">{category.name}</span>
-                        <span className="shrink-0 text-[11px] font-medium text-muted-foreground/70">{category.gameCount}</span>
-                      </span>
-                    )}
+                    <span className={`${labelClass} flex flex-1 items-center justify-between gap-2`}>
+                      <span>{category.name}</span>
+                      <span className="text-[11px] font-medium tabular-nums text-muted-foreground/60">{category.gameCount}</span>
+                    </span>
                   </Link>
                 </li>
               );
@@ -94,18 +80,20 @@ export function CategorySidebar({ categories, children }: { categories: SidebarC
           <Link
             prefetch={false}
             href="/category"
-            title="All categories"
-            className={`flex h-10 items-center gap-3 rounded-lg px-[10px] text-sm font-semibold text-muted-foreground transition-colors hover:bg-muted hover:text-foreground ${
+            aria-label="All categories"
+            onClick={() => setExpanded(false)}
+            aria-current={pathname === "/category" ? "page" : undefined}
+            className={`flex h-11 items-center gap-3 rounded-xl px-3.5 text-sm font-semibold text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary ${
               pathname === "/category" ? "bg-primary/10 text-primary" : ""
             }`}
           >
             <LayoutGrid className="h-5 w-5 shrink-0" />
-            {expanded && <span className="truncate">All categories</span>}
+            <span className={labelClass}>All categories</span>
           </Link>
         </div>
       </aside>
 
-      <div className={`flex min-h-0 flex-1 flex-col transition-[margin] duration-200 ease-out ${expanded ? "lg:ml-60" : "lg:ml-16"}`}>
+      <div className="flex min-h-0 flex-1 flex-col lg:ml-16">
         {children}
       </div>
     </>

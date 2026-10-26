@@ -105,6 +105,13 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) to see the site.
 
+`npm run dev` enables Node's proxy support when `HTTP_PROXY` / `HTTPS_PROXY`
+are set in the shell or `.env.local`. On macOS, it also uses an enabled system
+HTTP/HTTPS proxy when no explicit proxy is configured. This lets server-side
+Supabase reads use the same network path as the browser; localhost stays direct.
+No system settings or production configuration are changed. Set
+`NODE_USE_ENV_PROXY=0` to opt out. Restart the dev server after changing proxies.
+
 ### Cloudflare deployment
 
 Use Node.js 24 or later and `npm ci`. The Cloudflare build is `npm run build:cloudflare`;

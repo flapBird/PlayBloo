@@ -116,6 +116,16 @@
   }
 }
 
+.category-rail-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.category-rail:hover .category-rail-scroll,
+.category-rail:focus-within .category-rail-scroll {
+  scrollbar-color: var(--border) transparent;
+}
+
 .site-background {
   display: none;
 }

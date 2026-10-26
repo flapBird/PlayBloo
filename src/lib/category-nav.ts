@@ -7,7 +7,7 @@ import { queryTimeout } from "@/lib/query-timeout";
 import { MIN_INDEXABLE_CATEGORY_GAMES } from "@/lib/constants";
 
 /**
- * Sitewide category navigation data (sidebar, mobile menu, footer links).
+ * Sitewide category navigation data (sidebar and mobile menu).
  *
  * Ordering approximates traffic: the total play count of a category's
  * published games, with the game count as tiebreaker. A separate, narrow cache
