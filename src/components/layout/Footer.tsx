@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getCategoryNav } from "@/lib/category-nav";
+import type { CategoryNavItem } from "@/lib/category-nav";
 import { SITE_NAME } from "@/lib/constants";
 
 const aboutLinks = [
@@ -9,9 +9,7 @@ const aboutLinks = [
   { label: "Contact", href: "/contact" },
 ];
 
-export async function Footer() {
-  const categories = await getCategoryNav();
-
+export function Footer({ categories }: { categories: CategoryNavItem[] }) {
   return (
     <footer className="site-footer mt-16">
       <div className="container mx-auto px-4 py-12">

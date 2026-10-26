@@ -22,11 +22,13 @@ function fakeClient({ rows = [], count = null, failAt = -1 } = {}) {
         select(_columns, options) { exact = Boolean(options?.count === 'exact'); return query; },
         eq() { return query; },
         order() { return query; },
-        async range(start, end) {
+        range(start, end) {
           calls.push({ table, start, end, exact });
-          if (start === failAt) return { data: null, error: { message: 'database unavailable' } };
-          return { data: rows.slice(start, end + 1), error: null, count };
+          return { abortSignal: async () => start === failAt
+            ? { data: null, error: { message: 'database unavailable' } }
+            : { data: rows.slice(start, end + 1), error: null, count } };
         },
+        abortSignal() { return query; },
         then(resolve, reject) {
           const data = table === 'categories'
             ? [{ id: 'category', name: 'Puzzle', slug: 'puzzle', updated_at: '2025-01-01T00:00:00Z' }]
@@ -46,8 +48,10 @@ function fakeClient({ rows = [], count = null, failAt = -1 } = {}) {
 
 function loadModule(client) {
   const exports = {};
-  vm.runInNewContext(compiled, { exports, console, Promise, Map, Set, require(name) {
+  vm.runInNewContext(compiled, { exports, console, Promise, Map, Set, AbortSignal, require(name) {
     if (name === 'server-only') return {};
+    if (name === 'next/cache') return { unstable_cache: (fn) => fn };
+    if (name === '@/lib/query-timeout') return { queryTimeout: (ms) => ms };
     if (name === '@/lib/supabase/admin') return { createAdminClient: () => client };
     throw new Error(`Unexpected import ${name}`);
   } });

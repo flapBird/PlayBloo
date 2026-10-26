@@ -83,7 +83,7 @@ type AdminClient = ReturnType<typeof createAdminClient>;
  * requested in parallel. Reading them one after another would make the read
  * cost grow with the number of pages instead of staying flat.
  */
-export async function fetchPublishedGames<T extends CatalogGame>(
+export async function fetchPublishedGames<T>(
   supabase: AdminClient,
   columns: string,
   order: { column: string; ascending: boolean } = { column: "id", ascending: true },

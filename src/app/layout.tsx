@@ -72,7 +72,7 @@ export default async function RootLayout({
         <Header categories={categories} />
         <CategorySidebar categories={categories}>
           <main className="site-main flex-1">{children}</main>
-          <Footer />
+          <Footer categories={categories} />
         </CategorySidebar>
         <JsonLd type="WebSite" />
         {isProduction && (

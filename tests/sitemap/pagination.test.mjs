@@ -20,6 +20,9 @@ function loadSitemap(catalog, levels = []) {
       const query = {
         select() { return query; },
         eq() { return query; },
+        order() { return query; },
+        range() { return query; },
+        abortSignal() { return query; },
         then(resolve, reject) {
           const data = table === 'game_levels' ? levels : [];
           return Promise.resolve({ data, error: null }).then(resolve, reject);
@@ -28,9 +31,11 @@ function loadSitemap(catalog, levels = []) {
       return query;
     },
   };
-  vm.runInNewContext(compiled, { exports, Date, Map, Set, require(name) {
+  vm.runInNewContext(compiled, { exports, Date, Map, Set, AbortSignal, require(name) {
+    if (name === 'next/cache') return { unstable_cache: (fn) => fn };
+    if (name === '@/lib/query-timeout') return { queryTimeout: (ms) => ms };
     if (name === '@/lib/supabase/admin') return { createAdminClient: () => client };
-    if (name === '@/lib/catalog') return { loadCatalog: async () => catalog };
+    if (name === '@/lib/catalog') return { getCachedCatalog: async () => catalog };
     if (name === '@/lib/guides') return { getGuidesSitemap: () => [] };
     if (name === '@/lib/metrics') return { recordMetric: () => {}, startTimer: () => () => 0 };
     if (name === '@/lib/constants') return { SITE_URL: 'https://playbloo.net', MIN_INDEXABLE_CATEGORY_GAMES: 3, MIN_INDEXABLE_TAG_GAMES: 3, MIN_INDEXABLE_SERIES_GAMES: 3 };
