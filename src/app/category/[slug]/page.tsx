@@ -1,69 +1,28 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { unstable_cache } from "next/cache";
-import { createAdminClient } from "@/lib/supabase/admin";
-import { GameListItem } from "@/components/games/GameListItem";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { GameCard } from "@/components/games/GameCard";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { CategoryIcon } from "@/components/layout/category-icons";
+import { getCategory, getCategoryGames } from "@/lib/category-data";
 import { SITE_URL, PAGE_SIZE, MIN_INDEXABLE_CATEGORY_GAMES } from "@/lib/constants";
-import { normalizePublicGameCards, PUBLIC_GAME_CARD_FIELDS, getCachedCategoryCatalog } from "@/lib/discovery-data";
 
 interface Props {
   params: Promise<{ slug: string }>;
   searchParams: Promise<{ page?: string }>;
 }
 
-const getCategory = unstable_cache(async (slug: string) => {
-  const supabase = createAdminClient();
-  const { data } = await supabase
-    .from("categories")
-    .select("*")
-    .eq("slug", slug)
-    .single();
-  return data;
-}, ["category-by-slug-v2"], { revalidate: 3600 });
-
-const getGames = (slug: string, page: number) => unstable_cache(async () => {
-  const supabase = createAdminClient();
-  const from = (page - 1) * PAGE_SIZE;
-  const to = from + PAGE_SIZE - 1;
-
-  const { data: catData } = await supabase
-    .from("categories")
-    .select("id")
-    .eq("slug", slug)
-    .single();
-
-  if (!catData) return { games: [], total: 0 };
-
-  const { data: catGames } = await supabase
-    .from("game_categories")
-    .select("game_id")
-    .eq("category_id", catData.id);
-
-  const gameIds = (catGames || []).map(gc => gc.game_id);
-
-  if (gameIds.length === 0) return { games: [], total: 0 };
-
-  const { data: gamesData, count } = await supabase
-    .from("games")
-    .select(PUBLIC_GAME_CARD_FIELDS, { count: "exact" })
-    .eq("is_published", true)
-    .in("id", gameIds)
-    .order("created_at", { ascending: false })
-    .range(from, to);
-
-  return { games: normalizePublicGameCards(gamesData), total: count || 0 };
-}, ["category-games-v3", slug, String(page)], { revalidate: 3600, tags: [`category:${slug}`] })();
+function pageNumber(value?: string) {
+  return Math.min(100, Math.max(1, parseInt(value || "1") || 1));
+}
 
 export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const { page: pageValue } = await searchParams;
-  const page = Math.min(100, Math.max(1, parseInt(pageValue || "1") || 1));
+  const page = pageNumber((await searchParams).page);
   const category = await getCategory(slug);
-  if (!category) return { title: "Category Not Found" };
-  const { total } = await getGames(slug, 1);
+  if (!category) notFound();
+  const { total } = await getCategoryGames(category.id, slug, page);
   const isContentVerified = category.content_verified === true;
 
   const title = isContentVerified && category.meta_title
@@ -74,42 +33,36 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
     ? category.meta_description
     : `Browse ${total} ${category.name} ${gameLabel} on PlayBloo and choose where to play.`;
 
-   return {
-     title,
-     description,
-     alternates: {
-       canonical: page > 1 ? `/category/${slug}?page=${page}` : `/category/${slug}`,
-     },
-     ...(total < MIN_INDEXABLE_CATEGORY_GAMES
-       ? {
-           robots: {
-             index: false,
-             follow: true,
-           },
-         }
-       : {}),
-   };
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: page > 1 ? `/category/${slug}?page=${page}` : `/category/${slug}`,
+    },
+    ...(total < MIN_INDEXABLE_CATEGORY_GAMES
+      ? { robots: { index: false, follow: true } }
+      : {}),
+  };
 }
 
 export const revalidate = 3600;
 
 export default async function CategoryPage({ params, searchParams }: Props) {
   const { slug } = await params;
-  const { page: pageStr } = await searchParams;
-  const page = Math.min(100, Math.max(1, parseInt(pageStr || "1") || 1));
-
+  const page = pageNumber((await searchParams).page);
   const category = await getCategory(slug);
   if (!category) notFound();
 
-  const { games, total } = await getGames(slug, page);
+  const { games, total } = await getCategoryGames(category.id, slug, page);
   const totalPages = Math.ceil(total / PAGE_SIZE);
-  const isContentVerified = category.content_verified === true;
-  const relatedCategories = (await getCachedCategoryCatalog())
-    .filter((item) => item.game_count >= MIN_INDEXABLE_CATEGORY_GAMES && item.slug !== category.slug)
-    .slice(0, 10);
+  if (page > 1 && page > totalPages) notFound();
+  const pageHref = (value: number) => value === 1 ? `/category/${slug}` : `/category/${slug}?page=${value}`;
+  const visiblePages = [...new Set([1, page - 1, page, page + 1, totalPages])]
+    .filter((value) => value >= 1 && value <= totalPages)
+    .sort((a, b) => a - b);
 
   return (
-    <div className="container mx-auto px-4 py-8 space-y-8">
+    <div className="container mx-auto px-4 pb-8 pt-6 md:pt-8">
       <BreadcrumbJsonLd
         items={[
           { name: "Home", url: SITE_URL },
@@ -118,97 +71,56 @@ export default async function CategoryPage({ params, searchParams }: Props) {
         ]}
       />
 
-      <div className="border-b pb-6">
-        <div className="flex items-start gap-4">
-          <span className="brand-mark grid h-11 w-11 shrink-0 place-items-center rounded-lg text-white">
-            <CategoryIcon slug={category.slug} className="h-5 w-5" />
+      <header className="mb-6 max-w-4xl md:mb-8">
+        <div className="flex items-center gap-3">
+          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-primary/10 text-primary" aria-hidden="true">
+            <CategoryIcon slug={category.slug} className="h-6 w-6" />
           </span>
-          <div>
-            <p className="mb-1 text-[10px] font-extrabold uppercase tracking-[0.14em] text-muted-foreground">Browse by genre</p>
-            <h1 className="text-3xl font-black tracking-tight">{category.name} Games</h1>
-          </div>
+          <h1 className="text-2xl font-black tracking-tight sm:text-3xl">{category.name} Games</h1>
         </div>
-        {isContentVerified && category.description && (
-          <p className="mt-3 max-w-3xl leading-6 text-muted-foreground">{category.description}</p>
+        {category.content_verified === true && category.description && (
+          <p className="mt-3 text-sm leading-6 text-muted-foreground">{category.description}</p>
         )}
-        {isContentVerified && category.source_url && (
-          <a
-            href={category.source_url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-2 inline-flex text-xs font-semibold text-muted-foreground hover:text-foreground"
-          >
-            Editorial source
-          </a>
-        )}
-        <p className="mt-2 text-sm text-muted-foreground">{total} games found</p>
-      </div>
-
-      {relatedCategories.length > 0 && (
-        <nav aria-label="Related genres" className="flex flex-wrap items-center gap-2">
-          <span className="mr-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">Related genres</span>
-          {relatedCategories.map((item) => (
-            <Link
-              key={item.slug}
-              prefetch={false}
-              href={`/category/${item.slug}`}
-              className="rounded-full border px-3 py-1 text-sm text-muted-foreground transition-colors hover:border-primary/45 hover:text-foreground"
-            >
-              {item.name}
-            </Link>
-          ))}
-        </nav>
-      )}
+      </header>
 
       {games.length > 0 ? (
-        <>
-          <div className="mx-auto max-w-5xl">
+        <section aria-label={`${category.name} games`}>
+          <div className="category-game-grid grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 md:gap-4">
             {games.map((game, index) => (
-              <GameListItem key={game.id} game={game} categorySlug={category.slug} eagerImage={index === 0} />
+              <GameCard key={game.id} game={game} eagerImage={index < 6} />
             ))}
           </div>
 
           {totalPages > 1 && (
-            <div className="flex justify-center gap-2">
+            <nav aria-label="Category pages" className="mt-8 flex items-center justify-center gap-1.5 sm:gap-2">
               {page > 1 && (
-                <Link
-                  href={`/category/${slug}?page=${page - 1}`}
-                  className="inline-flex h-9 items-center justify-center rounded-md border px-4 text-sm"
-                >
-                  Previous
+                <Link href={pageHref(page - 1)} prefetch={false} aria-label="Previous page" rel="prev"
+                  className="flex h-10 items-center gap-1 rounded-xl border px-2.5 text-sm font-semibold transition-colors hover:bg-muted sm:px-3">
+                  <ChevronLeft className="h-4 w-4" /><span className="hidden sm:inline">Previous</span>
                 </Link>
               )}
-              {Array.from({ length: Math.min(totalPages, 10) }, (_, i) => i + 1)
-                .filter((p) => p === 1 || p === totalPages || Math.abs(p - page) <= 2)
-                .map((p, idx, arr) => (
-                  <span key={p} className="flex items-center gap-1">
-                    {idx > 0 && arr[idx - 1] !== p - 1 && <span className="px-1">...</span>}
-                    <Link
-                      href={`/category/${slug}?page=${p}`}
-                      className={`inline-flex h-9 w-9 items-center justify-center rounded-md text-sm ${
-                        p === page
-                          ? "bg-primary text-primary-foreground"
-                          : "border hover:bg-accent"
-                      }`}
-                    >
-                      {p}
-                    </Link>
-                  </span>
-                ))}
+              {visiblePages.map((value, index) => (
+                <span key={value} className="flex items-center gap-1.5 sm:gap-2">
+                  {index > 0 && visiblePages[index - 1] !== value - 1 && <span className="text-muted-foreground" aria-hidden="true">…</span>}
+                  <Link href={pageHref(value)} prefetch={false} aria-label={`Page ${value}`} aria-current={value === page ? "page" : undefined}
+                    className={`grid h-10 w-10 place-items-center rounded-xl text-sm font-semibold transition-colors ${value === page ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:bg-muted hover:text-foreground"}`}>
+                    {value}
+                  </Link>
+                </span>
+              ))}
               {page < totalPages && (
-                <Link
-                  href={`/category/${slug}?page=${page + 1}`}
-                  className="inline-flex h-9 items-center justify-center rounded-md border px-4 text-sm"
-                >
-                  Next
+                <Link href={pageHref(page + 1)} prefetch={false} aria-label="Next page" rel="next"
+                  className="flex h-10 items-center gap-1 rounded-xl border px-2.5 text-sm font-semibold transition-colors hover:bg-muted sm:px-3">
+                  <span className="hidden sm:inline">Next</span><ChevronRight className="h-4 w-4" />
                 </Link>
               )}
-            </div>
+            </nav>
           )}
-        </>
+        </section>
       ) : (
-        <div className="text-center py-12 text-muted-foreground">
-          No games found in this category yet.
+        <div className="rounded-2xl border border-dashed px-6 py-16 text-center text-sm text-muted-foreground">
+          <p>New games are on the way.</p>
+          <Link href="/category" className="mt-3 inline-block font-semibold text-primary">Explore other categories</Link>
         </div>
       )}
     </div>

@@ -39,7 +39,7 @@ PlayBloo's public content is written in English. Game pages provide researched i
 ## Content Structure
 
 - Game pages use `/game/{game-slug}` and may include a description, how-to-play instructions, controls, tips, features, developer or publisher information, release date, categories, tags, series membership, and related games.
-- Category pages use `/category/{category-slug}` and group published games by genre.
+- Category pages use `/category/{category-slug}` with a genre-focused title and introduction, followed by cover cards and pagination. They show up to 24 published games per page, with six columns on wide screens and two on small screens.
 - Tag pages use `/tag/{tag-slug}` and group published games by a more specific topic or gameplay trait.
 - Series pages use `/series/{series-slug}` and present related games in sequence.
 - Walkthrough indexes use `/game/{game-slug}/level`; individual guides use `/game/{game-slug}/level/{level-slug}` and may include tips, written instructions, and a video walkthrough.
