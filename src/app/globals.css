@@ -126,6 +126,32 @@
   scrollbar-color: var(--border) transparent;
 }
 
+/* The rail shares one centred canvas with the header and page content, so the
+   column and the rail read as one block. The attribute is also set
+   pre-hydration so a remembered "closed" state never flashes the rail. */
+html[data-sidebar="closed"] .category-rail {
+  width: 0;
+  border-right-width: 0;
+  box-shadow: none;
+}
+@media (width >= 1024px) {
+  /* The rail hugs the window edge, so the content is centred by symmetric
+     padding instead of a canvas that carried the rail with it. */
+  .site-header-content,
+  .site-shell-content {
+    width: 100%;
+    margin-inline: 0;
+    padding-inline: max(1rem, calc((100% - 1280px) / 2));
+  }
+  .site-header-content,
+  .site-shell-content {
+    padding-left: max(5rem, calc((100% - 1280px) / 2));
+  }
+  .category-rail {
+    left: 0;
+  }
+}
+
 .site-background {
   display: none;
 }

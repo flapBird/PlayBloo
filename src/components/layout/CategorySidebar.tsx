@@ -3,8 +3,9 @@
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Suspense, useState } from "react";
-import { Flame, House, History, LayoutGrid, PanelLeftClose, PanelLeftOpen, Sparkles, TrendingUp } from "lucide-react";
+import { Flame, House, History, LayoutGrid, Sparkles, TrendingUp } from "lucide-react";
 import { CategoryIcon } from "@/components/layout/category-icons";
+import { useSidebar } from "@/components/layout/SidebarProvider";
 
 export interface SidebarCategory {
   name: string;
@@ -61,6 +62,7 @@ function QuickLinks(props: QuickLinksProps) {
 
 /** Hover reveals the labels over the page; the grid always keeps its width. */
 export function CategorySidebar({ categories, children }: { categories: SidebarCategory[]; children: React.ReactNode }) {
+  const { open } = useSidebar();
   const [expanded, setExpanded] = useState(false);
   const pathname = usePathname();
   const labelClass = `min-w-0 whitespace-nowrap transition-opacity duration-150 motion-reduce:transition-none ${expanded ? "opacity-100" : "opacity-0"}`;
@@ -69,7 +71,9 @@ export function CategorySidebar({ categories, children }: { categories: SidebarC
   return (
     <>
       <aside
+        id="desktop-sidebar"
         aria-label="Game navigation"
+        inert={!open}
         onPointerEnter={(event) => { if (event.pointerType === "mouse") setExpanded(true); }}
         onPointerLeave={(event) => { if (event.pointerType === "mouse") setExpanded(false); }}
         onFocusCapture={(event) => { if (event.target.matches(":focus-visible")) setExpanded(true); }}
@@ -79,21 +83,7 @@ export function CategorySidebar({ categories, children }: { categories: SidebarC
           expanded ? "w-56 shadow-[12px_0_32px_-12px_rgba(0,0,0,0.4)]" : "w-16"
         }`}
       >
-        <div className="px-2 pb-2 pt-3">
-          <button
-            type="button"
-            onClick={() => setExpanded((value) => !value)}
-            aria-expanded={expanded}
-            aria-controls="desktop-sidebar-links"
-            aria-label={expanded ? "Collapse categories sidebar" : "Expand categories sidebar"}
-            className="flex h-10 w-full items-center gap-3 rounded-xl px-3.5 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary"
-          >
-            {expanded ? <PanelLeftClose className="h-5 w-5 shrink-0" /> : <PanelLeftOpen className="h-5 w-5 shrink-0" />}
-            <span className={`${labelClass} text-xs font-bold uppercase tracking-wider`}>Explore</span>
-          </button>
-        </div>
-
-        <div id="desktop-sidebar-links" className="category-rail-scroll min-h-0 flex-1 overflow-y-auto overflow-x-hidden px-2 pb-3">
+        <div id="desktop-sidebar-links" className="category-rail-scroll min-h-0 flex-1 overflow-y-auto overflow-x-hidden px-2 pb-3 pt-3">
           <Suspense fallback={<QuickLinksMenu {...quickLinksProps} />}>
             <QuickLinks {...quickLinksProps} />
           </Suspense>
@@ -138,7 +128,7 @@ export function CategorySidebar({ categories, children }: { categories: SidebarC
         </div>
       </aside>
 
-      <div className="flex min-h-0 flex-1 flex-col lg:ml-16">
+      <div className="site-shell-content flex min-h-0 flex-1 flex-col">
         {children}
       </div>
     </>

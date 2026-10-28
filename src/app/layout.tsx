@@ -3,6 +3,7 @@ import Script from "next/script";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CategorySidebar } from "@/components/layout/CategorySidebar";
+import { SidebarProvider } from "@/components/layout/SidebarProvider";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { getCategoryNav } from "@/lib/category-nav";
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from "@/lib/constants";
@@ -65,15 +66,17 @@ export default async function RootLayout({
   return (
     <html lang="en" className="dark h-full antialiased" suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: `try { document.documentElement.classList.toggle("dark", localStorage.getItem("playbloo-theme") !== "light"); } catch {}` }} />
+        <script dangerouslySetInnerHTML={{ __html: `try { document.documentElement.classList.toggle("dark", localStorage.getItem("playbloo-theme") !== "light"); } catch {} try { document.documentElement.dataset.sidebar = localStorage.getItem("playbloo-sidebar") === "closed" ? "closed" : "open"; } catch {}` }} />
       </head>
       <body className="min-h-full flex flex-col">
         <div className="site-background" aria-hidden="true" />
-        <Header categories={categories} />
-        <CategorySidebar categories={categories}>
-          <main className="site-main flex-1">{children}</main>
-          <Footer />
-        </CategorySidebar>
+        <SidebarProvider>
+          <Header categories={categories} />
+          <CategorySidebar categories={categories}>
+            <main className="site-main flex-1">{children}</main>
+            <Footer />
+          </CategorySidebar>
+        </SidebarProvider>
         <JsonLd type="WebSite" />
         {isProduction && (
           <Script id="microsoft-clarity" strategy="lazyOnload">
