@@ -17,6 +17,10 @@ const starterUpdatedAt = "2026-10-21T04:54:14.000Z";
 pages.push(starterPath);
 const newGuidePages = [castlevaniaHub, `${castlevaniaHub}/getting-started`, `${castlevaniaHub}/launch-fixes`, enshroudedHub, `${enshroudedHub}/beginners-guide`, `${enshroudedHub}/skill-tree`];
 pages.push(...newGuidePages);
+const pbzHub = "/guides/phantom-blade-zero";
+const pbzPages = [pbzHub, `${pbzHub}/release-time`, `${pbzHub}/pc-requirements`, `${pbzHub}/difficulty-modes`];
+const pbzUpdatedAt = "2026-10-28T07:30:00.000Z";
+pages.push(...pbzPages);
 const canonicalOrigin = "https://playbloo.net";
 const demoTopics = [
   { slug: "remember", officialUrl: "https://xlaucifer.itch.io/remember" },
@@ -42,6 +46,9 @@ const articleCovers = new Map([
   [`${enshroudedHub}/skill-tree`, "/images/guides/enshrouded-skill-tree.webp"],
   [`${mw4Hub}/release-date`, "/images/guides/modern-warfare-4-release-date.webp"],
   [`${mw4Hub}/campaign-early-access`, "/images/guides/modern-warfare-4-campaign-early-access.webp"],
+  [`${pbzHub}/release-time`, "/images/guides/phantom-blade-zero-release-time.webp"],
+  [`${pbzHub}/pc-requirements`, "/images/guides/phantom-blade-zero-pc-requirements.webp"],
+  [`${pbzHub}/difficulty-modes`, "/images/guides/phantom-blade-zero-difficulty.webp"],
 ]);
 const checkedCoverCards = new Map([...articleCovers.keys()].map((path) => [path, new Set()]));
 
@@ -113,7 +120,7 @@ const home = await homeResponse.text();
 const header = home.match(/<header\b[\s\S]*?<\/header>/)?.[0] || "";
 assert.ok(header.includes('href="/guides"'), "Primary navigation links to Guides");
 assert.ok(!header.includes("playMode=embedded"), "Redundant Playable navigation removed");
-assert.ok(home.includes(`href="${castlevaniaHub}"`), "Homepage feature links to the newest guide");
+assert.ok(home.includes(`href="${pbzHub}"`), "Homepage feature links to the newest guide");
 assert.ok(!(home.match(/<nav aria-label="Game feed"[\s\S]*?<\/nav>/)?.[0] || "").includes("playMode=embedded"), "Redundant feed tab removed");
 console.log("PASS unknown routes, canonical redirect, sitemap, internal links and homepage navigation");
 
@@ -271,7 +278,7 @@ console.log("PASS visual novel Demo status, official entries, covers and Latest 
 
 const hubSection = listing.split('aria-label="Game guide hubs"')[1]?.split("</section>")[0] ?? "";
 const firstHub = hubSection.match(/href="(\/guides\/[^"?#]+)"/)?.[1];
-assert.equal(firstHub, castlevaniaHub, "Guide hubs list leads with the newest published topic");
+assert.equal(firstHub, pbzHub, "Guide hubs list leads with the newest published topic");
 console.log("PASS guide hubs list is newest-first");
 
 const starter = await (await get(starterPath)).text();
@@ -285,3 +292,29 @@ for (const sibling of ["beginners-guide", "skill-tree"]) {
   assert.ok((await (await get(`${enshroudedHub}/${sibling}`)).text()).includes(`href="${starterPath}"`), "Existing guides link to the starter build");
 }
 console.log("PASS Enshrouded starter route, server-rendered plan, related links and sitemap date");
+
+for (const path of pbzPages) {
+  const html = await (await get(path)).text();
+  assert.ok(!html.includes("/_next/image"), `${path}: cover bypasses the image optimizer`);
+  assert.ok(!html.includes("<iframe"), `${path}: no game embed`);
+  const ids = [...html.matchAll(/<section[^>]*\bid="([^"]+)"/g)].map((match) => match[1]);
+  assert.equal(new Set(ids).size, ids.length, `${path}: unique section IDs`);
+  for (const [, target] of html.matchAll(/href="#([^"]+)"/g)) assert.ok(ids.includes(target), `${path}: contents target ${target} exists`);
+  assert.equal(currentEntries.get(`${canonicalOrigin}${path}`), pbzUpdatedAt, `${path}: sitemap uses the PlayBloo publication date`);
+}
+const pbzHubHtml = await (await get(pbzHub)).text();
+assert.ok(/datetime="2026-10-29"/i.test(pbzHubHtml), "Phantom Blade Zero release date is separate from guide publication");
+assert.ok(pbzHubHtml.includes("Upcoming"), "Phantom Blade Zero is still marked upcoming at the last check");
+assert.ok(pbzHubHtml.includes("not a browser game"), "Phantom Blade Zero is not presented as a playable browser game");
+const pbzRelease = await (await get(`${pbzHub}/release-time`)).text();
+assert.ok(pbzRelease.includes("October 28") && pbzRelease.includes("October 29"), "Release article explains both dates");
+assert.ok(pbzRelease.includes("7:00 PM"), "Release article lists the Pacific unlock time");
+assert.ok(pbzRelease.includes("No. Neither edition includes early play."), "Release article rules out early access");
+const pbzPc = await (await get(`${pbzHub}/pc-requirements`)).text();
+assert.ok(pbzPc.includes("300 GB") && pbzPc.includes("145 GB"), "PC article explains the preload space gap");
+assert.ok(pbzPc.includes("RTX 3060 Ti"), "PC article carries the official recommended GPU");
+assert.ok(pbzPc.includes("PlayBloo has not run the preload"), "PC article does not imply hands-on testing");
+const pbzDifficulty = await (await get(`${pbzHub}/difficulty-modes`)).text();
+for (const mode of ["Wayfarer", "Gamechanger", "Hellwalker", "Sixty-Six Days"]) assert.ok(pbzDifficulty.includes(mode), `Difficulty article covers ${mode}`);
+for (const slug of ["beginner-guide", "boss-guide", "best-weapons"]) assert.equal((await get(`${pbzHub}/${slug}`)).status, 404, `${slug}: no unverified placeholder`);
+console.log("PASS Phantom Blade Zero routes, launch facts, covers, anchors and sitemap dates");

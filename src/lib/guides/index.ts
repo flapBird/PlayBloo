@@ -14,8 +14,9 @@ import { hellraiserRevival } from "./hellraiser-revival";
 import { modernWarfare4 } from "./modern-warfare-4";
 import { castlevaniaBelmontsCurse } from "./castlevania-belmonts-curse";
 import { enshrouded } from "./enshrouded";
+import { phantomBladeZero } from "./phantom-blade-zero";
 
-const topics: GuideTopic[] = [castlevaniaBelmontsCurse, enshrouded, worldOfWarcraftForever, marvelsWolverine, ocarinaOfTimeRemake, remember, nextStationTheMoon, biteYourTongue, sploob, shapeWalkthrough, hellraiserRevival, modernWarfare4];
+const topics: GuideTopic[] = [phantomBladeZero, castlevaniaBelmontsCurse, enshrouded, worldOfWarcraftForever, marvelsWolverine, ocarinaOfTimeRemake, remember, nextStationTheMoon, biteYourTongue, sploob, shapeWalkthrough, hellraiserRevival, modernWarfare4];
 export const GUIDE_AUTHOR = { name: "PlayBloo Editorial", url: `${SITE_URL}/about` };
 export const GUIDES_DESCRIPTION = "Release dates, beta access, and help getting started with your next game.";
 

@@ -276,3 +276,35 @@ export; the suggested purchase order has not been playtested. See
 The new article has its own inspected official WebP cover. `llms.txt` and route
 checks include it; the hub update changes only that topic's sitemap timestamp,
 while existing sibling articles and playable game timestamps stay unchanged.
+
+## Phantom Blade Zero (October 28, 2026)
+
+`phantom-blade-zero` covers S-GAME's single-player wuxia action RPG on PS5 and PC.
+It is not added to the Supabase catalog; there is no playable iframe, and the pages
+state that PlayBloo has not played the game. Three launch articles ship with the hub:
+
+- `release-time` answers the regional unlock question. S-GAME unlocks the game at one
+  moment: October 28, 7:00 PM PDT, which is October 29, 10:00 AM Beijing. The date
+  difference between storefronts is time zones, not a staggered release.
+- `pc-requirements` carries the Steam spec table and explains the official request for
+  300 GB of free space for a 145 GB preload, including what to do when the drive or the
+  unpack fails.
+- `difficulty-modes` maps Wayfarer, Gamechanger, Hellwalker and Sixty-Six Days using
+  IGN China's preview and the producer's comments on AI-driven difficulty.
+
+Verified facts: the October 26 Steam announcement (preload time, 300 GB, SSD, driver
+advice, launch time), the Steam appdetails API (release date, specs, editions, quoted
+review scores), PlayStation Blog (platforms, preorder items, Donnie Yen) and Metacritic
+(Metascore 88 from 43 reviews, PS5 87, PC 88, checked October 28). PS5 download size,
+driver build 621.01 and the 2027 disc editions come from Chinese coverage of S-GAME's
+notice and final trailer; they are attributed in-text rather than presented as direct
+quotes.
+
+Do not publish boss, weapon or beginner guides before the retail build has been checked.
+The earlier preview claim that Hellwalker only unlocks in New Game+ is flagged as
+unconfirmed rather than repeated as fact.
+
+Covers are the official Steam key art and three distinct store screenshots, inspected
+before conversion to 1600 × 900 WebP; `sourceUrl` keeps the original asset URLs. No
+trailer embed is added. `llms.txt`, the sitemap generator and `verify-guides.mjs`
+include all four routes; existing guide and game timestamps are unchanged.
