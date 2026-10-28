@@ -1,0 +1,102 @@
+{
+  "batch": "2026-10-29",
+  "generatedAt": "2026-10-29T00:45:30+08:00",
+  "scope": "All pending_review submissions in the production queue at time of snapshot",
+  "baseline": {
+    "snapshotCapturedAt": "2026-10-28T16:40:06.533Z",
+    "snapshotPath": "/tmp/playbloo-review-snapshot-1029.json (private, not committed)",
+    "submissions": 49,
+    "games": 1131,
+    "pendingReviewBefore": 1,
+    "alreadyProcessedInEarlierBatches": 48
+  },
+  "results": [
+    {
+      "submissionId": "9b727f5e-5c3e-459e-825e-901d030fb353",
+      "inputUrl": "https://store.steampowered.com/app/2156350/Constraints",
+      "resolvedUrl": "https://store.steampowered.com/app/2156350/Constraints",
+      "identity": {
+        "title": "Constraints",
+        "developer": "Above Constraints (solo developer Mauro Leoci)",
+        "steamAppId": "2156350",
+        "sourceType": "steam",
+        "notes": "Developer identity cross-checked via studio site aboveconstraints.com/who-we-are and public search results; no itch.io project by this developer exists."
+      },
+      "decision": "rejected",
+      "reason": "Download-only Steam submission: Windows-only Unreal Engine 5v5 team-based action game, upcoming Q4 2026 Early Access with a required Above Constraints third-party account. No playable browser/HTML5 version exists: official site playconstraints.com is a marketing page with no play-in-browser entry (one fetch returned HTTP 500, content re-verified via a second fetcher showing no playable entry), the studio site lists Steam/mobile distribution only, and no itch.io page or web demo by Above Constraints (Mauro Leoci) was found as of 2026-10-29. PlayBloo policy: only games with a verifiable browser version are listed.",
+      "gameId": null,
+      "slug": null,
+      "publishedAt": null,
+      "game": null,
+      "categories": [],
+      "researchSources": [
+        {
+          "url": "https://store.steampowered.com/app/2156350/Constraints",
+          "fetchedAt": "2026-10-29",
+          "supports": "Windows-only platforms, upcoming Q4 2026 Early Access, free-to-play, Unreal Engine, required Above Constraints account, no browser option mentioned anywhere on the store page"
+        },
+        {
+          "url": "https://playconstraints.com/",
+          "fetchedAt": "2026-10-29",
+          "supports": "Official site is a marketing page (operators, matchmaking, battlegrounds, community); no playable browser entry. First fetch returned HTTP 500; content re-verified through a second fetcher, so the conclusion does not rest on the 500 alone."
+        },
+        {
+          "url": "https://aboveconstraints.com/who-we-are",
+          "fetchedAt": "2026-10-29",
+          "supports": "One-person studio; distribution via Steam and mobile apps, no web build"
+        },
+        {
+          "url": "https://itch.io/search?q=Constraints",
+          "fetchedAt": "2026-10-29",
+          "supports": "No itch.io game titled Constraints and no developer named Above Constraints or Mauro Leoci"
+        },
+        {
+          "url": "web search: Constraints browser version / itch.io / HTML5 (two queries)",
+          "fetchedAt": "2026-10-29",
+          "supports": "No browser, HTML5, or web-demo version of Constraints found anywhere; distribution is Steam + mobile only"
+        }
+      ],
+      "missingDetailFields": [],
+      "media": "none (no game created, no assets uploaded)",
+      "outcome": "rejected",
+      "verification": {
+        "databaseWrite": "Conditional update on exact id + status=pending_review + updated_at=2026-10-28T01:50:46.773+00:00; 1 row returned.",
+        "readBack": "status=rejected; reviewed_at=2026-10-28T16:42:53.356+00:00 (UTC; 2026-10-29 00:42 Beijing); reviewed_by=null (service-role write, no admin session, identity not claimed); duplicate_game_id/approved_game_id=null; extraction_status=success unchanged; original notes and all original extracted_data fields preserved; _editorial_review={method,status,reviewedAt,reason,sourceUrls[4],missingDetailFields[]} written.",
+        "dedupe": "Pre-write catalog query by steam_app_id=2156350, slug=constraints, title ilike 'constraints' (including unpublished drafts): 0 matches, so duplicate did not apply and no game row was created or modified.",
+        "queueState": "pending_review count after write: 0"
+      }
+    }
+  ],
+  "summary": {
+    "input": 1,
+    "approved": 0,
+    "duplicate": 0,
+    "rejected": 1,
+    "pendingReview": 0,
+    "failed": 0,
+    "gamesPublished": 0
+  },
+  "databaseVerification": {
+    "submissionFinalStates": "1/1 rejected with reviewed_at set and reason preserved in notes + _editorial_review",
+    "gamesTable": "No games inserted or updated in this batch; no categories/tags/series or associations touched.",
+    "existingContentProtection": "Single conditional update only; no batch writes to any other row."
+  },
+  "sitemapVerification": {
+    "impact": "none",
+    "explanation": "No game was published, unpublished, or deleted in this batch (a rejection creates no catalog entry), so the sitemap is unaffected by design; no game timestamps were touched and no regeneration was triggered. Sitemap regression tests were not rerun because sitemap inputs did not change."
+  },
+  "llmsTxt": {
+    "checked": false,
+    "explanation": "No site-functionality change in this batch (rejection only); public/llms.txt not modified and not expected to change."
+  },
+  "liveChecks": {
+    "detailPages": "n/a — no new public pages",
+    "cache": "n/a — no catalog change, no cache invalidation needed"
+  },
+  "notesOnEvidence": {
+    "adminSession": "No admin session available; write performed with service-role key inside the user-authorized review scope. reviewed_by left null rather than attributing to an admin account.",
+    "http500Note": "playconstraints.com returned HTTP 500 to one fetcher; per policy a failed fetch alone does not prove a source is dead, so the site content was re-fetched successfully through a second fetcher and the rejection rests on the verified content (no browser entry), not on the error status.",
+    "clockNote": "reviewed_at 2026-10-28T16:42:53Z corresponds to 2026-10-29 00:42:53 Beijing time (batch date).",
+    "privacy": "This report excludes submitter emails, request fingerprints, credentials, and private snapshot notes."
+  }
+}
