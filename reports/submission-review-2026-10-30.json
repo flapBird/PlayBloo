@@ -1,0 +1,95 @@
+{
+  "batchDate": "2026-10-30",
+  "generatedAt": "2026-10-29T16:20:00Z",
+  "scope": "user submission review",
+  "baseline": {
+    "snapshot": "/tmp/playbloo-review-snapshot-1029-b.json (private)",
+    "games": 1131,
+    "submissions": 50,
+    "pendingReview": 1
+  },
+  "summary": {
+    "input": 1,
+    "approved": 1,
+    "duplicate": 0,
+    "rejected": 0,
+    "pending": 0,
+    "failed": 0
+  },
+  "items": [
+    {
+      "submissionId": "1d295fa2-22e9-439c-97ed-4ec0e6c7d3b3",
+      "inputUrl": "https://beast.rork.app/lab",
+      "resolvedUrl": "https://beast.rork.app/lab",
+      "sourceType": "official",
+      "identity": {
+        "title": "Number Beasts: Bond Lab",
+        "developer": "Honest Little Apps",
+        "developerIndividual": "James Gray",
+        "evidence": [
+          "https://beast.rork.app/lab",
+          "https://beast.rork.app/",
+          "https://honestlittleapps.netlify.app/apps/number_beasts",
+          "https://honestlittleapps.netlify.app/"
+        ],
+        "dedup": "0 hits on slug / source_url / external_url / official_website_url / title keywords incl. drafts (snapshot + write-time recheck); native iOS app id6817125699 is a separate edition, not merged"
+      },
+      "decision": "approved",
+      "reason": "Playable browser game verified hands-on: opened the submitted URL in a live browser, aimed and launched 4 into beast 6, completed Stage 1 (4+6=10 bond, 3/3 stars); official pages confirm 45 stages across three worlds plus a Daily Lab; free with no ads/accounts/tracking",
+      "gameId": "2f26d352-498c-4511-8745-2e99bb601261",
+      "slug": "number-beasts-bond-lab",
+      "publishedAt": "2026-10-29T16:08:24.624Z",
+      "game": {
+        "externalUrl": "https://beast.rork.app/lab",
+        "sourceType": "official",
+        "platforms": ["browser"],
+        "monetization": "free",
+        "developmentStatus": "released",
+        "multiplayer": "single-player",
+        "contentVerified": true
+      },
+      "categories": ["puzzle", "educational"],
+      "tags": ["single-player"],
+      "researchSources": [
+        "https://beast.rork.app/lab (static fetch + live browser session)",
+        "https://beast.rork.app/ (official homepage FAQ)",
+        "https://honestlittleapps.netlify.app/apps/number_beasts",
+        "https://honestlittleapps.netlify.app/",
+        "Web search: App Store listing id6817125699 (developer James Gray) - identity cross-check only; native app not included in the record"
+      ],
+      "missingDetailFields": [
+        "release_date (browser launch date not stated anywhere)",
+        "engine (not disclosed)",
+        "publisher (same as developer brand)"
+      ],
+      "media": {
+        "cover": {
+          "origin": "official og-image of beast.rork.app/lab (brand art)",
+          "mirrored": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/submissions-2026-10-29/number-beasts-bond-lab.webp",
+          "spec": "640x336 WebP, 27006B, verified 200 image/webp RIFF"
+        },
+        "screenshots": [
+          {
+            "origin": "first-party capture of the live browser game during hands-on verification (Stage 1 board with aim-assist bond preview)",
+            "mirrored": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/submissions-2026-10-29/number-beasts-bond-lab-1.webp",
+            "spec": "964x1280 WebP, 20836B, verified 200 image/webp RIFF"
+          }
+        ]
+      },
+      "outcome": "published"
+    }
+  ],
+  "verification": {
+    "gameReadBack": "fields, sources (3), screenshots (1), associations (2 categories + 1 tag) all correct",
+    "anonVisibility": "draft hidden before publish (0 rows); published row visible after publish",
+    "submissionReadBack": "status=approved, approved_game_id bound, reviewed_at=2026-10-29T16:08:25.227Z, reviewed_by=null (service-role write, no admin session), extraction_status kept as partial with _editorial_review metadata",
+    "baselineComparison": "all 1131 existing games unchanged (title/slug/updated_at/is_published/content/cover); published 1124->1125, drafts 7->7",
+    "publicDetailPage": "https://playbloo.net/game/number-beasts-bond-lab HTTP 200 with five content sections, external play link, mirrored cover; no /_next/image references",
+    "sitemap": {
+      "localBuild": "1199 URLs (+1), includes /game/number-beasts-bond-lab with lastmod=2026-10-29T16:08:24.624Z (actual first publish moment); 7 drafts excluded; spot-checked old games (color-block-jam, dead-centre) lastmod equal to baseline updated_at",
+      "liveXml": "still previous version (1198 URLs, no new entry) - service-role writes do not revalidate the Next cache; no authenticated invalidation path available without an admin session; will refresh on next deploy/cache expiry"
+    },
+    "llmsTxt": "no change needed (functional description, no per-game list)"
+  },
+  "notes": "Report excludes submitter email, request fingerprints, credentials and private snapshot notes. This batch is dated 2026-10-30 (Asia/Shanghai) per local convention; DB timestamps are UTC (2026-10-29 evening)."
+}
