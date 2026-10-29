@@ -56,6 +56,8 @@ export interface GuideTopic {
   title: string;
   description: string;
   status: "published" | "draft";
+  kind?: "collection";
+  heroFact?: string;
   platforms: string[];
   releaseDate: string;
   releaseKind?: "demo";

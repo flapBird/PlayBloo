@@ -1,0 +1,137 @@
+import type { GuideTopic } from "./types";
+
+const steam = (id: number, slug: string) => `https://store.steampowered.com/app/${id}/${slug}/`;
+
+export const steamFreeGames2026: GuideTopic = {
+  slug: "steam-free-games-2026",
+  name: "Steam Free Games 2026",
+  officialName: "Steam Free Games 2026",
+  title: "Steam Free Games 2026: New Releases, Free to Keep & Best Free-to-Play",
+  description: "Find new Steam free games for October 2026, ten excellent free-to-play starting points, and the difference between free weekends, demos and games you keep.",
+  status: "published",
+  kind: "collection",
+  heroFact: "Updated throughout 2026",
+  platforms: ["Steam", "PC gaming"],
+  releaseDate: "2026-10-29",
+  releaseStatus: "released",
+  publisher: "Valve / individual publishers",
+  cover: {
+    src: "/images/guides/steam-free-games-2026.webp",
+    alt: "A group of Dota 2 heroes in Valve’s official Steam artwork",
+    credit: "Official Dota 2 Steam library artwork © Valve",
+    sourceUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/library_hero_2x.jpg?t=1791407503",
+    width: 1600,
+    height: 900,
+  },
+  publishedAt: "2026-10-29T16:00:00+08:00",
+  updatedAt: "2026-10-29T16:00:00+08:00",
+  verifiedAt: "2026-10-29",
+  sources: [
+    { id: "steam-free", label: "Steam — official Free to Play browse page", url: "https://store.steampowered.com/genre/Free%20to%20Play/" },
+    { id: "steam-events", label: "Steamworks — official upcoming event schedule", url: "https://partner.steamgames.com/doc/marketing/upcoming_events?language=english" },
+    { id: "dr-mancell", label: "Steam — Dr. Mancell and Mr. Flame", url: steam(5301420, "Dr_Mancell_and_Mr_Flame") },
+    { id: "stolemates", label: "Steam — Stolemates", url: steam(4761400, "Stolemates") },
+    { id: "goliath-rogue", label: "Steam — Goliath Rogue", url: steam(5180840, "Goliath_Rogue") },
+    { id: "wood-watch", label: "Steam — Wood Watch", url: steam(5249390, "Wood_Watch") },
+    { id: "cs2", label: "Steam — Counter-Strike 2", url: steam(730, "CounterStrike_2") },
+    { id: "dota2", label: "Steam — Dota 2", url: steam(570, "Dota_2") },
+    { id: "tf2", label: "Steam — Team Fortress 2", url: steam(440, "Team_Fortress_2") },
+    { id: "apex", label: "Steam — Apex Legends", url: steam(1172470, "Apex_Legends") },
+    { id: "warframe", label: "Steam — Warframe", url: steam(230410, "Warframe") },
+    { id: "poe", label: "Steam — Path of Exile", url: steam(238960, "Path_of_Exile") },
+    { id: "marvel-rivals", label: "Steam — Marvel Rivals", url: steam(2767030, "Marvel_Rivals") },
+    { id: "delta-force", label: "Steam — Delta Force", url: steam(2507950, "Delta_Force") },
+    { id: "pubg", label: "Steam — PUBG: BATTLEGROUNDS", url: steam(578080, "PUBG_BATTLEGROUNDS") },
+    { id: "destiny2", label: "Steam — Destiny 2", url: steam(1085660, "Destiny_2") },
+  ],
+  sections: [
+    {
+      id: "october-new",
+      title: "New free Steam games this October",
+      paragraphs: [
+        "Checked October 29: these four October releases are marked Free To Play on their Steam store data. They are not 100%-off coupons with a short claim window; each currently has a free base game. Open the store page before installing in case its distribution model changes later.",
+      ],
+      table: {
+        headers: ["Game", "October release", "What it offers"],
+        rows: [
+          ["Dr. Mancell and Mr. Flame", "October 7", "A retro-styled indie action game built around a Waterflame and Josh Mancell music collaboration"],
+          ["Stolemates", "October 5", "A multiplayer party game about stealing and holding a Heart, with jumping, dashing and power-ups"],
+          ["Goliath Rogue", "October 8", "An action roguelike with persistent gear, stats, talents and an upgradeable town"],
+          ["Wood Watch", "October 9", "A point-and-click horror survival game about monitoring threats and surviving the week"],
+        ],
+      },
+      sourceIds: ["dr-mancell", "stolemates", "goliath-rogue", "wood-watch"],
+    },
+    {
+      id: "best-free",
+      title: "10 of the best free Steam games to start in 2026",
+      paragraphs: [
+        "This is an editorial starting list, not a live player-count ranking. Every base game below was marked free in Steam's store data on October 29, 2026. Optional expansions, cosmetics, subscriptions and battle passes can still cost money.",
+      ],
+      table: {
+        headers: ["Game", "Genre / style", "Choose it for"],
+        rows: [
+          ["Counter-Strike 2", "Tactical FPS", "Round-based team shooting with a high skill ceiling"],
+          ["Dota 2", "MOBA / strategy", "Deep five-versus-five drafts, roles and team coordination"],
+          ["Team Fortress 2", "Class-based FPS", "Distinct classes and a more playful team-shooter style"],
+          ["Apex Legends", "Battle royale / hero shooter", "Fast movement, squads and legend abilities"],
+          ["Marvel Rivals", "Hero shooter", "Team fights built around well-known Marvel characters"],
+          ["Delta Force", "Large-scale / extraction FPS", "Objective-driven military shooting across different modes"],
+          ["PUBG: BATTLEGROUNDS", "Battle royale", "Slower tactical looting, positioning and survival"],
+          ["Warframe", "Co-op action RPG", "Fast sci-fi combat, movement and long-term equipment progression"],
+          ["Path of Exile", "Action RPG", "Complex character builds, loot and repeated endgame runs"],
+          ["Destiny 2", "Online FPS / RPG", "Cooperative science-fiction shooting and build collecting"],
+        ],
+      },
+      link: { label: "Browse Steam's full Free to Play catalog", href: "https://store.steampowered.com/genre/Free%20to%20Play/" },
+      sourceIds: ["steam-free", "cs2", "dota2", "tf2", "apex", "warframe", "poe", "marvel-rivals", "delta-force", "pubg", "destiny2"],
+    },
+    {
+      id: "free-meanings",
+      title: "Free to play, free to keep, free weekend or Demo?",
+      table: {
+        headers: ["Store wording", "What you get", "What to check"],
+        rows: [
+          ["Free To Play", "The base game is distributed without an upfront purchase", "Optional purchases, required accounts and the content included for free"],
+          ["100% off / free to keep", "A normally paid game can be added to your library during a promotion", "The exact deadline and whether claiming—not merely launching—secures it"],
+          ["Free Weekend", "Temporary access to a game during an event", "The end time and whether progress carries into a later purchase"],
+          ["Demo / Prologue", "A limited sample or separate introductory slice", "Content boundaries, save transfer and whether the full game is paid"],
+          ["Free DLC", "An add-on costs nothing", "Whether the required paid base game is already in your library"],
+        ],
+      },
+      paragraphs: ["A discount banner and a Free To Play label answer different questions. Read the store's purchase panel rather than assuming every free download stays playable forever."],
+      sourceIds: ["steam-free"],
+    },
+    {
+      id: "how-to-claim",
+      title: "How to claim or install a free Steam game",
+      bullets: [
+        "Open the game's official Steam store page and check whether it says Free To Play, Play Game, Add to Account or a limited-time 100% discount.",
+        "Sign in to your own Steam account through the official client or store; never enter credentials on a giveaway page reached through an unsolicited message.",
+        "For a free-to-keep promotion, complete the Add to Account step before the displayed deadline. For Free To Play, use Play Game to begin installation.",
+        "Check the operating-system icons, storage requirement and any third-party account notice before downloading.",
+        "After installation, review in-game purchases and privacy settings before spending money or linking another account.",
+      ],
+      paragraphs: ["PlayBloo does not sell Steam keys or require your Steam login. Our editorial links point to Steam; prices and availability remain controlled by each publisher and your regional store."],
+    },
+    {
+      id: "october-events",
+      title: "What about Steam Next Fest and October events?",
+      paragraphs: [
+        "October's Steam Next Fest ran from October 19 to 26 and featured free Demos for unreleased games. Those samples belong in the Demo category, not in a list of permanently free full games, and an individual Demo can be withdrawn after the event.",
+        "Steam Scream follows from October 26 to November 2 for horror and Halloween-themed games. An event can include free games, Demos and discounts, but the event label alone does not make every participating title free.",
+      ],
+      link: { label: "Check Valve's official event schedule", href: "https://partner.steamgames.com/doc/marketing/upcoming_events?language=english" },
+      sourceIds: ["steam-events"],
+    },
+    {
+      id: "update-policy",
+      title: "How this page stays useful after October",
+      paragraphs: [
+        "The October release table is the current-update module. We will replace or archive dated entries as new releases and verified free-to-keep promotions appear, while keeping the genre guide and free-access explanations on this stable URL.",
+        "Each update should recheck the actual Steam store data, distinguish a permanent free base game from a deadline, and remove expired claims instead of letting them accumulate. The Updated date above records the latest substantive editorial check; it does not promise that a store price cannot change afterward.",
+      ],
+    },
+  ],
+  articles: [],
+};

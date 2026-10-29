@@ -308,3 +308,29 @@ Covers are the official Steam key art and three distinct store screenshots, insp
 before conversion to 1600 × 900 WebP; `sourceUrl` keeps the original asset URLs. No
 trailer embed is added. `llms.txt`, the sitemap generator and `verify-guides.mjs`
 include all four routes; existing guide and game timestamps are unchanged.
+
+## October 29, 2026 topics and launch update
+
+`monster-hunter-outlanders` covers TiMi's free-to-play iOS/Android hunting game,
+released October 29. The hub links `release-date`, `beginners-guide` and `weapons`.
+Official site and Google Play sources establish the launch, seven-weapon roster,
+Adventurer pairings, Buddies and four-player co-op. Control and weapon suggestions
+are editorial starting advice, not a retail-build playtest, damage ranking or combo
+list. Regional store availability and unlock times are not treated as universal.
+The hub and three article covers are distinct inspected official assets, compressed
+to 1600 × 900 WebP; original asset URLs remain in the topic data.
+
+`steam-free-games-2026` is a standalone evergreen collection, not a VideoGame topic.
+`kind: "collection"` keeps its Article schema from declaring a game subject, while
+`heroFact` replaces the irrelevant release-date chip. Its current-update module
+lists four October free-to-play releases checked through Steam store data. The
+long-lived sections distinguish Free To Play, free-to-keep promotions, free weekends,
+Demos and free DLC. Future edits must recheck store status, remove expired claims
+and preserve this stable URL instead of creating monthly keyword duplicates.
+
+`ocarina-of-time-remake/launch-checklist` adds Nintendo's October product details:
+November 5 game launch, October 29 accessory dates, current US $69.99 physical
+listing, one-player support, play modes, HDR/VRR and the still-unconfirmed download
+size and unlock time. The hub and existing release-date article receive substantive
+update timestamps; all other Ocarina articles retain their original dates. Its
+independent official cover is a precompressed 1600 × 900 WebP.

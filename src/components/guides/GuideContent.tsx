@@ -47,7 +47,9 @@ export function GuideSchema({ topic, article }: { topic: GuideTopic; article?: G
     publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
     isPartOf: { "@type": "CollectionPage", "@id": `${SITE_URL}/guides` },
-    about: { "@type": "VideoGame", "@id": `${SITE_URL}${guidePath(topic)}#game`, name: topic.officialName, gamePlatform: topic.platforms, publisher: { "@type": "Organization", name: topic.publisher } },
+    about: topic.kind === "collection"
+      ? { "@type": "Thing", name: topic.officialName }
+      : { "@type": "VideoGame", "@id": `${SITE_URL}${guidePath(topic)}#game`, name: topic.officialName, gamePlatform: topic.platforms, publisher: { "@type": "Organization", name: topic.publisher } },
   };
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }} />;
 }
@@ -66,7 +68,7 @@ export function GuideHero({ topic, listing = false }: { topic: GuideTopic; listi
       {listing ? <h2>{topic.name}</h2> : <h1>{topic.title}</h1>}
       <p>{topic.description}</p>
       <div className={styles.heroMeta}>
-        <div className={styles.chips}><span>{topic.platforms.join(" · ")}</span><span><CalendarDays size={13} />{formatGuideDate(topic.releaseDate)}</span></div>
+        <div className={styles.chips}><span>{topic.platforms.join(" · ")}</span><span><CalendarDays size={13} />{topic.heroFact ?? formatGuideDate(topic.releaseDate)}</span></div>
         {listing ? <ArrowUpRight className={styles.topicArrow} size={19} aria-hidden="true" /> : getGuideArticles(topic).length > 0 ? <Link href="#guide-library" className={styles.heroGuideLink}>Find your guide<ArrowRight size={16} /></Link> : null}
       </div>
     </div>

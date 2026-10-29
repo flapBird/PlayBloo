@@ -21,6 +21,14 @@ const pbzHub = "/guides/phantom-blade-zero";
 const pbzPages = [pbzHub, `${pbzHub}/release-time`, `${pbzHub}/pc-requirements`, `${pbzHub}/difficulty-modes`];
 const pbzUpdatedAt = "2026-10-28T07:30:00.000Z";
 pages.push(...pbzPages);
+const mhoHub = "/guides/monster-hunter-outlanders";
+const mhoPages = [mhoHub, `${mhoHub}/release-date`, `${mhoHub}/beginners-guide`, `${mhoHub}/weapons`];
+const mhoUpdatedAt = "2026-10-29T10:00:00.000Z";
+const steamHub = "/guides/steam-free-games-2026";
+const steamUpdatedAt = "2026-10-29T08:00:00.000Z";
+const ootLaunchPath = `${hub}/launch-checklist`;
+const ootLaunchUpdatedAt = "2026-10-29T09:00:00.000Z";
+pages.push(...mhoPages, steamHub, ootLaunchPath);
 const canonicalOrigin = "https://playbloo.net";
 const demoTopics = [
   { slug: "remember", officialUrl: "https://xlaucifer.itch.io/remember" },
@@ -49,6 +57,10 @@ const articleCovers = new Map([
   [`${pbzHub}/release-time`, "/images/guides/phantom-blade-zero-release-time.webp"],
   [`${pbzHub}/pc-requirements`, "/images/guides/phantom-blade-zero-pc-requirements.webp"],
   [`${pbzHub}/difficulty-modes`, "/images/guides/phantom-blade-zero-difficulty.webp"],
+  [`${mhoHub}/release-date`, "/images/guides/monster-hunter-outlanders-release-date.webp"],
+  [`${mhoHub}/beginners-guide`, "/images/guides/monster-hunter-outlanders-beginners-guide.webp"],
+  [`${mhoHub}/weapons`, "/images/guides/monster-hunter-outlanders-weapons.webp"],
+  [ootLaunchPath, "/images/guides/ocarina-of-time-launch-checklist.webp"],
 ]);
 const checkedCoverCards = new Map([...articleCovers.keys()].map((path) => [path, new Set()]));
 
@@ -120,7 +132,7 @@ const home = await homeResponse.text();
 const header = home.match(/<header\b[\s\S]*?<\/header>/)?.[0] || "";
 assert.ok(header.includes('href="/guides"'), "Primary navigation links to Guides");
 assert.ok(!header.includes("playMode=embedded"), "Redundant Playable navigation removed");
-assert.ok(home.includes(`href="${pbzHub}"`), "Homepage feature links to the newest guide");
+assert.ok(home.includes(`href="${mhoHub}"`), "Homepage feature links to the newest guide");
 assert.ok(!(home.match(/<nav aria-label="Game feed"[\s\S]*?<\/nav>/)?.[0] || "").includes("playMode=embedded"), "Redundant feed tab removed");
 console.log("PASS unknown routes, canonical redirect, sitemap, internal links and homepage navigation");
 
@@ -212,6 +224,10 @@ if (process.argv[3]) {
       assert.equal(currentEntries.get(url), dmzUpdatedAt, "MW4 hub reflects the substantive DMZ update");
       continue;
     }
+    if (path === hub || path === `${hub}/release-date`) {
+      assert.equal(currentEntries.get(url), ootLaunchUpdatedAt, `${path}: Ocarina launch update has its own timestamp`);
+      continue;
+    }
     assert.equal(currentEntries.get(url), lastmod, `${path}: existing content keeps its sitemap timestamp`);
     unchanged++;
   }
@@ -278,7 +294,7 @@ console.log("PASS visual novel Demo status, official entries, covers and Latest 
 
 const hubSection = listing.split('aria-label="Game guide hubs"')[1]?.split("</section>")[0] ?? "";
 const firstHub = hubSection.match(/href="(\/guides\/[^"?#]+)"/)?.[1];
-assert.equal(firstHub, pbzHub, "Guide hubs list leads with the newest published topic");
+assert.equal(firstHub, mhoHub, "Guide hubs list leads with the newest published topic");
 console.log("PASS guide hubs list is newest-first");
 
 const starter = await (await get(starterPath)).text();
@@ -318,3 +334,46 @@ const pbzDifficulty = await (await get(`${pbzHub}/difficulty-modes`)).text();
 for (const mode of ["Wayfarer", "Gamechanger", "Hellwalker", "Sixty-Six Days"]) assert.ok(pbzDifficulty.includes(mode), `Difficulty article covers ${mode}`);
 for (const slug of ["beginner-guide", "boss-guide", "best-weapons"]) assert.equal((await get(`${pbzHub}/${slug}`)).status, 404, `${slug}: no unverified placeholder`);
 console.log("PASS Phantom Blade Zero routes, launch facts, covers, anchors and sitemap dates");
+
+for (const path of mhoPages) {
+  const html = await (await get(path)).text();
+  assert.ok(!html.includes("/_next/image"), `${path}: direct precompressed cover`);
+  assert.ok(!html.includes("<iframe"), `${path}: no browser-game embed`);
+  const ids = [...html.matchAll(/<section[^>]*\bid="([^"]+)"/g)].map((match) => match[1]);
+  assert.equal(new Set(ids).size, ids.length, `${path}: unique section IDs`);
+  for (const [, target] of html.matchAll(/href="#([^"]+)"/g)) assert.ok(ids.includes(target), `${path}: contents target ${target} exists`);
+  assert.equal(currentEntries.get(`${canonicalOrigin}${path}`), mhoUpdatedAt, `${path}: sitemap uses the PlayBloo publication date`);
+  if (path !== mhoHub) assert.ok(latestUpdates.includes(`href="${path}"`), `${path}: appears in Latest Updates`);
+}
+const mhoHubHtml = await (await get(mhoHub)).text();
+assert.ok(mhoHubHtml.includes("Released") && mhoHubHtml.includes("free-to-play"), "Outlanders launch and pricing status are explicit");
+assert.ok(mhoHubHtml.includes("not a browser edition"), "Outlanders is not presented as a browser game");
+const mhoWeapons = await (await get(`${mhoHub}/weapons`)).text();
+for (const weapon of ["Great Sword", "Long Sword", "Dual Blades", "Hammer", "Lance", "Heavy Bowgun", "Bow"]) assert.ok(mhoWeapons.includes(weapon), `Outlanders weapons include ${weapon}`);
+assert.ok(mhoWeapons.includes("not a damage ranking"), "Outlanders weapon guide does not invent a tier list");
+const mhoBeginners = await (await get(`${mhoHub}/beginners-guide`)).text();
+assert.ok(mhoBeginners.includes("two control modes") && mhoBeginners.includes("Up to four players"), "Outlanders beginner guide covers controls and co-op");
+
+const steamHtml = await (await get(steamHub)).text();
+assert.equal(currentEntries.get(`${canonicalOrigin}${steamHub}`), steamUpdatedAt, "Steam collection sitemap uses its publication date");
+assert.ok(steamHtml.includes("Updated throughout 2026"), "Steam collection has an evergreen update label");
+assert.ok(steamHtml.includes("Free to play, free to keep, free weekend or Demo?"), "Steam collection explains free-access types");
+for (const game of ["Dr. Mancell and Mr. Flame", "Stolemates", "Goliath Rogue", "Wood Watch", "Counter-Strike 2", "Dota 2"]) assert.ok(steamHtml.includes(game), `Steam collection includes ${game}`);
+assert.ok(latestUpdates.includes(`href="${steamHub}"`), "Standalone Steam collection appears in Latest Updates");
+const steamSchemas = [...steamHtml.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)].map((match) => JSON.parse(match[1]));
+assert.equal(steamSchemas.find((schema) => schema["@type"] === "Article")?.about?.["@type"], "Thing", "Steam collection is not marked as one VideoGame");
+
+const ootLaunch = await (await get(ootLaunchPath)).text();
+assert.equal(currentEntries.get(`${canonicalOrigin}${ootLaunchPath}`), ootLaunchUpdatedAt, "Ocarina launch checklist uses its publication date");
+assert.equal(currentEntries.get(`${canonicalOrigin}${hub}`), ootLaunchUpdatedAt, "Ocarina hub reflects the launch checklist update");
+assert.equal(currentEntries.get(`${canonicalOrigin}${hub}/release-date`), ootLaunchUpdatedAt, "Ocarina release article reflects its new related guide");
+assert.ok(ootLaunch.includes("$69.99") && ootLaunch.includes("1 player"), "Ocarina launch checklist carries current store facts");
+assert.ok(ootLaunch.includes("not October 29") && ootLaunch.includes("November 5"), "Ocarina hardware and game dates stay distinct");
+assert.ok(ootLaunch.includes("remain unconfirmed"), "Ocarina download size and unlock time are not invented");
+assert.ok(latestUpdates.includes(`href="${ootLaunchPath}"`), "Ocarina launch checklist appears in Latest Updates");
+for (const cover of ["/images/guides/monster-hunter-outlanders.webp", "/images/guides/steam-free-games-2026.webp"]) {
+  const response = await get(cover);
+  assert.equal(response.status, 200, `${cover}: hub cover loads`);
+  assert.ok(response.headers.get("content-type")?.includes("image/webp"), `${cover}: precompressed WebP`);
+}
+console.log("PASS Outlanders, Steam collection and Ocarina launch routes, facts, covers and sitemap dates");

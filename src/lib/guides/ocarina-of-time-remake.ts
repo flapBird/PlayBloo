@@ -1,6 +1,7 @@
 import type { GuideTopic } from "./types";
 
 const publicationDate = "2026-09-14T08:00:00+08:00";
+const launchUpdate = "2026-10-29T17:00:00+08:00";
 const dates = { publishedAt: publicationDate, updatedAt: publicationDate };
 const us = "https://www.nintendo.com/us/store/products/the-legend-of-zelda-ocarina-of-time-125697/";
 
@@ -27,13 +28,15 @@ export const ocarinaOfTimeRemake: GuideTopic = {
     publishedAt: "2026-09-08",
   },
   ...dates,
-  verifiedAt: "2026-09-14",
+  updatedAt: launchUpdate,
+  verifiedAt: "2026-10-29",
   sources: [
     { id: "us", label: "Nintendo US — game details and release date", url: us },
     { id: "uk", label: "Nintendo UK — gameplay, equipment and features", url: "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/The-Legend-of-Zelda-Ocarina-of-Time-3115664.html" },
     { id: "announcement", label: "Nintendo — Zelda 40th anniversary announcement", url: "https://www.nintendo.com/ph/news/article/3Uvp2H1iPLLLSnR4MJgmq1" },
     { id: "au", label: "Nintendo Australia — regional release listing", url: "https://www.nintendo.com/au/games/nintendo-switch-2/the-legend-of-zelda-ocarina-of-time/" },
     { id: "trailer", label: "Nintendo of America — official September trailer", url: "https://www.youtube.com/watch?v=wuFfiTEr2yc" },
+    { id: "overview", label: "Nintendo of America — Ocarina of Time overview trailer, October 14, 2026", url: "https://www.nintendo.com/us/whatsnew/you-have-been-summoned-to-watch-the-new-legend-of-zelda-ocarina-of-time-overview-trailer/" },
     { id: "history", label: "Nintendo Iwata Asks — Ocarina of Time and its 3DS remake", url: "https://www.nintendo.com/en-gb/Iwata-Asks/Iwata-Asks-Nintendo-3DS/Vol-5-Asking-Mr-Miyamoto-Right-Before-Release/8-I-Wanted-to-Experience-Hyrule-in-3D/8-I-Wanted-to-Experience-Hyrule-in-3D-210570.html" },
     { id: "3ds", label: "Nintendo UK — Ocarina of Time 3D features", url: "https://www.nintendo.com/en-gb/Games/Nintendo-3DS-games/The-Legend-of-Zelda-Ocarina-of-Time-3D-275007.html" },
     { id: "3ds-development", label: "Nintendo Iwata Asks — the 3DS inventory and Water Temple changes", url: "https://iwataasks.nintendo.com/interviews/3ds/zelda-ocarina-of-time/3/2/" },
@@ -47,6 +50,12 @@ export const ocarinaOfTimeRemake: GuideTopic = {
       ], sourceIds: ["us"],
     },
     { id: "release-date", title: "Release date & platform", releaseFacts: true, sourceIds: ["us", "au"] },
+    {
+      id: "launch-checklist", title: "One week to launch: what to check now",
+      paragraphs: ["Nintendo’s current US listing shows a $69.99 physical edition, one-player play and support for handheld, tabletop and TV modes. The Zelda 40th Anniversary console and accessories launch October 29, one week before the game; those hardware dates are not an early game release."],
+      link: { label: "Open the November 5 launch checklist", href: "/guides/ocarina-of-time-remake/launch-checklist" },
+      sourceIds: ["us", "announcement"],
+    },
     {
       id: "trailer", title: "Watch the official trailer", trailer: true,
       paragraphs: ["Nintendo’s September presentation is the starting point for this coverage. The video is an official preview; our articles are based on published information, not a review copy or hands-on access."], sourceIds: ["trailer"],
@@ -66,7 +75,7 @@ export const ocarinaOfTimeRemake: GuideTopic = {
       slug: "release-date", shortTitle: "Release date & pre-orders", category: "Release guide",
       title: "Ocarina of Time Remake Release Date, Platform & Pre-orders",
       description: "Ocarina of Time arrives on Nintendo Switch 2 on November 5, 2026. Check the official listings, pre-order details and which version to buy.",
-      status: "published", ...dates, relatedSlugs: ["remake-vs-original", "new-features"],
+      status: "published", ...dates, updatedAt: launchUpdate, relatedSlugs: ["launch-checklist", "remake-vs-original", "new-features"],
       sections: [
         { id: "release-date", title: "When does Ocarina of Time Remake come out?", releaseFacts: true, sourceIds: ["us", "au"] },
         {
@@ -172,6 +181,78 @@ export const ocarinaOfTimeRemake: GuideTopic = {
           id: "first-session", title: "Your first-session checklist",
           bullets: ["Read the control menu before bringing over habits from an older version.", "Try movement, camera and aiming in a safe area.", "Find the objective recap and understand how to return to it.", "Follow the on-screen ocarina instructions for your chosen input.", "Check a guide’s version label before following a puzzle or collectible route."],
           paragraphs: ["This preparation is intended to help you learn the new edition on its own terms. Exact opening routes, boss tactics and complete item checklists belong in a verified walkthrough once the release can be tested."],
+        },
+      ],
+    },
+    {
+      slug: "launch-checklist", shortTitle: "November 5 launch checklist", category: "Launch preparation",
+      title: "Ocarina of Time Launch Checklist: Price, Preload & Switch 2 Setup",
+      description: "Prepare for Ocarina of Time on November 5 with Nintendo’s current price, player and display details, download-size status and a practical first-day checklist.",
+      cover: {
+        src: "/images/guides/ocarina-of-time-launch-checklist.webp",
+        alt: "Link riding a rearing Epona with Death Mountain in the distance in Nintendo’s Ocarina of Time Switch 2 artwork",
+        credit: "Official Nintendo Switch 2 product artwork © Nintendo",
+        sourceUrl: "https://assets.nintendo.com/image/upload/q_auto/f_auto/dpr_2.0/store/software/switch2/70010000130792/9fb8faf644291a8398e43eadab602842d21c6b80537f71be0462685f52605c51",
+        width: 1600,
+        height: 900,
+      },
+      status: "published", publishedAt: launchUpdate, updatedAt: launchUpdate,
+      relatedSlugs: ["release-date", "gameplay", "new-features"],
+      sections: [
+        {
+          id: "release", title: "The game launches November 5—not October 29",
+          releaseFacts: true,
+          paragraphs: [
+            "The Legend of Zelda: Ocarina of Time launches for Nintendo Switch 2 on November 5, 2026. Nintendo’s official title does not include ‘Remake’; check both the game name and the Switch 2 platform label when ordering.",
+            "The anniversary-edition Switch 2 console, Pro Controller and carrying case are dated October 29. Buying or receiving one of those products early does not include early access to Ocarina of Time.",
+          ],
+          sourceIds: ["us", "announcement"],
+        },
+        {
+          id: "price-edition", title: "Current US price and edition check",
+          paragraphs: [
+            "Nintendo’s US product listing currently shows a $69.99 physical edition. Regional prices, digital-store pricing, taxes and retailer shipping can differ, so treat that figure as the checked US listing rather than a universal checkout total.",
+            "The launch physical version’s textured foil packaging is a while-supplies-last detail announced in Nintendo’s trailer. Confirm that a retailer explicitly includes it if the packaging matters to you; do not assume every later copy has it.",
+          ],
+          sourceIds: ["us", "trailer"],
+        },
+        {
+          id: "players-display", title: "Players, play modes and display features",
+          table: {
+            headers: ["Item", "Nintendo’s current US listing"],
+            rows: [
+              ["Players", "1 player"],
+              ["Play modes", "Handheld, tabletop and TV modes"],
+              ["Compatible-TV features", "HDR output and variable refresh rate (VRR) output"],
+              ["Audio", "Surround sound (linear PCM)"],
+              ["Extras", "amiibo support"],
+              ["Age rating", "Everyone 10+; Animated Blood and Fantasy Violence"],
+            ],
+          },
+          paragraphs: ["HDR and VRR depend on a compatible TV and setup; their presence on the product page is not a promise that every display mode will look identical. A one-player listing also means you should not expect a co-op campaign."],
+          sourceIds: ["us"],
+        },
+        {
+          id: "download", title: "Download size and exact unlock time remain unconfirmed",
+          paragraphs: [
+            "Nintendo’s current US listing warns that information such as download size may not be final during pre-order, and we have not verified a final file-size figure. Leave flexible storage rather than planning around an unsourced number.",
+            "We also have not verified a game-specific worldwide unlock schedule or preload start. Check your regional eShop for the actual download option and countdown instead of converting an assumed midnight release into a launch timer.",
+          ],
+          sourceIds: ["us"],
+        },
+        {
+          id: "first-day", title: "Your first-day setup checklist",
+          bullets: [
+            "Confirm the game and any required system update before your planned play session.",
+            "If using a TV, check its HDR and VRR support and the Switch 2 display settings before judging the image.",
+            "Read the new control menu rather than importing N64 or 3DS button habits.",
+            "Try movement, camera, quick equipment switching and motion aiming in a safe area.",
+            "Find Threads of Time for the recap and current objective, then choose button or microphone input for ocarina melodies.",
+            "Keep older walkthroughs as historical references until their routes are checked against the Switch 2 release.",
+          ],
+          paragraphs: ["Nintendo’s October overview trailer is the latest official visual starting point. Our checklist is based on published information, not a review copy, performance test or verified dungeon route."],
+          link: { label: "Watch Nintendo’s October overview", href: "https://www.nintendo.com/us/whatsnew/you-have-been-summoned-to-watch-the-new-legend-of-zelda-ocarina-of-time-overview-trailer/" },
+          sourceIds: ["overview", "uk"],
         },
       ],
     },
