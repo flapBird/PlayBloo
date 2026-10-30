@@ -2,43 +2,36 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useCallback, useEffect, useRef } from "react";
-import { useRouter, usePathname } from "next/navigation";
-import { Search, Menu, X, Heart, History, BookOpen, PanelLeftClose, PanelLeftOpen } from "lucide-react";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import { BookOpen, Heart, History, Menu, PanelLeftClose, PanelLeftOpen, Search, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
+import { HeaderSearch } from "@/components/layout/HeaderSearch";
 import { CategoryIcon } from "@/components/layout/category-icons";
 import { useSidebar } from "@/components/layout/SidebarProvider";
 import type { SidebarCategory } from "@/components/layout/CategorySidebar";
+import type { GuideSearchEntry } from "@/lib/guides/types";
+import { getFavorites, LIBRARY_CHANGE_EVENT } from "@/lib/user-library";
 import { SITE_NAME } from "@/lib/constants";
 
-export function Header({ categories = [] }: { categories?: SidebarCategory[] }) {
+export function Header({ categories = [], guides = [] }: { categories?: SidebarCategory[]; guides?: GuideSearchEntry[] }) {
   const { open: sidebarOpen, toggle: toggleSidebar } = useSidebar();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
-  const searchRef = useRef<HTMLInputElement>(null);
-  const router = useRouter();
+  const [favoriteCount, setFavoriteCount] = useState(0);
   const pathname = usePathname();
 
-  const handleSearch = useCallback(
-    (e: React.FormEvent) => {
-      e.preventDefault();
-      if (searchQuery.trim()) {
-        router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
-        setSearchOpen(false);
-        setSearchQuery("");
-      }
-    },
-    [searchQuery, router]
-  );
-
   useEffect(() => {
-    if (searchOpen && searchRef.current) {
-      searchRef.current.focus();
-    }
-  }, [searchOpen]);
+    const sync = () => setFavoriteCount(getFavorites().length);
+    sync();
+    window.addEventListener(LIBRARY_CHANGE_EVENT, sync);
+    window.addEventListener("storage", sync);
+    return () => {
+      window.removeEventListener(LIBRARY_CHANGE_EVENT, sync);
+      window.removeEventListener("storage", sync);
+    };
+  }, []);
 
   return (
     <header className="site-header sticky top-0 z-50 w-full">
@@ -58,56 +51,50 @@ export function Header({ categories = [] }: { categories?: SidebarCategory[] }) 
         </div>
         <div className="container mx-auto min-w-0 flex-1">
           {/* Main row */}
-          <div className="flex h-16 items-center justify-between">
-            <div className="flex shrink-0 items-center gap-7">
-              <Link prefetch={false} href="/" className="flex items-center gap-2 text-lg font-black sm:text-xl tracking-tight text-foreground transition-colors hover:text-primary">
-                <Image
-                  src="/images/brand/playbloo-ribbon.webp"
-                  alt=""
-                  width={36}
-                  height={36}
-                  loading="eager"
-                  className="site-brand-icon h-9 w-9 shrink-0 object-contain"
-                />
-                {SITE_NAME}
-              </Link>
-              <nav aria-label="Primary" className="hidden items-center gap-1 lg:flex">
-                <Link prefetch={false} href="/" className={`header-nav-link ${pathname === "/" ? "is-active" : ""}`}>Games</Link>
-                <Link prefetch={false} href="/guides" aria-current={pathname === "/guides" || pathname.startsWith("/guides/") ? "page" : undefined} className={`header-nav-link ${pathname === "/guides" || pathname.startsWith("/guides/") ? "is-active" : ""}`}><BookOpen className="h-3.5 w-3.5" />Guides</Link>
-                <Link prefetch={false} href="/submit-game" aria-current={pathname === "/submit-game" ? "page" : undefined} className={`header-nav-link ${pathname === "/submit-game" ? "is-active" : ""}`}>Submit a Game</Link>
-              </nav>
-            </div>
+          <div className="flex h-16 items-center gap-3 lg:gap-5">
+            <Link prefetch={false} href="/" className="flex shrink-0 items-center gap-2 text-lg font-black sm:text-xl tracking-tight text-foreground transition-colors hover:text-primary">
+              <Image
+                src="/images/brand/playbloo-ribbon.webp"
+                alt=""
+                width={36}
+                height={36}
+                loading="eager"
+                className="site-brand-icon h-9 w-9 shrink-0 object-contain"
+              />
+              {SITE_NAME}
+            </Link>
+            <nav aria-label="Primary" className="hidden shrink-0 items-center gap-1 lg:flex">
+              <Link prefetch={false} href="/guides" aria-current={pathname === "/guides" || pathname.startsWith("/guides/") ? "page" : undefined} className={`header-nav-link ${pathname === "/guides" || pathname.startsWith("/guides/") ? "is-active" : ""}`}><BookOpen className="h-3.5 w-3.5" />Guides</Link>
+              <Link prefetch={false} href="/submit-game" aria-current={pathname === "/submit-game" ? "page" : undefined} className={`header-nav-link ${pathname === "/submit-game" ? "is-active" : ""}`}>Submit a Game</Link>
+            </nav>
 
-            {/* Desktop search */}
-            <div className="mx-5 hidden max-w-md flex-1 items-center gap-3 md:flex lg:ml-auto">
-              <form onSubmit={handleSearch} className="relative w-full">
-                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                <Input
-                  ref={searchRef}
-                  type="search"
-                  placeholder="Search games..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="header-search h-9 w-full rounded-lg border pl-10 text-sm focus-visible:ring-0"
-                />
-              </form>
-            </div>
-
-            <div className="flex items-center gap-1 sm:gap-2">
-              <div className="flex items-center gap-1">
-                <Link prefetch={false} href="/recently-played" aria-label="Recently played" className="hidden md:grid h-9 w-9 place-items-center rounded-xl text-muted-foreground transition hover:bg-muted hover:text-primary">
-                  <History className="h-4 w-4" />
-                </Link>
-                <Link prefetch={false} href="/favorites" aria-label="Your favorites" className="grid h-9 w-9 place-items-center rounded-xl text-muted-foreground transition hover:bg-muted hover:text-rose-500">
-                  <Heart className="h-4 w-4" />
-                </Link>
+            {/* Desktop search, centred in the space between brand and actions */}
+            <div className="hidden min-w-0 flex-1 justify-center md:flex">
+              <div className="w-full max-w-[34rem]">
+                <HeaderSearch categories={categories} guides={guides} />
               </div>
-              <ThemeToggle />
+            </div>
+
+            <div className="ml-auto flex shrink-0 items-center gap-1.5 md:ml-0">
+              <div className="header-actions">
+                <Link prefetch={false} href="/recently-played" aria-label="Recently played" className="header-action hidden md:inline-flex">
+                  <History className="header-action-icon" aria-hidden="true" />
+                  <span className="hidden xl:inline">History</span>
+                </Link>
+                <Link prefetch={false} href="/favorites" aria-label={`Your favorites${favoriteCount ? ` (${favoriteCount})` : ""}`} className="header-action header-action-saved">
+                  <Heart className={`header-action-icon ${favoriteCount ? "fill-current" : ""}`} aria-hidden="true" />
+                  <span className="hidden xl:inline">Favorites</span>
+                  {favoriteCount > 0 && <span className="header-favorite-count">{favoriteCount > 99 ? "99+" : favoriteCount}</span>}
+                </Link>
+                <span className="header-action-divider" aria-hidden="true" />
+                <ThemeToggle />
+              </div>
+
               {/* Mobile search toggle */}
               <Button
                 variant="ghost"
                 size="icon"
-                className="h-9 w-9 md:hidden text-muted-foreground"
+                className="h-10 w-10 rounded-full text-muted-foreground md:hidden"
                 onClick={() => setSearchOpen(!searchOpen)}
                 aria-label={searchOpen ? "Close search" : "Open search"}
                 aria-expanded={searchOpen}
@@ -120,7 +107,7 @@ export function Header({ categories = [] }: { categories?: SidebarCategory[] }) 
               <Button
                 variant="ghost"
                 size="icon"
-                className="h-9 w-9 lg:hidden text-muted-foreground"
+                className="h-10 w-10 rounded-full text-muted-foreground lg:hidden"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
                 aria-expanded={mobileMenuOpen}
@@ -133,18 +120,13 @@ export function Header({ categories = [] }: { categories?: SidebarCategory[] }) 
 
           {/* Mobile search */}
           {searchOpen && (
-            <div id="mobile-search" className="md:hidden px-4 pb-3">
-              <form onSubmit={handleSearch} className="relative">
-                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                <Input
-                  type="search"
-                  placeholder="Search games..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 bg-muted border-0 text-sm h-10 rounded-xl"
-                  autoFocus
-                />
-              </form>
+            <div id="mobile-search" className="pb-3 md:hidden">
+              <HeaderSearch
+                categories={categories}
+                guides={guides}
+                autoFocus
+                onNavigate={() => setSearchOpen(false)}
+              />
             </div>
           )}
 
@@ -152,14 +134,6 @@ export function Header({ categories = [] }: { categories?: SidebarCategory[] }) 
           {mobileMenuOpen && (
             <div id="mobile-menu" className="lg:hidden border-t border-border/50">
               <div className="px-4 py-3 space-y-1">
-                <Link
-                  prefetch={false}
-                  href="/"
-                  className="block px-3 py-2 text-sm font-medium rounded-lg hover:bg-muted transition-colors"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Games
-                </Link>
                 <Link prefetch={false} href="/guides" aria-current={pathname === "/guides" || pathname.startsWith("/guides/") ? "page" : undefined} className={`block px-3 py-2 text-sm font-medium rounded-lg hover:bg-muted ${pathname === "/guides" || pathname.startsWith("/guides/") ? "text-primary bg-muted" : ""}`} onClick={() => setMobileMenuOpen(false)}>Guides</Link>
                 <Link prefetch={false} href="/submit-game" className="block px-3 py-2 text-sm font-medium rounded-lg hover:bg-muted" onClick={() => setMobileMenuOpen(false)}>Submit a Game</Link>
                 <Link prefetch={false} href="/favorites" className="flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-lg hover:bg-muted" onClick={() => setMobileMenuOpen(false)}>

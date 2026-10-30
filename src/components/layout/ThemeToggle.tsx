@@ -13,11 +13,14 @@ export function ThemeToggle() {
   };
 
   return (
-    <button type="button" onClick={toggleTheme} className="grid h-9 w-9 shrink-0 place-items-center rounded-xl text-muted-foreground transition hover:bg-muted hover:text-primary focus-visible:outline-2 focus-visible:outline-ring">
-      <Moon aria-hidden="true" className="h-4 w-4 dark:hidden" />
-      <Sun aria-hidden="true" className="hidden h-4 w-4 dark:block" />
-      <span className="sr-only dark:hidden">Switch to dark mode</span>
-      <span className="sr-only hidden dark:block">Switch to light mode</span>
+    <button
+      type="button"
+      onClick={toggleTheme}
+      aria-label="Switch color theme"
+      className="header-action header-action-square"
+    >
+      <Moon aria-hidden="true" className="header-action-icon dark:hidden" />
+      <Sun aria-hidden="true" className="header-action-icon hidden dark:block" />
     </button>
   );
 }

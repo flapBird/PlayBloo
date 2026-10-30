@@ -10,6 +10,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "guide:thumbs": "node scripts/guide-thumbs.mjs",
     "build:cloudflare": "opennextjs-cloudflare build",
     "preview": "npm run build:cloudflare && opennextjs-cloudflare preview",
     "deploy": "npm run build:cloudflare && opennextjs-cloudflare deploy -- --keep-vars",

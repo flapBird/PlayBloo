@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { unstable_cache } from "next/cache";
-import { LayoutGrid, List, SlidersHorizontal } from "lucide-react";
+import { ArrowRight, BookOpen, LayoutGrid, List, SlidersHorizontal } from "lucide-react";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { getGuideSearchIndex } from "@/lib/guides";
 import { getCachedCategoryCatalog, normalizePublicGameCards, PUBLIC_GAME_CARD_FIELDS } from "@/lib/discovery-data";
 import { GameCard, type GameCardGame } from "@/components/games/GameCard";
 import { GameListItem } from "@/components/games/GameListItem";
@@ -17,7 +18,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   const hasParameters = Object.keys(params).length > 0;
   return {
     title: "Search and Discover Browser Games",
-    description: "Search PlayBloo games by title, developer, genre, tag and play mode.",
+    description: "Search PlayBloo games and guides by title, developer, genre, tag and play mode.",
     robots: { index: false, follow: true },
     ...(!hasParameters ? { alternates: { canonical: "/search" } } : {}),
   };
@@ -162,6 +163,10 @@ export default async function SearchPage({ searchParams }: Props) {
     ? { games: [], total: 0, failed: false }
     : await searchGames(filters);
   const pages = Math.ceil(total / PAGE_SIZE);
+  const term = filters.q.toLowerCase();
+  const guideMatches = term
+    ? getGuideSearchIndex().filter((entry) => entry.title.toLowerCase().includes(term) || entry.keywords.includes(term)).slice(0, 4)
+    : [];
   const dateField = filters.sort === "released" ? "released" : filters.sort === "recently-updated" ? "updated" : "added";
   const sortLabels: Record<string, string> = { newest: "Newest games", released: "Recently released games", "recently-updated": "Recently updated games", trending: "Trending games", popular: "Popular games" };
 
@@ -180,6 +185,26 @@ export default async function SearchPage({ searchParams }: Props) {
         </div>
       </div>
       <section aria-label="Search results" className="min-w-0 space-y-5">
+        {guideMatches.length > 0 && (
+          <section aria-label="Matching guides" className="rounded-xl border bg-card p-3">
+            <p className="flex items-center gap-1.5 px-1 pb-2 text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground">
+              <BookOpen className="h-3.5 w-3.5" aria-hidden="true" />Guides
+            </p>
+            <ul className="grid gap-1 sm:grid-cols-2">
+              {guideMatches.map((guide) => (
+                <li key={guide.href}>
+                  <Link href={guide.href} className="flex items-center gap-3 rounded-lg px-2 py-2 transition-colors hover:bg-muted">
+                    <span className="min-w-0 flex-1">
+                      <span className="block truncate text-sm font-semibold">{guide.title}</span>
+                      <span className="block truncate text-xs text-muted-foreground">{guide.subtitle}</span>
+                    </span>
+                    <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
         <ActiveFilterChips filters={filters} options={options} />
         {games.length ? (
           <>

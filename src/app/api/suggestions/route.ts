@@ -15,12 +15,15 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ suggestions: [] });
   }
 
+  // Title/slug only, narrow payload: this endpoint feeds the header typeahead
+  // on every keystroke, so it must stay cheap and CDN-cacheable.
   const { data } = await createAdminClient()
     .from("games")
-    .select("title, slug")
+    .select("id, title, slug, thumbnail_url")
     .eq("is_published", true)
     .or(`title.ilike.%${q}%,slug.ilike.%${q}%`)
-    .limit(8);
+    .order("play_count", { ascending: false })
+    .limit(6);
 
   return NextResponse.json(
     { suggestions: data || [] },

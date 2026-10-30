@@ -6,6 +6,7 @@ import { CategorySidebar } from "@/components/layout/CategorySidebar";
 import { SidebarProvider } from "@/components/layout/SidebarProvider";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { getCategoryNav } from "@/lib/category-nav";
+import { getGuideSearchIndex } from "@/lib/guides";
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from "@/lib/constants";
 import "./globals.css";
 
@@ -62,6 +63,7 @@ export default async function RootLayout({
   // Shared, cached category navigation feeds the sidebar and mobile menu
   // from one read.
   const categories = await getCategoryNav();
+  const guides = getGuideSearchIndex();
 
   return (
     <html lang="en" className="dark h-full antialiased" suppressHydrationWarning>
@@ -71,7 +73,7 @@ export default async function RootLayout({
       <body className="min-h-full flex flex-col">
         <div className="site-background" aria-hidden="true" />
         <SidebarProvider>
-          <Header categories={categories} />
+          <Header categories={categories} guides={guides} />
           <CategorySidebar categories={categories}>
             <main className="site-main flex-1">{children}</main>
             <Footer />

@@ -4,6 +4,16 @@ export interface GuideSource {
   url: string;
 }
 
+/** Compact, client-safe entry for the site-wide search suggestions. */
+export interface GuideSearchEntry {
+  title: string;
+  subtitle: string;
+  href: string;
+  keywords: string;
+  cover?: string;
+  kind: "topic" | "article";
+}
+
 export interface GuideCover {
   src: string;
   alt: string;

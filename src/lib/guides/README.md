@@ -22,6 +22,11 @@ shared by the article header, every article card, Open Graph/Twitter and Article
 JSON-LD. Existing articles without a `cover` fall back to the topic cover.
 `fit` and `position` control cropping consistently across article surfaces.
 
+Search suggestions show an 88x64 cover thumbnail from
+`public/images/guides/thumbs/`. Run `npm run guide:thumbs` after adding or
+replacing a cover; it only regenerates thumbs older than their source. A guide
+without a thumb falls back to a book icon.
+
 The templates generate `/guides`, `/guides/[slug]` and
 `/guides/[slug]/[articleSlug]`. Existing site conventions normalize trailing slashes
 to the non-trailing-slash canonical. Unknown topics/articles return 404.
