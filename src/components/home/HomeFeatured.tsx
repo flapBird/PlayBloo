@@ -8,6 +8,7 @@ import type { GameCardGame } from "@/components/games/GameCard";
 /**
  * The homepage's one big visual anchor: a large spotlight plus two stacked
  * runner-ups, sitting between the hero headline and the discovery feed.
+ * Sourced from the trending feed — the games users are actually playing.
  */
 export function HomeFeatured({ games }: { games: GameCardGame[] }) {
   if (!games.length) return null;
@@ -21,7 +22,6 @@ export function HomeFeatured({ games }: { games: GameCardGame[] }) {
     official_website_url: lead.official_website_url || null,
   });
   const leadCategory = lead.categories?.[0]?.name;
-  const leadBadge = getDiscoveryStatusBadge(lead);
 
   return (
     <section aria-label="Featured games" className="mb-8 grid gap-4 lg:grid-cols-[2fr_1fr]">
@@ -53,7 +53,7 @@ export function HomeFeatured({ games }: { games: GameCardGame[] }) {
         />
         <span className="relative z-10 flex flex-col justify-end gap-2.5 p-5 md:gap-3 md:p-7">
           <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-primary/15 px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-[0.08em] text-primary">
-            Featured{leadBadge === "TRENDING" ? " · Trending" : ""}
+            Trending now
           </span>
           <span className="max-w-md text-xl font-black leading-tight tracking-tight md:text-2xl">{lead.title}</span>
           <span className="flex flex-wrap items-center gap-2">

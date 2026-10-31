@@ -73,7 +73,7 @@ export default async function HomePage() {
           </div>
         </section>
 
-        <HomeFeatured games={feeds.newest.games} />
+        <HomeFeatured games={feeds.trending.games} />
 
         <HomeDiscovery
           feeds={feeds}
