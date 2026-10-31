@@ -1,0 +1,19 @@
+{
+  "v": 3,
+  "createdOnFiles": { "v": 1, "at": "2026-10-31T18:02:00Z" },
+  "title": "PlayBloo UI 优化提案",
+  "launch": { "view": "canvas" },
+  "pages": [],
+  "boards": {
+    "Main.dc.html": { "x": 0, "y": 0, "w": 1440, "h": 1120, "title": "首页：Featured 大位 + 卡片标题常显", "expand": "fill" },
+    "Cards.dc.html": { "x": 0, "y": 1240, "w": 1440, "h": 780, "title": "游戏卡片：现状 vs 优化" },
+    "Loading-Fallback.dc.html": { "x": 0, "y": 2140, "w": 1440, "h": 900, "title": "加载骨架屏与缺省封面" },
+    "Guides.dc.html": { "x": 0, "y": 3160, "w": 1440, "h": 1080, "title": "Guides 列表：封面卡片化", "expand": "fill" },
+    "GameDetail.dc.html": { "x": 0, "y": 4360, "w": 1440, "h": 1060, "title": "游戏详情页精修", "expand": "fill" }
+  },
+  "order": ["Main.dc.html", "Cards.dc.html", "Loading-Fallback.dc.html", "Guides.dc.html", "GameDetail.dc.html"],
+  "notes": {
+    "t1": { "x": 0, "y": -180, "text": "PlayBloo UI 优化提案 · 基于 playbloo.net 线上页面 · 2026-10-31", "kind": "title1", "maxW": 1440 }
+  },
+  "designSystems": []
+}
