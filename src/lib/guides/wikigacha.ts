@@ -8,9 +8,9 @@ export const wikigacha: GuideTopic = {
   slug: "wikigacha",
   name: "WikiGacha",
   officialName: "Wikipedia Gacha",
-  title: "WikiGacha: How to Play the Wikipedia Gacha Card Game",
+  title: "WikiGacha: the Wikipedia Gacha Game",
   description:
-    "WikiGacha turns Wikipedia articles into collectible cards. Learn how its packs, rarity, stats and daily missions work, then compare it with other games that play with Wikipedia.",
+    "WikiGacha turns Wikipedia articles into collectible cards: how packs, rarity, stats and daily missions work, plus the best alternatives to try.",
   status: "published",
   platforms: ["Browser"],
   releaseDate: "2026-02-24",
@@ -84,7 +84,7 @@ export const wikigacha: GuideTopic = {
   articles: [
     {
       slug: "how-to-play",
-      title: "How to Play WikiGacha: Packs, Missions and Battles",
+      title: "How to Play WikiGacha: Packs and Missions",
       shortTitle: "How to play: packs, missions, battles",
       description:
         "Open your first WikiGacha pack, learn the pack timer and Gold Pack guarantee, finish the daily missions and try every battle mode.",
@@ -165,7 +165,7 @@ export const wikigacha: GuideTopic = {
     },
     {
       slug: "rarity",
-      title: "WikiGacha Rarity Guide: All Seven Tiers, Q-Score and Card Stats",
+      title: "WikiGacha Rarity: All Seven Tiers and Card Stats",
       shortTitle: "Rarity: all seven tiers & stats",
       description:
         "Every WikiGacha rarity rank from Common to Legend Rare with its exact Q-Score threshold, plus the ATK and DEF formulas, pack guarantees and flavor text.",
@@ -248,7 +248,7 @@ export const wikigacha: GuideTopic = {
     },
     {
       slug: "alternatives",
-      title: "WikiGacha Alternatives: Four More Games That Play With Wikipedia",
+      title: "WikiGacha Alternatives: 4 More Wikipedia Games",
       shortTitle: "Alternatives: more wiki games",
       description:
         "From WikiTCG's holographic card battles to wiki races and timeline trivia, four checked alternatives to WikiGacha and who each one suits.",

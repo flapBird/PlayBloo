@@ -13,6 +13,13 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - 游戏下架或删除后，必须从 sitemap 移除对应游戏 URL，以及依赖该游戏上线状态的关卡等页面 URL；同时检查受影响的分类、标签、系列等页面是否仍符合现有收录条件。
 - 验证至少覆盖：新增上线游戏被收录且更新时间等于上线日期；下架或删除游戏及其依赖页面不再被收录；本轮未变动的老游戏更新时间与修改前一致。最终回复简要说明 sitemap 的处理及验证结果；无法验证时如实说明原因。
 
+# 页面 SEO 标题与描述长度原则
+
+- 所有新增页面的 `<title>` 渲染结果（含站点后缀，如 guides 内容是 `content.title + " | PlayBloo"`）不得超过 60 字符；meta description 不得超过 160 字符。校验按"页面上实际渲染的完整文本"计长，不是内容数据里的裸字段。
+- 内容数据里写 title/description 时就预留后缀长度（guides 的后缀是 11 字符），不要写完再砍；关键词尽量放在前 50 个字符内。标题避免使用裸 `&`：HTML 转义成 `&amp;` 后原始长度 +4，按原始 HTML 长度校验最稳妥（`&` 用 "and" 或全角"／"等替代）。
+- 上线验收必须实测渲染后的长度：可用 `node scripts/verify-guides.mjs <本地地址>`（WikiGacha 起的 guides 页面已内置长度断言）、查看页面 HTML 的 `<title>`/`<meta name="description">`，或用 AITDK 等 SEO 扩展核对。
+- 已上线的老页面不为此批量回改标题或描述（会无谓刷新其更新时间）；发现超限时，随该页面下一次实质性内容更新一并收窄。
+
 # 图片管道约定
 
 - 站点所有图片直连原始 URL：`next.config.ts` 已设 `images.unoptimized: true` 全局关闭 Vercel 图片优化（2026-10-11 起）。不要移除该配置，不要给单个 `<Image>` 重新启用优化，也不要引入会请求 `/_next/image` 的自定义 loader。

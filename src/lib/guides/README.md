@@ -342,6 +342,9 @@ own UI in English, one of thewikigame.com for the alternatives article), convert
 CC BY-SA 4.0 card content. `wikigacha.webp` uses `contain` to keep all five pulled cards visible
 in compact cards. `llms.txt` and verify-guides include the hub and three articles; the newest-
 topic assertions in verify-guides and the homepage feature were updated to the new topic.
+Meta titles and the hub description follow the AGENTS.md 60/160 rendered-length rule
+(`content.title` + " | PlayBloo" must stay within 60; description within 160); verify-guides
+asserts the rendered lengths for these pages.
 
 ## October 29, 2026 topics and launch update
 

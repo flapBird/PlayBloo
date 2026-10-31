@@ -392,6 +392,10 @@ for (const path of wkgPages) {
   const ids = [...html.matchAll(/<section[^>]*\bid="([^"]+)"/g)].map((match) => match[1]);
   assert.equal(new Set(ids).size, ids.length, `${path}: unique section IDs`);
   for (const [, target] of html.matchAll(/href="#([^"]+)"/g)) assert.ok(ids.includes(target), `${path}: contents target ${target} exists`);
+  const pageTitle = html.match(/<title>(.*?)<\/title>/s)?.[1] ?? "";
+  assert.ok(pageTitle.length <= 60, `${path}: rendered title within 60 chars (${pageTitle.length})`);
+  const metaDescription = attr(html, "meta", 'name="description"', "content") ?? "";
+  assert.ok(metaDescription.length <= 160, `${path}: meta description within 160 chars (${metaDescription.length})`);
   assert.equal(currentEntries.get(`${canonicalOrigin}${path}`), wkgUpdatedAt, `${path}: sitemap uses the PlayBloo publication date`);
   if (path !== wkgHub) assert.ok(latestUpdates.includes(`href="${path}"`), `${path}: appears in Latest Updates`);
 }
