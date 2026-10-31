@@ -1,19 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ExternalLink, Play } from "lucide-react";
+import { ArrowRight, ExternalLink, Play } from "lucide-react";
 import { getGamePlayMode, shouldBypassImageOptimization } from "@/lib/game-utils";
+import { getLatestGuideTopic } from "@/lib/guides";
 import { CoverFallback } from "@/components/games/CoverFallback";
 import type { GameCardGame } from "@/components/games/GameCard";
 
 /**
- * The homepage's one big visual anchor: a CrazyGames-style mosaic — the #1
- * trending game on a double tile plus four runner-up covers, five games where
- * the old design had three. Sourced from the trending feed (play ranking).
+ * The homepage's one big visual anchor: the #1 trending game on a double tile,
+ * two runner-up covers, and a Game Guides promo riding in the same mosaic so
+ * the guides hub gets first-screen visibility. Sourced from the trending feed.
  */
 export function HomeFeatured({ games }: { games: GameCardGame[] }) {
   if (!games.length) return null;
   const [lead, ...rest] = games;
-  const runners = rest.slice(0, 4);
+  const runners = rest.slice(0, 2);
+  const guideTopic = getLatestGuideTopic();
 
   const leadMode = getGamePlayMode({
     iframe_url: lead.iframe_url || null,
@@ -24,12 +26,12 @@ export function HomeFeatured({ games }: { games: GameCardGame[] }) {
   const leadCategory = lead.categories?.[0]?.name;
 
   return (
-    <section aria-label="Trending games" className="mb-8 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+    <section aria-label="Trending games and guides" className="mb-8 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
       <Link
         href={`/game/${lead.slug}`}
         prefetch={false}
         aria-label={`View ${lead.title}`}
-        className="group relative col-span-2 flex aspect-[16/10] overflow-hidden rounded-2xl border bg-card transition-[border-color,box-shadow] duration-150 hover:border-primary/60 hover:shadow-[0_10px_30px_rgba(0,0,0,0.25)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary sm:gap-4 lg:row-span-2 lg:aspect-auto motion-reduce:transition-none"
+        className="group relative col-span-2 flex aspect-[16/10] overflow-hidden rounded-2xl border bg-card transition-[border-color,box-shadow] duration-150 hover:border-primary/60 hover:shadow-[0_10px_30px_rgba(0,0,0,0.25)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary lg:row-span-2 lg:aspect-auto motion-reduce:transition-none"
       >
         <span className="absolute inset-0" aria-hidden="true">
           {lead.thumbnail_url ? (
@@ -102,6 +104,27 @@ export function HomeFeatured({ games }: { games: GameCardGame[] }) {
           <span className="absolute inset-x-0 bottom-0 truncate px-2.5 pb-1.5 text-xs font-bold text-white">{game.title}</span>
         </Link>
       ))}
+
+      {guideTopic && (
+        <Link
+          href="/guides"
+          aria-label="Explore game guides"
+          className="group relative col-span-2 flex aspect-[16/6] overflow-hidden rounded-xl border border-primary/40 bg-gradient-to-br from-accent to-card transition-[border-color] duration-150 hover:border-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary lg:aspect-auto motion-reduce:transition-none"
+        >
+          <span className="absolute inset-y-0 right-0 w-[42%]" aria-hidden="true" style={{ maskImage: "linear-gradient(90deg, transparent 0%, black 30%)", WebkitMaskImage: "linear-gradient(90deg, transparent 0%, black 30%)" }}>
+            <Image src={guideTopic.cover.src} alt="" fill loading="lazy" className="object-cover" sizes="260px" />
+          </span>
+          <span className="relative z-10 flex min-w-0 flex-1 flex-col justify-center gap-1 p-4 md:p-5">
+            <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-primary/15 px-2 py-0.5 text-[9px] font-extrabold uppercase tracking-[0.1em] text-primary">Guides</span>
+            <span className="text-base font-extrabold tracking-tight md:text-lg">Game Guides: get good, faster</span>
+            <span className="line-clamp-1 text-xs text-muted-foreground md:text-sm">Release dates, tips and getting-started help{guideTopic ? ` · Latest: ${guideTopic.name}` : ""}</span>
+            <span className="mt-0.5 inline-flex items-center gap-1.5 text-xs font-bold text-primary md:text-sm">
+              Explore guides
+              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 motion-reduce:transition-none" aria-hidden="true" />
+            </span>
+          </span>
+        </Link>
+      )}
     </section>
   );
 }

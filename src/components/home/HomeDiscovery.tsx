@@ -2,7 +2,7 @@
 
 import { useState, type KeyboardEvent, type ReactNode } from "react";
 import Link from "next/link";
-import { ArrowRight, CalendarDays, Flame, LayoutGrid, List } from "lucide-react";
+import { ArrowRight, CalendarDays, Flame, LayoutGrid, List, Zap } from "lucide-react";
 import { GameCard } from "@/components/games/GameCard";
 import { GameListItem } from "@/components/games/GameListItem";
 import type { HomeFeeds, HomeFeedSort } from "@/lib/home-feeds";
@@ -14,7 +14,7 @@ const tabs = [
   { sort: "popular", label: "Popular", icon: null },
 ] as const;
 
-export function HomeDiscovery({ feeds, sidebar }: { feeds: HomeFeeds; sidebar: ReactNode }) {
+export function HomeDiscovery({ feeds, sidebar }: { feeds: HomeFeeds; sidebar?: ReactNode }) {
   const [view, setView] = useState<"grid" | "list">("grid");
   const [sort, setSort] = useState<HomeFeedSort>("newest");
   const activeTab = tabs.find((tab) => tab.sort === sort)!;
@@ -39,12 +39,19 @@ export function HomeDiscovery({ feeds, sidebar }: { feeds: HomeFeeds; sidebar: R
   return (
     <>
       <div className="discovery-toolbar home-discovery-toolbar mt-7">
-        <div role="tablist" aria-label="Game feed" className="discovery-tabs">
-          {tabs.map((tab, index) => (
-            <button key={tab.sort} type="button" role="tab" id={`feed-tab-${tab.sort}`} aria-controls="home-game-feed" aria-selected={sort === tab.sort} tabIndex={sort === tab.sort ? 0 : -1} onClick={() => setSort(tab.sort)} onKeyDown={(event) => handleTabKey(event, index)} className={sort === tab.sort ? "is-active" : ""}>
-              {tab.icon && <tab.icon className="h-3.5 w-3.5" aria-hidden="true" />}{tab.label}
-            </button>
-          ))}
+        <div className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1">
+          <div role="tablist" aria-label="Game feed" className="discovery-tabs">
+            {tabs.map((tab, index) => (
+              <button key={tab.sort} type="button" role="tab" id={`feed-tab-${tab.sort}`} aria-controls="home-game-feed" aria-selected={sort === tab.sort} tabIndex={sort === tab.sort ? 0 : -1} onClick={() => setSort(tab.sort)} onKeyDown={(event) => handleTabKey(event, index)} className={sort === tab.sort ? "is-active" : ""}>
+                {tab.icon && <tab.icon className="h-3.5 w-3.5" aria-hidden="true" />}{tab.label}
+              </button>
+            ))}
+          </div>
+          {/* A playMode filter, not a sort — styled like a tab but visually its own thing. */}
+          <Link href="/search?playMode=embedded" prefetch={false} className="discovery-instant-link">
+            <Zap className="h-3.5 w-3.5 fill-current" aria-hidden="true" />
+            Play instantly
+          </Link>
         </div>
         <div className="discovery-tools flex shrink-0 items-center gap-3">
           <Link href={browseHref} prefetch={false} className="discovery-tool-button home-browse-button">Browse all<ArrowRight className="h-4 w-4" /></Link>
@@ -54,7 +61,7 @@ export function HomeDiscovery({ feeds, sidebar }: { feeds: HomeFeeds; sidebar: R
           </div>
         </div>
       </div>
-      <div className="mt-6 grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_290px] xl:gap-8">
+      <div className={`mt-6 grid items-start gap-8 xl:gap-8 ${sidebar ? "lg:grid-cols-[minmax(0,1fr)_290px]" : ""}`}>
         <section id="home-game-feed" role="tabpanel" aria-labelledby={`feed-tab-${sort}`} tabIndex={0} className="home-feed-panel min-w-0">
           <span aria-live="polite" className="sr-only">{failed ? "Games could not be loaded" : `${activeTab.label}: ${games.length} games shown`}</span>
           {games.length ? view === "grid" ? (

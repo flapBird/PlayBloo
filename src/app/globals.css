@@ -838,6 +838,23 @@ body.game-fullscreen .site-main {
   outline-offset: 4px;
 }
 .discovery-tabs button { cursor: pointer; }
+/* "Play instantly" sits beside the sort tabs as its own playMode entry. */
+.discovery-instant-link {
+  display: inline-flex;
+  min-height: 2.35rem;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.35rem;
+  margin-left: 0.35rem;
+  padding-inline: 0.8rem;
+  border-radius: 0.45rem;
+  background: color-mix(in srgb, var(--primary) 14%, transparent);
+  color: var(--primary);
+  font-size: 0.82rem;
+  font-weight: 700;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+.discovery-instant-link:hover { background: var(--primary); color: var(--primary-foreground); }
 .home-view-switch { display: flex; gap: .125rem; border: 1px solid var(--border); border-radius: .6rem; padding: .2rem; }
 .home-view-switch .discovery-tool-button { min-width: 2rem; min-height: 2rem; border: 0; border-radius: .4rem; background: transparent; padding: .4rem; }
 .home-view-switch .discovery-tool-button.is-selected { background: var(--muted); color: var(--foreground); }
