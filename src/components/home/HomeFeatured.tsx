@@ -31,7 +31,15 @@ export function HomeFeatured({ games }: { games: GameCardGame[] }) {
         aria-label={`View ${lead.title}`}
         className="group relative flex h-60 overflow-hidden rounded-2xl border bg-card transition-[border-color,box-shadow] duration-150 hover:border-primary/60 hover:shadow-[0_10px_30px_rgba(0,0,0,0.25)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:h-[300px] motion-reduce:transition-none"
       >
-        <span className="absolute inset-y-0 right-0 w-[78%] md:w-[62%]" aria-hidden="true">
+        <span
+          className="absolute inset-y-0 right-0 w-[78%] md:w-[68%]"
+          aria-hidden="true"
+          style={{
+            // Fade the art into the card instead of ending in a hard edge.
+            maskImage: "linear-gradient(90deg, transparent 0%, black 24%)",
+            WebkitMaskImage: "linear-gradient(90deg, transparent 0%, black 24%)",
+          }}
+        >
           {lead.thumbnail_url ? (
             <Image
               src={lead.thumbnail_url}
@@ -40,7 +48,7 @@ export function HomeFeatured({ games }: { games: GameCardGame[] }) {
               preload
               unoptimized={shouldBypassImageOptimization(lead.thumbnail_url)}
               className="object-cover object-right-center"
-              sizes="(max-width: 1023px) 78vw, 500px"
+              sizes="(max-width: 1023px) 78vw, 640px"
             />
           ) : (
             <CoverFallback title={lead.title} />
@@ -49,7 +57,7 @@ export function HomeFeatured({ games }: { games: GameCardGame[] }) {
         <span
           className="absolute inset-0"
           aria-hidden="true"
-          style={{ background: "linear-gradient(90deg, var(--background) 34%, color-mix(in srgb, var(--background) 45%, transparent) 58%, transparent 80%)" }}
+          style={{ background: "linear-gradient(90deg, var(--background) 30%, color-mix(in srgb, var(--background) 42%, transparent) 52%, transparent 76%)" }}
         />
         <span className="relative z-10 flex flex-col justify-end gap-2.5 p-5 md:gap-3 md:p-7">
           <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-primary/15 px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-[0.08em] text-primary">
