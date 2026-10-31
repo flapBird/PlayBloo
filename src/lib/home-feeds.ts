@@ -4,11 +4,11 @@ import { createAdminClient } from "@/lib/supabase/admin";
 import { HOME_GAME_CARD_FIELDS, LEGACY_GAME_CARD_FIELDS, normalizePublicGameCards } from "@/lib/discovery-data";
 import type { GameCardGame } from "@/components/games/GameCard";
 
-export type HomeFeedSort = "newest" | "trending" | "released" | "popular";
+export type HomeFeedSort = "newest" | "trending" | "released" | "popular" | "instant";
 export interface HomeFeed { games: GameCardGame[]; failed: boolean }
 export type HomeFeeds = Record<HomeFeedSort, HomeFeed>;
 
-async function getFeed(sort: HomeFeedSort | "playable"): Promise<HomeFeed> {
+async function getFeed(sort: HomeFeedSort): Promise<HomeFeed> {
   try {
     const supabase = createAdminClient();
     const query = (fields: string) => {
@@ -21,8 +21,9 @@ async function getFeed(sort: HomeFeedSort | "playable"): Promise<HomeFeed> {
           .order("release_date", { ascending: false });
       } else if (sort === "trending") {
         request = request.order("hot_score", { ascending: false }).order("play_count", { ascending: false });
-      } else if (sort === "popular" || sort === "playable") {
-        if (sort === "playable") request = request.not("iframe_url", "is", null).neq("iframe_url", "");
+      } else if (sort === "popular" || sort === "instant") {
+        // "instant" is Popular restricted to games playable right on PlayBloo.
+        if (sort === "instant") request = request.not("iframe_url", "is", null).neq("iframe_url", "");
         request = request.order("play_count", { ascending: false }).order("view_count", { ascending: false });
       } else {
         request = request.order("created_at", { ascending: false });
@@ -30,7 +31,7 @@ async function getFeed(sort: HomeFeedSort | "playable"): Promise<HomeFeed> {
 
       // 30 keeps the XL 5-column grid at six full rows — a non-multiple would
       // orphan cards on the last row.
-      return request.order("id", { ascending: true }).limit(sort === "playable" ? 6 : 30);
+      return request.order("id", { ascending: true }).limit(30);
     };
 
     let result = await query(HOME_GAME_CARD_FIELDS);
@@ -45,8 +46,8 @@ async function getFeed(sort: HomeFeedSort | "playable"): Promise<HomeFeed> {
 }
 
 export async function getHomeContent() {
-  const [newest, trending, released, popular, playable] = await Promise.all([
-    getFeed("newest"), getFeed("trending"), getFeed("released"), getFeed("popular"), getFeed("playable"),
+  const [newest, trending, released, popular, instant] = await Promise.all([
+    getFeed("newest"), getFeed("trending"), getFeed("released"), getFeed("popular"), getFeed("instant"),
   ]);
-  return { feeds: { newest, trending, released, popular } satisfies HomeFeeds, playable: playable.games };
+  return { feeds: { newest, trending, released, popular, instant } satisfies HomeFeeds };
 }

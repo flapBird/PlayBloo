@@ -33,7 +33,7 @@ export function GameCard({ game, badges = [], showDate = false, dateField = "add
   return (
     <article className="game-card group relative min-w-0">
       <Link href={`/game/${game.slug}`} prefetch={false} aria-label={`View ${game.title}`} title={game.title} className="game-card-link relative">
-        <div className="game-card-media relative aspect-[5/4] shrink-0 overflow-hidden rounded-xl bg-muted">
+        <div className="game-card-media relative aspect-[16/10] shrink-0 overflow-hidden rounded-xl bg-muted">
           {game.thumbnail_url ? (
             <GameCover
               src={game.thumbnail_url}

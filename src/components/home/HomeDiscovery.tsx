@@ -8,10 +8,11 @@ import { GameListItem } from "@/components/games/GameListItem";
 import type { HomeFeeds, HomeFeedSort } from "@/lib/home-feeds";
 
 const tabs = [
-  { sort: "newest", label: "New", icon: null },
-  { sort: "trending", label: "Trending", icon: Flame },
-  { sort: "released", label: "Released", icon: CalendarDays },
-  { sort: "popular", label: "Popular", icon: null },
+  { sort: "newest", label: "New", icon: null, browseLabel: null },
+  { sort: "trending", label: "Trending", icon: Flame, browseLabel: null },
+  { sort: "released", label: "Released", icon: CalendarDays, browseLabel: null },
+  { sort: "popular", label: "Popular", icon: null, browseLabel: null },
+  { sort: "instant", label: "Play instantly", icon: Zap, browseLabel: "playable games" },
 ] as const;
 
 export function HomeDiscovery({ feeds, sidebar }: { feeds: HomeFeeds; sidebar?: ReactNode }) {
@@ -20,7 +21,9 @@ export function HomeDiscovery({ feeds, sidebar }: { feeds: HomeFeeds; sidebar?: 
   const activeTab = tabs.find((tab) => tab.sort === sort)!;
   const { games, failed } = feeds[sort];
   const query = new URLSearchParams();
-  if (sort !== "newest") query.set("sort", sort);
+  // "instant" is a playMode filter, not a search sort — it maps to playMode.
+  if (sort === "instant") query.set("playMode", "embedded");
+  else if (sort !== "newest") query.set("sort", sort);
   if (view === "list") query.set("view", view);
   const browseHref = `/search${query.size ? `?${query}` : ""}`;
 
@@ -39,19 +42,12 @@ export function HomeDiscovery({ feeds, sidebar }: { feeds: HomeFeeds; sidebar?: 
   return (
     <>
       <div className="discovery-toolbar home-discovery-toolbar mt-7">
-        <div className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1">
-          <div role="tablist" aria-label="Game feed" className="discovery-tabs">
-            {tabs.map((tab, index) => (
-              <button key={tab.sort} type="button" role="tab" id={`feed-tab-${tab.sort}`} aria-controls="home-game-feed" aria-selected={sort === tab.sort} tabIndex={sort === tab.sort ? 0 : -1} onClick={() => setSort(tab.sort)} onKeyDown={(event) => handleTabKey(event, index)} className={sort === tab.sort ? "is-active" : ""}>
-                {tab.icon && <tab.icon className="h-3.5 w-3.5" aria-hidden="true" />}{tab.label}
-              </button>
-            ))}
-          </div>
-          {/* A playMode filter, not a sort — styled like a tab but visually its own thing. */}
-          <Link href="/search?playMode=embedded" prefetch={false} className="discovery-instant-link">
-            <Zap className="h-3.5 w-3.5 fill-current" aria-hidden="true" />
-            Play instantly
-          </Link>
+        <div role="tablist" aria-label="Game feed" className="discovery-tabs">
+          {tabs.map((tab, index) => (
+            <button key={tab.sort} type="button" role="tab" id={`feed-tab-${tab.sort}`} aria-controls="home-game-feed" aria-selected={sort === tab.sort} tabIndex={sort === tab.sort ? 0 : -1} onClick={() => setSort(tab.sort)} onKeyDown={(event) => handleTabKey(event, index)} className={sort === tab.sort ? "is-active" : ""}>
+              {tab.icon && <tab.icon className="h-3.5 w-3.5" aria-hidden="true" />}{tab.label}
+            </button>
+          ))}
         </div>
         <div className="discovery-tools flex shrink-0 items-center gap-3">
           <Link href={browseHref} prefetch={false} className="discovery-tool-button home-browse-button">Browse all<ArrowRight className="h-4 w-4" /></Link>
@@ -79,7 +75,7 @@ export function HomeDiscovery({ feeds, sidebar }: { feeds: HomeFeeds; sidebar?: 
             </div>
           )}
           {games.length > 0 && <div className="mt-7 flex justify-center">
-            <Link href={browseHref} prefetch={false} className="home-browse-link inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-semibold hover:border-primary/50 hover:text-primary">Browse all {activeTab.label.toLowerCase()} games <ArrowRight className="h-4 w-4" /></Link>
+              <Link href={browseHref} prefetch={false} className="home-browse-link inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-semibold hover:border-primary/50 hover:text-primary">Browse all {activeTab.browseLabel ?? `${activeTab.label.toLowerCase()} games`} <ArrowRight className="h-4 w-4" /></Link>
           </div>}
         </section>
         {sidebar}
