@@ -65,7 +65,7 @@ export function HomeDiscovery({ feeds, sidebar }: { feeds: HomeFeeds; sidebar?: 
         <section id="home-game-feed" role="tabpanel" aria-labelledby={`feed-tab-${sort}`} tabIndex={0} className="home-feed-panel min-w-0">
           <span aria-live="polite" className="sr-only">{failed ? "Games could not be loaded" : `${activeTab.label}: ${games.length} games shown`}</span>
           {games.length ? view === "grid" ? (
-            <div className="home-game-grid grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 xl:grid-cols-4">
+            <div className="home-game-grid grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 xl:grid-cols-5">
               {games.map((game, index) => <GameCard key={game.id} game={game} eagerImage={index < 4} showDate={sort === "released"} dateField={sort === "released" ? "released" : "added"} />)}
             </div>
           ) : (

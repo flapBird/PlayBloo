@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>PlayBloo Home — Proposed</title>
+<title>PlayBloo Home v2 — Mosaic + Vertical Guides + 5-col feed</title>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -24,14 +24,8 @@ a { color: inherit; text-decoration: none; }
       PlayBloo
     </a>
     <nav style="display: flex; align-items: center; gap: 4px;">
-      <a href="#" style="display: flex; align-items: center; gap: 7px; padding: 8px 12px; border-radius: 8px; font-size: 14px; font-weight: 500; color: #C9CEDA;">
-        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-        Guides
-      </a>
-      <a href="#" style="display: flex; align-items: center; gap: 7px; padding: 8px 12px; border-radius: 8px; font-size: 14px; font-weight: 500; color: #C9CEDA;">
-        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="M8 12h.01M12 10v4M16 12h.01"/></svg>
-        Gacha
-      </a>
+      <a href="#" style="display: flex; align-items: center; gap: 7px; padding: 8px 12px; border-radius: 8px; font-size: 14px; font-weight: 500; color: #C9CEDA;">Guides</a>
+      <a href="#" style="display: flex; align-items: center; gap: 7px; padding: 8px 12px; border-radius: 8px; font-size: 14px; font-weight: 500; color: #C9CEDA;">Gacha</a>
       <a href="#" style="padding: 8px 12px; border-radius: 8px; font-size: 14px; font-weight: 500; color: #C9CEDA;">Submit a Game</a>
     </nav>
     <div style="flex: 1; display: flex; justify-content: center;">
@@ -42,220 +36,243 @@ a { color: inherit; text-decoration: none; }
       </label>
     </div>
     <div style="display: flex; align-items: center; gap: 2px; padding: 3px; border-radius: 999px; border: 1px solid #292E39;">
-      <button aria-label="Favorites" style="width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border: none; border-radius: 999px; background: #24213D; color: #B8B2FF; cursor: pointer;">
+      <span style="width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 999px; background: #24213D; color: #B8B2FF;">
         <svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7z"/></svg>
-      </button>
-      <button aria-label="Toggle theme" style="width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border: none; border-radius: 999px; background: transparent; color: #9CA3B2; cursor: pointer;">
+      </span>
+      <span style="width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; color: #9CA3B2;">
         <svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-      </button>
+      </span>
     </div>
   </header>
 
   <div style="flex: 1; display: flex; min-height: 0;">
 
-    <!-- Left rail -->
+    <!-- Left rail: colorful quick links + violet categories (restored) -->
     <nav aria-label="Primary" style="flex: none; width: 56px; border-right: 1px solid #292E39; display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 12px 0;">
       <a href="#" aria-label="Home" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 10px; background: #24213D; color: #B8B2FF;">
-        <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
       </a>
-      <a href="#" aria-label="New games" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 10px; color: #9CA3B2;">
-        <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      <a href="#" aria-label="Game Gacha" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 10px; color: #FBBF24;">
+        <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="M8 12h.01M12 10v4M16 12h.01"/></svg>
       </a>
-      <a href="#" aria-label="Trending" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 10px; color: #9CA3B2;">
-        <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+      <a href="#" aria-label="Recently played" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 10px; color: #A78BFA;">
+        <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg>
       </a>
-      <a href="#" aria-label="Categories" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 10px; color: #9CA3B2;">
-        <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+      <a href="#" aria-label="New games" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 10px; color: #38BDF8;">
+        <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
       </a>
-      <a href="#" aria-label="Recently played" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 10px; color: #9CA3B2;">
-        <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg>
+      <a href="#" aria-label="Hot games" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 10px; color: #FB923C;">
+        <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+      </a>
+      <a href="#" aria-label="Trending" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 10px; color: #F472B6;">
+        <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 7 13.5 15.5 8.5 10.5 2 17"/><path d="M16 7h6v6"/></svg>
+      </a>
+      <div style="width: 24px; border-top: 1px solid #292E39; margin: 8px 0;"></div>
+      <a href="#" aria-label="Categories" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 10px; color: #A78BFA;">
+        <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
       </a>
     </nav>
 
     <!-- Main column -->
     <main style="flex: 1; min-width: 0; max-width: 1384px; padding: 28px 40px 48px;">
 
-      <!-- Hero -->
       <h1 style="margin: 0 0 6px; font-size: 40px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1;">Discover your <span style="color: #8177FF;">next game.</span></h1>
       <p style="margin: 0 0 24px; font-size: 15px; color: #9CA3B2;">New browser games, ready to play. No download required.</p>
 
-      <!-- Featured band -->
-      <section aria-label="Featured games" style="display: grid; grid-template-columns: 2fr 1fr; gap: 16px; margin-bottom: 32px;">
-        <a href="#" style="position: relative; display: flex; height: 300px; border-radius: 16px; overflow: hidden; background: #161A22; border: 1px solid #292E39;">
-          <div style="flex: 1.2; min-width: 0; padding: 28px; display: flex; flex-direction: column; justify-content: flex-end; gap: 12px; background: linear-gradient(90deg, #0B0D12 0%, rgba(11,13,18,0.6) 100%); position: relative; z-index: 1;">
-            <span style="align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; background: rgba(129,119,255,0.16); color: #B8B2FF; font-size: 11px; font-weight: 700; letter-spacing: 0.08em;">FEATURED</span>
-            <h2 style="margin: 0; font-size: 26px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15;">Nine Heavens: Path to Immortality</h2>
-            <div style="display: flex; align-items: center; gap: 8px;">
-              <span style="padding: 3px 10px; border-radius: 999px; background: #1B1F28; border: 1px solid #292E39; font-size: 12px; color: #C9CEDA;">RPG</span>
-              <span style="padding: 3px 10px; border-radius: 999px; background: #1B1F28; border: 1px solid #292E39; font-size: 12px; color: #C9CEDA;">New this week</span>
-            </div>
-            <span style="display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; margin-top: 4px; padding: 10px 20px; border-radius: 10px; background: #8177FF; color: #FFFFFF; font-size: 14px; font-weight: 700;">
+      <!-- Featured mosaic: lead + 4 runners + vertical guides tile -->
+      <section aria-label="Trending games and guides" style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; margin-bottom: 28px;">
+        <!-- Lead -->
+        <a href="#" style="grid-column: 1 / 3; grid-row: 1 / 3; position: relative; display: flex; overflow: hidden; border-radius: 16px; border: 1px solid #292E39; background: #12151C;">
+          <img src="/_blob/9862b219e80c09193a307e88844c1318" alt="Escape Road 3 cover art" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: right 32%;">
+          <span style="position: absolute; inset: 0; background: linear-gradient(90deg, #0B0D12 22%, rgba(11,13,18,0.55) 46%, rgba(11,13,18,0) 68%);"></span>
+          <span style="position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: flex-end; gap: 9px; padding: 20px;">
+            <span style="display: inline-flex; width: fit-content; align-items: center; padding: 4px 10px; border-radius: 999px; background: rgba(129,119,255,0.15); color: #B8B2FF; font-size: 10px; font-weight: 800; letter-spacing: 0.08em;">TRENDING NOW</span>
+            <span style="font-size: 22px; font-weight: 800; letter-spacing: -0.02em;">Escape Road 3</span>
+            <span style="display: flex; align-items: center; gap: 8px;">
+              <span style="padding: 3px 10px; border-radius: 999px; border: 1px solid #292E39; background: #1B1F28; font-size: 12px; color: #C9CEDA;">Action</span>
+              <span style="display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; border-radius: 999px; border: 1px solid #292E39; background: #1B1F28; font-size: 12px; color: #C9CEDA;">
+                <svg class="icon" width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.14v13.72c0 .8.87 1.3 1.56.88l10.54-6.86a1.05 1.05 0 0 0 0-1.76L9.56 4.26A1.04 1.04 0 0 0 8 5.14z"/></svg>
+                Play here
+              </span>
+            </span>
+            <span style="margin-top: 4px; display: inline-flex; width: fit-content; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 10px; background: #8177FF; color: #FFFFFF; font-size: 14px; font-weight: 800;">
               <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.14v13.72c0 .8.87 1.3 1.56.88l10.54-6.86a1.05 1.05 0 0 0 0-1.76L9.56 4.26A1.04 1.04 0 0 0 8 5.14z"/></svg>
               Play now
             </span>
-          </div>
-          <img src="/_blob/1e8e391a1f2b5e629bcbccd9415f3cc5" alt="Nine Heavens: Path to Immortality cover art" style="position: absolute; right: 0; top: 0; width: 62%; height: 100%; object-fit: cover; object-position: right center;">
-          <div style="position: absolute; inset: 0; background: linear-gradient(90deg, #0B0D12 34%, rgba(11,13,18,0.45) 55%, rgba(11,13,18,0) 78%);"></div>
+          </span>
         </a>
-        <div style="display: flex; flex-direction: column; gap: 16px;">
-          <a href="#" style="flex: 1; display: flex; align-items: center; gap: 14px; padding: 14px; border-radius: 16px; background: #12151C; border: 1px solid #292E39;">
-            <img src="/_blob/2c18804caed3739bbbd58625349cbf84" alt="Incredig cover" style="width: 118px; height: 94px; border-radius: 10px; object-fit: cover; flex: none;">
-            <div style="min-width: 0;">
-              <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 4px;"><span style="padding: 2px 7px; border-radius: 6px; background: #24213D; color: #B8B2FF; font-size: 10px; font-weight: 700; letter-spacing: 0.06em;">NEW</span><span style="font-size: 11px; color: #9CA3B2;">Idle · Simulation</span></div>
-              <div style="font-size: 15px; font-weight: 700;">Incredig</div>
-              <div style="margin-top: 6px; display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; color: #B8B2FF;">Play <svg class="icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
-            </div>
-          </a>
-          <a href="#" style="flex: 1; display: flex; align-items: center; gap: 14px; padding: 14px; border-radius: 16px; background: #12151C; border: 1px solid #292E39;">
-            <img src="/_blob/c7c31d0c99a3b98a6c57f0071707244d" alt="Splashland is Closed cover" style="width: 118px; height: 94px; border-radius: 10px; object-fit: cover; flex: none;">
-            <div style="min-width: 0;">
-              <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 4px;"><span style="padding: 2px 7px; border-radius: 6px; background: #24213D; color: #B8B2FF; font-size: 10px; font-weight: 700; letter-spacing: 0.06em;">NEW</span><span style="font-size: 11px; color: #9CA3B2;">Survival</span></div>
-              <div style="font-size: 15px; font-weight: 700;">Splashland is Closed!</div>
-              <div style="margin-top: 6px; display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; color: #B8B2FF;">Play <svg class="icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
-            </div>
-          </a>
-        </div>
+
+        <!-- Runner tiles -->
+        <a href="#" style="position: relative; display: block; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 12px; border: 1px solid #292E39; background: #12151C;">
+          <img src="/_blob/0e559bb43ee2f23414df2ad168dc10bf" alt="Wave Rider cover" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+          <span style="position: absolute; inset-x: 0; bottom: 0; height: 56px; background: linear-gradient(0deg, rgba(0,0,0,0.8), rgba(0,0,0,0));"></span>
+          <span style="position: absolute; left: 10px; bottom: 7px; font-size: 12px; font-weight: 700; color: #FFFFFF;">Wave Rider</span>
+        </a>
+        <a href="#" style="position: relative; display: block; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 12px; border: 1px solid #292E39; background: #12151C;">
+          <img src="/_blob/024bc7691a8d99d676e74f1bf3918719" alt="Color Block Jam cover" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+          <span style="position: absolute; inset-x: 0; bottom: 0; height: 56px; background: linear-gradient(0deg, rgba(0,0,0,0.8), rgba(0,0,0,0));"></span>
+          <span style="position: absolute; left: 10px; bottom: 7px; font-size: 12px; font-weight: 700; color: #FFFFFF;">Color Block Jam</span>
+        </a>
+        <a href="#" style="position: relative; display: block; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 12px; border: 1px solid #292E39; background: #12151C;">
+          <img src="/_blob/6e7bc614f24cd1b0ce7ab0453a34fd3e" alt="Escape Road City 2 cover" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+          <span style="position: absolute; inset-x: 0; bottom: 0; height: 56px; background: linear-gradient(0deg, rgba(0,0,0,0.8), rgba(0,0,0,0));"></span>
+          <span style="position: absolute; left: 10px; bottom: 7px; font-size: 12px; font-weight: 700; color: #FFFFFF;">Escape Road City 2</span>
+        </a>
+        <a href="#" style="position: relative; display: block; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 12px; border: 1px solid #292E39; background: #12151C;">
+          <img src="/_blob/1d69c83b8eaa21e0d9c0783460252028" alt="Escape Road Halloween cover" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+          <span style="position: absolute; inset-x: 0; bottom: 0; height: 56px; background: linear-gradient(0deg, rgba(0,0,0,0.8), rgba(0,0,0,0));"></span>
+          <span style="position: absolute; left: 10px; bottom: 7px; font-size: 12px; font-weight: 700; color: #FFFFFF;">Escape Road Halloween</span>
+        </a>
+
+        <!-- Vertical guides tile -->
+        <a href="#" style="grid-column: 5; grid-row: 1 / 3; position: relative; display: flex; flex-direction: column; overflow: hidden; border-radius: 12px; border: 1px solid rgba(129,119,255,0.4); background: linear-gradient(160deg, #24213D 0%, #12151C 70%);">
+          <span style="position: relative; flex: 1.15; min-height: 0;">
+            <img src="/_blob/98aa7567b0e39a297dadf0ed34a0bcb6" alt="WikiGacha guide preview" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+            <span style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(18,21,28,0) 55%, #12151C 100%);"></span>
+          </span>
+          <span style="position: relative; display: flex; flex-direction: column; gap: 6px; padding: 14px 14px 16px;">
+            <span style="display: inline-flex; width: fit-content; align-items: center; padding: 3px 8px; border-radius: 999px; background: rgba(129,119,255,0.15); color: #B8B2FF; font-size: 9px; font-weight: 800; letter-spacing: 0.1em;">GUIDES</span>
+            <span style="font-size: 15px; font-weight: 800; letter-spacing: -0.01em; line-height: 1.25;">Game Guides: get good, faster</span>
+            <span style="font-size: 11px; color: #9CA3B2; line-height: 1.45;">Release dates, tips and getting-started help · Latest: WikiGacha</span>
+            <span style="display: inline-flex; align-items: center; gap: 6px; margin-top: 2px; font-size: 12px; font-weight: 700; color: #B8B2FF;">
+              Explore guides
+              <svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </span>
+          </span>
+        </a>
       </section>
 
-      <!-- Tabs -->
+      <!-- Toolbar with Play instantly entry -->
       <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #292E39; margin-bottom: 20px;">
-        <div style="display: flex; gap: 24px;">
-          <span style="display: inline-flex; align-items: center; gap: 7px; padding: 10px 2px 12px; font-size: 14px; font-weight: 700; color: #F2F4F8; border-bottom: 2px solid #8177FF; margin-bottom: -1px;">New</span>
-          <span style="display: inline-flex; align-items: center; gap: 7px; padding: 10px 2px 12px; font-size: 14px; font-weight: 500; color: #9CA3B2;">Trending</span>
-          <span style="display: inline-flex; align-items: center; gap: 7px; padding: 10px 2px 12px; font-size: 14px; font-weight: 500; color: #9CA3B2;">Released</span>
-          <span style="display: inline-flex; align-items: center; gap: 7px; padding: 10px 2px 12px; font-size: 14px; font-weight: 500; color: #9CA3B2;">Popular</span>
+        <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 6px;">
+          <div style="display: flex; gap: 10px;">
+            <span style="display: inline-flex; align-items: center; padding: 10px 2px 12px; font-size: 14px; font-weight: 700; color: #F2F4F8; border-bottom: 2px solid #8177FF;">New</span>
+            <span style="display: inline-flex; align-items: center; gap: 7px; padding: 10px 2px 12px; font-size: 14px; font-weight: 500; color: #9CA3B2;">Trending</span>
+            <span style="display: inline-flex; align-items: center; gap: 7px; padding: 10px 2px 12px; font-size: 14px; font-weight: 500; color: #9CA3B2;">Released</span>
+            <span style="display: inline-flex; align-items: center; gap: 7px; padding: 10px 2px 12px; font-size: 14px; font-weight: 500; color: #9CA3B2;">Popular</span>
+          </div>
+          <span style="display: inline-flex; align-items: center; gap: 6px; margin-left: 6px; padding: 8px 14px; border-radius: 8px; background: rgba(129,119,255,0.14); color: #B8B2FF; font-size: 13px; font-weight: 700;">
+            <svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            Play instantly
+          </span>
         </div>
         <div style="display: flex; align-items: center; gap: 12px;">
-          <a href="#" style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: #9CA3B2;">Browse all <svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          <a href="#" style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: #9CA3B2;">Browse all
+            <svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
           <div style="display: flex; padding: 3px; border-radius: 9px; border: 1px solid #292E39;">
-            <button aria-label="Grid view" style="width: 28px; height: 26px; display: flex; align-items: center; justify-content: center; border: none; border-radius: 7px; background: #24213D; color: #B8B2FF; cursor: pointer;"><svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></button>
-            <button aria-label="List view" style="width: 28px; height: 26px; display: flex; align-items: center; justify-content: center; border: none; border-radius: 7px; background: transparent; color: #9CA3B2; cursor: pointer;"><svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13"/><path d="M3 6h.01M3 12h.01M3 18h.01"/></svg></button>
+            <span style="width: 28px; height: 26px; display: flex; align-items: center; justify-content: center; border-radius: 7px; background: #24213D; color: #B8B2FF;">
+              <svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+            </span>
+            <span style="width: 28px; height: 26px; display: flex; align-items: center; justify-content: center; color: #9CA3B2;">
+              <svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13"/><path d="M3 6h.01M3 12h.01M3 18h.01"/></svg>
+            </span>
           </div>
         </div>
       </div>
 
-      <!-- Grid + rail -->
-      <div style="display: flex; gap: 24px; align-items: flex-start;">
-        <div style="flex: 1; min-width: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px;">
-          <!-- Card: normal -->
-          <a href="#" style="display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; background: #12151C; border: 1px solid #292E39;">
-            <div style="position: relative; aspect-ratio: 5 / 4;">
-              <img src="/_blob/c2c397cba83cd01fed6f096f6954e2af" alt="Maiu Online cover" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
-              <span style="position: absolute; top: 8px; left: 8px; padding: 3px 8px; border-radius: 6px; background: rgba(0,0,0,0.65); color: #FFFFFF; font-size: 10px; font-weight: 700; letter-spacing: 0.06em;">NEW</span>
-            </div>
-            <div style="padding: 10px 12px 12px;">
-              <div style="font-size: 14px; font-weight: 700; margin-bottom: 2px;">Maiu Online</div>
-              <div style="font-size: 12px; color: #9CA3B2;">RPG</div>
-            </div>
-          </a>
-          <!-- Card: hover state -->
-          <a href="#" style="position: relative; display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; background: #12151C; border: 2px solid #8177FF; box-shadow: 0 12px 32px rgba(0,0,0,0.5);">
-            <div style="position: relative; aspect-ratio: 5 / 4;">
-              <img src="/_blob/2c18804caed3739bbbd58625349cbf84" alt="Incredig cover" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
-              <span style="position: absolute; top: 8px; left: 8px; padding: 3px 8px; border-radius: 6px; background: rgba(0,0,0,0.65); color: #FFFFFF; font-size: 10px; font-weight: 700; letter-spacing: 0.06em;">NEW</span>
-              <span style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(11,13,18,0.35);">
-                <span style="width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; border-radius: 999px; background: #8177FF; color: #FFFFFF; box-shadow: 0 8px 24px rgba(129,119,255,0.45);">
-                  <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.14v13.72c0 .8.87 1.3 1.56.88l10.54-6.86a1.05 1.05 0 0 0 0-1.76L9.56 4.26A1.04 1.04 0 0 0 8 5.14z"/></svg>
-                </span>
-              </span>
-            </div>
-            <div style="padding: 10px 12px 12px;">
-              <div style="font-size: 14px; font-weight: 700; margin-bottom: 2px;">Incredig</div>
-              <div style="font-size: 12px; color: #9CA3B2;">Idle · Simulation</div>
-            </div>
-          </a>
-          <!-- Card: normal -->
-          <a href="#" style="display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; background: #12151C; border: 1px solid #292E39;">
-            <div style="position: relative; aspect-ratio: 5 / 4;">
-              <img src="/_blob/0d84b759e7f825c5686dbed627663ab3" alt="The Idle Countdown cover" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
-              <span style="position: absolute; top: 8px; left: 8px; padding: 3px 8px; border-radius: 6px; background: rgba(0,0,0,0.65); color: #FFFFFF; font-size: 10px; font-weight: 700; letter-spacing: 0.06em;">NEW</span>
-            </div>
-            <div style="padding: 10px 12px 12px;">
-              <div style="font-size: 14px; font-weight: 700; margin-bottom: 2px;">The Idle Countdown</div>
-              <div style="font-size: 12px; color: #9CA3B2;">Idle</div>
-            </div>
-          </a>
-          <!-- Card: normal -->
-          <a href="#" style="display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; background: #12151C; border: 1px solid #292E39;">
-            <div style="position: relative; aspect-ratio: 5 / 4;">
-              <img src="/_blob/5964719cf27773e431927a33c43e5cd7" alt="Turbovektor cover" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
-              <span style="position: absolute; top: 8px; left: 8px; padding: 3px 8px; border-radius: 6px; background: rgba(0,0,0,0.65); color: #FFFFFF; font-size: 10px; font-weight: 700; letter-spacing: 0.06em;">NEW</span>
-            </div>
-            <div style="padding: 10px 12px 12px;">
-              <div style="font-size: 14px; font-weight: 700; margin-bottom: 2px;">Turbovektor</div>
-              <div style="font-size: 12px; color: #9CA3B2;">Racing</div>
-            </div>
-          </a>
-          <!-- Card: normal -->
-          <a href="#" style="display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; background: #12151C; border: 1px solid #292E39;">
-            <div style="position: relative; aspect-ratio: 5 / 4;">
-              <img src="/_blob/46ace3adaabd61dc8f8741c8a68003b2" alt="One Button to Infinity cover" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
-              <span style="position: absolute; top: 8px; left: 8px; padding: 3px 8px; border-radius: 6px; background: rgba(0,0,0,0.65); color: #FFFFFF; font-size: 10px; font-weight: 700; letter-spacing: 0.06em;">NEW</span>
-            </div>
-            <div style="padding: 10px 12px 12px;">
-              <div style="font-size: 14px; font-weight: 700; margin-bottom: 2px;">One Button to Infinity</div>
-              <div style="font-size: 12px; color: #9CA3B2;">Idle</div>
-            </div>
-          </a>
-          <!-- Card: normal -->
-          <a href="#" style="display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; background: #12151C; border: 1px solid #292E39;">
-            <div style="position: relative; aspect-ratio: 5 / 4;">
-              <img src="/_blob/16f71ae07dcfab4a346f9ecf06f929d4" alt="Sparkmind cover" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
-              <span style="position: absolute; top: 8px; left: 8px; padding: 3px 8px; border-radius: 6px; background: rgba(0,0,0,0.65); color: #FFFFFF; font-size: 10px; font-weight: 700; letter-spacing: 0.06em;">NEW</span>
-            </div>
-            <div style="padding: 10px 12px 12px;">
-              <div style="font-size: 14px; font-weight: 700; margin-bottom: 2px;">Sparkmind</div>
-              <div style="font-size: 12px; color: #9CA3B2;">Puzzle</div>
-            </div>
-          </a>
-        </div>
-
-        <!-- Right rail -->
-        <aside style="flex: none; width: 300px; display: flex; flex-direction: column; gap: 16px;">
-          <a href="#" style="display: block; border-radius: 14px; overflow: hidden; background: #12151C; border: 1px solid #292E39;">
-            <img src="/_blob/98aa7567b0e39a297dadf0ed34a0bcb6" alt="WikiGacha guide cover" style="display: block; width: 100%; height: 150px; object-fit: cover;">
-            <div style="padding: 16px;">
-              <div style="font-size: 16px; font-weight: 700; margin-bottom: 6px;">WikiGacha</div>
-              <p style="margin: 0 0 10px; font-size: 13px; line-height: 1.5; color: #9CA3B2;">Wikipedia articles as collectible cards: packs, rarity, stats and daily missions.</p>
-              <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: #B8B2FF;">Explore the guide <svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-            </div>
-          </a>
-          <div style="border-radius: 14px; background: #12151C; border: 1px solid #292E39; padding: 16px;">
-            <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 12px;">
-              <div>
-                <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: #9CA3B2; margin-bottom: 2px;">NO DOWNLOAD REQUIRED</div>
-                <div style="font-size: 16px; font-weight: 700;">Play instantly</div>
-              </div>
-              <a href="#" style="font-size: 12px; font-weight: 600; color: #9CA3B2;">View all</a>
-            </div>
-            <div style="display: flex; flex-direction: column;">
-              <a href="#" style="display: flex; align-items: center; gap: 12px; padding: 10px 0; border-top: 1px solid #1B1F28;">
-                <span style="font-size: 12px; font-weight: 700; color: #8177FF; width: 18px;">01</span>
-                <span style="flex: 1; min-width: 0;">
-                  <span style="display: block; font-size: 14px; font-weight: 600;">Escape Road 3</span>
-                  <span style="display: block; font-size: 12px; color: #9CA3B2;">Action</span>
-                </span>
-                <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9CA3B2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-              </a>
-              <a href="#" style="display: flex; align-items: center; gap: 12px; padding: 10px 0; border-top: 1px solid #1B1F28;">
-                <span style="font-size: 12px; font-weight: 700; color: #8177FF; width: 18px;">02</span>
-                <span style="flex: 1; min-width: 0;">
-                  <span style="display: block; font-size: 14px; font-weight: 600;">Wave Rider</span>
-                  <span style="display: block; font-size: 12px; color: #9CA3B2;">Arcade</span>
-                </span>
-                <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9CA3B2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-              </a>
-              <a href="#" style="display: flex; align-items: center; gap: 12px; padding: 10px 0; border-top: 1px solid #1B1F28;">
-                <span style="font-size: 12px; font-weight: 700; color: #8177FF; width: 18px;">03</span>
-                <span style="flex: 1; min-width: 0;">
-                  <span style="display: block; font-size: 14px; font-weight: 600;">Color Block Jam</span>
-                  <span style="display: block; font-size: 12px; color: #9CA3B2;">Puzzle</span>
-                </span>
-                <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9CA3B2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-              </a>
-            </div>
+      <!-- Feed: 5 columns -->
+      <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px;">
+        <a href="#" style="display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; background: #12151C; border: 1px solid #292E39;">
+          <div style="position: relative; aspect-ratio: 5 / 4;">
+            <img src="/_blob/2c18804caed3739bbbd58625349cbf84" alt="Incredig cover" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+            <span style="position: absolute; top: 8px; left: 8px; padding: 3px 8px; border-radius: 6px; background: rgba(0,0,0,0.65); color: #FFFFFF; font-size: 10px; font-weight: 700;">NEW</span>
           </div>
-        </aside>
+          <div style="padding: 9px 12px 11px;">
+            <div style="font-size: 13px; font-weight: 700; margin-bottom: 1px;">Incredig</div>
+            <div style="font-size: 11px; color: #9CA3B2;">Idle</div>
+          </div>
+        </a>
+        <a href="#" style="display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; background: #12151C; border: 1px solid #292E39;">
+          <div style="position: relative; aspect-ratio: 5 / 4;">
+            <img src="/_blob/1e8e391a1f2b5e629bcbccd9415f3cc5" alt="Nine Heavens cover" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+            <span style="position: absolute; top: 8px; left: 8px; padding: 3px 8px; border-radius: 6px; background: rgba(0,0,0,0.65); color: #FFFFFF; font-size: 10px; font-weight: 700;">NEW</span>
+          </div>
+          <div style="padding: 9px 12px 11px;">
+            <div style="font-size: 13px; font-weight: 700; margin-bottom: 1px;">Nine Heavens: Path to Immortality</div>
+            <div style="font-size: 11px; color: #9CA3B2;">RPG</div>
+          </div>
+        </a>
+        <a href="#" style="display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; background: #12151C; border: 1px solid #292E39;">
+          <div style="position: relative; aspect-ratio: 5 / 4;">
+            <img src="/_blob/c7c31d0c99a3b98a6c57f0071707244d" alt="Splashland is Closed cover" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+            <span style="position: absolute; top: 8px; left: 8px; padding: 3px 8px; border-radius: 6px; background: rgba(0,0,0,0.65); color: #FFFFFF; font-size: 10px; font-weight: 700;">NEW</span>
+          </div>
+          <div style="padding: 9px 12px 11px;">
+            <div style="font-size: 13px; font-weight: 700; margin-bottom: 1px;">SPLASHLAND IS CLOSED!</div>
+            <div style="font-size: 11px; color: #9CA3B2;">Survival</div>
+          </div>
+        </a>
+        <a href="#" style="display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; background: #12151C; border: 1px solid #292E39;">
+          <div style="position: relative; aspect-ratio: 5 / 4;">
+            <img src="/_blob/c2c397cba83cd01fed6f096f6954e2af" alt="Maiu Online cover" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+            <span style="position: absolute; top: 8px; left: 8px; padding: 3px 8px; border-radius: 6px; background: rgba(0,0,0,0.65); color: #FFFFFF; font-size: 10px; font-weight: 700;">NEW</span>
+          </div>
+          <div style="padding: 9px 12px 11px;">
+            <div style="font-size: 13px; font-weight: 700; margin-bottom: 1px;">Maiu Online</div>
+            <div style="font-size: 11px; color: #9CA3B2;">RPG</div>
+          </div>
+        </a>
+        <a href="#" style="display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; background: #12151C; border: 1px solid #292E39;">
+          <div style="position: relative; aspect-ratio: 5 / 4;">
+            <img src="/_blob/1d9166b50736a28fe32a1a5312d031ae" alt="Slimeglass cover" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+            <span style="position: absolute; top: 8px; left: 8px; padding: 3px 8px; border-radius: 6px; background: rgba(0,0,0,0.65); color: #FFFFFF; font-size: 10px; font-weight: 700;">NEW</span>
+          </div>
+          <div style="padding: 9px 12px 11px;">
+            <div style="font-size: 13px; font-weight: 700; margin-bottom: 1px;">Slimeglass</div>
+            <div style="font-size: 11px; color: #9CA3B2;">Arcade</div>
+          </div>
+        </a>
+        <a href="#" style="display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; background: #12151C; border: 1px solid #292E39;">
+          <div style="position: relative; aspect-ratio: 5 / 4;">
+            <img src="/_blob/0d84b759e7f825c5686dbed627663ab3" alt="The Idle Countdown cover" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+            <span style="position: absolute; top: 8px; left: 8px; padding: 3px 8px; border-radius: 6px; background: rgba(0,0,0,0.65); color: #FFFFFF; font-size: 10px; font-weight: 700;">NEW</span>
+          </div>
+          <div style="padding: 9px 12px 11px;">
+            <div style="font-size: 13px; font-weight: 700; margin-bottom: 1px;">The Idle Countdown</div>
+            <div style="font-size: 11px; color: #9CA3B2;">Idle</div>
+          </div>
+        </a>
+        <a href="#" style="display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; background: #12151C; border: 1px solid #292E39;">
+          <div style="position: relative; aspect-ratio: 5 / 4;">
+            <img src="/_blob/5964719cf27773e431927a33c43e5cd7" alt="Turbovektor cover" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+            <span style="position: absolute; top: 8px; left: 8px; padding: 3px 8px; border-radius: 6px; background: rgba(0,0,0,0.65); color: #FFFFFF; font-size: 10px; font-weight: 700;">NEW</span>
+          </div>
+          <div style="padding: 9px 12px 11px;">
+            <div style="font-size: 13px; font-weight: 700; margin-bottom: 1px;">Turbovektor</div>
+            <div style="font-size: 11px; color: #9CA3B2;">Racing</div>
+          </div>
+        </a>
+        <a href="#" style="display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; background: #12151C; border: 1px solid #292E39;">
+          <div style="position: relative; aspect-ratio: 5 / 4;">
+            <img src="/_blob/46ace3adaabd61dc8f8741c8a68003b2" alt="One Button to Infinity cover" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+            <span style="position: absolute; top: 8px; left: 8px; padding: 3px 8px; border-radius: 6px; background: rgba(0,0,0,0.65); color: #FFFFFF; font-size: 10px; font-weight: 700;">NEW</span>
+          </div>
+          <div style="padding: 9px 12px 11px;">
+            <div style="font-size: 13px; font-weight: 700; margin-bottom: 1px;">One Button to Infinity</div>
+            <div style="font-size: 11px; color: #9CA3B2;">Idle</div>
+          </div>
+        </a>
+        <a href="#" style="display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; background: #12151C; border: 1px solid #292E39;">
+          <div style="position: relative; aspect-ratio: 5 / 4;">
+            <img src="/_blob/16f71ae07dcfab4a346f9ecf06f929d4" alt="Sparkmind cover" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+            <span style="position: absolute; top: 8px; left: 8px; padding: 3px 8px; border-radius: 6px; background: rgba(0,0,0,0.65); color: #FFFFFF; font-size: 10px; font-weight: 700;">NEW</span>
+          </div>
+          <div style="padding: 9px 12px 11px;">
+            <div style="font-size: 13px; font-weight: 700; margin-bottom: 1px;">Sparkmind</div>
+            <div style="font-size: 11px; color: #9CA3B2;">Puzzle</div>
+          </div>
+        </a>
+        <a href="#" style="display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; background: #12151C; border: 1px solid #292E39;">
+          <div style="position: relative; aspect-ratio: 5 / 4;">
+            <img src="/_blob/07f9ec0f67fd44f05920f4fec82199a9" alt="The Lands cover" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+            <span style="position: absolute; top: 8px; left: 8px; padding: 3px 8px; border-radius: 6px; background: rgba(0,0,0,0.65); color: #FFFFFF; font-size: 10px; font-weight: 700;">NEW</span>
+          </div>
+          <div style="padding: 9px 12px 11px;">
+            <div style="font-size: 13px; font-weight: 700; margin-bottom: 1px;">The Lands</div>
+            <div style="font-size: 11px; color: #9CA3B2;">RPG</div>
+          </div>
+        </a>
       </div>
 
     </main>

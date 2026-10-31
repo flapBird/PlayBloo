@@ -7,14 +7,15 @@ import { CoverFallback } from "@/components/games/CoverFallback";
 import type { GameCardGame } from "@/components/games/GameCard";
 
 /**
- * The homepage's one big visual anchor: the #1 trending game on a double tile,
- * two runner-up covers, and a Game Guides promo riding in the same mosaic so
- * the guides hub gets first-screen visibility. Sourced from the trending feed.
+ * The homepage's one big visual anchor: a five-column mosaic — the #1 trending
+ * game on a double tile, four runner-up covers, and a portrait Game Guides
+ * tile riding the right edge so the guides hub gets first-screen visibility.
+ * Sourced from the trending feed (play ranking).
  */
 export function HomeFeatured({ games }: { games: GameCardGame[] }) {
   if (!games.length) return null;
   const [lead, ...rest] = games;
-  const runners = rest.slice(0, 2);
+  const runners = rest.slice(0, 4);
   const guideTopic = getLatestGuideTopic();
 
   const leadMode = getGamePlayMode({
@@ -26,7 +27,7 @@ export function HomeFeatured({ games }: { games: GameCardGame[] }) {
   const leadCategory = lead.categories?.[0]?.name;
 
   return (
-    <section aria-label="Trending games and guides" className="mb-8 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+    <section aria-label="Trending games and guides" className="mb-8 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-5">
       <Link
         href={`/game/${lead.slug}`}
         prefetch={false}
@@ -42,7 +43,7 @@ export function HomeFeatured({ games }: { games: GameCardGame[] }) {
               preload
               unoptimized={shouldBypassImageOptimization(lead.thumbnail_url)}
               className="object-cover object-[right_32%]"
-              sizes="(max-width: 1023px) 100vw, 620px"
+              sizes="(max-width: 1023px) 100vw, 500px"
             />
           ) : (
             <CoverFallback title={lead.title} />
@@ -54,7 +55,7 @@ export function HomeFeatured({ games }: { games: GameCardGame[] }) {
           aria-hidden="true"
           style={{ background: "linear-gradient(90deg, var(--background) 22%, color-mix(in srgb, var(--background) 45%, transparent) 46%, transparent 68%)" }}
         />
-        <span className="relative z-10 flex flex-col justify-end gap-2 p-4 md:gap-2.5 md:p-6">
+        <span className="relative z-10 flex flex-col justify-end gap-2 p-4 md:gap-2.5 md:p-5">
           <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-primary/15 px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-[0.08em] text-primary">
             Trending now
           </span>
@@ -79,6 +80,30 @@ export function HomeFeatured({ games }: { games: GameCardGame[] }) {
         </span>
       </Link>
 
+      {/* Placed right after the lead so sparse auto-placement gives it the full
+          right column (the cursor never moves backward between items). */}
+      {guideTopic && (
+        <Link
+          href="/guides"
+          aria-label="Explore game guides"
+          className="group relative col-span-2 flex flex-col overflow-hidden rounded-xl border border-primary/40 bg-gradient-to-br from-accent to-card transition-[border-color] duration-150 hover:border-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary lg:col-span-1 lg:col-start-5 lg:row-span-2 lg:row-start-1 motion-reduce:transition-none"
+        >
+          <span className="relative h-36 sm:h-40 lg:h-auto lg:min-h-0 lg:flex-[1.1]" aria-hidden="true">
+            <Image src={guideTopic.cover.src} alt="" fill loading="lazy" className="object-cover" sizes="(max-width: 1023px) 100vw, 240px" />
+            <span className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-card/0 lg:to-card"></span>
+          </span>
+          <span className="relative flex min-w-0 flex-col gap-1.5 p-4">
+            <span className="inline-flex w-fit items-center rounded-full bg-primary/15 px-2 py-0.5 text-[9px] font-extrabold uppercase tracking-[0.1em] text-primary">Guides</span>
+            <span className="text-sm font-extrabold leading-snug tracking-tight">Game Guides: get good, faster</span>
+            <span className="line-clamp-2 text-[11px] leading-snug text-muted-foreground">Release dates, tips and getting-started help · Latest: {guideTopic.name}</span>
+            <span className="mt-0.5 inline-flex items-center gap-1.5 text-xs font-bold text-primary">
+              Explore guides
+              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 motion-reduce:transition-none" aria-hidden="true" />
+            </span>
+          </span>
+        </Link>
+      )}
+
       {runners.map((game) => (
         <Link
           key={game.id}
@@ -95,7 +120,7 @@ export function HomeFeatured({ games }: { games: GameCardGame[] }) {
               loading="lazy"
               unoptimized={shouldBypassImageOptimization(game.thumbnail_url)}
               className="object-cover transition-transform duration-200 group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:transform-none"
-              sizes="(max-width: 640px) 50vw, 300px"
+              sizes="(max-width: 640px) 50vw, 240px"
             />
           ) : (
             <CoverFallback title={game.title} />
@@ -104,27 +129,6 @@ export function HomeFeatured({ games }: { games: GameCardGame[] }) {
           <span className="absolute inset-x-0 bottom-0 truncate px-2.5 pb-1.5 text-xs font-bold text-white">{game.title}</span>
         </Link>
       ))}
-
-      {guideTopic && (
-        <Link
-          href="/guides"
-          aria-label="Explore game guides"
-          className="group relative col-span-2 flex aspect-[16/6] overflow-hidden rounded-xl border border-primary/40 bg-gradient-to-br from-accent to-card transition-[border-color] duration-150 hover:border-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary lg:aspect-auto motion-reduce:transition-none"
-        >
-          <span className="absolute inset-y-0 right-0 w-[42%]" aria-hidden="true" style={{ maskImage: "linear-gradient(90deg, transparent 0%, black 30%)", WebkitMaskImage: "linear-gradient(90deg, transparent 0%, black 30%)" }}>
-            <Image src={guideTopic.cover.src} alt="" fill loading="lazy" className="object-cover" sizes="260px" />
-          </span>
-          <span className="relative z-10 flex min-w-0 flex-1 flex-col justify-center gap-1 p-4 md:p-5">
-            <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-primary/15 px-2 py-0.5 text-[9px] font-extrabold uppercase tracking-[0.1em] text-primary">Guides</span>
-            <span className="text-base font-extrabold tracking-tight md:text-lg">Game Guides: get good, faster</span>
-            <span className="line-clamp-1 text-xs text-muted-foreground md:text-sm">Release dates, tips and getting-started help{guideTopic ? ` · Latest: ${guideTopic.name}` : ""}</span>
-            <span className="mt-0.5 inline-flex items-center gap-1.5 text-xs font-bold text-primary md:text-sm">
-              Explore guides
-              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 motion-reduce:transition-none" aria-hidden="true" />
-            </span>
-          </span>
-        </Link>
-      )}
     </section>
   );
 }

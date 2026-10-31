@@ -38,7 +38,7 @@ export function GameCard({ game, badges = [], showDate = false, dateField = "add
             <GameCover
               src={game.thumbnail_url}
               eager={eagerImage}
-              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 250px"
+              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
             />
           ) : (
             <CoverFallback title={game.title} />
