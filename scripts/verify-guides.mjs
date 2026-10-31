@@ -29,6 +29,10 @@ const steamUpdatedAt = "2026-10-29T08:00:00.000Z";
 const ootLaunchPath = `${hub}/launch-checklist`;
 const ootLaunchUpdatedAt = "2026-10-29T09:00:00.000Z";
 pages.push(...mhoPages, steamHub, ootLaunchPath);
+const wkgHub = "/guides/wikigacha";
+const wkgPages = [wkgHub, `${wkgHub}/how-to-play`, `${wkgHub}/rarity`, `${wkgHub}/alternatives`];
+const wkgUpdatedAt = "2026-10-31T09:00:00.000Z";
+pages.push(...wkgPages);
 const canonicalOrigin = "https://playbloo.net";
 const demoTopics = [
   { slug: "remember", officialUrl: "https://xlaucifer.itch.io/remember" },
@@ -61,6 +65,9 @@ const articleCovers = new Map([
   [`${mhoHub}/beginners-guide`, "/images/guides/monster-hunter-outlanders-beginners-guide.webp"],
   [`${mhoHub}/weapons`, "/images/guides/monster-hunter-outlanders-weapons.webp"],
   [ootLaunchPath, "/images/guides/ocarina-of-time-launch-checklist.webp"],
+  [`${wkgHub}/how-to-play`, "/images/guides/wikigacha-how-to-play.webp"],
+  [`${wkgHub}/rarity`, "/images/guides/wikigacha-rarity.webp"],
+  [`${wkgHub}/alternatives`, "/images/guides/wikigacha-alternatives.webp"],
 ]);
 const checkedCoverCards = new Map([...articleCovers.keys()].map((path) => [path, new Set()]));
 
@@ -132,7 +139,7 @@ const home = await homeResponse.text();
 const header = home.match(/<header\b[\s\S]*?<\/header>/)?.[0] || "";
 assert.ok(header.includes('href="/guides"'), "Primary navigation links to Guides");
 assert.ok(!header.includes("playMode=embedded"), "Redundant Playable navigation removed");
-assert.ok(home.includes(`href="${mhoHub}"`), "Homepage feature links to the newest guide");
+assert.ok(home.includes(`href="${wkgHub}"`), "Homepage feature links to the newest guide");
 assert.ok(!(home.match(/<nav aria-label="Game feed"[\s\S]*?<\/nav>/)?.[0] || "").includes("playMode=embedded"), "Redundant feed tab removed");
 console.log("PASS unknown routes, canonical redirect, sitemap, internal links and homepage navigation");
 
@@ -294,7 +301,7 @@ console.log("PASS visual novel Demo status, official entries, covers and Latest 
 
 const hubSection = listing.split('aria-label="Game guide hubs"')[1]?.split("</section>")[0] ?? "";
 const firstHub = hubSection.match(/href="(\/guides\/[^"?#]+)"/)?.[1];
-assert.equal(firstHub, mhoHub, "Guide hubs list leads with the newest published topic");
+assert.equal(firstHub, wkgHub, "Guide hubs list leads with the newest published topic");
 console.log("PASS guide hubs list is newest-first");
 
 const starter = await (await get(starterPath)).text();
@@ -377,3 +384,38 @@ for (const cover of ["/images/guides/monster-hunter-outlanders.webp", "/images/g
   assert.ok(response.headers.get("content-type")?.includes("image/webp"), `${cover}: precompressed WebP`);
 }
 console.log("PASS Outlanders, Steam collection and Ocarina launch routes, facts, covers and sitemap dates");
+
+for (const path of wkgPages) {
+  const html = await (await get(path)).text();
+  assert.ok(!html.includes("/_next/image"), `${path}: direct precompressed cover`);
+  assert.ok(!html.includes("<iframe"), `${path}: no game embed`);
+  const ids = [...html.matchAll(/<section[^>]*\bid="([^"]+)"/g)].map((match) => match[1]);
+  assert.equal(new Set(ids).size, ids.length, `${path}: unique section IDs`);
+  for (const [, target] of html.matchAll(/href="#([^"]+)"/g)) assert.ok(ids.includes(target), `${path}: contents target ${target} exists`);
+  assert.equal(currentEntries.get(`${canonicalOrigin}${path}`), wkgUpdatedAt, `${path}: sitemap uses the PlayBloo publication date`);
+  if (path !== wkgHub) assert.ok(latestUpdates.includes(`href="${path}"`), `${path}: appears in Latest Updates`);
+}
+const wkgHubHtml = await (await get(wkgHub)).text();
+assert.ok(wkgHubHtml.includes('href="https://wikigacha.com/"'), "WikiGacha hub links the official site");
+assert.ok(wkgHubHtml.includes("unofficial and not affiliated with Wikipedia"), "WikiGacha unofficial status is explicit");
+assert.ok(wkgHubHtml.includes("February 24, 2026"), "WikiGacha release date is separate from guide publication");
+assert.ok(wkgHubHtml.includes("Released"), "WikiGacha is marked released");
+const wkgHow = await (await get(`${wkgHub}/how-to-play`)).text();
+assert.ok(wkgHow.includes("Daily Raid Battle") && wkgHow.includes("Team Battle"), "How-to-play covers battle modes");
+assert.ok(wkgHow.includes("Watch one ad"), "How-to-play lists the rewarded-ad mission");
+assert.ok(wkgHow.includes("11/10"), "How-to-play reports the observed bonus-pack overflow");
+const wkgRarity = await (await get(`${wkgHub}/rarity`)).text();
+for (const rank of ["Legend Rare", "Ultra Rare", "Super Special Rare", "Super Rare", "Uncommon", "Common"]) {
+  assert.ok(wkgRarity.includes(rank), `Rarity article covers ${rank}`);
+}
+assert.ok(wkgRarity.includes("15,000") && wkgRarity.includes("WikiRank"), "Rarity article carries stat caps and the quality source");
+assert.ok(wkgRarity.includes("No drop rates are published"), "Rarity article does not invent probabilities");
+const wkgAlt = await (await get(`${wkgHub}/alternatives`)).text();
+assert.ok(wkgAlt.includes("wikitcg.net") && wkgAlt.includes("wikitrivia.tomjwatson.com"), "Alternatives links verified rival sites");
+for (const slug of ["best-cards", "drop-rates"]) assert.equal((await get(`${wkgHub}/${slug}`)).status, 404, `${slug}: folded into existing articles, no placeholder route`);
+for (const cover of ["/images/guides/wikigacha.webp", "/images/guides/wikigacha-how-to-play.webp", "/images/guides/wikigacha-rarity.webp", "/images/guides/wikigacha-alternatives.webp"]) {
+  const response = await get(cover);
+  assert.equal(response.status, 200, `${cover}: cover loads`);
+  assert.ok(response.headers.get("content-type")?.includes("image/webp"), `${cover}: precompressed WebP`);
+}
+console.log("PASS WikiGacha routes, Rule Book facts, covers and sitemap dates");

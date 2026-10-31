@@ -17,8 +17,9 @@ import { enshrouded } from "./enshrouded";
 import { phantomBladeZero } from "./phantom-blade-zero";
 import { monsterHunterOutlanders } from "./monster-hunter-outlanders";
 import { steamFreeGames2026 } from "./steam-free-games-2026";
+import { wikigacha } from "./wikigacha";
 
-const topics: GuideTopic[] = [monsterHunterOutlanders, steamFreeGames2026, phantomBladeZero, castlevaniaBelmontsCurse, enshrouded, worldOfWarcraftForever, marvelsWolverine, ocarinaOfTimeRemake, remember, nextStationTheMoon, biteYourTongue, sploob, shapeWalkthrough, hellraiserRevival, modernWarfare4];
+const topics: GuideTopic[] = [wikigacha, monsterHunterOutlanders, steamFreeGames2026, phantomBladeZero, castlevaniaBelmontsCurse, enshrouded, worldOfWarcraftForever, marvelsWolverine, ocarinaOfTimeRemake, remember, nextStationTheMoon, biteYourTongue, sploob, shapeWalkthrough, hellraiserRevival, modernWarfare4];
 export const GUIDE_AUTHOR = { name: "PlayBloo Editorial", url: `${SITE_URL}/about` };
 export const GUIDES_DESCRIPTION = "Release dates, beta access, and help getting started with your next game.";
 

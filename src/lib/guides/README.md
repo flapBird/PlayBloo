@@ -314,6 +314,35 @@ before conversion to 1600 × 900 WebP; `sourceUrl` keeps the original asset URLs
 trailer embed is added. `llms.txt`, the sitemap generator and `verify-guides.mjs`
 include all four routes; existing guide and game timestamps are unchanged.
 
+## WikiGacha (October 31, 2026)
+
+`wikigacha` covers the browser game Wikipedia Gacha by Harusugi (wikigacha.com), released
+February 24, 2026. It is not added to the Supabase catalog; there is no playable iframe, and
+the pages state the service is unofficial and not affiliated with Wikipedia. PlayBloo is not
+affiliated with it either.
+
+Facts were verified hands-on October 31, 2026 against the live English UI: the in-game Rule
+Book (seven rarity ranks with exact Q-Score thresholds, WikiRank as the quality source, ATK/DEF
+formulas with 15,000 caps, the February 2026 data snapshot), the pack screen (10-pack cap,
+one-per-minute refill, "pulls until Gold Pack"), the daily missions list (+2 packs each, and the
+counter reading 11/10 after one mission proves mission packs exceed the cap), the Battle menu
+(Daily Raid Battle up to 50 cards with HP carry-over, Single Random, 5-card Team Battle, Story
+Expedition) and the hundred-million-pack campaign dialog. Launch history, the LLM-authored
+flavor text and reception come from the English Wikipedia article on the game, cross-checked
+with GamesRadar+ and Destructoid; those two articles are retained as sources.
+
+Deliberate omissions: no pull percentages exist (the guide states "No drop rates are published");
+campaign bonuses (Rainbow/Black packs) are labeled event content that can end; the article routes
+`best-cards` and `drop-rates` are intentionally absent — both intents are served inside the
+rarity article, and verify-guides asserts their 404s.
+
+All four covers are screenshots taken by PlayBloo on October 31, 2026 (three of wikigacha.com's
+own UI in English, one of thewikigame.com for the alternatives article), converted to
+1600 × 900 WebP; `cover.sourceUrl` keeps each page's URL and the hub credit notes Wikipedia's
+CC BY-SA 4.0 card content. `wikigacha.webp` uses `contain` to keep all five pulled cards visible
+in compact cards. `llms.txt` and verify-guides include the hub and three articles; the newest-
+topic assertions in verify-guides and the homepage feature were updated to the new topic.
+
 ## October 29, 2026 topics and launch update
 
 `monster-hunter-outlanders` covers TiMi's free-to-play iOS/Android hunting game,
