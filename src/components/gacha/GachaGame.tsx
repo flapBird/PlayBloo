@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { Dices, Gamepad2, Share2, Sparkles, Undo2 } from "lucide-react";
+import { Dices, Gamepad2, MoonStar, Share2, Sparkles, Undo2 } from "lucide-react";
 import { GACHA_PACKS_PER_DAY } from "@/lib/constants";
 import { GACHA_RARITIES, GACHA_RARITY_ORDER, type GachaPoolGame, type GachaRarity } from "@/lib/gacha-shared";
 import {
@@ -98,7 +98,9 @@ function pickCard(candidates: GachaPoolGame[], owned: Set<string>): GachaCardSum
 
 export function GachaGame({ pool, theme, totalGames }: GachaGameProps) {
   const [state, setState] = useState<GachaState | null>(null);
-  const [revealed, setRevealed] = useState(0);
+  // null = not animating (cards show immediately, e.g. after a refresh);
+  // a number = the staggered reveal of a pack opened just now.
+  const [revealed, setRevealed] = useState<number | null>(null);
   const [shareNote, setShareNote] = useState<string | null>(null);
 
   useEffect(() => {
@@ -185,8 +187,13 @@ export function GachaGame({ pool, theme, totalGames }: GachaGameProps) {
     }
   }, [lastPack]);
 
-  const collection = state?.collection || [];
+  const collection = useMemo(() => state?.collection || [], [state]);
   const rarityCount = (rarity: GachaRarity) => collection.filter((item) => item.rarity === rarity).length;
+  const todayNew = useMemo(() => {
+    const startOfDay = new Date();
+    startOfDay.setHours(0, 0, 0, 0);
+    return collection.filter((item) => item.firstPulledAt >= startOfDay.getTime()).length;
+  }, [collection]);
 
   return (
     <div className="space-y-10">
@@ -218,10 +225,15 @@ export function GachaGame({ pool, theme, totalGames }: GachaGameProps) {
             </span>
           </button>
         ) : (
-          <div className="grid h-72 w-full max-w-md place-items-center rounded-2xl border-2 border-dashed border-border/70 px-6 text-center">
-            <p className="text-sm text-muted-foreground">
-              All three packs are open. Come back tomorrow — packs refill at midnight, your time.
-            </p>
+          <div className="w-full max-w-md rounded-2xl border border-dashed border-border/70 px-6 py-7 text-center">
+            <MoonStar className="mx-auto h-7 w-7 text-amber-500/80" aria-hidden="true" />
+            <p className="mt-2 text-sm font-bold">All three packs are open</p>
+            <p className="mt-1 text-xs text-muted-foreground">New packs refill at midnight, your time.</p>
+            {todayNew > 0 && (
+              <p className="mt-3 text-xs font-semibold text-muted-foreground">
+                Today: {todayNew} new {todayNew === 1 ? "game" : "games"} added to your collection
+              </p>
+            )}
           </div>
         )}
       </section>
@@ -246,11 +258,11 @@ export function GachaGame({ pool, theme, totalGames }: GachaGameProps) {
           <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
             {lastPack.cards.map((card, index) => {
               const style = RARITY_STYLES[card.rarity];
-              const visible = index < revealed;
+              const showCard = revealed === null || index < revealed;
               return (
                 <li
                   key={`${card.gameId}-${index}`}
-                  className={`rounded-xl border-2 ${style.frame} ${style.glow} bg-card p-2 transition-all duration-300 motion-reduce:transition-none ${visible ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"}`}
+                  className={`rounded-xl border-2 ${style.frame} ${style.glow} bg-card p-2 transition-all duration-300 motion-reduce:transition-none ${showCard ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"}`}
                 >
                   <div className="relative mb-2 aspect-[4/3] overflow-hidden rounded-lg bg-muted">
                     {card.thumbnailUrl ? (
