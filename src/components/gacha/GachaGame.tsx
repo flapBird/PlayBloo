@@ -98,9 +98,9 @@ function pickCard(candidates: GachaPoolGame[], owned: Set<string>): GachaCardSum
 
 export function GachaGame({ pool, theme, totalGames }: GachaGameProps) {
   const [state, setState] = useState<GachaState | null>(null);
-  // null = not animating (cards show immediately, e.g. after a refresh);
-  // a number = the staggered reveal of a pack opened just now.
-  const [revealed, setRevealed] = useState<number | null>(null);
+  // The pack-opening ceremony: "burst" shakes and detonates the pack, "reveal"
+  // flips the pulled cards in. Skipped entirely for reduced-motion users.
+  const [phase, setPhase] = useState<"idle" | "burst" | "reveal">("idle");
   const [shareNote, setShareNote] = useState<string | null>(null);
 
   useEffect(() => {
@@ -160,12 +160,17 @@ export function GachaGame({ pool, theme, totalGames }: GachaGameProps) {
     }
     if (!cards.length) return;
 
-    setRevealed(0);
     setState(recordGachaPack({ dateKey, themed, cards }));
-    cards.forEach((_, index) => {
-      window.setTimeout(() => setRevealed(index + 1), 140 * (index + 1));
-    });
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    setPhase("burst");
+    window.setTimeout(() => setPhase("reveal"), 950);
   }, [state, packsLeft, pool, theme, ownedIds]);
+
+  const closeCeremony = useCallback(() => {
+    setPhase("idle");
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    document.getElementById("gacha-latest-pull")?.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
+  }, []);
 
   const sharePack = useCallback(async () => {
     if (!lastPack?.cards.length) return;
@@ -238,8 +243,70 @@ export function GachaGame({ pool, theme, totalGames }: GachaGameProps) {
         )}
       </section>
 
+      {phase !== "idle" && lastPack && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Pack opening ceremony"
+          onClick={phase === "reveal" ? closeCeremony : undefined}
+          className="fixed inset-0 z-[60] flex items-center justify-center overflow-hidden bg-black/90 backdrop-blur-sm"
+        >
+          {phase === "burst" ? (
+            <div className="relative grid place-items-center">
+              <div className="gacha-burst-rays" aria-hidden="true" />
+              <div className={`gacha-burst-ring ${lastPack.themed ? "border-amber-400/90" : ""}`} aria-hidden="true" />
+              <div className="gacha-burst-core absolute h-72 w-72 rounded-full bg-primary/40 blur-3xl" aria-hidden="true" />
+              <div className="gacha-burst-flash absolute inset-0 rounded-full bg-white" aria-hidden="true" />
+              <div className="gacha-burst-stage relative grid h-80 w-52 place-items-center rounded-2xl border-2 border-primary/50 bg-gradient-to-b from-primary/20 via-card to-card shadow-[0_0_60px_-10px_rgb(129_87_255_/_0.7)]">
+                <Image src="/images/brand/playbloo-ribbon.webp" alt="" width={88} height={88} className="h-20 w-20 object-contain" />
+                <span className="absolute inset-x-0 bottom-6 text-center text-[11px] font-black uppercase tracking-[0.2em] text-muted-foreground">
+                  Opening…
+                </span>
+              </div>
+            </div>
+          ) : (
+            <div className="relative flex flex-col items-center px-4" onClick={(event) => event.stopPropagation()}>
+              <div className="pointer-events-none absolute left-1/2 top-1/2 h-[30rem] w-[30rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/15 blur-3xl" aria-hidden="true" />
+              <p className={`relative mb-5 text-sm font-black uppercase tracking-[0.25em] ${lastPack.themed ? "text-amber-400" : "text-primary"}`}>
+                {lastPack.themed ? "Themed pack" : "Pack"} opened
+              </p>
+              <ul className="relative flex max-w-4xl flex-wrap items-stretch justify-center gap-3">
+                {lastPack.cards.map((card, index) => {
+                  const style = RARITY_STYLES[card.rarity];
+                  return (
+                    <li
+                      key={`${card.gameId}-${index}`}
+                      className={`gacha-card-enter w-32 rounded-xl border-2 ${style.frame} ${style.glow} bg-card p-2 sm:w-40`}
+                      style={{ animationDelay: `${index * 130}ms` }}
+                    >
+                      <div className="relative mb-2 aspect-[4/3] overflow-hidden rounded-lg bg-muted">
+                        {card.thumbnailUrl ? (
+                          <Image src={card.thumbnailUrl} alt="" fill unoptimized={shouldBypassImageOptimization(card.thumbnailUrl)} className="object-cover" sizes="176px" />
+                        ) : (
+                          <span className="flex h-full items-center justify-center"><Gamepad2 className="h-7 w-7 text-primary/30" aria-hidden="true" /></span>
+                        )}
+                        {card.isNew && <span className="absolute left-1.5 top-1.5 rounded-md bg-emerald-500 px-1.5 py-0.5 text-[10px] font-black text-white">NEW</span>}
+                      </div>
+                      <span className={`inline-block rounded-md px-1.5 py-0.5 text-[10px] font-black uppercase tracking-wide ${style.chip}`}>{card.rarity}</span>
+                      <h3 className="mt-1.5 line-clamp-2 text-sm font-bold leading-snug" title={card.title}>{card.title}</h3>
+                    </li>
+                  );
+                })}
+              </ul>
+              <button
+                type="button"
+                onClick={closeCeremony}
+                className="relative mt-6 rounded-full border-2 border-primary/60 bg-primary/15 px-8 py-2.5 text-sm font-black uppercase tracking-widest text-foreground transition-colors hover:bg-primary/30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              >
+                Collect
+              </button>
+            </div>
+          )}
+        </div>
+      )}
+
       {lastPack && (
-        <section aria-label="Latest pack" className="space-y-4">
+        <section id="gacha-latest-pull" aria-label="Latest pack" className="space-y-4 scroll-mt-24">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <h2 className="text-lg font-extrabold tracking-tight">
               Latest pull
@@ -256,13 +323,12 @@ export function GachaGame({ pool, theme, totalGames }: GachaGameProps) {
           </div>
           {shareNote && <p className="text-xs font-semibold text-primary" role="status">{shareNote}</p>}
           <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-            {lastPack.cards.map((card, index) => {
+            {lastPack.cards.map((card) => {
               const style = RARITY_STYLES[card.rarity];
-              const showCard = revealed === null || index < revealed;
               return (
                 <li
-                  key={`${card.gameId}-${index}`}
-                  className={`rounded-xl border-2 ${style.frame} ${style.glow} bg-card p-2 transition-all duration-300 motion-reduce:transition-none ${showCard ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"}`}
+                  key={card.gameId}
+                  className={`rounded-xl border-2 ${style.frame} ${style.glow} bg-card p-2`}
                 >
                   <div className="relative mb-2 aspect-[4/3] overflow-hidden rounded-lg bg-muted">
                     {card.thumbnailUrl ? (
