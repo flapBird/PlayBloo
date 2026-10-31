@@ -99,7 +99,7 @@ export function getRelatedGames(
   tagIds: string[],
   seriesIds: string[],
   candidates: RecommendationCandidate[],
-  limit = 6,
+  limit = 5,
 ) {
   const categorySet = new Set(categoryIds);
   const tagSet = new Set(tagIds);
@@ -166,7 +166,7 @@ export function getVisibleSeries<T extends { id: string }>(series: T[], candidat
  * from its taxonomy ids. Returns an empty list when the pool is unavailable
  * or the game is missing from it.
  */
-export async function getRelatedGamesBySlug(slug: string, limit = 6) {
+export async function getRelatedGamesBySlug(slug: string, limit = 5) {
   const pool = await getRecommendationPool().catch(() => [] as RecommendationCandidate[]);
   const self = pool.find((candidate) => candidate.slug === slug);
   if (!self) return [];

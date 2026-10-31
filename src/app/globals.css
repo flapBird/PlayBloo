@@ -136,15 +136,19 @@ html[data-sidebar="closed"] .category-rail {
 }
 @media (width >= 1024px) {
   /* The rail hugs the window edge, so the content is centred by symmetric
-     padding instead of a canvas that carried the rail with it. */
+     padding instead of a canvas that carried the rail with it. The padding
+     lives on .site-main and .site-footer-inner (not the shared shell) so the
+     footer band can still paint edge to edge behind the centred columns. */
   .site-header-content,
-  .site-shell-content {
+  .site-main,
+  .site-footer-inner {
     width: 100%;
     margin-inline: 0;
     padding-inline: max(1rem, calc((100% - 1280px) / 2));
   }
   .site-header-content,
-  .site-shell-content {
+  .site-main,
+  .site-footer-inner {
     padding-left: max(5rem, calc((100% - 1280px) / 2));
   }
   .category-rail {

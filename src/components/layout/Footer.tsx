@@ -11,7 +11,7 @@ const aboutLinks = [
 export function Footer() {
   return (
     <footer className="site-footer mt-16">
-      <div className="container mx-auto px-4 py-12">
+      <div className="site-footer-inner px-4 py-12">
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
           {/* Brand column */}
           <div className="col-span-2 lg:col-span-2">
