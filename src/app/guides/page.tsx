@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { GuideBreadcrumbs, GuideCard, GuideHero } from "@/components/guides/GuideContent";
+import { GuideBreadcrumbs, GuideCard, GuideFeatured, GuideTopicCard } from "@/components/guides/GuideContent";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { getGuideArticles, getGuideTopics, guidePath, GUIDES_DESCRIPTION } from "@/lib/guides";
 import type { GuideArticle, GuideTopic } from "@/lib/guides/types";
@@ -31,7 +31,10 @@ export default function GuidesPage() {
       <h1>Game Guides</h1>
       <p>Release dates, beta access, and help getting started with your next game.</p>
     </header>
-    <section aria-label="Game guide hubs" className="space-y-5">{topics.map((topic) => <GuideHero key={topic.slug} topic={topic} listing />)}</section>
+    <section aria-label="Game guide hubs" className="space-y-5">
+      {topics[0] && <GuideFeatured topic={topics[0]} />}
+      {topics.length > 1 && <div className={styles.topicGrid}>{topics.slice(1).map((topic) => <GuideTopicCard key={topic.slug} topic={topic} />)}</div>}
+    </section>
     <section className={styles.latest} aria-labelledby="latest-guides">
       <div className={styles.sectionHeading}><div><h2 id="latest-guides">Latest Updates</h2></div><span className={styles.count}>{latest.length} guides</span></div>
       <div className={styles.cardGrid}>{latest.map(({ topic, article }) => <GuideCard key={`${topic.slug}/${article?.slug ?? ""}`} topic={topic} article={article} />)}</div>

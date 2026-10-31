@@ -79,6 +79,39 @@ export function GuideHero({ topic, listing = false }: { topic: GuideTopic; listi
     : <div className={`${styles.hero} ${styles.detailHero}`}>{content}</div>;
 }
 
+/** The /guides page's hero slot: latest topic, cover on the left at full weight. */
+export function GuideFeatured({ topic }: { topic: GuideTopic }) {
+  return <Link href={guidePath(topic)} aria-label={`Explore ${topic.name} guides`} className={styles.featuredGuide}>
+    <div className={styles.featuredGuideImage}>
+      <Image src={topic.cover.src} style={topic.cover.fit ? { objectFit: topic.cover.fit, objectPosition: "center" } : undefined} alt={topic.cover.alt} fill preload sizes="(max-width: 767px) 100vw, 620px" />
+    </div>
+    <div className={styles.featuredGuideCopy}>
+      <span className={styles.featuredChip}>Featured guide</span>
+      <h2>{topic.name}</h2>
+      <p>{topic.description}</p>
+      <div className={styles.heroMeta}>
+        <div className={styles.chips}><span>{topic.platforms.join(" · ")}</span><span><CalendarDays size={13} />{topic.heroFact ?? formatGuideDate(topic.releaseDate)}</span></div>
+      </div>
+      <span className={styles.readGuide}>Read the guide<ArrowRight size={14} aria-hidden="true" /></span>
+    </div>
+  </Link>;
+}
+
+/** Remaining topics as cover-top cards in a responsive grid. */
+export function GuideTopicCard({ topic }: { topic: GuideTopic }) {
+  return <Link href={guidePath(topic)} aria-label={`Explore ${topic.name} guides`} className={styles.topicCoverCard}>
+    <div className={styles.topicCoverMedia}>
+      <Image src={topic.cover.src} style={topic.cover.fit ? { objectFit: topic.cover.fit, objectPosition: "center" } : undefined} alt="" fill loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 380px" />
+    </div>
+    <div className={styles.topicCoverCopy}>
+      <div className={styles.chips}><span>{topic.platforms.join(" · ")}</span><span><CalendarDays size={12} />{topic.heroFact ?? formatGuideDate(topic.releaseDate)}</span></div>
+      <h3>{topic.name}</h3>
+      <p>{topic.description}</p>
+      <span className={styles.readGuide}>Read guide<ArrowRight size={13} aria-hidden="true" /></span>
+    </div>
+  </Link>;
+}
+
 export function GuideCard({ topic, article }: { topic: GuideTopic; article?: GuideArticle }) {
   const cover = getGuideCover(topic, article);
   return <Link href={guidePath(topic, article)} className={styles.guideCard}>

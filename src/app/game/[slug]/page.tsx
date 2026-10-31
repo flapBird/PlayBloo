@@ -215,12 +215,17 @@ export default async function GamePage({ params }: Props) {
           </div>
 
           <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
-            <span className="flex items-center gap-1">
-              <Eye className="h-4 w-4" /> {game.view_count.toLocaleString()} views
-            </span>
-            <span className="flex items-center gap-1">
-              <Play className="h-4 w-4" /> {game.play_count.toLocaleString()} plays
-            </span>
+            {/* Zero counters read as "nobody plays this" — surface them only once there is something to show. */}
+            {game.view_count > 0 && (
+              <span className="flex items-center gap-1">
+                <Eye className="h-4 w-4" /> {game.view_count.toLocaleString()} views
+              </span>
+            )}
+            {game.play_count > 0 && (
+              <span className="flex items-center gap-1">
+                <Play className="h-4 w-4" /> {game.play_count.toLocaleString()} plays
+              </span>
+            )}
             {game.release_date && (
               <span className="flex items-center gap-1">
                 <Calendar className="h-4 w-4" /> Released {new Date(game.release_date).toLocaleDateString("en", { year: "numeric", month: "short", day: "numeric" })}
@@ -341,6 +346,7 @@ export default async function GamePage({ params }: Props) {
               )}
               {!game.developer && sources.length === 0 && <p className="text-sm leading-6 text-muted-foreground">No verified source or developer link has been published yet.</p>}
           </section>
+          {(neighbors.previous || neighbors.next) && <GameNeighbors previous={neighbors.previous} next={neighbors.next} />}
         </aside>
       </div>
 
@@ -350,18 +356,17 @@ export default async function GamePage({ params }: Props) {
           <div className="flex flex-wrap items-end justify-between gap-3">
             <div>
               <p className="text-[10px] font-extrabold uppercase tracking-[0.14em] text-muted-foreground">Continue discovering</p>
-              <h2 className="mt-1 text-2xl font-black tracking-tight">Why these games are related</h2>
+              <h2 className="mt-1 text-2xl font-black tracking-tight">More like {game.title}</h2>
             </div>
             <Link href="/search" className="text-sm font-bold text-muted-foreground hover:text-primary">Browse all games <span aria-hidden="true">→</span></Link>
           </div>
-          <div className="mt-4 grid gap-x-7 md:grid-cols-2">
+          <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {relatedGames.map((relatedGame) => (
               <RelatedGameItem key={relatedGame.id} game={relatedGame} reason={relatedGame.recommendationReason} />
             ))}
           </div>
         </section>
       )}
-      <div className="max-w-5xl mx-auto"><GameNeighbors previous={neighbors.previous} next={neighbors.next} /></div>
     </div>
   );
 }

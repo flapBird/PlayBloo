@@ -1,7 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
-import { ExternalLink, Gamepad2, Play } from "lucide-react";
-import { getDiscoveryStatusBadge, getGamePlayMode, shouldBypassImageOptimization } from "@/lib/game-utils";
+import { ExternalLink, Play } from "lucide-react";
+import { getDiscoveryStatusBadge, getGamePlayMode } from "@/lib/game-utils";
+import { CoverFallback } from "@/components/games/CoverFallback";
+import { GameCover } from "@/components/games/GameCover";
 import type { Category, Game } from "@/lib/types";
 
 export type GameCardGame = Pick<Game, "id" | "title" | "slug" | "thumbnail_url"> &
@@ -32,23 +33,20 @@ export function GameCard({ game, badges = [], showDate = false, dateField = "add
   return (
     <article className="game-card group relative min-w-0">
       <Link href={`/game/${game.slug}`} prefetch={false} aria-label={`View ${game.title}`} title={game.title} className="game-card-link relative">
-        <div className="game-card-media relative aspect-[16/10] shrink-0 overflow-hidden rounded-xl bg-muted">
+        <div className="game-card-media relative aspect-[5/4] shrink-0 overflow-hidden rounded-xl bg-muted">
           {game.thumbnail_url ? (
-            <Image
+            <GameCover
               src={game.thumbnail_url}
-              alt=""
-              fill
-              loading={eagerImage ? "eager" : "lazy"}
-              unoptimized={shouldBypassImageOptimization(game.thumbnail_url)}
-              className="object-cover"
-              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 20vw, 16vw"
+              eager={eagerImage}
+              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 250px"
             />
           ) : (
-            <span className="flex h-full items-center justify-center bg-muted">
-              <Gamepad2 className="h-9 w-9 text-muted-foreground" aria-hidden="true" />
-            </span>
+            <CoverFallback title={game.title} />
           )}
           {visibleBadge && <span className={`game-card-status ${visibleBadge === "TRENDING" ? "is-trending" : ""}`}>{visibleBadge === "TRENDING" ? "Trending" : visibleBadge === "NEW" ? "New" : visibleBadge === "UPDATED" ? "Updated" : visibleBadge}</span>}
+          <span className="game-card-play" aria-hidden="true">
+            <Play className="h-5 w-5 fill-current" />
+          </span>
         </div>
         <div className="game-card-copy">
           <h3 className="game-card-title line-clamp-2">{game.title}</h3>

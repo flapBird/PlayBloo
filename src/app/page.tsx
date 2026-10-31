@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { GameCardGame } from "@/components/games/GameCard";
 import { HomeDiscovery } from "@/components/home/HomeDiscovery";
+import { HomeFeatured } from "@/components/home/HomeFeatured";
 import { HomeLibraryPanel } from "@/components/home/HomeLibraryPanel";
 import { HomeGuideFeature } from "@/components/guides/HomeGuideFeature";
 import { getHomeContent } from "@/lib/home-feeds";
@@ -43,7 +44,7 @@ function CompactRanking({
               <span className="min-w-0 flex-1">
                 <span className="block truncate text-sm font-bold transition-colors group-hover:text-primary">{game.title}</span>
                 <span className="mt-0.5 block truncate text-[11px] text-muted-foreground">
-                  {game.categories?.[0]?.name || "Browser game"} · {(game.play_count || 0).toLocaleString()} plays
+                  {game.categories?.[0]?.name || "Browser game"}{game.play_count ? ` · ${game.play_count.toLocaleString()} plays` : ""}
                 </span>
               </span>
               <ArrowRight className="h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
@@ -72,6 +73,7 @@ export default async function HomePage() {
           </div>
         </section>
 
+        <HomeFeatured games={feeds.newest.games} />
 
         <HomeDiscovery
           feeds={feeds}

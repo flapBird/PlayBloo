@@ -145,6 +145,34 @@
   .guideCard, .primaryButton { transition: none; }
 }
 
+/* Guides index: one featured hub (cover at half the card) plus a grid of
+   cover-top cards, so every hub's 1600px cover actually gets seen. */
+.featuredGuide { display: grid; grid-template-columns: minmax(0, 11fr) minmax(0, 9fr); overflow: hidden; border: 1px solid var(--border); border-radius: 18px; background: var(--card); transition: border-color .15s; }
+.featuredGuide:hover { border-color: var(--primary); }
+.featuredGuideImage { position: relative; min-height: 300px; }
+.featuredGuideImage img { object-fit: cover; }
+.featuredGuideCopy { padding: 34px 32px; align-self: center; min-width: 0; }
+.featuredChip { display: inline-flex; width: fit-content; padding: 4px 10px; border-radius: 999px; background: var(--accent); color: var(--accent-foreground); font-size: 10px; font-weight: 750; text-transform: uppercase; letter-spacing: .1em; }
+.featuredGuideCopy h2 { margin: 14px 0 0; font-size: clamp(24px, 2.4vw, 32px); font-weight: 850; letter-spacing: -.03em; line-height: 1.15; }
+.featuredGuideCopy > p { margin: 10px 0 0; max-width: 480px; font-size: 14px; line-height: 1.7; color: var(--muted-foreground); }
+.topicGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+@media (min-width: 1024px) { .topicGrid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.topicCoverCard { display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--border); border-radius: 14px; background: var(--card); transition: border-color .15s; }
+.topicCoverCard:hover { border-color: var(--primary); }
+.topicCoverMedia { position: relative; aspect-ratio: 16 / 9; border-bottom: 1px solid var(--border); }
+.topicCoverMedia img { object-fit: cover; }
+.topicCoverCopy { display: flex; flex: 1; min-width: 0; flex-direction: column; gap: 8px; padding: 16px; }
+.topicCoverCopy .chips { margin: 0; }
+.topicCoverCopy h3 { margin: 0; font-size: 17px; letter-spacing: -.01em; line-height: 1.35; }
+.topicCoverCopy > p { margin: 0; font-size: 12px; line-height: 1.65; color: var(--muted-foreground); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.readGuide { margin-top: auto; padding-top: 8px; display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 650; color: var(--primary); }
+@media (max-width: 767px) {
+  .featuredGuide { grid-template-columns: minmax(0, 1fr); }
+  .featuredGuideImage { min-height: 0; aspect-ratio: 16 / 9; }
+  .featuredGuideCopy { padding: 22px; }
+  .topicGrid { grid-template-columns: minmax(0, 1fr); }
+}
+
 /* Compact topic rows and article cards with visible game identity. */
 .topicCard { grid-template-columns: minmax(0, 1fr) 280px; border-radius: 12px; }
 .topicCard .heroCopy { padding: 22px 26px; }

@@ -1,7 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
-import { CalendarDays, ArrowRight, Eye, Gamepad2 } from "lucide-react";
-import { getDiscoveryStatusBadge, getGamePlayMode, shouldBypassImageOptimization } from "@/lib/game-utils";
+import { CalendarDays, ArrowRight, Eye } from "lucide-react";
+import { getDiscoveryStatusBadge, getGamePlayMode } from "@/lib/game-utils";
+import { CoverFallback } from "@/components/games/CoverFallback";
+import { GameCover } from "@/components/games/GameCover";
 import type { GameCardGame } from "@/components/games/GameCard";
 
 interface GameListItemProps {
@@ -70,20 +71,14 @@ export function GameListItem({
         className="discovery-row-media relative block overflow-hidden bg-muted"
       >
         {game.thumbnail_url ? (
-          <Image
+          <GameCover
             src={game.thumbnail_url}
-            alt=""
-            fill
-            loading={eagerImage ? "eager" : "lazy"}
-            fetchPriority={eagerImage ? "high" : undefined}
-            unoptimized={shouldBypassImageOptimization(game.thumbnail_url)}
-            className="object-cover transition-opacity duration-150 group-hover:opacity-90"
+            eager={eagerImage}
             sizes="(max-width: 640px) 112px, 190px"
+            className="transition-opacity duration-150 group-hover:opacity-90"
           />
         ) : (
-          <span className="flex h-full items-center justify-center bg-card">
-            <Gamepad2 className="h-7 w-7 text-primary/30" aria-hidden="true" />
-          </span>
+          <CoverFallback title={game.title} />
         )}
         {position && (
           <span className="absolute left-2 top-2 grid h-6 min-w-6 place-items-center rounded-md border border-white/15 bg-black/75 px-1 text-[10px] font-black text-white">

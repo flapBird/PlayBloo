@@ -14,18 +14,18 @@ export interface SidebarCategory {
 }
 
 const QUICK_LINKS = [
-  { label: "Home", href: "/", icon: House, color: "text-lime-600 dark:text-lime-300" },
-  { label: "Game Gacha", href: "/gacha", icon: Dices, color: "text-amber-600 dark:text-amber-400" },
-  { label: "Recently played", href: "/recently-played", icon: History, color: "text-violet-600 dark:text-violet-400" },
-  { label: "New", href: "/search?sort=newest", sort: "newest", icon: Sparkles, color: "text-sky-600 dark:text-sky-400" },
-  { label: "Hot Games", href: "/search?sort=popular", sort: "popular", icon: Flame, color: "text-orange-600 dark:text-orange-400" },
-  { label: "Trending", href: "/search?sort=trending", sort: "trending", icon: TrendingUp, color: "text-pink-600 dark:text-pink-400" },
+  { label: "Home", href: "/", icon: House },
+  { label: "Game Gacha", href: "/gacha", icon: Dices },
+  { label: "Recently played", href: "/recently-played", icon: History },
+  { label: "New", href: "/search?sort=newest", sort: "newest", icon: Sparkles },
+  { label: "Hot Games", href: "/search?sort=popular", sort: "popular", icon: Flame },
+  { label: "Trending", href: "/search?sort=trending", sort: "trending", icon: TrendingUp },
 ];
 
 const itemClass = (active: boolean) => `relative flex h-11 items-center gap-3 rounded-xl px-3.5 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary ${active
   ? "bg-primary/15 text-foreground ring-1 ring-inset ring-primary/30 before:absolute before:left-0 before:top-3 before:h-5 before:w-[3px] before:rounded-full before:bg-primary"
   : "text-muted-foreground hover:bg-muted hover:text-foreground"}`;
-const activeIconClass = "text-lime-700 dark:text-lime-300";
+const activeIconClass = "text-primary";
 
 interface QuickLinksProps {
   pathname: string;
@@ -44,7 +44,7 @@ function QuickLinksMenu({ pathname, labelClass, onNavigate, sort }: QuickLinksPr
             <li key={item.href}>
               <Link href={item.href} prefetch={false} aria-label={item.label} aria-current={active ? "page" : undefined}
                 onClick={onNavigate} className={itemClass(active)}>
-                <Icon aria-hidden="true" strokeWidth={2.5} className={`h-5 w-5 shrink-0 ${active ? activeIconClass : item.color}`} />
+                <Icon aria-hidden="true" strokeWidth={2.5} className={`h-5 w-5 shrink-0 ${active ? activeIconClass : "text-muted-foreground"}`} />
                 <span className={labelClass}>{item.label}</span>
               </Link>
             </li>
@@ -104,7 +104,7 @@ export function CategorySidebar({ categories, children }: { categories: SidebarC
                       aria-current={isActive ? "page" : undefined}
                       className={itemClass(isActive)}
                     >
-                      <CategoryIcon slug={category.slug} className={`h-5 w-5 shrink-0 [&_*]:stroke-[2.5] ${isActive ? activeIconClass : "text-violet-600 dark:text-violet-400"}`} />
+                      <CategoryIcon slug={category.slug} className={`h-5 w-5 shrink-0 [&_*]:stroke-[2.5] ${isActive ? activeIconClass : "text-muted-foreground"}`} />
                       <span className={labelClass}>{category.name}</span>
                     </Link>
                   </li>
@@ -123,7 +123,7 @@ export function CategorySidebar({ categories, children }: { categories: SidebarC
             aria-current={pathname === "/category" ? "page" : undefined}
             className={itemClass(pathname === "/category")}
           >
-            <LayoutGrid strokeWidth={2.5} className={`h-5 w-5 shrink-0 ${pathname === "/category" ? activeIconClass : "text-violet-600 dark:text-violet-400"}`} />
+            <LayoutGrid strokeWidth={2.5} className={`h-5 w-5 shrink-0 ${pathname === "/category" ? activeIconClass : "text-muted-foreground"}`} />
             <span className={labelClass}>All categories</span>
           </Link>
         </div>

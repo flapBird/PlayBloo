@@ -1,14 +1,16 @@
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Gamepad2, Play } from "lucide-react";
+import { Play } from "lucide-react";
 import type { GameCardGame } from "@/components/games/GameCard";
-import { getGamePlayMode, shouldBypassImageOptimization } from "@/lib/game-utils";
+import { getGamePlayMode } from "@/lib/game-utils";
+import { CoverFallback } from "@/components/games/CoverFallback";
+import { GameCover } from "@/components/games/GameCover";
 
 interface RelatedGameItemProps {
   game: GameCardGame;
   reason: string;
 }
 
+/** Vertical related-game card: cover on top, title and why-it's-related below. */
 export function RelatedGameItem({ game, reason }: RelatedGameItemProps) {
   const playMode = getGamePlayMode({
     iframe_url: game.iframe_url || null,
@@ -20,28 +22,27 @@ export function RelatedGameItem({ game, reason }: RelatedGameItemProps) {
     <Link
       href={`/game/${game.slug}`}
       prefetch={false}
-      className="group grid min-w-0 grid-cols-[6.5rem_minmax(0,1fr)] gap-3 border-b py-4 transition-colors hover:border-primary/50 sm:grid-cols-[7.5rem_minmax(0,1fr)]"
+      className="group flex min-w-0 flex-col overflow-hidden rounded-xl border bg-card transition-[border-color,box-shadow,transform] duration-150 hover:-translate-y-0.5 hover:border-primary/60 hover:shadow-[0_6px_18px_rgba(0,0,0,0.2)] motion-reduce:transition-none motion-reduce:hover:transform-none"
     >
-      <span className="relative aspect-[16/10] overflow-hidden rounded-lg border bg-muted">
+      <span className="relative aspect-[5/4] shrink-0 overflow-hidden border-b bg-muted">
         {game.thumbnail_url ? (
-          <Image
+          <GameCover
             src={game.thumbnail_url}
-            alt=""
-            fill
-            className="object-cover transition-opacity group-hover:opacity-90"
-            sizes="120px"
-            unoptimized={shouldBypassImageOptimization(game.thumbnail_url)}
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 300px"
           />
         ) : (
-          <span className="flex h-full items-center justify-center"><Gamepad2 className="h-6 w-6 text-primary/30" /></span>
+          <CoverFallback title={game.title} />
+        )}
+        {playMode === "embedded" && (
+          <span className="absolute bottom-2 left-2 inline-flex items-center gap-1 rounded-full bg-black/70 px-2 py-1 text-[10px] font-bold text-white backdrop-blur-sm">
+            <Play className="h-3 w-3 fill-current" aria-hidden="true" />
+            Play here
+          </span>
         )}
       </span>
-      <span className="flex min-w-0 flex-col justify-center">
-        <span className="truncate text-sm font-extrabold transition-colors group-hover:text-primary sm:text-base">{game.title}</span>
-        <span className="mt-1 truncate text-xs text-muted-foreground">{reason}</span>
-        <span className="mt-2 inline-flex items-center gap-1 text-[11px] font-bold text-muted-foreground">
-          {playMode === "embedded" ? <><Play className="h-3 w-3 fill-current text-emerald-400" />Playable here</> : <>{game.categories?.[0]?.name || "View details"}<ArrowRight className="h-3 w-3" /></>}
-        </span>
+      <span className="flex min-w-0 flex-col gap-0.5 px-3 pb-3 pt-2.5">
+        <span className="truncate text-sm font-bold transition-colors group-hover:text-primary">{game.title}</span>
+        <span className="truncate text-xs text-muted-foreground">{reason}</span>
       </span>
     </Link>
   );
