@@ -1,0 +1,85 @@
+{
+  "batchDate": "2026-10-28",
+  "inputCount": 1,
+  "batchType": "single-game-request",
+  "entries": [
+    {
+      "index": 1,
+      "inputTitle": "Eggy Car",
+      "sourceUrl": "https://ubg98.github.io/EggyCar/",
+      "resolvedUrl": "https://ubg98.github.io/EggyCar/",
+      "identity": "https://poki.com/en/g/eggy-car",
+      "decision": "added-published",
+      "reason": "HTML5 build verified playable, embeddable, not present in catalogue",
+      "gameId": "d919d1d3-b0d1-4ccc-b1fe-305976d966b3",
+      "slug": "eggy-car",
+      "publishedAt": "2026-10-28T06:40:23.234885+00:00",
+      "game": {
+        "title": "Eggy Car",
+        "developer": "Beedo Games",
+        "engine": "Construct 2",
+        "platforms": ["browser", "desktop", "tablet", "mobile"],
+        "monetization": "free-with-ads",
+        "development_status": "released",
+        "graphics": "2D",
+        "multiplayer": "Single-player",
+        "iframe_url": "https://ubg98.github.io/EggyCar/",
+        "external_url": "https://ubg98.github.io/EggyCar/",
+        "source_url": "https://poki.com/en/g/eggy-car",
+        "source_type": "official",
+        "original_game_url": "https://poki.com/en/g/eggy-car",
+        "meta_title": "Eggy Car Unblocked – Play Eggy Car Online Free",
+        "meta_description": "Play Eggy Car unblocked in your browser: balance the egg over hills and jumps, collect coins and unlock cars. No download or install needed.",
+        "content_verified": true,
+        "is_published": true,
+        "release_date": null,
+        "last_updated_at": null
+      },
+      "categories": ["driving", "casual", "arcade"],
+      "detailResearchSources": [
+        { "url": "https://poki.com/en/g/eggy-car", "verifiedAt": "2026-10-28T06:38:00Z", "supports": "developer Beedo Games, controls A/← and D/→, coins, car unlocks, desktop+mobile" },
+        { "url": "https://www.coolmathgames.com/0-eggy-car", "verifiedAt": "2026-10-28T06:38:00Z", "supports": "on-screen pedals, coin unlocks, freeze power-up, balance-vs-speed tradeoff" },
+        { "url": "https://ubg98.github.io/EggyCar/", "verifiedAt": "2026-10-28T06:40:00Z", "supports": "playable build, in-game How to Play board, Construct 2 export, framing allowed" }
+      ],
+      "missingDetailFields": ["release_date", "last_updated_at", "official_website_url"],
+      "media": {
+        "cover": { "path": "covers/2026-10-28/eggy-car.webp", "size": "640x360", "bytes": 16344 },
+        "screenshots": [
+          { "path": "screenshots/2026-10-28/eggy-car-1.webp", "size": "1280x720", "bytes": 32796 },
+          { "path": "screenshots/2026-10-28/eggy-car-2.webp", "size": "1280x720", "bytes": 32764 },
+          { "path": "screenshots/2026-10-28/eggy-car-3.webp", "size": "1280x720", "bytes": 33668 }
+        ],
+        "verified": "public URL 200, image/webp, byte-exact sha256 match"
+      }
+    }
+  ],
+  "verification": {
+    "publishedGamesBefore": 1113,
+    "publishedGamesAfter": 1114,
+    "pageRender": "200 local; title/description/canonical/OG/H1/sections/JSON-LD verified",
+    "sitemapLocal": "https://playbloo.net/game/eggy-car present with lastmod 2026-10-28T06:40:23Z",
+    "oldGameTimestamps": "unchanged (death-spiral 2026-06-28, escape-road 2026-07-02, powder-peak-tycoon 2026-10-25, sun-smith 2026-10-27)",
+    "iframeEmbed": "verified rendering inside a test iframe; no X-Frame-Options/CSP frame-ancestors",
+    "launchButtonLocalTest": "not exercised: local dev client hydration/HMR is broken under workerd for all game pages, including existing escape-road; needs one manual click on production",
+    "codeChanges": "none",
+    "deploy": "not performed"
+  },
+  "keywordPlan": {
+    "implementedOnGamePage": ["eggy car", "eggy car unblocked", "eggy car game", "egg car", "eggycart"],
+    "rejectedDoorwayPages": ["/game/eggy-car-unblocked", "/game/eggy-car-2", "/game/egg-car", "/game/eggycart"],
+    "rejectedReason": "near-duplicate pages sharing one embed = doorway/duplicate content risk",
+    "eggyCar2": "no official sequel found (poki.com/en/g/eggy-car-2 -> 404); no page created",
+    "unblockedHub": "created as tag slug unblocked-games (id f1585b54-3e0d-40bc-999e-d85d957c7bd7), name 'Unblocked', linked to all 13 published games with a non-empty iframe_url",
+    "unblockedTag": {
+      "url": "/tag/unblocked-games",
+      "tagId": "f1585b54-3e0d-40bc-999e-d85d957c7bd7",
+      "name": "Unblocked",
+      "slug": "unblocked-games",
+      "games": 13,
+      "taggedSlugs": ["beast-clash", "color-block-jam", "drift-rush", "eggy-car", "escape-road", "escape-road-2", "escape-road-3", "escape-road-city", "escape-road-city-2", "escape-road-halloween", "goodbye-doggy", "undead-corridor", "wave-rider"],
+      "pageCheck": "200; title 'Unblocked Games - Browse Free Online Games Tagged with Unblocked'; canonical /tag/unblocked-games; robots index,follow; 13 game links",
+      "gameBadgeCheck": "/game/eggy-car renders href=/tag/unblocked-games",
+      "sitemapLocal": "not yet present: /sitemap.xml served from a 1h catalog snapshot taken before the tag existed; tag count 13 >= MIN_INDEXABLE_TAG_GAMES so it will be included after cache TTL or redeploy"
+    }
+  }
+}
