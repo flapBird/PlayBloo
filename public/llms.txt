@@ -15,6 +15,7 @@ PlayBloo's public content is written in English. Game pages provide researched i
 - [Game Series](https://playbloo.net/series): Browse related game collections in their intended order.
 - [Game Guides](https://playbloo.net/guides): Release dates, beta access, comparisons and help getting started, including console and PC games.
 - [Submit a Game](https://playbloo.net/submit-game): Suggest a game for review; available beside Guides in the main navigation.
+- [Game Gacha](https://playbloo.net/gacha): Draw free daily packs of collectible cards, each one a real browser game from the catalog. Three packs per day with published rarity odds (Common 60%, Rare 25%, Epic 12%, Legendary 3%, rarity following each game's play-count rank), a daily themed pack, and a collection saved in the visitor's browser. Card pulls lead to the standard game pages.
 
 ## Core Categories
 

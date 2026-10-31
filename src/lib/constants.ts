@@ -29,6 +29,10 @@ export const MONITORING_PROBE_SAMPLES = 12;
 export const FAVORITES_STORAGE_KEY = "playbloo:favorites:v1";
 export const RECENTLY_PLAYED_STORAGE_KEY = "playbloo:recently-played:v1";
 
+// Game Gacha: free packs per local day and the browser-local collection key.
+export const GACHA_PACKS_PER_DAY = 3;
+export const GACHA_STORAGE_KEY = "playbloo:gacha:v1";
+
 export const HOT_SCORE_DECAY_FACTOR = 0.9;
 export const HOT_SCORE_VIEW_WEIGHT = 1;
 export const HOT_SCORE_PLAY_WEIGHT = 3;

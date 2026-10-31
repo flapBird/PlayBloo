@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { BookOpen, Heart, History, Menu, PanelLeftClose, PanelLeftOpen, Search, X } from "lucide-react";
+import { BookOpen, Dices, Heart, History, Menu, PanelLeftClose, PanelLeftOpen, Search, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
 import { HeaderSearch } from "@/components/layout/HeaderSearch";
@@ -65,6 +65,7 @@ export function Header({ categories = [], guides = [] }: { categories?: SidebarC
             </Link>
             <nav aria-label="Primary" className="hidden shrink-0 items-center gap-1 lg:flex">
               <Link prefetch={false} href="/guides" aria-current={pathname === "/guides" || pathname.startsWith("/guides/") ? "page" : undefined} className={`header-nav-link ${pathname === "/guides" || pathname.startsWith("/guides/") ? "is-active" : ""}`}><BookOpen className="h-3.5 w-3.5" />Guides</Link>
+              <Link prefetch={false} href="/gacha" aria-current={pathname === "/gacha" ? "page" : undefined} className={`header-nav-link ${pathname === "/gacha" ? "is-active" : ""}`}><Dices className="h-3.5 w-3.5" />Gacha</Link>
               <Link prefetch={false} href="/submit-game" aria-current={pathname === "/submit-game" ? "page" : undefined} className={`header-nav-link ${pathname === "/submit-game" ? "is-active" : ""}`}>Submit a Game</Link>
             </nav>
 
@@ -134,6 +135,7 @@ export function Header({ categories = [], guides = [] }: { categories?: SidebarC
           {mobileMenuOpen && (
             <div id="mobile-menu" className="lg:hidden border-t border-border/50">
               <div className="px-4 py-3 space-y-1">
+                <Link prefetch={false} href="/gacha" aria-current={pathname === "/gacha" ? "page" : undefined} className={`block px-3 py-2 text-sm font-medium rounded-lg hover:bg-muted ${pathname === "/gacha" ? "text-primary bg-muted" : ""}`} onClick={() => setMobileMenuOpen(false)}>Game Gacha</Link>
                 <Link prefetch={false} href="/guides" aria-current={pathname === "/guides" || pathname.startsWith("/guides/") ? "page" : undefined} className={`block px-3 py-2 text-sm font-medium rounded-lg hover:bg-muted ${pathname === "/guides" || pathname.startsWith("/guides/") ? "text-primary bg-muted" : ""}`} onClick={() => setMobileMenuOpen(false)}>Guides</Link>
                 <Link prefetch={false} href="/submit-game" className="block px-3 py-2 text-sm font-medium rounded-lg hover:bg-muted" onClick={() => setMobileMenuOpen(false)}>Submit a Game</Link>
                 <Link prefetch={false} href="/favorites" className="flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-lg hover:bg-muted" onClick={() => setMobileMenuOpen(false)}>

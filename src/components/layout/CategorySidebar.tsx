@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Suspense, useState } from "react";
-import { Flame, House, History, LayoutGrid, Sparkles, TrendingUp } from "lucide-react";
+import { Dices, Flame, House, History, LayoutGrid, Sparkles, TrendingUp } from "lucide-react";
 import { CategoryIcon } from "@/components/layout/category-icons";
 import { useSidebar } from "@/components/layout/SidebarProvider";
 
@@ -15,6 +15,7 @@ export interface SidebarCategory {
 
 const QUICK_LINKS = [
   { label: "Home", href: "/", icon: House, color: "text-lime-600 dark:text-lime-300" },
+  { label: "Game Gacha", href: "/gacha", icon: Dices, color: "text-amber-600 dark:text-amber-400" },
   { label: "Recently played", href: "/recently-played", icon: History, color: "text-violet-600 dark:text-violet-400" },
   { label: "New", href: "/search?sort=newest", sort: "newest", icon: Sparkles, color: "text-sky-600 dark:text-sky-400" },
   { label: "Hot Games", href: "/search?sort=popular", sort: "popular", icon: Flame, color: "text-orange-600 dark:text-orange-400" },
