@@ -1,0 +1,84 @@
+{
+  "batchDate": "2026-11-01",
+  "capturedAtBaseline": "2026-10-31T17:33:44.374Z",
+  "inputs": 3,
+  "outcomes": { "approved": 3, "duplicate": 0, "rejected": 0, "pending": 0, "failed": 0 },
+  "items": [
+    {
+      "submissionId": "0a7600a2-ecd8-4cc3-b9ff-851a8a42a24a",
+      "inputUrl": "https://bludle.com/secondsight/",
+      "resolvedUrl": "https://bludle.com/secondsight/",
+      "identity": "Bludle 'Second Sight' — official publisher game page (unique per-game path); no same-title/same-identity row in catalog or drafts at review time (live re-checked immediately before insert)",
+      "decision": "approved",
+      "reason": "Browser-playable daily colour-perception game on the publisher's own site; rules, ten-round daily format, eight answer dimensions and 1-8 keyboard answer selection verified on the official page and secondsight.js (static read). Page carries an ad card, so monetization set to free-with-ads.",
+      "gameId": "a76f1d34-5871-4614-98eb-6f98951def3a",
+      "slug": "second-sight",
+      "publishedAt": "2026-10-31T17:41:13.370Z",
+      "game": { "title": "Second Sight", "monetization": "free-with-ads", "platforms": ["browser"], "developer": "Bludle", "source_type": "official", "external_url": "https://bludle.com/secondsight/" },
+      "categories": ["puzzle", "casual"],
+      "researchSources": [
+        "https://bludle.com/secondsight/ (official page, verified 2026-11-01)",
+        "https://bludle.com/secondsight/secondsight.js (static read: eight dimensions, keydown 1-8 answer selection)",
+        "https://bludle.com/images/social/secondsight.jpg (official social cover)"
+      ],
+      "missingDetailFields": ["release_date", "engine", "graphics", "development_status (left null per convention)", "individual author not named on studio site"],
+      "media": { "cover": "covers/submissions-2026-11-01/secondsight.webp", "source": "official social image 1200x630 -> 640x336 WebP 11238B", "verified": "public URL 200, image/webp, sha256 match, cache-control max-age=604800" },
+      "outcome": "published & approved; submission conditionally updated (status=pending_review + baseline updated_at), reviewed_at set, reviewed_by null (service-role review, identity not claimed)"
+    },
+    {
+      "submissionId": "22ea1904-a5f4-48d5-b10f-b2306d56a99b",
+      "inputUrl": "https://bludle.com/rulebreaker/",
+      "resolvedUrl": "https://bludle.com/rulebreaker/",
+      "identity": "Bludle 'Rulebreaker' — official publisher game page; no catalog or draft match (live re-checked)",
+      "decision": "approved",
+      "reason": "Browser-playable daily cipher game: live-output module chain, numeric tuning, reordering, 3 hints and UTC daily reset verified on the official page and rulebreaker.js/phrases.js (static read). No ad markers found; free.",
+      "gameId": "6e8f7654-c405-4bc5-b5a7-346f3aec2a35",
+      "slug": "rulebreaker",
+      "publishedAt": "2026-10-31T17:41:15.693Z",
+      "game": { "title": "Rulebreaker", "monetization": "free", "platforms": ["browser"], "developer": "Bludle", "source_type": "official", "external_url": "https://bludle.com/rulebreaker/" },
+      "categories": ["puzzle", "casual"],
+      "researchSources": [
+        "https://bludle.com/rulebreaker/ (official page incl. field manual and decoder's notebook, verified 2026-11-01)",
+        "https://bludle.com/rulebreaker/rulebreaker.js (static read: module types shift/mirror/reverse/rotate, hint count, UTC daily key)",
+        "https://bludle.com/rulebreaker/phrases.js (static read)",
+        "https://bludle.com/images/social/rulebreaker.png (official image; shows live workbench UI)"
+      ],
+      "missingDetailFields": ["release_date", "engine", "graphics", "development_status (left null per convention)"],
+      "media": { "cover": "covers/submissions-2026-11-01/rulebreaker.webp", "source": "official social image 1265x712 -> 640x360 WebP 15428B", "verified": "public URL 200, image/webp, sha256 match, cache-control max-age=604800" },
+      "outcome": "published & approved; conditional submission update as above"
+    },
+    {
+      "submissionId": "fbf65361-0062-47b2-bc80-9042f1177832",
+      "inputUrl": "https://bludle.com/wordmash/",
+      "resolvedUrl": "https://bludle.com/wordmash/",
+      "identity": "Bludle 'Word Mash' — official publisher game page; no catalog or draft match (live re-checked)",
+      "decision": "approved",
+      "reason": "Browser-playable daily word-fusion puzzle: two clues, six guesses, overlap fusion (star + artist = startist) and locally saved streak verified on the official page and script.js (static read: wordmash-streak / wordmash-last-win storage keys). No ad markers found; free.",
+      "gameId": "f1f8ea29-ac3f-45a6-b14f-5dd53c9570f1",
+      "slug": "word-mash",
+      "publishedAt": "2026-10-31T17:41:17.277Z",
+      "game": { "title": "Word Mash", "monetization": "free", "platforms": ["browser"], "developer": "Bludle", "source_type": "official", "external_url": "https://bludle.com/wordmash/" },
+      "categories": ["puzzle", "casual"],
+      "researchSources": [
+        "https://bludle.com/wordmash/ (official page, verified 2026-11-01)",
+        "https://bludle.com/wordmash/script.js (static read: local save keys)",
+        "https://bludle.com/images/social/wordmash.jpg (official social cover)"
+      ],
+      "missingDetailFields": ["release_date", "engine", "graphics", "development_status (left null per convention)"],
+      "media": { "cover": "covers/submissions-2026-11-01/wordmash.webp", "source": "official social image 1200x630 -> 640x336 WebP 13274B", "verified": "public URL 200, image/webp, sha256 match, cache-control max-age=604800" },
+      "outcome": "published & approved; conditional submission update as above"
+    }
+  ],
+  "verification": {
+    "database": "3/3 submissions approved with correct approved_game_id; duplicate_game_id null; original extraction_status 'partial' preserved; _editorial_review merged into extracted_data with method/time/reason/sources/missing; notes preserved with appended review marker",
+    "games": "3/3 published, is_featured/is_trending false, categories puzzle+casual linked (anon-visible), platforms ['browser'], sources type 'official' with verifiedAt; five content columns + controls read back verbatim",
+    "anonymity": "drafts verified invisible via anon client before publish; published rows anon-visible after",
+    "oldGames": "1160 baseline rows compared on all non-stat fields: 0 changed; counts (view/play/click/hot) excluded as natural drift",
+    "pages": "3/3 live detail pages HTTP 200 with rendered description/how_to_play/controls/tips/features, external game link, official cover; 0 /_next/image references; titles use default '{title} - Game Details | PlayBloo' pattern (meta fields intentionally null for submissions)",
+    "sitemap": "local generator run against live DB: 1190 entries; 3/3 new URLs included with lastmod == actual publish timestamps; 1153 old published games lastmod unchanged; 7 drafts excluded; regression test tests/sitemap/pagination.test.mjs 5 pass / 0 fail",
+    "liveSitemap": "https://playbloo.net/sitemap.xml not yet showing the 3 new URLs at review time (ISR/CDN cache lag; service-role writes do not trigger Next cache invalidation and no admin revalidation session available — recorded as limitation, no forced refresh, old URLs' lastmod unchanged live, e.g. dead-centre 2026-10-21T12:50:03.125Z)",
+    "home": "homepage 0 /_next/image refs, 108 direct game-media cover refs; new cards not yet in ISR cache (expected lag)",
+    "llmsTxt": "public/llms.txt consistent (browser catalogue, external play, /game/ routes); no edit needed"
+  },
+  "notes": "No emails, request fingerprints, credentials or private submission notes reproduced in this report. Static source reading used for verification; no full playthrough claimed. No game_updates rows created for submission approvals (per integration conventions)."
+}
