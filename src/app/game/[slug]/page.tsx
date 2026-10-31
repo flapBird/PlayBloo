@@ -360,7 +360,7 @@ export default async function GamePage({ params }: Props) {
             </div>
             <Link href="/search" className="text-sm font-bold text-muted-foreground hover:text-primary">Browse all games <span aria-hidden="true">→</span></Link>
           </div>
-          <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
             {relatedGames.map((relatedGame) => (
               <RelatedGameItem key={relatedGame.id} game={relatedGame} reason={relatedGame.recommendationReason} />
             ))}
