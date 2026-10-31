@@ -78,13 +78,8 @@ export function Header({ categories = [], guides = [] }: { categories?: SidebarC
 
             <div className="ml-auto flex shrink-0 items-center gap-1.5 md:ml-0">
               <div className="header-actions">
-                <Link prefetch={false} href="/recently-played" aria-label="Recently played" className="header-action hidden md:inline-flex">
-                  <History className="header-action-icon" aria-hidden="true" />
-                  <span className="hidden xl:inline">History</span>
-                </Link>
                 <Link prefetch={false} href="/favorites" aria-label={`Your favorites${favoriteCount ? ` (${favoriteCount})` : ""}`} className="header-action header-action-saved">
                   <Heart className={`header-action-icon ${favoriteCount ? "fill-current" : ""}`} aria-hidden="true" />
-                  <span className="hidden xl:inline">Favorites</span>
                   {favoriteCount > 0 && <span className="header-favorite-count">{favoriteCount > 99 ? "99+" : favoriteCount}</span>}
                 </Link>
                 <span className="header-action-divider" aria-hidden="true" />
