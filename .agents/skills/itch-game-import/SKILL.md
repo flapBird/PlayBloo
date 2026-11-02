@@ -5,7 +5,7 @@ description: PlayBloo（playbloo.net）itch.io 新游戏批量入库的完整工
 
 # itch.io 新游戏批量入库（PlayBloo）
 
-把 SEO 控制台 itch 雷达每日的新游戏（API 自动拉取，status=ready 即「未用于 PlayBloo」），做成 PlayBloo 生产库里的完整游戏详情页：抓取官方页面补全详情 → 撰写英文文案 → 写入 Supabase（games + 分类 + Updates）→ 封面镜像到自家存储 → 回填雷达「已用」状态。所有游戏是外链游玩（`external_url` 指向 itch 页面），不做 iframe 内嵌。
+把 SEO 控制台 itch 雷达每日的新游戏（API 自动拉取，status=new 即「未用于 PlayBloo」；2026-11-02 起枚举由 ready 改为 new/used/all），做成 PlayBloo 生产库里的完整游戏详情页：抓取官方页面补全详情 → 撰写英文文案 → 写入 Supabase（games + 分类 + Updates）→ 封面镜像到自家存储 → 回填雷达「已用」状态。所有游戏是外链游玩（`external_url` 指向 itch 页面），不做 iframe 内嵌。
 
 **先读 `references/pitfalls.md`**（每一项都是真实事故），写作细节和分类映射在 `references/content-guide.md`。
 
@@ -21,9 +21,9 @@ description: PlayBloo（playbloo.net）itch.io 新游戏批量入库的完整工
 ### 1. 拉批次数据（fetch_batch.py，自动）
 ```bash
 mkdir -p /tmp/itch-import && python3 .agents/skills/itch-game-import/scripts/fetch_batch.py \
-  --date 2026-10-25        # date 缺省=今天（东八区）；status 缺省 ready=未用于 PlayBloo
+  --date 2026-10-25        # date 缺省=今天（东八区）；status 缺省 new=未用于 PlayBloo（2026-11-02 前的旧枚举叫 ready）
 ```
-从雷达 API 拉当日未用游戏，写两个文件：`batch.json`（API 原始响应，存档核对用，**不要改**）和 `games.json`（工作清单）。终端打印每款的质量标记/价格/类型表。**挑选 = 直接编辑 games.json，删掉不入库的游戏**（后面 mark-used 只回填实际入库的 URL，未选的自动留在 ready，下次还能拉到）。count 为 0 说明当天雷达还没跑完，用 `--date` 取前几天。**不要**查 SEOGrowthManage 本地 SQLite（是旧库）。
+从雷达 API 拉当日未用游戏，写两个文件：`batch.json`（API 原始响应，存档核对用，**不要改**）和 `games.json`（工作清单）。终端打印每款的质量标记/价格/类型表。**挑选 = 直接编辑 games.json，删掉不入库的游戏**（后面 mark-used 只回填实际入库的 URL，未选的自动留在 new，下次还能拉到）。count 为 0 先核对 status 枚举（new/used/all）再判定「当天雷达没跑」，用 `--date` 取前几天。**不要**查 SEOGrowthManage 本地 SQLite（是旧库）。
 
 API 不可用时的回退：让用户粘贴「# itch.io 新游戏速递」导出 Markdown（parse_and_fetch.py 仍支持 Markdown 输入），该路径完成后需**人工**到控制台标记已用。
 

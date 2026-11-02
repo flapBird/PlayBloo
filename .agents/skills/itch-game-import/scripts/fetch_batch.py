@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Fetch the day's itch radar batch from the SEO console API (status=ready).
+"""Fetch the day's itch radar batch from the SEO console API (status=new).
+
+NOTE: the API's "unused by PlayBloo" status enum used to be `ready`; since
+2026-11-02 the value is `new` (used records are `used`). If count=0 on a date
+that should have data, check the enum first before assuming the radar hasn't
+run.
 
 Replaces the old "paste the export markdown" step: the API returns MORE fields
 than the markdown export (cover_url, description, price, genres, tags,
@@ -7,7 +12,7 @@ platforms, screenshots, keywords, quality_ok/quality_notes) and the same
 records flow into parse_and_fetch.py for itch-page enrichment.
 
 Usage:
-  python3 fetch_batch.py [--date YYYY-MM-DD] [--status ready] [--limit 300] \
+  python3 fetch_batch.py [--date YYYY-MM-DD] [--status new] [--limit 300] \
                          [--out-dir /tmp/itch-import] [--env /path/.env.local] \
                          [--proxy http://127.0.0.1:7890] [--direct]
 
@@ -58,7 +63,7 @@ def main():
         return args[args.index(name) + 1] if name in args and args.index(name) + 1 < len(args) else default
 
     out_dir = pathlib.Path(opt("--out-dir", "/tmp/itch-import"))
-    status = opt("--status", "ready")
+    status = opt("--status", "new")
     limit = opt("--limit", "300")
     date = opt("--date", "")
     use_proxy = "--direct" not in args
