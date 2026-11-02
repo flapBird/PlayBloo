@@ -1,0 +1,111 @@
+{
+  "batchDate": "2026-11-02",
+  "reviewMethod": "manual editorial review via service role within this authorized session; no admin session available (reviewed_by left null, actual method recorded in submission _editorial_review)",
+  "snapshotBaseline": {
+    "path": "/tmp/playbloo-review-snapshot-2026-11-02.json (private, not committed)",
+    "submissions": 54,
+    "games": 1163,
+    "pendingReviewAtStart": 1
+  },
+  "summary": {
+    "input": 1,
+    "approved": 1,
+    "duplicate": 0,
+    "rejected": 0,
+    "pending": 0,
+    "failed": 0
+  },
+  "items": [
+    {
+      "submissionId": "cec2a9cb-6ae8-416f-8a78-5d6f19dde946",
+      "inputUrl": "https://covenant.cards/",
+      "sourceType": "official",
+      "resolvedUrl": "https://covenant.cards/#battle",
+      "identity": {
+        "officialSite": "https://covenant.cards/",
+        "developer": "Gal Itach (solo developer, studio/brand Valorem, valorem.ing)",
+        "crossEvidence": "Google Play package io.github.galitach.covenantcards matches developer name; footer 'Created by Gal Itach'; 'an independent game from Valorem'",
+        "steamAppId": null,
+        "itchProjectSlug": null,
+        "duplicateScan": "no match across 1163 catalog games incl. drafts (title/developer/creator/url identity)"
+      },
+      "decision": "approved",
+      "reason": "Free English browser battle preview verified playable in a real browser; submission notes verified point by point (three 16-card decks Vanguard/Sanctuary/Serpent, 15 starting captain health, at most seven turns per side, simplified preview separate from the native game, not browser multiplayer); no duplicate in catalog",
+      "gameId": "e8776e1b-caf4-4a1d-bfd9-5ab5c74396b0",
+      "slug": "covenant-cards",
+      "publishedAt": "2026-11-01T20:39:07.242Z",
+      "game": {
+        "title": "Covenant Cards",
+        "developer": "Gal Itach",
+        "developerUrl": "https://valorem.ing/",
+        "externalUrl": "https://covenant.cards/#battle",
+        "originalGameUrl": "https://covenant.cards/",
+        "platforms": ["browser"],
+        "monetization": "free",
+        "developmentStatus": "demo",
+        "iframeUrl": "",
+        "note": "external-link listing only per submitter request; labeled as a limited browser preview; full native iOS/Android game not bundled into the listing"
+      },
+      "categories": ["card", "strategy"],
+      "tags": ["single-player"],
+      "researchSources": [
+        { "url": "https://covenant.cards/", "verifiedAt": "2026-11-02", "supports": "official homepage; developer and studio attribution; native App Store / Google Play links for the full game" },
+        { "url": "https://covenant.cards/#battle", "verifiedAt": "2026-11-02", "supports": "browser battle preview played interactively: card deploy (mana 8->6, Momentum 0->1, unit on board); deck chooser dialog: three 16-card decks, '15 health · 7 turns each', Pharaoh AI strategies Assault/Bastion/Hex, encounter seeds and challenge links" },
+        { "url": "https://covenant.cards/assets/* (public site bundle, static read)", "verifiedAt": "2026-11-02", "supports": "nav sections 'Browser battle preview'/'Browser pack preview'; card data with factions Judaism/Egypt/Babylon; help text; static reading only, not counted as playtesting" },
+        { "url": "https://covenant.cards/game-assets/cinematic-breach-v2.webp", "verifiedAt": "2026-11-02", "supports": "official key art used as cover source" }
+      ],
+      "missingDetailFields": [
+        { "field": "engine", "reason": "native engine not disclosed for browser preview or full game" },
+        { "field": "release_date", "reason": "browser preview release date not published" },
+        { "field": "last_updated_at", "reason": "browser preview update date not published" },
+        { "field": "multiplayer", "reason": "browser preview is single-player vs AI; native game multiplayer status unverified" },
+        { "field": "publisher", "reason": "Valorem is the developer's studio brand; no separate publisher claimed" },
+        { "field": "graphics", "reason": "no authoritative asset style classification" }
+      ],
+      "media": {
+        "cover": {
+          "source": "https://covenant.cards/game-assets/cinematic-breach-v2.webp",
+          "mirror": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/submissions-2026-11-02/covenant-cards.webp",
+          "spec": "640x360 WebP, 37480 bytes",
+          "verification": "public URL HTTP 200, content-type image/webp, byte length matches upload; official brand key art, not claimed as browser-preview screenshot",
+          "screenshots": []
+        }
+      },
+      "dbWrite": {
+        "draftInsert": "games row inserted is_published=false with all five content fields + short_description; read back",
+        "associations": "game_categories card+strategy, game_tags single-player written and read back",
+        "anonDraftHidden": "anon queries by id and slug returned 0 rows pre-publish",
+        "publish": "conditional update is_published=true with real updated_at=2026-11-01T20:39:07.242Z; added_at=2026-11-01T17:53:56.884Z (actual ingestion)",
+        "submissionUpdate": "conditional update eq(id).eq(status,pending_review) returned exactly 1 row; status=approved, approved_game_id bound, reviewed_at set, extracted_data merged with _editorial_review, original notes preserved with appended review note, extraction_status left partial"
+      },
+      "verification": {
+        "livePage": {
+          "url": "https://playbloo.net/game/covenant-cards",
+          "http": 200,
+          "renderedTitle": "Covenant Cards - Game Details | PlayBloo",
+          "titleLength": 41,
+          "metaDescriptionLength": 152,
+          "fiveFieldSpotChecks": "12/12 hit",
+          "externalLink": "https://covenant.cards/#battle",
+          "coverDirectFromStorage": true,
+          "usesNextImageOptimizer": false
+        },
+        "homepage": "new game card present with direct Storage cover URL; no /_next/image on page",
+        "sitemap": {
+          "liveXml": "not yet including covenant-cards (pre-publish cache; service-role writes do not invalidate Next cache and no admin session available for existing revalidation path)",
+          "liveXmlBaselineCheck": "1156 /game/ URLs all match baseline published games, lastmod all unchanged, 0 mismatches; 3 extra URLs are Color Block Jam level pages (expected)",
+          "localSourceQuery": "1157 published games now; covenant-cards would be included with lastmod=2026-11-01T20:39:07.242Z; no duplicate slugs; generator code unchanged so no regression test run"
+        },
+        "llmsTxt": "describes route patterns only, no per-game links; no change needed",
+        "baselineDrift": "none: no other game, category, tag, or series rows touched (proven by 1156/1156 lastmod match)"
+      },
+      "incidents": [
+        "insert script stalled during network read-back phase and was stopped; state read-back confirmed insert + associations had succeeded, so no duplicate creation was attempted and only missing verification steps were re-run"
+      ],
+      "outcome": "approved+published+verified"
+    }
+  ],
+  "limitations": [
+    "live sitemap.xml will include the new URL only after Next cache revalidation or next deployment; no authenticated revalidation path available in this session and no auto-deploy performed"
+  ]
+}
