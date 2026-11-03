@@ -1,0 +1,93 @@
+{
+  "batchDate": "2026-11-03",
+  "reviewMethod": "manual editorial review via service role within this authorized session; no admin session available (reviewed_by left null, actual method recorded in each submission _editorial_review)",
+  "snapshotBaseline": {
+    "path": "/tmp/playbloo-review-snapshot-2026-11-03.json (private, not committed)",
+    "submissions": 56,
+    "games": 1173,
+    "pendingReviewAtStart": 2,
+    "note": "games +10 vs 2026-11-02 batch came from other sessions between snapshots (itch batch import and Farflung), not touched this round"
+  },
+  "summary": {
+    "input": 2,
+    "approved": 0,
+    "duplicate": 0,
+    "rejected": 2,
+    "pending": 0,
+    "failed": 0
+  },
+  "networkNote": "itch.io and the Steam store page timed out from the review network; page facts were cross-verified via the successful auto-extraction at submission time (2026-11-01), web search of listings/creator profile/coverage, and submitters' own explicit statements. Timeouts alone were not used as rejection grounds.",
+  "items": [
+    {
+      "submissionId": "5cfb013e-531e-4ac4-b136-0b8c4bfbb9e0",
+      "title": "The Meridian Signal",
+      "inputUrl": "https://digiiforge.itch.io/the-meridian-signal",
+      "sourceType": "itch",
+      "itchProjectSlug": "digiiforge/the-meridian-signal",
+      "identity": {
+        "creator": "digiiforge",
+        "dedupeScan": "no duplicate in full catalog incl. drafts; existing 'MERIDIAN' (Brady Licht, slug meridian) is a same-title different-author game, not merged"
+      },
+      "decision": "rejected",
+      "reason": "Paid print-and-play tabletop mystery (Letter/A4 PDF dossiers, separate hint booklet, optional offline desktop-browser terminal run from a downloaded file); no hosted online browser-playable version. Submitter notes explicitly state it is not an embedded free browser game; the free first-puzzle prologue is downloadable material, not an online browser build. Does not meet the only-browser-games inclusion rule.",
+      "researchSources": [
+        { "url": "https://digiiforge.itch.io/the-meridian-signal", "verifiedAt": "2026-11-01 (auto-extraction, extraction=success)", "supports": "description/tags: printable sci-fi mystery, print-and-play tag, PDFs, offline hint terminal" },
+        { "url": "https://itch.io/profile/digiiforge", "verifiedAt": "2026-11-03 (web search)", "supports": "downloadable puzzle game, free prologue with downloadable materials" },
+        { "url": "https://www.digiiforge.com/products/meridian-signal", "verifiedAt": "2026-11-03 (web search summary; direct fetch timed out)", "supports": "official product page existence" }
+      ],
+      "missingDetailFields": [],
+      "dbWrite": {
+        "conditionalUpdateRows": 1,
+        "status": "rejected",
+        "reviewedAt": "2026-11-03T15:26:17.099+00:00",
+        "reviewedBy": null,
+        "notesPreserved": true,
+        "editorialReviewRecorded": true,
+        "originalExtractedKeysPreserved": 18,
+        "extractionStatusLeft": "success"
+      },
+      "outcome": "rejected+written+verified"
+    },
+    {
+      "submissionId": "d651a5bb-50a6-4ad7-92fc-56c9ed449407",
+      "title": "Cartoon Crime",
+      "inputUrl": "https://store.steampowered.com/app/5057090/Cartoon_Crime/",
+      "sourceType": "steam",
+      "steamAppId": 5057090,
+      "identity": {
+        "developer": "BuBa Games (Burhan Doygun; two-person studio)",
+        "dedupeScan": "no duplicate in full catalog incl. drafts"
+      },
+      "decision": "rejected",
+      "reason": "Paid Windows-only Steam Early Access download (~$2.99, launched late August 2026). No browser/HTML5/WebGL or itch.io version found; submitter notes explicitly state it is not a browser game. A native Steam game, even with demos, is not a browser game under the PlayBloo inclusion rule.",
+      "researchSources": [
+        { "url": "https://store.steampowered.com/app/5057090/Cartoon_Crime/", "verifiedAt": "2026-11-01 (auto-extraction, extraction=success; direct fetch timed out 2026-11-03)", "supports": "platforms=[Windows], paid, Early Access, Steam URL" },
+        { "url": "https://steamdb.info/app/5057090/", "verifiedAt": "2026-11-03 (web search)", "supports": "Steam-only PC download, price history" },
+        { "url": "web search coverage (Playin.gg info hub, GameFAQs PC-only, coverage sites)", "verifiedAt": "2026-11-03", "supports": "no browser/HTML5/itch build exists" }
+      ],
+      "missingDetailFields": [],
+      "dbWrite": {
+        "conditionalUpdateRows": 1,
+        "status": "rejected",
+        "reviewedAt": "2026-11-03T15:26:17.099+00:00",
+        "reviewedBy": null,
+        "notesPreserved": true,
+        "editorialReviewRecorded": true,
+        "originalExtractedKeysPreserved": 21,
+        "extractionStatusLeft": "success"
+      },
+      "outcome": "rejected+written+verified"
+    }
+  ],
+  "verification": {
+    "readBack": "both submissions status=rejected with reviewed_at set, no duplicate/approved bindings, original notes preserved with appended review appendix, _editorial_review present with method/reviewedAt/status/reason/sourceUrls",
+    "queue": "pending_review remaining: 0",
+    "gamesRowsTouched": 0,
+    "sitemap": "no published-game changes this round; rejections do not affect sitemap; no lastmod changes needed or made",
+    "llmsTxt": "not affected; unchanged",
+    "build": "no application code changes; no build run"
+  },
+  "incidents": [
+    "first write script's final read-back selected a non-existent column (game_submissions.title) and errored after both conditional updates had already succeeded (1 row each); a corrected read-back script verified both writes — no rewrites were attempted against the already-updated rows"
+  ]
+}
