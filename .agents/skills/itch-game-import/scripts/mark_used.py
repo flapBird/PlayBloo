@@ -55,7 +55,7 @@ def main():
     date = opt("--date", "")
     all_day = "--all-day" in args
     use_proxy = "--direct" not in args
-    proxy = opt("--proxy", "http://127.0.0.1:7890")
+    proxy = opt("--proxy", "http://127.0.0.1:7890") if "--proxy" in args else "http://127.0.0.1:7890"
 
     env = load_env(opt("--env"))
     key = (env.get("ITCH_RADAR_API_KEY") or "").strip()
@@ -63,7 +63,18 @@ def main():
         sys.exit("ITCH_RADAR_API_KEY is empty/missing in .env.local — issue one on the SEO console /itch page and paste it there")
     base = (env.get("ITCH_RADAR_API_BASE") or DEFAULT_BASE).rstrip("/")
 
-    urls = [a for a in args if a.startswith("http")]
+    # collect explicit urls from argv, excluding option VALUES like --proxy's
+    skip_next = False
+    urls = []
+    for a in args:
+        if skip_next:
+            skip_next = False
+            continue
+        if a == "--proxy":
+            skip_next = True
+            continue
+        if a.startswith("http"):
+            urls.append(a)
     if urls_file:
         for line in open(urls_file, encoding="utf-8"):
             line = line.strip()
