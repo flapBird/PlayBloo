@@ -7,12 +7,13 @@ import { CoverFallback } from "@/components/games/CoverFallback";
 import type { GameCardGame } from "@/components/games/GameCard";
 
 /**
- * The homepage's one big visual anchor: a five-column mosaic — the #1 trending
- * game on a double tile, four runner-up covers, and a portrait Game Guides
- * tile riding the right edge so the guides hub gets first-screen visibility.
- * Sourced from the trending feed (play ranking).
+ * The homepage's one big visual anchor: a five-column mosaic — the #1 game on
+ * a double tile, four runner-up covers, and a portrait Game Guides tile
+ * riding the right edge so the guides hub gets first-screen visibility.
+ * Games come from the curated /admin/featured slots with the trending feed
+ * filling unset positions; the lead badge reflects which source won slot 1.
  */
-export function HomeFeatured({ games }: { games: GameCardGame[] }) {
+export function HomeFeatured({ games, leadIsCurated = false }: { games: GameCardGame[]; leadIsCurated?: boolean }) {
   if (!games.length) return null;
   const [lead, ...rest] = games;
   const runners = rest.slice(0, 4);
@@ -57,7 +58,7 @@ export function HomeFeatured({ games }: { games: GameCardGame[] }) {
         />
         <span className="relative z-10 flex flex-col justify-end gap-2 p-4 md:gap-2.5 md:p-5">
           <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-primary/15 px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-[0.08em] text-primary">
-            Trending now
+            {leadIsCurated ? "Featured" : "Trending now"}
           </span>
           <span className="max-w-md text-xl font-black leading-tight tracking-tight md:text-2xl">{lead.title}</span>
           <span className="flex flex-wrap items-center gap-2">

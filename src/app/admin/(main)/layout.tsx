@@ -5,7 +5,7 @@ import { getAuthenticatedAdmin } from "@/lib/admin-auth";
 import { SITE_NAME } from "@/lib/constants";
 import {
   LayoutDashboard, Gamepad2, Tags, ListTree, FolderTree, Search,
-  FileSpreadsheet, ExternalLink, Inbox, Activity
+  FileSpreadsheet, ExternalLink, Inbox, Activity, LayoutGrid
 } from "lucide-react";
 
 export const metadata: Metadata = { robots: { index: false, follow: false } };
@@ -13,6 +13,7 @@ export const metadata: Metadata = { robots: { index: false, follow: false } };
 const adminNav = [
   { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
   { label: "Games", href: "/admin/games", icon: Gamepad2 },
+  { label: "Home Featured", href: "/admin/featured", icon: LayoutGrid },
   { label: "Submissions", href: "/admin/submissions", icon: Inbox },
   { label: "Categories", href: "/admin/categories", icon: FolderTree },
   { label: "Tags", href: "/admin/tags", icon: Tags },

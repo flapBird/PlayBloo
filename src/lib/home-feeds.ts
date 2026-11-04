@@ -8,6 +8,13 @@ export type HomeFeedSort = "newest" | "trending" | "released" | "popular" | "ins
 export interface HomeFeed { games: GameCardGame[]; failed: boolean }
 export type HomeFeeds = Record<HomeFeedSort, HomeFeed>;
 
+export interface HomeFeaturedContent {
+  /** Five cards for the featured mosaic: curated slots first, trending filling the rest. */
+  games: GameCardGame[];
+  /** True when position 1 (the big lead tile) holds a hand-curated game. */
+  leadIsCurated: boolean;
+}
+
 async function getFeed(sort: HomeFeedSort): Promise<HomeFeed> {
   try {
     const supabase = createAdminClient();
@@ -45,9 +52,47 @@ async function getFeed(sort: HomeFeedSort): Promise<HomeFeed> {
   }
 }
 
+/**
+ * The featured mosaic honours hand-picked positions from /admin/featured:
+ * each curated row occupies its literal slot (1 = big lead tile, 2-5 =
+ * runner-up covers) and every unset slot falls back to the trending feed so
+ * the mosaic never shrinks. Any error (missing migration, bad row) keeps the
+ * homepage on the pure trending ranking.
+ */
+async function getFeaturedGames(trending: GameCardGame[]): Promise<HomeFeaturedContent> {
+  try {
+    const supabase = createAdminClient();
+    const { data, error } = await supabase
+      .from("home_featured_slots")
+      .select(`position, games(${HOME_GAME_CARD_FIELDS})`)
+      .eq("games.is_published", true)
+      .order("position", { ascending: true });
+    if (error) throw error;
+
+    const slots: (GameCardGame | null)[] = new Array(5).fill(null);
+    for (const row of data || []) {
+      const position = Number(row?.position);
+      const game = Array.isArray(row?.games) ? row.games[0] : row?.games;
+      if (!Number.isInteger(position) || position < 1 || position > 5 || !game) continue;
+      slots[position - 1] = normalizePublicGameCards([game])[0];
+    }
+    const used = new Set(slots.filter((game): game is GameCardGame => Boolean(game)).map((game) => game.id));
+    const fallbackQueue = trending.filter((game) => !used.has(game.id));
+    for (let i = 0; i < slots.length; i++) {
+      if (!slots[i]) slots[i] = fallbackQueue.shift() ?? null;
+    }
+    const games = slots.filter((game): game is GameCardGame => Boolean(game));
+    return { games, leadIsCurated: Boolean(slots[0]) };
+  } catch (error) {
+    console.error("Could not load curated home featured slots:", error);
+    return { games: trending, leadIsCurated: false };
+  }
+}
+
 export async function getHomeContent() {
   const [newest, trending, released, popular, instant] = await Promise.all([
     getFeed("newest"), getFeed("trending"), getFeed("released"), getFeed("popular"), getFeed("instant"),
   ]);
-  return { feeds: { newest, trending, released, popular, instant } satisfies HomeFeeds };
+  const featured = await getFeaturedGames(trending.games);
+  return { feeds: { newest, trending, released, popular, instant } satisfies HomeFeeds, featured };
 }

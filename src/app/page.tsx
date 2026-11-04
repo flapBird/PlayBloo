@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
-  const { feeds } = await getHomeContent();
+  const { feeds, featured } = await getHomeContent();
 
   return (
     <div className="home-page pb-8">
@@ -26,7 +26,7 @@ export default async function HomePage() {
           </div>
         </section>
 
-        <HomeFeatured games={feeds.trending.games} />
+        <HomeFeatured games={featured.games} leadIsCurated={featured.leadIsCurated} />
 
         {/* The guides hub lives in the featured mosaic and "Play instantly" sits
             beside the feed tabs, so the old right rail has nothing left to do. */}
