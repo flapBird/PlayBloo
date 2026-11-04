@@ -47,8 +47,8 @@
 游戏页大部分区块的信息源就是 itch 页面，这是与 itch 内容同质、Google 只给"Discovered - currently not indexed"的主要原因。以下三个字段是页面上**只属于 PlayBloo 的内容**，每款必写：
 
 13. **editorial_take**（游戏页 "Why we're featuring X" 高亮区块）：2-4 句站点第一视角的推荐语——为什么收录它、适合什么玩家、最突出的一两个亮点、和同品类游戏相比的位置。规则：只下"有依据的判断"（依据仍是页面素材），可以带观点（"standout pick for fans of X"），但不得虚构未提及的机制、评分或奖项；不复述 description 的句子。
-14. **meta_title**（SERP 标题，设置后覆盖默认 `{title} - Play Here`）：≤60 字符，含游戏名 + 一个差异化的搜索意图词（如 "Play … Online"、"… Browser Demo"、"Free … Web Game"）；不要重复站名后缀（模板会自己加）。
-15. **meta_description**（SERP 描述，设置后覆盖 description 截断）：≤155 字符，**原创句子**（可以化用 short_description，但不要与它逐字相同），写清"是什么 + 玩点 + 可直接在浏览器玩"。
+14. **meta_title**（SERP 标题，设置后覆盖默认 `{title} - Play Here`）：**渲染后 ≤60 字符——根 layout 模板会追加 ` | PlayBloo`（11 字符），所以 meta_title 本身必须 ≤49 字符**（2026-11-04 批次实测：写满 60 渲染后变 68 超限）。含游戏名 + 一个差异化的搜索意图词（如 "Play … Online"、"… Browser Demo"、"Free … Web Game"）；不要自己重复站名后缀。
+15. **meta_description**（SERP 描述，设置后覆盖 description 截断）：≤155 字符（该字段模板不再追加后缀，按原样计长），**原创句子**（可以化用 short_description，但不要与它逐字相同），写清"是什么 + 玩点 + 可直接在浏览器玩"。
 
 这三个字段同样用于老游戏回填：后台 Games 列表勾选 "Missing editorial take"（按 view_count 倒序）就是回填工作清单，每批处理约 20 款；回填只补这三个字段，**不要动 `updated_at`/`last_updated_at`**（sitemap 的 lastmod 依赖它们保持不变）。
 
