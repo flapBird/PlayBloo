@@ -26,3 +26,8 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - 原因：Vercel Transformations 按（图片 × 宽度）计费，Hobby 配额耗尽后所有新转换 402，症状是"线上裂图、本地正常"（2026-10 两次事故）。`scripts/warm-image-cache.mjs` 是优化器时代的产物，已无用且运行只会消耗配额，不要再在部署后运行。
 - 没有优化器兜底，新增图片素材必须预先压缩到位（WebP、合理尺寸，参考 `public/images/guides/` 下 1600px 宽的封面规格），浏览器直接加载原图缩放显示。
 - 游戏封面镜像到 Supabase Storage 的惯例不变——那是为了绕开 itch 热链问题，与图片优化无关。
+
+# CDN 游戏托管约定
+
+- 本站自托管（iframe 直嵌）游戏统一放在 Cloudflare R2 桶 `cdn-assets`，公开访问域名 **`https://cdn.playbloo.net`**，路径 `games/<slug>/index.html`（现有：odio-el-chocolate、last-flag-standing）。把游戏改造成站内直嵌时，`games.iframe_url` 一律指向该域名下对应 slug 的 index.html。
+- 上传用 Wrangler CLI（项目本地 `npx wrangler`，OAuth 已有 R2 写权限）：`r2 object put` 仅支持单文件，批量需脚本并发循环；`r2 object get` 不接受 `-y`。上传必须显式设 Content-Type（html/js/json/mp3/svg/png 各归各类），缓存策略：index.html 与数据 JSON 用 `max-age=300`，其余静态资源 `max-age=86400`。
