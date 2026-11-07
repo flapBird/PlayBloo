@@ -371,3 +371,28 @@ listing, one-player support, play modes, HDR/VRR and the still-unconfirmed downl
 size and unlock time. The hub and existing release-date article receive substantive
 update timestamps; all other Ocarina articles retain their original dates. Its
 independent official cover is a precompressed 1600 × 900 WebP.
+
+## Niệm Phật Online (November 7, 2026)
+
+`niem-phat-online` covers Vietnam's viral 3D temple browser game (niemphat.online), known
+colloquially as the đi chùa online game. It is not added to the Supabase catalog; there is no
+playable iframe. The hub's "Where to play it" section states outright that the multiplayer
+service runs on the official site only (five servers with per-server subdomains, accounts,
+queues) and that PlayBloo links out instead of hosting or framing it.
+
+Facts were checked hands-on on the evening of November 7, 2026: PlayBloo created one throwaway
+character on the suggested S1 server (Chùa Vô Lượng), joined the main hall, tried the practice
+screens, opened the pilgrimage map and read the in-game Cách chơi help plus the site's
+Điều khoản & Chính sách (updated November 2, 2026). Server online counts are labeled as a
+single-evening snapshot. The exact launch date is not announced anywhere; `releaseDate` holds
+an internal approximation that never renders (heroFact replaces the hub date chip and the topic
+has no releaseFacts section). The Korean Sansa temple's 600,000-visit figure belongs to the
+Korean original, not to this game — do not copy it over.
+
+All four covers are PlayBloo screenshots taken November 7, 2026 (character creation, main hall
+with the top announcement ticker cropped off, the chanting screen and the pilgrimage map),
+converted to WebP; `cover.sourceUrl` keeps each page's URL. Player dharma names visible in the
+shots are public in-game labels; the wish-lamp wall was deliberately not captured as it holds
+user-written prayers. `llms.txt` gained bullets for this topic and the previously missing
+Fight Karo topic. The homepage guides-card and first-hub assertions in verify-guides moved to
+this topic, which is now the newest by publication date.

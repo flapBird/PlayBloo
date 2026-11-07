@@ -36,6 +36,10 @@ const wkgHub = "/guides/wikigacha";
 const wkgPages = [wkgHub, `${wkgHub}/how-to-play`, `${wkgHub}/rarity`, `${wkgHub}/alternatives`];
 const wkgUpdatedAt = "2026-10-31T09:00:00.000Z";
 pages.push(...wkgPages);
+const npoHub = "/guides/niem-phat-online";
+const npoPages = [npoHub, `${npoHub}/getting-started`, `${npoHub}/practices`, `${npoHub}/world`];
+const npoUpdatedAt = "2026-11-07T16:10:00.000Z";
+pages.push(...npoPages);
 const canonicalOrigin = "https://playbloo.net";
 const demoTopics = [
   { slug: "remember", officialUrl: "https://xlaucifer.itch.io/remember" },
@@ -71,6 +75,9 @@ const articleCovers = new Map([
   [`${wkgHub}/how-to-play`, "/images/guides/wikigacha-how-to-play.webp"],
   [`${wkgHub}/rarity`, "/images/guides/wikigacha-rarity.webp"],
   [`${wkgHub}/alternatives`, "/images/guides/wikigacha-alternatives.webp"],
+  [`${npoHub}/getting-started`, "/images/guides/niem-phat-online-getting-started.webp"],
+  [`${npoHub}/practices`, "/images/guides/niem-phat-online-practices.webp"],
+  [`${npoHub}/world`, "/images/guides/niem-phat-online-world.webp"],
 ]);
 const checkedCoverCards = new Map([...articleCovers.keys()].map((path) => [path, new Set()]));
 
@@ -144,7 +151,7 @@ assert.ok(header.includes('href="/guides"'), "Primary navigation links to Guides
 assert.ok(!header.includes("playMode=embedded"), "Redundant Playable navigation removed");
 assert.ok(home.includes('href="/guides"'), "Homepage mosaic links to the guides hub");
 assert.ok(home.includes("Game Guides: get good, faster"), "Homepage mosaic shows the guides card");
-assert.ok(home.includes("/images/guides/fight-karo.webp"), "Guides card features the newest guide cover");
+assert.ok(home.includes("/images/guides/niem-phat-online.webp"), "Guides card features the newest guide cover");
 assert.ok(!(home.match(/<nav aria-label="Game feed"[\s\S]*?<\/nav>/)?.[0] || "").includes("playMode=embedded"), "Redundant feed tab removed");
 console.log("PASS unknown routes, canonical redirect, sitemap, internal links and homepage navigation");
 
@@ -306,7 +313,7 @@ console.log("PASS visual novel Demo status, official entries, covers and Latest 
 
 const hubSection = listing.split('aria-label="Game guide hubs"')[1]?.split("</section>")[0] ?? "";
 const firstHub = hubSection.match(/href="(\/guides\/[^"?#]+)"/)?.[1];
-assert.equal(firstHub, fkHub, "Guide hubs list leads with the newest published topic");
+assert.equal(firstHub, npoHub, "Guide hubs list leads with the newest published topic");
 console.log("PASS guide hubs list is newest-first");
 
 const starter = await (await get(starterPath)).text();
@@ -428,3 +435,44 @@ for (const cover of ["/images/guides/wikigacha.webp", "/images/guides/wikigacha-
   assert.ok(response.headers.get("content-type")?.includes("image/webp"), `${cover}: precompressed WebP`);
 }
 console.log("PASS WikiGacha routes, Rule Book facts, covers and sitemap dates");
+
+for (const path of npoPages) {
+  const html = await (await get(path)).text();
+  assert.ok(!html.includes("/_next/image"), `${path}: direct precompressed cover`);
+  assert.ok(!html.includes("<iframe"), `${path}: no game embed`);
+  const ids = [...html.matchAll(/<section[^>]*\bid="([^"]+)"/g)].map((match) => match[1]);
+  assert.equal(new Set(ids).size, ids.length, `${path}: unique section IDs`);
+  for (const [, target] of html.matchAll(/href="#([^"]+)"/g)) assert.ok(ids.includes(target), `${path}: contents target ${target} exists`);
+  const pageTitle = html.match(/<title>(.*?)<\/title>/s)?.[1] ?? "";
+  assert.ok(pageTitle.length <= 60, `${path}: rendered title within 60 chars (${pageTitle.length})`);
+  const metaDescription = attr(html, "meta", 'name="description"', "content") ?? "";
+  assert.ok(metaDescription.length <= 160, `${path}: meta description within 160 chars (${metaDescription.length})`);
+  assert.equal(currentEntries.get(`${canonicalOrigin}${path}`), npoUpdatedAt, `${path}: sitemap uses the PlayBloo publication date`);
+  if (path !== npoHub) assert.ok(latestUpdates.includes(`href="${path}"`), `${path}: appears in Latest Updates`);
+}
+const npoHubHtml = await (await get(npoHub)).text();
+assert.ok(npoHubHtml.includes('href="https://www.niemphat.online/"'), "Niệm Phật Online hub links the official site");
+assert.ok(npoHubHtml.includes("PlayBloo is not affiliated with Niệm Phật Online"), "Niệm Phật Online non-affiliation is explicit");
+assert.ok(npoHubHtml.includes("runs on the official site only"), "The hub says the live service is official-only");
+assert.ok(npoHubHtml.includes("November 7, 2026"), "Niệm Phật Online hub states the hands-on check date");
+const npoStart = await (await get(`${npoHub}/getting-started`)).text();
+assert.ok(npoStart.includes("Máy chủ Gốc") && npoStart.includes("Máy chủ S1"), "Getting-started lists the servers");
+assert.ok(npoStart.includes("100 Sen"), "Getting-started reports the welcome gift");
+assert.ok(npoStart.includes("60 minutes per day"), "Getting-started carries the under-18 playtime notice");
+assert.ok(npoStart.includes("W A S D"), "Getting-started covers desktop controls");
+const npoPractices = await (await get(`${npoHub}/practices`)).text();
+for (const practice of ["Lạy Phật", "Tràng hạt", "Tụng kinh", "Thiền"]) assert.ok(npoPractices.includes(practice), `Practices article covers ${practice}`);
+assert.ok(npoPractices.includes("+5% per extra person"), "Practices article explains the group bowing bonus");
+assert.ok(npoPractices.includes("30 rosary chains, 1,080 bows and 180 meditation minutes"), "Practices article carries the leaderboard caps");
+assert.ok(npoPractices.includes("cannot be bought with money"), "Practices article keeps the no-paid-merit promise");
+const npoWorld = await (await get(`${npoHub}/world`)).text();
+assert.ok(npoWorld.includes("chùa duyên") && npoWorld.includes("Hộ chiếu"), "World article covers destiny temples and the passport");
+assert.ok(npoWorld.includes("Áo Hoa Sala") && npoWorld.includes("Sư Tử Xanh"), "World article covers the robe reward and pet pity");
+assert.ok(npoWorld.includes("ngạ quỷ"), "World article explains the hungry ghost rule");
+for (const slug of ["merit", "download"]) assert.equal((await get(`${npoHub}/${slug}`)).status, 404, `${slug}: folded into existing articles, no placeholder route`);
+for (const cover of ["/images/guides/niem-phat-online.webp", "/images/guides/niem-phat-online-getting-started.webp", "/images/guides/niem-phat-online-practices.webp", "/images/guides/niem-phat-online-world.webp"]) {
+  const response = await get(cover);
+  assert.equal(response.status, 200, `${cover}: cover loads`);
+  assert.ok(response.headers.get("content-type")?.includes("image/webp"), `${cover}: precompressed WebP`);
+}
+console.log("PASS Niệm Phật Online routes, hands-on facts, covers and sitemap dates");
