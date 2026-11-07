@@ -1,0 +1,128 @@
+{
+  "batch": "2026-11-07",
+  "reviewedAt": "2026-11-07T03:20:13.951Z",
+  "snapshot": {
+    "path": "/tmp/playbloo-review-snapshot-2026-11-07.json",
+    "counts": { "submissions": 58, "games": 1211, "categories": 24, "tags": 8, "series": 2 },
+    "pendingAtSnapshot": 2
+  },
+  "method": "manual editorial review; rendered-page fetch + live browser session verification (start screen render; interactive tap test on puzzle). No admin session: service role writes within this authorized review; reviewed_by left null; actual method recorded per submission in extracted_data._editorial_review.",
+  "results": [
+    {
+      "submissionId": "afca83d8-68a0-43d7-8b66-f6fd63ab3766",
+      "inputUrl": "https://1in8billion.cc/",
+      "resolvedUrl": "https://1in8billion.cc/en/",
+      "identity": "independently maintained browser life simulation '1 in 8 Billion' (1in8b) at 1in8billion.cc; operator name unpublished; site states it is not operated by creators of similarly named projects; catalog scan (58 submissions, 1211 games incl. drafts) found no duplicate",
+      "decision": "approved",
+      "reason": "free browser life simulation playable without download or account (beta v0.9.48); verified 2026-11-07 via rendered homepage, /en/guide/ and /en/about/ plus a live browser session",
+      "gameId": "8e786c2b-4968-4c1e-9947-9caea69bce69",
+      "slug": "1-in-8-billion",
+      "publishedAt": "2026-11-07T03:20:21.457Z",
+      "game": {
+        "title": "1 in 8 Billion",
+        "platforms": ["browser"],
+        "monetization": "freemium",
+        "development_status": "early-access",
+        "developer": null,
+        "categories": ["simulation", "educational"],
+        "tags": ["single-player"],
+        "external_url": "https://1in8billion.cc/",
+        "cover_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/submissions-2026-11-07/1-in-8-billion.webp",
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/submissions-2026-11-07/1-in-8-billion-1.webp"
+        ],
+        "content_verified": true,
+        "fiveSectionsRendered": ["About", "How to Play", "Controls", "Tips & Tricks", "Features"],
+        "renderedTitleLength": 40,
+        "renderedMetaDescriptionLength": 156
+      },
+      "researchSources": [
+        "https://1in8billion.cc/ (rendered homepage; v0.9.48 beta badge; keepsake pass $3; Ages 15+; 19 interface languages in nav)",
+        "https://1in8billion.cc/en/guide/ (world presets 1950-2025/UN future, pace options, begin flow, milestone questions, 16x speed, local saves, transfer codes, share cards)",
+        "https://1in8billion.cc/en/about/ (data sources UN/WHO/World Bank etc., US$3 pass, advertising may appear, classroom mode, API tiers, no operator name)",
+        "live browser session 2026-11-07 (start screen rendered; settings area captured)"
+      ],
+      "missingDetailFields": ["developer name", "engine", "release_date"],
+      "media": {
+        "coverSource": "live capture of game start screen (site og-en.png is a 404 at source; broken og:image not used)",
+        "screenshotSource": "live capture of world/pace settings area",
+        "compression": "WebP, cover 640x400, screenshot 1280x800",
+        "verified": "public URLs return HTTP 200 image/webp with byte sizes matching local files"
+      },
+      "dbOutcome": {
+        "draftInserted": true,
+        "anonymousDraftHidden": true,
+        "published": true,
+        "submissionConditionalUpdate": "eq(id).eq(status,pending_review).eq(updated_at,snapshot) returned 1 row",
+        "notesOriginalPreserved": true,
+        "extractedDataKeysPreserved": true,
+        "extractionStatusUnchanged": "partial",
+        "reviewed_by": null
+      },
+      "outcome": "approved-and-published"
+    },
+    {
+      "submissionId": "bfe125e7-44c5-44d8-bdb2-e5bb8cd05746",
+      "inputUrl": "https://udrwu9c0tjuedqy2.github.io/hla-games/sumthread/daily-number-puzzle-for-beginners/#pz",
+      "resolvedUrl": "https://udrwu9c0tjuedqy2.github.io/hla-games/sumthread/daily-number-puzzle-for-beginners/",
+      "identity": "Sumthread web companion (daily 3x3 number-path puzzle) by Honest Little Apps on GitHub Pages; sibling of free iOS app (app-id 6829816144) not merged into this entry; catalog scan found no duplicate",
+      "decision": "approved",
+      "reason": "free browser puzzle playable directly on the submitted page without download or account; verified 2026-11-07 with a live browser session including an interactive tap test on the daily board (segment 0/20 to 5/20, tiles used 1/9, legal-move dashes appeared)",
+      "gameId": "7ec280d2-c8e3-4d2f-aa25-b5a034d551d1",
+      "slug": "sumthread-daily-number-puzzle",
+      "publishedAt": "2026-11-07T03:20:28.014Z",
+      "game": {
+        "title": "Sumthread Daily Number Puzzle",
+        "platforms": ["browser"],
+        "monetization": "free",
+        "development_status": "released",
+        "developer": "Honest Little Apps",
+        "developer_url": "https://udrwu9c0tjuedqy2.github.io/hla-games/",
+        "categories": ["puzzle"],
+        "tags": ["single-player"],
+        "external_url": "https://udrwu9c0tjuedqy2.github.io/hla-games/sumthread/daily-number-puzzle-for-beginners/",
+        "cover_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/submissions-2026-11-07/sumthread-daily-number-puzzle.webp",
+        "screenshots": [
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/submissions-2026-11-07/sumthread-daily-number-puzzle-1.webp",
+          "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/screenshots/submissions-2026-11-07/sumthread-daily-number-puzzle-2.webp"
+        ],
+        "content_verified": true,
+        "fiveSectionsRendered": ["About", "How to Play", "Controls", "Tips & Tricks", "Features"],
+        "renderedTitleLength": 55,
+        "renderedMetaDescriptionLength": 156
+      },
+      "researchSources": [
+        "https://udrwu9c0tjuedqy2.github.io/hla-games/sumthread/daily-number-puzzle-for-beginners/ (page HTML + FAQ JSON-LD: rules, Clean Weave, scratch-to-reveal, 7 weekday boards, 28 mini-challenges)",
+        "live browser session 2026-11-07 (daily board 2026-11-07 rendered; interactive tap test)",
+        "page metadata (og:site_name Honest Little Apps; breadcrumb hla-games root; apple-itunes-app id 6829816144)"
+      ],
+      "missingDetailFields": ["engine", "web companion launch date (iOS app v1.0.0 released 2026-11-02 per listing references; web launch date unpublished)"],
+      "media": {
+        "coverSource": "official og.png of the submitted page (1200x630)",
+        "screenshotSource": "live captures of the 2026-11-07 daily board (initial + after verified tap)",
+        "compression": "WebP, cover 640x336, screenshots 1280x800",
+        "verified": "public URLs return HTTP 200 image/webp with byte sizes matching local files"
+      },
+      "dbOutcome": {
+        "draftInserted": true,
+        "anonymousDraftHidden": true,
+        "published": true,
+        "submissionConditionalUpdate": "eq(id).eq(status,pending_review).eq(updated_at,snapshot) returned 1 row",
+        "notesOriginalPreserved": true,
+        "extractedDataKeysPreserved": true,
+        "extractionStatusUnchanged": "partial",
+        "reviewed_by": null
+      },
+      "outcome": "approved-and-published"
+    }
+  ],
+  "verification": {
+    "oldGamesUnchanged": "full comparison vs snapshot: 0 changes to updated_at/is_published across all 1211 baseline games (1 natural counter drift only); no category/tag/series rows touched",
+    "liveDetailPages": "both /game/{slug} pages render the five content sections and Game Info; external links point to official entries; covers served direct from Supabase public URLs; 0 /_next/image references; homepage already lists both slugs",
+    "liveSitemap": "stale cache as expected (1204 game URLs matching baseline exactly, lastmods all equal baseline updated_at; new games pending the 1h revalidate cycle; route revalidate=3600 + unstable_cache(3600); no unauthenticated invalidation path used)",
+    "localBuildSitemap": "production build exit 0; local /sitemap.xml contains 1216 game URLs exactly matching current DB published set (0 extra, 0 missing, 0 timestamp mismatches); new games' lastmod equal exact publish timestamps",
+    "llmsTxt": "live copy identical to repo public/llms.txt; unchanged",
+    "parallelNote": "another session published 10 itch games at 03:30:06 between snapshot and build (untouched by this review); local sitemap reconciliation includes them and matches DB"
+  },
+  "counts": { "approved": 2, "duplicate": 0, "rejected": 0, "pending": 0, "failed": 0 }
+}
