@@ -24,6 +24,9 @@ pages.push(...pbzPages);
 const mhoHub = "/guides/monster-hunter-outlanders";
 const mhoPages = [mhoHub, `${mhoHub}/release-date`, `${mhoHub}/beginners-guide`, `${mhoHub}/weapons`];
 const mhoUpdatedAt = "2026-10-29T10:00:00.000Z";
+const fkHub = "/guides/fight-karo";
+const fkPages = [fkHub, `${fkHub}/how-to-play`, `${fkHub}/fighters`, `${fkHub}/friend-rooms`];
+pages.push(...fkPages);
 const steamHub = "/guides/steam-free-games-2026";
 const steamUpdatedAt = "2026-10-29T08:00:00.000Z";
 const ootLaunchPath = `${hub}/launch-checklist`;
@@ -139,7 +142,9 @@ const home = await homeResponse.text();
 const header = home.match(/<header\b[\s\S]*?<\/header>/)?.[0] || "";
 assert.ok(header.includes('href="/guides"'), "Primary navigation links to Guides");
 assert.ok(!header.includes("playMode=embedded"), "Redundant Playable navigation removed");
-assert.ok(home.includes(`href="${wkgHub}"`), "Homepage feature links to the newest guide");
+assert.ok(home.includes('href="/guides"'), "Homepage mosaic links to the guides hub");
+assert.ok(home.includes("Game Guides: get good, faster"), "Homepage mosaic shows the guides card");
+assert.ok(home.includes("/images/guides/fight-karo.webp"), "Guides card features the newest guide cover");
 assert.ok(!(home.match(/<nav aria-label="Game feed"[\s\S]*?<\/nav>/)?.[0] || "").includes("playMode=embedded"), "Redundant feed tab removed");
 console.log("PASS unknown routes, canonical redirect, sitemap, internal links and homepage navigation");
 
@@ -301,7 +306,7 @@ console.log("PASS visual novel Demo status, official entries, covers and Latest 
 
 const hubSection = listing.split('aria-label="Game guide hubs"')[1]?.split("</section>")[0] ?? "";
 const firstHub = hubSection.match(/href="(\/guides\/[^"?#]+)"/)?.[1];
-assert.equal(firstHub, wkgHub, "Guide hubs list leads with the newest published topic");
+assert.equal(firstHub, fkHub, "Guide hubs list leads with the newest published topic");
 console.log("PASS guide hubs list is newest-first");
 
 const starter = await (await get(starterPath)).text();
