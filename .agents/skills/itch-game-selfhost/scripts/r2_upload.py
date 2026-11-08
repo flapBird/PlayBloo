@@ -40,6 +40,8 @@ CONTENT_TYPES = {
     ".woff2": "font/woff2",
     ".glb": "model/gltf-binary",
     ".bin": "application/octet-stream",
+    ".zip": "application/zip",
+    ".data": "application/octet-stream",
 }
 SKIP_NAMES = {".gitignore", ".DS_Store"}
 

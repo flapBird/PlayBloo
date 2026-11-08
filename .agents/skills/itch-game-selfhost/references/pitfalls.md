@@ -40,3 +40,12 @@
 ## 10. sitemap 与 updated_at 约定
 
 自托管改造是真实内容更新：该游戏的 `updated_at` 刷为实际修改时刻（sitemap lastmod 自动跟随）；其他游戏时间戳一律不动；无上下架不改 `src/app/sitemap.ts`。数据侧核验通过即收尾，不等 ISR/sitemap 缓存。
+
+## 11. Ren'Py 导出的 PWA service worker 要整个移除（2026-11-08 my-sweet-pets-demo 事故）
+
+Ren'Py web 导出自带 `service-worker.js` + index.html 内的注册代码（PWA 离线缓存）。iframe 嵌入实测中 SW 的 `cache.put(182MB response.clone())` 在受限存储环境直接炸掉 game.zip 下载（"Could not download game.zip: network error"），wasm 首次加载也报 "both async and sync fetching of the wasm failed"。**处理：删 service-worker.js 文件 + 精确移除 index.html 里的 SW 注册代码块（保留 `window.gameZipURL` 行）**，Ren'Py 引擎不依赖 SW，去掉后本地与 CDN iframe 嵌入全部正常。附带收益：避免 CDN 上更新游戏后 SW 缓存返回旧版。
+
+## 12. r2_upload.py 的未知扩展名是静默跳过（2026-11-08 my-sweet-pets-demo 事故）
+
+Ren'Py 的 `renpy.data`（引擎启动必需）因 `.data` 不在 CONTENT_TYPES 里被 "SKIP（未知类型）" 跳过，且该行混在正常输出里极易漏看——上传"93/93 成功"但游戏根本起不来。上传后必须核对：脚本输出的 SKIP 行逐条处理（给脚本补类型映射或手工补传），并抽一个**运行时关键文件**回读校验，不能只看成功计数。
+
