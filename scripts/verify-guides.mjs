@@ -40,6 +40,13 @@ const npoHub = "/guides/niem-phat-online";
 const npoPages = [npoHub, `${npoHub}/getting-started`, `${npoHub}/practices`, `${npoHub}/world`];
 const npoUpdatedAt = "2026-11-07T16:10:00.000Z";
 pages.push(...npoPages);
+const ftHub = "/guides/fortnite-pirate-token";
+const ftPages = [ftHub, `${ftHub}/drop-rate`, `${ftHub}/how-to-get`];
+const gtaHub = "/guides/gta-6";
+const gtaPages = [gtaHub, `${gtaHub}/pre-order`];
+const newestUpdatedAt = "2026-11-08T13:00:00.000Z";
+const ootDlcPath = `${hub}/master-quest-dlc`;
+pages.push(...ftPages, ...gtaPages, ootDlcPath);
 const canonicalOrigin = "https://playbloo.net";
 const demoTopics = [
   { slug: "remember", officialUrl: "https://xlaucifer.itch.io/remember" },
@@ -78,6 +85,9 @@ const articleCovers = new Map([
   [`${npoHub}/getting-started`, "/images/guides/niem-phat-online-getting-started.webp"],
   [`${npoHub}/practices`, "/images/guides/niem-phat-online-practices.webp"],
   [`${npoHub}/world`, "/images/guides/niem-phat-online-world.webp"],
+  [`${ftHub}/drop-rate`, "/images/guides/fortnite-pirate-token-drop-rate.webp"],
+  [`${ftHub}/how-to-get`, "/images/guides/fortnite-pirate-token-how-to-get.webp"],
+  [ootDlcPath, "/images/guides/ocarina-of-time-master-quest-dlc.webp"],
 ]);
 const checkedCoverCards = new Map([...articleCovers.keys()].map((path) => [path, new Set()]));
 
@@ -151,7 +161,7 @@ assert.ok(header.includes('href="/guides"'), "Primary navigation links to Guides
 assert.ok(!header.includes("playMode=embedded"), "Redundant Playable navigation removed");
 assert.ok(home.includes('href="/guides"'), "Homepage mosaic links to the guides hub");
 assert.ok(home.includes("Game Guides: get good, faster"), "Homepage mosaic shows the guides card");
-assert.ok(home.includes("/images/guides/niem-phat-online.webp"), "Guides card features the newest guide cover");
+assert.ok(home.includes("/images/guides/fortnite-pirate-token.webp"), "Guides card features the newest guide cover");
 assert.ok(!(home.match(/<nav aria-label="Game feed"[\s\S]*?<\/nav>/)?.[0] || "").includes("playMode=embedded"), "Redundant feed tab removed");
 console.log("PASS unknown routes, canonical redirect, sitemap, internal links and homepage navigation");
 
@@ -243,8 +253,12 @@ if (process.argv[3]) {
       assert.equal(currentEntries.get(url), dmzUpdatedAt, "MW4 hub reflects the substantive DMZ update");
       continue;
     }
-    if (path === hub || path === `${hub}/release-date`) {
-      assert.equal(currentEntries.get(url), ootLaunchUpdatedAt, `${path}: Ocarina launch update has its own timestamp`);
+    if (path === hub) {
+      assert.equal(currentEntries.get(url), newestUpdatedAt, "Ocarina hub reflects the DLC rumor update");
+      continue;
+    }
+    if (path === `${hub}/release-date`) {
+      assert.equal(currentEntries.get(url), ootLaunchUpdatedAt, `${path}: Ocarina launch update keeps its own timestamp`);
       continue;
     }
     assert.equal(currentEntries.get(url), lastmod, `${path}: existing content keeps its sitemap timestamp`);
@@ -313,7 +327,7 @@ console.log("PASS visual novel Demo status, official entries, covers and Latest 
 
 const hubSection = listing.split('aria-label="Game guide hubs"')[1]?.split("</section>")[0] ?? "";
 const firstHub = hubSection.match(/href="(\/guides\/[^"?#]+)"/)?.[1];
-assert.equal(firstHub, npoHub, "Guide hubs list leads with the newest published topic");
+assert.equal(firstHub, ftHub, "Guide hubs list leads with the newest published topic");
 console.log("PASS guide hubs list is newest-first");
 
 const starter = await (await get(starterPath)).text();
@@ -384,12 +398,20 @@ assert.equal(steamSchemas.find((schema) => schema["@type"] === "Article")?.about
 
 const ootLaunch = await (await get(ootLaunchPath)).text();
 assert.equal(currentEntries.get(`${canonicalOrigin}${ootLaunchPath}`), ootLaunchUpdatedAt, "Ocarina launch checklist uses its publication date");
-assert.equal(currentEntries.get(`${canonicalOrigin}${hub}`), ootLaunchUpdatedAt, "Ocarina hub reflects the launch checklist update");
-assert.equal(currentEntries.get(`${canonicalOrigin}${hub}/release-date`), ootLaunchUpdatedAt, "Ocarina release article reflects its new related guide");
+assert.equal(currentEntries.get(`${canonicalOrigin}${hub}`), newestUpdatedAt, "Ocarina hub reflects the DLC rumor update");
+assert.equal(currentEntries.get(`${canonicalOrigin}${hub}/release-date`), ootLaunchUpdatedAt, "Ocarina release article keeps its launch-update timestamp");
 assert.ok(ootLaunch.includes("$69.99") && ootLaunch.includes("1 player"), "Ocarina launch checklist carries current store facts");
 assert.ok(ootLaunch.includes("not October 29") && ootLaunch.includes("November 5"), "Ocarina hardware and game dates stay distinct");
 assert.ok(ootLaunch.includes("remain unconfirmed"), "Ocarina download size and unlock time are not invented");
+const ootDlc = await (await get(ootDlcPath)).text();
+assert.equal(currentEntries.get(`${canonicalOrigin}${ootDlcPath}`), newestUpdatedAt, "Ocarina DLC article uses its publication date");
+assert.ok(ootDlc.includes("DodongoCavern") && ootDlc.includes("HasMQ"), "Ocarina DLC article carries the datamine specifics");
+assert.ok(ootDlc.includes("I don’t think that we would announce anything specific at this time"), "Ocarina DLC article quotes Aonuma’s non-answer");
+assert.ok(ootDlc.includes("could be scaffolding for cancelled work"), "Ocarina DLC article keeps the leftover-code caveat");
 assert.ok(latestUpdates.includes(`href="${ootLaunchPath}"`), "Ocarina launch checklist appears in Latest Updates");
+assert.ok(latestUpdates.includes(`href="${ootDlcPath}"`), "Ocarina DLC article appears in Latest Updates");
+const npoFeatures = await (await get(`${hub}/new-features`)).text();
+assert.ok(npoFeatures.includes(`href="${ootDlcPath}"`), "New-features article links the DLC rumor for the related-card surface");
 for (const cover of ["/images/guides/monster-hunter-outlanders.webp", "/images/guides/steam-free-games-2026.webp"]) {
   const response = await get(cover);
   assert.equal(response.status, 200, `${cover}: hub cover loads`);
@@ -476,3 +498,70 @@ for (const cover of ["/images/guides/niem-phat-online.webp", "/images/guides/nie
   assert.ok(response.headers.get("content-type")?.includes("image/webp"), `${cover}: precompressed WebP`);
 }
 console.log("PASS Niệm Phật Online routes, hands-on facts, covers and sitemap dates");
+
+for (const path of ftPages) {
+  const html = await (await get(path)).text();
+  assert.ok(!html.includes("/_next/image"), `${path}: direct precompressed cover`);
+  assert.ok(!html.includes("<iframe"), `${path}: no game embed`);
+  const ids = [...html.matchAll(/<section[^>]*\bid="([^"]+)"/g)].map((match) => match[1]);
+  assert.equal(new Set(ids).size, ids.length, `${path}: unique section IDs`);
+  for (const [, target] of html.matchAll(/href="#([^"]+)"/g)) assert.ok(ids.includes(target), `${path}: contents target ${target} exists`);
+  const pageTitle = html.match(/<title>(.*?)<\/title>/s)?.[1] ?? "";
+  assert.ok(pageTitle.length <= 60, `${path}: rendered title within 60 chars (${pageTitle.length})`);
+  const metaDescription = attr(html, "meta", 'name="description"', "content") ?? "";
+  assert.ok(metaDescription.length <= 160, `${path}: meta description within 160 chars (${metaDescription.length})`);
+  assert.equal(currentEntries.get(`${canonicalOrigin}${path}`), newestUpdatedAt, `${path}: sitemap uses the PlayBloo publication date`);
+  if (path !== ftHub) assert.ok(latestUpdates.includes(`href="${path}"`), `${path}: appears in Latest Updates`);
+}
+const ftHubHtml = await (await get(ftHub)).text();
+assert.ok(ftHubHtml.includes("1 in 137,500"), "Pirate Token hub carries the headline odds");
+assert.ok(ftHubHtml.includes("Treasure Hours") && ftHubHtml.includes("2–4 PM ET"), "Hub carries the Treasure Hour windows");
+assert.ok(ftHubHtml.includes("nothing here is a luck claim"), "Hub does not imply hands-on token luck");
+assert.ok(ftHubHtml.includes("December 5"), "Hub marks the season end event");
+const ftDrop = await (await get(`${ftHub}/drop-rate`)).text();
+assert.ok(ftDrop.includes("1 in 1,562,500") && ftDrop.includes("1 in 68,750"), "Drop-rate article carries base and boosted odds");
+assert.ok(ftDrop.includes("137,500 chests on average"), "Drop-rate article does the expected-chests math");
+assert.ok(ftDrop.includes("may be higher in the future"), "Drop-rate article keeps Epic’s future-rate caveat");
+const ftHow = await (await get(`${ftHub}/how-to-get`)).text();
+assert.ok(ftHow.includes("Crossbones Isle") && ftHow.includes("Arlong Park"), "How-to-get covers the island");
+assert.ok(ftHow.includes("nowhere else"), "How-to-get warns off token-generator scams");
+assert.ok(ftHow.includes(`href="${ftHub}/drop-rate"`), "How-to-get links the odds article");
+for (const slug of ["calculator", "power-hour", "shop"]) assert.equal((await get(`${ftHub}/${slug}`)).status, 404, `${slug}: folded into existing articles, no placeholder route`);
+for (const cover of ["/images/guides/fortnite-pirate-token.webp", "/images/guides/fortnite-pirate-token-drop-rate.webp", "/images/guides/fortnite-pirate-token-how-to-get.webp"]) {
+  const response = await get(cover);
+  assert.equal(response.status, 200, `${cover}: cover loads`);
+  assert.ok(response.headers.get("content-type")?.includes("image/webp"), `${cover}: precompressed WebP`);
+}
+console.log("PASS Fortnite Pirate Token routes, published odds, covers and sitemap dates");
+
+for (const path of gtaPages) {
+  const html = await (await get(path)).text();
+  assert.ok(!html.includes("/_next/image"), `${path}: direct precompressed cover`);
+  assert.ok(!html.includes("<iframe"), `${path}: no game embed`);
+  const ids = [...html.matchAll(/<section[^>]*\bid="([^"]+)"/g)].map((match) => match[1]);
+  assert.equal(new Set(ids).size, ids.length, `${path}: unique section IDs`);
+  for (const [, target] of html.matchAll(/href="#([^"]+)"/g)) assert.ok(ids.includes(target), `${path}: contents target ${target} exists`);
+  const pageTitle = html.match(/<title>(.*?)<\/title>/s)?.[1] ?? "";
+  assert.ok(pageTitle.length <= 60, `${path}: rendered title within 60 chars (${pageTitle.length})`);
+  const metaDescription = attr(html, "meta", 'name="description"', "content") ?? "";
+  assert.ok(metaDescription.length <= 160, `${path}: meta description within 160 chars (${metaDescription.length})`);
+  assert.equal(currentEntries.get(`${canonicalOrigin}${path}`), newestUpdatedAt, `${path}: sitemap uses the PlayBloo publication date`);
+}
+const gtaHubHtml = await (await get(gtaHub)).text();
+assert.ok(/datetime="2026-11-19"/i.test(gtaHubHtml), "GTA 6 release date is separate from guide publication");
+assert.ok(gtaHubHtml.includes("Upcoming"), "GTA 6 is still marked upcoming at the last check");
+assert.ok(gtaHubHtml.includes("code-in-box") || gtaHubHtml.includes("code in a box"), "GTA 6 hub carries the physical-edition caveat");
+assert.ok(gtaHubHtml.includes("not a browser game"), "GTA 6 is not presented as a playable browser game");
+const gtaPreorder = await (await get(`${gtaHub}/pre-order`)).text();
+assert.ok(gtaPreorder.includes("$79.99") && gtaPreorder.includes("$99.99"), "Pre-order guide carries both reported US prices");
+assert.ok(gtaPreorder.includes("Vintage Vice City Pack") && gtaPreorder.includes("November 20"), "Pre-order bonus and its deadline are explicit");
+assert.ok(gtaPreorder.includes("'55 Vapid Stanier"), "Pre-order guide itemizes the bonus contents");
+assert.ok(gtaPreorder.includes("Preload begins November 10") || gtaPreorder.includes("November 10, 2026"), "Preload window is stated");
+assert.ok(gtaPreorder.includes("a disc will not be included"), "Pre-order guide repeats the no-disc warning");
+assert.ok(gtaPreorder.includes("PlayBloo does not sell"), "Pre-order guide disclaims selling");
+const gtaArticleCover = await get("/images/guides/gta-6-pre-order-guide.webp");
+assert.equal(gtaArticleCover.status, 200, "GTA pre-order article cover loads");
+assert.ok(gtaArticleCover.headers.get("content-type")?.includes("image/webp"), "GTA pre-order article cover is WebP");
+for (const slug of ["release-date", "editions", "collector"]) assert.equal((await get(`${gtaHub}/${slug}`)).status, 404, `${slug}: single-intent topic, no placeholder route`);
+assert.ok(latestUpdates.includes(`href="${gtaHub}/pre-order"`), "GTA pre-order article appears in Latest Updates");
+console.log("PASS GTA 6 pre-order routes, store facts, covers and sitemap dates");

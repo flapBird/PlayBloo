@@ -20,8 +20,10 @@ import { steamFreeGames2026 } from "./steam-free-games-2026";
 import { wikigacha } from "./wikigacha";
 import { fightKaro } from "./fight-karo";
 import { niemPhatOnline } from "./niem-phat-online";
+import { fortnitePirateToken } from "./fortnite-pirate-token";
+import { gta6 } from "./gta-6";
 
-const topics: GuideTopic[] = [niemPhatOnline, wikigacha, fightKaro, monsterHunterOutlanders, steamFreeGames2026, phantomBladeZero, castlevaniaBelmontsCurse, enshrouded, worldOfWarcraftForever, marvelsWolverine, ocarinaOfTimeRemake, remember, nextStationTheMoon, biteYourTongue, sploob, shapeWalkthrough, hellraiserRevival, modernWarfare4];
+const topics: GuideTopic[] = [fortnitePirateToken, gta6, niemPhatOnline, wikigacha, fightKaro, monsterHunterOutlanders, steamFreeGames2026, phantomBladeZero, castlevaniaBelmontsCurse, enshrouded, worldOfWarcraftForever, marvelsWolverine, ocarinaOfTimeRemake, remember, nextStationTheMoon, biteYourTongue, sploob, shapeWalkthrough, hellraiserRevival, modernWarfare4];
 export const GUIDE_AUTHOR = { name: "PlayBloo Editorial", url: `${SITE_URL}/about` };
 export const GUIDES_DESCRIPTION = "Release dates, beta access, and help getting started with your next game.";
 

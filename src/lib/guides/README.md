@@ -372,6 +372,40 @@ size and unlock time. The hub and existing release-date article receive substant
 update timestamps; all other Ocarina articles retain their original dates. Its
 independent official cover is a precompressed 1600 × 900 WebP.
 
+## November 8, 2026 trend topics
+
+Three pages shipped against the November 8 search-trend shortlist, in priority order. All three
+follow the same sourcing discipline: official publisher material first, press coverage attributed
+in text, no hands-on claims, and covers are distinct inspected official assets compressed to
+1600 × 900 WebP with original URLs kept in the topic data.
+
+`fortnite-pirate-token` (P0) covers the Treasure Hunters mini-season reward. The odds table, the
+Treasure Hour schedule and the November 7 reveal story come from Vice and IGN's reporting of Epic's
+Fortnite Status post; the season, island and end-event facts come from Epic's own announcement. The
+expected-chests arithmetic converts Epic's published ratios only. PlayBloo has not pulled a token
+and the hub says so; no calculator page was built (the math lives in the drop-rate article), and
+"power hour" is answered as the informal name for Treasure Hours.
+
+`gta-6` (P1) is a single-intent pre-order topic: one hub plus the pre-order guide. Facts come from
+Rockstar's Newswire (June 25 pre-order opening; November 19, 2026 launch after the May 26 delay)
+and the Rockstar Store buy page checked November 8 (Vintage Vice City Pack before November 20,
+Ultimate contents, code-in-box wording, preload from November 10, €79.99 physical Standard as
+rendered to us). US $79.99/$99.99 pricing is attributed to Rockstar's store and launch coverage.
+Push Square's June 24, 2026 report is linked for the code-in-box story. No release-date article
+exists; hub releaseFacts carry the date, and placeholder routes (`release-date`, `editions`,
+`collector`) are asserted 404. Trailer 2 (`VQRLujxTm3c`) is embedded from Rockstar's official
+upload as listed on the store page.
+
+`ocarina-of-time-remake/master-quest-dlc` (P0, same-day) adds the Master Quest rumor article to the
+existing topic. Facts come from Nintendo Life's November 7 rumour piece (MrCheeze's Bluesky finds:
+MQ-labeled data next to DodongoCavern; exefs strings HasMQ, IsMQModeExist, NewGameMQ, ReleaseMQ),
+with Master Quest history carried by the topic's existing Iwata Asks and 3DS sources. The article
+states plainly that the data could be cancelled work, that nothing is confirmed, and that Aonuma's
+IGN answer (as quoted by Nintendo Life) is a non-answer. The hub gains a rumor section; the hub's
+updatedAt moves to 2026-11-08 while every existing article keeps its own dates except the
+related-link addition on `new-features`, which is navigation only and keeps its timestamps.
+`llms.txt` and verify-guides cover all three.
+
 ## Niệm Phật Online (November 7, 2026)
 
 `niem-phat-online` covers Vietnam's viral 3D temple browser game (niemphat.online), known

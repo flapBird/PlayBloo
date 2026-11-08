@@ -2,8 +2,10 @@ import type { GuideTopic } from "./types";
 
 const publicationDate = "2026-09-14T08:00:00+08:00";
 const launchUpdate = "2026-10-29T17:00:00+08:00";
+const dlcUpdate = "2026-11-08T13:00:00.000Z";
 const dates = { publishedAt: publicationDate, updatedAt: publicationDate };
 const us = "https://www.nintendo.com/us/store/products/the-legend-of-zelda-ocarina-of-time-125697/";
+const nintendoLifeRumor = "https://www.nintendolife.com/news/2026/11/rumour-data-found-in-zelda-ocarina-of-time-may-hint-at-master-quest-dlc";
 
 export const ocarinaOfTimeRemake: GuideTopic = {
   slug: "ocarina-of-time-remake",
@@ -28,8 +30,8 @@ export const ocarinaOfTimeRemake: GuideTopic = {
     publishedAt: "2026-09-08",
   },
   ...dates,
-  updatedAt: launchUpdate,
-  verifiedAt: "2026-10-29",
+  updatedAt: dlcUpdate,
+  verifiedAt: "2026-11-08",
   sources: [
     { id: "us", label: "Nintendo US — game details and release date", url: us },
     { id: "uk", label: "Nintendo UK — gameplay, equipment and features", url: "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/The-Legend-of-Zelda-Ocarina-of-Time-3115664.html" },
@@ -40,6 +42,7 @@ export const ocarinaOfTimeRemake: GuideTopic = {
     { id: "history", label: "Nintendo Iwata Asks — Ocarina of Time and its 3DS remake", url: "https://www.nintendo.com/en-gb/Iwata-Asks/Iwata-Asks-Nintendo-3DS/Vol-5-Asking-Mr-Miyamoto-Right-Before-Release/8-I-Wanted-to-Experience-Hyrule-in-3D/8-I-Wanted-to-Experience-Hyrule-in-3D-210570.html" },
     { id: "3ds", label: "Nintendo UK — Ocarina of Time 3D features", url: "https://www.nintendo.com/en-gb/Games/Nintendo-3DS-games/The-Legend-of-Zelda-Ocarina-of-Time-3D-275007.html" },
     { id: "3ds-development", label: "Nintendo Iwata Asks — the 3DS inventory and Water Temple changes", url: "https://iwataasks.nintendo.com/interviews/3ds/zelda-ocarina-of-time/3/2/" },
+    { id: "nl", label: "Nintendo Life — Rumour: Data Found In Zelda: Ocarina Of Time May Hint At Master Quest DLC (November 7, 2026)", url: nintendoLifeRumor },
   ],
   sections: [
     {
@@ -55,6 +58,15 @@ export const ocarinaOfTimeRemake: GuideTopic = {
       paragraphs: ["Nintendo’s current US listing shows a $69.99 physical edition, one-player play and support for handheld, tabletop and TV modes. The Zelda 40th Anniversary console and accessories launch October 29, one week before the game; those hardware dates are not an early game release."],
       link: { label: "Open the November 5 launch checklist", href: "/guides/ocarina-of-time-remake/launch-checklist" },
       sourceIds: ["us", "announcement"],
+    },
+    {
+      id: "master-quest-rumor", title: "Is Master Quest DLC coming?",
+      paragraphs: [
+        "The game is out, and the post-launch conversation has moved to DLC. On November 6, dataminers found MQ-labeled data and DLC-named strings in the Switch 2 game files, hinting at Master Quest content; Nintendo has not announced anything, and producer Eiji Aonuma’s quoted answer stays non-committal.",
+        "Our rumor article separates what the data shows from what it does not — including why leftover code from cancelled work remains possible.",
+      ],
+      link: { label: "Read the Master Quest DLC rumor status", href: "/guides/ocarina-of-time-remake/master-quest-dlc" },
+      sourceIds: ["nl"],
     },
     {
       id: "trailer", title: "Watch the official trailer", trailer: true,
@@ -101,7 +113,7 @@ export const ocarinaOfTimeRemake: GuideTopic = {
       slug: "new-features", shortTitle: "Confirmed new features", category: "What’s new",
       title: "Ocarina of Time Remake: Confirmed New Features",
       description: "A sourced overview of Ocarina of Time’s Switch 2 changes, from visuals and voiced scenes to new controls, with unverified details kept separate.",
-      status: "published", ...dates, relatedSlugs: ["gameplay", "remake-vs-original"],
+      status: "published", ...dates, relatedSlugs: ["gameplay", "remake-vs-original", "master-quest-dlc"],
       sections: [
         {
           id: "presentation", title: "Visuals, voices and music",
@@ -253,6 +265,69 @@ export const ocarinaOfTimeRemake: GuideTopic = {
           paragraphs: ["Nintendo’s October overview trailer is the latest official visual starting point. Our checklist is based on published information, not a review copy, performance test or verified dungeon route."],
           link: { label: "Watch Nintendo’s October overview", href: "https://www.nintendo.com/us/whatsnew/you-have-been-summoned-to-watch-the-new-legend-of-zelda-ocarina-of-time-overview-trailer/" },
           sourceIds: ["overview", "uk"],
+        },
+      ],
+    },
+    {
+      slug: "master-quest-dlc", shortTitle: "Master Quest DLC rumor", category: "DLC rumor",
+      title: "Ocarina of Time Remake DLC: Master Quest Rumor",
+      description:
+        "MQ-labeled data and DLC-named strings were found in the Switch 2 files. What dataminers found, what Nintendo has said, and what stays unconfirmed.",
+      cover: {
+        src: "/images/guides/ocarina-of-time-master-quest-dlc.webp",
+        alt: "Link fighting two Stalfos skeletons with shield and spear inside a dim wooden dungeon hall in Nintendo’s Ocarina of Time Switch 2 screenshot",
+        credit: "Official Nintendo Switch 2 store screenshot © Nintendo",
+        sourceUrl: "https://assets.nintendo.com/image/upload/f_jpg,q_auto/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%202/Software/The%20Legend%20of%20Zelda%20Ocarina%20of%20Time/125697-125698-nintendo-the-legend-of-zelda-ocarina-of-time-ss-5-1280x720",
+        width: 1600,
+        height: 900,
+      },
+      status: "published", publishedAt: dlcUpdate, updatedAt: dlcUpdate, relatedSlugs: ["new-features", "remake-vs-original", "launch-checklist"],
+      sections: [
+        {
+          id: "what-was-found", title: "What dataminers found in the game files",
+          paragraphs: [
+            "On November 6, 2026, dataminer MrCheeze posted findings from the Switch 2 game files on Bluesky: many data lines carrying an “MQ” tag next to map names such as “DodongoCavern”. A follow-up post described strings inside the executable (exefs) named HasMQ, IsMQModeExist, NewGameMQ and ReleaseMQ.",
+            "Nintendo Life reported the find the next day under a rumour label. The important qualifier in their coverage: the data is incomplete. What is in the files looks like the scaffolding for a Master Quest mode, not finished content, and a game being one week old at the time means nothing has been announced or confirmed.",
+          ],
+          sourceIds: ["nl"],
+        },
+        {
+          id: "what-master-quest-is", title: "What Master Quest is, briefly",
+          paragraphs: [
+            "Master Quest is Ocarina of Time’s remixed second quest: the same adventure with rearranged dungeon layouts and puzzles. It originally shipped on GameCube in the early 2000s — famously distributed in some regions through a Wind Waker pre-order disc — and Nintendo’s development interviews treat the GameCube disc as part of the Ocarina of Time line’s history.",
+            "Ocarina of Time 3D later carried the concept forward for the 3DS, where the Master Quest dungeons were mirrored on top of their remixing. That history matters for expectations: every previous Master Quest was included alongside its base game rather than sold separately, which is why the community reaction to a paid DLC hinges so heavily on scope.",
+          ],
+          sourceIds: ["history", "3ds"],
+        },
+        {
+          id: "dlc-or-update", title: "DLC or free update: what the strings do and don’t say",
+          paragraphs: [
+            "Nintendo Life’s reporting suggests the find could point to Master Quest arriving as DLC, and notes it would make sense for Nintendo to deliver it as an expansion — but stops short of calling it confirmed, and leaves free versus paid open. The string names alone cannot settle it: HasMQ and ReleaseMQ describe a mode existing and being released, not a price.",
+            "The community split follows that history line. One camp argues a straight port of the GameCube or 3DS Master Quest should be a free update because it always shipped with the base game before; the other points out that Nintendo’s first-party output now ships with substantial expansions, and a modern remake’s Master Quest could be a bigger, reworked package rather than a bare-bones remix. Both positions are expectations, not evidence.",
+          ],
+          sourceIds: ["nl"],
+        },
+        {
+          id: "what-nintendo-says", title: "What Nintendo has actually said",
+          paragraphs: [
+            "Nothing official. Nintendo has not announced Master Quest content, DLC or otherwise, for the Switch 2 remake. The closest thing to an answer is producer Eiji Aonuma’s comment in a recent IGN interview, as quoted by Nintendo Life: “I don’t think that we would announce anything specific at this time” when asked whether Master Quest was considered for the remake — a non-answer that fuels both readings.",
+            "The appetite is real, though: Nintendo Life’s own review called the remake “a stunning remake, but not quite definitive”, with the absence of Master Quest among its main complaints about difficulty for veteran players. That context explains why one Bluesky post moved the news cycle within a day.",
+          ],
+          sourceIds: ["nl"],
+        },
+        {
+          id: "unconfirmed", title: "What this rumor does not confirm",
+          bullets: [
+            "That Master Quest is coming at all — the data could be scaffolding for cancelled work, or leftovers from development.",
+            "Whether it would be a free update or paid DLC; nothing in the strings names a price or an edition.",
+            "Any timing, window or announcement venue, from a future Direct to a shadow drop.",
+            "The scope: a faithful remix of the GameCube dungeons, a mirrored 3DS-style take, or something newly reworked.",
+            "That the MQ strings refer to player-facing DLC at all rather than internal tooling.",
+          ],
+          paragraphs: [
+            "Our stance matches the reporting: treat this as a genuine hint worth tracking, not a promise. If Nintendo announces Master Quest content for the Switch 2 remake, we will update this article — and its date — with the confirmed details.",
+          ],
+          sourceIds: ["nl"],
         },
       ],
     },
