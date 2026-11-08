@@ -49,3 +49,15 @@ Ren'Py web 导出自带 `service-worker.js` + index.html 内的注册代码（PW
 
 Ren'Py 的 `renpy.data`（引擎启动必需）因 `.data` 不在 CONTENT_TYPES 里被 "SKIP（未知类型）" 跳过，且该行混在正常输出里极易漏看——上传"93/93 成功"但游戏根本起不来。上传后必须核对：脚本输出的 SKIP 行逐条处理（给脚本补类型映射或手工补传），并抽一个**运行时关键文件**回读校验，不能只看成功计数。
 
+## 13. Ren'Py 大体量 web 导出：182MB 单流 game.zip 在不稳网络下必然失败（2026-11-08 my-sweet-pets-demo 线上事故）
+
+`renpy-pre.js` 的 `loadGameZip()` 是单次流式 fetch（无重试无续传），game.zip 93% 体积是音频时（本例 162MB/174MB），长连接任何一次抖动 = 整局失败（"Could not download game.zip: network error"）。修复三板斧（全部实测通过）：
+1. **改写 renpy-pre.js**：Range 断点续传 + 10 次重试（206 续传 / 200 重来，`FS.open` 用 'a'/'w' 区分），CDN 的 206 支持先 curl 验证
+2. **音频外移按需加载**：把 `game/audio/*` 从 zip 移除，追加进 zip 内 `game/renpyweb_remote_files.txt`（格式：`audio/x.mp3` 换行 `music <字节数>`；BGM/环境声用 music、一次性音效用 voice——该清单是运行时按需下载的资格表，loader 找不到文件且名单内有才抛 DownloadNeeded 触发 XHR）。游戏脚本用"逻辑曲目名→候选扩展名列表（mp3→ogg→wav）"运行时解析，`renpy.loadable` 认可清单内的远端文件，所以 wav 死重可直接剔除（本例 72MB menu_theme.wav / 67MB bgm_laboratory.wav 都有同名 ogg 且候选链里 ogg 优先/主菜单硬编码 ogg）
+3. **缓存绕行**：zip/js 变更后 index.html 里给 `gameZipURL` 和 `renpy-pre.js` 加 `?v=N`（max-age=86400 的对象换内容，不加 query 会让边缘缓存旧版最长一天）
+
+**重建 zip 的两个坑**：① 必须原样保留目录条目（`game/`、`game/images/` 等）——webloader 的 XHR 用 `FS.writeFile` 落盘**不建父目录**，缺 `game/images/` 目录条目会让场景图下载写入失败（报 `Download error: OK`）；② 用 python zipfile 重写时别把原清单和更新后的清单写重名（先跳过旧条目再写新的），写完 `Counter(namelist)` 查重。
+
+验证口径：本地 http.server 日志能看到 `GET /game/audio/*.mp3` 按需请求（200→304）即管线通；CDN 顶层打开读 `performance.getEntriesByType("resource")` 确认全部同源且音频/图片按需命中。
+
+
