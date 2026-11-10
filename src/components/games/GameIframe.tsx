@@ -184,18 +184,6 @@ export function GameIframe({ src, title, gameId, slug, thumbnailUrl, externalUrl
       >
         {/* Controls */}
         <div className="absolute top-3 right-3 z-20 flex gap-2">
-          {externalUrl && (
-            <Button
-              aria-label="Open game site in a new tab"
-              title="Open game site in a new tab"
-              variant="secondary"
-              size="icon"
-              onClick={() => { trackExternalClick(); window.open(externalUrl, "_blank", "noopener,noreferrer"); }}
-              className="h-11 w-11 bg-black/80 hover:bg-black/80 text-white border-0"
-            >
-              <ExternalLink className="h-4 w-4" />
-            </Button>
-          )}
           <Button
             variant="secondary"
             size="icon"
