@@ -271,6 +271,11 @@ if (process.argv[3]) {
   for (const [url, lastmod] of previousEntries) {
     const path = new URL(url).pathname;
     if (!/^\/(game\/[^/]+(?:\/level\/[^/]+)?|guides\/.+)$/.test(path)) continue;
+    // The 2026-11-12 sitemap curation (see src/app/sitemap.ts) lists only
+    // high-traffic games, so URLs Google still knows from the old full
+    // sitemap can be legitimately absent now. The timestamp guarantee only
+    // applies to URLs that are still listed.
+    if (!currentEntries.has(url)) continue;
     if (path === enshroudedHub) {
       assert.equal(currentEntries.get(url), starterUpdatedAt, "Enshrouded hub reflects the starter-build addition");
       continue;

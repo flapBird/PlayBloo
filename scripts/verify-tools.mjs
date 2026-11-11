@@ -3,16 +3,14 @@ import assert from "node:assert/strict";
 // Smoke test for the /tools section, in the spirit of verify-guides.mjs:
 //   node scripts/verify-tools.mjs [base-url]
 // Asserts the SEO contract (rendered title/description lengths, canonical,
-// one H1, JSON-LD), the sitemap entry with its launch-date lastmod, the
-// trailing-slash redirect, and that made-up tool slugs stay 404.
+// one H1, JSON-LD), that the tools pages stay out of the curated sitemap,
+// the trailing-slash redirect, and that made-up tool slugs stay 404.
 
 const base = process.argv[2] || "http://localhost:3000";
 const hubPath = "/tools";
 const path = "/tools/fortnite-chest-counter";
 const canonicalOrigin = "https://playbloo.net";
 const canonicalUrl = `${canonicalOrigin}${path}`;
-// Must match src/app/sitemap.ts — the page's real PlayBloo launch date.
-const launchLastmod = "2026-11-11";
 
 const get = (target, options) => fetch(new URL(target, base), { signal: AbortSignal.timeout(30000), ...options });
 const attr = (html, tag, match, name) => {
@@ -50,9 +48,11 @@ assert.ok(html.includes("pace line appears once you have counted"), `${path}: ex
 const sitemapResponse = await get("/sitemap.xml");
 assert.equal(sitemapResponse.status, 200);
 const sitemap = await sitemapResponse.text();
-const entry = sitemap.match(new RegExp(`<loc>\\s*${canonicalUrl.replace(/\//g, "\\/")}\\s*<\\/loc>\\s*<lastmod>([^<]+)<\\/lastmod>`));
-assert.ok(entry, "Sitemap contains the tool page");
-assert.ok(entry[1].startsWith(launchLastmod), `Sitemap lastmod keeps the launch date (got ${entry[1]})`);
+// The 2026-11-12 sitemap curation (see src/app/sitemap.ts) stopped listing
+// the tools pages: the sitemap only carries Search Console-indexed URLs,
+// category pages, the homepage, high-traffic games and guides. The pages
+// stay live and crawlable via internal links, so assert absence here.
+assert.ok(!sitemap.includes(`<loc>${canonicalUrl}</loc>`), "Tool page is intentionally absent from the curated sitemap");
 
 const redirect = await get(`${path}/`, { redirect: "manual" });
 assert.ok([307, 308].includes(redirect.status), "Trailing-slash URL redirects");
@@ -77,9 +77,7 @@ assert.ok(hubHtml.includes('href="/tools/fortnite-chest-counter"'), `${hubPath}:
 assert.ok(hubHtml.includes("Auto-save") && hubHtml.includes("Live odds"), `${hubPath}: card lists its features`);
 assert.ok([...hubHtml.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)].some((match) => JSON.parse(match[1])["@type"] === "BreadcrumbList"), `${hubPath}: BreadcrumbList schema`);
 
-const hubSitemapEntry = sitemap.match(new RegExp(`<loc>\\s*${canonicalOrigin}${hubPath.replace(/\//g, "\\/")}\\s*<\\/loc>\\s*<lastmod>([^<]+)<\\/lastmod>`));
-assert.ok(hubSitemapEntry, "Sitemap contains the tools hub");
-assert.ok(hubSitemapEntry[1].startsWith(launchLastmod), `Tools hub sitemap lastmod keeps the launch date (got ${hubSitemapEntry[1]})`);
+assert.ok(!sitemap.includes(`<loc>${canonicalOrigin}${hubPath}</loc>`), "Tools hub is intentionally absent from the curated sitemap");
 
 const hubRedirect = await get(`${hubPath}/`, { redirect: "manual" });
 assert.ok([307, 308].includes(hubRedirect.status), "Tools hub trailing-slash URL redirects");
