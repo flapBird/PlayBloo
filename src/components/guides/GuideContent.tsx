@@ -5,6 +5,7 @@ import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 import { formatGuideDate, getGuideArticles, getGuideCover, GUIDE_AUTHOR, guidePath } from "@/lib/guides";
 import type { GuideArticle, GuideSection, GuideTopic } from "@/lib/guides/types";
+import { pickGameLinksForGuide } from "@/lib/priority-pages";
 import { GuideTrailer } from "./GuideTrailer";
 import { EnshroudedStarterPlanner } from "./EnshroudedStarterPlanner";
 import styles from "./guides.module.css";
@@ -189,4 +190,28 @@ export function RelatedGuides({ topic, article }: { topic: GuideTopic; article: 
   });
   if (!related.length) return null;
   return <section className={styles.related}><div className={styles.sectionHeading}><h2>Keep exploring</h2><Link href={guidePath(topic)}>All guides <ArrowRight size={14} /></Link></div><div className={styles.cardGrid}>{related.map((item) => <GuideCard key={item.slug} topic={topic} article={item} />)}</div></section>;
+}
+
+/**
+ * Rotating bridge from the guide corpus to the game catalogue. The current
+ * guides cover games that are not hosted on PlayBloo, so these links point
+ * at catalogue pages honestly framed as "what else there is to play" rather
+ * than pretending to be the same game. The trio is rotated per page slug so
+ * guide pages do not all repeat the same links.
+ */
+export function GuideGameLinks({ pageSlug }: { pageSlug: string }) {
+  const picks = pickGameLinksForGuide(pageSlug);
+  return <section className={styles.related} aria-label="More browser games on PlayBloo">
+    <div className={styles.sectionHeading}><h2>More browser games on PlayBloo</h2></div>
+    <p>Free, in the browser, no download — the games this catalogue is built around:</p>
+    <ul className="mt-3 space-y-1.5">
+      {picks.map((pick) => (
+        <li key={pick.href}>
+          <Link href={pick.href} className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline">
+            {pick.label}<ArrowRight size={14} aria-hidden="true" />
+          </Link>
+        </li>
+      ))}
+    </ul>
+  </section>;
 }

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { GuideBreadcrumbs, GuideByline, GuideSchema, GuideSections, GuideSidebar, RelatedGuides } from "@/components/guides/GuideContent";
+import { GuideBreadcrumbs, GuideByline, GuideGameLinks, GuideSchema, GuideSections, GuideSidebar, RelatedGuides } from "@/components/guides/GuideContent";
 import { getGuideArticle, getGuideCover, getGuideTopic, getGuideTopics, guideMetadata } from "@/lib/guides";
 import styles from "@/components/guides/guides.module.css";
 
@@ -45,6 +45,7 @@ export default async function GuideArticlePage({ params }: Props) {
       </div>
     </article>
     <RelatedGuides topic={topic} article={article} />
+    <GuideGameLinks pageSlug={`${topic.slug}/${article.slug}`} />
     <GuideSchema topic={topic} article={article} />
   </div>;
 }

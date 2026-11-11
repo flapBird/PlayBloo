@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { HomeDiscovery } from "@/components/home/HomeDiscovery";
 import { HomeFeatured } from "@/components/home/HomeFeatured";
+import { HomePicks } from "@/components/home/HomePicks";
 import { getHomeContent } from "@/lib/home-feeds";
 
 export const revalidate = 900;
@@ -31,6 +32,8 @@ export default async function HomePage() {
         {/* The guides hub lives in the featured mosaic and "Play instantly" sits
             beside the feed tabs, so the old right rail has nothing left to do. */}
         <HomeDiscovery feeds={feeds} />
+
+        <HomePicks />
       </div>
     </div>
   );

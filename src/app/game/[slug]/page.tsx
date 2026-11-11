@@ -26,6 +26,8 @@ import { GameInfo } from "@/components/games/GameInfo";
 import { GameUpdates } from "@/components/games/GameUpdates";
 import { GameNeighbors } from "@/components/games/GameNeighbors";
 import { GameViewTracker } from "@/components/analytics/GameViewTracker";
+import { GAME_GUIDE_LINKS } from "@/lib/priority-pages";
+import { BookOpen } from "lucide-react";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -167,6 +169,9 @@ export default async function GamePage({ params }: Props) {
   const playMode = getGamePlayMode(game);
   const externalGameUrl = getExternalGameUrl(game);
   const sources = getGameSources(game);
+  // Audience-adjacent guide reads for this game (curated in priority-pages);
+  // only the games that earn Search Console exposure get the block.
+  const guideLinks = GAME_GUIDE_LINKS[game.slug];
   return (
     <div className="container mx-auto px-4 py-8 space-y-8">
       <GameViewTracker gameId={game.id} />
@@ -346,6 +351,20 @@ export default async function GamePage({ params }: Props) {
               )}
               {!game.developer && sources.length === 0 && <p className="text-sm leading-6 text-muted-foreground">No verified source or developer link has been published yet.</p>}
           </section>
+          {guideLinks && (
+            <section className="rounded-xl border p-4">
+              <h3 className="mb-3 flex items-center gap-2 font-semibold"><BookOpen className="h-4 w-4 text-primary" />From the PlayBloo guides</h3>
+              <ul className="space-y-2 text-sm">
+                {guideLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="inline-flex items-center gap-1.5 font-semibold text-primary hover:underline">
+                      {link.label}<ArrowRight className="h-3 w-3" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
           {(neighbors.previous || neighbors.next) && <GameNeighbors previous={neighbors.previous} next={neighbors.next} />}
         </aside>
       </div>
