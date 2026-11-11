@@ -13,10 +13,13 @@ import {
 } from "@/lib/chest-counter";
 
 /**
- * Fortnite Treasure Hunters chest tally. The counter itself is a big,
- * mobile-first tap target; the odds panel turns the count into live Pirate
- * Token probabilities using Epic's published per-chest odds (see the page's
- * odds table for the full reward tier list and sources).
+ * Fortnite Treasure Hunters chest tally.
+ *
+ * Layout: a counter column (hero count, tap button, quick actions) beside an
+ * odds sidebar that turns the count into live Pirate Token probabilities
+ * using Epic's published per-chest odds. The tap button is deliberately the
+ * largest element on mobile and a controlled ~half-width card action on
+ * desktop, so quick actions stay reachable without a second look.
  */
 
 /** Epic's published odds, normal match (November 7, 2026). */
@@ -82,62 +85,66 @@ export function FortniteChestCounter() {
   const chance = tokenChance(total, oneIn);
 
   return (
-    <div className="rounded-2xl border bg-card/50 p-5 sm:p-6">
-      <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-primary">Chests opened</p>
-        <p className="rounded-full border px-3 py-1 text-xs font-bold tabular-nums text-muted-foreground">
-          Today: {today}
-        </p>
-      </div>
-      <p
-        className="mt-2 text-6xl font-black tabular-nums tracking-tight sm:text-7xl"
-        role="status"
-        aria-live="polite"
-        aria-atomic="true"
-      >
-        {state ? total : "—"}
-      </p>
-
-      {milestone && (
-        <div className="mt-3">
-          <div
-            className="h-2 overflow-hidden rounded-full bg-muted"
-            role="progressbar"
-            aria-valuemin={0}
-            aria-valuemax={milestone}
-            aria-valuenow={Math.min(total, milestone)}
-            aria-label={`Progress to ${milestone} chests`}
-          >
-            <div
-              className="h-full rounded-full bg-primary transition-all motion-reduce:transition-none"
-              style={{ width: `${Math.min(100, (total / milestone) * 100)}%` }}
-            />
-          </div>
-          <p className="mt-1.5 text-xs text-muted-foreground tabular-nums">
-            {milestone - total} to go until {milestone} chests
+    <div className="grid items-start gap-4 lg:grid-cols-5">
+      {/* Counter column: hero count, tap button, quick actions */}
+      <section aria-label="Chest counter" className="rounded-2xl border bg-card/50 p-5 sm:p-6 lg:col-span-3">
+        <div className="flex items-center justify-between gap-2">
+          <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-primary">Chests opened</p>
+          <p className="rounded-full border px-2.5 py-0.5 text-xs font-bold tabular-nums text-muted-foreground">
+            Today: {today}
           </p>
         </div>
-      )}
-      {!milestone && state && total > 0 && (
-        <p className="mt-3 text-xs text-muted-foreground">All milestones cleared. The counter keeps counting anyway.</p>
-      )}
 
-      <div className="mt-5 grid gap-2.5">
+        <div className="mt-5 text-center">
+          <p
+            className="text-7xl font-black tabular-nums leading-none tracking-tight sm:text-8xl"
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            {state ? total.toLocaleString("en-US") : "—"}
+          </p>
+          {milestone && (
+            <div className="mx-auto mt-5 max-w-xs">
+              <div
+                className="h-1.5 overflow-hidden rounded-full bg-muted"
+                role="progressbar"
+                aria-valuemin={0}
+                aria-valuemax={milestone}
+                aria-valuenow={Math.min(total, milestone)}
+                aria-label={`Progress to ${milestone} chests`}
+              >
+                <div
+                  className="h-full rounded-full bg-primary transition-all motion-reduce:transition-none"
+                  style={{ width: `${Math.min(100, (total / milestone) * 100)}%` }}
+                />
+              </div>
+              <p className="mt-1.5 text-xs tabular-nums text-muted-foreground">
+                {milestone - total} to go until {milestone} chests
+              </p>
+            </div>
+          )}
+          {!milestone && state && total > 0 && (
+            <p className="mt-3 text-xs text-muted-foreground">All milestones cleared. The counter keeps counting anyway.</p>
+          )}
+        </div>
+
         <button
           type="button"
           disabled={!state}
           onClick={() => add(1)}
           aria-label="Count one chest opened"
-          className="flex min-h-24 items-center justify-center gap-2 rounded-2xl bg-primary text-xl font-black text-primary-foreground transition-transform active:scale-[0.98] disabled:opacity-50 motion-reduce:transition-none motion-reduce:active:scale-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:text-2xl"
+          className="mt-6 flex h-20 w-full items-center justify-center gap-2 rounded-2xl bg-primary text-lg font-extrabold text-primary-foreground transition-transform hover:bg-primary/90 active:scale-[0.98] disabled:opacity-50 motion-reduce:transition-none motion-reduce:active:scale-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:text-xl"
         >
-          <Plus className="h-6 w-6" aria-hidden="true" /> Opened a chest
+          <Plus className="h-5 w-5" aria-hidden="true" /> Opened a chest
         </button>
-        <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4">
+
+        <div className="mt-2.5 grid grid-cols-2 gap-2 sm:grid-cols-4">
           <button
             type="button"
             disabled={!state}
             onClick={() => add(5)}
-            className="min-h-11 rounded-xl border bg-background px-4 text-sm font-bold tabular-nums transition hover:bg-muted disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+            className="h-10 rounded-xl border bg-background px-3 text-sm font-bold tabular-nums transition hover:bg-muted disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
           >
             +5
           </button>
@@ -145,7 +152,7 @@ export function FortniteChestCounter() {
             type="button"
             disabled={!state}
             onClick={() => add(10)}
-            className="min-h-11 rounded-xl border bg-background px-4 text-sm font-bold tabular-nums transition hover:bg-muted disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+            className="h-10 rounded-xl border bg-background px-3 text-sm font-bold tabular-nums transition hover:bg-muted disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
           >
             +10
           </button>
@@ -153,56 +160,74 @@ export function FortniteChestCounter() {
             type="button"
             disabled={!state || total === 0}
             onClick={() => add(-1)}
-            className="min-h-11 inline-flex items-center justify-center gap-1.5 rounded-xl border bg-background px-4 text-sm font-bold transition hover:bg-muted disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+            className="inline-flex h-10 items-center justify-center gap-1.5 rounded-xl border bg-background px-3 text-sm font-bold transition hover:bg-muted disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
           >
-            <Undo2 className="h-4 w-4" aria-hidden="true" /> Undo
+            <Undo2 className="h-3.5 w-3.5" aria-hidden="true" /> Undo
           </button>
           <button
             type="button"
             disabled={!state || total === 0}
             onClick={reset}
-            className="min-h-11 inline-flex items-center justify-center gap-1.5 rounded-xl border border-destructive/40 bg-background px-4 text-sm font-bold text-destructive transition hover:bg-muted disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+            className="inline-flex h-10 items-center justify-center gap-1.5 rounded-xl border border-destructive/40 bg-background px-3 text-sm font-bold text-destructive transition hover:bg-muted disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
           >
-            <RotateCcw className="h-4 w-4" aria-hidden="true" /> Reset
+            <RotateCcw className="h-3.5 w-3.5" aria-hidden="true" /> Reset
           </button>
         </div>
-      </div>
 
-      <div className="mt-6 rounded-xl border bg-muted/30 p-4">
-        <div className="flex flex-wrap items-center justify-between gap-2">
-          <h3 className="text-sm font-extrabold tracking-tight">Pirate Token odds at your count</h3>
+        <p className="mt-4 text-center text-xs text-muted-foreground">
+          Auto-saves in this browser only — no account, nothing uploaded. Clearing site data resets it.
+        </p>
+      </section>
+
+      {/* Odds sidebar: live Pirate Token probabilities */}
+      <aside aria-label="Pirate Token odds" className="rounded-2xl border bg-card/50 p-5 lg:col-span-2">
+        <div className="flex items-center justify-between gap-2">
+          <h3 className="text-sm font-extrabold tracking-tight">Pirate Token odds</h3>
           <button
             type="button"
             aria-pressed={treasureHour}
             onClick={() => setTreasureHour((value) => !value)}
-            className="min-h-11 rounded-full border px-3 py-1.5 text-xs font-bold transition hover:bg-muted aria-pressed:bg-primary aria-pressed:text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+            className="rounded-full border px-2.5 py-1 text-[11px] font-bold transition hover:bg-muted aria-pressed:border-primary aria-pressed:bg-primary aria-pressed:text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
           >
             Treasure Hour ×1.5
           </button>
         </div>
-        <ul className="mt-3 space-y-1.5 text-sm text-muted-foreground" role="status" aria-live="polite">
-          <li className="tabular-nums">
-            Token odds per chest: <strong className="text-foreground">1 in {oneIn.toLocaleString("en-US")}</strong>
-            {treasureHour && " (boosted Saturday window)"}
-          </li>
-          <li className="tabular-nums">
+
+        <div className="mt-5 rounded-xl bg-muted/30 p-4 text-center" role="status" aria-live="polite">
+          <p className="text-[11px] font-bold uppercase tracking-wide text-muted-foreground">Your token chance</p>
+          <p className="mt-1 text-3xl font-black tabular-nums tracking-tight text-primary">
+            {state && total > 0 ? formatPercent(chance) : "—"}
+          </p>
+          <p className="mt-1.5 text-xs text-muted-foreground">
             {state && total > 0
-              ? `Chance at least one token dropped in your ${total.toLocaleString("en-US")} chests: ${formatPercent(chance)}`
-              : "Count chests above to see your live token chance here."}
-          </li>
-          <li className="tabular-nums">
-            Coin-flip chance needs about {coinFlipChests(oneIn).toLocaleString("en-US")} chests.
-          </li>
-        </ul>
-        <p className="mt-3 text-xs text-muted-foreground">
+              ? `At least one token across ${total.toLocaleString("en-US")} chests`
+              : "Count a chest above to see the live chance."}
+          </p>
+        </div>
+
+        <dl className="mt-4 space-y-2.5 text-sm">
+          <div className="flex items-baseline justify-between gap-2">
+            <dt className="text-muted-foreground">Odds per chest</dt>
+            <dd className="font-bold tabular-nums text-foreground">1 in {oneIn.toLocaleString("en-US")}</dd>
+          </div>
+          <div className="flex items-baseline justify-between gap-2">
+            <dt className="text-muted-foreground">Coin-flip needs</dt>
+            <dd className="font-bold tabular-nums text-foreground">≈ {coinFlipChests(oneIn).toLocaleString("en-US")} chests</dd>
+          </div>
+          <div className="flex items-baseline justify-between gap-2">
+            <dt className="text-muted-foreground">Milestone</dt>
+            <dd className="font-bold tabular-nums text-foreground">{milestone ? milestone.toLocaleString("en-US") : "cleared"}</dd>
+          </div>
+        </dl>
+        {treasureHour && (
+          <p className="mt-3 text-xs font-bold text-primary">Boosted Saturday window — odds recalculated above.</p>
+        )}
+
+        <p className="mt-4 text-xs text-muted-foreground">
           Odds are Epic&apos;s published per-chest figures for a normal match; Treasure Hours multiply them as announced.
           They describe chance, not luck — the counter never predicts a drop.
         </p>
-      </div>
-
-      <p className="mt-4 text-xs text-muted-foreground">
-        Your count is saved in this browser only — there is no account, and clearing site data resets it.
-      </p>
+      </aside>
     </div>
   );
 }

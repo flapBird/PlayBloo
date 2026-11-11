@@ -153,6 +153,7 @@ export default function FortniteChestCounterPage() {
       <BreadcrumbJsonLd
         items={[
           { name: SITE_NAME, url: SITE_URL },
+          { name: "Tools", url: `${SITE_URL}/tools` },
           { name: "Fortnite Chest Counter", url: `${SITE_URL}/tools/fortnite-chest-counter` },
         ]}
       />

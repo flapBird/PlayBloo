@@ -56,7 +56,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // /gacha launched 2026-10-31; its lastmod keeps the launch date, matching
     // the convention that new pages carry their real PlayBloo launch date.
     { url: `${SITE_URL}/gacha`, lastModified: new Date("2026-10-31T09:00:00.000Z"), changeFrequency: "daily" as const, priority: 0.6 },
-    // /tools/fortnite-chest-counter launched 2026-11-11; launch-date lastmod.
+    // /tools (hub) and /tools/fortnite-chest-counter launched 2026-11-11;
+    // launch-date lastmod per the convention above.
+    { url: `${SITE_URL}/tools`, lastModified: new Date("2026-11-11T12:00:00.000Z"), changeFrequency: "weekly" as const, priority: 0.6 },
     { url: `${SITE_URL}/tools/fortnite-chest-counter`, lastModified: new Date("2026-11-11T12:00:00.000Z"), changeFrequency: "weekly" as const, priority: 0.6 },
     { url: `${SITE_URL}/category`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.7 },
     { url: `${SITE_URL}/series`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.6 },

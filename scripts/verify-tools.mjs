@@ -7,6 +7,7 @@ import assert from "node:assert/strict";
 // trailing-slash redirect, and that made-up tool slugs stay 404.
 
 const base = process.argv[2] || "http://localhost:3000";
+const hubPath = "/tools";
 const path = "/tools/fortnite-chest-counter";
 const canonicalOrigin = "https://playbloo.net";
 const canonicalUrl = `${canonicalOrigin}${path}`;
@@ -57,3 +58,27 @@ assert.equal(new URL(redirect.headers.get("location"), base).pathname, path);
 assert.equal((await get("/tools/not-a-real-tool")).status, 404, "Made-up tool slug stays 404");
 
 console.log(`PASS ${path} (title ${title.length} chars, description ${description.length} chars)`);
+
+// Tools hub: card index that deep links into each tool.
+const hubResponse = await get(hubPath);
+assert.equal(hubResponse.status, 200, `${hubPath}: HTTP status`);
+const hubHtml = await hubResponse.text();
+const hubTitle = hubHtml.match(/<title>(.*?)<\/title>/s)?.[1];
+assert.equal(hubTitle, "Free Gaming Tools: Trackers and Counters | PlayBloo", `${hubPath}: title`);
+assert.ok(hubTitle.length <= 60, `${hubPath}: rendered title within 60 chars (got ${hubTitle.length})`);
+const hubDescription = attr(hubHtml, "meta", 'name="description"', "content");
+assert.ok(hubDescription && hubDescription.length <= 160, `${hubPath}: meta description within 160 chars (got ${hubDescription?.length})`);
+assert.equal(attr(hubHtml, "link", 'rel="canonical"', "href"), `${canonicalOrigin}${hubPath}`, `${hubPath}: canonical`);
+assert.equal((hubHtml.match(/<h1\b/g) || []).length, 1, `${hubPath}: one H1`);
+assert.ok(hubHtml.includes('href="/tools/fortnite-chest-counter"'), `${hubPath}: card links to the chest counter`);
+assert.ok(hubHtml.includes("Auto-save") && hubHtml.includes("Live odds"), `${hubPath}: card lists its features`);
+assert.ok([...hubHtml.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)].some((match) => JSON.parse(match[1])["@type"] === "BreadcrumbList"), `${hubPath}: BreadcrumbList schema`);
+
+const hubSitemapEntry = sitemap.match(new RegExp(`<loc>\\s*${canonicalOrigin}${hubPath.replace(/\//g, "\\/")}\\s*<\\/loc>\\s*<lastmod>([^<]+)<\\/lastmod>`));
+assert.ok(hubSitemapEntry, "Sitemap contains the tools hub");
+assert.ok(hubSitemapEntry[1].startsWith(launchLastmod), `Tools hub sitemap lastmod keeps the launch date (got ${hubSitemapEntry[1]})`);
+
+const hubRedirect = await get(`${hubPath}/`, { redirect: "manual" });
+assert.ok([307, 308].includes(hubRedirect.status), "Tools hub trailing-slash URL redirects");
+assert.equal(new URL(hubRedirect.headers.get("location"), base).pathname, hubPath);
+console.log(`PASS ${hubPath} (title ${hubTitle.length} chars, description ${hubDescription.length} chars)`);
