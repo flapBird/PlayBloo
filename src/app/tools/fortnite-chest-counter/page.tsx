@@ -40,6 +40,11 @@ const CHEST_ODDS = [
 
 const FAQ = [
   {
+    question: "What is the point of counting if the odds never change?",
+    answer:
+      "The per-chest odds are fixed, but your information is not. The count feeds three decisions: your recent pace projects a coin-flip date you can actually judge, the chance ladder shows how many chests each probability tier takes so you can pick a stop point, and the Treasure Hour countdown tells you when the same grind pays 1.5× better. Fortnite shows none of this in game — the Treasure Tab tracks weekly hunts, not your running tally.",
+  },
+  {
     question: "Does Fortnite have a built-in chest counter?",
     answer:
       "No. The in-game Treasure Tab tracks weekly hunt progress, but there is no running tally of how many chests you have opened — which is exactly why players count by hand during the Treasure Hunters mini-season.",
@@ -81,8 +86,10 @@ export default function FortniteChestCounterPage() {
         <ol className="list-decimal space-y-1.5 pl-5 text-sm text-muted-foreground">
           <li>Open a Treasure Hunters chest in a normal Fortnite match, then tap <strong className="text-foreground">Opened a chest</strong> here. Loot in Create island or other modes does not roll the published reward table.</li>
           <li>Opened several chests at once after a match? Use the batch <strong className="text-foreground">+5</strong> and <strong className="text-foreground">+10</strong> buttons. Miscounted? <strong className="text-foreground">Undo</strong> takes the last chest back.</li>
-          <li>The count saves itself in this browser — close the tab, come back tomorrow, and your total (and today&apos;s count) are still there.</li>
-          <li>Playing during a boosted Treasure Hour window? Switch on the <strong className="text-foreground">Treasure Hour ×1.5</strong> toggle and the odds panel recalculates.</li>
+          <li>The count saves itself in this browser — close the tab, come back tomorrow, and your total (and your per-day history) are still there.</li>
+          <li>After a few counting days the tool projects your recent pace and a coin-flip date — the honest answer to whether the grind fits your schedule.</li>
+          <li>The <strong className="text-foreground">chance ladder</strong> shows how many chests each cumulative probability (1%, 10%, 25%, 50%…) takes, so you can pick a stop point before you burn out.</li>
+          <li>Playing during a boosted Treasure Hour window? Switch on the <strong className="text-foreground">Treasure Hour ×1.5</strong> toggle — the countdown to the next announced window sits right beside it, and every projection recalculates.</li>
         </ol>
       </section>
 

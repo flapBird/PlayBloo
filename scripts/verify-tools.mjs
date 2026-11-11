@@ -43,6 +43,9 @@ assert.ok(schemas.some((schema) => schema["@type"] === "BreadcrumbList"), `${pat
 const webApp = schemas.find((schema) => schema["@type"] === "WebApplication");
 assert.ok(webApp?.name && webApp?.url === canonicalUrl && webApp?.offers, `${path}: WebApplication schema`);
 assert.ok(html.includes('href="/guides/fortnite-pirate-token"'), `${path}: links to the Pirate Token guide`);
+assert.ok(html.includes("Chance ladder"), `${path}: renders the chance ladder`);
+assert.ok(html.includes("Next Treasure Hour"), `${path}: renders the Treasure Hour countdown module`);
+assert.ok(html.includes("pace line appears once you have counted"), `${path}: explains the pace projection before data exists`);
 
 const sitemapResponse = await get("/sitemap.xml");
 assert.equal(sitemapResponse.status, 200);
