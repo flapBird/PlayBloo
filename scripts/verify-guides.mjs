@@ -51,6 +51,16 @@ const shrekHub = "/guides/shrek-2-remastered";
 const shrekPages = [shrekHub, `${shrekHub}/co-op`, `${shrekHub}/cheats`, `${shrekHub}/where-to-buy`];
 const shrekUpdatedAt = "2026-11-11T09:00:00.000Z";
 pages.push(...shrekPages);
+const prHub = "/guides/playrooms";
+const prPages = [prHub, `${prHub}/getting-started`, `${prHub}/demo`, `${prHub}/achievements`];
+const msHub = "/guides/moon-sweepers";
+const msPages = [msHub, `${msHub}/getting-started`, `${msHub}/co-op`];
+const ffaHub = "/guides/unstable-smp-ffa";
+const ffaPages = [ffaHub, `${ffaHub}/how-to-play`, `${ffaHub}/pvp-tips`];
+const bgHub = "/guides/break-glass-if-bored";
+const bgPages = [bgHub, `${bgHub}/getting-started`, `${bgHub}/secrets`];
+const trendingUpdatedAt = "2026-11-11T10:00:00.000Z";
+pages.push(...prPages, ...msPages, ...ffaPages, ...bgPages);
 const canonicalOrigin = "https://playbloo.net";
 const demoTopics = [
   { slug: "remember", officialUrl: "https://xlaucifer.itch.io/remember" },
@@ -95,6 +105,15 @@ const articleCovers = new Map([
   [`${shrekHub}/co-op`, "/images/guides/shrek-2-remastered-co-op.webp"],
   [`${shrekHub}/cheats`, "/images/guides/shrek-2-remastered-cheats.webp"],
   [`${shrekHub}/where-to-buy`, "/images/guides/shrek-2-remastered-buy.webp"],
+  [`${prHub}/getting-started`, "/images/guides/playrooms-difficulty.webp"],
+  [`${prHub}/demo`, "/images/guides/playrooms-pool.webp"],
+  [`${prHub}/achievements`, "/images/guides/playrooms-yellow-room.webp"],
+  [`${msHub}/getting-started`, "/images/guides/moon-sweepers-sweeper.webp"],
+  [`${msHub}/co-op`, "/images/guides/moon-sweepers-crew.webp"],
+  [`${ffaHub}/how-to-play`, "/images/guides/unstable-smp-ffa-how-to-play.webp"],
+  [`${ffaHub}/pvp-tips`, "/images/guides/unstable-smp-ffa-pvp.webp"],
+  [`${bgHub}/getting-started`, "/images/guides/break-glass-if-bored-getting-started.webp"],
+  [`${bgHub}/secrets`, "/images/guides/break-glass-if-bored-gold.webp"],
 ]);
 const checkedCoverCards = new Map([...articleCovers.keys()].map((path) => [path, new Set()]));
 
@@ -168,7 +187,7 @@ assert.ok(header.includes('href="/guides"'), "Primary navigation links to Guides
 assert.ok(!header.includes("playMode=embedded"), "Redundant Playable navigation removed");
 assert.ok(home.includes('href="/guides"'), "Homepage mosaic links to the guides hub");
 assert.ok(home.includes("Game Guides: get good, faster"), "Homepage mosaic shows the guides card");
-assert.ok(home.includes("/images/guides/shrek-2-remastered.webp"), "Guides card features the newest guide cover");
+assert.ok(home.includes("/images/guides/playrooms.webp"), "Guides card features the newest guide cover");
 assert.ok(!(home.match(/<nav aria-label="Game feed"[\s\S]*?<\/nav>/)?.[0] || "").includes("playMode=embedded"), "Redundant feed tab removed");
 console.log("PASS unknown routes, canonical redirect, sitemap, internal links and homepage navigation");
 
@@ -334,7 +353,7 @@ console.log("PASS visual novel Demo status, official entries, covers and Latest 
 
 const hubSection = listing.split('aria-label="Game guide hubs"')[1]?.split("</section>")[0] ?? "";
 const firstHub = hubSection.match(/href="(\/guides\/[^"?#]+)"/)?.[1];
-assert.equal(firstHub, shrekHub, "Guide hubs list leads with the newest published topic");
+assert.equal(firstHub, prHub, "Guide hubs list leads with the newest published topic");
 console.log("PASS guide hubs list is newest-first");
 
 const starter = await (await get(starterPath)).text();
@@ -615,3 +634,100 @@ for (const cover of ["/images/guides/shrek-2-remastered.webp", "/images/guides/s
 }
 for (const slug of ["walkthrough", "cheat-codes", "release-date"]) assert.equal((await get(`${shrekHub}/${slug}`)).status, 404, `${slug}: no invented walkthrough, cheat list or duplicate release route`);
 console.log("PASS Shrek 2 Remastered routes, co-op and cheat facts, buyer pricing, covers and sitemap dates");
+
+const trendingGroups = [
+  {
+    hub: prHub,
+    pages: prPages,
+    hubChecks: [
+      [/datetime="2026-11-04"/i, "Playrooms release date is separate from guide publication"],
+      [/Overwhelmingly Positive/, "Playrooms hub carries the verified review verdict"],
+      [/\$6\.99/, "Playrooms hub states the US price"],
+      [/not a browser game/, "Playrooms is not presented as a playable browser game"],
+    ],
+    articleChecks: [
+      [`${prHub}/getting-started`, [/Crazy/, /Normal/, /Hardcore/], "Getting-started names the three difficulty modes"],
+      [`${prHub}/demo`, [/Download Demo/, /\$6\.99/], "Demo article explains the free trial and the full-game price"],
+      [`${prHub}/achievements`, [/30 achievements/, /First sparrow/], "Achievements article carries the count and highlighted names"],
+    ],
+    covers: ["/images/guides/playrooms.webp", "/images/guides/playrooms-difficulty.webp", "/images/guides/playrooms-pool.webp", "/images/guides/playrooms-yellow-room.webp"],
+    missing: ["walkthrough", "codes", "tier-list"],
+  },
+  {
+    hub: msHub,
+    pages: msPages,
+    hubChecks: [
+      [/datetime="2026-10-23"/i, "Moon Sweepers release date is separate from guide publication"],
+      [/€8\.99/, "Moon Sweepers hub states the store price"],
+      [/16 players/, "Moon Sweepers hub covers the 16-player co-op ceiling"],
+      [/not a browser game/, "Moon Sweepers is not presented as a playable browser game"],
+    ],
+    articleChecks: [
+      [`${msHub}/getting-started`, [/depot/, /carrying capacity/], "Getting-started explains the delivery loop and upgrade priorities"],
+      [`${msHub}/co-op`, [/Online Co-op/, /up to 16 players/], "Co-op article covers lobby size and the online-only flag"],
+    ],
+    covers: ["/images/guides/moon-sweepers.webp", "/images/guides/moon-sweepers-sweeper.webp", "/images/guides/moon-sweepers-crew.webp"],
+    missing: ["tier-list", "map", "secrets"],
+  },
+  {
+    hub: ffaHub,
+    pages: ffaPages,
+    hubChecks: [
+      [/datetime="2026-10-21"/i, "Unstable SMP FFA creation date is separate from guide publication"],
+      [/Insomnia Studios/, "Unstable SMP FFA hub names the developer group"],
+      [/7\.4 million/, "Unstable SMP FFA hub carries the verified visit count"],
+      [/not affiliated with Roblox/, "Unstable SMP FFA hub disclaims affiliation"],
+    ],
+    articleChecks: [
+      [`${ffaHub}/how-to-play`, [/76870565041704/, /Insomnia Studios/], "How-to-play points at the official experience and developer"],
+      [`${ffaHub}/pvp-tips`, [/Practice Dummy/, /Terms of Use/], "PvP tips steer beginners away from scripts"],
+    ],
+    covers: ["/images/guides/unstable-smp-ffa.webp", "/images/guides/unstable-smp-ffa-how-to-play.webp", "/images/guides/unstable-smp-ffa-pvp.webp"],
+    missing: ["scripts", "codes", "server-ip"],
+  },
+  {
+    hub: bgHub,
+    pages: bgPages,
+    hubChecks: [
+      [/datetime="2026-10-23"/i, "Break Glass If Bored creation date is separate from guide publication"],
+      [/Nebula/, "Break Glass If Bored hub names the developer"],
+      [/976,000 visits/, "Break Glass If Bored hub carries the verified visit count"],
+      [/not a browser game/, "Break Glass If Bored is not presented as a playable browser game"],
+    ],
+    articleChecks: [
+      [`${bgHub}/getting-started`, [/139016063432102/, /pistol/, /sledgehammer/], "Getting-started links the official page and the community buy order"],
+      [`${bgHub}/secrets`, [/26 secrets/, /Force Push/], "Secrets article attributes the community count and the Premium perk"],
+    ],
+    covers: ["/images/guides/break-glass-if-bored.webp", "/images/guides/break-glass-if-bored-getting-started.webp", "/images/guides/break-glass-if-bored-gold.webp"],
+    missing: ["badges-list", "wing-map", "codes"],
+  },
+];
+for (const group of trendingGroups) {
+  for (const path of group.pages) {
+    const html = await (await get(path)).text();
+    assert.ok(!html.includes("/_next/image"), `${path}: direct precompressed cover`);
+    assert.ok(!html.includes("<iframe"), `${path}: no game embed`);
+    const ids = [...html.matchAll(/<section[^>]*\bid="([^"]+)"/g)].map((match) => match[1]);
+    assert.equal(new Set(ids).size, ids.length, `${path}: unique section IDs`);
+    for (const [, target] of html.matchAll(/href="#([^"]+)"/g)) assert.ok(ids.includes(target), `${path}: contents target ${target} exists`);
+    const pageTitle = html.match(/<title>(.*?)<\/title>/s)?.[1] ?? "";
+    assert.ok(pageTitle.length <= 60, `${path}: rendered title within 60 chars (${pageTitle.length})`);
+    const metaDescription = attr(html, "meta", 'name="description"', "content") ?? "";
+    assert.ok(metaDescription.length <= 160, `${path}: meta description within 160 chars (${metaDescription.length})`);
+    assert.equal(currentEntries.get(`${canonicalOrigin}${path}`), trendingUpdatedAt, `${path}: sitemap uses the PlayBloo publication date`);
+    if (path !== group.hub) assert.ok(latestUpdates.includes(`href="${path}"`), `${path}: appears in Latest Updates`);
+  }
+  const hubHtml = await (await get(group.hub)).text();
+  for (const [pattern, message] of group.hubChecks) assert.ok(pattern.test(hubHtml), `${group.hub}: ${message}`);
+  for (const [path, patterns, message] of group.articleChecks) {
+    const html = await (await get(path)).text();
+    for (const pattern of patterns) assert.ok(pattern.test(html), `${path}: ${message}`);
+  }
+  for (const cover of group.covers) {
+    const response = await get(cover);
+    assert.equal(response.status, 200, `${cover}: cover loads`);
+    assert.ok(response.headers.get("content-type")?.includes("image/webp"), `${cover}: precompressed WebP`);
+  }
+  for (const slug of group.missing) assert.equal((await get(`${group.hub}/${slug}`)).status, 404, `${group.hub}/${slug}: no invented or unmaintainable route`);
+}
+console.log("PASS Playrooms, Moon Sweepers, Unstable SMP FFA and Break Glass If Bored routes, facts, covers, 404 boundaries and sitemap dates");

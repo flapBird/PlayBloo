@@ -406,6 +406,56 @@ updatedAt moves to 2026-11-08 while every existing article keeps its own dates e
 related-link addition on `new-features`, which is navigation only and keeps its timestamps.
 `llms.txt` and verify-guides cover all three.
 
+## November 11, 2026 trend batch: Playrooms, Moon Sweepers, Unstable SMP FFA, Break Glass If Bored
+
+Four pages shipped against the November 11 search-trend shortlist (a fifth keyword,
+"shibuya roblox codes", was deliberately skipped: it is a cross-game rotating code-list
+intent we cannot maintain honestly — codes expire within days, official sources are
+per-game Discords, and established competitors already own the query).
+
+`playrooms` (Steam app 5037510, Two Pixels UG, released November 4, 2026, $6.99 with a
+20% discount at check, Overwhelmingly Positive 97% of 1,002) ships hub + `getting-started`
+(difficulty modes Crazy/Normal/Hardcore read from the official screenshot), `demo` (the
+store's Demo Available flag; community scope descriptions attributed to the fan-run
+playrooms.xyz) and `achievements` (30 achievements from the appdetails API, highlighted
+names quoted, unlock conditions explicitly undocumented).
+
+`moon-sweepers` (Steam app 5335510, DragDrop Games, released October 23, 2026, €8.99,
+Mostly Positive 78% of 4,341 English reviews) ships hub + `getting-started` (the
+sweep-store-ship loop and editorial upgrade priorities, labeled as such) + `co-op`
+(16-player online lobbies, online-only flags, undocumented hosting details stated as
+undocumented). The keyword's spelling "sweep the moon" is carried via officialName.
+
+`unstable-smp-ffa` (Roblox place 76870565041704, universe 10772281976, group
+[IS] Insomnia Studios, created October 21, 2026, ~7.4M visits and 24K+ concurrent at check)
+ships hub + `how-to-play` (join via the official page, copycat warning, modes: FFA, Duels,
+Practice Dummy, Simulator with up-to-10 parties vs up-to-100 healing soldiers, three arenas
+on a 15-minute rotation, 28 characters plus unlockable The Wraith) + `pvp-tips` (editorial,
+labeled). The guide explicitly refuses scripts/exploits (Roblox ToS) and fake "server IPs"
+(Roblox matchmaking has none); verify-guides asserts those routes stay 404. Series context
+is attributed to the community-run Unstable Universe Fandom wiki.
+
+`break-glass-if-bored` (Roblox place 139016063432102, universe 10772618968, group Nebula,
+created October 23, 2026, ~976K visits at check) ships hub + `getting-started` (controls
+and buy order credited to the fan wiki, not presented as PlayBloo testing) + `secrets`
+(official rule: one hidden weapon per wing; community count of 26 attributed and marked as
+moving with updates; Nebula group reward and Roblox Premium Force Push perk from the official
+page). Individual secret locations are deliberately left to the wiki rather than copied
+secondhand.
+
+Roblox facts were pulled from the official games API (`games.roblox.com/v1/games`) and the
+official game pages in the browser on November 11, 2026 — both experiences carry explicit
+not-affiliated disclaimers that the guides repeat. Steam facts come from the store pages and
+appdetails APIs (release state, prices, 30/33 achievements, screenshots). All covers are
+official assets: Steam store screenshots at 1600 × 900 WebP and official Roblox game
+thumbnails at their native 768 × 432; original asset URLs stay in each topic's
+`cover.sourceUrl`. `llms.txt` gains four bullets ahead of the Shrek one; the homepage
+guides-card cover and first-hub assertions in verify-guides moved to `playrooms`, now the
+newest topic by publication date. All four topics insert at the front of the `topics`
+array; no existing topic file is edited, so prior sitemap timestamps stay unchanged
+(verify with a pre-change XML snapshot as the third argument). Publication requires
+deployment before it is live.
+
 ## Niệm Phật Online (November 7, 2026)
 
 `niem-phat-online` covers Vietnam's viral 3D temple browser game (niemphat.online), known
