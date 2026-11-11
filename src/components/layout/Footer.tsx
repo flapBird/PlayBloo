@@ -44,10 +44,13 @@ export function Footer() {
                 <Link href="/" prefetch={false} className="text-sm text-muted-foreground transition-colors hover:text-foreground">Home</Link>
               </li>
               <li>
-                <Link href="/search?sort=newest" prefetch={false} className="text-sm text-muted-foreground transition-colors hover:text-foreground">New Games</Link>
+                <Link href="/new-games" prefetch={false} className="text-sm text-muted-foreground transition-colors hover:text-foreground">New Games</Link>
               </li>
               <li>
-                <Link href="/search?sort=trending" prefetch={false} className="text-sm text-muted-foreground transition-colors hover:text-foreground">Trending</Link>
+                <Link href="/popular" prefetch={false} className="text-sm text-muted-foreground transition-colors hover:text-foreground">Hot Games</Link>
+              </li>
+              <li>
+                <Link href="/trending" prefetch={false} className="text-sm text-muted-foreground transition-colors hover:text-foreground">Trending</Link>
               </li>
               <li>
                 <Link href="/series" prefetch={false} className="text-sm text-muted-foreground transition-colors hover:text-foreground">Game Series</Link>

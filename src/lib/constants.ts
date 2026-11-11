@@ -4,6 +4,10 @@ export const SITE_URL = `https://${SITE_DOMAIN}`;
 export const SITE_DESCRIPTION = "Discover browser games and explore game guides on PlayBloo, with release dates, gameplay explainers and version comparisons.";
 
 export const PAGE_SIZE = 24;
+// The /new-games, /popular and /trending landing pages serve 36 cards on page
+// 1 — inside the 30-50-card first screen these pages need to render real
+// content with, and a multiple of the 6-column grid.
+export const LANDING_PAGE_SIZE = 36;
 export const ADMIN_PAGE_SIZE = 20;
 export const RELATED_GAMES_LIMIT = 6;
 export const TOP_GAMES_LIMIT = 10;
@@ -56,6 +60,6 @@ export const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "Categories", href: "/category" },
   { label: "Series", href: "/series" },
-  { label: "New Games", href: "/search?sort=newest" },
-  { label: "Trending", href: "/search?sort=trending" },
+  { label: "New Games", href: "/new-games" },
+  { label: "Trending", href: "/trending" },
 ];

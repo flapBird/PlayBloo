@@ -21,9 +21,10 @@ type SitemapGame = { slug: string; updated_at: string };
 //   2. every indexable category page (page-1 canonicals, as before),
 //   3. the homepage plus games with real traffic (view_count >= 3),
 //   4. every guides hub and article (all editorially curated).
-// /new-games, /popular and /trending join here once those pages exist.
-// /gacha, /tools/*, /submit-game, tag pages and level pages are no longer
-// listed even though the pages remain live and crawlable via internal links.
+// The /new-games, /popular and /trending landing pages joined on launch day
+// (2026-11-12, page-1 URLs only). /gacha, /tools/*, /submit-game, tag pages
+// and level pages are no longer listed even though the pages remain live and
+// crawlable via internal links.
 
 // The 17 game URLs from the Search Console indexed list. view_count only
 // ever increases, so these all clear FEATURED_MIN_VIEWS today — the explicit
@@ -98,6 +99,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE_URL}/`, lastModified: new Date(), changeFrequency: "daily" as const, priority: 1.0 },
     { url: `${SITE_URL}/category`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.7 },
     { url: `${SITE_URL}/series`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.6 },
+    // The three discovery landing pages, first published 2026-11-12 — their
+    // launch date, not a build time. Paginated ?page= URLs of these pages are
+    // deliberately not listed (same rule as category pagination).
+    { url: `${SITE_URL}/new-games`, lastModified: new Date("2026-11-12T00:00:00.000Z"), changeFrequency: "daily" as const, priority: 0.8 },
+    { url: `${SITE_URL}/popular`, lastModified: new Date("2026-11-12T00:00:00.000Z"), changeFrequency: "daily" as const, priority: 0.8 },
+    { url: `${SITE_URL}/trending`, lastModified: new Date("2026-11-12T00:00:00.000Z"), changeFrequency: "daily" as const, priority: 0.8 },
     // Newly sitemapped with the 2026-11-12 curation (Search Console reports
     // all four indexed). lastmod anchors to the last commit that touched each
     // page in git history, not to the build.

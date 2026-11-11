@@ -8,11 +8,14 @@ import { GameListItem } from "@/components/games/GameListItem";
 import type { HomeFeeds, HomeFeedSort } from "@/lib/home-feeds";
 
 const tabs = [
-  { sort: "newest", label: "New", icon: null, browseLabel: null },
-  { sort: "trending", label: "Trending", icon: Flame, browseLabel: null },
-  { sort: "released", label: "Released", icon: CalendarDays, browseLabel: null },
-  { sort: "popular", label: "Popular", icon: null, browseLabel: null },
-  { sort: "instant", label: "Play instantly", icon: Zap, browseLabel: "playable games" },
+  // The three indexable landing pages take the discovery feeds' "browse all"
+  // traffic; "released" and "play instantly" have no landing page and stay on
+  // /search filters (which remain noindex, follow).
+  { sort: "newest", label: "New", icon: null, browseLabel: null, browsePath: "/new-games" },
+  { sort: "trending", label: "Trending", icon: Flame, browseLabel: null, browsePath: "/trending" },
+  { sort: "released", label: "Released", icon: CalendarDays, browseLabel: null, browsePath: null },
+  { sort: "popular", label: "Popular", icon: null, browseLabel: null, browsePath: "/popular" },
+  { sort: "instant", label: "Play instantly", icon: Zap, browseLabel: "playable games", browsePath: null },
 ] as const;
 
 export function HomeDiscovery({ feeds, sidebar }: { feeds: HomeFeeds; sidebar?: ReactNode }) {
@@ -23,9 +26,9 @@ export function HomeDiscovery({ feeds, sidebar }: { feeds: HomeFeeds; sidebar?: 
   const query = new URLSearchParams();
   // "instant" is a playMode filter, not a search sort — it maps to playMode.
   if (sort === "instant") query.set("playMode", "embedded");
-  else if (sort !== "newest") query.set("sort", sort);
+  else if (sort === "released") query.set("sort", sort);
   if (view === "list") query.set("view", view);
-  const browseHref = `/search${query.size ? `?${query}` : ""}`;
+  const browseHref = activeTab.browsePath ?? `/search${query.size ? `?${query}` : ""}`;
 
   function handleTabKey(event: KeyboardEvent<HTMLButtonElement>, index: number) {
     let next: number;

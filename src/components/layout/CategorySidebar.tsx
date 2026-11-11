@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
-import { Suspense, useState } from "react";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
 import { Dices, Flame, House, History, LayoutGrid, Sparkles, TrendingUp } from "lucide-react";
 import { CategoryIcon } from "@/components/layout/category-icons";
 import { useSidebar } from "@/components/layout/SidebarProvider";
@@ -17,9 +17,9 @@ const QUICK_LINKS = [
   { label: "Home", href: "/", icon: House, color: "text-lime-600 dark:text-lime-300" },
   { label: "Game Gacha", href: "/gacha", icon: Dices, color: "text-amber-600 dark:text-amber-400" },
   { label: "Recently played", href: "/recently-played", icon: History, color: "text-violet-600 dark:text-violet-400" },
-  { label: "New", href: "/search?sort=newest", sort: "newest", icon: Sparkles, color: "text-sky-600 dark:text-sky-400" },
-  { label: "Hot Games", href: "/search?sort=popular", sort: "popular", icon: Flame, color: "text-orange-600 dark:text-orange-400" },
-  { label: "Trending", href: "/search?sort=trending", sort: "trending", icon: TrendingUp, color: "text-pink-600 dark:text-pink-400" },
+  { label: "New", href: "/new-games", icon: Sparkles, color: "text-sky-600 dark:text-sky-400" },
+  { label: "Hot Games", href: "/popular", icon: Flame, color: "text-orange-600 dark:text-orange-400" },
+  { label: "Trending", href: "/trending", icon: TrendingUp, color: "text-pink-600 dark:text-pink-400" },
 ];
 
 const itemClass = (active: boolean) => `relative flex h-11 items-center gap-3 rounded-xl px-3.5 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary ${active
@@ -33,12 +33,12 @@ interface QuickLinksProps {
   onNavigate: () => void;
 }
 
-function QuickLinksMenu({ pathname, labelClass, onNavigate, sort }: QuickLinksProps & { sort?: string }) {
+function QuickLinksMenu({ pathname, labelClass, onNavigate }: QuickLinksProps) {
   return (
     <nav aria-label="Discover games">
       <ul className="space-y-1">
         {QUICK_LINKS.map((item) => {
-          const active = item.sort ? pathname === "/search" && sort === item.sort : pathname === item.href;
+          const active = pathname === item.href;
           const Icon = item.icon;
           return (
             <li key={item.href}>
@@ -56,9 +56,7 @@ function QuickLinksMenu({ pathname, labelClass, onNavigate, sort }: QuickLinksPr
 }
 
 function QuickLinks(props: QuickLinksProps) {
-  const searchParams = useSearchParams();
-  const sort = searchParams.get("q")?.trim() ? undefined : searchParams.get("sort") || "newest";
-  return <QuickLinksMenu {...props} sort={sort} />;
+  return <QuickLinksMenu {...props} />;
 }
 
 /** Hover reveals the labels over the page; the grid always keeps its width. */
@@ -85,9 +83,7 @@ export function CategorySidebar({ categories, children }: { categories: SidebarC
         }`}
       >
         <div id="desktop-sidebar-links" className="category-rail-scroll min-h-0 flex-1 overflow-y-auto overflow-x-hidden px-2 pb-3 pt-3">
-          <Suspense fallback={<QuickLinksMenu {...quickLinksProps} />}>
-            <QuickLinks {...quickLinksProps} />
-          </Suspense>
+          <QuickLinks {...quickLinksProps} />
           <div className="mx-2 my-4 border-t border-border/70" />
           <nav aria-label="Game categories">
             <ul className="space-y-1">

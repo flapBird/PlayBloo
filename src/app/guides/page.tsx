@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { GuideBreadcrumbs, GuideCard, GuideFeatured, GuideTopicCard } from "@/components/guides/GuideContent";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { getGuideArticles, getGuideTopics, guidePath, GUIDES_DESCRIPTION } from "@/lib/guides";
@@ -38,6 +39,18 @@ export default function GuidesPage() {
     <section className={styles.latest} aria-labelledby="latest-guides">
       <div className={styles.sectionHeading}><div><h2 id="latest-guides">Latest Updates</h2></div><span className={styles.count}>{latest.length} guides</span></div>
       <div className={styles.cardGrid}>{latest.map(({ topic, article }) => <GuideCard key={`${topic.slug}/${article?.slug ?? ""}`} topic={topic} article={article} />)}</div>
+    </section>
+    <section aria-label="Play browser games on PlayBloo" className={styles.latest}>
+      <div className={styles.sectionHeading}><div><h2>Play while you read</h2></div></div>
+      <p className="max-w-3xl text-sm leading-6 text-muted-foreground">
+        Every guide here is written by the PlayBloo editorial team. If you would rather play than read, the catalogue
+        side of the site keeps three live rankings:{" "}
+        <Link href="/new-games" className="font-semibold text-primary hover:underline">new browser games</Link> (what
+        landed this week), <Link href="/trending" className="font-semibold text-primary hover:underline">trending
+        browser games</Link> (what is moving right now) and{" "}
+        <Link href="/popular" className="font-semibold text-primary hover:underline">the most played games</Link> on
+        the site — all free to play in the browser, no download needed.
+      </p>
     </section>
     <JsonLd type="CollectionPage" data={{
       name: title, description: GUIDES_DESCRIPTION, url: `${SITE_URL}/guides`,
