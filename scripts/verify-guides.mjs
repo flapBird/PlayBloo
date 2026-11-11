@@ -47,6 +47,10 @@ const gtaPages = [gtaHub, `${gtaHub}/pre-order`];
 const newestUpdatedAt = "2026-11-08T13:00:00.000Z";
 const ootDlcPath = `${hub}/master-quest-dlc`;
 pages.push(...ftPages, ...gtaPages, ootDlcPath);
+const shrekHub = "/guides/shrek-2-remastered";
+const shrekPages = [shrekHub, `${shrekHub}/co-op`, `${shrekHub}/cheats`, `${shrekHub}/where-to-buy`];
+const shrekUpdatedAt = "2026-11-11T09:00:00.000Z";
+pages.push(...shrekPages);
 const canonicalOrigin = "https://playbloo.net";
 const demoTopics = [
   { slug: "remember", officialUrl: "https://xlaucifer.itch.io/remember" },
@@ -88,6 +92,9 @@ const articleCovers = new Map([
   [`${ftHub}/drop-rate`, "/images/guides/fortnite-pirate-token-drop-rate.webp"],
   [`${ftHub}/how-to-get`, "/images/guides/fortnite-pirate-token-how-to-get.webp"],
   [ootDlcPath, "/images/guides/ocarina-of-time-master-quest-dlc.webp"],
+  [`${shrekHub}/co-op`, "/images/guides/shrek-2-remastered-co-op.webp"],
+  [`${shrekHub}/cheats`, "/images/guides/shrek-2-remastered-cheats.webp"],
+  [`${shrekHub}/where-to-buy`, "/images/guides/shrek-2-remastered-buy.webp"],
 ]);
 const checkedCoverCards = new Map([...articleCovers.keys()].map((path) => [path, new Set()]));
 
@@ -161,7 +168,7 @@ assert.ok(header.includes('href="/guides"'), "Primary navigation links to Guides
 assert.ok(!header.includes("playMode=embedded"), "Redundant Playable navigation removed");
 assert.ok(home.includes('href="/guides"'), "Homepage mosaic links to the guides hub");
 assert.ok(home.includes("Game Guides: get good, faster"), "Homepage mosaic shows the guides card");
-assert.ok(home.includes("/images/guides/fortnite-pirate-token.webp"), "Guides card features the newest guide cover");
+assert.ok(home.includes("/images/guides/shrek-2-remastered.webp"), "Guides card features the newest guide cover");
 assert.ok(!(home.match(/<nav aria-label="Game feed"[\s\S]*?<\/nav>/)?.[0] || "").includes("playMode=embedded"), "Redundant feed tab removed");
 console.log("PASS unknown routes, canonical redirect, sitemap, internal links and homepage navigation");
 
@@ -327,7 +334,7 @@ console.log("PASS visual novel Demo status, official entries, covers and Latest 
 
 const hubSection = listing.split('aria-label="Game guide hubs"')[1]?.split("</section>")[0] ?? "";
 const firstHub = hubSection.match(/href="(\/guides\/[^"?#]+)"/)?.[1];
-assert.equal(firstHub, ftHub, "Guide hubs list leads with the newest published topic");
+assert.equal(firstHub, shrekHub, "Guide hubs list leads with the newest published topic");
 console.log("PASS guide hubs list is newest-first");
 
 const starter = await (await get(starterPath)).text();
@@ -565,3 +572,46 @@ assert.ok(gtaArticleCover.headers.get("content-type")?.includes("image/webp"), "
 for (const slug of ["release-date", "editions", "collector"]) assert.equal((await get(`${gtaHub}/${slug}`)).status, 404, `${slug}: single-intent topic, no placeholder route`);
 assert.ok(latestUpdates.includes(`href="${gtaHub}/pre-order"`), "GTA pre-order article appears in Latest Updates");
 console.log("PASS GTA 6 pre-order routes, store facts, covers and sitemap dates");
+
+for (const path of shrekPages) {
+  const html = await (await get(path)).text();
+  assert.ok(!html.includes("/_next/image"), `${path}: direct precompressed cover`);
+  assert.ok(!html.includes("<iframe"), `${path}: no game embed`);
+  const ids = [...html.matchAll(/<section[^>]*\bid="([^"]+)"/g)].map((match) => match[1]);
+  assert.equal(new Set(ids).size, ids.length, `${path}: unique section IDs`);
+  for (const [, target] of html.matchAll(/href="#([^"]+)"/g)) assert.ok(ids.includes(target), `${path}: contents target ${target} exists`);
+  const pageTitle = html.match(/<title>(.*?)<\/title>/s)?.[1] ?? "";
+  assert.ok(pageTitle.length <= 60, `${path}: rendered title within 60 chars (${pageTitle.length})`);
+  const metaDescription = attr(html, "meta", 'name="description"', "content") ?? "";
+  assert.ok(metaDescription.length <= 160, `${path}: meta description within 160 chars (${metaDescription.length})`);
+  assert.equal(currentEntries.get(`${canonicalOrigin}${path}`), shrekUpdatedAt, `${path}: sitemap uses the PlayBloo publication date`);
+  if (path !== shrekHub) assert.ok(latestUpdates.includes(`href="${path}"`), `${path}: appears in Latest Updates`);
+}
+const shrekHubHtml = await (await get(shrekHub)).text();
+assert.ok(/datetime="2026-11-10"/i.test(shrekHubHtml), "Shrek 2 Remastered release date is separate from guide publication");
+assert.ok(shrekHubHtml.includes("Released"), "Shrek 2 Remastered is marked released");
+assert.ok(shrekHubHtml.includes("not a browser game"), "Shrek 2 Remastered is not presented as a playable browser game");
+assert.ok(shrekHubHtml.includes("has not played"), "Shrek hub discloses no hands-on testing");
+const shrekCoop = await (await get(`${shrekHub}/co-op`)).text();
+assert.ok(shrekCoop.includes("Couch Co-Op") && shrekCoop.includes("Mixed"), "Co-op article covers couch, online and mixed modes");
+assert.ok(shrekCoop.includes("Epic Online Services") && shrekCoop.includes("linking to a Steam account"), "Co-op article explains the EOS account step");
+assert.ok(shrekCoop.includes("Remote Play Together") && shrekCoop.includes("Family Sharing"), "Co-op article carries the Steam feature flags");
+assert.ok(shrekCoop.includes("a first for this game"), "Co-op article attributes online play to the remaster only");
+const shrekCheats = await (await get(`${shrekHub}/cheats`)).text();
+assert.ok(shrekCheats.includes("Cheat Mode") && shrekCheats.includes("unlock cheats"), "Cheats article carries the official Cheat Mode wording");
+assert.ok(shrekCheats.includes("not documented") || shrekCheats.includes("not published"), "Cheats article admits the cheat list is undocumented");
+assert.ok(shrekCheats.includes("Scrap Book"), "Cheats article keeps the 2004 Scrap Book context");
+assert.ok(shrekCheats.includes("45 achievements"), "Cheats article reports the verified achievement count");
+const shrekBuy = await (await get(`${shrekHub}/where-to-buy`)).text();
+assert.ok(shrekBuy.includes("$29.99") && shrekBuy.includes("$26.99"), "Buyer's guide carries both price points");
+assert.ok(shrekBuy.includes("November 17"), "Buyer's guide states the Steam discount end date");
+assert.ok(shrekBuy.includes("Windows 11 (64-bit)") && shrekBuy.includes("15 GB"), "Buyer's guide carries the PC spec quirks");
+assert.ok(shrekBuy.includes("Mixed"), "Buyer's guide reports the early Steam review status");
+assert.ok(shrekBuy.includes("PlayBloo does not sell"), "Buyer's guide disclaims selling");
+for (const cover of ["/images/guides/shrek-2-remastered.webp", "/images/guides/shrek-2-remastered-co-op.webp", "/images/guides/shrek-2-remastered-cheats.webp", "/images/guides/shrek-2-remastered-buy.webp"]) {
+  const response = await get(cover);
+  assert.equal(response.status, 200, `${cover}: cover loads`);
+  assert.ok(response.headers.get("content-type")?.includes("image/webp"), `${cover}: precompressed WebP`);
+}
+for (const slug of ["walkthrough", "cheat-codes", "release-date"]) assert.equal((await get(`${shrekHub}/${slug}`)).status, 404, `${slug}: no invented walkthrough, cheat list or duplicate release route`);
+console.log("PASS Shrek 2 Remastered routes, co-op and cheat facts, buyer pricing, covers and sitemap dates");

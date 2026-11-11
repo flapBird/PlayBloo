@@ -430,3 +430,51 @@ shots are public in-game labels; the wish-lamp wall was deliberately not capture
 user-written prayers. `llms.txt` gained bullets for this topic and the previously missing
 Fight Karo topic. The homepage guides-card and first-hub assertions in verify-guides moved to
 this topic, which is now the newest by publication date.
+
+## Shrek 2 Remastered (November 11, 2026)
+
+`shrek-2-remastered` covers Aspyr Media's remaster of the 2004 Luxoflux/Activision Shrek 2
+game, released November 10, 2026 on PC (Steam), PS5, Xbox Series X|S, Switch and Switch 2.
+It is not added to the Supabase catalog; there is no playable iframe, and the pages state
+that PlayBloo has not played the game. Three published articles ship with the hub:
+
+- `co-op` explains couch (shared/split screen), online and mixed play for up to four players,
+  hero swapping, the Epic Online Services account requirement (Steam-account linking, third-party
+  EULA) and the Remote Play Together / Family Sharing flags. Online co-op is attributed to press
+  coverage as a first for this game, not asserted from a playthrough.
+- `cheats` documents the officially confirmed wording only: the Steam description's "unlock
+  cheats in Cheat Mode" line, Photo Mode's menu as shown in an official screenshot, and the
+  Steam API's 45-achievement count with highlighted names. The cheat list and unlock conditions
+  were not documented anywhere checked on November 11, 2026 — the article says so and asserts
+  `cheat-codes` stays a 404 until they are. The 2004 game's pause-menu Scrap Book codes are
+  kept as clearly labeled original-build context; no sequence is reprinted and legacy codes are
+  explicitly unconfirmed for the remaster.
+- `where-to-buy` carries the $29.99 price, the 10% Steam discount to $26.99 ending November 17,
+  the store table, the Windows 11-only PC spec quirk, 15 GB install size, 12-language support
+  and the day-one Steam review snapshot (Mixed, 47% of 325, November 11) marked as a live figure.
+
+Verified sources: Steam store page and appdetails API (app 2523740: release state, price,
+discount end, 45 achievements, category flags, system requirements, 12 languages, 1920×1080
+screenshots), PlayStation Store and Nintendo eShop listing URLs, and announcement coverage
+(Gematsu's October Microsoft Store leak, XboxAchievements, Polygon, Bleeding Cool). The
+2004 original's structure (11 levels, four-character team, Hero Time, four-million-plus units)
+comes from Wikipedia. No trailer embed is added: no official YouTube upload ID was verified.
+Physical-release availability was not established and is flagged as check-your-region.
+
+The hub cover is Steam's page background key art; the three article covers and three in-body
+images are distinct official Steam screenshots, inspected before conversion to 1600 × 900 WebP.
+Original asset URLs (base, without cache parameters):
+
+- Hub key art: `.../store_item_assets/steam/apps/2523740/4e349ac74d4b443654bccfebf6b1e2665ccf559f/page_bg_raw.jpg`
+- Co-op cover: `.../store_item_assets/steam/apps/2523740/b731e4625e47d8c441aae2f98f50a2b378107744/ss_...1920x1080.jpg`
+- Cheats cover: `.../store_item_assets/steam/apps/2523740/611847cd2878d3ffb2efcffb9f896bfa84fcf595/ss_...1920x1080.jpg`
+- Buy cover: `.../store_item_assets/steam/apps/2523740/d0d409245641e953ca7f8759b7c98830f98115ab/ss_...1920x1080.jpg`
+- Co-op in-body: `.../store_item_assets/steam/apps/2523740/4726600b8a59d90c3444d50e89f0ae9f4bba7c08/ss_...1920x1080.jpg`
+- Photo Mode in-body: `.../store_item_assets/steam/apps/2523740/d5a8c107e541d4a4ff25729c6e60c7829792b86e/ss_...1920x1080.jpg`
+- Swamp in-body: `.../store_item_assets/steam/apps/2523740/60c65a1cc845e889e6c25cb0abbaaf542355fe47/ss_...1920x1080.jpg`
+
+`llms.txt` gains a Shrek bullet ahead of the Fortnite one. The homepage guides-card cover and
+first-hub assertions in verify-guides moved to this topic, now newest by publication date.
+The topic inserts at the front of the `topics` array; no existing topic file is edited, so all
+prior guide sitemap timestamps stay unchanged (verify with a pre-change XML snapshot as the
+third argument). Publication requires deployment before it is live.
