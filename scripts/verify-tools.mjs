@@ -1,0 +1,59 @@
+import assert from "node:assert/strict";
+
+// Smoke test for the /tools section, in the spirit of verify-guides.mjs:
+//   node scripts/verify-tools.mjs [base-url]
+// Asserts the SEO contract (rendered title/description lengths, canonical,
+// one H1, JSON-LD), the sitemap entry with its launch-date lastmod, the
+// trailing-slash redirect, and that made-up tool slugs stay 404.
+
+const base = process.argv[2] || "http://localhost:3000";
+const path = "/tools/fortnite-chest-counter";
+const canonicalOrigin = "https://playbloo.net";
+const canonicalUrl = `${canonicalOrigin}${path}`;
+// Must match src/app/sitemap.ts — the page's real PlayBloo launch date.
+const launchLastmod = "2026-11-11";
+
+const get = (target, options) => fetch(new URL(target, base), { signal: AbortSignal.timeout(30000), ...options });
+const attr = (html, tag, match, name) => {
+  const element = [...html.matchAll(new RegExp(`<${tag}\\b[^>]*>`, "g"))].map(([value]) => value).find((value) => value.includes(match));
+  return element?.match(new RegExp(`\\b${name}="([^"]*)"`))?.[1];
+};
+
+const response = await get(path);
+assert.equal(response.status, 200, `${path}: HTTP status`);
+const html = await response.text();
+
+const title = html.match(/<title>(.*?)<\/title>/s)?.[1];
+assert.equal(title, "Fortnite Chest Counter — Free Online Tracker | PlayBloo", `${path}: title`);
+assert.ok(title.length <= 60, `${path}: rendered title within 60 chars (got ${title.length})`);
+
+const description = attr(html, "meta", 'name="description"', "content");
+assert.ok(description, `${path}: meta description present`);
+assert.ok(description.length <= 160, `${path}: meta description within 160 chars (got ${description.length})`);
+
+assert.equal(attr(html, "link", 'rel="canonical"', "href"), canonicalUrl, `${path}: canonical`);
+assert.equal((html.match(/<h1\b/g) || []).length, 1, `${path}: one H1`);
+assert.ok(attr(html, "meta", 'property="og:image"', "content")?.startsWith(canonicalOrigin), `${path}: absolute OG image`);
+const robots = attr(html, "meta", 'name="robots"', "content");
+assert.ok(!robots?.includes("noindex"), `${path}: indexable`);
+
+const schemas = [...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)].map((match) => JSON.parse(match[1]));
+assert.ok(schemas.some((schema) => schema["@type"] === "BreadcrumbList"), `${path}: BreadcrumbList schema`);
+const webApp = schemas.find((schema) => schema["@type"] === "WebApplication");
+assert.ok(webApp?.name && webApp?.url === canonicalUrl && webApp?.offers, `${path}: WebApplication schema`);
+assert.ok(html.includes('href="/guides/fortnite-pirate-token"'), `${path}: links to the Pirate Token guide`);
+
+const sitemapResponse = await get("/sitemap.xml");
+assert.equal(sitemapResponse.status, 200);
+const sitemap = await sitemapResponse.text();
+const entry = sitemap.match(new RegExp(`<loc>\\s*${canonicalUrl.replace(/\//g, "\\/")}\\s*<\\/loc>\\s*<lastmod>([^<]+)<\\/lastmod>`));
+assert.ok(entry, "Sitemap contains the tool page");
+assert.ok(entry[1].startsWith(launchLastmod), `Sitemap lastmod keeps the launch date (got ${entry[1]})`);
+
+const redirect = await get(`${path}/`, { redirect: "manual" });
+assert.ok([307, 308].includes(redirect.status), "Trailing-slash URL redirects");
+assert.equal(new URL(redirect.headers.get("location"), base).pathname, path);
+
+assert.equal((await get("/tools/not-a-real-tool")).status, 404, "Made-up tool slug stays 404");
+
+console.log(`PASS ${path} (title ${title.length} chars, description ${description.length} chars)`);

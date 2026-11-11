@@ -99,6 +99,15 @@ export const fortnitePirateToken: GuideTopic = {
       sourceIds: ["vice", "ign"],
     },
     {
+      id: "track-your-count",
+      title: "Track your chest count while you farm",
+      paragraphs: [
+        "There is no chest counter inside Fortnite itself, so keeping a running tally during the grind means counting by hand. PlayBloo built a free web tool for exactly that: the Fortnite Chest Counter lets you tap a count up as you open chests, saves the total in your browser, and turns your count into a live Pirate Token chance using the official odds published on November 7, 2026.",
+        "It works on phones mid-match, supports batch counting when you open a stash of chests at once, and has a Treasure Hour toggle that applies the announced 1.5× boost to the token odds.",
+      ],
+      link: { label: "Open the Fortnite Chest Counter", href: "/tools/fortnite-chest-counter" },
+    },
+    {
       id: "about-this-guide",
       title: "About this coverage",
       paragraphs: [

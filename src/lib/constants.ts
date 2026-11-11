@@ -33,6 +33,9 @@ export const RECENTLY_PLAYED_STORAGE_KEY = "playbloo:recently-played:v1";
 export const GACHA_PACKS_PER_DAY = 3;
 export const GACHA_STORAGE_KEY = "playbloo:gacha:v1";
 
+// Fortnite Chest Counter (/tools/fortnite-chest-counter): browser-local tally.
+export const CHEST_COUNTER_STORAGE_KEY = "playbloo:fortnite-chest-counter:v1";
+
 export const HOT_SCORE_DECAY_FACTOR = 0.9;
 export const HOT_SCORE_VIEW_WEIGHT = 1;
 export const HOT_SCORE_PLAY_WEIGHT = 3;

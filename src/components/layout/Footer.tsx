@@ -30,6 +30,7 @@ export function Footer() {
               <li><Link href="/category" prefetch={false} className="text-sm text-muted-foreground transition-colors hover:text-foreground">Browse Categories</Link></li>
               <li><Link href="/gacha" prefetch={false} className="text-sm text-muted-foreground transition-colors hover:text-foreground">Game Gacha</Link></li>
               <li><Link href="/guides" prefetch={false} className="text-sm text-muted-foreground transition-colors hover:text-foreground">Game Guides</Link></li>
+              <li><Link href="/tools/fortnite-chest-counter" prefetch={false} className="text-sm text-muted-foreground transition-colors hover:text-foreground">Fortnite Chest Counter</Link></li>
               <li><Link href="/favorites" prefetch={false} className="text-sm text-muted-foreground transition-colors hover:text-foreground">Your Favorites</Link></li>
               <li><Link href="/recently-played" prefetch={false} className="text-sm text-muted-foreground transition-colors hover:text-foreground">Recently Played</Link></li>
             </ul>
