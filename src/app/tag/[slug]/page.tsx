@@ -55,12 +55,14 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
   const tag = await getTag(slug);
   if (!tag) return { title: "Tag Not Found" };
   const { total } = await getGames(slug, 1);
+  // Same rule as category pages: paginated pages (page >= 2) stay crawlable
+  // but out of the index; page 1 keeps its indexable status untouched.
    return {
      title: `${tag.name} Games - Browse Free Online Games Tagged with ${tag.name}`,
      alternates: {
        canonical: page > 1 ? `/tag/${slug}?page=${page}` : `/tag/${slug}`,
      },
-     ...(total < MIN_INDEXABLE_TAG_GAMES ? { robots: { index: false, follow: true } } : {}),
+     ...(page > 1 || total < MIN_INDEXABLE_TAG_GAMES ? { robots: { index: false, follow: true } } : {}),
    };
 }
 

@@ -33,13 +33,19 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
     ? category.meta_description
     : `Browse ${total} ${category.name} ${gameLabel} on PlayBloo and choose where to play.`;
 
+  // Paginated pages (page >= 2) are indexable duplicates of their category's
+  // first page — ~300 near-empty pages repeating one title. They stay crawled
+  // as the "keep walking" path (pagination links, canonical self-references),
+  // but noindex keeps them out of the index and out of the game pages' way.
+  const isPaginated = page > 1;
+
   return {
     title,
     description,
     alternates: {
-      canonical: page > 1 ? `/category/${slug}?page=${page}` : `/category/${slug}`,
+      canonical: isPaginated ? `/category/${slug}?page=${page}` : `/category/${slug}`,
     },
-    ...(total < MIN_INDEXABLE_CATEGORY_GAMES
+    ...(isPaginated || total < MIN_INDEXABLE_CATEGORY_GAMES
       ? { robots: { index: false, follow: true } }
       : {}),
   };
