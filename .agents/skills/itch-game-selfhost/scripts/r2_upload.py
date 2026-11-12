@@ -39,6 +39,7 @@ CONTENT_TYPES = {
     ".woff": "font/woff",
     ".woff2": "font/woff2",
     ".glb": "model/gltf-binary",
+    ".exr": "image/x-exr",
     ".bin": "application/octet-stream",
     ".zip": "application/zip",
     ".data": "application/octet-stream",
