@@ -1,0 +1,1417 @@
+{
+  "generatedAt": "2026-11-11T17:43:54.639Z",
+  "base": "https://playbloo.net",
+  "summary": {
+    "pagesCrawled": 1271,
+    "linksChecked": 76338,
+    "uniqueTargets": 1271,
+    "brokenTargets": 49,
+    "redirectTargets": 0,
+    "sitemapUrls": 1368,
+    "sitemapBroken": 34,
+    "okNotInSitemap": 37
+  },
+  "broken": [
+    {
+      "target": "/game/ygo-rogue",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/game/abattlacus",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/altar-of-thirteen",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/amber-forest",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/ares-1-mars-core",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/average-routine",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/azzucca",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/baller-story",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/beacon",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/bellum-atrox",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/blocus-2026-fusion",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/bob",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/boosterware",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/box-claim",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/buck-face-saves-us-all",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/burst-blackjack",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/castle-defense-halloween-edition",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/cattleship",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/chainedpath",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/checkers",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/checkmist",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/chess-mentor",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/codebreaker",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/color-block-jam",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/color-block-jam/level",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/combat-wars",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/commander",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/covenant-cards",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/crown-circuit-chess",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/crownwatch",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/cube-2048",
+          "text": "Previous gameYu-Gi-Oh! Rogue Duelist"
+        },
+        {
+          "from": "/game/danmaku-shogi",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/defend-constantinople",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/defend-the-keep",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/deus-vult",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/dominion",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/dragon-dynasty",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/draw-or-die-demo",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/dream-war-chronicle-demo",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/eldritch-apocalypse",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/elves-vs-goblins",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/emberwatch-helios-colony-defense",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/factory-go",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/fantasy-battle-roguelite",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/fantasy-card-masters",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/fireworks-incremental",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/first-bid",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/flakeparty",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/fleet-werewolf",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/gate-ajar",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/give-me-back-my-goat",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/hell-x-spin-cards",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/hellcrawler",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/hold-the-bridge-demo",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/hollow-ridge",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/honeycomb-turn-battle",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/i-was-reborn-as-a-warlord-of-patinko-orcs-and-i-need-to-crush-my-enemy",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/increlight",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/ironfall",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/ironfront",
+          "text": "Next gameYu-Gi-Oh! Rogue Duelist"
+        },
+        {
+          "from": "/game/island-crusade",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/kill-the-hero",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/kingfall-demo",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/kuli-coding",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/last-biscuit",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/legend-of-idle-playtest-demo",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/llama-roguelike-work-in-progress",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/long-suit",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/mancala",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/marketfield",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/mechwar",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/midnight-market",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/multi-modal",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/my-sweet-sugar-td",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/nosferatooth",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/november-uprising-1830",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/one-way-down",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/othello-line",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/outpost-alpha",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/packardos",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/pawnstorm",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/plaguebound",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/pocchi-tomoshibi",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/pokemon-overlord",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/project-bastion",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/project-chromata",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/qqq-kingdoms",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/raw-war",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/red-banner-1993",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/respect-the-horde",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/retromine",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/ring-of-leaders",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/robot-outbreak",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/rogue-bits",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/rooklite",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/rpg-tatico",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/sad-damn",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/seed-bowl",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/siegedle",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/sigma-tower-defence",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/signal-zero",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/sir-we-have-a-situation",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/six-bastions",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/sleigh-the-spire",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/slendersweet",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/spywar",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/stackapult",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/starturrets",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/steel-continent",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/stillhand-demo",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/super-tic-tac-toe",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/sword-shield-game",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/the-club-poker",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/the-deck-that-fed-the-snake",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/the-deconsecration-initiative",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/the-king-speaks",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/the-last-line",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/tic-tac-gone",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/tiny-bastion",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/tower-defense",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/tower-defense-word-scramble",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/trick-or-thief",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/turf-rollers",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/unlucky-traveler",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/wairo-de-bingo",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/we-need-more-undead",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        },
+        {
+          "from": "/game/yuasama-cardgame",
+          "text": "Yu-Gi-Oh! Rogue DuelistSimilar genre"
+        }
+      ]
+    },
+    {
+      "target": "/tag/unblocked-games",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/game/beast-clash",
+          "text": "Unblocked"
+        },
+        {
+          "from": "/game/color-block-jam",
+          "text": "Unblocked"
+        },
+        {
+          "from": "/game/drift-rush",
+          "text": "Unblocked"
+        },
+        {
+          "from": "/game/eggy-car",
+          "text": "Unblocked"
+        },
+        {
+          "from": "/game/escape-road",
+          "text": "Unblocked"
+        },
+        {
+          "from": "/game/escape-road-2",
+          "text": "Unblocked"
+        },
+        {
+          "from": "/game/escape-road-3",
+          "text": "Unblocked"
+        },
+        {
+          "from": "/game/escape-road-city",
+          "text": "Unblocked"
+        },
+        {
+          "from": "/game/escape-road-city-2",
+          "text": "Unblocked"
+        },
+        {
+          "from": "/game/escape-road-halloween",
+          "text": "Unblocked"
+        },
+        {
+          "from": "/game/goodbye-doggy",
+          "text": "Unblocked"
+        },
+        {
+          "from": "/game/wave-rider",
+          "text": "Unblocked"
+        }
+      ]
+    },
+    {
+      "target": "/game/ddr-any-mp3",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/game/chiptune-hero",
+          "text": "DDR Any MP3Similar genre"
+        },
+        {
+          "from": "/game/corruptbox-but-sprunki-3-infected-war-chao100s-take-remaster",
+          "text": "DDR Any MP3Similar genre"
+        },
+        {
+          "from": "/game/corruptboxbutsprunki1remastered",
+          "text": "DDR Any MP3Similar genre"
+        },
+        {
+          "from": "/game/corruptboxbutsprunki2redirection",
+          "text": "DDR Any MP3Similar genre"
+        },
+        {
+          "from": "/game/just-hit-play",
+          "text": "DDR Any MP3Similar genre"
+        },
+        {
+          "from": "/game/rhythm-center",
+          "text": "DDR Any MP3Similar genre"
+        }
+      ]
+    },
+    {
+      "target": "/guides/playrooms/getting-started",
+      "status": 0,
+      "error": "fetch failed",
+      "referrers": [
+        {
+          "from": "/guides",
+          "text": "PlayroomsGetting started: rooms, tools, the shiftHow Playrooms works: the collec"
+        },
+        {
+          "from": "/guides/playrooms",
+          "text": "PlayroomsGetting started: rooms, tools, the shiftHow Playrooms works: the collec"
+        },
+        {
+          "from": "/guides/playrooms",
+          "text": "Read the getting-started guide"
+        },
+        {
+          "from": "/guides/playrooms/achievements",
+          "text": "PlayroomsGetting started: rooms, tools, the shiftHow Playrooms works: the collec"
+        },
+        {
+          "from": "/guides/playrooms/demo",
+          "text": "PlayroomsGetting started: rooms, tools, the shiftHow Playrooms works: the collec"
+        }
+      ]
+    },
+    {
+      "target": "/guides/monster-hunter-outlanders/release-date",
+      "status": 0,
+      "error": "This operation was aborted",
+      "referrers": [
+        {
+          "from": "/guides",
+          "text": "Monster Hunter OutlandersRelease date &amp; downloadMonster Hunter Outlanders la"
+        },
+        {
+          "from": "/guides/monster-hunter-outlanders",
+          "text": "Monster Hunter OutlandersRelease date &amp; downloadMonster Hunter Outlanders la"
+        },
+        {
+          "from": "/guides/monster-hunter-outlanders",
+          "text": "Launch date, downloads and regional checks"
+        },
+        {
+          "from": "/guides/monster-hunter-outlanders/beginners-guide",
+          "text": "Monster Hunter OutlandersRelease date &amp; downloadMonster Hunter Outlanders la"
+        }
+      ]
+    },
+    {
+      "target": "/category/shooting??page=2",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/category/shooting",
+          "text": "2"
+        },
+        {
+          "from": "/category/shooting",
+          "text": "Next"
+        },
+        {
+          "from": "/category/shooting??page=4",
+          "text": "2"
+        },
+        {
+          "from": "/category/shooting??page=4",
+          "text": "Next"
+        }
+      ]
+    },
+    {
+      "target": "/game/un-pacman-en-el-savoy",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/category/music",
+          "text": "Un Pacman en el SavoyMusicExternal"
+        },
+        {
+          "from": "/category/music??page=2",
+          "text": "Un Pacman en el SavoyMusicExternal"
+        },
+        {
+          "from": "/game/corruptboxbutsprunki2redirection",
+          "text": "Next gameUn Pacman en el Savoy"
+        }
+      ]
+    },
+    {
+      "target": "/game/undead-corridor",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/game/beast-clash",
+          "text": "Next gameUndead Corridor"
+        },
+        {
+          "from": "/game/odio-el-chocolate",
+          "text": "Play hereUndead CorridorSimilar genre"
+        },
+        {
+          "from": "/game/wave-rider",
+          "text": "Previous gameUndead Corridor"
+        }
+      ]
+    },
+    {
+      "target": "/category/puzzle??page=9",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/category/puzzle",
+          "text": "9"
+        },
+        {
+          "from": "/category/puzzle??page=2",
+          "text": "9"
+        }
+      ]
+    },
+    {
+      "target": "/category/horror??page=2",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/category/horror",
+          "text": "2"
+        },
+        {
+          "from": "/category/horror",
+          "text": "Next"
+        }
+      ]
+    },
+    {
+      "target": "/category/adventure??page=2",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/category/adventure",
+          "text": "2"
+        },
+        {
+          "from": "/category/adventure",
+          "text": "Next"
+        }
+      ]
+    },
+    {
+      "target": "/category/rpg??page=5",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/category/rpg",
+          "text": "5"
+        },
+        {
+          "from": "/category/rpg??page=2",
+          "text": "5"
+        }
+      ]
+    },
+    {
+      "target": "/game/gatmao-ja",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/category/trivia",
+          "text": "GatMao (v.finished)EducationalExternal"
+        },
+        {
+          "from": "/game/local-slime-infestation",
+          "text": "Next gameGatMao (v.finished)"
+        }
+      ]
+    },
+    {
+      "target": "/category/educational??page=3",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/category/educational",
+          "text": "3"
+        },
+        {
+          "from": "/category/educational??page=2",
+          "text": "3"
+        }
+      ]
+    },
+    {
+      "target": "/category/sports??page=2",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/category/sports",
+          "text": "2"
+        },
+        {
+          "from": "/category/sports",
+          "text": "Next"
+        }
+      ]
+    },
+    {
+      "target": "/game/juniper-jam-metagame",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/game/color-block-jam",
+          "text": "Next gameJuniper Jam Metagame"
+        },
+        {
+          "from": "/game/dearest-darling-dragon",
+          "text": "Previous gameJuniper Jam Metagame"
+        }
+      ]
+    },
+    {
+      "target": "/game/la-aventura-de-naomi",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/game/escape-road-halloween",
+          "text": "Previous gameLa aventura de Naomi"
+        },
+        {
+          "from": "/game/two-cards-one-way-home",
+          "text": "Next gameLa aventura de Naomi"
+        }
+      ]
+    },
+    {
+      "target": "/game/lumberbound",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/game/baller-story",
+          "text": "Previous gameLumberbound"
+        },
+        {
+          "from": "/game/untitled-car-racing-game-anpanlover",
+          "text": "Next gameLumberbound"
+        }
+      ]
+    },
+    {
+      "target": "/game/one-of-these-is-you",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/game/kirby-soft-and-wet",
+          "text": "Previous gameONE OF THESE IS YOU"
+        },
+        {
+          "from": "/game/spotmaster",
+          "text": "Next gameONE OF THESE IS YOU"
+        }
+      ]
+    },
+    {
+      "target": "/game/emails",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/game/christmas-time",
+          "text": "Previous gameEmails"
+        },
+        {
+          "from": "/game/spooky-survivors",
+          "text": "Next gameEmails"
+        }
+      ]
+    },
+    {
+      "target": "/game/locked-in",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/game/negi",
+          "text": "Next gameLocked In"
+        },
+        {
+          "from": "/game/spark-desk",
+          "text": "Previous gameLocked In"
+        }
+      ]
+    },
+    {
+      "target": "/game/ballboing",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/game/let-the-dough-rest",
+          "text": "Next gameBall Bounce"
+        },
+        {
+          "from": "/game/ninja-bunny",
+          "text": "Previous gameBall Bounce"
+        }
+      ]
+    },
+    {
+      "target": "/game/descent",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/game/orbit-pets",
+          "text": "Next gameDescent"
+        },
+        {
+          "from": "/game/shape-shooter",
+          "text": "Previous gameDescent"
+        }
+      ]
+    },
+    {
+      "target": "/game/survival",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/game/hand-helfinger",
+          "text": "Next gameSurvival Craft"
+        },
+        {
+          "from": "/game/pop",
+          "text": "Previous gameSurvival Craft"
+        }
+      ]
+    },
+    {
+      "target": "/category/horror??page=3",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/category/horror",
+          "text": "3"
+        }
+      ]
+    },
+    {
+      "target": "/category/adventure??page=6",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/category/adventure",
+          "text": "6"
+        }
+      ]
+    },
+    {
+      "target": "/category/card??page=3",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/category/card",
+          "text": "3"
+        }
+      ]
+    },
+    {
+      "target": "/game/one-million-hp",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/category/clicker",
+          "text": "ONE MILLION HPClickerExternal"
+        }
+      ]
+    },
+    {
+      "target": "/game/the-god-of-bureaucracy",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/game/corruptboxbutsprunki1remastered",
+          "text": "Previous gameThe God of Bureaucracy"
+        }
+      ]
+    },
+    {
+      "target": "/game/ticking-time-bombs",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/game/corruptboxbutsprunki2redirection",
+          "text": "Previous gameTicking Time Bombs!"
+        }
+      ]
+    },
+    {
+      "target": "/tag/adjustable-text-size",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/game/the-tally",
+          "text": "Adjustable Text Size"
+        }
+      ]
+    },
+    {
+      "target": "/tag/camera-comfort",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/game/the-tally",
+          "text": "Camera Comfort"
+        }
+      ]
+    },
+    {
+      "target": "/tag/custom-volume-controls",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/game/the-tally",
+          "text": "Custom Volume Controls"
+        }
+      ]
+    },
+    {
+      "target": "/tag/save-anytime",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/game/the-tally",
+          "text": "Save Anytime"
+        }
+      ]
+    },
+    {
+      "target": "/tag/family-sharing",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/game/the-tally",
+          "text": "Family Sharing"
+        }
+      ]
+    },
+    {
+      "target": "/game/lanterns-of-aldermere",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/game/joga-boleiro",
+          "text": "Previous gameLanterns of Aldermere"
+        }
+      ]
+    },
+    {
+      "target": "/game/shape-o-chet-endless",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/game/joga-boleiro",
+          "text": "Next gameSHAPE-O-CHET ENDLESS"
+        }
+      ]
+    },
+    {
+      "target": "/game/europa-clipper",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/game/crownwatch",
+          "text": "Previous gameEuropa Clipper"
+        }
+      ]
+    },
+    {
+      "target": "/game/youre-a-buge",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/game/the-staring-contest",
+          "text": "Previous gameyour&#x27;e a buge"
+        }
+      ]
+    },
+    {
+      "target": "/game/seek-far",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/game/knight-battles-childeren-for-some-reson-i-dont-know",
+          "text": "Previous gameSeek Far"
+        }
+      ]
+    },
+    {
+      "target": "/game/character-customizer-2d",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/game/her-wish",
+          "text": "Previous gameCharacter Customizer (2D)"
+        }
+      ]
+    },
+    {
+      "target": "/game/hook-hopper",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/game/2d-shooter-tutorial-tarroant",
+          "text": "Previous gameHook Hopper"
+        }
+      ]
+    },
+    {
+      "target": "/game/mini-racing-game",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/game/2009-roblox-obby",
+          "text": "Next gameMini Racing Game"
+        }
+      ]
+    },
+    {
+      "target": "/game/thecandyman",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/game/pac-man-simulator",
+          "text": "Next gameThe Candy Man"
+        }
+      ]
+    },
+    {
+      "target": "/game/mushroom-kingdoms",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/game/backrooms-world",
+          "text": "Next gameMushroom Kingdoms"
+        }
+      ]
+    },
+    {
+      "target": "/game/goobermon-autobattler",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/game/how-long-can-you-last",
+          "text": "Next gameGoobermon Autobattler"
+        }
+      ]
+    },
+    {
+      "target": "/game/line-pour",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/game/tilt-jar",
+          "text": "Next gameLine Pour"
+        }
+      ]
+    },
+    {
+      "target": "/game/duality",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/game/drift-maze",
+          "text": "Previous gameDuality"
+        }
+      ]
+    },
+    {
+      "target": "/game/somewhere-eventually",
+      "status": 503,
+      "error": null,
+      "referrers": [
+        {
+          "from": "/game/mai-suya",
+          "text": "Next gameSomewhere, Eventually"
+        }
+      ]
+    }
+  ],
+  "redirects": [],
+  "sitemapBroken": [
+    {
+      "url": "https://playbloo.net/game/one-of-these-is-you",
+      "status": 503
+    },
+    {
+      "url": "https://playbloo.net/game/lumberbound",
+      "status": 503
+    },
+    {
+      "url": "https://playbloo.net/game/locked-in",
+      "status": 503
+    },
+    {
+      "url": "https://playbloo.net/game/ygo-rogue",
+      "status": 503
+    },
+    {
+      "url": "https://playbloo.net/game/ballboing",
+      "status": 503
+    },
+    {
+      "url": "https://playbloo.net/game/survival",
+      "status": 503
+    },
+    {
+      "url": "https://playbloo.net/game/mushroom-kingdoms",
+      "status": 503
+    },
+    {
+      "url": "https://playbloo.net/game/character-customizer-2d",
+      "status": 503
+    },
+    {
+      "url": "https://playbloo.net/game/descent",
+      "status": 503
+    },
+    {
+      "url": "https://playbloo.net/game/somewhere-eventually",
+      "status": 503
+    },
+    {
+      "url": "https://playbloo.net/game/the-god-of-bureaucracy",
+      "status": 503
+    },
+    {
+      "url": "https://playbloo.net/game/mini-racing-game",
+      "status": 503
+    },
+    {
+      "url": "https://playbloo.net/game/lanterns-of-aldermere",
+      "status": 503
+    },
+    {
+      "url": "https://playbloo.net/game/shape-o-chet-endless",
+      "status": 503
+    },
+    {
+      "url": "https://playbloo.net/game/seek-far",
+      "status": 503
+    },
+    {
+      "url": "https://playbloo.net/game/gatmao-ja",
+      "status": 503
+    },
+    {
+      "url": "https://playbloo.net/game/ticking-time-bombs",
+      "status": 503
+    },
+    {
+      "url": "https://playbloo.net/game/un-pacman-en-el-savoy",
+      "status": 503
+    },
+    {
+      "url": "https://playbloo.net/game/duality",
+      "status": 503
+    },
+    {
+      "url": "https://playbloo.net/game/emails",
+      "status": 503
+    },
+    {
+      "url": "https://playbloo.net/game/thecandyman",
+      "status": 503
+    },
+    {
+      "url": "https://playbloo.net/game/hook-hopper",
+      "status": 503
+    },
+    {
+      "url": "https://playbloo.net/game/line-pour",
+      "status": 503
+    },
+    {
+      "url": "https://playbloo.net/game/one-million-hp",
+      "status": 503
+    },
+    {
+      "url": "https://playbloo.net/game/ddr-any-mp3",
+      "status": 503
+    },
+    {
+      "url": "https://playbloo.net/game/youre-a-buge",
+      "status": 503
+    },
+    {
+      "url": "https://playbloo.net/game/goobermon-autobattler",
+      "status": 503
+    },
+    {
+      "url": "https://playbloo.net/game/europa-clipper",
+      "status": 503
+    },
+    {
+      "url": "https://playbloo.net/game/la-aventura-de-naomi",
+      "status": 503
+    },
+    {
+      "url": "https://playbloo.net/game/undead-corridor",
+      "status": 503
+    },
+    {
+      "url": "https://playbloo.net/game/juniper-jam-metagame",
+      "status": 503
+    },
+    {
+      "url": "https://playbloo.net/tag/unblocked-games",
+      "status": 503
+    },
+    {
+      "url": "https://playbloo.net/guides/playrooms/getting-started",
+      "status": 0
+    },
+    {
+      "url": "https://playbloo.net/guides/monster-hunter-outlanders/release-date",
+      "status": 0
+    }
+  ],
+  "okNotInSitemap": [
+    "/about",
+    "/category/action??page=12",
+    "/category/action??page=2",
+    "/category/arcade??page=2",
+    "/category/arcade??page=9",
+    "/category/card??page=2",
+    "/category/casual??page=2",
+    "/category/casual??page=21",
+    "/category/educational??page=2",
+    "/category/idle??page=2",
+    "/category/idle??page=6",
+    "/category/multiplayer??page=2",
+    "/category/music??page=2",
+    "/category/platformer??page=2",
+    "/category/platformer??page=4",
+    "/category/puzzle??page=2",
+    "/category/racing??page=2",
+    "/category/rpg??page=2",
+    "/category/shooting??page=4",
+    "/category/simulation??page=11",
+    "/category/simulation??page=2",
+    "/category/strategy??page=2",
+    "/category/strategy??page=9",
+    "/category/survival??page=2",
+    "/category/survival??page=4",
+    "/contact",
+    "/favorites",
+    "/guides/ocarina-of-time-remake/walkthrough",
+    "/privacy",
+    "/recently-played",
+    "/search",
+    "/search??page=2",
+    "/search??sort=newest",
+    "/search??sort=popular",
+    "/search??sort=trending",
+    "/tag/steam-achievements",
+    "/terms"
+  ]
+}

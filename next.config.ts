@@ -3,6 +3,15 @@ import { PHASE_DEVELOPMENT_SERVER, PHASE_PRODUCTION_BUILD } from "next/constants
 import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
 
 const nextConfig: NextConfig = {
+  // GSC keeps recrawling a few malformed URLs it once discovered (/$, /&) and
+  // reports them as 404, burning crawl budget for nothing; a permanent
+  // redirect to the homepage retires those entries on the next recrawl.
+  async redirects() {
+    return [
+      { source: "/$", destination: "/", permanent: true },
+      { source: "/&", destination: "/", permanent: true },
+    ];
+  },
   images: {
     // Vercel bills Image Transformations per (image, width) pair. Once the quota
     // is exhausted, every new transformation 402s and production renders broken
