@@ -8,26 +8,45 @@ import type { LandingFeed } from "@/lib/landing-feeds";
 
 /**
  * Shared shell for the three indexable discovery landing pages. The page
- * files own their copy and metadata; this component owns the grid, the
- * crawlable pagination and the page-2+ lean rendering (the 150-250-word
- * intro only renders on page 1 so paginated pages stay lean duplicates).
+ * files own their copy and metadata; this component owns the compact hero
+ * (one lead line plus a New/Popular/Trending switcher), the grid, the
+ * crawlable pagination and the "about this list" block below the grid.
+ *
+ * The first screen belongs to the games: the long-form intro SEO needs lives
+ * below the grid (still server-rendered on page 1) instead of pushing the
+ * grid under the fold. Page 2+ render only a short lead line — lean
+ * duplicates of page 1, per the pagination noindex convention.
  */
+
+const LANDING_TABS = [
+  { basePath: "new-games", label: "New" },
+  { basePath: "popular", label: "Popular" },
+  { basePath: "trending", label: "Trending" },
+];
+
+export interface LandingAbout {
+  heading: string;
+  paragraphs: ReactNode[];
+  /** Three scannable fact cards under the paragraphs. */
+  facts: Array<{ title: string; text: string }>;
+}
+
 export interface GameLandingProps {
   /** Single path segment, e.g. "new-games". */
   basePath: string;
   eyebrow: string;
   h1: string;
-  /** Page-1 intro copy (150-250 words), already composed with live numbers. */
-  intro: ReactNode;
-  /** Short page-2+ lead line instead of the full intro. */
+  /** Page-1 lead line (~25 words) rendered under the H1. */
+  lead: ReactNode;
+  /** Page-1 long-form copy, rendered below the grid. */
+  about: LandingAbout;
+  /** Short lead line for pages 2+. */
   pageLead: ReactNode;
   feed: LandingFeed;
   page: number;
-  /** Links to the sibling landing pages, rendered under the grid. */
-  siblings: Array<{ label: string; href: string }>;
 }
 
-export function GameLanding({ basePath, eyebrow, h1, intro, pageLead, feed, page, siblings }: GameLandingProps) {
+export function GameLanding({ basePath, eyebrow, h1, lead, about, pageLead, feed, page }: GameLandingProps) {
   const { games, total } = feed;
   const totalPages = Math.max(1, Math.ceil(total / LANDING_PAGE_SIZE));
   const pageHref = (value: number) => (value === 1 ? `/${basePath}` : `/${basePath}?page=${value}`);
@@ -45,10 +64,23 @@ export function GameLanding({ basePath, eyebrow, h1, intro, pageLead, feed, page
         ]}
       />
 
-      <header className="mb-6 max-w-3xl md:mb-8">
-        <p className="mb-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground">{eyebrow}</p>
-        <h1 className="text-2xl font-black tracking-tight sm:text-3xl">{h1}{!isFirstPage && <span className="text-muted-foreground"> — page {page}</span>}</h1>
-        {isFirstPage ? <div className="mt-3 space-y-3 text-sm leading-6 text-muted-foreground">{intro}</div> : <div className="mt-2 text-sm leading-6 text-muted-foreground">{pageLead}</div>}
+      <header className="mb-5 md:mb-6">
+        <div className="flex flex-wrap items-end justify-between gap-x-4 gap-y-3">
+          <div className="min-w-0">
+            <p className="mb-1 text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground">{eyebrow}</p>
+            <h1 className="text-2xl font-black tracking-tight sm:text-3xl">{h1}{!isFirstPage && <span className="text-muted-foreground"> — page {page}</span>}</h1>
+          </div>
+          <nav aria-label="Discovery rankings" className="flex shrink-0 items-center gap-1 rounded-xl border bg-card p-1">
+            {LANDING_TABS.map((tab) => (
+              <Link key={tab.basePath} href={`/${tab.basePath}`} prefetch={false}
+                aria-current={tab.basePath === basePath ? "page" : undefined}
+                className={`rounded-lg px-3 py-1.5 text-xs font-bold transition-colors ${tab.basePath === basePath ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:bg-muted hover:text-foreground"}`}>
+                {tab.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
+        <p className="mt-2.5 max-w-2xl text-sm leading-6 text-muted-foreground">{isFirstPage ? lead : pageLead}</p>
       </header>
 
       {games.length > 0 ? (
@@ -92,16 +124,21 @@ export function GameLanding({ basePath, eyebrow, h1, intro, pageLead, feed, page
         </div>
       )}
 
-      {siblings.length > 0 && (
-        <nav aria-label="More ways to browse" className="mt-10 border-t pt-5 text-sm text-muted-foreground">
-          <span className="font-semibold text-foreground">More ways to browse:</span>{" "}
-          {siblings.map((sibling, index) => (
-            <span key={sibling.href}>
-              {index > 0 && " · "}
-              <Link href={sibling.href} prefetch={false} className="font-semibold text-primary hover:underline">{sibling.label}</Link>
-            </span>
-          ))}
-        </nav>
+      {isFirstPage && (
+        <section aria-label={`About ${h1.toLowerCase()}`} className="mt-10 border-t pt-6 md:mt-12">
+          <h2 className="text-lg font-black tracking-tight">{about.heading}</h2>
+          <div className="mt-2.5 max-w-3xl space-y-3 text-sm leading-6 text-muted-foreground">
+            {about.paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+          </div>
+          <ul className="mt-5 grid gap-3 sm:grid-cols-3">
+            {about.facts.map((fact) => (
+              <li key={fact.title} className="rounded-xl border bg-card p-3.5">
+                <span className="block text-xs font-extrabold uppercase tracking-wide">{fact.title}</span>
+                <span className="mt-1 block text-xs leading-5 text-muted-foreground">{fact.text}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
       )}
     </div>
   );

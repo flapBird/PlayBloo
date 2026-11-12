@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { HomeDiscovery } from "@/components/home/HomeDiscovery";
 import { HomeFeatured } from "@/components/home/HomeFeatured";
 import { HomePicks } from "@/components/home/HomePicks";
-import { getHomeContent } from "@/lib/home-feeds";
+import { getCachedHomePickGames, getHomeContent } from "@/lib/home-feeds";
 
 export const revalidate = 900;
 
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
-  const { feeds, featured } = await getHomeContent();
+  const [{ feeds, featured }, pickGames] = await Promise.all([getHomeContent(), getCachedHomePickGames()]);
 
   return (
     <div className="home-page pb-8">
@@ -33,7 +33,7 @@ export default async function HomePage() {
             beside the feed tabs, so the old right rail has nothing left to do. */}
         <HomeDiscovery feeds={feeds} />
 
-        <HomePicks />
+        <HomePicks games={pickGames} />
       </div>
     </div>
   );

@@ -1,7 +1,10 @@
 import "server-only";
 
+import { unstable_cache } from "next/cache";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { queryTimeout } from "@/lib/query-timeout";
 import { HOME_GAME_CARD_FIELDS, LEGACY_GAME_CARD_FIELDS, normalizePublicGameCards } from "@/lib/discovery-data";
+import { HOME_PICKS } from "@/lib/priority-pages";
 import type { GameCardGame } from "@/components/games/GameCard";
 
 export type HomeFeedSort = "newest" | "trending" | "released" | "popular" | "instant";
@@ -96,3 +99,33 @@ export async function getHomeContent() {
   const featured = await getFeaturedGames(trending.games);
   return { feeds: { newest, trending, released, popular, instant } satisfies HomeFeeds, featured };
 }
+
+/** One row per "Featured this week" pick: just enough to render its mini card. */
+export interface HomePickGame {
+  slug: string;
+  title: string;
+  thumbnail_url: string | null;
+}
+
+/**
+ * Catalogue rows for the homepage's editorial picks. The curated order and
+ * blurbs live in priority-pages; this only supplies live titles and covers
+ * so the block can render thumbnails. Returns a plain array — unstable_cache
+ * JSON-serializes its return value, which would strip a Map to {}.
+ */
+export const getCachedHomePickGames = () =>
+  unstable_cache(async (): Promise<HomePickGame[]> => {
+    try {
+      const { data, error } = await createAdminClient()
+        .from("games")
+        .select("slug, title, thumbnail_url")
+        .eq("is_published", true)
+        .in("slug", HOME_PICKS.map((pick) => pick.slug))
+        .abortSignal(AbortSignal.timeout(queryTimeout(5000)));
+      if (error) throw error;
+      return (data || []) as HomePickGame[];
+    } catch (error) {
+      console.error("Could not load home pick games:", error);
+      return [];
+    }
+  }, ["home-pick-games-v1"], { revalidate: 3600, tags: ["public-recommendations"] })();

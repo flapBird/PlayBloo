@@ -25,11 +25,6 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
 
 export const revalidate = 900;
 
-const SIBLINGS = [
-  { label: "Most played browser games", href: "/popular" },
-  { label: "Trending this week", href: "/trending" },
-];
-
 export default async function NewGamesPage({ searchParams }: Props) {
   const page = pageNumber((await searchParams).page);
   const [feed, additions] = await Promise.all([
@@ -39,43 +34,35 @@ export default async function NewGamesPage({ searchParams }: Props) {
   const totalPages = Math.ceil(feed.total / LANDING_PAGE_SIZE);
   if (page > 1 && page > totalPages) notFound();
 
-  const newestTitle = additions.latestTitle;
-  const newestDays = additions.latestAgeDays;
+  const lead = additions.weekCount > 0
+    ? <>Every game added to PlayBloo, newest first. <strong>{additions.weekCount} games</strong> joined in the last seven days{additions.latestTitle && additions.latestAgeDays !== null
+      ? <> — the newest, <strong>{additions.latestTitle}</strong>, landed {additions.latestAgeDays === 0 ? "today" : additions.latestAgeDays === 1 ? "yesterday" : `${additions.latestAgeDays} days ago`}</>
+      : null}.</>
+    : <>Every game added to PlayBloo, newest first — fresh imports land here the moment they are published.</>;
 
-  const intro = (
-    <>
-      <p>
-        This is every game we have added to PlayBloo, sorted by the day it joined the catalogue — the top card is the
-        newest addition on the site. Additions land continuously rather than in weekly batches:{" "}
-        {additions.weekCount > 0
-          ? <>the last seven days brought <strong>{additions.weekCount} new games</strong>{newestDays !== null && newestTitle ? <> and the latest, <strong>{newestTitle}</strong>, joined {newestDays === 0 ? "today" : newestDays === 1 ? "yesterday" : `${newestDays} days ago`}</> : null}, and the next one usually appears here within hours of being imported.</>
-          : <>new games are imported and checked every week, and the next one usually appears here within hours of joining the catalogue.</>}
-      </p>
-      <p>
-        Every entry is an independent web game — mostly HTML5 and WebGL titles from itch.io and small studios — and each
-        one gets the same treatment before it shows up on this page: we verify where it actually runs, record the
-        developer and release details, and mark whether you can play it right here in an embedded frame or whether it
-        links out to the official page. Games that carry a &ldquo;New&rdquo; badge were added within the last two weeks;
-        the badge clears automatically, so this list stays honest about what is genuinely fresh.
-      </p>
-      <p>
-        If you visit often, page one is the only page you need — the grid is ordered newest first and each page holds 36
-        games, so older additions move down as new ones arrive. Prefer rankings that reflect what other visitors are
-        playing today? Try the most-played or trending lists linked below the grid.
-      </p>
-    </>
-  );
+  const about = {
+    heading: "How the new-games list works",
+    paragraphs: [
+      <>The catalogue grows continuously: itch.io imports, editorial finds and community submissions all land here the moment they are published. Each one is verified — where it runs, who made it, whether it plays in an embedded frame or links out — before it earns a card, and the top tile is always the newest addition on the site.</>,
+      <>Because arrivals are checked before listing, a game can appear a few hours after we find it — and if it breaks later, the card says so instead of silently linking a dead page.</>,
+    ],
+    facts: [
+      { title: "Newest first", text: "The grid is ordered by the day each game joined; older games slide down as fresh ones arrive." },
+      { title: "The New badge", text: "Marks games added within the last two weeks and clears automatically, so the list stays honest about what is fresh." },
+      { title: "36 games per page", text: "Pagination walks down the full arrival history of the catalogue." },
+    ],
+  };
 
   return (
     <GameLanding
       basePath="new-games"
       eyebrow="Fresh off the import queue"
       h1="New Browser Games"
-      intro={intro}
-      pageLead={<>Page {page} of the catalogue&apos;s newest additions, ordered newest first. The full introduction and the freshest cards are on <strong>page 1</strong>.</>}
+      lead={lead}
+      about={about}
+      pageLead={<>Page {page} of the catalogue&apos;s newest additions, ordered newest first. The full introduction and the freshest cards live on <strong>page 1</strong>.</>}
       feed={feed}
       page={page}
-      siblings={SIBLINGS}
     />
   );
 }

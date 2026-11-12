@@ -25,52 +25,37 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
 
 export const revalidate = 900;
 
-const SIBLINGS = [
-  { label: "New browser games", href: "/new-games" },
-  { label: "Trending this week", href: "/trending" },
-];
-
 export default async function PopularPage({ searchParams }: Props) {
   const page = pageNumber((await searchParams).page);
   const feed = await getCachedLandingPage("popular", page);
   const totalPages = Math.ceil(feed.total / LANDING_PAGE_SIZE);
   if (page > 1 && page > totalPages) notFound();
 
-  const intro = (
-    <>
-      <p>
-        This ranking is the closest thing PlayBloo has to a chart: every game on the site ordered by{" "}
-        <strong>how many visitors actually started playing it</strong>, with page views settling ties. Nothing here is
-        hand-picked — the order comes from play sessions recorded on the site itself, and the list re-sorts on its own
-        as plays accumulate. Across the {feed.total.toLocaleString()} games in the catalogue, these are the ones people
-        keep coming back to.
-      </p>
-      <p>
-        Two things are worth knowing about how the chart behaves. First, play counts only grow — a game that earned its
-        position stays visible even after the initial wave moves on, which makes this page the record of all-time
-        favourites rather than this week&rsquo;s fad. Second, most games near the top are titles you can launch right
-        here in an embedded frame, because a game that plays in place is far easier to start than one that links out.
-        Games that have never been played do not appear near the top at all, however good their store page looks.
-      </p>
-      <p>
-        Use it as a starting point: the first page holds the 36 most-launched games, and the pagination walks you down
-        the long tail in the same order. If you would rather see what is moving <em>right now</em> — new releases
-        spiking, seasonal picks reviving — the trending list next to it re-weights recent activity instead of lifetime
-        totals.
-      </p>
-    </>
-  );
+  const lead = <>The all-time chart: <strong>{feed.total.toLocaleString()} browser games</strong> ranked by how many visitors actually started playing them, with page views settling ties.</>;
+
+  const about = {
+    heading: "How the most-played ranking works",
+    paragraphs: [
+      <>Nothing here is hand-picked. Play starts are recorded on the site itself, and the order re-sorts on its own as sessions accumulate — games nobody launches never climb, however good their store page looks, while games people return to keep their ground for years.</>,
+      <>Counts only ever grow, so this is the record of long-term favourites rather than this week&apos;s fad. For what is moving right now, the trending list re-weights recent activity instead.</>,
+    ],
+    facts: [
+      { title: "Plays, not views", text: "A game climbs only when someone actually starts it, not when its page loads." },
+      { title: "Ties by views", text: "Equally-played games are ordered by how often their pages were viewed." },
+      { title: "Plays in place", text: "Most entries near the top launch right here in an embedded frame — in-place games are easier to start." },
+    ],
+  };
 
   return (
     <GameLanding
       basePath="popular"
       eyebrow="Ranked by real play starts"
       h1="Most Played Browser Games"
-      intro={intro}
+      lead={lead}
+      about={about}
       pageLead={<>Page {page} of the all-time most-played ranking, ordered by play starts. The full introduction and the top of the chart are on <strong>page 1</strong>.</>}
       feed={feed}
       page={page}
-      siblings={SIBLINGS}
     />
   );
 }

@@ -79,29 +79,30 @@ export function pickGameLinksForGuide(pageSlug: string, count = 3): PriorityLink
 }
 
 /**
- * The homepage "Featured this week" block: 12 priority pages with
- * one-line original blurbs. Anchor text varies between the plain title and
- * light long-tail variants.
+ * The homepage "Featured this week" block: 12 priority games, each with a
+ * one-line original blurb. Titles and covers come from the catalogue at
+ * render time (see getCachedHomePickGames); the blurb is the editorial part.
+ * Deliberately at most two entries per franchise so the block reads curated
+ * rather than keyword-stuffed.
  */
 export interface HomePick {
-  href: string;
-  label: string;
+  slug: string;
   blurb: string;
 }
 
 export const HOME_PICKS: HomePick[] = [
-  { href: "/game/last-flag-standing", label: "Last Flag Standing", blurb: "Capture-the-flag arena brawls against bots and friends." },
-  { href: "/game/escape-road-3", label: "Play Escape Road 3 online", blurb: "The third Escape Road chase, playable right on the site." },
-  { href: "/game/eggy-car", label: "Eggy Car", blurb: "Drive a car balancing a very fragile egg down a bumpy hill." },
-  { href: "/game/wave-rider", label: "Wave Rider", blurb: "Timing-based arcade riding with an increasingly mean surf." },
-  { href: "/game/odio-el-chocolate", label: "Odio el Chocolate", blurb: "A bite-sized Spanish indie that runs straight in the browser." },
-  { href: "/game/color-block-jam", label: "Color Block Jam", blurb: "Sort-and-slide puzzle rooms; our walkthrough covers every level." },
-  { href: "/game/drift-rush", label: "Drift Rush", blurb: "Score-chain drifting against the clock." },
-  { href: "/game/escape-road-city-2", label: "Escape Road City 2", blurb: "Tighter streets, louder sirens in the city sequel." },
-  { href: "/game/undead-corridor", label: "Undead Corridor", blurb: "Horde survival down one very long hallway." },
-  { href: "/game/wheeljumper", label: "Wheeljumper", blurb: "Precision wheel-flipping platforming." },
-  { href: "/game/escape-road-halloween", label: "Escape Road Halloween", blurb: "The seasonal Escape Road spin with pumpkin chases." },
-  { href: "/game/goodbye-doggy", label: "Goodbye Doggy", blurb: "A short, kind game about saying goodbye." },
+  { slug: "last-flag-standing", blurb: "Capture-the-flag brawls vs bots and friends." },
+  { slug: "escape-road-3", blurb: "The third Escape Road chase — play it right here." },
+  { slug: "eggy-car", blurb: "Drive carefully: the egg is very fragile." },
+  { slug: "wave-rider", blurb: "Timing-based riding, increasingly mean surf." },
+  { slug: "odio-el-chocolate", blurb: "A bite-sized Spanish indie, runs in-browser." },
+  { slug: "color-block-jam", blurb: "Sort-and-slide puzzles with a full walkthrough." },
+  { slug: "drift-rush", blurb: "Score-chain drifting against the clock." },
+  { slug: "escape-road-city-2", blurb: "Tighter streets, louder sirens." },
+  { slug: "undead-corridor", blurb: "Horde survival down one long hallway." },
+  { slug: "wheeljumper", blurb: "Precision wheel-flipping platforming." },
+  { slug: "goodbye-doggy", blurb: "A short, kind game about saying goodbye." },
+  { slug: "dearest-darling-dragon", blurb: "Raise the world's most dangerous sweetheart." },
 ];
 
 /**
