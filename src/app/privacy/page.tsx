@@ -20,7 +20,9 @@ export default function PrivacyPage() {
             We collect information you provide directly, such as when you contact us or optionally include
             contact details with a game submission. We also collect
             certain information automatically, including your IP address, browser type, and usage data
-            through cookies and analytics services like Google Analytics.
+            through cookies and analytics services like Google Analytics. To improve our game
+            catalogue, we also anonymously record search terms that return no results and visits to
+            game pages that no longer exist. These records contain no account or identity information.
           </p>
         </section>
         <section>

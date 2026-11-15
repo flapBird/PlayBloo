@@ -12,6 +12,7 @@ import {
   type RecommendationCandidate,
 } from "@/lib/related-games";
 import { recordMetric, startTimer } from "@/lib/metrics";
+import { logGameNotFound } from "@/lib/search-logs";
 import { RelatedGameItem } from "@/components/games/RelatedGameItem";
 import { Badge } from "@/components/ui/badge";
 import { GameJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
@@ -147,7 +148,11 @@ export default async function GamePage({ params }: Props) {
   const elapsed = startTimer();
   const gameRow = await getGame(slug);
 
-  if (!gameRow) notFound();
+  if (!gameRow) {
+    // Fire-and-forget demand signal; `after()` runs it after the response.
+    void logGameNotFound(slug);
+    notFound();
+  }
   const game = gameRow as unknown as Game;
 
   const categories = gameRow.categories?.map((membership) => membership.categories).filter((category): category is CategorySummary => Boolean(category)) || [];

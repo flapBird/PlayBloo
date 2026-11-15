@@ -10,6 +10,7 @@ import { GameListItem } from "@/components/games/GameListItem";
 import { ActiveFilterChips, type FilterOptions, type PublicSearchFilters } from "@/components/search/ActiveFilterChips";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { PAGE_SIZE, SITE_URL } from "@/lib/constants";
+import { logZeroResultSearch } from "@/lib/search-logs";
 
 interface Props { searchParams: Promise<{ q?: string; sort?: string; page?: string; category?: string; playMode?: string; platform?: string; price?: string; status?: string; view?: string }> }
 interface SearchOptionGame { platforms: string[] | null; monetization: string | null; development_status: string | null; release_date: string | null; last_updated_at: string | null }
@@ -162,6 +163,11 @@ export default async function SearchPage({ searchParams }: Props) {
   const { games, total, failed = false } = filters.sort === "recently-updated" && !options.hasUpdates
     ? { games: [], total: 0, failed: false }
     : await searchGames(filters);
+  // Demand signal: remember submitted terms that matched nothing, so the
+  // catalogue can grow toward what visitors actually look for. Bot requests
+  // are skipped inside the logger; database failures are not a real "no
+  // result" and are not recorded.
+  if (filters.q && total === 0 && !failed) void logZeroResultSearch(filters.q);
   const pages = Math.ceil(total / PAGE_SIZE);
   const term = filters.q.toLowerCase();
   const guideMatches = term

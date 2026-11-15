@@ -110,7 +110,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // page in git history, not to the build.
     { url: `${SITE_URL}/about`, lastModified: new Date("2026-07-24T00:00:00.000Z"), changeFrequency: "monthly" as const, priority: 0.5 },
     { url: `${SITE_URL}/contact`, lastModified: new Date("2026-09-13T00:00:00.000Z"), changeFrequency: "monthly" as const, priority: 0.5 },
-    { url: `${SITE_URL}/privacy`, lastModified: new Date("2026-09-08T00:00:00.000Z"), changeFrequency: "monthly" as const, priority: 0.5 },
+    { url: `${SITE_URL}/privacy`, lastModified: new Date("2026-11-15T00:00:00.000Z"), changeFrequency: "monthly" as const, priority: 0.5 },
     { url: `${SITE_URL}/terms`, lastModified: new Date("2026-07-24T00:00:00.000Z"), changeFrequency: "monthly" as const, priority: 0.5 },
   ];
 

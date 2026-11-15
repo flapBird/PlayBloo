@@ -10,6 +10,7 @@ import { ArrowLeft, ArrowRight, Gamepad2, Grid3X3 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { getRelatedGamesBySlug } from "@/lib/related-games";
+import { logGameNotFound } from "@/lib/search-logs";
 import { RelatedGameItem } from "@/components/games/RelatedGameItem";
 
 interface Props {
@@ -100,10 +101,17 @@ export const revalidate = 1800;
 export default async function LevelPage({ params }: Props) {
   const { slug, levelSlug } = await params;
   const game = await getGame(slug);
-  if (!game) notFound();
+  if (!game) {
+    // Fire-and-forget demand signal; `after()` runs it after the response.
+    void logGameNotFound(slug);
+    notFound();
+  }
 
   const level = await getLevel(game.id, levelSlug);
-  if (!level) notFound();
+  if (!level) {
+    void logGameNotFound(`${slug}/${levelSlug}`);
+    notFound();
+  }
 
   const adjacent = await getAdjacentLevels(game.id, level.level_number);
   // Served from the shared recommendation pool — no extra Supabase query.
