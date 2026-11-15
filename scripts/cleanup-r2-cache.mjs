@@ -33,7 +33,7 @@ for (const file of [".env", ".env.local"]) {
   }
 }
 
-const ACCOUNT_ID = process.env.CF_ACCOUNT_ID || "9727dd6591b71bd19b539eb94ee91e78";
+const ACCOUNT_ID = process.env.CLOUDFLARE_ACCOUNT_ID || process.env.CF_ACCOUNT_ID || "9727dd6591b71bd19b539eb94ee91e78";
 const BUCKET = process.env.R2_BUCKET_NAME || "playbloo-next-cache";
 const CACHE_DIR = process.env.OPEN_NEXT_CACHE_DIR || ".open-next/cache";
 const PREFIX = "incremental-cache";

@@ -1,4 +1,5 @@
 import { createAdminClient } from "@/lib/supabase/admin";
+import { CacheMaintenanceCard } from "@/components/admin/CacheMaintenanceCard";
 
 export const dynamic = "force-dynamic";
 
@@ -142,6 +143,8 @@ export default async function AdminDashboard() {
           <p className="text-sm text-muted-foreground">No stats yet.</p>
         )}
       </div>
+
+      <CacheMaintenanceCard />
     </div>
   );
 }
