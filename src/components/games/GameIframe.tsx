@@ -24,6 +24,7 @@ export function GameIframe({ src, title, gameId, slug, thumbnailUrl, externalUrl
   const [attempt, setAttempt] = useState(0);
   const [showRecovery, setShowRecovery] = useState(false);
   const tracked = useRef(false);
+  const iframeLoaded = useRef(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const playerRef = useRef<HTMLDivElement>(null);
   const hintTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
@@ -100,13 +101,18 @@ export function GameIframe({ src, title, gameId, slug, thumbnailUrl, externalUrl
 
   useEffect(() => {
     if (!showIframe) return;
-    const timer = setTimeout(() => { setShowRecovery(true); setIframeLoading(false); }, 15000);
+    // Only flag recovery when the iframe document itself never finished loading;
+    // a slow engine (game.zip etc.) loading inside a loaded iframe is not an error.
+    const timer = setTimeout(() => {
+      if (!iframeLoaded.current) { setShowRecovery(true); setIframeLoading(false); }
+    }, 15000);
     return () => clearTimeout(timer);
   }, [showIframe, attempt]);
 
   useEffect(() => () => clearTimeout(hintTimer.current), []);
 
   const retry = () => {
+    iframeLoaded.current = false;
     setIframeLoading(true);
     setShowRecovery(false);
     setAttempt((value) => value + 1);
@@ -224,7 +230,7 @@ export function GameIframe({ src, title, gameId, slug, thumbnailUrl, externalUrl
           allow="autoplay; fullscreen; gamepad; microphone; camera; clipboard-read; clipboard-write; accelerometer; gyroscope; xr-spatial-tracking"
           allowFullScreen
           title={title}
-          onLoad={() => setIframeLoading(false)}
+          onLoad={() => { iframeLoaded.current = true; setIframeLoading(false); }}
           onError={() => { setIframeLoading(false); setShowRecovery(true); }}
         />
       </div>
@@ -234,7 +240,7 @@ export function GameIframe({ src, title, gameId, slug, thumbnailUrl, externalUrl
           <div className="flex flex-wrap gap-2">
             <Button variant="outline" onClick={retry}><RotateCcw className="mr-2 h-4 w-4" />Reload game</Button>
             <Button variant="outline" onClick={() => { setShowIframe(false); setIsFullscreen(false); setIframeLoading(true); setShowRecovery(false); }}><ArrowLeft className="mr-2 h-4 w-4" />Back to launch</Button>
-            {externalUrl && <a href={externalUrl} target="_blank" rel="noopener noreferrer" onClick={trackExternalClick} className="inline-flex min-h-11 items-center gap-2 px-3 text-sm font-bold text-primary">Open game site<ExternalLink className="h-4 w-4" /></a>}
+            {showRecovery && externalUrl && <a href={externalUrl} target="_blank" rel="noopener noreferrer" onClick={trackExternalClick} className="inline-flex min-h-11 items-center gap-2 px-3 text-sm font-bold text-primary">Open game site<ExternalLink className="h-4 w-4" /></a>}
           </div>
         </div>
       )}
