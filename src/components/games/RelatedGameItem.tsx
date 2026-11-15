@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Play } from "lucide-react";
+import { ExternalLink, Play } from "lucide-react";
 import type { GameCardGame } from "@/components/games/GameCard";
 import { getGamePlayMode } from "@/lib/game-utils";
 import { CoverFallback } from "@/components/games/CoverFallback";
@@ -7,11 +7,15 @@ import { GameCover } from "@/components/games/GameCover";
 
 interface RelatedGameItemProps {
   game: GameCardGame;
-  reason: string;
 }
 
-/** Vertical related-game card: cover on top, title and why-it's-related below. */
-export function RelatedGameItem({ game, reason }: RelatedGameItemProps) {
+/**
+ * Immersive related-game card: full-bleed cover, the title laid over a bottom
+ * gradient, and a small icon badge marking playable-here vs external. The
+ * why-it's-related line is explained once at section level, not repeated on
+ * every card.
+ */
+export function RelatedGameItem({ game }: RelatedGameItemProps) {
   const playMode = getGamePlayMode({
     iframe_url: game.iframe_url || null,
     external_url: game.external_url || null,
@@ -22,27 +26,39 @@ export function RelatedGameItem({ game, reason }: RelatedGameItemProps) {
     <Link
       href={`/game/${game.slug}`}
       prefetch={false}
-      className="group flex min-w-0 flex-col overflow-hidden rounded-lg border bg-card transition-[border-color,box-shadow,transform] duration-150 hover:-translate-y-0.5 hover:border-primary/60 hover:shadow-[0_6px_18px_rgba(0,0,0,0.2)] motion-reduce:transition-none motion-reduce:hover:transform-none"
+      className="group relative flex aspect-[16/10] min-w-0 overflow-hidden rounded-xl border bg-card transition-[border-color,box-shadow] duration-150 hover:border-primary/60 hover:shadow-[0_8px_22px_rgba(0,0,0,0.28)] motion-reduce:transition-none"
     >
-      <span className="relative aspect-[16/10] shrink-0 overflow-hidden border-b bg-muted">
+      <span className="absolute inset-0" aria-hidden="true">
         {game.thumbnail_url ? (
           <GameCover
             src={game.thumbnail_url}
+            className="transition-transform duration-200 group-hover:scale-[1.05] motion-reduce:transition-none motion-reduce:group-hover:transform-none"
             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 17vw"
           />
         ) : (
           <CoverFallback title={game.title} />
         )}
-        {playMode === "embedded" && (
-          <span className="absolute bottom-1.5 left-1.5 inline-flex items-center gap-1 rounded-full bg-black/70 px-1.5 py-0.5 text-[9px] font-bold text-white backdrop-blur-sm">
-            <Play className="h-2.5 w-2.5 fill-current" aria-hidden="true" />
-            Play here
-          </span>
-        )}
       </span>
-      <span className="flex min-w-0 flex-col gap-0.5 px-2.5 pb-2 pt-1.5">
-        <span className="truncate text-[13px] font-bold leading-tight transition-colors group-hover:text-primary">{game.title}</span>
-        <span className="truncate text-[11px] leading-tight text-muted-foreground">{reason}</span>
+      {/* Readability gradient under the title. */}
+      <span className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent" aria-hidden="true" />
+      {playMode === "embedded" && (
+        <span
+          title="Playable right here"
+          className="absolute right-2 top-2 z-10 inline-flex h-6 w-6 items-center justify-center rounded-full bg-black/65 text-white backdrop-blur-sm"
+        >
+          <Play className="h-3 w-3 fill-current" aria-hidden="true" />
+        </span>
+      )}
+      {playMode === "external" && (
+        <span
+          title="Opens on the game site"
+          className="absolute right-2 top-2 z-10 inline-flex h-6 w-6 items-center justify-center rounded-full bg-black/65 text-white backdrop-blur-sm"
+        >
+          <ExternalLink className="h-3 w-3" aria-hidden="true" />
+        </span>
+      )}
+      <span className="relative z-10 mt-auto w-full truncate px-2.5 pb-2 pt-6 text-sm font-bold leading-tight text-white">
+        {game.title}
       </span>
     </Link>
   );

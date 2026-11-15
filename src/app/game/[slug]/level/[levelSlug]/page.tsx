@@ -273,7 +273,7 @@ export default async function LevelPage({ params }: Props) {
           <h2 className="mt-1 text-2xl font-black tracking-tight">Keep exploring on {SITE_NAME}</h2>
           <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
             {relatedGames.map((relatedGame) => (
-              <RelatedGameItem key={relatedGame.id} game={relatedGame} reason={relatedGame.recommendationReason} />
+              <RelatedGameItem key={relatedGame.id} game={relatedGame} />
             ))}
           </div>
         </section>

@@ -365,12 +365,17 @@ export default async function GamePage({ params }: Props) {
             <div>
               <p className="text-[10px] font-extrabold uppercase tracking-[0.14em] text-muted-foreground">Continue discovering</p>
               <h2 className="mt-1 text-2xl font-black tracking-tight">More like {game.title}</h2>
+              <p className="mt-1 text-sm text-muted-foreground">
+                {relatedGames.filter((relatedGame) => relatedGame.recommendationReason === "Same game series").length >= 3
+                  ? `More from the same series as ${game.title}`
+                  : "Picked by genre, gameplay tags and current trends"}
+              </p>
             </div>
             <Link href="/search" className="text-sm font-bold text-muted-foreground hover:text-primary">Browse all games <span aria-hidden="true">→</span></Link>
           </div>
           <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
             {relatedGames.map((relatedGame) => (
-              <RelatedGameItem key={relatedGame.id} game={relatedGame} reason={relatedGame.recommendationReason} />
+              <RelatedGameItem key={relatedGame.id} game={relatedGame} />
             ))}
           </div>
         </section>
