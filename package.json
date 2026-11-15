@@ -56,6 +56,6 @@
     "rclone.js": "^0.6.6",
     "tailwindcss": "^4",
     "typescript": "^5",
-    "wrangler": "4.151.1"
+    "wrangler": "^4.162.0"
   }
 }

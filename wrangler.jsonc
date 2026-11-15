@@ -10,13 +10,6 @@
 	"observability": {
 		"enabled": true
 	},
-	// 每个 versions upload 的版本都生成可访问的 preview URL（<version>-<name>.<子域>.workers.dev），
-	// 供手动 rollout 前验证；不配置时 previews_enabled 默认 false，preview 会 404。
-	// 注意：运行时读取的是 subdomain.previews_enabled，顶层 preview_urls 字段不生效。
-	"subdomain": {
-		"enabled": true,
-		"previews_enabled": true
-	},
 	"vars": {
 		"MAX_REVALIDATE_CONCURRENCY": "10",
 		"NEXT_CACHE_DO_QUEUE_MAX_REVALIDATION": "8",
