@@ -19,7 +19,7 @@
 import { spawn } from "node:child_process";
 
 const child = spawn("npx", ["wrangler", "versions", "upload", "--keep-vars"], {
-  stdio: ["inherit", "pipe", "inherit"],
+  stdio: ["inherit", "pipe", "pipe"],
   shell: process.platform === "win32",
 });
 
@@ -28,7 +28,8 @@ child.stdout.on("data", (chunk) => {
   stdout += chunk;
   process.stdout.write(chunk);
 });
-child.stderr.on("data", (chunk) => process.stderr.write(chunk));
+// stderr is only a stream when stdio is "pipe"; guard anyway.
+child.stderr?.on("data", (chunk) => process.stderr.write(chunk));
 
 child.on("close", (code) => {
   if (code !== 0) {
