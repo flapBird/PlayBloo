@@ -37,12 +37,18 @@ child.on("close", (code) => {
     process.exit(code);
   }
 
-  const match = stdout.match(/https:\/\/[a-z0-9.-]+workers\.dev\S*/i);
-  if (!match) {
+  // wrangler prints the preview URL with an 8-char version prefix, but the
+  // routable form uses the full version ID (`<version>-<name>.<subdomain>...`).
+  const versionMatch = stdout.match(/Worker Version ID:\s*([a-f0-9-]{36})/);
+  const previewMatch = stdout.match(/Version Preview URL:\s*(https:\/\/[a-z0-9.-]+workers\.dev\S*)/i);
+  let previewUrl = previewMatch?.[1]?.replace(/[)"'<>,]$/, "");
+  if (!previewUrl) {
     console.warn("\nNo preview URL found in upload output — skipping warm-up (cache will build on demand).");
     process.exit(0);
   }
-  const previewUrl = match[0].replace(/[)"'<>,]$/, "");
+  if (versionMatch && previewUrl) {
+    previewUrl = previewUrl.replace(versionMatch[1].slice(0, 8), versionMatch[1]);
+  }
   console.log(`\nWarming the version preview URL (${previewUrl}) so rollout traffic starts hot...`);
 
   const warm = spawn("node", ["scripts/warm-cache.mjs", "--base", previewUrl], {
