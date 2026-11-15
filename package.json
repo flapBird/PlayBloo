@@ -16,6 +16,7 @@
     "deploy": "npm run build:cloudflare && opennextjs-cloudflare deploy -- --keep-vars",
     "deploy:rclone": "npm run build:cloudflare && opennextjs-cloudflare deploy --rclone -- --keep-vars && node scripts/cleanup-r2-cache.mjs",
     "cf:typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
+    "warm-cache": "node scripts/warm-cache.mjs",
     "test:submissions": "node --experimental-test-module-mocks --test tests/submissions/url-security.test.mjs"
   },
   "dependencies": {
