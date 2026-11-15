@@ -43,6 +43,9 @@ CONTENT_TYPES = {
     ".bin": "application/octet-stream",
     ".zip": "application/zip",
     ".data": "application/octet-stream",
+    # Unity WebGL 构建常见 .gz 后缀（内容可能是未压缩的 UnityWebData，按原始字节直出）
+    ".gz": "application/octet-stream",
+    ".ico": "image/x-icon",
 }
 SKIP_NAMES = {".gitignore", ".DS_Store"}
 
