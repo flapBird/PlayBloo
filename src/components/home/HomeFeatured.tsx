@@ -87,7 +87,7 @@ export function HomeFeatured({ games, leadIsCurated = false }: { games: GameCard
         <Link
           href="/guides"
           aria-label="Explore game guides"
-          className="group relative col-span-2 flex flex-col overflow-hidden rounded-xl border border-primary/40 bg-gradient-to-br from-accent to-card transition-[border-color] duration-150 hover:border-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary lg:col-span-1 lg:col-start-5 lg:row-span-2 lg:row-start-1 motion-reduce:transition-none"
+          className="group relative col-span-2 order-last flex flex-col overflow-hidden rounded-xl border border-primary/40 bg-gradient-to-br from-accent to-card transition-[border-color] duration-150 hover:border-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary lg:order-none lg:col-span-1 lg:col-start-5 lg:row-span-2 lg:row-start-1 motion-reduce:transition-none"
         >
           <span className="relative h-36 sm:h-40 lg:h-auto lg:min-h-0 lg:flex-[1.1]" aria-hidden="true">
             <Image src={guideTopic.cover.src} alt="" fill loading="lazy" className="object-cover" sizes="(max-width: 1023px) 100vw, 240px" />
