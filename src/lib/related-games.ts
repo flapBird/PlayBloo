@@ -143,8 +143,8 @@ export function getNeighbors(game: { id: string }, candidates: RecommendationCan
   const previous = ordered[index - 1];
   const next = ordered[index + 1];
   return {
-    previous: previous ? { title: previous.title, slug: previous.slug } : null,
-    next: next ? { title: next.title, slug: next.slug } : null,
+    previous: previous ? { title: previous.title, slug: previous.slug, thumbnail_url: previous.thumbnail_url ?? null } : null,
+    next: next ? { title: next.title, slug: next.slug, thumbnail_url: next.thumbnail_url ?? null } : null,
   };
 }
 

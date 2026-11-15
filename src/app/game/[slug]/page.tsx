@@ -22,7 +22,7 @@ import { GameIframe } from "@/components/games/GameIframe";
 import type { Category, Game, GameUpdate, Series, Tag } from "@/lib/types";
 import { LevelSearch } from "@/components/levels/LevelSearch";
 import { FavoriteButton } from "@/components/games/FavoriteButton";
-import { getExternalGameUrl, getGamePlayMode, getGameSources } from "@/lib/game-utils";
+import { getExternalGameUrl, getGamePlayMode } from "@/lib/game-utils";
 import { GameInfo } from "@/components/games/GameInfo";
 import { GameUpdates } from "@/components/games/GameUpdates";
 import { GameNeighbors } from "@/components/games/GameNeighbors";
@@ -173,7 +173,6 @@ export default async function GamePage({ params }: Props) {
   const relatedGames = getRelatedGames(game, categories.map((category) => category.id), tags.map((tag) => tag.id), seriesList.map((series) => series.id), recommendationPool);
   const playMode = getGamePlayMode(game);
   const externalGameUrl = getExternalGameUrl(game);
-  const sources = getGameSources(game);
   // Audience-adjacent guide reads for this game (curated in priority-pages);
   // only the games that earn Search Console exposure get the block.
   const guideLinks = GAME_GUIDE_LINKS[game.slug];
@@ -341,21 +340,6 @@ export default async function GamePage({ params }: Props) {
         {/* Sidebar */}
         <aside className="space-y-6">
           <GameInfo game={game} playMode={playMode} />
-          <section className="rounded-xl border p-4">
-              <h3 className="mb-3 flex items-center gap-2 font-semibold"><ShieldCheck className="h-4 w-4 text-emerald-700 dark:text-emerald-400" /> Sources &amp; credits</h3>
-              {game.developer && <p className="mb-3 text-sm text-muted-foreground">Developer: <span className="font-semibold text-foreground">{game.developer}</span></p>}
-              {sources.length > 0 && (
-                <ul className="space-y-2 text-sm">
-                  {sources.map((source) => (
-                    <li key={source.url}>
-                      <a href={source.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 font-semibold text-primary hover:underline">{source.type}<ExternalLink className="h-3 w-3" /></a>
-                      {source.verifiedAt && <span className="ml-2 text-xs text-muted-foreground">checked {new Date(source.verifiedAt).toLocaleDateString("en")}</span>}
-                    </li>
-                  ))}
-                </ul>
-              )}
-              {!game.developer && sources.length === 0 && <p className="text-sm leading-6 text-muted-foreground">No verified source or developer link has been published yet.</p>}
-          </section>
           {guideLinks && (
             <section className="rounded-xl border p-4">
               <h3 className="mb-3 flex items-center gap-2 font-semibold"><BookOpen className="h-4 w-4 text-primary" />From the PlayBloo guides</h3>

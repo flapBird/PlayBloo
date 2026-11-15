@@ -60,39 +60,6 @@ export function shouldBypassImageOptimization(value: string | null | undefined):
   }
 }
 
-export function getGameSources(game: Game): GameSource[] {
-  const sources = Array.isArray(game.sources) ? game.sources : [];
-  const normalized = sources.filter(
-    (source): source is GameSource =>
-      Boolean(source && source.type && isSafeWebUrl(source.url)),
-  );
-
-  const primaryVerifiedAt = game.last_verified_at || null;
-  const candidates: GameSource[] = [
-    ...(game.source_url && game.source_type
-      ? [{ type: game.source_type, url: game.source_url, verifiedAt: primaryVerifiedAt }]
-      : []),
-    ...(game.developer_url
-      ? [{ type: "Developer", url: game.developer_url, verifiedAt: primaryVerifiedAt }]
-      : []),
-    ...(game.steam_url
-      ? [{ type: "Steam", url: game.steam_url, verifiedAt: primaryVerifiedAt }]
-      : []),
-    ...(game.itch_url
-      ? [{ type: "itch.io", url: game.itch_url, verifiedAt: primaryVerifiedAt }]
-      : []),
-    ...(game.official_website_url
-      ? [{ type: "Official website", url: game.official_website_url, verifiedAt: primaryVerifiedAt }]
-      : []),
-  ];
-
-  const unique = new Map<string, GameSource>();
-  for (const source of [...normalized, ...candidates]) {
-    if (isSafeWebUrl(source.url)) unique.set(source.url, source);
-  }
-  return [...unique.values()];
-}
-
 export function parseSourcesText(value: string | null | undefined): GameSource[] {
   return (value || "")
     .split("\n")
