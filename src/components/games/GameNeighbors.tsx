@@ -17,7 +17,7 @@ function NeighborThumb({ src }: { src: string | null }) {
 
 export function GameNeighbors({ previous, next }: { previous: Neighbor; next: Neighbor }) {
   if (!previous && !next) return null;
-  return <nav aria-label="Previous and next games" className="grid gap-3">
+  return <nav aria-label="Previous and next games" className="grid gap-3 lg:grid-cols-2">
     {previous && <Link href={`/game/${previous.slug}`} className="group flex items-center gap-3 rounded-2xl border p-4 hover:border-primary/40">
       <NeighborThumb src={previous.thumbnail_url} />
       <span className="min-w-0 flex-1"><span className="flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-wider text-muted-foreground"><ArrowLeft className="h-3 w-3" />Previous game</span><strong className="mt-1 block truncate group-hover:text-primary">{previous.title}</strong></span>

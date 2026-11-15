@@ -13,7 +13,7 @@ import {
 } from "@/lib/related-games";
 import { recordMetric, startTimer } from "@/lib/metrics";
 import { logGameNotFound } from "@/lib/search-logs";
-import { RelatedGameItem } from "@/components/games/RelatedGameItem";
+import { RelatedListItem } from "@/components/games/RelatedListItem";
 import { Badge } from "@/components/ui/badge";
 import { GameJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
@@ -354,32 +354,33 @@ export default async function GamePage({ params }: Props) {
               </ul>
             </section>
           )}
-          {(neighbors.previous || neighbors.next) && <GameNeighbors previous={neighbors.previous} next={neighbors.next} />}
+          {relatedGames.length > 0 && (
+            <section>
+              <h3 className="mb-3 text-lg font-bold tracking-tight">More like this</h3>
+              <div className="space-y-2.5">
+                {relatedGames.map((relatedGame) => (
+                  <RelatedListItem key={relatedGame.id} game={relatedGame} />
+                ))}
+              </div>
+            </section>
+          )}
         </aside>
       </div>
 
-      </div>
-      {relatedGames.length > 0 && (
-        <section className="border-t pt-8">
-          <div className="flex flex-wrap items-end justify-between gap-3">
-            <div>
-              <p className="text-[10px] font-extrabold uppercase tracking-[0.14em] text-muted-foreground">Continue discovering</p>
-              <h2 className="mt-1 text-2xl font-black tracking-tight">More like {game.title}</h2>
-              <p className="mt-1 text-sm text-muted-foreground">
-                {relatedGames.filter((relatedGame) => relatedGame.recommendationReason === "Same game series").length >= 3
-                  ? `More from the same series as ${game.title}`
-                  : "Picked by genre, gameplay tags and current trends"}
-              </p>
-            </div>
+      {/* Sequential browsing lives at the end of the page, like article pagination. */}
+      {(neighbors.previous || neighbors.next) && (
+        <section className="mt-8 border-t pt-8">
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <h2 className="text-lg font-bold tracking-tight">Keep browsing</h2>
             <Link href="/search" className="text-sm font-bold text-muted-foreground hover:text-primary">Browse all games <span aria-hidden="true">→</span></Link>
           </div>
-          <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
-            {relatedGames.map((relatedGame) => (
-              <RelatedGameItem key={relatedGame.id} game={relatedGame} />
-            ))}
+          <div className="mt-4">
+            <GameNeighbors previous={neighbors.previous} next={neighbors.next} />
           </div>
         </section>
       )}
+
+      </div>
     </div>
   );
 }
