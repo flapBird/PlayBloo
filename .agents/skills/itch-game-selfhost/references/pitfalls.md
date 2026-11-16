@@ -60,4 +60,11 @@ Ren'Py 的 `renpy.data`（引擎启动必需）因 `.data` 不在 CONTENT_TYPES 
 
 验证口径：本地 http.server 日志能看到 `GET /game/audio/*.mp3` 按需请求（200→304）即管线通；CDN 顶层打开读 `performance.getEntriesByType("resource")` 确认全部同源且音频/图片按需命中。
 
+## 14. 游戏更新后的注入层复核两件事（2026-11-16 wreckbox 2.0 事故）
+
+给已自托管游戏升版本时，注入层要重新过一遍：
+
+1. **原生替代**：新版可能把注入层绕过的痛点原生实现了（2.0 原生加了工具栏折叠 bFold/`#ctrl.folded`），继续注入会双份 UI。升版前先在浏览器里点一遍旧注入层覆盖的功能，原生的就删注入。
+2. **启动期合成点击竞态**：游戏启动后会回放自己保存的语言设置，对 `langEn`/`langRu` 派发**合成 click**（`isTrusted=false`），把汉化层刚开启的中文状态关掉——本地预置 localStorage 复现不出（游戏不回放点击），CDN 首访必现。注入层拦截语言按钮时必须判 `e.isTrusted`，只把真实用户点击交还给游戏。
+
 
