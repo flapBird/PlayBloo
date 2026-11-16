@@ -1,0 +1,26 @@
+.dataModule { margin: 20px 0; }
+.controls { display: grid; grid-template-columns: minmax(180px, 1fr) minmax(130px, auto); gap: 12px; align-items: end; }
+.tierControls { grid-template-columns: minmax(180px, 1fr) repeat(2, minmax(130px, auto)); }
+.controls label { display: grid; gap: 7px; color: var(--foreground); font-size: 11px; font-weight: 650; }
+.controls input, .controls select { width: 100%; min-height: 44px; box-sizing: border-box; border: 1px solid var(--border); border-radius: 7px; background: var(--card); color: var(--foreground); padding: 10px 12px; font: inherit; font-size: 13px; }
+.controls input:focus-visible, .controls select:focus-visible, .tableScroll:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+.resultCount { margin: 12px 0 !important; color: var(--muted-foreground); font-size: 11px !important; line-height: 1.6 !important; }
+.tableScroll { max-width: 100%; overflow-x: auto; border: 1px solid var(--border); border-radius: 9px; background: var(--card); }
+.tableScroll table { width: 100%; min-width: 680px; border-collapse: collapse; text-align: left; font-size: 13px; line-height: 1.7; }
+.tableScroll th, .tableScroll td { padding: 14px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.tableScroll thead { background: var(--secondary); }
+.tableScroll thead th { color: var(--foreground); font-size: 11px; }
+.tableScroll tbody th { min-width: 100px; color: var(--foreground); font-weight: 700; }
+.tableScroll tbody td { color: var(--muted-foreground); }
+.tableScroll tbody tr:last-child th, .tableScroll tbody tr:last-child td { border-bottom: 0; }
+.rarity { display: inline-flex; border: 1px solid var(--border); border-radius: 999px; padding: 3px 8px; color: var(--foreground); font-size: 11px; white-space: nowrap; }
+.tier { display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 6px; background: var(--secondary); color: var(--foreground); font-weight: 850; }
+.tier[data-tier="S"] { background: #7c5cff; color: #fff; }
+.tier[data-tier="A"] { background: #d9a441; color: #211607; }
+.tier[data-tier="B"] { background: #4b9b80; color: #fff; }
+.empty { margin: 0 !important; padding: 20px; color: var(--muted-foreground); font-size: 13px !important; }
+@media (max-width: 767px) {
+  .controls, .tierControls { grid-template-columns: minmax(0, 1fr); }
+  .tableScroll table { min-width: 610px; }
+  .tableScroll th, .tableScroll td { padding: 12px; }
+}

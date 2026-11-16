@@ -1,0 +1,16 @@
+[
+  { "tier": "S", "name": "Eclipse", "focus": "Mixed", "note": "Area damage and pull or control utility make it a flexible PvE and PvP pick." },
+  { "tier": "S", "name": "Orbit", "focus": "Mixed", "note": "Area attacks, gravity control and flight earned it a top-tier placement." },
+  { "tier": "S", "name": "Poison", "focus": "Mixed", "note": "Broad PvE and PvP usefulness plus a reported transformation place it at the top." },
+  { "tier": "A", "name": "Mirror", "focus": "PvP", "note": "Fast area attacks, stuns and mobility stand out, especially for PvP." },
+  { "tier": "A", "name": "Vulcanic", "focus": "PvE", "note": "Persistent magma damage is strong for PvE, while slower moves are a PvP drawback." },
+  { "tier": "B", "name": "Shine", "focus": "Mixed", "note": "Melee, area attacks and flight are useful, but the video ranks it below other legendaries." },
+  { "tier": "B", "name": "Zen", "focus": "PvE", "note": "A PvE-oriented placement; this table does not reproduce unverified mastery requirements." },
+  { "tier": "B", "name": "Frozen", "focus": "PvE", "note": "Area farming, ice-trident melee attacks and ranged utility support its placement." },
+  { "tier": "B", "name": "Blaze", "focus": "PvE", "note": "Accessible area damage and mobility make it a useful PvE option." },
+  { "tier": "C", "name": "Boom", "focus": "PvE", "note": "Serviceable early farming, but stronger area-damage options rank above it." },
+  { "tier": "C", "name": "Elastic", "focus": "PvP", "note": "Some early PvP utility, without the overall strength of the higher-ranked choices." },
+  { "tier": "C", "name": "Dust", "focus": "PvE", "note": "Area attacks help with farming, but reported damage trails the preferred options." },
+  { "tier": "D", "name": "Divide", "focus": "Starter", "note": "A basic starter fruit that the creator recommends replacing when possible." },
+  { "tier": "D", "name": "Kilo", "focus": "Starter", "note": "A basic starter fruit that the creator recommends replacing when possible." }
+]

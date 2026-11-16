@@ -34,6 +34,8 @@ export interface GuideSection {
   sourceIds?: string[];
   trailer?: boolean;
   starterPlanner?: boolean;
+  fruitTable?: boolean;
+  tierList?: boolean;
   releaseFacts?: boolean;
   link?: { label: string; href: string };
   image?: { src: string; alt: string; width: number; height: number; caption: string };
@@ -66,7 +68,7 @@ export interface GuideTopic {
   title: string;
   description: string;
   status: "published" | "draft";
-  kind?: "collection";
+  kind?: "collection" | "wiki";
   heroFact?: string;
   platforms: string[];
   releaseDate: string;

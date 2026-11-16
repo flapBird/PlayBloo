@@ -136,6 +136,28 @@ inspected before conversion to WebP; their original asset URLs are retained in
 marketing material for an adults-rated horror game and illustrates the armor
 advice directly.
 
+## Vox Seas Wiki (November 16, 2026)
+
+`vox-seas` uses the standard Guides topic and article routes with `kind: "wiki"`.
+Its four published articles are `codes`, `fruits`, `tier-list` and `beginner-guide`;
+do not add Map, Bosses, Trello or other placeholder routes without verified content.
+The fruit and tier tables are reusable client components fed by local JSON snapshots,
+not a database or live-stock service. Wiki cards display article categories while
+retaining the shared breadcrumbs, related links, metadata and sitemap generation.
+
+The canonical experience is Roblox place 104067066727140, universe 7174773198,
+created by the Vox Seas! group with 20-player servers. Its January 31, 2025 universe
+creation date is not presented as the November 2026 relaunch date. PlayBloo has not
+played the game and has not verified an active code, complete redemption result,
+live dealer stock, exact fruit prices, Boss statistics or mastery thresholds.
+Do not publish guessed code strings or turn community commentary into official data.
+
+The 14-fruit roster and rarities are cross-checked against BloxInformer's community
+reference and Roblofix's November 15 videos. Fruit uses, acquisition rules and S–D
+placements are explicitly attributed community reporting. The five WebP covers were
+visually inspected before publication; source URLs and credits remain in `vox-seas.ts`.
+All five URLs use November 16 as their actual PlayBloo first-publication date.
+
 ## Checks
 
 Run `npm run lint` and `npm run build`. Against a local running server, run

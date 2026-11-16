@@ -27,8 +27,9 @@ import { playrooms } from "./playrooms";
 import { moonSweepers } from "./moon-sweepers";
 import { unstableSmpFfa } from "./unstable-smp-ffa";
 import { breakGlassIfBored } from "./break-glass-if-bored";
+import { voxSeas } from "./vox-seas";
 
-const topics: GuideTopic[] = [playrooms, moonSweepers, unstableSmpFfa, breakGlassIfBored, shrek2Remastered, fortnitePirateToken, gta6, niemPhatOnline, wikigacha, fightKaro, monsterHunterOutlanders, steamFreeGames2026, phantomBladeZero, castlevaniaBelmontsCurse, enshrouded, worldOfWarcraftForever, marvelsWolverine, ocarinaOfTimeRemake, remember, nextStationTheMoon, biteYourTongue, sploob, shapeWalkthrough, hellraiserRevival, modernWarfare4];
+const topics: GuideTopic[] = [voxSeas, playrooms, moonSweepers, unstableSmpFfa, breakGlassIfBored, shrek2Remastered, fortnitePirateToken, gta6, niemPhatOnline, wikigacha, fightKaro, monsterHunterOutlanders, steamFreeGames2026, phantomBladeZero, castlevaniaBelmontsCurse, enshrouded, worldOfWarcraftForever, marvelsWolverine, ocarinaOfTimeRemake, remember, nextStationTheMoon, biteYourTongue, sploob, shapeWalkthrough, hellraiserRevival, modernWarfare4];
 export const GUIDE_AUTHOR = { name: "PlayBloo Editorial", url: `${SITE_URL}/about` };
 export const GUIDES_DESCRIPTION = "Release dates, beta access, and help getting started with your next game.";
 

@@ -8,6 +8,10 @@ import type { GuideArticle, GuideSection, GuideTopic } from "@/lib/guides/types"
 import { pickGameLinksForGuide } from "@/lib/priority-pages";
 import { GuideTrailer } from "./GuideTrailer";
 import { EnshroudedStarterPlanner } from "./EnshroudedStarterPlanner";
+import { GuideFruitTable } from "./GuideFruitTable";
+import { GuideTierList } from "./GuideTierList";
+import voxSeasFruits from "@/lib/guides/data/vox-seas-fruits.json";
+import voxSeasTierList from "@/lib/guides/data/vox-seas-tier-list.json";
 import styles from "./guides.module.css";
 
 export function GuideBreadcrumbs({ topic, article }: { topic?: GuideTopic; article?: GuideArticle }) {
@@ -118,7 +122,7 @@ export function GuideCard({ topic, article }: { topic: GuideTopic; article?: Gui
   return <Link href={guidePath(topic, article)} className={styles.guideCard}>
     <div className={styles.cardImage}><Image src={cover.src} style={cover.fit || cover.position ? { objectFit: cover.fit, objectPosition: cover.position ?? "center" } : undefined} alt="" fill sizes="(max-width: 767px) 88px, 120px" /></div>
     <div className={styles.cardCopy}>
-      <div className={styles.cardTop}><span className={styles.gameName}>{topic.name}</span><ArrowUpRight size={16} /></div>
+      <div className={styles.cardTop}><span className={styles.gameName}>{article && topic.kind === "wiki" ? article.category : topic.name}</span><ArrowUpRight size={16} /></div>
       <h3>{article?.shortTitle ?? topic.title}</h3>
       <p>{article?.description ?? topic.description}</p>
     </div>
@@ -129,7 +133,7 @@ export function GuideLibrary({ topic }: { topic: GuideTopic }) {
   if (!getGuideArticles(topic).length) return null;
   const preview = topic.articles.find((article) => article.status === "preview" && article.slug === "walkthrough");
   return <section id="guide-library" className={styles.library} aria-labelledby="library-heading">
-    <div className={styles.sectionHeading}><div><h2 id="library-heading">Choose your next read</h2></div><span className={styles.count}>{getGuideArticles(topic).length} {getGuideArticles(topic).length === 1 ? "guide" : "guides"}</span></div>
+    <div className={styles.sectionHeading}><div><h2 id="library-heading">{topic.kind === "wiki" ? `Browse the ${topic.name} Wiki` : "Choose your next read"}</h2></div><span className={styles.count}>{getGuideArticles(topic).length} {getGuideArticles(topic).length === 1 ? "guide" : "guides"}</span></div>
     <div className={styles.cardGrid}>{getGuideArticles(topic).map((article) => <GuideCard key={article.slug} topic={topic} article={article} />)}</div>
     {preview && <div className={styles.previewNote}><BookOpen size={19} /><div><strong>Looking for a walkthrough?</strong><p>Switch 2 routes are in preparation and have not been tested yet.</p></div><Link href={guidePath(topic, preview)}>Coverage status <ArrowRight size={14} /></Link></div>}
   </section>;
@@ -164,6 +168,8 @@ export function GuideSections({ topic, sections }: { topic: GuideTopic; sections
       {section.releaseFacts && <GuideFacts topic={topic} />}
       {section.paragraphs?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
       {section.starterPlanner && <EnshroudedStarterPlanner />}
+      {section.fruitTable && <GuideFruitTable fruits={voxSeasFruits} />}
+      {section.tierList && <GuideTierList entries={voxSeasTierList} />}
       {section.link && <a href={section.link.href} className={styles.heroGuideLink}>{section.link.label}<ArrowUpRight size={16} aria-hidden="true" /></a>}
       {section.bullets && <ul>{section.bullets.map((item) => <li key={item}>{item}</li>)}</ul>}
       {section.table && <div className={styles.tableScroll} role="region" aria-label={`${section.title} comparison table`} tabIndex={0}><table>

@@ -61,6 +61,10 @@ const bgHub = "/guides/break-glass-if-bored";
 const bgPages = [bgHub, `${bgHub}/getting-started`, `${bgHub}/secrets`];
 const trendingUpdatedAt = "2026-11-11T10:00:00.000Z";
 pages.push(...prPages, ...msPages, ...ffaPages, ...bgPages);
+const voxHub = "/guides/vox-seas";
+const voxPages = [voxHub, `${voxHub}/codes`, `${voxHub}/fruits`, `${voxHub}/tier-list`, `${voxHub}/beginner-guide`];
+const voxUpdatedAt = "2026-11-16T08:00:00.000Z";
+pages.push(...voxPages);
 const canonicalOrigin = "https://playbloo.net";
 const demoTopics = [
   { slug: "remember", officialUrl: "https://xlaucifer.itch.io/remember" },
@@ -114,6 +118,10 @@ const articleCovers = new Map([
   [`${ffaHub}/pvp-tips`, "/images/guides/unstable-smp-ffa-pvp.webp"],
   [`${bgHub}/getting-started`, "/images/guides/break-glass-if-bored-getting-started.webp"],
   [`${bgHub}/secrets`, "/images/guides/break-glass-if-bored-gold.webp"],
+  [`${voxHub}/codes`, "/images/guides/vox-seas-codes.webp"],
+  [`${voxHub}/fruits`, "/images/guides/vox-seas-fruits.webp"],
+  [`${voxHub}/tier-list`, "/images/guides/vox-seas-tier-list.webp"],
+  [`${voxHub}/beginner-guide`, "/images/guides/vox-seas-beginner-guide.webp"],
 ]);
 const checkedCoverCards = new Map([...articleCovers.keys()].map((path) => [path, new Set()]));
 
@@ -187,7 +195,7 @@ assert.ok(header.includes('href="/guides"'), "Primary navigation links to Guides
 assert.ok(!header.includes("playMode=embedded"), "Redundant Playable navigation removed");
 assert.ok(home.includes('href="/guides"'), "Homepage mosaic links to the guides hub");
 assert.ok(home.includes("Game Guides: get good, faster"), "Homepage mosaic shows the guides card");
-assert.ok(home.includes("/images/guides/playrooms.webp"), "Guides card features the newest guide cover");
+assert.ok(home.includes("/images/guides/vox-seas.webp"), "Guides card features the newest guide cover");
 assert.ok(!(home.match(/<nav aria-label="Game feed"[\s\S]*?<\/nav>/)?.[0] || "").includes("playMode=embedded"), "Redundant feed tab removed");
 console.log("PASS unknown routes, canonical redirect, sitemap, internal links and homepage navigation");
 
@@ -358,8 +366,48 @@ console.log("PASS visual novel Demo status, official entries, covers and Latest 
 
 const hubSection = listing.split('aria-label="Game guide hubs"')[1]?.split("</section>")[0] ?? "";
 const firstHub = hubSection.match(/href="(\/guides\/[^"?#]+)"/)?.[1];
-assert.equal(firstHub, prHub, "Guide hubs list leads with the newest published topic");
+assert.equal(firstHub, voxHub, "Guide hubs list leads with the newest published topic");
 console.log("PASS guide hubs list is newest-first");
+
+const voxFruitNames = ["Divide", "Kilo", "Boom", "Elastic", "Dust", "Blaze", "Shine", "Frozen", "Zen", "Mirror", "Vulcanic", "Eclipse", "Orbit", "Poison"];
+for (const path of voxPages) {
+  const html = await (await get(path)).text();
+  assert.ok(!html.includes("/_next/image"), `${path}: direct precompressed cover`);
+  assert.ok(!html.includes("<iframe"), `${path}: no game embed in the initial page`);
+  const ids = [...html.matchAll(/<section[^>]*\bid="([^"]+)"/g)].map((match) => match[1]);
+  assert.equal(new Set(ids).size, ids.length, `${path}: unique section IDs`);
+  for (const [, target] of html.matchAll(/href="#([^"]+)"/g)) assert.ok(ids.includes(target), `${path}: contents target ${target} exists`);
+  const pageTitle = html.match(/<title>(.*?)<\/title>/s)?.[1] ?? "";
+  assert.ok(pageTitle.length <= 60, `${path}: rendered title within 60 chars (${pageTitle.length})`);
+  const metaDescription = attr(html, "meta", 'name="description"', "content") ?? "";
+  assert.ok(metaDescription.length <= 160, `${path}: meta description within 160 chars (${metaDescription.length})`);
+  assert.equal(currentEntries.get(`${canonicalOrigin}${path}`), voxUpdatedAt, `${path}: sitemap uses the PlayBloo publication date`);
+  if (path !== voxHub) assert.ok(latestUpdates.includes(`href="${path}"`), `${path}: appears in Latest Updates`);
+}
+const voxHubHtml = await (await get(voxHub)).text();
+assert.ok(voxHubHtml.includes('href="https://www.roblox.com/games/104067066727140/Vox-Seas"'), "Vox Seas hub links to the canonical official experience");
+assert.ok(voxHubHtml.includes("Action RPG · 20-player servers"), "Vox Seas hub carries the verified server limit");
+assert.ok(voxHubHtml.includes("PlayBloo has not played Vox Seas"), "Vox Seas hub discloses no hands-on testing");
+const voxCodes = await (await get(`${voxHub}/codes`)).text();
+assert.ok(voxCodes.includes("has not independently verified an active Vox Seas code"), "Codes article publishes its verification status instead of an invented code");
+assert.ok(voxCodes.includes("does not label guessed strings such as RELEASE as working"), "Codes article rejects guessed redemption strings");
+const voxFruits = await (await get(`${voxHub}/fruits`)).text();
+for (const name of voxFruitNames) assert.ok(voxFruits.includes(`>${name}</th>`), `Fruit table includes ${name} in server HTML`);
+assert.ok(voxFruits.includes("not a live stock feed"), "Fruit table does not claim live stock");
+const voxTier = await (await get(`${voxHub}/tier-list`)).text();
+for (const name of voxFruitNames) assert.ok(voxTier.includes(`>${name}</th>`), `Tier list includes ${name} in server HTML`);
+assert.ok(voxTier.includes("one community member&#x27;s assessment"), "Tier list attributes its community opinion");
+assert.ok(voxTier.includes("Mixed entries appear in both PvE and PvP filters"), "Tier list documents mixed-focus filtering");
+const voxBeginner = await (await get(`${voxHub}/beginner-guide`)).text();
+assert.ok(voxBeginner.includes('href="https://www.roblox.com/games/104067066727140/Vox-Seas"'), "Beginner guide links to the official experience");
+assert.ok(voxBeginner.includes("does not invent a quest order"), "Beginner guide does not invent progression routes");
+for (const cover of ["/images/guides/vox-seas.webp", "/images/guides/vox-seas-codes.webp", "/images/guides/vox-seas-fruits.webp", "/images/guides/vox-seas-tier-list.webp", "/images/guides/vox-seas-beginner-guide.webp"]) {
+  const response = await get(cover);
+  assert.equal(response.status, 200, `${cover}: cover loads`);
+  assert.ok(response.headers.get("content-type")?.includes("image/webp"), `${cover}: precompressed WebP`);
+}
+for (const slug of ["map", "bosses", "trello"]) assert.equal((await get(`${voxHub}/${slug}`)).status, 404, `${slug}: no unverified Wiki route`);
+console.log("PASS Vox Seas Wiki routes, official entry, verified-content limits, 14-fruit data, covers and sitemap dates");
 
 const starter = await (await get(starterPath)).text();
 assert.equal(currentEntries.get(`${canonicalOrigin}${starterPath}`), starterUpdatedAt, "Starter guide uses its own publication date");

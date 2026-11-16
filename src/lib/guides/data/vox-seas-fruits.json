@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Divide",
+    "rarity": "Common",
+    "reportedUse": "A basic starter option that Roblofix recommends replacing as better fruits become available."
+  },
+  {
+    "name": "Kilo",
+    "rarity": "Common",
+    "reportedUse": "A basic starter option that Roblofix recommends replacing as better fruits become available."
+  },
+  {
+    "name": "Boom",
+    "rarity": "Rare",
+    "reportedUse": "An early PvE farming option with area attacks, ranked below the stronger farming choices."
+  },
+  {
+    "name": "Elastic",
+    "rarity": "Rare",
+    "reportedUse": "Reported early PvP utility, but not a leading long-term pick in the cited ranking."
+  },
+  {
+    "name": "Dust",
+    "rarity": "Epic",
+    "reportedUse": "Area attacks for farming; the video places its damage below the preferred alternatives."
+  },
+  {
+    "name": "Blaze",
+    "rarity": "Epic",
+    "reportedUse": "Accessible PvE area damage and mobility, according to Roblofix's testing."
+  },
+  {
+    "name": "Shine",
+    "rarity": "Legendary",
+    "reportedUse": "Melee and area attacks plus flight utility; ranked as a weaker legendary option."
+  },
+  {
+    "name": "Frozen",
+    "rarity": "Legendary",
+    "reportedUse": "Area farming with ice-trident melee attacks and a ranged option."
+  },
+  {
+    "name": "Zen",
+    "rarity": "Legendary",
+    "reportedUse": "A PvE-oriented kit in the cited video; mastery numbers are deliberately not reproduced here."
+  },
+  {
+    "name": "Mirror",
+    "rarity": "Legendary",
+    "reportedUse": "Fast area attacks and PvP stuns, with a reported island-teleport ability."
+  },
+  {
+    "name": "Vulcanic",
+    "rarity": "Legendary",
+    "reportedUse": "Strong reported PvE magma damage and persistent puddles, balanced by slower PvP moves."
+  },
+  {
+    "name": "Eclipse",
+    "rarity": "Legendary",
+    "reportedUse": "A mixed PvE and PvP choice with area attacks and pull or control utility."
+  },
+  {
+    "name": "Orbit",
+    "rarity": "Mythical",
+    "reportedUse": "Area attacks, gravity control and flight utility in Roblofix's community ranking."
+  },
+  {
+    "name": "Poison",
+    "rarity": "Mythical",
+    "reportedUse": "A broad PvE and PvP option with a reported transformation; no mastery threshold is claimed here."
+  }
+]
