@@ -74,3 +74,5 @@ missingDetailFields：无（五栏目齐全）。关卡总数未写具体数字�
 ——绕过包装页的跳板与 15 秒劫持，游戏加载屏在 localhost iframe 直嵌测试中可正常加载；Famobi 广告与 A1000-11 归因保留。`external_url` 仍指 play.famobi.com/thief-puzzle 作为恢复态"Open game site"兜底。`last_verified_at` 刷新为 2026-11-17T16:34:59Z；`updated_at` 未动（仍为首次上线 2026-11-17T16:08:01Z）。
 
 **残留风险**：CDN 路径含版本号 v090 且属未注册热链，Famobi 升版/封链即裂——裂时游戏页恢复态有 "Open game site" 外链兜底，需人工跟进。线上游戏页 ISR 缓存 `s-maxage≈33min`，修复后旧 iframe 最多再服务约半小时（无管理员会话可主动 revalidatePath）。
+
+**修复后线上验证（17:14Z 缓存翻新后）**：live HTML iframe src 已为 CDN 构建地址；浏览器实测 Launch game → iframe 挂载 `games.cdn.famobi.com/.../v090/` 游戏加载屏正常渲染，宿主页 `topUrl` 在点击后 15 秒+保持 `playbloo.net/game/thief-puzzle` 不变（wrapper 的 15 秒 top 劫持随包装页一并绕过）。iframe 内游戏加载屏的后续点击（cookie/广告/开始）在自动化环境无法穿透跨域 iframe，但直开该构建 URL 时全流程（cookie 同意→插屏广告→标题画面）已在页内验证通过，且授权发布商的正常嵌入路径同为 iframe 内运行该构建。

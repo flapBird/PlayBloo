@@ -62,7 +62,8 @@
           "appliedAt": "2026-11-17T16:34:59Z",
           "updatedAtUntouched": true,
           "residualRisk": "CDN 路径含版本号 v090、未注册热链，升版/封链即裂；裂时恢复态 Open game site 兜底",
-          "cacheNote": "线上 ISR s-maxage≈33min 后自动翻新，无管理员会话无法主动 revalidate"
+          "cacheNote": "线上 ISR 缓存 17:14:56Z 翻新（轮询证实），无管理员会话无法主动 revalidate",
+          "postFixVerification": "live iframe src=games.cdn.famobi.com/.../v090/ 加载屏渲染正常；Launch 后 15 秒+ topUrl 保持 playbloo.net/game/thief-puzzle 不变，top 劫持随 wrapper 绕过而消除"
         }
       }
     }
