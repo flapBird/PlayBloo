@@ -11,6 +11,7 @@ import { ActiveFilterChips, type FilterOptions, type PublicSearchFilters } from 
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { PAGE_SIZE, SITE_URL } from "@/lib/constants";
 import { logZeroResultSearch } from "@/lib/search-logs";
+import { normalizeSearchQuery } from "@/lib/search-query";
 
 interface Props { searchParams: Promise<{ q?: string; sort?: string; page?: string; category?: string; playMode?: string; platform?: string; price?: string; status?: string; view?: string }> }
 interface SearchOptionGame { platforms: string[] | null; monetization: string | null; development_status: string | null; release_date: string | null; last_updated_at: string | null }
@@ -24,7 +25,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
     ...(!hasParameters ? { alternates: { canonical: "/search" } } : {}),
   };
 }
-function clean(value = "", max = 80) { return value.trim().replace(/[%_(),]/g, " ").replace(/\s+/g, " ").slice(0, max); }
+function clean(value = "", max = 80) { return normalizeSearchQuery(value, max); }
 
 async function findMatches(q: string) {
   const term = clean(q); if (!term) return null;

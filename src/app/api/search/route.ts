@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { normalizeSearchQuery } from "@/lib/search-query";
 
 export const dynamic = "force-dynamic";
 
@@ -12,13 +13,9 @@ type SearchGameRow = {
   [key: string]: unknown;
 };
 
-function normalize(value: string): string {
-  return value.trim().replace(/[%_(),]/g, " ").replace(/\s+/g, " ").slice(0, 80);
-}
-
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
-  const q = normalize(searchParams.get("q") || "");
+  const q = normalizeSearchQuery(searchParams.get("q") || "");
   const sort = searchParams.get("sort") || "newest";
   const category = searchParams.get("category");
   const playMode = searchParams.get("playMode") || "all";

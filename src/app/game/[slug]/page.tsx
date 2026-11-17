@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { cache } from "react";
@@ -13,6 +13,7 @@ import {
 } from "@/lib/related-games";
 import { recordMetric, startTimer } from "@/lib/metrics";
 import { logGameNotFound } from "@/lib/search-logs";
+import { resolvePastedGameSlug } from "@/lib/slug-rescue";
 import { RelatedListItem } from "@/components/games/RelatedListItem";
 import { Badge } from "@/components/ui/badge";
 import { GameJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
@@ -149,6 +150,13 @@ export default async function GamePage({ params }: Props) {
   const gameRow = await getGame(slug);
 
   if (!gameRow) {
+    // Paste-artifact rescue first (2026-11-18): the not-found log keeps
+    // showing URLs that are the site's own games with trailing CJK
+    // punctuation, AI citation markers or guessed slug fragments. A resolved
+    // match redirects (308) and is served demand — only the genuinely lost
+    // slugs stay on the 404 path and keep feeding the demand signal.
+    const rescued = await resolvePastedGameSlug(slug).catch(() => null);
+    if (rescued) permanentRedirect(`/game/${rescued}`);
     // Fire-and-forget demand signal; `after()` runs it after the response.
     void logGameNotFound(slug);
     notFound();

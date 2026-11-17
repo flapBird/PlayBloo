@@ -1,4 +1,6 @@
 import type { NextRequest } from "next/server";
+import { NextResponse } from "next/server";
+import { resolvePastedGameSlug } from "@/lib/slug-rescue";
 
 // Games that were removed from the catalogue and will not come back. Their
 // rows are deleted from Supabase, so these URLs would otherwise 404 forever
@@ -15,6 +17,18 @@ const REMOVED_GAME_SLUGS: ReadonlySet<string> = new Set([
   "feed-the-ai",
 ]);
 
+// Canonical slugs are lowercase [a-z0-9-]. Anything else in /game/<slug> is a
+// paste artifact (trailing CJK punctuation, U+2011 dashes, AI citation
+// markers, embedded spaces, a full URL or a Chinese title) and can never
+// exact-match a game page, so it is worth paying Supabase round trips to
+// resolve a redirect target — and only the proxy can emit a real 308, because
+// the ISR page streams its loading shell before its render decides anything.
+// Canonical-shaped misses skip the proxy lookups entirely and fall through to
+// the ISR page, whose not-found path runs the same resolver as a mid-stream
+// meta redirect; that path costs zero for the healthy game pages that
+// dominate this route.
+const CANONICAL_SLUG_RE = /^[a-z0-9-]+$/;
+
 const gonePage = (slug: string) => `<!DOCTYPE html>
 <html lang="en">
 <head><meta charset="utf-8"><title>Game removed - PlayBloo</title><meta name="robots" content="noindex"></head>
@@ -25,13 +39,31 @@ const gonePage = (slug: string) => `<!DOCTYPE html>
 </body>
 </html>`;
 
-export function proxy(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const match = /^\/game\/([^/]+)$/.exec(request.nextUrl.pathname);
-  if (match && REMOVED_GAME_SLUGS.has(match[1].toLowerCase())) {
-    return new Response(gonePage(match[1]), {
+  if (!match) return;
+  const rawSlug = match[1];
+
+  if (REMOVED_GAME_SLUGS.has(rawSlug.toLowerCase())) {
+    return new Response(gonePage(rawSlug), {
       status: 410,
       headers: { "content-type": "text/html; charset=utf-8" },
     });
+  }
+
+  let decoded = rawSlug;
+  try {
+    decoded = decodeURIComponent(rawSlug);
+  } catch {
+    // Malformed escapes are themselves paste evidence — keep the raw value.
+  }
+  if (CANONICAL_SLUG_RE.test(decoded) && decoded.length <= 80) return;
+
+  // Resolver failures must not take the route down: falling through renders
+  // the regular (soft) 404 exactly as before this rescue existed.
+  const rescued = await resolvePastedGameSlug(rawSlug).catch(() => null);
+  if (rescued) {
+    return NextResponse.redirect(new URL(`/game/${rescued}`, request.url), 308);
   }
 }
 

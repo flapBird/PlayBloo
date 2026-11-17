@@ -3,6 +3,7 @@ import "server-only";
 import { after } from "next/server";
 import { headers } from "next/headers";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { normalizeSearchQuery } from "@/lib/search-query";
 
 /**
  * Demand-signal logging for the catalogue: search submissions that matched
@@ -21,12 +22,13 @@ export type SearchLogSource = "search_zero" | "game_404";
 const BOT_USER_AGENT = /bot|crawl|spider|slurp/i;
 
 /**
- * Same normalization rules as the search page's `clean()`: strip the `ilike`
- * operator characters, collapse whitespace and cap the length. Anything
+ * Same normalization rules as the search page's `clean()` and the search API:
+ * strip the `ilike` operator characters plus copy-paste punctuation
+ * (lib/search-query.ts), collapse whitespace and cap the length. Anything
  * shorter than two characters carries no signal worth a row.
  */
 export function normalizeQuery(value = "", max = 80): string {
-  return value.trim().replace(/[%_(),]/g, " ").replace(/\s+/g, " ").slice(0, max);
+  return normalizeSearchQuery(value, max);
 }
 
 export function isBotUserAgent(userAgent: string | null): boolean {
