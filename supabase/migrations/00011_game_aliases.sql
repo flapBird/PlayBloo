@@ -10,17 +10,17 @@
 -- Only the service role reads and writes this table (admin client bypasses
 -- RLS). No anon/authenticated policies, mirroring search_query_logs (00010).
 
-CREATE TABLE game_aliases (
+CREATE TABLE IF NOT EXISTS game_aliases (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   game_id uuid NOT NULL REFERENCES games(id) ON DELETE CASCADE,
   alias text NOT NULL,
   created_at timestamptz NOT NULL DEFAULT NOW()
 );
 
-CREATE UNIQUE INDEX idx_game_aliases_game_alias
+CREATE UNIQUE INDEX IF NOT EXISTS idx_game_aliases_game_alias
   ON game_aliases (game_id, lower(alias));
 
-CREATE INDEX idx_game_aliases_game_id ON game_aliases (game_id);
+CREATE INDEX IF NOT EXISTS idx_game_aliases_game_id ON game_aliases (game_id);
 
 ALTER TABLE game_aliases ENABLE ROW LEVEL SECURITY;
 
@@ -31,7 +31,9 @@ CREATE OR REPLACE FUNCTION assert_alias_has_no_wildcards() RETURNS trigger
 LANGUAGE plpgsql AS $$
 BEGIN
   IF NEW.alias ~ '[%_]' THEN
-    RAISE EXCEPTION 'alias must not contain ILIKE wildcards (% or _): %', NEW.alias;
+    -- Literal %% is escaped: a bare % inside a RAISE format string is a
+    -- parameter placeholder and would fail compilation (42601).
+    RAISE EXCEPTION 'alias must not contain ILIKE wildcards (%% or _): %', NEW.alias;
   END IF;
   RETURN NEW;
 END;
