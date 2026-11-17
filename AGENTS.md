@@ -33,3 +33,8 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - 上传用 Wrangler CLI（项目本地 `npx wrangler`，OAuth 已有 R2 写权限）：`r2 object put` 仅支持单文件，批量需脚本并发循环；`r2 object get` 不接受 `-y`。上传必须显式设 Content-Type（html/js/json/mp3/svg/png 各归各类），缓存策略：index.html 与数据 JSON 用 `max-age=300`，其余静态资源 `max-age=86400`。
 - 复制/改造 itch 游戏时，必须从 index.html 移除 `<script src="https://static.itch.io/htmlgame.js">` 引用（2026-11-06 last-flag-standing 事故）：这是 itch 的反盗链脚本，检测到嵌入方为非 itch 域名就上报 itch 并把整个框架跳转到 "You should be using itch.io" 盗链提示页；顶层窗口打开时不触发，所以本地直开正常、线上 iframe 嵌入必炸。文件内其余 itch 字样（ITCH 主机名判断、模板字符串里的链接）不加载 itch 资源，可保留。
 - 游戏自带的隐藏外呼（更新检查、统计打点、内嵌反馈表单等）用 fetch 垫片拦截或改道本地副本（skill 的 references/fetch-shim.md）；2026-11-15 rotten-machines 实例：Unity data 内嵌开局自动 POST Google Forms，垫片拦 `docs.google.com`。注意 Response 构造坑：204 是 null-body 状态码，`new Response("", {status: 204})` 抛 RangeError 被 catch 吞掉后请求照发——要用 `new Response(null, {status: 204})` 或 status 200。判定以运行时 `performance.getEntriesByType("resource")` 为准，静态 grep 会被压缩容器骗过（Unity 的 .gz 实为未压缩 UnityWebData）。
+
+# 本地测试端口清理
+
+- 为本地测试临时起的服务（`python -m http.server`、`next dev`、`npx serve` 等，含后台 `&`/子 shell 启动的）在任务完成收尾时必须关闭，不留常驻监听进程；进程被 shell 复位等因素挂起也要在下轮检查补杀。
+- 关闭后验证无残留再汇报：`pgrep -fl "http.server"` 与 `lsof -nP -iTCP:<端口> -sTCP:LISTEN` 均应为空。发现往期会话遗留、只绑 127.0.0.1 的测试服务可顺手清理（2026-11-18 收尾时发现 8899、8924 两个遗留测试服务仍在监听）；用途不明的进程先向用户确认再杀。
