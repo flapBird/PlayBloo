@@ -35,6 +35,13 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - 复制/改造 itch 游戏时，必须从 index.html 移除 `<script src="https://static.itch.io/htmlgame.js">` 引用（2026-11-06 last-flag-standing 事故）：这是 itch 的反盗链脚本，检测到嵌入方为非 itch 域名就上报 itch 并把整个框架跳转到 "You should be using itch.io" 盗链提示页；顶层窗口打开时不触发，所以本地直开正常、线上 iframe 嵌入必炸。文件内其余 itch 字样（ITCH 主机名判断、模板字符串里的链接）不加载 itch 资源，可保留。
 - 游戏自带的隐藏外呼（更新检查、统计打点、内嵌反馈表单等）用 fetch 垫片拦截或改道本地副本（skill 的 references/fetch-shim.md）；2026-11-15 rotten-machines 实例：Unity data 内嵌开局自动 POST Google Forms，垫片拦 `docs.google.com`。注意 Response 构造坑：204 是 null-body 状态码，`new Response("", {status: 204})` 抛 RangeError 被 catch 吞掉后请求照发——要用 `new Response(null, {status: 204})` 或 status 200。判定以运行时 `performance.getEntriesByType("resource")` 为准，静态 grep 会被压缩容器骗过（Unity 的 .gz 实为未压缩 UnityWebData）。
 
+# 部署与缓存纪律
+
+- 唯一部署路径是 push → Cloudflare Workers Builds 自动构建部署（Build command `npm run build:cloudflare`，Deploy command 在 CF Dashboard 维护）。**未经用户明确指令，不得在本地执行任何部署到 Cloudflare 的命令**，包括 `npm run deploy`、`npm run deploy:rclone`、`npx wrangler deploy`、`npx opennextjs-cloudflare deploy/upload` 等（2026-11-18 用户明令）。
+- 本地运维脚本同样只在用户明确要求时运行：`scripts/warm-cache.mjs`、`scripts/populate-r2-cache.mjs`、`scripts/cleanup-r2-cache.mjs`。
+- 缓存策略（2026-11-18 约定）：R2 增量缓存不再随每次部署全量上传，页面缓存靠运行时被动预热（首次访问触发渲染并写入 R2，按 buildId 隔离，无脏读风险）。全量缓存上传 + 旧命名空间清理属于重操作，仅在用户明确要求时执行。
+- 注意 `scripts/cleanup-r2-cache.mjs` 的保留策略是"对照本地 `.open-next` 的 buildId"：轻部署模式下本地构建的 buildId 永远不在桶内（buildId 每次构建随机生成，桶内命名空间全部来自 Workers Builds 云端构建），脚本会拒绝删除任何内容——手动清理前先修这个保留策略。
+
 # 本地测试端口清理
 
 - 为本地测试临时起的服务（`python -m http.server`、`next dev`、`npx serve` 等，含后台 `&`/子 shell 启动的）在任务完成收尾时必须关闭，不留常驻监听进程；进程被 shell 复位等因素挂起也要在下轮检查补杀。
