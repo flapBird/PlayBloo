@@ -19,7 +19,8 @@ type SitemapGame = { slug: string; updated_at: string };
 // the pages themselves and their internal links stay live as before:
 //   1. the 34 URLs Search Console reports as indexed (see GSC_INDEXED_...),
 //   2. every indexable category page (page-1 canonicals, as before),
-//   3. the homepage plus games with real traffic (view_count >= 3),
+//   3. the homepage plus games with real traffic (view_count >= 3), or any
+//      playable embedded game regardless of traffic (2026-11-18, see query below),
 //   4. every guides hub and article (all editorially curated).
 // The /new-games, /popular and /trending landing pages joined on launch day
 // (2026-11-12, page-1 URLs only). /gacha, /tools/*, /submit-game, tag pages
@@ -65,7 +66,12 @@ const getCachedFeaturedGames = unstable_cache(async (): Promise<SitemapGame[]> =
       .select("slug, updated_at", withCount ? { count: "exact" } : undefined)
       .eq("is_published", true)
       .or(
-        `view_count.gte.${FEATURED_MIN_VIEWS},slug.in.(${GSC_INDEXED_GAME_SLUGS.map((slug) => `"${slug}"`).join(",")})`,
+        // 2026-11-18: playable embedded games (iframe_url set) are always listed
+        // regardless of traffic — they are the site's own playable pages, and a
+        // fresh self-host/convert used to sit out of the sitemap until organic
+        // views crossed FEATURED_MIN_VIEWS. like.http* matches every real embed
+        // URL while skipping the '' placeholders (681 rows) and NULLs (380).
+        `view_count.gte.${FEATURED_MIN_VIEWS},slug.in.(${GSC_INDEXED_GAME_SLUGS.map((slug) => `"${slug}"`).join(",")}),iframe_url.like.http*`,
       )
       .order("view_count", { ascending: false })
       .order("id", { ascending: true })
