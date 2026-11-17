@@ -41,6 +41,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - 本地运维脚本同样只在用户明确要求时运行：`scripts/warm-cache.mjs`、`scripts/populate-r2-cache.mjs`、`scripts/cleanup-r2-cache.mjs`。
 - 缓存策略（2026-11-18 约定）：线上 Deploy command 为 `OPEN_NEXT_DEPLOY=true npx wrangler deploy --keep-vars`——`OPEN_NEXT_DEPLOY=true` 是行内环境变量（不配进构建变量），缺少它 wrangler 会检测到 OpenNext 项目并自动转发回 `opennextjs-cloudflare deploy`，全量 R2 缓存上传随之回归。R2 增量缓存不再随每次部署全量上传，页面缓存靠运行时被动预热（首次访问触发渲染并写入 R2，按 buildId 隔离，无脏读风险）。全量缓存上传 + 旧命名空间清理属于重操作，仅在用户明确要求时执行。
 - 注意 `scripts/cleanup-r2-cache.mjs` 的保留策略是"对照本地 `.open-next` 的 buildId"：轻部署模式下本地构建的 buildId 永远不在桶内（buildId 每次构建随机生成，桶内命名空间全部来自 Workers Builds 云端构建），脚本会拒绝删除任何内容——手动清理前先修这个保留策略。
+- 部署方式建议（2026-11-18 约定）：用户询问本次如何部署、是否需要 full 时，先检查本地领先远端的 commit（`git log --oneline --stat @{u}..HEAD`，无 upstream 时用 `origin/main..HEAD`），按改动性质给出建议——纯内容迭代（新增/下架游戏、guides、文案、数据、单页局部修改）建议维持轻-A，冷渲染被动预热即可；全站性改动（布局/导航/模板组件/SEO 结构、`unstable_cache` 键结构等会让大量老页面 HTML 发生变化的修改）建议跑一次 full 全量预热（CACHE_MODE=full 或临时改 Deploy command，跑完立即恢复轻-A），避免爬虫抓取和首波访问撞上全站冷渲染。拿不准时默认轻-A 并说明理由。
 
 # 本地测试端口清理
 
