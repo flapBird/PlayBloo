@@ -45,7 +45,19 @@ CONTENT_TYPES = {
     ".data": "application/octet-stream",
     # Unity WebGL 构建常见 .gz 后缀（内容可能是未压缩的 UnityWebData，按原始字节直出）
     ".gz": "application/octet-stream",
+    # Unity 2019 老版 UnityLoader 构建的三大件（2026-11-17 six-cats-under 案例：漏了会被静默跳过，游戏起不来）
+    ".unityweb": "application/octet-stream",
     ".ico": "image/x-icon",
+    # HaxeFlixel/Lime 构建常见（2026-11-17 FNF 案例）：xml 雪碧图/数据、hxc 脚本、
+    # 字幕 srt、fla 动画源、otf/fnt 字体、glsl 片段着色器——缺了会被静默跳过
+    ".xml": "application/xml",
+    ".txt": "text/plain; charset=utf-8",
+    ".hxc": "text/plain; charset=utf-8",
+    ".srt": "text/plain; charset=utf-8",
+    ".fla": "application/octet-stream",
+    ".otf": "font/otf",
+    ".fnt": "text/plain; charset=utf-8",
+    ".frag": "text/plain; charset=utf-8",
 }
 SKIP_NAMES = {".gitignore", ".DS_Store"}
 
