@@ -54,7 +54,16 @@
         "gamePage": "HTTP 200, title 35 chars, meta description 157 chars, 五栏目+分类+Game Info 渲染, Instant play 启动态",
         "embed": "iframe 挂载 play.famobi.com/thief-puzzle，启动画面渲染且按钮响应；对照直开 Famobi 原页可完成 cookie→广告→标题画面全流程；canvas 关卡自动化点击未推进（环境限制）",
         "sitemap": "未列入（curated 规则 view_count>=3，与 bloxd-io/cold-smoke 一致）；老游戏时间戳未动",
-        "llmsTxt": "无需修改，未改"
+        "llmsTxt": "无需修改，未改",
+        "embedFix": {
+          "issue": "play.famobi.com 包装页对未注册嵌入域：Play 为 <a target=_blank> 开新标签跳 Famobi + 15 秒 window.top.location 顶走宿主页（wrapper inline script 证实）",
+          "evidence": "用户实际开出 2 个 games.cdn.famobi.com 标签；playbloo.net/ads.txt 404 无 Famobi 合作配置",
+          "fix": "iframe_url 改为 games.cdn.famobi.com/html5games/t/thief-puzzle/v090/?fg_domain=play.famobi.com&fg_aid=A1000-11&fg_uid=56b693d4-476b-472b-a1ed-25cc7cabbd09&fg_pid=4638e320-4444-4514-81c4-d80a8c662371&fg_beat=704（用户选定：直嵌 CDN 游戏本体，绕过包装页；localhost iframe 测试加载正常）",
+          "appliedAt": "2026-11-17T16:34:59Z",
+          "updatedAtUntouched": true,
+          "residualRisk": "CDN 路径含版本号 v090、未注册热链，升版/封链即裂；裂时恢复态 Open game site 兜底",
+          "cacheNote": "线上 ISR s-maxage≈33min 后自动翻新，无管理员会话无法主动 revalidate"
+        }
       }
     }
   ],

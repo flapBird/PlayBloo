@@ -59,3 +59,18 @@ missingDetailFields：无（五栏目齐全）。关卡总数未写具体数字�
 
 - iframe 为 Famobi 域外链嵌入（非 R2 自托管）：依赖 Famobi 服务可用性与其条款；如后续要自托管需按 itch-game-selfhost 流程单独评估
 - 游戏内含广告与 Famobi 隐私提示，站点隐私页未因嵌入第三方游戏新增披露（与既有外嵌游戏一致）
+
+## 2026-11-18 修复：play.famobi.com 包装页会劫持跳出站外
+
+用户反馈点击 Play 跳到站外。扒 `play.famobi.com` 包装页 inline script 确认机制（未注册合作域名的嵌入门控，`redirectToBlank = isInsideFrame && adProvider==="dfp" && portalParams.ad_ingame && !portalParams.dfp_available`，默认 A1000 门户 `dfp_available=false`）：
+
+1. 包装页的 Play 按钮是 `<a href="play.famobi.com/thief-puzzle/A1000-11" target="_blank">`，点击开新标签跳到 Famobi CDN（用户实际开出两个 games.cdn.famobi.com 标签）
+2. 更糟：`redirectTimer = setTimeout(() => window.top.location = getGameLink(), 15000)` —— 嵌入后 15 秒无条件把整个宿主页面顶走
+
+另核实 playbloo.net 无 ads.txt（404），未注册 Famobi 合作；真正页内嵌入仅对注册发布商开放（其门户配置 `dfp_available=true` 时包装页才走 `window.location.replace(url)` 在 iframe 内载入游戏）。
+
+**修复（用户选定方案：直嵌 CDN 游戏本体）**：`iframe_url` 改为包装页自身跳转生成的游戏构建地址
+`https://games.cdn.famobi.com/html5games/t/thief-puzzle/v090/?fg_domain=play.famobi.com&fg_aid=A1000-11&fg_uid=56b693d4-476b-472b-a1ed-25cc7cabbd09&fg_pid=4638e320-4444-4514-81c4-d80a8c662371&fg_beat=704`
+——绕过包装页的跳板与 15 秒劫持，游戏加载屏在 localhost iframe 直嵌测试中可正常加载；Famobi 广告与 A1000-11 归因保留。`external_url` 仍指 play.famobi.com/thief-puzzle 作为恢复态"Open game site"兜底。`last_verified_at` 刷新为 2026-11-17T16:34:59Z；`updated_at` 未动（仍为首次上线 2026-11-17T16:08:01Z）。
+
+**残留风险**：CDN 路径含版本号 v090 且属未注册热链，Famobi 升版/封链即裂——裂时游戏页恢复态有 "Open game site" 外链兜底，需人工跟进。线上游戏页 ISR 缓存 `s-maxage≈33min`，修复后旧 iframe 最多再服务约半小时（无管理员会话可主动 revalidatePath）。
