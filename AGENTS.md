@@ -39,9 +39,10 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 - 唯一部署路径是 push → Cloudflare Workers Builds 自动构建部署（Build command `npm run build:cloudflare`，Deploy command 在 CF Dashboard 维护）。**未经用户明确指令，不得在本地执行任何部署到 Cloudflare 的命令**，包括 `npm run deploy`、`npm run deploy:rclone`、`npx wrangler deploy`、`npx opennextjs-cloudflare deploy/upload` 等（2026-11-18 用户明令）。
 - 本地运维脚本同样只在用户明确要求时运行：`scripts/warm-cache.mjs`、`scripts/populate-r2-cache.mjs`、`scripts/cleanup-r2-cache.mjs`。
-- 缓存策略（2026-11-18 约定）：线上 Deploy command 为 `OPEN_NEXT_DEPLOY=true npx wrangler deploy --keep-vars`——`OPEN_NEXT_DEPLOY=true` 是行内环境变量（不配进构建变量），缺少它 wrangler 会检测到 OpenNext 项目并自动转发回 `opennextjs-cloudflare deploy`，全量 R2 缓存上传随之回归。R2 增量缓存不再随每次部署全量上传，页面缓存靠运行时被动预热（首次访问触发渲染并写入 R2，按 buildId 隔离，无脏读风险）。全量缓存上传 + 旧命名空间清理属于重操作，仅在用户明确要求时执行。
-- 注意 `scripts/cleanup-r2-cache.mjs` 的保留策略是"对照本地 `.open-next` 的 buildId"：轻部署模式下本地构建的 buildId 永远不在桶内（buildId 每次构建随机生成，桶内命名空间全部来自 Workers Builds 云端构建），脚本会拒绝删除任何内容——手动清理前先修这个保留策略。
-- 部署方式建议（2026-11-18 约定）：用户询问本次如何部署、是否需要 full 时，先检查本地领先远端的 commit（`git log --oneline --stat @{u}..HEAD`，无 upstream 时用 `origin/main..HEAD`），按改动性质给出建议——纯内容迭代（新增/下架游戏、guides、文案、数据、单页局部修改）建议维持轻-A，冷渲染被动预热即可；全站性改动（布局/导航/模板组件/SEO 结构、`unstable_cache` 键结构等会让大量老页面 HTML 发生变化的修改）建议跑一次 full 全量预热（CACHE_MODE=full 或临时改 Deploy command，跑完立即恢复轻-A），避免爬虫抓取和首波访问撞上全站冷渲染。拿不准时默认轻-A 并说明理由。
+- 缓存策略（2026-11-18 定稿）：线上 Deploy command 为 `npx opennextjs-cloudflare deploy --rclone -- --keep-vars && node scripts/cleanup-r2-cache.mjs`，全量预热 + 旧命名空间清理，是唯一部署方式。每次 push 全量写入新 buildId 命名空间（实测 ~8000 条/约 450MB，写+删合计约 1.6 万次 R2 Class A，Free 每月 100 万额度约支撑 60 次 push）。
+- **禁止跳过预热的轻部署**（2026-11-18 事故定论）：曾试运行轻-A（`OPEN_NEXT_DEPLOY=true npx wrangler deploy --keep-vars`，不预填 R2、靠首次访问被动预热），部署后全站冷渲染撞 Free 计划 10ms CPU 硬限制，游戏页大面积 Error 1102（Worker exceeded resource limits），失败渲染不写缓存导致反复重试持续失败，已回滚恢复。docs/cloudflare.md 的"冷启动或重新生成不保证低于 Free 的 10ms CPU 预算"是硬约束——运行时只能承担"读缓存吐 HTML"级别的 CPU 负载，页面 HTML 必须随部署全量预填 R2。此后不再提议任何跳过/部分预热的方案（含只传 route-cache 的轻-B 变体；配额真吃紧时需先压测冷渲染 CPU 再评估）。`OPEN_NEXT_DEPLOY=true` 的机制：wrangler 会检测 OpenNext 项目（`next.config.*` + `open-next.config.ts`）并自动转发回 `opennextjs-cloudflare deploy`，该变量用于抑制转发，仅在绕过 OpenNext CLI 直跑 wrangler 时才需要。
+- `scripts/cleanup-r2-cache.mjs` 的保留策略是"对照本地 `.open-next` 的 buildId"：接在部署尾部（Workers Builds 云端构建环境）时自洽可用；独立在本地手动运行时本地 buildId 大概率不在桶内（buildId 每次构建随机生成），脚本会拒绝删除任何内容——手动清理前先修保留策略。
+- 部署方式无选择题：所有 push 一律全量预热，不存在"这次要不要 full"的判断（2026-11-18 起，轻部署已证伪禁用）。
 
 # 本地测试端口清理
 
