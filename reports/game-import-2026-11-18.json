@@ -1,0 +1,68 @@
+{
+  "batchDate": "2026-11-18",
+  "inputCount": 1,
+  "entries": [
+    {
+      "index": 1,
+      "inputTitle": "Thief Puzzle",
+      "sourceUrl": "https://play.famobi.com/thief-puzzle",
+      "resolvedUrl": "https://play.famobi.com/thief-puzzle",
+      "identity": { "type": "famobi-web", "slug": "thief-puzzle", "developer": "WEEGOON", "webPublisher": "Famobi" },
+      "decision": "new-published",
+      "reason": "全库去重（含草稿）无 Thief Puzzle；trick-or-thief 为不同 itch 项目",
+      "gameId": "c04f1e56-6a90-4147-990a-77f9f275ff70",
+      "slug": "thief-puzzle",
+      "publishedAt": "2026-11-17T16:08:01.690Z",
+      "game": {
+        "title": "Thief Puzzle",
+        "slug": "thief-puzzle",
+        "thumbnail_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-11-18/thief-puzzle.webp",
+        "cover_url": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-11-18/thief-puzzle.webp",
+        "iframe_url": "https://play.famobi.com/thief-puzzle",
+        "external_url": "https://play.famobi.com/thief-puzzle",
+        "developer": "WEEGOON",
+        "publisher": "Famobi",
+        "source_type": "official",
+        "source_url": "https://play.famobi.com/thief-puzzle",
+        "original_game_url": "https://play.famobi.com/thief-puzzle",
+        "platforms": ["browser"],
+        "monetization": "free-with-ads",
+        "development_status": "released",
+        "content_verified": true,
+        "release_date": null,
+        "last_updated_at": null,
+        "five_detail_fields": ["description", "how_to_play", "controls", "tips", "features"]
+      },
+      "categories": ["puzzle", "casual"],
+      "detailResearchSources": [
+        { "url": "https://play.famobi.com/thief-puzzle", "type": "official", "support": "嵌入入口、游戏名、v090 构建存在", "verifiedAt": "2026-11-17T16:07Z" },
+        { "url": "https://games.famobi.com/thief-puzzle", "type": "official", "support": "2D 盗贼手谜题、难度递增、Exclusive 标记、HTML5 跨设备", "verifiedAt": "2026-11-17T16:07Z" },
+        { "url": "https://thiefpuzzle.com/", "type": "official", "support": "拖拽伸臂玩法、碰到即失败、守卫/锯子/炸药障碍、dozens 场景、无内购", "verifiedAt": "2026-11-17T16:07Z" },
+        { "url": "https://www.crazygames.com/game/thief-puzzle", "type": "portal", "support": "左键按住拖拽、关卡实例（钱包/车钥匙/试卷/珍珠/假发）、角度与最短路径、难度递增、老少皆宜", "verifiedAt": "2026-11-17T16:07Z" },
+        { "url": "https://thiefpuzzle.fandom.com/wiki/Browser_Version", "type": "community", "support": "浏览器版署名 WEEGOON 开发", "verifiedAt": "2026-11-17T16:07Z" },
+        { "url": "https://play.google.com/store/apps/details?id=com.weegoon.thiefpuzzle", "type": "official", "support": "移动原作 Weegoon（仅用于署名交叉核对，移动端独有功能未写入）", "verifiedAt": "2026-11-17T16:07Z" }
+      ],
+      "missingDetailFields": [],
+      "coverMirror": {
+        "originalUrl": "https://img.cdn.famobi.com/portal/html5games/images/tmp/ThiefPuzzleTeaser.jpg",
+        "optimizedUrl": "https://oktplxtuewrginqgmkgz.supabase.co/storage/v1/object/public/game-media/covers/2026-11-18/thief-puzzle.webp",
+        "sourceDims": "320x320 jpeg 21225B",
+        "outputDims": "320x320 webp 21098B",
+        "verified": "HTTP 200 image/webp, byte-identical"
+      },
+      "liveVerification": {
+        "gamePage": "HTTP 200, title 35 chars, meta description 157 chars, 五栏目+分类+Game Info 渲染, Instant play 启动态",
+        "embed": "iframe 挂载 play.famobi.com/thief-puzzle，启动画面渲染且按钮响应；对照直开 Famobi 原页可完成 cookie→广告→标题画面全流程；canvas 关卡自动化点击未推进（环境限制）",
+        "sitemap": "未列入（curated 规则 view_count>=3，与 bloxd-io/cold-smoke 一致）；老游戏时间戳未动",
+        "llmsTxt": "无需修改，未改"
+      }
+    }
+  ],
+  "verification": {
+    "dedupeQueries": "games 表全量（含草稿）title/slug/external_url/iframe_url 的 thief 模糊匹配 + slug 精确核对",
+    "dbWriteScope": "insert games ×1（先草稿后发布 update 仅该 id）、game_categories ×2；未触碰老游戏行",
+    "draftChecksPassed": 15,
+    "publishedAfterChecks": true,
+    "notes": "updated_at 在发布同一操作写入真实上线时间（本地 2026-11-18）；未创建 game_updates"
+  }
+}
