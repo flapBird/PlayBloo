@@ -39,7 +39,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 - 唯一部署路径是 push → Cloudflare Workers Builds 自动构建部署（Build command `npm run build:cloudflare`，Deploy command 在 CF Dashboard 维护）。**未经用户明确指令，不得在本地执行任何部署到 Cloudflare 的命令**，包括 `npm run deploy`、`npm run deploy:rclone`、`npx wrangler deploy`、`npx opennextjs-cloudflare deploy/upload` 等（2026-11-18 用户明令）。
 - 本地运维脚本同样只在用户明确要求时运行：`scripts/warm-cache.mjs`、`scripts/populate-r2-cache.mjs`、`scripts/cleanup-r2-cache.mjs`。
-- 缓存策略（2026-11-18 约定）：R2 增量缓存不再随每次部署全量上传，页面缓存靠运行时被动预热（首次访问触发渲染并写入 R2，按 buildId 隔离，无脏读风险）。全量缓存上传 + 旧命名空间清理属于重操作，仅在用户明确要求时执行。
+- 缓存策略（2026-11-18 约定）：线上 Deploy command 为 `OPEN_NEXT_DEPLOY=true npx wrangler deploy --keep-vars`——`OPEN_NEXT_DEPLOY=true` 是行内环境变量（不配进构建变量），缺少它 wrangler 会检测到 OpenNext 项目并自动转发回 `opennextjs-cloudflare deploy`，全量 R2 缓存上传随之回归。R2 增量缓存不再随每次部署全量上传，页面缓存靠运行时被动预热（首次访问触发渲染并写入 R2，按 buildId 隔离，无脏读风险）。全量缓存上传 + 旧命名空间清理属于重操作，仅在用户明确要求时执行。
 - 注意 `scripts/cleanup-r2-cache.mjs` 的保留策略是"对照本地 `.open-next` 的 buildId"：轻部署模式下本地构建的 buildId 永远不在桶内（buildId 每次构建随机生成，桶内命名空间全部来自 Workers Builds 云端构建），脚本会拒绝删除任何内容——手动清理前先修这个保留策略。
 
 # 本地测试端口清理
