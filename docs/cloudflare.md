@@ -146,7 +146,7 @@ npm run deploy
 
 ### rclone 直传（推荐，不占 Workers 额度）
 
-OpenNext 内置 `--rclone` 选项：预热改走 R2 的 S3 端点（`<account>.r2.cloudflarestorage.com`）直传，完全绕开 Workers 请求额度；对象键名与 Worker 路径使用同一套 `computeCacheKey`，两者可互换。代价只计入 R2 Class A 操作：每次部署约 2.3 万次写入，加上清理旧缓存时同等数量的删除（见下节），Free 每月 100 万次约可支撑 20 次部署；S3 端点速率远高于 REST API，全量预热只需几分钟。
+OpenNext 内置 `--rclone` 选项：预热改走 R2 的 S3 端点（`<account>.r2.cloudflarestorage.com`）直传，完全绕开 Workers 请求额度；对象键名与 Worker 路径使用同一套 `computeCacheKey`，两者可互换。代价只计入 R2 Class A 操作（2026-11-19 修正账目）：Class A 主体是每对象一次的写入（2026-10-24 曾实测约 2.3 万次，2026-11-18 实测约 8000 次，随目录规模浮动），加上列目录的少量 LIST；**删除不计额度**——R2 将 DELETE 列为 Free operations，旧命名空间清理不产生 Class A。Free 每月 100 万次 Class A 按 8000 次写入/部署计约可支撑 120 次部署。S3 端点速率远高于 REST API，全量预热只需几分钟。
 
 一次性配置：
 
@@ -159,7 +159,7 @@ OpenNext 内置 `--rclone` 选项：预热改走 R2 的 S3 端点（`<account>.r
 
 ### 旧构建缓存清理
 
-每次部署在新 buildId 命名空间下全量写入缓存，旧命名空间的条目不会自动删除——临时上传 Worker 与适配器都没有清理逻辑，R2 会以每次部署约 340 MB 的速度累积死数据。`scripts/cleanup-r2-cache.mjs` 删除 R2 `incremental-cache/` 前缀下除当前 buildId 外的所有条目，已接入 `deploy:rclone` 尾部自动运行，首次执行会把历史上积累的旧构建一次清完。它复用 rclone 直传的 S3 凭据；当前构建的 buildId 不在桶中时拒绝删除任何内容，防止桶配置错误时误清线上缓存。删除按对象数计入 Class A 操作；`node scripts/cleanup-r2-cache.mjs --dry-run` 可预览将删除的构建及体量。默认 `npm run deploy`（Worker 路径）不执行清理，需要时手动运行上述脚本。
+每次部署在新 buildId 命名空间下全量写入缓存，旧命名空间的条目不会自动删除——临时上传 Worker 与适配器都没有清理逻辑，R2 会以每次部署约 450 MB 的速度累积死数据。`scripts/cleanup-r2-cache.mjs` 删除 R2 `incremental-cache/` 前缀下除当前 buildId 外的所有条目，已接入 `deploy:rclone` 尾部自动运行，首次执行会把历史上积累的旧构建一次清完。它复用 rclone 直传的 S3 凭据；当前构建的 buildId 不在桶中时拒绝删除任何内容，防止桶配置错误时误清线上缓存。删除本身不计额度（R2 DELETE 属免费操作），仅列对象的 LIST 请求按次计入 Class A（每千条对象约一次）；`node scripts/cleanup-r2-cache.mjs --dry-run` 可预览将删除的构建及体量。默认 `npm run deploy`（Worker 路径）不执行清理，需要时手动运行上述脚本。
 
 ### REST API 直传（无 S3 Token 时的兜底）
 
