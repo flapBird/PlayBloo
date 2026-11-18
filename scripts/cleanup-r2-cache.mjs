@@ -3,9 +3,12 @@
 // Every deploy uploads the whole cache under a new build ID namespace
 // (`incremental-cache/<buildId>/<hash>.{cache,fetch}`), and the runtime only
 // reads the deployed build ID. Nothing ever deletes the old namespaces, so
-// each deploy leaves a full cache worth (~340 MB) of dead objects behind.
-// This script purges every `incremental-cache/` prefix except the build ID
-// of the local `.open-next/cache` output. It runs as part of
+// each deploy leaves a full cache worth (~450 MB) of dead objects behind.
+// This script purges stale `incremental-cache/` prefixes, keeping the build ID
+// of the local `.open-next/cache` output plus the most recently written old
+// namespace (rollback safety: rolling back to the previous deployment must
+// find its cache warm, not trigger a full cold render; adjust with
+// CLEANUP_KEEP_OLD_BUILDS). It runs as part of
 // `npm run deploy:rclone`, after the new build has been populated and
 // deployed, so the local build ID always matches the live deployment.
 //
@@ -79,9 +82,12 @@ async function main() {
 
   // rclone.js's promise API rejects on any stderr output, even harmless
   // notices on successful runs, so resolve on exit code instead.
+  // `s3-no-check-bucket`: the R2 token is scoped to Object Read & Write, and
+  // rclone's bucket probe (CreateBucket idempotency check) is denied with 403
+  // for write operations — the bucket always exists here.
   const run = (command, target, flags = {}) =>
     new Promise((resolve, reject) => {
-      const proc = rclone(command, target, { ...flags, env });
+      const proc = rclone(command, target, { ...flags, "s3-no-check-bucket": true, env });
       let stdout = "";
       let stderr = "";
       proc.stdout.on("data", (chunk) => (stdout += chunk));
@@ -117,15 +123,62 @@ async function main() {
       return;
     }
 
+    // Keep the most recently written old namespace(s) so a rollback to the
+    // previous deployment finds its cache warm. Rollback was the recovery path
+    // for the 2026-11-18 cold-render 1102 incident; deleting everything but
+    // the current build would turn any post-deploy rollback itself into a
+    // full cold render. A namespace keeps receiving writes as long as some
+    // deployed version reads it (runtime ISR revalidation), so its newest
+    // object mtime identifies exactly the namespace a rollback would warm up.
+    const KEEP_OLD_BUILDS = Number(process.env.CLEANUP_KEEP_OLD_BUILDS || 1);
+    const newestMtime = new Map(
+      await Promise.all(
+        stale.map(async (id) => {
+          // `lsf --format t` prints "mtime;key" per line. Scanning one
+          // namespace is a few seconds (S3 lists 1000 keys per request).
+          const out = await run("lsf", `${remote}/${PREFIX}/${id}/`, {
+            "files-only": true,
+            format: "t",
+          });
+          let max = 0;
+          for (const line of out.split("\n")) {
+            if (!line) continue;
+            // "2026-01-02 15:04:05.000000000;key" → epoch ms, truncated to
+            // milliseconds. rclone prints local time; all namespaces are
+            // compared on the same machine and are hours-to-days apart, so
+            // the shared timezone offset cancels out in the ordering.
+            const t = Date.parse(line.split(";")[0].replace(" ", "T").slice(0, 23));
+            if (Number.isFinite(t) && t > max) max = t;
+          }
+          return [id, max];
+        })
+      )
+    );
+    const keepOld = [...stale]
+      .sort((a, b) => (newestMtime.get(b) ?? 0) - (newestMtime.get(a) ?? 0))
+      .slice(0, KEEP_OLD_BUILDS);
+    const toDelete = stale.filter((id) => !keepOld.includes(id));
+    if (toDelete.length === 0) {
+      console.log(
+        `Keeping current build ${buildId} + ${stale.length} recent old build(s) (${stale.join(", ")}); nothing to clean up`
+      );
+      return;
+    }
+    if (keepOld.length > 0) {
+      console.log(
+        `Keeping current build ${buildId} + most recent old build ${keepOld.join(", ")} (rollback safety); purging the rest`
+      );
+    }
+
     // Prefixes are purged in parallel: on high-latency networks the sequential
     // loop needs the better part of an hour for ~90k objects, while R2
     // comfortably accepts a few hundred concurrent S3 requests.
     const PURGE_CONCURRENCY = 4;
     let next = 0;
     await Promise.all(
-      Array.from({ length: Math.min(PURGE_CONCURRENCY, stale.length) }, async () => {
-        while (next < stale.length) {
-          const id = stale[next++];
+      Array.from({ length: Math.min(PURGE_CONCURRENCY, toDelete.length) }, async () => {
+        while (next < toDelete.length) {
+          const id = toDelete[next++];
           const size = (await run("size", `${remote}/${PREFIX}/${id}`)).trim();
           const objects = /Total objects:\s*(\d+)/.exec(size)?.[1] ?? "?";
           const bytes = /Total size:\s*(.+)/.exec(size)?.[1] ?? "?";
@@ -140,8 +193,8 @@ async function main() {
     );
     console.log(
       DRY_RUN
-        ? `Dry run: ${stale.length} stale build(s) would be purged`
-        : `Done: purged ${stale.length} stale build(s), kept ${buildId}`
+        ? `Dry run: ${toDelete.length} stale build(s) would be purged (kept old: ${keepOld.join(", ") || "none"})`
+        : `Done: purged ${toDelete.length} stale build(s), kept ${buildId} + old ${keepOld.join(", ") || "none"}`
     );
   } finally {
     await rm(configDir, { recursive: true, force: true });
