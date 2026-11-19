@@ -8,6 +8,7 @@ import type { GuideArticle, GuideSection, GuideTopic } from "@/lib/guides/types"
 import { pickGameLinksForGuide } from "@/lib/priority-pages";
 import { GuideTrailer } from "./GuideTrailer";
 import { EnshroudedStarterPlanner } from "./EnshroudedStarterPlanner";
+import { DownloadTimeCalculator } from "@/components/tools/DownloadTimeCalculator";
 import { GuideFruitTable } from "./GuideFruitTable";
 import { GuideTierList } from "./GuideTierList";
 import voxSeasFruits from "@/lib/guides/data/vox-seas-fruits.json";
@@ -180,6 +181,7 @@ export function GuideSections({ topic, sections }: { topic: GuideTopic; sections
       {section.releaseFacts && <GuideFacts topic={topic} />}
       {section.paragraphs?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
       {section.starterPlanner && <EnshroudedStarterPlanner />}
+      {section.downloadCalculator && <DownloadTimeCalculator />}
       {section.fruitTable && <GuideFruitTable fruits={voxSeasFruits} />}
       {section.tierList && <GuideTierList entries={voxSeasTierList} />}
       {section.link && <a href={section.link.href} className={styles.heroGuideLink}>{section.link.label}<ArrowUpRight size={16} aria-hidden="true" /></a>}

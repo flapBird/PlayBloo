@@ -409,13 +409,21 @@ and the hub says so; no calculator page was built (the math lives in the drop-ra
 "power hour" is answered as the informal name for Treasure Hours.
 
 `gta-6` first covered pre-orders on November 8. The November 19 launch update keeps the hub and
-`pre-order` URL and their original publication dates. Added `release-time` for regional unlocks and
-download planning, `platforms` for PC and Steam status plus console access, `reviews` for the
-launch-day review snapshot, and `story` for the cast, gameplay and attributed playtimes. The US
-unlock conversions use the PlayStation and Xbox store timestamps. Xbox Cloud Gaming has a
-separate launch time and device eligibility. The review scores are dated to the November 19
-check. All four new covers are official Rockstar gallery screenshots. The hub retains Rockstar's
-official Trailer 2 (`VQRLujxTm3c`).
+`pre-order` URL and their original publication dates. Launch-day coverage is five published articles:
+`pc-release-date` (the unannounced PC version and Steam status, the GTA V / RDR2 PC-port pattern and
+the missing PC specs), `pre-order`, `platforms` (console support, Xbox One cloud play, Remote Play
+and PS5 sharing), `reviews` and `story`. A drafted `release-time` unlock-schedule article was removed
+before deployment: the game is out, the unlock-time keyword dies right after launch day, and its
+still-useful content folded into the hub's out-now section and the shared download tool. Download
+planning lives in `/tools/download-time-calculator` (a generic estimator with a GTA 6 preset and the
+published speed table), embedded in the buying guide's storage section via the
+`downloadCalculator` section flag. Tools routes stay outside the sitemap per the 2026-11-12
+curation; the calculator is reached through internal links from the hub and the buying guide. The
+US unlock facts that remain on the hub use the PlayStation and Xbox store timestamps. Xbox Cloud
+Gaming has a separate launch time and device eligibility. The review scores are dated to the
+November 19 check. All covers are official Rockstar gallery screenshots (the former release-time
+cover was renamed for the PC article). The hub retains Rockstar's official Trailer 2
+(`VQRLujxTm3c`).
 
 `ocarina-of-time-remake/master-quest-dlc` (P0, same-day) adds the Master Quest rumor article to the
 existing topic. Facts come from Nintendo Life's November 7 rumour piece (MrCheeze's Bluesky finds:

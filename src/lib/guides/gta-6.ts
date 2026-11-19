@@ -56,9 +56,9 @@ export const gta6: GuideTopic = {
   updatedAt: launchUpdate,
   verifiedAt: launchDate,
   quickAnswers: [
-    { label: "Release date", answer: "Out since Nov 19", href: `${guide}/release-time` },
+    { label: "PC release date", answer: "Unannounced", href: `${guide}/pc-release-date` },
     { label: "US price", answer: `From ${standardPrice}`, href: `${guide}/pre-order` },
-    { label: "PC and Steam", answer: "Unannounced", href: `${guide}/platforms` },
+    { label: "Platforms", answer: "PS5 and Xbox Series X|S", href: `${guide}/platforms` },
     { label: "Metacritic", answer: `${launchMetascore} at launch`, href: `${guide}/reviews` },
   ],
   sources: [
@@ -96,6 +96,8 @@ export const gta6: GuideTopic = {
     { id: "twitch", label: "Twitch — Grand Theft Auto VI live category", url: twitch },
     { id: "take-two", label: "Take-Two — Fiscal Q2 2027 results, November 9, 2026", url: investorRelease },
     { id: "take-two-release", label: "Take-Two — Rockstar launch date, pricing and single-player announcement", url: "https://ir.take2games.com/node/32311" },
+    { id: "gta-v-pc", label: "Wikipedia — Grand Theft Auto V (PC release April 14, 2015)", url: "https://en.wikipedia.org/wiki/Grand_Theft_Auto_V" },
+    { id: "rdr2-pc", label: "Rockstar Newswire — Red Dead Redemption 2 coming to PC November 5th (announced October 4, 2019)", url: "https://www.rockstargames.com/newswire/article/9k1248838o2974/Red-Dead-Redemption-2-Coming-to-PC-November-5th" },
   ],
   sections: [
     {
@@ -103,19 +105,28 @@ export const gta6: GuideTopic = {
       title: "Is GTA 6 out now?",
       releaseFacts: true,
       paragraphs: [
-        "Yes. GTA 6 came out on November 19, 2026, on PS5 and Xbox Series X|S. Rockstar scheduled digital access around midnight by store region. In the continental US, the PlayStation and Xbox listings pointed to midnight Eastern, the same moment as 11 p.m. Central and 9 p.m. in California on November 18.",
+        "Yes. GTA 6 came out on November 19, 2026, on PS5 and Xbox Series X|S. Rockstar scheduled digital access around midnight by store region. In the continental US, the PlayStation and Xbox listings pointed to midnight Eastern, the same moment as 11 p.m. Central and 9 p.m. in California on November 18. Set aside up to 212 GB of free space for the install.",
       ],
-      link: { label: "Check regional unlock times and download space", href: `${guide}/release-time` },
-      sourceIds: ["rockstar", "timing", "ps-store", "xbox-store"],
+      link: { label: "Estimate your GTA 6 download time", href: "/tools/download-time-calculator" },
+      sourceIds: ["rockstar", "timing", "ps-store", "xbox-store", "storage"],
+    },
+    {
+      id: "pc-release",
+      title: "When is GTA 6 coming to PC?",
+      paragraphs: [
+        "Rockstar has yet to announce a native PC version, a PC release date or a Steam listing, and no PC system requirements have been published. The launch lineup is PS5 and Xbox Series X|S only.",
+      ],
+      link: { label: "Check the PC and Steam status in detail", href: `${guide}/pc-release-date` },
+      sourceIds: ["rockstar", "take-two", "editions"],
     },
     {
       id: "platforms",
-      title: "Can I play GTA 6 on PC, PS4 or Xbox One?",
+      title: "Can I play GTA 6 on PS4 or Xbox One?",
       paragraphs: [
-        "Rockstar has yet to announce a native PC version, a PC release date or a Steam listing. The PlayStation version requires a PS5. Xbox One owners can stream the game through Xbox Cloud Gaming on eligible consoles and in supported markets after buying the Xbox copy.",
+        "The PlayStation version requires a PS5. Xbox One owners can stream the game through Xbox Cloud Gaming on eligible consoles and in supported markets after buying the Xbox copy.",
       ],
       link: { label: "Check Xbox One cloud play, Remote Play and sharing", href: `${guide}/platforms` },
-      sourceIds: ["rockstar", "take-two", "ps-game", "xbox-cloud"],
+      sourceIds: ["ps-game", "xbox-cloud"],
     },
     {
       id: "editions",
@@ -174,14 +185,14 @@ export const gta6: GuideTopic = {
   ],
   articles: [
     {
-      slug: "release-time",
-      title: "GTA 6 Release Time by Region and Download Size",
-      shortTitle: "Release time and download",
-      description: "When GTA 6 unlocked in New Zealand and the US, when Xbox Cloud Gaming opened, and how much storage and download time to plan for.",
-      category: "Launch guide",
+      slug: "pc-release-date",
+      title: "GTA 6 PC Release Date and Steam Status",
+      shortTitle: "PC release date and Steam",
+      description: "Is GTA 6 coming to PC or Steam? The PC version is unannounced — what Rockstar has confirmed, the series' PC-port pattern and the missing PC specs.",
+      category: "PC guide",
       status: "published",
       cover: {
-        src: "/images/guides/gta-6-release-time.webp",
+        src: "/images/guides/gta-6-pc-release-date.webp",
         alt: "Police lights flash by a Vice City canal at dusk",
         credit: "Official Grand Theft Auto VI screenshot © Rockstar Games",
         sourceUrl: "https://www.rockstargames.com/VI/_next/static/media/Vice_City_17.0er79m2u3nygs.jpg",
@@ -192,68 +203,42 @@ export const gta6: GuideTopic = {
       relatedSlugs: ["platforms", "pre-order"],
       sections: [
         {
-          id: "release-date",
-          title: "When did GTA 6 become playable?",
-          releaseFacts: true,
+          id: "pc-status",
+          title: "Is GTA 6 coming to PC and Steam?",
           paragraphs: [
-            "Rockstar's regional schedule put the digital console launch at midnight on November 19. Unlock times follow the store region. The US storefronts used a single timestamp of 05:00 UTC, even in US time zones where the calendar still read November 18.",
+            "The GTA 6 PC release date is still unannounced. Rockstar's launch lineup is PS5 and Xbox Series X|S, and the publisher has yet to confirm a Steam release. There is no official PC version to buy, and no PC system requirements have been published.",
+            "Treat any store page, key reseller or video claiming a PC copy or a PC release date as unverified until Rockstar announces it on its own GTA VI page.",
           ],
-          sourceIds: ["timing", "ps-store", "xbox-store"],
+          link: { label: "Check Rockstar's GTA VI page for a PC announcement", href: rockstarMedia },
+          sourceIds: ["rockstar", "take-two", "editions"],
         },
         {
-          id: "unlock-times",
-          title: "New Zealand, Central time and California",
+          id: "pc-pattern",
+          title: "How long did previous Rockstar PC ports take?",
           paragraphs: [
-            "The first four rows are for the installed console game. Microsoft gave Xbox Cloud Gaming a separate start of 1 a.m. Eastern on November 19.",
+            "Rockstar's recent history points to a wait rather than a simultaneous PC launch. Grand Theft Auto V reached PS3 and Xbox 360 in September 2013 and arrived on PC on April 14, 2015, about 19 months later. Red Dead Redemption 2 reached PS4 and Xbox One in October 2018, and Rockstar announced its PC version on October 4, 2019 for a November 5, 2019 release, about a year later.",
+            "Those are precedents, not promises. Rockstar has not committed to a PC version of GTA 6 or to any window, and both earlier PC ports were announced after the console launch, not at it.",
           ],
-          table: {
-            headers: ["Region", "Local unlock", "Same time in UTC"],
-            rows: [
-              ["New Zealand (NZDT, UTC+13)", "12 a.m., Nov 19", "11:00, Nov 18"],
-              ["US Eastern (EST)", "12 a.m., Nov 19", "05:00, Nov 19"],
-              ["US Central (CST)", "11 p.m., Nov 18", "05:00, Nov 19"],
-              ["California (PST)", "9 p.m., Nov 18", "05:00, Nov 19"],
-              ["Xbox Cloud Gaming (US Eastern)", "1 a.m., Nov 19", "06:00, Nov 19"],
-            ],
-          },
-          sourceIds: ["timing", "ps-store", "xbox-store", "xbox-cloud"],
+          sourceIds: ["gta-v-pc", "rdr2-pc", "take-two"],
         },
         {
-          id: "early-access",
-          title: "Why were people playing GTA 6 early?",
+          id: "pc-requirements",
+          title: "What are the GTA 6 PC system requirements?",
           paragraphs: [
-            "New Zealand reached its normal release time 18 hours before the US console stores. Reviewers also had copies ahead of retail. Both retail editions followed the same launch schedule. The November 10 preload let digital buyers download their files ahead of the unlock.",
-            "The 'New Zealand trick' refers to attempts to use an earlier store region. PlayStation account countries are fixed after account creation. For Xbox and PlayStation, use the store region where you own the game and its official unlock time.",
+            "None exist yet. Because the PC version itself is unannounced, Rockstar has published no minimum or recommended PC specs and no storage figure for a PC install, and there is no Steam page to check. Spec sheets circulating online are speculation.",
+            "When a PC version is announced, official requirements would appear on Rockstar's own channels and on the game's store pages. The console launch needs up to 212 GB of free space, which says nothing about a future PC build's size.",
           ],
-          sourceIds: ["timing", "editions", "ps-region", "game-informer"],
+          link: { label: "Check the console storage requirement", href: `${guide}/pre-order` },
+          sourceIds: ["rockstar", "editions", "storage", "ps-game"],
         },
         {
-          id: "download",
-          title: "How long does GTA 6 take to download?",
+          id: "meanwhile",
+          title: "How can PC players play GTA 6 now?",
           paragraphs: [
-            "Rockstar says to allow up to 212 GB of free space, depending on the console. PlayStation recommends clearing 212 GB on PS5. Free space is the room the installer needs. Use the transfer size shown in your console's queue to estimate download time.",
-            "The times below assume a 200 GB transfer at a steady speed. Installation, updates and slower speeds can add time.",
+            "Today, GTA 6 runs on PS5 and Xbox Series X|S. Microsoft streams the Xbox edition to eligible Xbox One and Series X|S consoles through Xbox Cloud Gaming in supported markets, and Xbox Remote Play can mirror a console install onto a PC screen — the PC streams your console; it does not run the game natively.",
           ],
-          table: {
-            headers: ["Download speed", "Time for 200 GB"],
-            rows: [
-              ["50 Mbps", "About 8 hr 53 min"],
-              ["100 Mbps", "About 4 hr 27 min"],
-              ["300 Mbps", "About 1 hr 29 min"],
-              ["500 Mbps", "About 53 min"],
-            ],
-          },
-          sourceIds: ["storage", "ps-game"],
-        },
-        {
-          id: "install",
-          title: "Where to install your copy",
-          paragraphs: [
-            "On PS5, sign into the account that bought or redeemed the game, open Game Library, choose Your Collection and select the PS5 download. On Xbox Series X or Series S, sign in with the owning account and open My games & apps or the game's Microsoft Store page to install it.",
-            "If the game looks locked after release, check that you have the right account and that the download and latest update have finished. Xbox One players can use the cloud option where eligible.",
-          ],
-          link: { label: "Check platform compatibility and cloud options", href: `${guide}/platforms` },
-          sourceIds: ["ps-support", "xbox-store", "xbox-cloud"],
+          link: { label: "See the full platform and cloud compatibility guide", href: `${guide}/platforms` },
+          sourceIds: ["xbox-cloud", "xbox-remote", "ps-game"],
         },
       ],
     },
@@ -339,18 +324,18 @@ export const gta6: GuideTopic = {
           id: "preload-and-launch",
           title: "Storage space for a new purchase",
           paragraphs: [
-            "A new purchase can be downloaded now. Set aside up to 212 GB of free space for the installation and check your console's queue for its actual transfer size.",
+            "A new purchase can be downloaded now. Set aside up to 212 GB of free space for the installation and check your console's queue for its actual transfer size. The calculator below estimates the transfer at your connection speed.",
           ],
-          link: { label: "Estimate your download time", href: `${guide}/release-time#download` },
+          downloadCalculator: true,
           sourceIds: ["storage", "ps-game"],
         },
       ],
     },
     {
       slug: "platforms",
-      title: "GTA 6 PC Release Date, Steam and Console Support",
-      shortTitle: "PC, Steam and console compatibility",
-      description: "Is GTA 6 on PC or Steam? Check the confirmed platforms, how Xbox One cloud streaming works, and what PS5 game sharing covers.",
+      title: "GTA 6 Platforms: PS5, Xbox and Cloud Play",
+      shortTitle: "PS5, Xbox and cloud compatibility",
+      description: "Which platforms run GTA 6: PS5 and Xbox Series X|S at launch, no PS4 version, Xbox One cloud streaming, Remote Play and PS5 game sharing.",
       category: "Platform guide",
       status: "published",
       cover: {
@@ -362,17 +347,8 @@ export const gta6: GuideTopic = {
         height: 900,
       },
       ...launchArticleDates,
-      relatedSlugs: ["release-time", "pre-order"],
+      relatedSlugs: ["pc-release-date", "pre-order"],
       sections: [
-        {
-          id: "pc-release",
-          title: "When is GTA 6 coming to PC and Steam?",
-          paragraphs: [
-            "The GTA 6 PC release date is still unannounced. Rockstar's launch lineup is PS5 and Xbox Series X|S, and the publisher has yet to confirm a Steam release or PC system requirements. Use Rockstar's game page to check for a PC announcement before buying a key.",
-          ],
-          link: { label: "Check Rockstar's GTA VI page", href: rockstarMedia },
-          sourceIds: ["rockstar", "take-two", "editions"],
-        },
         {
           id: "console-support",
           title: "Which consoles can play GTA 6?",
@@ -507,7 +483,7 @@ export const gta6: GuideTopic = {
         position: "50% 34%",
       },
       ...launchArticleDates,
-      relatedSlugs: ["reviews", "release-time"],
+      relatedSlugs: ["reviews", "platforms"],
       sections: [
         {
           id: "story",

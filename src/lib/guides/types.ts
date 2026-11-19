@@ -34,6 +34,7 @@ export interface GuideSection {
   sourceIds?: string[];
   trailer?: boolean;
   starterPlanner?: boolean;
+  downloadCalculator?: boolean;
   fruitTable?: boolean;
   tierList?: boolean;
   releaseFacts?: boolean;

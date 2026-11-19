@@ -1,21 +1,21 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, BookmarkCheck, LineChart, Smartphone } from "lucide-react";
+import { ArrowRight, BookmarkCheck, Gauge, HardDrive, LineChart, Smartphone, Timer } from "lucide-react";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 
 // Rendered title stays inside the AGENTS.md 60-char limit including the
 // " | PlayBloo" suffix; the description stays inside 160 chars.
 export const metadata: Metadata = {
-  title: "Free Gaming Tools: Trackers and Counters",
+  title: "Free Gaming Tools: Calculators and Counters",
   description:
-    "PlayBloo's free browser tools: count Fortnite Treasure Hunters chests with auto-save and live Pirate Token odds — no account, nothing uploaded.",
+    "PlayBloo's free browser tools: a game download time calculator with a GTA 6 preset and a Fortnite chest counter — no account, nothing uploaded.",
   alternates: { canonical: "/tools" },
   openGraph: {
-    title: "Free Gaming Tools: Trackers and Counters | PlayBloo",
+    title: "Free Gaming Tools: Calculators and Counters | PlayBloo",
     description:
-      "PlayBloo's free browser tools: count Fortnite Treasure Hunters chests with auto-save and live Pirate Token odds — no account, nothing uploaded.",
+      "PlayBloo's free browser tools: a game download time calculator with a GTA 6 preset and a Fortnite chest counter — no account, nothing uploaded.",
     url: "/tools",
     type: "website",
     images: [{ url: "/images/guides/fortnite-pirate-token.webp", width: 1600, height: 900, alt: "An illustrated Fortnite treasure map on a ship's table" }],
@@ -35,6 +35,44 @@ export default function ToolsPage() {
       </header>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <Link
+          href="/tools/download-time-calculator"
+          prefetch={false}
+          className="group flex flex-col overflow-hidden rounded-2xl border bg-card transition-colors hover:border-primary/50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+        >
+          <div className="relative aspect-video overflow-hidden">
+            <Image
+              src="/images/guides/gta-6-pc-release-date.webp"
+              alt="Police lights flash by a Vice City canal at dusk, above the GTA 6 download preset"
+              width={800}
+              height={450}
+              className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+            />
+          </div>
+          <div className="flex flex-1 flex-col gap-2 p-4">
+            <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-primary">Free tool</p>
+            <h2 className="text-base font-extrabold tracking-tight">Game Download Time Calculator</h2>
+            <p className="text-sm text-muted-foreground">
+              Estimate any game download from a file size and your speed — the GTA 6 launch preset is ready to go.
+            </p>
+            <ul className="mt-auto flex flex-wrap gap-1.5 pt-2 text-[11px] font-bold text-muted-foreground">
+              <li className="inline-flex items-center gap-1 rounded-full border px-2 py-0.5">
+                <HardDrive className="h-3 w-3" aria-hidden="true" /> GTA 6 preset
+              </li>
+              <li className="inline-flex items-center gap-1 rounded-full border px-2 py-0.5">
+                <Gauge className="h-3 w-3" aria-hidden="true" /> Any speed
+              </li>
+              <li className="inline-flex items-center gap-1 rounded-full border px-2 py-0.5">
+                <Timer className="h-3 w-3" aria-hidden="true" /> Instant result
+              </li>
+            </ul>
+            <span className="mt-3 inline-flex items-center gap-1 text-sm font-extrabold text-primary">
+              Open tool
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 motion-reduce:transition-none" aria-hidden="true" />
+            </span>
+          </div>
+        </Link>
+
         <Link
           href="/tools/fortnite-chest-counter"
           prefetch={false}
@@ -75,7 +113,8 @@ export default function ToolsPage() {
       </div>
 
       <p className="mt-6 text-sm text-muted-foreground">
-        One tool so far — the shelf grows when a season demands the next one. If a grind needs a tracker, tell us via{" "}
+        Two tools so far — the shelf grows when a season or a launch demands the next one. If a grind needs a tracker
+        or a download needs planning, tell us via{" "}
         <Link href="/contact" prefetch={false} className="font-bold text-primary hover:underline">Contact</Link> or{" "}
         <Link href="/submit-game" prefetch={false} className="font-bold text-primary hover:underline">Submit a Game</Link>.
       </p>

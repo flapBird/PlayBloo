@@ -44,7 +44,7 @@ const ftHub = "/guides/fortnite-pirate-token";
 const ftPages = [ftHub, `${ftHub}/drop-rate`, `${ftHub}/how-to-get`];
 const gtaHub = "/guides/gta-6";
 const gtaPreorderPath = `${gtaHub}/pre-order`;
-const gtaNewArticles = ["release-time", "platforms", "reviews", "story"];
+const gtaNewArticles = ["pc-release-date", "platforms", "reviews", "story"];
 const gtaPages = [gtaHub, gtaPreorderPath, ...gtaNewArticles.map((slug) => `${gtaHub}/${slug}`)];
 const gtaOriginalPublication = "2026-11-08T13:00:00.000Z";
 const gtaUpdatedAt = "2026-11-19T11:48:00.000Z";
@@ -647,7 +647,8 @@ assert.ok(gtaHubHtml.includes("<dd>Released</dd>"), "GTA 6 is marked released");
 assert.ok(gtaHubHtml.includes("code-in-box"), "GTA 6 hub carries the physical-edition caveat");
 assert.ok(gtaHubHtml.includes("single-player campaign") && gtaHubHtml.includes("TTWO"), "Launch FAQ covers multiplayer status and publisher reporting");
 const gtaQuickAnswers = gtaHubHtml.match(/<nav\b[^>]*aria-label="GTA 6 quick answers"[^>]*>(.*?)<\/nav>/s)?.[1] ?? "";
-for (const slug of ["release-time", "pre-order", "platforms", "reviews"]) assert.ok(gtaQuickAnswers.includes(`href="${gtaHub}/${slug}"`), `${slug}: linked from the quick answers`);
+for (const slug of ["pc-release-date", "pre-order", "platforms", "reviews"]) assert.ok(gtaQuickAnswers.includes(`href="${gtaHub}/${slug}"`), `${slug}: linked from the quick answers`);
+assert.ok(gtaHubHtml.includes('href="/tools/download-time-calculator"'), "Hub links the shared download calculator from the out-now section");
 
 const gtaPreorder = gtaHtml.get(gtaPreorderPath);
 assert.ok(gtaPreorder.includes("$79.99") && gtaPreorder.includes("$99.99"), "Buying guide carries both US prices");
@@ -655,11 +656,13 @@ assert.ok(gtaPreorder.includes('href="https://store.playstation.com/') && gtaPre
 assert.ok(gtaPreorder.includes("Vintage Vice City Pack") && gtaPreorder.includes("November 20"), "Launch bonus and its deadline are explicit");
 assert.ok(gtaPreorder.includes("'55 Vapid Stanier") && gtaPreorder.includes("A disc will not be included"), "Buying guide itemizes the pack and explains the boxed code");
 
-const gtaRelease = gtaHtml.get(`${gtaHub}/release-time`);
-for (const value of ["New Zealand (NZDT", "11 p.m., Nov 18", "9 p.m., Nov 18", "1 a.m., Nov 19", "212 GB", "200 GB"]) assert.ok(gtaRelease.includes(value), `Release guide includes ${value}`);
-assert.ok(gtaRelease.includes('id="download"') && gtaPreorder.includes(`href="${gtaHub}/release-time#download"`), "Buying guide links to the download estimates");
+const gtaPc = gtaHtml.get(`${gtaHub}/pc-release-date`);
+for (const value of ["April 14, 2015", "November 5, 2019", "no PC system requirements have been published", "has yet to confirm a Steam release"]) assert.ok(gtaPc.includes(value), `PC guide includes ${value}`);
+assert.ok(gtaPc.includes('href="https://www.rockstargames.com/VI"'), "PC guide links Rockstar's GTA VI page");
+assert.ok(gtaPc.includes(`href="${gtaHub}/platforms"`), "PC guide links the platform guide for playable options");
+assert.ok(gtaPreorder.includes('href="/tools/download-time-calculator"'), "Buying guide embeds and links the shared download calculator");
 const gtaPlatforms = gtaHtml.get(`${gtaHub}/platforms`);
-for (const value of ["PC release date is still unannounced", "Xbox Cloud Gaming only", "Xbox Remote Play", "Console Sharing and Offline Play"]) assert.ok(gtaPlatforms.includes(value), `Platform guide includes ${value}`);
+for (const value of ["Unavailable on PS4", "Xbox Cloud Gaming only", "Xbox Remote Play", "Console Sharing and Offline Play"]) assert.ok(gtaPlatforms.includes(value), `Platform guide includes ${value}`);
 const gtaReviews = gtaHtml.get(`${gtaHub}/reviews`);
 assert.ok(gtaReviews.includes("99/100") && gtaReviews.includes("Mature 17+"), "Review guide distinguishes critic scores and age rating");
 const gtaStory = gtaHtml.get(`${gtaHub}/story`);
@@ -670,8 +673,20 @@ for (const slug of gtaNewArticles) {
   assert.equal(thumb.status, 200, `${slug}: search thumbnail loads`);
   assert.ok(thumb.headers.get("content-type")?.includes("image/webp"), `${slug}: search thumbnail is WebP`);
 }
-for (const slug of ["release-date", "editions", "collector"]) assert.equal((await get(`${gtaHub}/${slug}`)).status, 404, `${slug}: no duplicate or placeholder route`);
+for (const slug of ["release-date", "editions", "collector", "release-time"]) assert.equal((await get(`${gtaHub}/${slug}`)).status, 404, `${slug}: no duplicate or placeholder route`);
 console.log("PASS GTA 6 launch routes, storefront facts, quick answers, covers and sitemap dates");
+
+const calculatorPath = "/tools/download-time-calculator";
+const calculator = await (await get(calculatorPath)).text();
+const calculatorTitle = calculator.match(/<title>(.*?)<\/title>/s)?.[1] ?? "";
+assert.ok(calculatorTitle.length <= 60, `Calculator rendered title within 60 chars (${calculatorTitle.length})`);
+const calculatorDescription = attr(calculator, "meta", 'name="description"', "content") ?? "";
+assert.ok(calculatorDescription.length <= 160, `Calculator meta description within 160 chars (${calculatorDescription.length})`);
+assert.equal(attr(calculator, "link", 'rel="canonical"', "href"), `${canonicalOrigin}${calculatorPath}`, "Calculator canonical");
+assert.ok(calculator.includes("212 GB") && calculator.includes("200 GB"), "Calculator carries the GTA 6 launch size facts");
+assert.ok(calculator.includes("About 4 hr 27 min"), "Calculator carries the published speed table");
+assert.ok(calculator.includes(`href="${gtaHub}"`) && calculator.includes(`href="${gtaPreorderPath}"`), "Calculator links the GTA 6 hub and buying guide");
+console.log("PASS Game Download Time Calculator route, GTA 6 preset facts and canonical");
 
 for (const path of shrekPages) {
   const html = await (await get(path)).text();
