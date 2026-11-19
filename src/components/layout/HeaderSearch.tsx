@@ -125,6 +125,12 @@ export function HeaderSearch({ categories, guides, autoFocus = false, onNavigate
     navigate(`/search?q=${encodeURIComponent(term)}`, true);
   }, [navigate, term]);
 
+  // Footer action: with a term it mirrors Enter; empty-handed it still lands
+  // on the discovery page instead of doing nothing.
+  const openSearchPage = useCallback(() => {
+    navigate(term ? `/search?q=${encodeURIComponent(term)}` : "/search", true);
+  }, [navigate, term]);
+
   const showGames = term.length >= MIN_GAME_QUERY;
   const items = useMemo(() => [
     ...categoryMatches.map((category) => ({ href: `/category/${category.slug}` })),
@@ -162,7 +168,8 @@ export function HeaderSearch({ categories, guides, autoFocus = false, onNavigate
       }
     } else if (event.key === "Enter") {
       event.preventDefault();
-      if (activeIndex >= 0 && activeIndex < allResultsIndex) navigate(items[activeIndex].href);
+      if (activeIndex === allResultsIndex) openSearchPage();
+      else if (activeIndex >= 0) navigate(items[activeIndex].href);
       else submitSearch();
     }
   };
@@ -313,23 +320,23 @@ export function HeaderSearch({ categories, guides, autoFocus = false, onNavigate
                 })}
               </div>
             )}
-
-            <button
-              type="button"
-              {...optionProps(allResultsIndex)}
-              onClick={submitSearch}
-              className="header-search-row header-search-all"
-              data-active={activeIndex === allResultsIndex}
-            >
-              <span className="header-search-icon">
-                <Search className="h-4 w-4" aria-hidden="true" />
-              </span>
-              <span className="min-w-0 flex-1 truncate text-[13px] font-semibold">
-                {term ? <>Search all results for &ldquo;{term}&rdquo;</> : "Search the full game catalogue"}
-              </span>
-              <ArrowRight className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-            </button>
           </div>
+
+          {/* Pinned footer action, deliberately not styled like the input:
+              no box, no fill — a quiet row with an Enter key hint. */}
+          <button
+            type="button"
+            {...optionProps(allResultsIndex)}
+            onClick={openSearchPage}
+            className="header-search-all"
+            data-active={activeIndex === allResultsIndex}
+          >
+            <Search className="h-4 w-4 shrink-0" aria-hidden="true" />
+            <span className="min-w-0 flex-1 truncate text-[13px] font-semibold">
+              {term ? <>See all results for &ldquo;{term}&rdquo;</> : "Browse the full game catalogue"}
+            </span>
+            <kbd className="header-search-all-kbd" aria-hidden="true">Enter</kbd>
+          </button>
         </div>
       )}
     </div>
