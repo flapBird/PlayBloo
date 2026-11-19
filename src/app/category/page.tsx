@@ -12,7 +12,7 @@ export const metadata = {
    },
 };
 
-export const revalidate = 3600;
+export const revalidate = 21600;
 
 export default async function CategoryListPage() {
   const visibleCategories = (await getCachedCategoryCatalog()).filter(

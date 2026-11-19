@@ -35,7 +35,7 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
-export const revalidate = 3600;
+export const revalidate = 21600;
 
 // Prerender every published game at build time. A visitor hitting a page that
 // was never rendered pays the full server render (several Supabase round

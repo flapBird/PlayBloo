@@ -123,7 +123,7 @@ npm run deploy
 
 ## 缓存与图片
 
-站点使用页面 ISR、`unstable_cache` 和后台按需失效。首页有效期为 15 分钟，游戏详情为 1 小时，分类总览、系列页面以及分类/标签列表数据为 1 小时（带查询参数的分类/标签详情仍动态渲染），关卡页面仍为 30 分钟。到期后有访问才刷新，不会定时扫描整个目录。游戏推荐、分类导航和搜索筛选数据缓存 1 小时；推荐池与 sitemap 共用的整目录条目（`public-catalog-v1`）以及 sitemap 的关卡清单（`public-sitemap-levels-v1`）同样缓存 1 小时，后台关卡增删改会立即失效关卡清单并刷新 /sitemap.xml。后台发布、下架、改名或调整游戏关联会让对应共享数据立即过期，普通内容编辑只刷新相关页面和分类/标签列表。后台修改通过 API 后在下一次访问重新生成，不代表保存接口同步生成整站。
+站点使用页面 ISR、`unstable_cache` 和后台按需失效。首页、最新游戏和热门游戏页有效期为 1 小时，游戏详情、分类总览、系列页面为 6 小时，关卡页面为 2 小时（带查询参数的分类/标签详情仍动态渲染）。页面级 TTL 只是兜底：后台发布、下架、改名或调整关联仍会立即失效对应缓存并触发重渲染，内容变更不依赖 TTL 到期。拉长 TTL 是为了降低「每个被访问页面每个 TTL 周期一次的全页重渲染」的频率——2026-11-20 起，此前 15 分钟/1 小时/30 分钟的设定使这类重渲染约占 Worker 计量 CPU 的 65%（约每天 3,800 次）。绕过后台 API 直接写数据库的流程仍必须在写入后自行失效缓存，不能等 TTL。到期后有访问才刷新，不会定时扫描整个目录。游戏推荐、分类导航和搜索筛选数据缓存 1 小时；推荐池与 sitemap 共用的整目录条目（`public-catalog-v1`）以及 sitemap 的关卡清单（`public-sitemap-levels-v1`）同样缓存 1 小时，后台关卡增删改会立即失效关卡清单并刷新 /sitemap.xml。后台发布、下架、改名或调整游戏关联会让对应共享数据立即过期，普通内容编辑只刷新相关页面和分类/标签列表。后台修改通过 API 后在下一次访问重新生成，不代表保存接口同步生成整站。
 
 `open-next.config.ts` 使用 R2 保存页面和数据缓存，并启用 `enableCacheInterception`，缓存命中时跳过 NextServer 页面代码加载。DO Queue 外包一层 30 秒的 `queueCache`，只抑制同一旧缓存版本的重复刷新入队，不缓存 HTML 或失效标签；先等队列确认再记录去重。后台 `revalidatePath`/`revalidateTag` 的有效性仍直接由 Tag Cache 决定，不依赖刷新队列的缓存。
 
@@ -180,6 +180,8 @@ OpenNext 内置 `--rclone` 选项：预热改走 R2 的 S3 端点（`<account>.r
 ## 扫描请求拦截
 
 2026-10-19 在 `playbloo.net` 的 Cloudflare 自定义 WAF 规则中启用 `playbloo_block_sensitive_file_probes`，拦截 `/.env`、`/.env.*`、`/@fs/.env`、`/@fs/.env.*`、`/.git` 和 `/.git/` 下的请求，在进入 Worker 前返回 403。规则位于 zone 的 `http_request_firewall_custom` 阶段，不随代码部署创建；新环境需要单独配置。不封锁正常游戏页面、搜索引擎或所有 HEAD 请求（ISR 本身使用 HEAD）。
+
+2026-11-20 起 `src/app/robots.ts` 另行禁止抓取 `/search?q=`（内部搜索结果页，Google 官方建议不抓）与 `/search?*view=`（列表/网格视图切换变体）——两者均为动态渲染、无独立收录价值；`/search` 的 `?sort=`、`?page=` 等其余参数仍可爬可收录。
 
 ## 正式域名与 Supabase Auth
 

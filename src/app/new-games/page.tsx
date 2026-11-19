@@ -23,7 +23,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   );
 }
 
-export const revalidate = 900;
+export const revalidate = 3600;
 
 export default async function NewGamesPage({ searchParams }: Props) {
   const page = pageNumber((await searchParams).page);

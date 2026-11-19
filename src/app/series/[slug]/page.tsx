@@ -76,7 +76,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
    };
 }
 
-export const revalidate = 3600;
+export const revalidate = 21600;
 
 export default async function SeriesPage({ params }: Props) {
   const { slug } = await params;

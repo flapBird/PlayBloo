@@ -4,7 +4,7 @@ import { HomeFeatured } from "@/components/home/HomeFeatured";
 import { HomePicks } from "@/components/home/HomePicks";
 import { getCachedHomePickGames, getHomeContent } from "@/lib/home-feeds";
 
-export const revalidate = 900;
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },

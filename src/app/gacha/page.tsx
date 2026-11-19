@@ -3,7 +3,7 @@ import { GachaGame } from "@/components/gacha/GachaGame";
 import { GACHA_PACKS_PER_DAY } from "@/lib/constants";
 import { GACHA_RARITIES, getGachaData } from "@/lib/gacha";
 
-export const revalidate = 900;
+export const revalidate = 3600;
 
 // Rendered title stays inside the AGENTS.md 60-char limit including the
 // " | PlayBloo" suffix; the description stays inside 160 chars.
