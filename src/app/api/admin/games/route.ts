@@ -98,6 +98,10 @@ export async function GET(request: NextRequest) {
   const page = Math.max(1, parseInt(searchParams.get("page") || "1") || 1);
   const search = searchParams.get("q") || "";
   const missing = searchParams.get("missing") || "";
+  // Admin list sorting: newest by default, or by a traffic counter (desc).
+  const SORTABLE_COLUMNS = new Set(["view_count", "play_count"]);
+  const sortParam = searchParams.get("sort") || "";
+  const sortColumn = SORTABLE_COLUMNS.has(sortParam) ? sortParam : null;
   const limit = 20;
   const from = (page - 1) * limit;
   const to = from + limit - 1;
@@ -108,6 +112,8 @@ export async function GET(request: NextRequest) {
   // hottest first, so enrichment batches start where crawlers will look first.
   if (missing === "editorial") {
     query = query.is("editorial_take", null).eq("is_published", true).order("view_count", { ascending: false });
+  } else if (sortColumn) {
+    query = query.order(sortColumn, { ascending: false }).order("created_at", { ascending: false });
   } else {
     query = query.order("created_at", { ascending: false });
   }

@@ -5,8 +5,11 @@ import { SearchX } from "lucide-react";
 export const dynamic = "force-dynamic";
 
 const RANGE_DAYS = [7, 30, 90] as const;
+const SORT_MODES = ["hits", "recent"] as const;
 const MAX_TABLE_ROWS = 50;
 const MAX_ROWS_SCANNED = 5000;
+
+type SortMode = (typeof SORT_MODES)[number];
 
 interface SearchLogRow {
   query: string;
@@ -23,6 +26,7 @@ interface AggregatedQuery {
 
 interface SearchesData {
   rangeDays: number;
+  sort: SortMode;
   zeroSearches: AggregatedQuery[];
   notFoundSlugs: AggregatedQuery[];
   zeroSearchEvents: number;
@@ -30,7 +34,7 @@ interface SearchesData {
   totalRows: number;
 }
 
-function aggregate(rows: SearchLogRow[]): AggregatedQuery[] {
+function aggregate(rows: SearchLogRow[], sort: SortMode): AggregatedQuery[] {
   const groups = new Map<string, AggregatedQuery>();
   for (const row of rows) {
     // Group case-insensitively: "Sonic" and "sonic" are the same demand.
@@ -43,14 +47,22 @@ function aggregate(rows: SearchLogRow[]): AggregatedQuery[] {
       groups.set(key, { query: row.query, attempts: 1, lastSeen: row.created_at });
     }
   }
-  return [...groups.values()].sort((a, b) => b.attempts - a.attempts || a.query.localeCompare(b.query)).slice(0, MAX_TABLE_ROWS);
+  // "hits" ranks by demand volume; "recent" surfaces what visitors searched
+  // for lately, day by day, regardless of how often it repeats.
+  return [...groups.values()]
+    .sort((a, b) =>
+      sort === "recent"
+        ? b.lastSeen.localeCompare(a.lastSeen) || b.attempts - a.attempts
+        : b.attempts - a.attempts || a.query.localeCompare(b.query),
+    )
+    .slice(0, MAX_TABLE_ROWS);
 }
 
 function formatWhen(iso: string): string {
   return new Date(iso).toISOString().slice(0, 16).replace("T", " ");
 }
 
-async function getSearchesData(rangeDays: number): Promise<SearchesData | null> {
+async function getSearchesData(rangeDays: number, sort: SortMode): Promise<SearchesData | null> {
   const since = new Date(Date.now() - rangeDays * 86_400_000).toISOString();
   const { data, error } = await createAdminClient()
     .from("search_query_logs")
@@ -71,8 +83,9 @@ async function getSearchesData(rangeDays: number): Promise<SearchesData | null> 
   const notFoundRows = rows.filter((row) => row.source === "game_404");
   return {
     rangeDays,
-    zeroSearches: aggregate(zeroSearchRows),
-    notFoundSlugs: aggregate(notFoundRows),
+    sort,
+    zeroSearches: aggregate(zeroSearchRows, sort),
+    notFoundSlugs: aggregate(notFoundRows, sort),
     zeroSearchEvents: zeroSearchRows.length,
     notFoundEvents: notFoundRows.length,
     totalRows: rows.length,
@@ -120,11 +133,12 @@ function AggregateTable({ title, description, entityLabel, rows, emptyText }: { 
   );
 }
 
-export default async function AdminSearches({ searchParams }: { searchParams: Promise<{ days?: string }> }) {
-  const { days } = await searchParams;
+export default async function AdminSearches({ searchParams }: { searchParams: Promise<{ days?: string; sort?: string }> }) {
+  const { days, sort } = await searchParams;
   const requestedDays = Number(days);
   const rangeDays = (RANGE_DAYS as readonly number[]).includes(requestedDays) ? requestedDays : 30;
-  const data = await getSearchesData(rangeDays);
+  const sortMode: SortMode = sort === "recent" ? "recent" : "hits";
+  const data = await getSearchesData(rangeDays, sortMode);
 
   return (
     <div className="space-y-8">
@@ -137,17 +151,31 @@ export default async function AdminSearches({ searchParams }: { searchParams: Pr
         </p>
       </div>
 
-      <div className="flex items-center gap-2 text-sm">
-        <span className="text-muted-foreground">Range:</span>
-        {RANGE_DAYS.map((option) => (
-          <Link
-            key={option}
-            href={`/admin/searches?days=${option}`}
-            className={`rounded-lg border px-3 py-1.5 font-semibold transition-colors ${option === rangeDays ? "bg-accent text-foreground" : "text-muted-foreground hover:text-foreground"}`}
-          >
-            {option}d
-          </Link>
-        ))}
+      <div className="flex flex-wrap items-center gap-x-8 gap-y-2 text-sm">
+        <div className="flex items-center gap-2">
+          <span className="text-muted-foreground">Range:</span>
+          {RANGE_DAYS.map((option) => (
+            <Link
+              key={option}
+              href={`/admin/searches?days=${option}&sort=${sortMode}`}
+              className={`rounded-lg border px-3 py-1.5 font-semibold transition-colors ${option === rangeDays ? "bg-accent text-foreground" : "text-muted-foreground hover:text-foreground"}`}
+            >
+              {option}d
+            </Link>
+          ))}
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="text-muted-foreground">Sort:</span>
+          {SORT_MODES.map((option) => (
+            <Link
+              key={option}
+              href={`/admin/searches?days=${rangeDays}&sort=${option}`}
+              className={`rounded-lg border px-3 py-1.5 font-semibold transition-colors ${option === sortMode ? "bg-accent text-foreground" : "text-muted-foreground hover:text-foreground"}`}
+            >
+              {option === "hits" ? "Hits" : "Recent"}
+            </Link>
+          ))}
+        </div>
       </div>
 
       {!data ? (

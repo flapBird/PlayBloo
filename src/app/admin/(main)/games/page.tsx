@@ -6,8 +6,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
-import { Plus, Search, Edit, Trash2, Eye, EyeOff } from "lucide-react";
+import { Plus, Search, Edit, Trash2, Eye, EyeOff, ArrowDown } from "lucide-react";
 import type { Game } from "@/lib/types";
+
+type SortColumn = "" | "view_count" | "play_count";
 
 export default function AdminGames() {
   const [games, setGames] = useState<Game[]>([]);
@@ -15,6 +17,7 @@ export default function AdminGames() {
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
   const [missingEditorial, setMissingEditorial] = useState(false);
+  const [sort, setSort] = useState<SortColumn>("");
   const [loading, setLoading] = useState(true);
   const PAGE_SIZE = 20;
 
@@ -22,10 +25,34 @@ export default function AdminGames() {
     setLoading(true);
     const params = new URLSearchParams({ page: String(page), q: search });
     if (missingEditorial) params.set("missing", "editorial");
+    if (sort) params.set("sort", sort);
     const res = await fetch("/api/admin/games?" + params.toString());
     const json = await res.json();
     setGames(json.data || []); setTotal(json.total || 0); setLoading(false);
-  }, [page, search, missingEditorial]);
+  }, [page, search, missingEditorial, sort]);
+
+  /** Toggle list ordering: pick a counter column, click again for newest-first. */
+  function toggleSort(column: Exclude<SortColumn, "">) {
+    setSort(current => (current === column ? "" : column));
+    setPage(1);
+  }
+
+  function sortHeader(column: Exclude<SortColumn, "">, label: string) {
+    const active = sort === column;
+    return (
+      <TableHead className="text-center">
+        <button
+          type="button"
+          onClick={() => toggleSort(column)}
+          className={`inline-flex items-center gap-1 font-medium transition-colors hover:text-foreground ${active ? "text-foreground" : "text-muted-foreground"}`}
+          title={active ? "Back to newest first" : `Sort by ${label}`}
+        >
+          {label}
+          {active && <ArrowDown className="h-3.5 w-3.5" />}
+        </button>
+      </TableHead>
+    );
+  }
 
   useEffect(() => {
     queueMicrotask(() => { void loadGames(); });
@@ -71,18 +98,19 @@ export default function AdminGames() {
       </div>
       <div className="rounded-xl border bg-card">
         <Table>
-          <TableHeader><TableRow><TableHead>Title</TableHead><TableHead>Slug</TableHead><TableHead className="text-center">Views</TableHead><TableHead className="text-center">Status</TableHead><TableHead className="text-center">Featured</TableHead><TableHead className="text-right">Actions</TableHead></TableRow></TableHeader>
+          <TableHeader><TableRow><TableHead>Title</TableHead><TableHead>Slug</TableHead>{sortHeader("view_count", "Views")}{sortHeader("play_count", "Plays")}<TableHead className="text-center">Status</TableHead><TableHead className="text-center">Featured</TableHead><TableHead className="text-right">Actions</TableHead></TableRow></TableHeader>
           <TableBody>
             {loading ? (
-              <TableRow><TableCell colSpan={6} className="text-center py-8 text-muted-foreground">Loading...</TableCell></TableRow>
+              <TableRow><TableCell colSpan={7} className="text-center py-8 text-muted-foreground">Loading...</TableCell></TableRow>
             ) : games.length === 0 ? (
-              <TableRow><TableCell colSpan={6} className="text-center py-8 text-muted-foreground">No games found</TableCell></TableRow>
+              <TableRow><TableCell colSpan={7} className="text-center py-8 text-muted-foreground">No games found</TableCell></TableRow>
             ) : (
               games.map((game) => (
                 <TableRow key={game.id}>
                   <TableCell className="font-medium">{game.title}</TableCell>
                   <TableCell className="text-muted-foreground">{game.slug}</TableCell>
-                  <TableCell className="text-center">{game.view_count.toLocaleString()}</TableCell>
+                  <TableCell className="text-center tabular-nums">{game.view_count.toLocaleString()}</TableCell>
+                  <TableCell className="text-center tabular-nums">{game.play_count.toLocaleString()}</TableCell>
                   <TableCell className="text-center"><Badge variant={game.is_published ? "default" : "secondary"}>{game.is_published ? "Published" : "Draft"}</Badge></TableCell>
                   <TableCell className="text-center">{game.is_featured ? "Yes" : "No"}</TableCell>
                   <TableCell className="text-right">

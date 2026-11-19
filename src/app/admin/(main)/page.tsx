@@ -1,5 +1,4 @@
 import { createAdminClient } from "@/lib/supabase/admin";
-import { CacheMaintenanceCard } from "@/components/admin/CacheMaintenanceCard";
 
 export const dynamic = "force-dynamic";
 
@@ -19,25 +18,6 @@ async function getStats() {
       supabase.from("games").select("id, title, slug, view_count, play_count").eq("is_published", true).order("view_count", { ascending: false }).limit(5),
     ]);
 
-    const sevenDaysAgo = new Date(Date.now() - 7 * 86400000).toISOString().split("T")[0];
-    const { data: statsData } = await supabase
-      .from("game_stats_daily")
-      .select("date, view_count, play_count")
-      .gte("date", sevenDaysAgo)
-      .order("date", { ascending: false });
-
-    const dateMap = new Map<string, { date: string; view_total: number; play_total: number }>();
-    for (const row of statsData || []) {
-      const existing = dateMap.get(row.date);
-      if (existing) {
-        existing.view_total += row.view_count;
-        existing.play_total += row.play_count;
-      } else {
-        dateMap.set(row.date, { date: row.date, view_total: row.view_count, play_total: row.play_count });
-      }
-    }
-    const recentStats = Array.from(dateMap.values()).sort((a, b) => b.date.localeCompare(a.date));
-
     return {
       totalGames: gamesCount.count || 0,
       totalCategories: catsCount.count || 0,
@@ -45,12 +25,11 @@ async function getStats() {
       totalSeries: seriesCount.count || 0,
       recentGames: recentGames.data || [],
       topGames: topGames.data || [],
-      recentStats,
     };
   } catch {
     return {
       totalGames: 0, totalCategories: 0, totalTags: 0, totalSeries: 0,
-      recentGames: [], topGames: [], recentStats: [],
+      recentGames: [], topGames: [],
     };
   }
 }
@@ -119,32 +98,6 @@ export default async function AdminDashboard() {
           )}
         </div>
       </div>
-
-      <div className="rounded-xl border bg-card p-6">
-        <h2 className="font-semibold mb-4">Recent 7 Days Stats</h2>
-        {stats.recentStats.length > 0 ? (
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b"><th className="text-left py-2 font-medium">Date</th><th className="text-right py-2 font-medium">Views</th><th className="text-right py-2 font-medium">Plays</th></tr>
-              </thead>
-              <tbody>
-                {stats.recentStats.map((s) => (
-                  <tr key={s.date} className="border-b last:border-0">
-                    <td className="py-2">{s.date}</td>
-                    <td className="text-right py-2">{s.view_total}</td>
-                    <td className="text-right py-2">{s.play_total}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        ) : (
-          <p className="text-sm text-muted-foreground">No stats yet.</p>
-        )}
-      </div>
-
-      <CacheMaintenanceCard />
     </div>
   );
 }
