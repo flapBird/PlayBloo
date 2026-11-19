@@ -25,6 +25,12 @@
 .primaryButton:hover { filter: brightness(1.1); }
 .byline { display: flex; flex-wrap: wrap; gap: 8px; font-size: 11px; line-height: 1.8; color: var(--muted-foreground); margin: 17px 0 0; }
 .byline a { color: var(--foreground); }
+.quickAnswers { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 18px; }
+.quickAnswer { position: relative; display: grid; align-content: start; gap: 5px; padding: 12px 34px 12px 14px; border: 1px solid var(--border); border-radius: 9px; background: var(--card); }
+.quickAnswer:hover { border-color: var(--primary); background: var(--secondary); }
+.quickAnswer span { color: var(--muted-foreground); font-size: 12px; line-height: 1.4; }
+.quickAnswer strong { color: var(--foreground); font-size: 14px; line-height: 1.4; }
+.quickAnswer svg { position: absolute; top: 13px; right: 12px; color: var(--primary); }
 .sectionHeading { display: flex; justify-content: space-between; align-items: end; flex-wrap: wrap; gap: 14px; margin-bottom: 20px; }
 .sectionHeading h2 { margin-top: 7px; font-size: 24px; letter-spacing: -.03em; }
 .sectionHeading > a { display: inline-flex; align-items: center; gap: 8px; color: var(--primary); font-size: 12px; }
@@ -121,6 +127,7 @@
 }
 @media (max-width: 767px) {
   .page { padding: 20px 16px 40px; }
+  .quickAnswers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .hero { grid-template-columns: 1fr; }
   .heroImage { grid-row: 1; min-height: 0; aspect-ratio: 1.8; }
   .heroImage img { object-position: center 48%; }

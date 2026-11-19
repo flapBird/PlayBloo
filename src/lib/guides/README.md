@@ -408,15 +408,14 @@ expected-chests arithmetic converts Epic's published ratios only. PlayBloo has n
 and the hub says so; no calculator page was built (the math lives in the drop-rate article), and
 "power hour" is answered as the informal name for Treasure Hours.
 
-`gta-6` (P1) is a single-intent pre-order topic: one hub plus the pre-order guide. Facts come from
-Rockstar's Newswire (June 25 pre-order opening; November 19, 2026 launch after the May 26 delay)
-and the Rockstar Store buy page checked November 8 (Vintage Vice City Pack before November 20,
-Ultimate contents, code-in-box wording, preload from November 10, €79.99 physical Standard as
-rendered to us). US $79.99/$99.99 pricing is attributed to Rockstar's store and launch coverage.
-Push Square's June 24, 2026 report is linked for the code-in-box story. No release-date article
-exists; hub releaseFacts carry the date, and placeholder routes (`release-date`, `editions`,
-`collector`) are asserted 404. Trailer 2 (`VQRLujxTm3c`) is embedded from Rockstar's official
-upload as listed on the store page.
+`gta-6` first covered pre-orders on November 8. The November 19 launch update keeps the hub and
+`pre-order` URL and their original publication dates. Added `release-time` for regional unlocks and
+download planning, `platforms` for PC and Steam status plus console access, `reviews` for the
+launch-day review snapshot, and `story` for the cast, gameplay and attributed playtimes. The US
+unlock conversions use the PlayStation and Xbox store timestamps. Xbox Cloud Gaming has a
+separate launch time and device eligibility. The review scores are dated to the November 19
+check. All four new covers are official Rockstar gallery screenshots. The hub retains Rockstar's
+official Trailer 2 (`VQRLujxTm3c`).
 
 `ocarina-of-time-remake/master-quest-dlc` (P0, same-day) adds the Master Quest rumor article to the
 existing topic. Facts come from Nintendo Life's November 7 rumour piece (MrCheeze's Bluesky finds:

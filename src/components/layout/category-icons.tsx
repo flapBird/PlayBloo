@@ -1,3 +1,4 @@
+import { createElement } from "react";
 import {
   Brain,
   Car,
@@ -63,6 +64,5 @@ export function getCategoryIcon(slug: string): LucideIcon {
 }
 
 export function CategoryIcon({ slug, className }: { slug: string; className?: string }) {
-  const Icon = getCategoryIcon(slug);
-  return <Icon className={className} aria-hidden="true" />;
+  return createElement(getCategoryIcon(slug), { className, "aria-hidden": true });
 }

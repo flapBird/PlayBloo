@@ -129,6 +129,18 @@ export function GuideCard({ topic, article }: { topic: GuideTopic; article?: Gui
   </Link>;
 }
 
+export function GuideQuickAnswers({ topic }: { topic: GuideTopic }) {
+  if (!topic.quickAnswers?.length) return null;
+
+  return <nav className={styles.quickAnswers} aria-label={`${topic.name} quick answers`}>
+    {topic.quickAnswers.map(({ label, answer, href }) => <Link key={href} className={styles.quickAnswer} href={href}>
+      <span>{label}</span>
+      <strong>{answer}</strong>
+      <ArrowUpRight size={15} aria-hidden="true" />
+    </Link>)}
+  </nav>;
+}
+
 export function GuideLibrary({ topic }: { topic: GuideTopic }) {
   if (!getGuideArticles(topic).length) return null;
   const preview = topic.articles.find((article) => article.status === "preview" && article.slug === "walkthrough");

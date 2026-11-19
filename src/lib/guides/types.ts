@@ -70,6 +70,7 @@ export interface GuideTopic {
   status: "published" | "draft";
   kind?: "collection" | "wiki";
   heroFact?: string;
+  quickAnswers?: { label: string; answer: string; href: string }[];
   platforms: string[];
   releaseDate: string;
   releaseKind?: "demo";

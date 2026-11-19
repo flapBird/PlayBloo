@@ -43,7 +43,11 @@ pages.push(...npoPages);
 const ftHub = "/guides/fortnite-pirate-token";
 const ftPages = [ftHub, `${ftHub}/drop-rate`, `${ftHub}/how-to-get`];
 const gtaHub = "/guides/gta-6";
-const gtaPages = [gtaHub, `${gtaHub}/pre-order`];
+const gtaPreorderPath = `${gtaHub}/pre-order`;
+const gtaNewArticles = ["release-time", "platforms", "reviews", "story"];
+const gtaPages = [gtaHub, gtaPreorderPath, ...gtaNewArticles.map((slug) => `${gtaHub}/${slug}`)];
+const gtaOriginalPublication = "2026-11-08T13:00:00.000Z";
+const gtaUpdatedAt = "2026-11-19T11:48:00.000Z";
 const newestUpdatedAt = "2026-11-08T13:00:00.000Z";
 const ootDlcPath = `${hub}/master-quest-dlc`;
 pages.push(...ftPages, ...gtaPages, ootDlcPath);
@@ -105,6 +109,8 @@ const articleCovers = new Map([
   [`${npoHub}/world`, "/images/guides/niem-phat-online-world.webp"],
   [`${ftHub}/drop-rate`, "/images/guides/fortnite-pirate-token-drop-rate.webp"],
   [`${ftHub}/how-to-get`, "/images/guides/fortnite-pirate-token-how-to-get.webp"],
+  [gtaPreorderPath, "/images/guides/gta-6-pre-order-guide.webp"],
+  ...gtaNewArticles.map((slug) => [`${gtaHub}/${slug}`, `/images/guides/gta-6-${slug}.webp`]),
   [ootDlcPath, "/images/guides/ocarina-of-time-master-quest-dlc.webp"],
   [`${shrekHub}/co-op`, "/images/guides/shrek-2-remastered-co-op.webp"],
   [`${shrekHub}/cheats`, "/images/guides/shrek-2-remastered-cheats.webp"],
@@ -298,6 +304,10 @@ if (process.argv[3]) {
     }
     if (path === `${hub}/release-date`) {
       assert.equal(currentEntries.get(url), ootLaunchUpdatedAt, `${path}: Ocarina launch update keeps its own timestamp`);
+      continue;
+    }
+    if (path === gtaHub || path === gtaPreorderPath) {
+      assert.equal(currentEntries.get(url), gtaUpdatedAt, `${path}: GTA 6 launch update is reflected in the sitemap`);
       continue;
     }
     assert.equal(currentEntries.get(url), lastmod, `${path}: existing content keeps its sitemap timestamp`);
@@ -613,8 +623,8 @@ for (const cover of ["/images/guides/fortnite-pirate-token.webp", "/images/guide
 }
 console.log("PASS Fortnite Pirate Token routes, published odds, covers and sitemap dates");
 
-for (const path of gtaPages) {
-  const html = await (await get(path)).text();
+const gtaHtml = new Map(await Promise.all(gtaPages.map(async (path) => [path, await (await get(path)).text()])));
+for (const [path, html] of gtaHtml) {
   assert.ok(!html.includes("/_next/image"), `${path}: direct precompressed cover`);
   assert.ok(!html.includes("<iframe"), `${path}: no game embed`);
   const ids = [...html.matchAll(/<section[^>]*\bid="([^"]+)"/g)].map((match) => match[1]);
@@ -624,26 +634,44 @@ for (const path of gtaPages) {
   assert.ok(pageTitle.length <= 60, `${path}: rendered title within 60 chars (${pageTitle.length})`);
   const metaDescription = attr(html, "meta", 'name="description"', "content") ?? "";
   assert.ok(metaDescription.length <= 160, `${path}: meta description within 160 chars (${metaDescription.length})`);
-  assert.equal(currentEntries.get(`${canonicalOrigin}${path}`), newestUpdatedAt, `${path}: sitemap uses the PlayBloo publication date`);
+  assert.equal(currentEntries.get(`${canonicalOrigin}${path}`), gtaUpdatedAt, `${path}: sitemap uses the launch update date`);
+  const structuredArticle = [...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)]
+    .map(([, value]) => JSON.parse(value)).find((schema) => schema["@type"] === "Article");
+  assert.equal(structuredArticle?.datePublished, [gtaHub, gtaPreorderPath].includes(path) ? gtaOriginalPublication : gtaUpdatedAt, `${path}: keeps its own publication date`);
+  assert.equal(structuredArticle?.dateModified, gtaUpdatedAt, `${path}: article metadata reflects the launch update`);
+  if (path !== gtaHub) assert.ok(latestUpdates.includes(`href="${path}"`), `${path}: appears in Latest Updates`);
 }
-const gtaHubHtml = await (await get(gtaHub)).text();
+const gtaHubHtml = gtaHtml.get(gtaHub);
 assert.ok(/datetime="2026-11-19"/i.test(gtaHubHtml), "GTA 6 release date is separate from guide publication");
-assert.ok(gtaHubHtml.includes("Upcoming"), "GTA 6 is still marked upcoming at the last check");
-assert.ok(gtaHubHtml.includes("code-in-box") || gtaHubHtml.includes("code in a box"), "GTA 6 hub carries the physical-edition caveat");
-assert.ok(gtaHubHtml.includes("not a browser game"), "GTA 6 is not presented as a playable browser game");
-const gtaPreorder = await (await get(`${gtaHub}/pre-order`)).text();
-assert.ok(gtaPreorder.includes("$79.99") && gtaPreorder.includes("$99.99"), "Pre-order guide carries both reported US prices");
-assert.ok(gtaPreorder.includes("Vintage Vice City Pack") && gtaPreorder.includes("November 20"), "Pre-order bonus and its deadline are explicit");
-assert.ok(gtaPreorder.includes("'55 Vapid Stanier"), "Pre-order guide itemizes the bonus contents");
-assert.ok(gtaPreorder.includes("Preload begins November 10") || gtaPreorder.includes("November 10, 2026"), "Preload window is stated");
-assert.ok(gtaPreorder.includes("a disc will not be included"), "Pre-order guide repeats the no-disc warning");
-assert.ok(gtaPreorder.includes("PlayBloo does not sell"), "Pre-order guide disclaims selling");
-const gtaArticleCover = await get("/images/guides/gta-6-pre-order-guide.webp");
-assert.equal(gtaArticleCover.status, 200, "GTA pre-order article cover loads");
-assert.ok(gtaArticleCover.headers.get("content-type")?.includes("image/webp"), "GTA pre-order article cover is WebP");
-for (const slug of ["release-date", "editions", "collector"]) assert.equal((await get(`${gtaHub}/${slug}`)).status, 404, `${slug}: single-intent topic, no placeholder route`);
-assert.ok(latestUpdates.includes(`href="${gtaHub}/pre-order"`), "GTA pre-order article appears in Latest Updates");
-console.log("PASS GTA 6 pre-order routes, store facts, covers and sitemap dates");
+assert.ok(gtaHubHtml.includes("<dd>Released</dd>"), "GTA 6 is marked released");
+assert.ok(gtaHubHtml.includes("code-in-box"), "GTA 6 hub carries the physical-edition caveat");
+assert.ok(gtaHubHtml.includes("single-player campaign") && gtaHubHtml.includes("TTWO"), "Launch FAQ covers multiplayer status and publisher reporting");
+const gtaQuickAnswers = gtaHubHtml.match(/<nav\b[^>]*aria-label="GTA 6 quick answers"[^>]*>(.*?)<\/nav>/s)?.[1] ?? "";
+for (const slug of ["release-time", "pre-order", "platforms", "reviews"]) assert.ok(gtaQuickAnswers.includes(`href="${gtaHub}/${slug}"`), `${slug}: linked from the quick answers`);
+
+const gtaPreorder = gtaHtml.get(gtaPreorderPath);
+assert.ok(gtaPreorder.includes("$79.99") && gtaPreorder.includes("$99.99"), "Buying guide carries both US prices");
+assert.ok(gtaPreorder.includes('href="https://store.playstation.com/') && gtaPreorder.includes('href="https://www.xbox.com/en-US/games/store/'), "Buying guide links to both official stores");
+assert.ok(gtaPreorder.includes("Vintage Vice City Pack") && gtaPreorder.includes("November 20"), "Launch bonus and its deadline are explicit");
+assert.ok(gtaPreorder.includes("'55 Vapid Stanier") && gtaPreorder.includes("A disc will not be included"), "Buying guide itemizes the pack and explains the boxed code");
+
+const gtaRelease = gtaHtml.get(`${gtaHub}/release-time`);
+for (const value of ["New Zealand (NZDT", "11 p.m., Nov 18", "9 p.m., Nov 18", "1 a.m., Nov 19", "212 GB", "200 GB"]) assert.ok(gtaRelease.includes(value), `Release guide includes ${value}`);
+assert.ok(gtaRelease.includes('id="download"') && gtaPreorder.includes(`href="${gtaHub}/release-time#download"`), "Buying guide links to the download estimates");
+const gtaPlatforms = gtaHtml.get(`${gtaHub}/platforms`);
+for (const value of ["PC release date is still unannounced", "Xbox Cloud Gaming only", "Xbox Remote Play", "Console Sharing and Offline Play"]) assert.ok(gtaPlatforms.includes(value), `Platform guide includes ${value}`);
+const gtaReviews = gtaHtml.get(`${gtaHub}/reviews`);
+assert.ok(gtaReviews.includes("99/100") && gtaReviews.includes("Mature 17+"), "Review guide distinguishes critic scores and age rating");
+const gtaStory = gtaHtml.get(`${gtaHub}/story`);
+assert.ok(gtaStory.includes("Manni L. Perez") && gtaStory.includes("Jeff Gerstmann"), "Story guide attributes cast and playtime reporting");
+assert.ok(gtaStory.includes('href="https://www.twitch.tv/directory/category/grand-theft-auto-vi"'), "Story guide links to the GTA VI Twitch category");
+for (const slug of gtaNewArticles) {
+  const thumb = await get(`/images/guides/thumbs/gta-6-${slug}.webp`);
+  assert.equal(thumb.status, 200, `${slug}: search thumbnail loads`);
+  assert.ok(thumb.headers.get("content-type")?.includes("image/webp"), `${slug}: search thumbnail is WebP`);
+}
+for (const slug of ["release-date", "editions", "collector"]) assert.equal((await get(`${gtaHub}/${slug}`)).status, 404, `${slug}: no duplicate or placeholder route`);
+console.log("PASS GTA 6 launch routes, storefront facts, quick answers, covers and sitemap dates");
 
 for (const path of shrekPages) {
   const html = await (await get(path)).text();

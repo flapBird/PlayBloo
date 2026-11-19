@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { GuideBreadcrumbs, GuideByline, GuideGameLinks, GuideHero, GuideLibrary, GuideSchema, GuideSections, GuideSidebar } from "@/components/guides/GuideContent";
+import { GuideBreadcrumbs, GuideByline, GuideGameLinks, GuideHero, GuideLibrary, GuideQuickAnswers, GuideSchema, GuideSections, GuideSidebar } from "@/components/guides/GuideContent";
 import { getGuideTopic, getGuideTopics, guideMetadata } from "@/lib/guides";
 import styles from "@/components/guides/guides.module.css";
 
@@ -20,6 +20,7 @@ export default async function GuideHubPage({ params }: Props) {
     <GuideBreadcrumbs topic={topic} />
     <GuideHero topic={topic} />
     <GuideByline publishedAt={topic.publishedAt} updatedAt={topic.updatedAt} />
+    <GuideQuickAnswers topic={topic} />
     <GuideLibrary topic={topic} />
     <div className={styles.body}>
       <div><GuideSections topic={topic} sections={topic.sections} /></div>
